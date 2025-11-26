@@ -3,9 +3,19 @@ import Layout from '@layouts/Layout.astro';
 import Text from '@components/Text.astro';
 import CurrentBoardMembers from './_current-board.astro';
 import PastBoardMembers from './_past-boards.mdx';
+import HeroImage from '@components/HeroImage.astro';
+import heroImage from '@images/MDGC-founders.jpg';
 ---
 
 <Layout title="Board" subtitle="our volunteer committee members" cmsPath="/collections/board">
+
+<HeroImage
+  src={heroImage}
+  alt="inaugural MDGC board, 2008"
+  caption="inaugural board members (Ben Ayres, Dr. Greg Bowers, Paul Arden, Ian Bycroft, Oliver Pauli, Daniel Hartley)"
+  class="aspect-2/1"
+/>
+
 	<Text>
 		<p>
 			Since our founding in 2008, MDGC has been managed by passionate volunteers who donate their time and expertise to support the growth of disc golf in Melbourne. As a non-profit organisation, we rely on dedicated community members to guide our club's direction, and are always looking for enthusiastic members to help with various club activities and initiatives.
