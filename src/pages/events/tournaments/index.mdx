@@ -8,7 +8,7 @@ import { getCollection } from 'astro:content';
 import Text from '@components/Text.astro';
 import Panel from '@components/Panel.astro';
 import HeroImage from '@components/HeroImage.astro';
-import heroImage from '@images/adgc-tournament.jpg';
+import heroImage from '@images/bundoora-park-simon.jpg';
 
 export const tournaments = (await getCollection('events', ({ data }) => data.eventType === 'tournament')).sort((a, b) =>
   b.data.date.getTime() - a.data.date.getTime()
