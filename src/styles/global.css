@@ -41,16 +41,18 @@ a:hover {
 }
 
 .prose h2 {
+  position: relative;
   background: linear-gradient(to right, #f3f4f6, white);
   padding: 0.5rem 1rem;
   margin-left: -1rem;
   margin-right: -1rem;
 }
 
-/* Heading permalink anchors */
+/* Heading permalink anchors - positioned left of the heading background */
 .prose h2 .heading-link {
+  position: absolute;
+  left: -1.2rem;
   opacity: 0;
-  margin-right: 0.5rem;
   text-decoration: none;
   color: var(--color-mdgc-blue);
   font-weight: normal;
