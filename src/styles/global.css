@@ -47,6 +47,24 @@ a:hover {
   margin-right: -1rem;
 }
 
+/* Heading permalink anchors */
+.prose h2 .heading-link {
+  opacity: 0;
+  margin-right: 0.5rem;
+  text-decoration: none;
+  color: var(--color-mdgc-blue);
+  font-weight: normal;
+}
+
+.prose h2:hover .heading-link {
+  opacity: 1;
+}
+
+.prose h2 .heading-link:hover {
+  color: var(--color-mdgc-blue-dark);
+  transform: none;
+}
+
 .prose h3, .prose h4 {
   color: var(--color-text-body);
 }
