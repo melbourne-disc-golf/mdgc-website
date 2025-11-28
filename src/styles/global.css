@@ -41,17 +41,16 @@ a:hover {
 }
 
 .prose h2 {
-  position: relative;
-  background: linear-gradient(to right, #f3f4f6, white);
-  padding: 0.5rem 1rem;
-  margin-left: -1rem;
-  margin-right: -1rem;
+  background: linear-gradient(to right, #f3f4f6, transparent);
+  padding: 0.5rem 1.5rem;
+  margin-left: -1.5rem;
 }
 
 /* Heading permalink anchors - positioned left of the heading background */
 .prose h2 .heading-link {
-  position: absolute;
-  left: -1.2rem;
+  /* display: none; */
+  margin-left: -1.2rem;
+  margin-right: 0.3rem;
   opacity: 0;
   text-decoration: none;
   color: var(--color-mdgc-blue);
