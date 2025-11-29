@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+
+const seasons = await getCollection('metrixSeasons');
+const events = seasons.flatMap(season => season.data.events);
+---
+
+<div id="next-social-day" data-events={JSON.stringify(events)}></div>
+
+<script>
+  const container = document.getElementById('next-social-day');
+  if (container) {
+    const events = JSON.parse(container.dataset.events || '[]');
+    const now = new Date();
+
+    const futureEvents = events
+      .map((e: { id: number; name: string; date: string; courseName: string }) => ({
+        id: e.id,
+        name: e.name,
+        date: new Date(e.date),
+        courseName: e.courseName,
+      }))
+      .filter((e: { date: Date }) => e.date >= now)
+      .sort((a: { date: Date }, b: { date: Date }) => a.date.getTime() - b.date.getTime());
+
+    const next = futureEvents[0];
+
+    if (next) {
+      const dateStr = next.date.toLocaleDateString('en-AU', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+
+      // Clean up HTML entities (e.g., &rarr;)
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = next.courseName;
+      const cleanCourseName = tempDiv.textContent || next.courseName;
+
+      container.innerHTML = `
+        <p>
+          Our <strong><a href="https://discgolfmetrix.com/${next.id}">next social day</a></strong> is on <strong>${dateStr}</strong>, at <strong>${cleanCourseName}</strong>.
+        </p>
+      `;
+    }
+  }
+</script>
