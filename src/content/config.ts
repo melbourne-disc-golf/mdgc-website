@@ -13,6 +13,7 @@ const courses = defineCollection({
     udiscUrl: z.string().optional(),
     featured: z.boolean().optional().default(false),
     discLibrary: reference('discLibraries').optional(),
+    metrixCourseIds: z.array(z.string()).optional(), // Disc Golf Metrix course IDs (for linking social days)
   }),
 });
 

@@ -2,47 +2,86 @@
 import { getCollection } from 'astro:content';
 
 const seasons = await getCollection('metrixSeasons');
-const events = seasons.flatMap(season => season.data.events);
+const courses = await getCollection('courses');
+
+// Build a map of metrix course ID -> course info
+const metrixToCourse = new Map<string, { slug: string; title: string }>();
+for (const course of courses) {
+  const ids = course.data.metrixCourseIds || [];
+  for (const id of ids) {
+    metrixToCourse.set(id, {
+      slug: course.id.replace(/\.mdx?$/, ''),
+      title: course.data.title,
+    });
+  }
+}
+
+// Get future events, sorted by date, and enrich with course info
+const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+const events = seasons
+  .flatMap(season => season.data.events)
+  .filter(e => e.date >= today)
+  .map(e => {
+    const course = metrixToCourse.get(e.courseId);
+    return {
+      ...e,
+      courseSlug: course?.slug,
+      courseTitle: course?.title,
+    };
+  })
+  .sort((a, b) => a.date.localeCompare(b.date));
+
+// Format date for display
+function formatDate(dateStr: string): string {
+  const date = new Date(dateStr);
+  const weekday = date.toLocaleDateString('en-AU', { weekday: 'long' });
+  const day = date.getDate();
+  const month = date.toLocaleDateString('en-AU', { month: 'long' });
+  return `${weekday}, ${day} ${month}`;
+}
+
+// Clean HTML entities from Metrix data
+function cleanHtml(str: string): string {
+  return str.replace(/&rarr;/g, '→').replace(/&[a-z]+;/gi, '');
+}
 ---
 
-<div id="next-social-day" data-events={JSON.stringify(events)}></div>
+<div class="next-social-day">
+  {events.map(event => (
+    <p class="social-day-item hidden" data-date={event.date}>
+      Our <strong><a href={`https://discgolfmetrix.com/${event.id}`}>next social day</a></strong> is
+      at{' '}
+      {event.courseSlug ? (
+        <strong><a href={`/courses/${event.courseSlug}/`}>{event.courseTitle}</a></strong>
+      ) : (
+        <strong>{cleanHtml(event.courseName)}</strong>
+      )}, on <strong>{formatDate(event.date)}</strong>.
+    </p>
+  ))}
+</div>
+
+<style>
+  .hidden {
+    display: none;
+  }
+</style>
 
 <script>
-  const container = document.getElementById('next-social-day');
+  const container = document.querySelector('.next-social-day');
   if (container) {
-    const events = JSON.parse(container.dataset.events || '[]');
+    const items = container.querySelectorAll('.social-day-item');
     const now = new Date();
+    now.setHours(0, 0, 0, 0);
 
-    const futureEvents = events
-      .map((e: { id: number; name: string; date: string; courseName: string }) => ({
-        id: e.id,
-        name: e.name,
-        date: new Date(e.date),
-        courseName: e.courseName,
-      }))
-      .filter((e: { date: Date }) => e.date >= now)
-      .sort((a: { date: Date }, b: { date: Date }) => a.date.getTime() - b.date.getTime());
-
-    const next = futureEvents[0];
-
-    if (next) {
-      const dateStr = next.date.toLocaleDateString('en-AU', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      });
-
-      // Clean up HTML entities (e.g., &rarr;)
-      const tempDiv = document.createElement('div');
-      tempDiv.innerHTML = next.courseName;
-      const cleanCourseName = tempDiv.textContent || next.courseName;
-
-      container.innerHTML = `
-        <p>
-          Our <strong><a href="https://discgolfmetrix.com/${next.id}">next social day</a></strong> is on <strong>${dateStr}</strong>, at <strong>${cleanCourseName}</strong>.
-        </p>
-      `;
+    for (const item of items) {
+      const dateStr = (item as HTMLElement).dataset.date;
+      if (dateStr) {
+        const eventDate = new Date(dateStr);
+        if (eventDate >= now) {
+          item.classList.remove('hidden');
+          break; // Only show the first future event
+        }
+      }
     }
   }
 </script>
