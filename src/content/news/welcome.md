@@ -5,6 +5,5 @@ author: Mike Williams
 expiryDate: ''
 ---
 We're re-developing the club website!
-What do you think of it so far?
 
-Stay tuned for more updates!
+Launching in December 2025. Stay tuned.
