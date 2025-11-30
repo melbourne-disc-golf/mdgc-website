@@ -1,8 +1,9 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import Text from '@components/Text.astro';
+import { formatDateRange } from '@utils/dates';
 
 export async function getStaticPaths() {
   const events = await getCollection('events', ({ data }) => data.eventType === 'tournament');
@@ -14,27 +15,11 @@ export async function getStaticPaths() {
 
 const { event } = Astro.props;
 const { Content } = await event.render();
-
-const courses = await Promise.all(
-  event.data.courses.map(async (courseRef) => {
-    const course = await getEntry(courseRef);
-    return course;
-  })
-);
-
-const formatDate = (date: Date) => {
-  return date.toLocaleDateString('en-AU', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-};
 ---
 
 <Layout
   title={event.data.title}
-  subtitle={formatDate(event.data.date)}
+  subtitle={formatDateRange(event.data.date, event.data.endDate)}
   cmsPath={`/collections/events/entries/${event.slug}`}
 >
   {event.data.heroImage && (
@@ -48,57 +33,5 @@ const formatDate = (date: Date) => {
 
   <Text>
     <Content />
-
-    <section>
-      <h2>Event details</h2>
-      <dl>
-        <dt>Date</dt>
-        <dd>{formatDate(event.data.date)}</dd>
-
-        {event.data.endDate && (
-          <>
-            <dt>End date</dt>
-            <dd>{formatDate(event.data.endDate)}</dd>
-          </>
-        )}
-
-        <dt>{courses.length > 1 ? 'Courses' : 'Course'}</dt>
-        <dd>
-          {courses.map((course, index) => (
-            <>
-              <a href={`/courses/${course.slug}`}>{course.data.title}</a>
-              {index < courses.length - 1 && ', '}
-            </>
-          ))}
-        </dd>
-
-        {event.data.registrationUrl && (
-          <>
-            <dt>Registration</dt>
-            <dd>
-              <a href={event.data.registrationUrl} target="_blank" rel="noopener noreferrer">
-                Register here
-              </a>
-            </dd>
-          </>
-        )}
-      </dl>
-    </section>
   </Text>
 </Layout>
-
-<style>
-  dl {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.5rem 1rem;
-  }
-
-  dt {
-    font-weight: 600;
-  }
-
-  dd {
-    margin: 0;
-  }
-</style>
