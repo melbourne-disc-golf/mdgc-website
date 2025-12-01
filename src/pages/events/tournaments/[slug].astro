@@ -6,7 +6,7 @@ import Text from '@components/Text.astro';
 import { formatDateRange } from '@utils/dates';
 
 export async function getStaticPaths() {
-  const events = await getCollection('events', ({ data }) => data.eventType === 'tournament');
+  const events = await getCollection('events', ({ data }) => data.eventType === 'tournament' && !data.external);
   return events.map((event) => ({
     params: { slug: event.slug },
     props: { event },

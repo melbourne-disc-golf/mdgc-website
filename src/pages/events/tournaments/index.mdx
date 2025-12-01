@@ -4,17 +4,21 @@ title: Tournaments
 subtitle: Competitive disc golf events and championships
 ---
 
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import Text from '@components/Text.astro';
 import Panel from '@components/Panel.astro';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import HeroImage from '@components/HeroImage.astro';
 import heroImage from '@images/bundoora-park-simon.jpg';
+import { formatDateRange } from '@utils/dates';
 
-export const tournaments = (await getCollection('events', ({ data }) => data.eventType === 'tournament')).sort((a, b) =>
+export const allEvents = await getCollection('events');
+export const tournaments = allEvents.filter((e) => e.data.eventType === 'tournament').sort((a, b) =>
   b.data.date.getTime() - a.data.date.getTime()
 );
+export const allCourses = await getCollection('courses');
+export const coursesBySlug = new Map(allCourses.map((c) => [c.slug, c]));
 
 <HeroImage
   src={heroImage}
@@ -31,21 +35,46 @@ Melbourne Disc Golf Club hosts various tournaments throughout the year. They're 
 {tournaments.length === 0 ? (
   <p>No tournaments scheduled at the moment. Check back soon!</p>
 ) : (
-  <ul>
-    {tournaments.map((event) => (
-      <li>
-        <a href={`/events/tournaments/${event.slug}`}>
-          <strong>{event.data.title}</strong>
-        </a>
-        {' - '}
-        {event.data.date.toLocaleDateString('en-AU', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        })}
-      </li>
-    ))}
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Event</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      {tournaments.map((event) => (
+        <tr>
+          <td>{formatDateRange(event.data.date, event.data.endDate)}</td>
+          <td>
+            {event.data.external ? (
+              <span>
+                <a href={event.data.url}>{event.data.title}</a> ↗
+              </span>
+            ) : (
+              <a href={`/events/tournaments/${event.slug}`}>{event.data.title}</a>
+            )}
+          </td>
+          <td>
+            {event.data.external ? (
+              event.data.location
+            ) : (
+              (event.data.courses || []).map((ref, i) => {
+                const course = coursesBySlug.get(ref.id);
+                return (
+                  <span key={ref.id}>
+                    {i > 0 && ', '}
+                    <a href={`/courses/${ref.id}`}>{course?.data.title || ref.id}</a>
+                  </span>
+                );
+              })
+            )}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
 )}
 
 ## Tournament logistics

@@ -52,9 +52,13 @@ const events = defineCollection({
     eventType: z.enum(['tournament', 'come-and-try', 'other']),
     date: z.date(),
     endDate: z.date().optional(),
-    courses: z.array(reference('courses')),
+    courses: z.array(reference('courses')).optional(), // optional for external events
     heroImage: image().optional(),
     registrationUrl: z.string().optional(),
+    // For external events (not organised by MDGC)
+    external: z.boolean().optional(),
+    location: z.string().optional(), // e.g. "Geelong, VIC" - required for external events
+    url: z.string().optional(), // link to external event page
   }),
 });
 
