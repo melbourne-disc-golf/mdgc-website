@@ -15,7 +15,7 @@ import { formatDateRange } from '@utils/dates';
 
 export const allEvents = await getCollection('events');
 export const tournaments = allEvents.filter((e) => e.data.eventType === 'tournament').sort((a, b) =>
-  b.data.date.getTime() - a.data.date.getTime()
+  a.data.date.getTime() - b.data.date.getTime()
 );
 export const allCourses = await getCollection('courses');
 export const coursesBySlug = new Map(allCourses.map((c) => [c.slug, c]));
