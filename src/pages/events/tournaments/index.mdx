@@ -46,7 +46,7 @@ Melbourne Disc Golf Club hosts various tournaments throughout the year. They're 
     <tbody>
       {tournaments.map((event) => (
         <tr>
-          <td>{formatDateRange(event.data.date, event.data.endDate)}</td>
+          <td>{formatDateRange(event.data.date, event.data.endDate, 'short')}</td>
           <td>
             {event.data.external ? (
               <span>

@@ -1,16 +1,26 @@
 /**
  * Format a date range for display.
  *
- * Examples:
+ * Examples (long format, default):
  * - Single day: "14 December, 2025"
  * - Same month: "14-18 December, 2025"
  * - Different months: "30 June - 2 July, 2025"
  * - Different years: "30 December, 2025 - 2 January, 2026"
+ *
+ * Examples (short format):
+ * - Single day: "14 Dec, 2025"
+ * - Same month: "14-18 Dec, 2025"
+ * - Different months: "30 Jun - 2 Jul, 2025"
+ * - Different years: "30 Dec, 2025 - 2 Jan, 2026"
  */
-export function formatDateRange(startDate: Date, endDate?: Date): string {
+export function formatDateRange(
+  startDate: Date,
+  endDate?: Date,
+  format: 'long' | 'short' = 'long',
+): string {
   const formatOptions: Intl.DateTimeFormatOptions = {
     day: 'numeric',
-    month: 'long',
+    month: format,
     year: 'numeric',
   };
 
@@ -31,7 +41,7 @@ export function formatDateRange(startDate: Date, endDate?: Date): string {
   } else if (sameYear) {
     const startFormatted = startDate.toLocaleDateString('en-AU', {
       day: 'numeric',
-      month: 'long',
+      month: format,
     });
     const endFormatted = endDate.toLocaleDateString('en-AU', formatOptions);
     return `${startFormatted} - ${addComma(endFormatted)}`;
