@@ -108,8 +108,24 @@ a:hover {
 
 .prose td,
 .prose th {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .prose td,
+  .prose th {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .prose td,
+  .prose th {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 .prose td:first-child,
