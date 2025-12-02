@@ -15,6 +15,7 @@
 /* Subtle zoom effect on all links */
 a {
   transition: transform 0.2s ease-in-out;
+  font-weight: 400;
   text-underline-offset: 0.3em;
 }
 
