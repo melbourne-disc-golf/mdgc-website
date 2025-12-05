@@ -35,16 +35,6 @@ const discLibraries = defineCollection({
   }),
 });
 
-const news = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    date: z.date(),
-    author: z.string().optional(),
-    expiryDate: z.union([z.date(), z.literal('')]).optional(),
-  }),
-});
-
 const events = defineCollection({
   type: 'content',
   schema: ({ image }) => z.object({
@@ -85,7 +75,6 @@ export const collections = {
   courses,
   board,
   discLibraries,
-  news,
   events,
   metrixSeasons,
 };

@@ -29,25 +29,6 @@ collections:
         fields:
           - { label: "Body", name: "body", widget: "markdown", hint: "Displayed after the navigation grid" }
 
-  - name: "news"
-    label: "News"
-    label_singular: "News Item"
-    folder: "src/content/news"
-    create: true
-    editor:
-      preview: false
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    extension: "md"
-    format: "frontmatter"
-    sortable_fields: ["date", "title"]
-    summary: "{{date}} - {{title}}"
-    fields:
-      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Author", name: "author", widget: "string", required: false }
-      - { label: "Expiry Date", name: "expiryDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: false, hint: "News will not be displayed after this date" }
-
   - name: "courses"
     label: "Courses"
     label_singular: "Course"
