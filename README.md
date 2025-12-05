@@ -39,7 +39,6 @@ There are two ways to edit content without needing to understand Git or programm
 We have integrated a Content Management System (CMS) into the site, for management of _structured_ content. This is the recommended way to add and edit:
 
 - **Events**
-- **News**
 - **Courses**
 - **Board Members**
 
@@ -81,6 +80,15 @@ web interface - it triggers an automatic "build" and "deployment" process, which
 
 You can observe the process on the [Cloudflare dashboard](https://dash.cloudflare.com/1dbfd2793b506e08151b86bd944859b5/pages/view/mdgc).
 Tip: if you're wondering whether your changes are live yet, check the "last updated" timestamp in bottom-left of the page footer.
+
+## News (via Mailchimp)
+
+The [News page](/club/news) displays recent newsletters from our Mailchimp mailing list. To add news:
+
+1. Send a newsletter campaign via [Mailchimp](https://mailchimp.com/)
+2. File the campaign in the "Club News" folder
+
+The News page embeds a feed from Mailchimp, so it updates automatically - no changes to the website are required.
 
 ## ⚙️ Development
 
