@@ -27,7 +27,13 @@ collections:
         file: "src/pages/_homepage-text.mdx"
         format: "frontmatter"
         fields:
-          - { label: "Body", name: "body", widget: "markdown", hint: "Displayed after the navigation grid" }
+          - { label: "Body", name: "body", widget: "markdown", hint: "Displayed on the landing page, after the navigation grid" }
+      - name: "shoptalk"
+        label: "Shop Talk"
+        file: "src/pages/club/_shoptalk.mdx"
+        format: "frontmatter"
+        fields:
+          - { label: "Body", name: "body", widget: "markdown", hint: "Displayed on the Shop page, above Questions" }
 
   - name: "courses"
     label: "Courses"
