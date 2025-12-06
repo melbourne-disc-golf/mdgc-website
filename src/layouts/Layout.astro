@@ -139,8 +139,9 @@ const faviconSizes = [16, 32, 48, 192];
 				</div>
 
 				<!-- Navigation sections grid -->
-				<nav class="flex flex-wrap mx-auto gap-4 sm:gap-8 md:gap-16 items-center md:items-start ">
-					{navItems.map(section => (
+				<nav class="flex flex-wrap mx-auto gap-2 sm:gap-4 md:gap-8 lg:gap-16 items-start">
+					{navItems.map((section, index) => (
+						<>{index > 0 && <div class="text-gray-400 md:hidden">·</div>}</>
 						<div>
 							<h3 class="font-semibold mb-2">
 								<a href={section.href} class={`inline-block ${navItemColor(section.href)} whitespace-nowrap`}>
