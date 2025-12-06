@@ -48,7 +48,6 @@ export async function getNavItems(featuredCoursesOnly: boolean = false): Promise
       icon: 'heroicons:users',
       subPages: [
         { title: 'News', href: '/club/news', description: 'latest updates', icon: 'heroicons:newspaper' },
-        { title: 'Shop', href: '/club/shop', description: 'buy discs, and more!', icon: 'heroicons:shopping-cart' },
         { title: 'Membership', href: '/club/membership', description: 'join us!', icon: 'heroicons:users' },
         { title: 'Board', href: '/club/board', description: 'meet the team', icon: 'heroicons:user-group' }
       ]
@@ -69,6 +68,12 @@ export async function getNavItems(featuredCoursesOnly: boolean = false): Promise
         { title: 'Social Days', href: '/events/social', description: 'our regular meetups', icon: 'heroicons:heart' },
         { title: 'Tournaments', href: '/events/tournaments', description: 'compete!', icon: 'heroicons:trophy' }
       ]
+    },
+    {
+      title: 'Shop',
+      href: '/shop',
+      description: 'buy discs, and more!',
+      icon: 'heroicons:shopping-cart'
     }
   ];
 }
