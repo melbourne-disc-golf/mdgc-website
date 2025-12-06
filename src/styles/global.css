@@ -172,3 +172,7 @@ a:hover {
 .callout p {
 	@apply m-0;
 }
+
+time {
+  @apply text-sm text-gray-500;
+}
