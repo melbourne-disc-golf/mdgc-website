@@ -2,11 +2,11 @@
 
 [![Deployment Status](https://img.shields.io/github/check-runs/melbourne-disc-golf/mdgc-website/HEAD?label="deployment")](https://github.com/melbourne-disc-golf/mdgc-website/commits/main)
 
-A modern website for the Melbourne Disc Golf Club.
+The website of the Melbourne Disc Golf Club.
 
 ## 📋 Project Status
 
-Mike Williams is currently in the midst of porting the existing WordPress site to a modern static website. The plan is to prove viability by end of Oct 2025, and complete migration by the end of Nov.
+We recently (Dec 6, 2025) went live, migrating traffic from the old WordPress site to this one.
 
 To get an idea of what's left to do, see
 
@@ -14,11 +14,10 @@ To get an idea of what's left to do, see
 
 ## 🌐 Live Site
 
-A preview of new site is available at:
+The site is available at:
 
-- https://mdgc.pages.dev/
-
-Once development is complete, we will change the existing site URL to refer to the new one.
+- https://www.melbournediscgolf.com/ (public URL)
+- https://mdgc.pages.dev/ (underlying Cloudflare Pages URL)
 
 ## ✏️ Making changes to the site
 
@@ -136,19 +135,11 @@ All commands are run from the root of the project, from a terminal:
 
 To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-## Content Migration
-
-As of Oct 2025, the existing WordPress site is hosted at:
-
-- https://www.melbournediscgolf.com/
-
-The `existing-site/` directory contains a summary of the contents and structure of the WordPress site.
-
-## Comparison to existing site
+## Comparison to original MDGC website
 
 ### WordPress vs static site
 
-MDGC's existing website is based on WordPress. WordPress is a "dynamic" platform, which generates web-pages on-the-fly, as users browse.
+MDGC's previous website was based on WordPress. WordPress is a "dynamic" platform, which generates web-pages on-the-fly, as users browse.
 
 In constrast, this rebuild is a "static website", meaning that the web-pages are pre-built, meaning much less work needs to be done on the "server" when people use the site.  Because of this, it should be:
 
@@ -161,7 +152,7 @@ In constrast, this rebuild is a "static website", meaning that the web-pages are
 
 #### Code hosting = GitHub (free)
 
-The website code needs to be hosted somewhere. [GitHub](https://github.com) is a great option, and their Free plan support hosting of Git repositories with multiple collaborators. Anyone who needs to edit the website would need to register for a (free) GitHub account.
+The website code needs to be hosted somewhere. [GitHub](https://github.com) is a great option, and their Free plan support hosting of Git repositories with multiple collaborators.
 
 #### Site build and hosting = Cloudflare Pages (free)
 
@@ -171,5 +162,5 @@ On their Free [plan](https://developers.cloudflare.com/pages/platform/limits/), 
 
 #### Editing experience
 
-The experience of people _editing_ the website will be quite different, for those used to WordPress. In particular, the new solution
-will not provide a WYSIWYG ("what you see is what you get") editing experience, and it will be harder to change site _styling_, without some technical knowledge. However - though a combination of Sveltia CMS and the GitHub UI - we should be able to make it pretty easy for non-technical folks to edit and add _content_.
+The experience of people _editing_ the website is quite different, for those used to WordPress. In particular, the new solution
+does not provide a WYSIWYG ("what you see is what you get") editing experience, and it will be harder to change site _styling_, without some technical knowledge. However - though a combination of Sveltia CMS and the GitHub UI - we've made it pretty easy for non-technical folks to edit and add _content_.
