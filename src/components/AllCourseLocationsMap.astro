@@ -29,7 +29,7 @@ const coursesWithLocation = courses.map(course => {
 ---
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<div id="course-map" class="w-full aspect-2/1 rounded-lg"></div>
+<div id="course-map" class="w-full aspect-3/2 rounded-lg"></div>
 
 <style>
 	/* Custom popup styling */
@@ -166,13 +166,13 @@ const coursesWithLocation = courses.map(course => {
 			});
 		});
 
-		// Set explicit bounds to show Melbourne area with all courses
-		// Coordinates roughly encompass all Melbourne disc golf courses
-		const bounds = L.latLngBounds(
-			[-37.96, 144.55],  // Southwest corner (bottom-left)
-			[-37.68, 145.55]  // Northeast corner (top-right)
-		);
+		// Calculate bounds from all course locations
+		const points = coursesWithLocation.map(c => [c.location.lat, c.location.lng]);
+		const bounds = L.latLngBounds(points).pad(0.1); // 10% padding
 		map.fitBounds(bounds);
+
+		// Show the bounding rectangle (for debugging/adjustment)
+		// L.rectangle(bounds, { color: '#ef4444', weight: 2, fill: false, dashArray: '5, 5' }).addTo(map);
 	};
 	document.head.appendChild(script);
 </script>
