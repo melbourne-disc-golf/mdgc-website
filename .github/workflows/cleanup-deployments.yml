@@ -1,0 +1,31 @@
+name: Cleanup old deployments
+
+on:
+  schedule:
+    # Run weekly on Sunday at 2am UTC (1pm AEDT)
+    - cron: '0 2 * * 0'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (list but do not delete)'
+        type: boolean
+        default: false
+      max_age_days:
+        description: 'Delete deployments older than this many days'
+        type: number
+        default: 30
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Delete old Cloudflare Pages deployments
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 1dbfd2793b506e08151b86bd944859b5
+          CLOUDFLARE_PROJECT: mdgc
+          MAX_AGE_DAYS: ${{ inputs.max_age_days || 30 }}
+          DRY_RUN: ${{ inputs.dry_run && 'true' || 'false' }}
+        run: ./scripts/cleanup-deployments.sh
