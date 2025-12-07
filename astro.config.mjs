@@ -12,6 +12,20 @@ import { rehypeSectionize } from './src/lib/rehype-sectionize.js';
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
+  redirects: {
+    '/about': '/club',
+    '/admin': '/cms/',
+    '/contact': '/club#contact-us',
+    '/ctb': 'https://docs.google.com/forms/d/1qG5hbu89CphfQhYTAXnmCRAqe84S5EgCChU908jlZTQ',
+    '/ctp': '/ctb',
+    '/melbourne-courses': '/courses',
+    '/membership': '/club/membership',
+    '/news': '/club/news',
+    '/shop': 'https://mdgcshop.square.site/',
+    '/upcoming-events': '/events',
+    '/what-is-disc-golf': '/disc-golf',
+    '/club/shop': '/club#shop',
+  },
   markdown: {
     rehypePlugins: [rehypeSectionize],
   },
@@ -19,7 +33,7 @@ export default defineConfig({
     mdx({
       rehypePlugins: [rehypeSectionize],
     }),
-    icon()
+    icon(),
   ],
   image: {
     layout: 'constrained'

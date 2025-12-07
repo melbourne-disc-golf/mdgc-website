@@ -1,0 +1,31 @@
+# Cloudflare Pages redirects
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Legacy URL redirects (301 permanent)
+/about /club 301
+/about/ /club 301
+/club/shop /club#shop 301
+/club/shop/ /club#shop 301
+/contact /club#contact-us 301
+/contact/ /club#contact-us 301
+/ctp /ctb 301
+/melbourne-courses /courses 301
+/melbourne-courses/ /courses 301
+/membership /club/membership 301
+/membership/ /club/membership 301
+/news /club/news 301
+/news/ /club/news 301
+/upcoming-events /events 301
+/upcoming-events/ /events 301
+/what-is-disc-golf /disc-golf 301
+/what-is-disc-golf/ /disc-golf 301
+
+# External redirects (302 temporary)
+/shop https://mdgcshop.square.site/ 302
+/shop/ https://mdgcshop.square.site/ 302
+/ctb https://docs.google.com/forms/d/1qG5hbu89CphfQhYTAXnmCRAqe84S5EgCChU908jlZTQ 302
+/ctb/ https://docs.google.com/forms/d/1qG5hbu89CphfQhYTAXnmCRAqe84S5EgCChU908jlZTQ 302
+
+# CMS redirect (308 permanent, preserves method)
+/admin /cms/ 308
+/admin/ /cms/ 308
