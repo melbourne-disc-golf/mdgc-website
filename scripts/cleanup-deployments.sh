@@ -67,18 +67,10 @@ while true; do
 
     id=$(echo "$deployment" | jq -r '.id')
     created_on=$(echo "$deployment" | jq -r '.created_on')
-    environment=$(echo "$deployment" | jq -r '.environment')
     aliases=$(echo "$deployment" | jq -r '.aliases // [] | length')
     branch=$(echo "$deployment" | jq -r '.deployment_trigger.metadata.branch // "unknown"')
 
-    # Skip production deployments
-    if [ "$environment" = "production" ]; then
-      echo "SKIP: ${id} (production, branch: ${branch})"
-      skipped=$((skipped + 1))
-      continue
-    fi
-
-    # Skip deployments with aliases (e.g., branch aliases)
+    # Skip deployments with aliases (current production, active branch previews)
     if [ "$aliases" -gt 0 ]; then
       echo "SKIP: ${id} (has ${aliases} alias(es), branch: ${branch})"
       skipped=$((skipped + 1))
