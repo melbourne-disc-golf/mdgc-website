@@ -30,10 +30,10 @@ collections:
           - { label: "Body", name: "body", widget: "markdown", hint: "Displayed on the landing page, after the navigation grid" }
       - name: "shoptalk"
         label: "Shop Talk"
-        file: "src/pages/_shoptalk.mdx"
+        file: "src/pages/club/_shoptalk.mdx"
         format: "frontmatter"
         fields:
-          - { label: "Body", name: "body", widget: "markdown", hint: "Displayed on the Shop page, above Questions" }
+          - { label: "Body", name: "body", widget: "markdown", hint: "Displayed in the Shop section of the Club page" }
 
   - name: "courses"
     label: "Courses"
