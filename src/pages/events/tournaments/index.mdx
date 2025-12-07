@@ -10,7 +10,7 @@ import Panel from '@components/Panel.astro';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import HeroImage from '@components/HeroImage.astro';
-import heroImage from '@images/bundoora-park-simon.jpg';
+import ruffeyRumbleKim from '@images/2025-ruffey-rumble-kim.jpg';
 import { formatDateRange } from '@utils/dates';
 
 export const allEvents = await getCollection('events');
@@ -21,9 +21,8 @@ export const allCourses = await getCollection('courses');
 export const coursesBySlug = new Map(allCourses.map((c) => [c.slug, c]));
 
 <HeroImage
-  src={heroImage}
-  alt="Tournament players at ADGC"
-  class="aspect-2/1 object-top"
+  src={ruffeyRumbleKim}
+  alt="Kim at 2025 Ruffey Rumble"
 />
 
 <Text>
