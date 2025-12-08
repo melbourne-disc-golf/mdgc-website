@@ -20,6 +20,11 @@
 /what-is-disc-golf /disc-golf 301
 /what-is-disc-golf/ /disc-golf 301
 
+# Legacy shop URLs (301 permanent)
+/shop-3/ /shop 301
+/product-category/* /shop 301
+/product-tag/* /shop 301
+
 # External redirects (302 temporary)
 /shop https://mdgcshop.square.site/ 302
 /shop/ https://mdgcshop.square.site/ 302
