@@ -47,8 +47,11 @@ const events = defineCollection({
     // For external events (not organised by MDGC)
     external: z.boolean().optional(),
     location: z.string().optional(), // e.g. "Geelong, VIC" - required for external events
-    url: z.string().optional(), // link to external event page
-  }),
+    url: z.string().url().optional(), // link to external event page
+  }).refine(
+    (data) => !data.external || (data.location && data.url),
+    { message: "External events require both 'location' and 'url' to be set" }
+  ),
 });
 
 const metrixSeasons = defineCollection({
