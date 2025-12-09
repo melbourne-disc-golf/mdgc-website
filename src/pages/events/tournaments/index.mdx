@@ -58,10 +58,8 @@ Our members also compete in tournaments elsewhere in Victoria, around Australia,
             )}
           </td>
           <td>
-            {event.data.external ? (
-              event.data.location
-            ) : (
-              (event.data.courses || []).map((ref, i) => {
+            {(event.data.courses || []).length > 0 ? (
+              event.data.courses.map((ref, i) => {
                 const course = coursesBySlug.get(ref.id);
                 return (
                   <span key={ref.id}>
@@ -70,6 +68,8 @@ Our members also compete in tournaments elsewhere in Victoria, around Australia,
                   </span>
                 );
               })
+            ) : (
+              event.data.location
             )}
           </td>
         </tr>
