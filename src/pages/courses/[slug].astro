@@ -3,7 +3,6 @@ import { getCollection, getEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import Text from '@components/Text.astro';
-import HeroImage from '@components/HeroImage.astro';
 import CourseLocationMap from '@components/CourseLocationMap.astro';
 
 export async function getStaticPaths() {
@@ -39,15 +38,12 @@ const mapLinks = {
   title={course.data.title}
   subtitle={course.data.suburb}
   cmsPath={`/collections/courses/entries/${course.slug}`}
+  heroImage={course.data.mainImage && {
+    src: course.data.mainImage,
+    alt: course.data.title,
+    class: "aspect-2/1"
+  }}
 >
-  {course.data.mainImage && (
-    <HeroImage
-      src={course.data.mainImage}
-      alt={course.data.title}
-      class="aspect-2/1"
-    />
-  )}
-
   <Text>
 
     <Content />
