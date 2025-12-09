@@ -1,9 +1,37 @@
 ---
 import Layout from './Layout.astro';
+import type { HeroImage } from './Layout.astro';
+
+// Pre-import all images from the assets/images directory
+const allImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/**/*.{png,jpg,jpeg,webp,svg,gif}', { eager: true });
 
 const { frontmatter } = Astro.props;
+
+// Resolve heroImage if specified in frontmatter
+let heroImage: HeroImage | undefined;
+if (frontmatter.heroImage?.src) {
+	// Convert @images/foo.jpg to /src/assets/images/foo.jpg
+	const imagePath = frontmatter.heroImage.src.replace('@images/', '/src/assets/images/');
+	const imageModule = allImages[imagePath];
+	if (imageModule) {
+		heroImage = {
+			src: imageModule.default,
+			alt: frontmatter.heroImage.alt || '',
+			class: frontmatter.heroImage.class,
+			caption: frontmatter.heroImage.caption,
+		};
+	} else {
+		console.warn(`MdxLayout: Could not find image "${imagePath}"`);
+	}
+}
 ---
 
-<Layout title={frontmatter.title} subtitle={frontmatter.subtitle} cmsPath={frontmatter.cmsPath}>
+<Layout
+	title={frontmatter.title}
+	subtitle={frontmatter.subtitle}
+	description={frontmatter.description}
+	cmsPath={frontmatter.cmsPath}
+	heroImage={heroImage}
+>
 	<slot />
 </Layout>

@@ -1,23 +1,19 @@
 ---
 layout: "@layouts/MdxLayout.astro"
 title: Club
+heroImage:
+  src: "@images/Bald-Hill-Open-2022-group.jpeg"
+  alt: "Kingston Classic 2019 group photo"
+  caption: "assorted members of MDGC"
+  class: "aspect-2/1"
 ---
 
 import Text from '@components/Text.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import NavLink from '@components/NavLink.astro';
 import Grid from '@components/Grid.astro';
-import HeroImage from '@components/HeroImage.astro';
 import Section from '@components/Section.astro';
-import heroImage from '@images/Bald-Hill-Open-2022-group.jpeg';
 import { Content as ShopTalk } from './_shoptalk.mdx';
-
-<HeroImage
-  src={heroImage}
-  alt="Kingston Classic 2019 group photo"
-  caption="assorted members of MDGC"
-  class="aspect-2/1"
-/>
 
 <Text>
 

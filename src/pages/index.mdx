@@ -3,20 +3,16 @@ layout: "@layouts/MdxLayout.astro"
 title: Welcome
 subtitle: to the home of disc golf in Melbourne (Australia)
 cmsPath: "/collections/fragments/entries/homepage-text"
+heroImage:
+  src: "@images/royal-park-group.jpg"
+  alt: "MDGC members at Royal Park"
+  class: "aspect-2/1"
 ---
 
 import NavLink from '@components/NavLink.astro';
-import HeroImage from '@components/HeroImage.astro';
 import Grid from '@components/Grid.astro';
 import Text from '@components/Text.astro';
-import heroImage from '@images/royal-park-group.jpg';
 import { Content as HomepageText } from './_homepage-text.mdx';
-
-<HeroImage
-  src={heroImage}
-  alt="MDGC members at Royal Park"
-  class="aspect-2/1"
-/>
 
 <Grid>
 	<NavLink href="/disc-golf" />

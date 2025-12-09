@@ -2,6 +2,9 @@
 layout: "@layouts/MdxLayout.astro"
 title: Tournaments
 subtitle: Competitive disc golf events and championships
+heroImage:
+  src: "@images/2025-ruffey-rumble-kim.jpg"
+  alt: "Kim at 2025 Ruffey Rumble"
 ---
 
 import { getCollection, getEntry } from 'astro:content';
@@ -9,8 +12,6 @@ import Text from '@components/Text.astro';
 import Panel from '@components/Panel.astro';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
-import HeroImage from '@components/HeroImage.astro';
-import ruffeyRumbleKim from '@images/2025-ruffey-rumble-kim.jpg';
 import { formatDateRange } from '@utils/dates';
 
 export const allEvents = await getCollection('events');
@@ -19,11 +20,6 @@ export const tournaments = allEvents.filter((e) => e.data.eventType === 'tournam
 );
 export const allCourses = await getCollection('courses');
 export const coursesBySlug = new Map(allCourses.map((c) => [c.slug, c]));
-
-<HeroImage
-  src={ruffeyRumbleKim}
-  alt="Kim at 2025 Ruffey Rumble"
-/>
 
 <Text>
 
