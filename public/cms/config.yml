@@ -94,5 +94,4 @@ collections:
       - { label: "End Date", name: "endDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: false }
       - { label: "Courses", name: "courses", widget: "relation", collection: "courses", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], multiple: true }
       - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
-      - { label: "Registration URL", name: "registrationUrl", widget: "string", required: false, hint: "Link to registration form or page" }
       - { label: "Body", name: "body", widget: "markdown" }
