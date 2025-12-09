@@ -11,6 +11,7 @@ import { rehypeSectionize } from './src/lib/rehype-sectionize.js';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://www.melbournediscgolf.com',
   output: 'static',
   redirects: {
     '/about': '/club',

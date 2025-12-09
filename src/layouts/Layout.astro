@@ -4,14 +4,33 @@ import logoImage from '@images/mdgc-logo.png';
 import { getNavItems, type NavItem } from '@data/navigation.ts';
 import { Icon } from 'astro-icon/components'
 import ReportIssue from '@components/ReportIssue.astro';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+export interface HeroImage {
+  src: ImageMetadata;
+  alt: string;
+  class?: string;
+  caption?: string;
+}
 
 export interface Props {
   title: string;
   subtitle?: string;
+  description?: string;  // for og:description, falls back to subtitle
+  heroImage?: HeroImage;
   cmsPath?: string;  // e.g., '/collections/courses/entries/bald-hill-park'
 }
 
-const { title, subtitle, cmsPath } = Astro.props;
+const { title, subtitle, description, heroImage, cmsPath } = Astro.props;
+
+// Build page metadata
+const pageTitle = `${title} | Melbourne Disc Golf Club`;
+const pageDescription = description || subtitle || 'Melbourne Disc Golf Club - promoting disc golf in Melbourne since 2007';
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = heroImage
+  ? new URL(heroImage.src.src, Astro.site)
+  : new URL('/images/og-default.jpg', Astro.site);
 
 // Check if current page is under a nav item
 function isActiveNavItem(itemHref: string): boolean {
@@ -41,9 +60,27 @@ const faviconSizes = [16, 32, 48, 192];
 <!doctype html>
 <html lang="en">
 	<head>
-		<title>{title} | Melbourne Disc Golf Club</title>
+		<title>{pageTitle}</title>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={pageDescription} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDescription} />
+		<meta property="og:image" content={ogImageUrl} />
+		<meta property="og:site_name" content="Melbourne Disc Golf Club" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalUrl} />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={pageDescription} />
+		<meta name="twitter:image" content={ogImageUrl} />
+
+		<link rel="canonical" href={canonicalUrl} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
@@ -124,7 +161,24 @@ const faviconSizes = [16, 32, 48, 192];
 				</div>
 			</div>
 			<div class="content-width">
+
+				{heroImage && (
+					<figure class="my-8">
+						<Image
+							src={heroImage.src}
+							alt={heroImage.alt}
+							class={`w-full rounded-lg object-cover ${heroImage.class || ''}`}
+						/>
+						{heroImage.caption && (
+							<figcaption class="text-sm text-gray-600 mt-2 text-center italic">
+								{heroImage.caption}
+							</figcaption>
+						)}
+					</figure>
+				)}
+
 				<slot />
+
 			</div>
 		</main>
 
