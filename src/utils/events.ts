@@ -51,9 +51,13 @@ export function socialDayToCalendarEvent(
 ): CalendarEvent {
   // Extract short name from full metrix name
   // e.g. "MDGC 2025 Social Days: Season 2 → July West Social Day - Melton"
-  const shortName = event.name.includes('→')
-    ? event.name.split('→').pop()?.trim() || event.name
-    : event.name;
+  // Handle both actual → character and &rarr; HTML entity
+  let shortName = event.name;
+  if (event.name.includes('→')) {
+    shortName = event.name.split('→').pop()?.trim() || event.name;
+  } else if (event.name.includes('&rarr;')) {
+    shortName = event.name.split('&rarr;').pop()?.trim() || event.name;
+  }
 
   return {
     summary: shortName,

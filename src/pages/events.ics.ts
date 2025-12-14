@@ -1,0 +1,109 @@
+import type { APIRoute } from 'astro';
+import { getCollection } from 'astro:content';
+import { eventEntryToCalendarEvent, socialDayToCalendarEvent } from '@utils/events';
+import type { CalendarEvent } from '@components/EventCalendar.astro';
+
+// Format date as iCal DATE (YYYYMMDD)
+function formatDate(date: Date): string {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}${month}${day}`;
+}
+
+// Escape special characters in iCal text fields
+function escapeText(text: string): string {
+  return text
+    .replace(/\\/g, '\\\\')
+    .replace(/;/g, '\\;')
+    .replace(/,/g, '\\,')
+    .replace(/\n/g, '\\n');
+}
+
+// Generate a unique ID for an event
+function generateUID(event: CalendarEvent): string {
+  const dateStr = formatDate(event.startDate);
+  const slug = event.summary.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  return `${dateStr}-${slug}@melbournediscgolf.com`;
+}
+
+// Convert a CalendarEvent to iCal VEVENT format
+function toVEvent(event: CalendarEvent): string {
+  const lines: string[] = [
+    'BEGIN:VEVENT',
+    `UID:${generateUID(event)}`,
+    `DTSTAMP:${formatDate(new Date())}T000000Z`,
+    `DTSTART;VALUE=DATE:${formatDate(event.startDate)}`,
+  ];
+
+  if (event.endDate) {
+    // iCal DTEND is exclusive, so add 1 day for all-day events
+    const endDate = new Date(event.endDate);
+    endDate.setDate(endDate.getDate() + 1);
+    lines.push(`DTEND;VALUE=DATE:${formatDate(endDate)}`);
+  }
+
+  lines.push(`SUMMARY:${escapeText(event.summary)}`);
+
+  if (event.location) {
+    lines.push(`LOCATION:${escapeText(event.location)}`);
+  }
+
+  if (event.url) {
+    lines.push(`URL:${event.url}`);
+  }
+
+  lines.push('END:VEVENT');
+  return lines.join('\r\n');
+}
+
+export const GET: APIRoute = async () => {
+  // Get data from collections
+  const eventsCollection = await getCollection('events');
+  const metrixSeasons = await getCollection('metrixSeasons');
+  const courses = await getCollection('courses');
+
+  // Build course lookup maps
+  const coursesBySlug = new Map(courses.map((c) => [c.slug, c]));
+  const metrixToCourse = new Map<string, string>();
+  for (const course of courses) {
+    for (const id of course.data.metrixCourseIds || []) {
+      metrixToCourse.set(id, course.data.title);
+    }
+  }
+
+  // Convert all events to CalendarEvents
+  const contentEvents = eventsCollection.map((e) =>
+    eventEntryToCalendarEvent(e, coursesBySlug)
+  );
+
+  const socialDays = metrixSeasons
+    .flatMap((season) => season.data.events)
+    .map((e) => socialDayToCalendarEvent(e, metrixToCourse));
+
+  const allEvents = [...contentEvents, ...socialDays];
+
+  // Sort by date
+  allEvents.sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
+
+  // Build iCal content
+  const icalLines = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Melbourne Disc Golf Club//Events//EN',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
+    'X-WR-CALNAME:MDGC Events',
+    ...allEvents.map(toVEvent),
+    'END:VCALENDAR',
+  ];
+
+  const icalContent = icalLines.join('\r\n');
+
+  return new Response(icalContent, {
+    headers: {
+      'Content-Type': 'text/calendar; charset=utf-8',
+      'Content-Disposition': 'attachment; filename="mdgc-events.ics"',
+    },
+  });
+};
