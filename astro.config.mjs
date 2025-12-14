@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 import path from 'path';
 
 import tailwindcss from '@tailwindcss/vite';
@@ -35,6 +36,7 @@ export default defineConfig({
       rehypePlugins: [rehypeSectionize],
     }),
     icon(),
+    sitemap(),
   ],
   image: {
     layout: 'constrained'
