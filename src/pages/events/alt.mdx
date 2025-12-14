@@ -1,0 +1,28 @@
+---
+layout: "@layouts/MdxLayout.astro"
+title: Events (alt)
+subtitle: experimental alternative layout
+---
+
+import Text from '@components/Text.astro';
+import NavLink from '@components/NavLink.astro';
+import Grid from '@components/Grid.astro';
+import UpcomingEvents from '@components/UpcomingEvents.astro';
+
+<Text>
+
+While disc golf _can_ be enjoyed solo, the best way to experience the sport is to play with others.
+
+MDGC events bring together players of all skill levels to share the joy of disc golf in a
+supportive and welcoming community.
+
+<Grid>
+	<NavLink href="/events/social" />
+	<NavLink href="/events/tournaments" />
+</Grid>
+
+## Upcoming events
+
+<UpcomingEvents />
+
+</Text>

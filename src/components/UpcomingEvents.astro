@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import EventCalendar from '@components/EventCalendar.astro';
+import { eventEntryToCalendarEvent, socialDayToCalendarEvent } from '@utils/events';
+
+// Get data from collections
+const eventsCollection = await getCollection('events');
+const metrixSeasons = await getCollection('metrixSeasons');
+const courses = await getCollection('courses');
+
+// Build course lookup maps
+const coursesBySlug = new Map(courses.map((c) => [c.slug, c]));
+const metrixToCourse = new Map<string, string>();
+for (const course of courses) {
+  for (const id of course.data.metrixCourseIds || []) {
+    metrixToCourse.set(id, course.data.title);
+  }
+}
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+// Convert content events to CalendarEvents
+const contentEvents = eventsCollection
+  .filter(e => e.data.date >= today)
+  .map(e => eventEntryToCalendarEvent(e, coursesBySlug));
+
+// Convert metrix social days to CalendarEvents
+const socialDays = metrixSeasons
+  .flatMap(season => season.data.events)
+  .filter(e => new Date(e.date) >= today)
+  .map(e => socialDayToCalendarEvent(e, metrixToCourse));
+
+// Combine all events
+const allEvents = [...contentEvents, ...socialDays];
+---
+
+<EventCalendar events={allEvents} />
