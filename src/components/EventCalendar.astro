@@ -13,9 +13,11 @@ export type CalendarEvent = {
 
 interface Props {
   events: CalendarEvent[];
+  maxDaysInPast?: number;
+  maxDaysInFuture?: number;
 }
 
-const { events } = Astro.props;
+const { events, maxDaysInPast, maxDaysInFuture } = Astro.props;
 const sortedEvents = [...events].sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
 
 const TIMEZONE = 'Australia/Melbourne';
@@ -71,13 +73,17 @@ function getEventTypeClass(event: CalendarEvent): string {
 {sortedEvents.length === 0 ? (
   <p class="no-events">No events scheduled at the moment. Check back soon!</p>
 ) : (
-  <div class="event-calendar">
+  <div
+    class="event-calendar"
+    data-max-days-in-past={maxDaysInPast}
+    data-max-days-in-future={maxDaysInFuture}
+  >
     {groupedByMonth.map((group) => (
       <div class="month-group">
         <h3 class="month-header">{group.label}</h3>
         <div class="events-list">
           {group.events.map((event) => (
-            <div class={`event-row ${getEventTypeClass(event)}`}>
+            <div class={`event-row ${getEventTypeClass(event)}`} data-date={event.startDate.toISOString()}>
               <div class="event-date">
                 <span class="day-number">{getDayNumber(event.startDate)}</span>
                 <span class="day-name">{getDayOfWeek(event.startDate)}</span>
@@ -234,6 +240,10 @@ function getEventTypeClass(event: CalendarEvent): string {
     font-style: italic;
   }
 
+  .hidden {
+    display: none;
+  }
+
   @media (max-width: 480px) {
     .event-row {
       padding: 0.5rem;
@@ -244,3 +254,38 @@ function getEventTypeClass(event: CalendarEvent): string {
     }
   }
 </style>
+
+<script>
+  // Filter events based on configurable date range
+  document.querySelectorAll('.event-calendar').forEach((calendar) => {
+    const maxDaysInPast = calendar.getAttribute('data-max-days-in-past');
+    const maxDaysInFuture = calendar.getAttribute('data-max-days-in-future');
+
+    if (!maxDaysInPast && !maxDaysInFuture) return;
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const minDate = maxDaysInPast
+      ? new Date(today.getTime() - parseInt(maxDaysInPast) * 24 * 60 * 60 * 1000)
+      : null;
+    const maxDate = maxDaysInFuture
+      ? new Date(today.getTime() + parseInt(maxDaysInFuture) * 24 * 60 * 60 * 1000)
+      : null;
+
+    calendar.querySelectorAll('.event-row[data-date]').forEach((row) => {
+      const eventDate = new Date(row.getAttribute('data-date')!);
+      if ((minDate && eventDate < minDate) || (maxDate && eventDate > maxDate)) {
+        row.classList.add('hidden');
+      }
+    });
+
+    // Hide month groups with no visible events
+    calendar.querySelectorAll('.month-group').forEach((group) => {
+      const visibleEvents = group.querySelectorAll('.event-row:not(.hidden)');
+      if (visibleEvents.length === 0) {
+        group.classList.add('hidden');
+      }
+    });
+  });
+</script>

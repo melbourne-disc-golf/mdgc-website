@@ -35,4 +35,4 @@ const socialDays = metrixSeasons
 const allEvents = [...contentEvents, ...socialDays];
 ---
 
-<EventCalendar events={allEvents} />
+<EventCalendar events={allEvents} maxDaysInPast={3} maxDaysInFuture={90}/>
