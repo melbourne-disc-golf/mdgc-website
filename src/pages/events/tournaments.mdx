@@ -12,14 +12,17 @@ import Text from '@components/Text.astro';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import EventCalendar from '@components/EventCalendar.astro';
-import { eventEntryToCalendarEvent } from '@utils/events';
+import { clubEventToCalendarEvent, externalEventToCalendarEvent } from '@utils/events';
 
-export const allEvents = await getCollection('events');
-export const tournaments = allEvents.filter((e) => e.data.eventType === 'tournament');
+export const clubEvents = await getCollection('events');
+export const externalEvents = await getCollection('externalEvents');
 export const allCourses = await getCollection('courses');
 export const coursesBySlug = new Map(allCourses.map((c) => [c.slug, c]));
 
-export const calendarEvents = tournaments.map((e) => eventEntryToCalendarEvent(e, coursesBySlug));
+export const calendarEvents = [
+  ...clubEvents.map((e) => clubEventToCalendarEvent(e, coursesBySlug)),
+  ...externalEvents.map((e) => externalEventToCalendarEvent(e)),
+];
 
 <Text>
 

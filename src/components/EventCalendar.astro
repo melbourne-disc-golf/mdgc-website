@@ -1,5 +1,5 @@
 ---
-export type EventType = 'tournament' | 'social-day' | 'come-and-try' | 'other';
+export type EventSource = 'club' | 'social' | 'external';
 
 export type CalendarEvent = {
   summary: string;
@@ -8,7 +8,7 @@ export type CalendarEvent = {
   url?: string;
   location?: string;
   external?: boolean;
-  eventType?: EventType;
+  source?: EventSource;
 };
 
 interface Props {
@@ -60,13 +60,8 @@ for (const event of sortedEvents) {
   currentGroup.events.push(event);
 }
 
-function getEventTypeClass(event: CalendarEvent): string {
-  // External events (not hosted by MDGC) are grey
-  if (event.external && event.eventType !== 'social-day') return 'event-external';
-  if (event.eventType === 'social-day') return 'event-social';
-  if (event.eventType === 'tournament') return 'event-tournament';
-  if (event.eventType === 'come-and-try') return 'event-come-and-try';
-  return 'event-other';
+function getEventSourceClass(event: CalendarEvent): string {
+  return `event-${event.source || 'other'}`;
 }
 ---
 
@@ -83,7 +78,7 @@ function getEventTypeClass(event: CalendarEvent): string {
         <h3 class="month-header">{group.label}</h3>
         <div class="events-list">
           {group.events.map((event) => (
-            <div class={`event-row ${getEventTypeClass(event)}`} data-date={event.startDate.toISOString()}>
+            <div class={`event-row ${getEventSourceClass(event)}`} data-date={event.startDate.toISOString()}>
               <div class="event-date">
                 <span class="day-number">{getDayNumber(event.startDate)}</span>
                 <span class="day-name">{getDayOfWeek(event.startDate)}</span>
@@ -144,7 +139,7 @@ function getEventTypeClass(event: CalendarEvent): string {
     border-left: 3px solid transparent;
   }
 
-  .event-tournament {
+  .event-club {
     background: #eff6ff;
     border-left-color: #3b82f6;
   }
@@ -152,11 +147,6 @@ function getEventTypeClass(event: CalendarEvent): string {
   .event-social {
     background: #fefce8;
     border-left-color: #eab308;
-  }
-
-  .event-come-and-try {
-    background: #ecfdf5;
-    border-left-color: #10b981;
   }
 
   .event-external {

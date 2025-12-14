@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { eventEntryToCalendarEvent, socialDayToCalendarEvent } from '@utils/events';
+import { clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent } from '@utils/events';
 import type { CalendarEvent } from '@components/EventCalendar.astro';
 
 // Format date as iCal DATE (YYYYMMDD)
@@ -59,7 +59,8 @@ function toVEvent(event: CalendarEvent): string {
 
 export const GET: APIRoute = async () => {
   // Get data from collections
-  const eventsCollection = await getCollection('events');
+  const clubEvents = await getCollection('events');
+  const externalEvents = await getCollection('externalEvents');
   const metrixSeasons = await getCollection('metrixSeasons');
   const courses = await getCollection('courses');
 
@@ -73,15 +74,19 @@ export const GET: APIRoute = async () => {
   }
 
   // Convert all events to CalendarEvents
-  const contentEvents = eventsCollection.map((e) =>
-    eventEntryToCalendarEvent(e, coursesBySlug)
+  const clubCalendarEvents = clubEvents.map((e) =>
+    clubEventToCalendarEvent(e, coursesBySlug)
+  );
+
+  const externalCalendarEvents = externalEvents.map((e) =>
+    externalEventToCalendarEvent(e)
   );
 
   const socialDays = metrixSeasons
     .flatMap((season) => season.data.events)
     .map((e) => socialDayToCalendarEvent(e, metrixToCourse));
 
-  const allEvents = [...contentEvents, ...socialDays];
+  const allEvents = [...clubCalendarEvents, ...externalCalendarEvents, ...socialDays];
 
   // Sort by date
   allEvents.sort((a, b) => a.startDate.getTime() - b.startDate.getTime());

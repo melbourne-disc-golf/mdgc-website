@@ -1,7 +1,8 @@
 import type { CollectionEntry } from 'astro:content';
 import type { CalendarEvent } from '@components/EventCalendar.astro';
 
-type EventEntry = CollectionEntry<'events'>;
+type ClubEventEntry = CollectionEntry<'events'>;
+type ExternalEventEntry = CollectionEntry<'externalEvents'>;
 type CourseEntry = CollectionEntry<'courses'>;
 
 // Metrix social day event shape (from metrixSeasons collection)
@@ -15,16 +16,16 @@ type MetrixEvent = {
 };
 
 /**
- * Convert an event content entry to a CalendarEvent.
+ * Convert a club event content entry to a CalendarEvent.
  *
- * @param event - The event content entry
+ * @param event - The club event content entry
  * @param coursesBySlug - Map of course slug to course entry (for resolving location)
  */
-export function eventEntryToCalendarEvent(
-  event: EventEntry,
+export function clubEventToCalendarEvent(
+  event: ClubEventEntry,
   coursesBySlug?: Map<string, CourseEntry>
 ): CalendarEvent {
-  // Build location from courses if available, otherwise use location field
+  // Build location from courses if available
   const courseNames = (event.data.courses || [])
     .map((ref) => coursesBySlug?.get(ref.id)?.data.title || ref.id)
     .join(', ');
@@ -33,10 +34,28 @@ export function eventEntryToCalendarEvent(
     summary: event.data.title,
     startDate: event.data.date,
     endDate: event.data.endDate,
-    url: event.data.external ? event.data.url : `/events/${event.slug}`,
-    location: courseNames || event.data.location,
-    external: event.data.external,
-    eventType: event.data.eventType,
+    url: `/events/${event.slug}`,
+    location: courseNames || undefined,
+    source: 'club',
+  };
+}
+
+/**
+ * Convert an external event data entry to a CalendarEvent.
+ *
+ * @param event - The external event data entry
+ */
+export function externalEventToCalendarEvent(
+  event: ExternalEventEntry
+): CalendarEvent {
+  return {
+    summary: event.data.title,
+    startDate: new Date(event.data.date),
+    endDate: event.data.endDate ? new Date(event.data.endDate) : undefined,
+    url: event.data.url,
+    location: event.data.location,
+    external: true,
+    source: 'external',
   };
 }
 
@@ -66,6 +85,6 @@ export function socialDayToCalendarEvent(
     url: `https://discgolfmetrix.com/${event.id}`,
     location: metrixToCourse?.get(event.courseId),
     external: true,
-    eventType: 'social-day' as const,
+    source: 'social',
   };
 }

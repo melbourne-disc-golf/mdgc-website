@@ -1,10 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import EventCalendar from '@components/EventCalendar.astro';
-import { eventEntryToCalendarEvent, socialDayToCalendarEvent } from '@utils/events';
+import { clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent } from '@utils/events';
 
 // Get data from collections
-const eventsCollection = await getCollection('events');
+const clubEvents = await getCollection('events');
+const externalEvents = await getCollection('externalEvents');
 const metrixSeasons = await getCollection('metrixSeasons');
 const courses = await getCollection('courses');
 
@@ -20,10 +21,15 @@ for (const course of courses) {
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 
-// Convert content events to CalendarEvents
-const contentEvents = eventsCollection
+// Convert club events to CalendarEvents
+const clubCalendarEvents = clubEvents
   .filter(e => e.data.date >= today)
-  .map(e => eventEntryToCalendarEvent(e, coursesBySlug));
+  .map(e => clubEventToCalendarEvent(e, coursesBySlug));
+
+// Convert external events to CalendarEvents
+const externalCalendarEvents = externalEvents
+  .filter(e => new Date(e.data.date) >= today)
+  .map(e => externalEventToCalendarEvent(e));
 
 // Convert metrix social days to CalendarEvents
 const socialDays = metrixSeasons
@@ -32,7 +38,7 @@ const socialDays = metrixSeasons
   .map(e => socialDayToCalendarEvent(e, metrixToCourse));
 
 // Combine all events
-const allEvents = [...contentEvents, ...socialDays];
+const allEvents = [...clubCalendarEvents, ...externalCalendarEvents, ...socialDays];
 ---
 
 <EventCalendar events={allEvents} maxDaysInPast={3} maxDaysInFuture={90}/>

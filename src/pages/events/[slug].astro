@@ -8,7 +8,7 @@ import LinkPanel from '@components/LinkPanel.astro';
 import { formatDateRange } from '@utils/dates';
 
 export async function getStaticPaths() {
-  const events = await getCollection('events', ({ data }) => !data.external);
+  const events = await getCollection('events');
   return events.map((event) => ({
     params: { slug: event.slug },
     props: { event },

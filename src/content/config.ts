@@ -35,24 +35,29 @@ const discLibraries = defineCollection({
   }),
 });
 
+// Club events (organised by MDGC)
 const events = defineCollection({
   type: 'content',
   schema: ({ image }) => z.object({
     title: z.string(),
-    eventType: z.enum(['tournament', 'come-and-try', 'other']),
     date: z.date(),
     endDate: z.date().optional(),
-    courses: z.array(reference('courses')).optional(), // optional for external events
+    courses: z.array(reference('courses')).optional(),
     heroImage: image().optional(),
-    registrationUrl: z.string().url().optional(), // link to registration page
-    // For external events (not organised by MDGC)
-    external: z.boolean().optional(),
-    location: z.string().optional(), // e.g. "Geelong, VIC" - required for external events
-    url: z.string().url().optional(), // link to external event page
-  }).refine(
-    (data) => !data.external || (data.location && data.url),
-    { message: "External events require both 'location' and 'url' to be set" }
-  ),
+    registrationUrl: z.string().url().optional(),
+  }),
+});
+
+// External events (not organised by MDGC)
+const externalEvents = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    endDate: z.date().optional(),
+    location: z.string(), // e.g. "Geelong, VIC"
+    url: z.string().url(), // link to external event page
+  }),
 });
 
 const metrixSeasons = defineCollection({
@@ -79,5 +84,6 @@ export const collections = {
   board,
   discLibraries,
   events,
+  externalEvents,
   metrixSeasons,
 };
