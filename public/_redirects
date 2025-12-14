@@ -20,9 +20,6 @@
 /what-is-disc-golf /disc-golf 301
 /what-is-disc-golf/ /disc-golf 301
 
-# Event URL restructure (hoisted from /events/tournaments/ to /events/)
-/events/tournaments/* /events/:splat 301
-
 # Legacy shop URLs (301 permanent)
 /shop-3/ /shop 301
 /product-category/* /shop 301
