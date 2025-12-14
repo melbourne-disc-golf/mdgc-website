@@ -181,6 +181,7 @@ function getEventTypeClass(event: CalendarEvent): string {
 
   .event-title {
     font-weight: 500;
+    flex: 1;
   }
 
   .event-title a {
@@ -201,6 +202,19 @@ function getEventTypeClass(event: CalendarEvent): string {
     font-size: 0.875rem;
     color: var(--color-text-muted, #6b7280);
     margin-top: 0.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .event-details {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .event-location {
+      margin-top: 0;
+      flex-shrink: 0;
+    }
   }
 
   .no-events {
