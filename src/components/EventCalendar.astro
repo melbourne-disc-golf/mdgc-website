@@ -1,5 +1,5 @@
 ---
-import { formatDateRange } from '@utils/dates';
+export type EventType = 'tournament' | 'social-day' | 'come-and-try' | 'other';
 
 export type CalendarEvent = {
   summary: string;
@@ -7,7 +7,8 @@ export type CalendarEvent = {
   endDate?: Date;
   url?: string;
   location?: string;
-  external?: boolean; // opens in new tab with ↗ indicator
+  external?: boolean;
+  eventType?: EventType;
 };
 
 interface Props {
@@ -16,39 +17,204 @@ interface Props {
 
 const { events } = Astro.props;
 const sortedEvents = [...events].sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
+
+// Group events by month
+type MonthGroup = {
+  key: string;
+  label: string;
+  events: CalendarEvent[];
+};
+
+const groupedByMonth: MonthGroup[] = [];
+let currentGroup: MonthGroup | null = null;
+
+for (const event of sortedEvents) {
+  const monthKey = `${event.startDate.getFullYear()}-${event.startDate.getMonth()}`;
+  const monthLabel = event.startDate.toLocaleDateString('en-AU', {
+    month: 'long',
+    year: 'numeric'
+  });
+
+  if (!currentGroup || currentGroup.key !== monthKey) {
+    currentGroup = { key: monthKey, label: monthLabel, events: [] };
+    groupedByMonth.push(currentGroup);
+  }
+  currentGroup.events.push(event);
+}
+
+// Format helpers
+function getDayOfWeek(date: Date): string {
+  return date.toLocaleDateString('en-AU', { weekday: 'short' });
+}
+
+function getEventTypeClass(event: CalendarEvent): string {
+  // External events (not hosted by MDGC) are grey
+  if (event.external && event.eventType !== 'social-day') return 'event-external';
+  if (event.eventType === 'social-day') return 'event-social';
+  if (event.eventType === 'tournament') return 'event-tournament';
+  if (event.eventType === 'come-and-try') return 'event-come-and-try';
+  return 'event-other';
+}
 ---
 
 {sortedEvents.length === 0 ? (
-  <p>No events scheduled at the moment. Check back soon!</p>
+  <p class="no-events">No events scheduled at the moment. Check back soon!</p>
 ) : (
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Event</th>
-        <th>Location</th>
-      </tr>
-    </thead>
-    <tbody>
-      {sortedEvents.map((event) => (
-        <tr>
-          <td class="text-right whitespace-nowrap">
-            {formatDateRange(event.startDate, event.endDate, 'short')}
-          </td>
-          <td>
-            {event.url ? (
-              event.external ? (
-                <span><a href={event.url}>{event.summary}</a> ↗</span>
-              ) : (
-                <a href={event.url}><strong>{event.summary}</strong></a>
-              )
-            ) : (
-              <span>{event.summary}</span>
-            )}
-          </td>
-          <td>{event.location || ''}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
+  <div class="event-calendar">
+    {groupedByMonth.map((group) => (
+      <div class="month-group">
+        <h3 class="month-header">{group.label}</h3>
+        <div class="events-list">
+          {group.events.map((event) => (
+            <div class={`event-row ${getEventTypeClass(event)}`}>
+              <div class="event-date">
+                <span class="day-number">{event.startDate.getDate()}</span>
+                <span class="day-name">{getDayOfWeek(event.startDate)}</span>
+              </div>
+              <div class="event-details">
+                <div class="event-title">
+                  {event.url ? (
+                    <a href={event.url} class:list={{ external: event.external }}>
+                      {event.summary}
+                      {event.external && <span class="external-icon"> ↗</span>}
+                    </a>
+                  ) : (
+                    <span>{event.summary}</span>
+                  )}
+                </div>
+                {event.location && (
+                  <div class="event-location">{event.location}</div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
 )}
+
+<style>
+  .event-calendar {
+    margin: 1rem 0;
+  }
+
+  .month-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .month-header {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-muted, #6b7280);
+    margin: 0 0 0.75rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border, #e5e5e5);
+  }
+
+  .events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .event-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border-left: 3px solid transparent;
+  }
+
+  .event-tournament {
+    background: #eff6ff;
+    border-left-color: #3b82f6;
+  }
+
+  .event-social {
+    background: #fefce8;
+    border-left-color: #eab308;
+  }
+
+  .event-come-and-try {
+    background: #ecfdf5;
+    border-left-color: #10b981;
+  }
+
+  .event-external {
+    background: #f9fafb;
+    border-left-color: #9ca3af;
+  }
+
+  .event-other {
+    background: #f9fafb;
+    border-left-color: #d1d5db;
+  }
+
+  .event-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 3rem;
+    text-align: center;
+  }
+
+  .day-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-text, #111827);
+  }
+
+  .day-name {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-text-muted, #6b7280);
+    letter-spacing: 0.025em;
+  }
+
+  .event-details {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .event-title {
+    font-weight: 500;
+  }
+
+  .event-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .event-title a:hover {
+    text-decoration: underline;
+  }
+
+  .external-icon {
+    font-size: 0.85em;
+    opacity: 0.6;
+  }
+
+  .event-location {
+    font-size: 0.875rem;
+    color: var(--color-text-muted, #6b7280);
+    margin-top: 0.25rem;
+  }
+
+  .no-events {
+    color: var(--color-text-muted, #6b7280);
+    font-style: italic;
+  }
+
+  @media (max-width: 480px) {
+    .event-row {
+      padding: 0.5rem;
+    }
+
+    .day-number {
+      font-size: 1.25rem;
+    }
+  }
+</style>

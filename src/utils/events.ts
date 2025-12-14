@@ -36,6 +36,7 @@ export function eventEntryToCalendarEvent(
     url: event.data.external ? event.data.url : `/events/${event.slug}`,
     location: courseNames || event.data.location,
     external: event.data.external,
+    eventType: event.data.eventType,
   };
 }
 
@@ -65,5 +66,6 @@ export function socialDayToCalendarEvent(
     url: `https://discgolfmetrix.com/${event.id}`,
     location: metrixToCourse?.get(event.courseId),
     external: true,
+    eventType: 'social-day' as const,
   };
 }
