@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import Text from '@components/Text.astro';
+import Grid from '@components/Grid.astro';
+import LinkPanel from '@components/LinkPanel.astro';
 import { formatDateRange } from '@utils/dates';
 
 export async function getStaticPaths() {
@@ -34,4 +36,14 @@ const { Content } = await event.render();
   <Text>
     <Content />
   </Text>
+
+  {event.data.registrationUrl && (
+    <Grid>
+      <LinkPanel
+        href={event.data.registrationUrl}
+        title="Register here"
+        icon="mdi:calendar-check"
+      />
+    </Grid>
+  )}
 </Layout>

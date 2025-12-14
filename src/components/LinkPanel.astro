@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components';
 interface Props {
 	href: string;
 	title: string;
-	description: string;
+	description?: string;
 	icon?: string;
 	image?: string;
 	class?: string;
@@ -21,7 +21,7 @@ const { href, title, description, icon, image, class: className = '' } = Astro.p
 		</div>
 		<div class="link-panel-content">
 			<h3>{title}</h3>
-			<p>{description}</p>
+			{description && <p>{description}</p>}
 		</div>
 	</div>
 </a>

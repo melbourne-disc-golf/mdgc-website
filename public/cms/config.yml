@@ -94,6 +94,7 @@ collections:
       - { label: "End Date", name: "endDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: false }
       - { label: "Courses", name: "courses", widget: "relation", collection: "courses", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], multiple: true, required: false }
       - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
+      - { label: "Registration URL", name: "registrationUrl", widget: "string", required: false, hint: "Link to registration page (e.g. Disc Golf Metrix)" }
       - { label: "External event", name: "external", widget: "boolean", default: false, required: false, hint: "Enable for events not organised by MDGC (requires Location and URL)" }
       - { label: "Location", name: "location", widget: "string", required: false, hint: "Required for external events, e.g. 'Geelong, VIC'" }
       - { label: "URL", name: "url", widget: "string", required: false, hint: "Required for external events - link to event page" }
