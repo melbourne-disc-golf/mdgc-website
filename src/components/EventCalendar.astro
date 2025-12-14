@@ -18,6 +18,25 @@ interface Props {
 const { events } = Astro.props;
 const sortedEvents = [...events].sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
 
+const TIMEZONE = 'Australia/Melbourne';
+
+// Format helpers
+function getDayNumber(date: Date): number {
+  return parseInt(date.toLocaleDateString('en-AU', { day: 'numeric', timeZone: TIMEZONE }), 10);
+}
+
+function getDayOfWeek(date: Date): string {
+  return date.toLocaleDateString('en-AU', { weekday: 'short', timeZone: TIMEZONE });
+}
+
+function getMonthKey(date: Date): string {
+  return date.toLocaleDateString('en-AU', { month: 'numeric', year: 'numeric', timeZone: TIMEZONE });
+}
+
+function getMonthLabel(date: Date): string {
+  return date.toLocaleDateString('en-AU', { month: 'long', year: 'numeric', timeZone: TIMEZONE });
+}
+
 // Group events by month
 type MonthGroup = {
   key: string;
@@ -29,22 +48,14 @@ const groupedByMonth: MonthGroup[] = [];
 let currentGroup: MonthGroup | null = null;
 
 for (const event of sortedEvents) {
-  const monthKey = `${event.startDate.getFullYear()}-${event.startDate.getMonth()}`;
-  const monthLabel = event.startDate.toLocaleDateString('en-AU', {
-    month: 'long',
-    year: 'numeric'
-  });
+  const monthKey = getMonthKey(event.startDate);
+  const monthLabel = getMonthLabel(event.startDate);
 
   if (!currentGroup || currentGroup.key !== monthKey) {
     currentGroup = { key: monthKey, label: monthLabel, events: [] };
     groupedByMonth.push(currentGroup);
   }
   currentGroup.events.push(event);
-}
-
-// Format helpers
-function getDayOfWeek(date: Date): string {
-  return date.toLocaleDateString('en-AU', { weekday: 'short' });
 }
 
 function getEventTypeClass(event: CalendarEvent): string {
@@ -68,7 +79,7 @@ function getEventTypeClass(event: CalendarEvent): string {
           {group.events.map((event) => (
             <div class={`event-row ${getEventTypeClass(event)}`}>
               <div class="event-date">
-                <span class="day-number">{event.startDate.getDate()}</span>
+                <span class="day-number">{getDayNumber(event.startDate)}</span>
                 <span class="day-name">{getDayOfWeek(event.startDate)}</span>
               </div>
               <div class="event-details">
