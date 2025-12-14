@@ -82,11 +82,11 @@ collections:
     create: true
     editor:
       preview: false
-    slug: "{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     extension: "mdx"
     format: "frontmatter"
     sortable_fields: ["date", "title", "eventType"]
-    summary: "{{date}} - {{title}} ({{eventType}})"
+    summary: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Event Type", name: "eventType", widget: "select", options: ["tournament", "come-and-try", "other"] }
