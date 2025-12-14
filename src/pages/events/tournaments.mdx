@@ -7,19 +7,19 @@ heroImage:
   alt: "Kim at 2025 Ruffey Rumble"
 ---
 
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import Text from '@components/Text.astro';
-import Panel from '@components/Panel.astro';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
-import { formatDateRange } from '@utils/dates';
+import EventCalendar from '@components/EventCalendar.astro';
+import { toCalendarEvent } from '@utils/events';
 
 export const allEvents = await getCollection('events');
-export const tournaments = allEvents.filter((e) => e.data.eventType === 'tournament').sort((a, b) =>
-  a.data.date.getTime() - b.data.date.getTime()
-);
+export const tournaments = allEvents.filter((e) => e.data.eventType === 'tournament');
 export const allCourses = await getCollection('courses');
 export const coursesBySlug = new Map(allCourses.map((c) => [c.slug, c]));
+
+export const calendarEvents = tournaments.map((e) => toCalendarEvent(e, coursesBySlug));
 
 <Text>
 
@@ -29,50 +29,7 @@ Our members also compete in tournaments elsewhere in Victoria, around Australia,
 
 ## Upcoming tournaments
 
-{tournaments.length === 0 ? (
-  <p>No tournaments scheduled at the moment. Check back soon!</p>
-) : (
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Event</th>
-        <th>Location</th>
-      </tr>
-    </thead>
-    <tbody>
-      {tournaments.map((event) => (
-        <tr>
-          <td class="text-right whitespace-nowrap">{formatDateRange(event.data.date, event.data.endDate, 'short')}</td>
-          <td>
-            {event.data.external ? (
-              <span>
-                <a href={event.data.url}>{event.data.title}</a> ↗
-              </span>
-            ) : (
-              <a href={`/events/${event.slug}`}><strong>{event.data.title}</strong></a>
-            )}
-          </td>
-          <td>
-            {(event.data.courses || []).length > 0 ? (
-              event.data.courses.map((ref, i) => {
-                const course = coursesBySlug.get(ref.id);
-                return (
-                  <span key={ref.id}>
-                    {i > 0 && ', '}
-                    <a href={`/courses/${ref.id}`}>{course?.data.title || ref.id}</a>
-                  </span>
-                );
-              })
-            ) : (
-              event.data.location
-            )}
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-)}
+<EventCalendar events={calendarEvents} />
 
 ## Tournament logistics
 

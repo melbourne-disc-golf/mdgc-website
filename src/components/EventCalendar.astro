@@ -1,0 +1,54 @@
+---
+import { formatDateRange } from '@utils/dates';
+
+export type CalendarEvent = {
+  summary: string;
+  startDate: Date;
+  endDate?: Date;
+  url?: string;
+  location?: string;
+  external?: boolean; // opens in new tab with ↗ indicator
+};
+
+interface Props {
+  events: CalendarEvent[];
+}
+
+const { events } = Astro.props;
+const sortedEvents = [...events].sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
+---
+
+{sortedEvents.length === 0 ? (
+  <p>No events scheduled at the moment. Check back soon!</p>
+) : (
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Event</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      {sortedEvents.map((event) => (
+        <tr>
+          <td class="text-right whitespace-nowrap">
+            {formatDateRange(event.startDate, event.endDate, 'short')}
+          </td>
+          <td>
+            {event.url ? (
+              event.external ? (
+                <span><a href={event.url}>{event.summary}</a> ↗</span>
+              ) : (
+                <a href={event.url}><strong>{event.summary}</strong></a>
+              )
+            ) : (
+              <span>{event.summary}</span>
+            )}
+          </td>
+          <td>{event.location || ''}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+)}
