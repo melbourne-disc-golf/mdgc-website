@@ -177,6 +177,10 @@ function getEventSourceClass(event: CalendarEvent): string {
     letter-spacing: 0.025em;
   }
 
+  .past-event .event-date {
+    opacity: 0.4;
+  }
+
   .event-details {
     flex: 1;
     min-width: 0;
@@ -242,12 +246,10 @@ function getEventSourceClass(event: CalendarEvent): string {
 </style>
 
 <script>
-  // Filter events based on configurable date range
+  // Filter events based on configurable date range and mark past events
   document.querySelectorAll('.event-calendar').forEach((calendar) => {
     const maxDaysInPast = calendar.getAttribute('data-max-days-in-past');
     const maxDaysInFuture = calendar.getAttribute('data-max-days-in-future');
-
-    if (!maxDaysInPast && !maxDaysInFuture) return;
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -261,6 +263,13 @@ function getEventSourceClass(event: CalendarEvent): string {
 
     calendar.querySelectorAll('.event-row[data-date]').forEach((row) => {
       const eventDate = new Date(row.getAttribute('data-date')!);
+
+      // Dim past events
+      if (eventDate < today) {
+        row.classList.add('past-event');
+      }
+
+      // Hide events outside date range
       if ((minDate && eventDate < minDate) || (maxDate && eventDate > maxDate)) {
         row.classList.add('hidden');
       }
