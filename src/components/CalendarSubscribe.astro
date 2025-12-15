@@ -1,0 +1,23 @@
+---
+import Grid from './Grid.astro';
+import LinkPanel from './LinkPanel.astro';
+
+const siteHost = Astro.site ? new URL(Astro.site).host : 'mdgc.pages.dev';
+const webcalUrl = `webcal://${siteHost}/events.ics`;
+const googleUrl = `https://calendar.google.com/calendar/render?cid=${webcalUrl}`;
+---
+
+<Grid>
+  <LinkPanel
+    href={webcalUrl}
+    title="Subscribe to calendar"
+    description="works with Apple Calendar, Outlook, etc."
+    icon="mdi:calendar-plus"
+  />
+  <LinkPanel
+    href={googleUrl}
+    title="Add to Google Calendar"
+    description="subscribe via Google Calendar"
+    icon="mdi:google"
+  />
+</Grid>

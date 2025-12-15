@@ -108,7 +108,6 @@ export const GET: APIRoute = async () => {
   return new Response(icalContent, {
     headers: {
       'Content-Type': 'text/calendar; charset=utf-8',
-      'Content-Disposition': 'attachment; filename="mdgc-events.ics"',
     },
   });
 };
