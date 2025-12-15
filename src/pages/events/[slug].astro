@@ -62,20 +62,23 @@ if (event.data.courses) {
     <Content />
 
     {courseLocations.length > 0 && (
-      <section class="my-8">
+      <section>
         <h2>Location</h2>
         <LocationsMap locations={courseLocations} permanentTooltips />
       </section>
     )}
 
     {event.data.registrationUrl && (
-      <Grid>
-        <LinkPanel
-          href={event.data.registrationUrl}
-          title="Register here"
-          icon="mdi:calendar-check"
-        />
-      </Grid>
+      <section>
+        <h2>Registration</h2>
+        <Grid>
+          <LinkPanel
+            href={event.data.registrationUrl}
+            title="Register here"
+            icon="mdi:calendar-check"
+          />
+        </Grid>
+      </section>
     )}
 
 </Text>
