@@ -23,18 +23,15 @@ today.setHours(0, 0, 0, 0);
 
 // Convert club events to CalendarEvents
 const clubCalendarEvents = clubEvents
-  .filter(e => e.data.date >= today)
   .map(e => clubEventToCalendarEvent(e, coursesBySlug));
 
 // Convert external events to CalendarEvents
 const externalCalendarEvents = externalEvents
-  .filter(e => new Date(e.data.date) >= today)
   .map(e => externalEventToCalendarEvent(e));
 
 // Convert metrix social days to CalendarEvents
 const socialDays = metrixSeasons
   .flatMap(season => season.data.events)
-  .filter(e => new Date(e.date) >= today)
   .map(e => socialDayToCalendarEvent(e, metrixToCourse));
 
 // Combine all events
