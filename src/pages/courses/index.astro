@@ -2,13 +2,33 @@
 import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import CourseCard from '@components/CourseCard.astro';
-import AllCourseLocationsMap from '@components/AllCourseLocationsMap.astro';
+import LocationsMap from '@components/LocationsMap.astro';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import Section from '@components/Section.astro';
 
 const courses = await getCollection('courses');
 courses.sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+// Prepare locations for the map
+const courseLocations = courses.flatMap(course => {
+	if (!course.data.location) return [];
+	try {
+		const parsed = JSON.parse(course.data.location);
+		if (parsed.type === 'Point' && parsed.coordinates) {
+			return [{
+				lat: parsed.coordinates[1] as number,
+				lng: parsed.coordinates[0] as number,
+				title: course.data.title,
+				subtitle: course.data.suburb,
+				href: `/courses/${course.slug}`
+			}];
+		}
+	} catch (e) {
+		// Ignore parse errors
+	}
+	return [];
+});
 ---
 
 <Layout title="Courses" subtitle="disc golf courses around Melbourne" cmsPath="/collections/courses">
@@ -24,7 +44,7 @@ courses.sort((a, b) => a.data.title.localeCompare(b.data.title));
 	</Grid>
 
 	<div class="my-8">
-		<AllCourseLocationsMap />
+		<LocationsMap locations={courseLocations} />
 	</div>
 
 	<Section title="Further afield">

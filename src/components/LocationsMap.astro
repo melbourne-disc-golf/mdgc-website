@@ -1,0 +1,105 @@
+---
+interface Location {
+  lat: number;
+  lng: number;
+  title: string;
+  subtitle?: string;
+  href?: string;
+}
+
+interface Props {
+  locations: Location[];
+  permanentTooltips?: boolean;
+  class?: string;
+}
+
+const { locations, permanentTooltips = false, class: className } = Astro.props;
+---
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<div class:list={["locations-map w-full aspect-3/2 rounded-lg", className]}></div>
+
+<style>
+  :global(.location-tooltip) {
+    background: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e3a8a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  :global(.location-tooltip a) {
+    color: inherit;
+    text-decoration: none;
+  }
+  :global(.location-tooltip a:hover) {
+    text-decoration: underline;
+  }
+  :global(.location-tooltip .subtitle) {
+    margin-top: 2px;
+    font-size: 13px;
+    font-weight: normal;
+    color: #6b7280;
+  }
+  :global(.leaflet-tooltip-top.location-tooltip::before) {
+    border-top-color: white;
+  }
+  :global(.leaflet-tooltip-bottom.location-tooltip::before) {
+    border-bottom-color: white;
+  }
+  :global(.clickable-marker) {
+    cursor: pointer;
+    transition: filter 0.15s;
+  }
+  :global(.clickable-marker:hover) {
+    filter: brightness(1.2);
+  }
+</style>
+
+<script is:inline define:vars={{ locations, permanentTooltips }}>
+  const script = document.createElement('script');
+  script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  script.onload = () => {
+    const container = document.querySelector('.locations-map:not([data-initialized])');
+    if (!container) return;
+    container.setAttribute('data-initialized', 'true');
+
+    const map = L.map(container, { scrollWheelZoom: false });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/attributions">CARTO</a>',
+      maxZoom: 20,
+      subdomains: 'abcd'
+    }).addTo(map);
+
+    locations.forEach(location => {
+      const marker = L.marker([location.lat, location.lng]).addTo(map);
+
+      let content = location.title;
+      if (location.subtitle) {
+        content += `<div class="subtitle">${location.subtitle}</div>`;
+      }
+
+      marker.bindTooltip(content, {
+        permanent: permanentTooltips,
+        direction: 'top',
+        offset: [-15, -15],
+        className: 'location-tooltip'
+      });
+
+      // Click marker to navigate
+      if (location.href) {
+        marker.on('click', () => window.location.href = location.href);
+        marker.on('add', () => marker.getElement()?.classList.add('clickable-marker'));
+      }
+    });
+
+    const points = locations.map(l => [l.lat, l.lng]);
+    const bounds = L.latLngBounds(points).pad(0.1);
+    map.fitBounds(bounds, { maxZoom: 12 });
+  };
+  document.head.appendChild(script);
+</script>
