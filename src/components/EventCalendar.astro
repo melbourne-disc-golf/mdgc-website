@@ -77,29 +77,34 @@ function getEventSourceClass(event: CalendarEvent): string {
       <div class="month-group">
         <h3 class="month-header">{group.label}</h3>
         <div class="events-list">
-          {group.events.map((event) => (
-            <div class={`event-row ${getEventSourceClass(event)}`} data-date={event.startDate.toISOString()}>
-              <div class="event-date">
-                <span class="day-number">{getDayNumber(event.startDate)}</span>
-                <span class="day-name">{getDayOfWeek(event.startDate)}</span>
-              </div>
-              <div class="event-details">
-                <div class="event-title">
-                  {event.url ? (
-                    <a href={event.url} class:list={{ external: event.external }}>
-                      {event.summary}
-                      {event.external && <span class="external-icon"> ↗</span>}
-                    </a>
-                  ) : (
-                    <span>{event.summary}</span>
+          {group.events.map((event) => {
+            const rowContent = (
+              <>
+                <div class="event-date">
+                  <span class="day-number">{getDayNumber(event.startDate)}</span>
+                  <span class="day-name">{getDayOfWeek(event.startDate)}</span>
+                </div>
+                <div class="event-details">
+                  <div class="event-title">
+                    {event.summary}
+                    {event.external && <span class="external-icon"> ↗</span>}
+                  </div>
+                  {event.location && (
+                    <div class="event-location">{event.location}</div>
                   )}
                 </div>
-                {event.location && (
-                  <div class="event-location">{event.location}</div>
-                )}
+              </>
+            );
+            return event.url ? (
+              <a href={event.url} class={`event-row clickable ${getEventSourceClass(event)}`} data-date={event.startDate.toISOString()}>
+                {rowContent}
+              </a>
+            ) : (
+              <div class={`event-row ${getEventSourceClass(event)}`} data-date={event.startDate.toISOString()}>
+                {rowContent}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     ))}
@@ -133,6 +138,31 @@ function getEventSourceClass(event: CalendarEvent): string {
     padding: 0.5rem;
     border-radius: 0.5rem;
     border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  a.event-row {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  a.event-row:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  a.event-row.event-club:hover {
+    background: #dbeafe;
+  }
+
+  a.event-row.event-social:hover {
+    background: #fef9c3;
+  }
+
+  a.event-row.event-external:hover,
+  a.event-row.event-other:hover {
+    background: #f3f4f6;
   }
 
   .event-club {
@@ -187,17 +217,12 @@ function getEventSourceClass(event: CalendarEvent): string {
   }
 
   .event-title {
-    font-weight: 900;
+    font-weight: 600;
     font-size: 1.1rem;
     flex: 1;
   }
 
-  .event-title a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .event-title a:hover {
+  .event-row:hover .event-title {
     text-decoration: underline;
   }
 
