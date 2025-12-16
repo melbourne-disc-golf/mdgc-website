@@ -1,5 +1,11 @@
 import { defineCollection, z, reference } from 'astro:content';
 
+// Helper for optional fields from Sveltia/Decap CMS.
+// The CMS outputs '' for empty optional fields instead of omitting them,
+// which breaks Zod validation. This wrapper converts '' to undefined.
+const cmsOptional = <T extends z.ZodTypeAny>(schema: T) =>
+  z.preprocess((val) => (val === '' ? undefined : val), schema.optional());
+
 const courses = defineCollection({
   type: 'content',
   schema: ({ image }) => z.object({
@@ -41,10 +47,10 @@ const events = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),
     date: z.date(),
-    endDate: z.date().optional(),
+    endDate: cmsOptional(z.date()),
     courses: z.array(reference('courses')).optional(),
-    heroImage: image().optional(),
-    registrationUrl: z.string().url().optional(),
+    heroImage: cmsOptional(image()),
+    registrationUrl: cmsOptional(z.string().url()),
   }),
 });
 
@@ -54,7 +60,7 @@ const externalEvents = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.date(),
-    endDate: z.date().optional(),
+    endDate: cmsOptional(z.date()),
     location: z.string(), // e.g. "Geelong, VIC"
     url: z.string().url(), // link to external event page
   }),
