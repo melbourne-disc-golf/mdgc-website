@@ -31,6 +31,11 @@ function getDayOfWeek(date: Date): string {
   return date.toLocaleDateString('en-AU', { weekday: 'short', timeZone: TIMEZONE });
 }
 
+function getDurationDays(start: Date, end: Date): number {
+  const msPerDay = 24 * 60 * 60 * 1000;
+  return Math.round((end.getTime() - start.getTime()) / msPerDay) + 1;
+}
+
 function getMonthKey(date: Date): string {
   return date.toLocaleDateString('en-AU', { month: 'numeric', year: 'numeric', timeZone: TIMEZONE });
 }
@@ -83,6 +88,9 @@ function getEventSourceClass(event: CalendarEvent): string {
                 <div class="event-date">
                   <span class="day-number">{getDayNumber(event.startDate)}</span>
                   <span class="day-name">{getDayOfWeek(event.startDate)}</span>
+                  {event.endDate && (
+                    <span class="duration">({getDurationDays(event.startDate, event.endDate)} days)</span>
+                  )}
                 </div>
                 <div class="event-details">
                   <div class="event-title">
@@ -205,6 +213,11 @@ function getEventSourceClass(event: CalendarEvent): string {
     text-transform: uppercase;
     color: var(--color-text-muted, #6b7280);
     letter-spacing: 0.025em;
+  }
+
+  .duration {
+    font-size: 0.8rem;
+    color: var(--color-text-muted, #6b7280);
   }
 
   .past-event {
