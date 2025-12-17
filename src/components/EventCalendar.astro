@@ -145,7 +145,7 @@ function getEventSourceClass(event: CalendarEvent): string {
     gap: 1rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
-    border-left: 3px solid transparent;
+    border-left: 4px solid transparent;
     transition: all 0.2s ease;
   }
 
@@ -153,11 +153,7 @@ function getEventSourceClass(event: CalendarEvent): string {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
-  }
-
-  a.event-row:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transform: none;
   }
 
   a.event-row.event-club:hover {
@@ -233,10 +229,12 @@ function getEventSourceClass(event: CalendarEvent): string {
     font-weight: 600;
     font-size: 1.1rem;
     flex: 1;
+    transition: all 0.2s ease;
   }
 
-  .event-row:hover .event-title {
+  a.event-row:hover .event-title {
     text-decoration: underline;
+    display: inline-block;
   }
 
   .external-icon {
