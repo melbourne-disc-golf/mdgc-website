@@ -1,6 +1,7 @@
 ---
 import '@styles/global.css'
 import logoImage from '@images/mdgc-logo.png';
+import defaultOgImage from '@images/ruffey-lake-hole-1.jpg';
 import { getNavItems, type NavItem } from '@data/navigation.ts';
 import { Icon } from 'astro-icon/components'
 import ReportIssue from '@components/ReportIssue.astro';
@@ -30,7 +31,7 @@ const pageDescription = description || subtitle || 'Melbourne Disc Golf Club - p
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = heroImage
   ? new URL(heroImage.src.src, Astro.site)
-  : new URL('/images/og-default.jpg', Astro.site);
+  : new URL(defaultOgImage.src, Astro.site);
 
 // Check if current page is under a nav item
 function isActiveNavItem(itemHref: string): boolean {
