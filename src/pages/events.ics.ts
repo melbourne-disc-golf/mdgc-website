@@ -51,6 +51,11 @@ function toVEvent(event: CalendarEvent): string {
 
   if (event.geo) {
     lines.push(`GEO:${event.geo.lat};${event.geo.lon}`);
+    // Apple Calendar needs X-APPLE-STRUCTURED-LOCATION for map previews
+    const locationTitle = event.location?.split(',')[0] || 'Location';
+    lines.push(
+      `X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-APPLE-RADIUS=500;X-TITLE="${escapeText(locationTitle)}":geo:${event.geo.lat},${event.geo.lon}`
+    );
   }
 
   if (event.description) {
