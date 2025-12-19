@@ -53,6 +53,10 @@ function toVEvent(event: CalendarEvent): string {
     lines.push(`GEO:${event.geo.lat};${event.geo.lon}`);
   }
 
+  if (event.description) {
+    lines.push(`DESCRIPTION:${escapeText(event.description)}`);
+  }
+
   if (event.url) {
     lines.push(`URL:${event.url}`);
   }

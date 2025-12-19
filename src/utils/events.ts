@@ -18,6 +18,20 @@ type MetrixEvent = {
 const SITE_URL = 'https://www.melbournediscgolf.com';
 
 /**
+ * Extract the first paragraph from markdown body and strip formatting.
+ */
+function extractFirstParagraph(body: string): string | undefined {
+  const paragraphs = body.split(/\n\n+/).filter((p) => p.trim());
+  if (!paragraphs.length) return undefined;
+
+  return paragraphs[0]
+    .replace(/\*\*(.+?)\*\*/g, '$1') // **bold** → bold
+    .replace(/\*(.+?)\*/g, '$1') // *italic* → italic
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // [text](url) → text
+    .trim();
+}
+
+/**
  * Parse GeoJSON Point location string to lat/lon.
  */
 function parseGeoJson(location: string | undefined): { lat: number; lon: number } | undefined {
@@ -64,6 +78,7 @@ export function clubEventToCalendarEvent(
     url: `${SITE_URL}/events/${event.slug}`,
     location: locationText || undefined,
     geo,
+    description: extractFirstParagraph(event.body),
     source: 'club',
   };
 }
