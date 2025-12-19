@@ -101,7 +101,12 @@ export const GET: APIRoute = async () => {
     .flatMap((season) => season.data.events)
     .map((e) => socialDayToCalendarEvent(e, metrixToCourse));
 
-  const allEvents = [...clubCalendarEvents, ...externalCalendarEvents, ...socialDays];
+  // Filter out events more than 30 days in the past
+  const cutoffDate = new Date();
+  cutoffDate.setDate(cutoffDate.getDate() - 30);
+
+  const allEvents = [...clubCalendarEvents, ...externalCalendarEvents, ...socialDays]
+    .filter((e) => e.startDate >= cutoffDate);
 
   // Sort by date
   allEvents.sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
