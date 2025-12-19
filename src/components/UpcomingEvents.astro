@@ -11,12 +11,11 @@ const courses = await getCollection('courses');
 
 // Build course lookup maps
 const coursesBySlug = new Map(courses.map((c) => [c.slug, c]));
-const metrixToCourse = new Map<string, string>();
-for (const course of courses) {
-  for (const id of course.data.metrixCourseIds || []) {
-    metrixToCourse.set(id, course.data.title);
-  }
-}
+const metrixToCourse = new Map(
+  courses.flatMap((c) =>
+    (c.data.metrixCourseIds || []).map((id) => [id, c] as const)
+  )
+);
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);

@@ -7,6 +7,7 @@ export type CalendarEvent = {
   endDate?: Date;
   url?: string;
   location?: string;
+  geo?: { lat: number; lon: number };
   external?: boolean;
   source?: EventSource;
 };

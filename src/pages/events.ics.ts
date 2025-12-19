@@ -49,6 +49,10 @@ function toVEvent(event: CalendarEvent): string {
     lines.push(`LOCATION:${escapeText(event.location)}`);
   }
 
+  if (event.geo) {
+    lines.push(`GEO:${event.geo.lat};${event.geo.lon}`);
+  }
+
   if (event.url) {
     lines.push(`URL:${event.url}`);
   }
@@ -66,12 +70,11 @@ export const GET: APIRoute = async () => {
 
   // Build course lookup maps
   const coursesBySlug = new Map(courses.map((c) => [c.slug, c]));
-  const metrixToCourse = new Map<string, string>();
-  for (const course of courses) {
-    for (const id of course.data.metrixCourseIds || []) {
-      metrixToCourse.set(id, course.data.title);
-    }
-  }
+  const metrixToCourse = new Map(
+    courses.flatMap((c) =>
+      (c.data.metrixCourseIds || []).map((id) => [id, c] as const)
+    )
+  );
 
   // Convert all events to CalendarEvents
   const clubCalendarEvents = clubEvents.map((e) =>
