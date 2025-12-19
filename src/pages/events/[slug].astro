@@ -1,6 +1,5 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
-import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import Text from '@components/Text.astro';
 import Grid from '@components/Grid.astro';
@@ -47,16 +46,12 @@ if (event.data.courses) {
   title={event.data.title}
   subtitle={formatDateRange(event.data.date, event.data.endDate)}
   cmsPath={`/collections/events/entries/${event.slug}`}
+  heroImage={event.data.heroImage && {
+    src: event.data.heroImage,
+    alt: event.data.title,
+    class: 'max-h-96 object-contain'
+  }}
 >
-  {event.data.heroImage && (
-    <Image
-      src={event.data.heroImage}
-      alt={event.data.title}
-      class="w-full max-h-96 object-contain rounded-lg my-8"
-      inferSize={true}
-    />
-  )}
-
   <Text>
 
     <Content />
