@@ -56,6 +56,9 @@ function toVEvent(event: CalendarEvent): string {
     lines.push(
       `X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-APPLE-RADIUS=500;X-TITLE="${escapeText(locationTitle)}":geo:${event.geo.lat},${event.geo.lon}`
     );
+    // Microsoft Outlook uses these properties
+    lines.push(`X-MICROSOFT-LATITUDE:${event.geo.lat}`);
+    lines.push(`X-MICROSOFT-LONGITUDE:${event.geo.lon}`);
   }
 
   if (event.description) {
