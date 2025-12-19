@@ -1,0 +1,31 @@
+---
+layout: "@layouts/MdxLayout.astro"
+title: Summer Cup
+subtitle: Low-cost, no-frills tournament series
+heroImage:
+  src: "@images/summer-cup.webp"
+  alt: "Summer Cup"
+  class: "max-h-96 object-contain"
+---
+
+import { getCollection } from 'astro:content';
+import Text from '@components/Text.astro';
+import EventCalendar from '@components/EventCalendar.astro';
+import { clubEventToCalendarEvent } from '@utils/events';
+
+export const allEvents = await getCollection('events');
+export const summerCupEvents = allEvents.filter((e) => e.data.title.includes('Summer Cup'));
+export const allCourses = await getCollection('courses');
+export const coursesBySlug = new Map(allCourses.map((c) => [c.slug, c]));
+
+export const calendarEvents = summerCupEvents.map((e) => clubEventToCalendarEvent(e, coursesBySlug));
+
+<Text>
+
+The **MDGC Summer Cup** is a series of 4-6 events across December and January. These are low-cost, no-frills, fun events for those who want to play some PDGA tournaments on local Melbourne courses.
+
+## Events
+
+<EventCalendar events={calendarEvents} maxDaysInPast={7} maxDaysInFuture={60} />
+
+</Text>

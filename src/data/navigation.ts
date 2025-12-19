@@ -66,7 +66,8 @@ export async function getNavItems(featuredCoursesOnly: boolean = false): Promise
       icon: 'heroicons:calendar',
       subPages: [
         { title: 'Social Days', href: '/events/social', description: 'our regular meetups', icon: 'heroicons:heart' },
-        { title: 'Tournaments', href: '/events/tournaments', description: 'compete!', icon: 'heroicons:trophy' }
+        { title: 'Tournaments', href: '/events/tournaments', description: 'compete!', icon: 'heroicons:trophy' },
+        { title: 'Summer Cup', href: '/events/summer-cup', description: 'tournament series', icon: 'heroicons:sun' }
       ]
     },
     {
