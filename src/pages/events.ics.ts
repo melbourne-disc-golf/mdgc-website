@@ -52,9 +52,10 @@ function toVEvent(event: CalendarEvent): string {
   if (event.geo) {
     lines.push(`GEO:${event.geo.lat};${event.geo.lon}`);
     // Apple Calendar needs X-APPLE-STRUCTURED-LOCATION for map previews
-    const locationTitle = event.location?.split(',')[0] || 'Location';
+    // X-TITLE uses backslash escaping (same as other iCal fields), no quotes
+    const locationTitle = event.location || 'Location';
     lines.push(
-      `X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-APPLE-RADIUS=500;X-TITLE="${escapeText(locationTitle)}":geo:${event.geo.lat},${event.geo.lon}`
+      `X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-APPLE-RADIUS=500;X-TITLE=${escapeText(locationTitle)}:geo:${event.geo.lat},${event.geo.lon}`
     );
     // Microsoft Outlook uses these properties
     lines.push(`X-MICROSOFT-LATITUDE:${event.geo.lat}`);
