@@ -34,6 +34,7 @@ const { locations, permanentTooltips = false, class: className } = Astro.props;
   :global(.location-tooltip a) {
     color: inherit;
     text-decoration: none;
+    font-weight: 700;
   }
   :global(.location-tooltip a:hover) {
     text-decoration: underline;
@@ -82,12 +83,16 @@ const { locations, permanentTooltips = false, class: className } = Astro.props;
       if (location.subtitle) {
         content += `<div class="subtitle">${location.subtitle}</div>`;
       }
+      if (location.href) {
+        content = `<a href="${location.href}">${content}</a>`;
+      }
 
       marker.bindTooltip(content, {
         permanent: permanentTooltips,
         direction: 'top',
         offset: [-15, -15],
-        className: 'location-tooltip'
+        className: 'location-tooltip',
+        interactive: !!location.href
       });
 
       // Click marker to navigate
