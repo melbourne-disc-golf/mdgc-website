@@ -4,6 +4,8 @@ import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import Text from '@components/Text.astro';
 import LocationsMap from '@components/LocationsMap.astro';
+import EventCalendar from '@components/EventCalendar.astro';
+import { clubEventToCalendarEvent } from '@utils/events';
 
 export async function getStaticPaths() {
   const courses = await getCollection('courses');
@@ -18,6 +20,15 @@ const { Content } = await course.render();
 
 // Get disc library if referenced
 const discLibrary = course.data.discLibrary ? await getEntry(course.data.discLibrary) : null;
+
+// Get upcoming events at this course
+const allEvents = await getCollection('events');
+const allCourses = await getCollection('courses');
+const coursesBySlug = new Map(allCourses.map((c) => [c.slug, c]));
+const eventsAtThisCourse = allEvents.filter((event) =>
+  event.data.courses?.some((ref) => ref.id === course.slug)
+);
+const calendarEvents = eventsAtThisCourse.map((e) => clubEventToCalendarEvent(e, coursesBySlug));
 
 // Parse location coordinates (mandatory)
 if (!course.data.location) {
@@ -82,6 +93,13 @@ const mapLinks = {
             inferSize={true}
           />
         </a>
+      </section>
+    )}
+
+    {calendarEvents.length > 0 && (
+      <section>
+        <h2>Upcoming events</h2>
+        <EventCalendar events={calendarEvents} maxDaysInPast={2} />
       </section>
     )}
 
