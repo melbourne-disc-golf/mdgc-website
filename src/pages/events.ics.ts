@@ -1,7 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent } from '@utils/events';
-import type { CalendarEvent } from '@components/EventCalendar.astro';
+import { clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent, type CalendarEvent } from '@utils/events';
 
 // Format date as iCal DATE (YYYYMMDD)
 function formatDate(date: Date): string {
@@ -18,6 +17,12 @@ function escapeText(text: string): string {
     .replace(/;/g, '\\;')
     .replace(/,/g, '\\,')
     .replace(/\n/g, '\\n');
+}
+
+// Make relative URLs absolute
+function absoluteUrl(url: string | undefined, base: string | undefined): string | undefined {
+  if (!url || !base) return url;
+  return new URL(url, base).toString();
 }
 
 // Generate a unique ID for an event
@@ -74,7 +79,8 @@ function toVEvent(event: CalendarEvent): string {
   return lines.join('\r\n');
 }
 
-export const GET: APIRoute = async () => {
+export const GET: APIRoute = async ({ site }) => {
+  const siteUrl = site?.toString();
   // Get data from collections
   const clubEvents = await getCollection('events');
   const externalEvents = await getCollection('externalEvents');
@@ -107,7 +113,8 @@ export const GET: APIRoute = async () => {
   cutoffDate.setDate(cutoffDate.getDate() - 30);
 
   const allEvents = [...clubCalendarEvents, ...externalCalendarEvents, ...socialDays]
-    .filter((e) => e.startDate >= cutoffDate);
+    .filter((e) => e.startDate >= cutoffDate)
+    .map((e) => ({ ...e, url: absoluteUrl(e.url, siteUrl) }));
 
   // Sort by date
   allEvents.sort((a, b) => a.startDate.getTime() - b.startDate.getTime());

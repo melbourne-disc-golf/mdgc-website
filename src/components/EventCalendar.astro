@@ -1,17 +1,5 @@
 ---
-export type EventSource = 'club' | 'social' | 'external';
-
-export type CalendarEvent = {
-  summary: string;
-  startDate: Date;
-  endDate?: Date;
-  url?: string;
-  location?: string;
-  geo?: { lat: number; lon: number };
-  description?: string;
-  external?: boolean;
-  source?: EventSource;
-};
+import type { CalendarEvent } from '@utils/events';
 
 interface Props {
   events: CalendarEvent[];

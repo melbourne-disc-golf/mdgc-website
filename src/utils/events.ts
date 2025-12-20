@@ -1,5 +1,18 @@
 import type { CollectionEntry } from 'astro:content';
-import type { CalendarEvent } from '@components/EventCalendar.astro';
+
+export type EventSource = 'club' | 'social' | 'external';
+
+export type CalendarEvent = {
+  summary: string;
+  startDate: Date;
+  endDate?: Date;
+  url?: string;
+  location?: string;
+  geo?: { lat: number; lon: number };
+  description?: string;
+  external?: boolean;
+  source?: EventSource;
+};
 
 type ClubEventEntry = CollectionEntry<'events'>;
 type ExternalEventEntry = CollectionEntry<'externalEvents'>;
@@ -14,8 +27,6 @@ type MetrixEvent = {
   courseName: string;
   courseId: string;
 };
-
-const SITE_URL = 'https://www.melbournediscgolf.com';
 
 /**
  * Extract the first paragraph from markdown body and strip formatting.
@@ -75,7 +86,7 @@ export function clubEventToCalendarEvent(
     summary: event.data.title,
     startDate: event.data.date,
     endDate: event.data.endDate,
-    url: `${SITE_URL}/events/${event.slug}`,
+    url: `/events/${event.slug}`,
     location: locationText || undefined,
     geo,
     description: extractFirstParagraph(event.body),
