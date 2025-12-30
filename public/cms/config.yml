@@ -34,6 +34,12 @@ collections:
         format: "frontmatter"
         fields:
           - { label: "Body", name: "body", widget: "markdown", hint: "Displayed in the Shop section of the Club page" }
+      - name: "summer-cup-details"
+        label: "Summer Cup Details"
+        file: "src/pages/events/_summer-cup-details.mdx"
+        format: "frontmatter"
+        fields:
+          - { label: "Body", name: "body", widget: "markdown", hint: "Displayed on the Summer Cup page, after the events calendar" }
 
   - name: "courses"
     label: "Courses"

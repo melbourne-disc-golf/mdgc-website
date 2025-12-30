@@ -2,6 +2,7 @@
 layout: "@layouts/MdxLayout.astro"
 title: Summer Cup
 subtitle: our low-cost, no-frills tournament series
+cmsPath: "/collections/fragments/entries/summer-cup-details"
 heroImage:
   src: "@images/summer-cup.webp"
   alt: "Summer Cup"
@@ -12,6 +13,7 @@ import { getCollection } from 'astro:content';
 import Text from '@components/Text.astro';
 import EventCalendar from '@components/EventCalendar.astro';
 import { clubEventToCalendarEvent } from '@utils/events';
+import { Content as SummerCupDetails } from './_summer-cup-details.mdx';
 
 export const allEvents = await getCollection('events');
 export const summerCupEvents = allEvents.filter((e) => e.data.title.includes('Summer Cup'));
@@ -26,23 +28,8 @@ The **MDGC Summer Cup** is a series of 4-6 events across December and January. T
 
 ## Events
 
-<EventCalendar events={calendarEvents} maxDaysInPast={7} maxDaysInFuture={60} />
+<EventCalendar events={calendarEvents} maxDaysInPast={30} maxDaysInFuture={60} />
 
-## Prizes
-
-### Per-event prizes
-
-- Handicap prize (whoever played most above their rating)
-- CTB prizes (grouped by division)
-
-### Series points and prizes
-
-- End-of-series prizes for top performers in each division (smaller divisions may be combined)
-- Ace pot runs across the series - any aces split the pot
-
-Play as many or as few events as you want. 
-Your "series rating" will be calculated by summing your PDGA event-ratings for your best 3 events.
-
-Standings are organised by division, but you can choose which division you want to be recorded in per event.
+<SummerCupDetails />
 
 </Text>
