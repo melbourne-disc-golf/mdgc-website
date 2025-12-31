@@ -63,6 +63,24 @@ if (event.data.courses) {
       </section>
     )}
 
+    {event.data.pdgaEventId && (
+      <section>
+        <h2>PDGA event info</h2>
+        <Grid>
+          <LinkPanel
+            href={`https://www.pdga.com/tour/event/${event.data.pdgaEventId}`}
+            title="Official event page"
+            icon="heroicons:information-circle"
+          />
+          <LinkPanel
+            href={`https://www.pdga.com/live/event/${event.data.pdgaEventId}/`}
+            title="Live scoring"
+            icon="heroicons:presentation-chart-line"
+          />
+        </Grid>
+      </section>
+    )}
+
     {event.data.registrationUrl && (
       <section>
         <h2>Registration</h2>
