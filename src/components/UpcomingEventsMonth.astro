@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import EventCalendarMonth from '@components/EventCalendarMonth.astro';
+import { clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent } from '@utils/events';
+
+const clubEvents = await getCollection('events');
+const externalEvents = await getCollection('externalEvents');
+const metrixSeasons = await getCollection('metrixSeasons');
+const courses = await getCollection('courses');
+
+const coursesBySlug = new Map(courses.map((c) => [c.slug, c]));
+const metrixToCourse = new Map(
+  courses.flatMap((c) =>
+    (c.data.metrixCourseIds || []).map((id) => [id, c] as const)
+  )
+);
+
+const clubCalendarEvents = clubEvents
+  .map(e => clubEventToCalendarEvent(e, coursesBySlug));
+
+const externalCalendarEvents = externalEvents
+  .map(e => externalEventToCalendarEvent(e));
+
+const socialDays = metrixSeasons
+  .flatMap(season => season.data.events)
+  .map(e => socialDayToCalendarEvent(e, metrixToCourse));
+
+const allEvents = [...clubCalendarEvents, ...externalCalendarEvents, ...socialDays];
+---
+
+<EventCalendarMonth events={allEvents} maxDaysInPast={3} maxDaysInFuture={90} />

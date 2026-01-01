@@ -1,0 +1,323 @@
+---
+import type { CalendarEvent } from '@utils/events';
+
+interface Props {
+  events: CalendarEvent[];
+  maxDaysInPast?: number;
+  maxDaysInFuture?: number;
+}
+
+const { events, maxDaysInPast, maxDaysInFuture } = Astro.props;
+const TIMEZONE = 'Australia/Melbourne';
+
+function getEventSourceClass(event: CalendarEvent): string {
+  return `event-${event.source || 'other'}`;
+}
+
+function formatDateKey(date: Date): string {
+  return date.toLocaleDateString('en-AU', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: TIMEZONE });
+}
+
+function getMonthStart(date: Date): Date {
+  return new Date(date.getFullYear(), date.getMonth(), 1);
+}
+
+function getShortMonth(date: Date): string {
+  return date.toLocaleDateString('en-AU', { month: 'short', timeZone: TIMEZONE });
+}
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const minDateLimit = maxDaysInPast !== undefined
+  ? new Date(today.getTime() - maxDaysInPast * 24 * 60 * 60 * 1000)
+  : undefined;
+const maxDateLimit = maxDaysInFuture !== undefined
+  ? new Date(today.getTime() + maxDaysInFuture * 24 * 60 * 60 * 1000)
+  : undefined;
+
+const filteredEvents = events.filter((e) => {
+  if (minDateLimit && e.startDate < minDateLimit) return false;
+  if (maxDateLimit && e.startDate > maxDateLimit) return false;
+  return true;
+});
+
+const sortedEvents = [...filteredEvents].sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
+const minDate = sortedEvents.length > 0 ? sortedEvents[0].startDate : today;
+const maxDate = sortedEvents.length > 0 ? sortedEvents[sortedEvents.length - 1].startDate : today;
+
+const eventsByDate = new Map<string, CalendarEvent[]>();
+for (const event of filteredEvents) {
+  const key = formatDateKey(event.startDate);
+  const existing = eventsByDate.get(key) || [];
+  existing.push(event);
+  eventsByDate.set(key, existing);
+}
+
+type DayCell = {
+  date: Date;
+  isToday: boolean;
+  isWeekend: boolean;
+  isPast: boolean;
+  events: CalendarEvent[];
+};
+
+function buildGrid(): DayCell[] {
+  const cells: DayCell[] = [];
+  const startMonth = getMonthStart(minDate);
+  const endMonth = getMonthStart(maxDate);
+  const endOfLastMonth = new Date(endMonth.getFullYear(), endMonth.getMonth() + 1, 0);
+
+  // Monday = 0, Sunday = 6 (adjusted from JS where Sunday = 0)
+  const firstDayOfWeek = (startMonth.getDay() + 6) % 7;
+
+  // Pad start to Monday
+  for (let i = 0; i < firstDayOfWeek; i++) {
+    const prevDate = new Date(startMonth.getFullYear(), startMonth.getMonth(), -firstDayOfWeek + i + 1);
+    cells.push(buildDayCell(prevDate));
+  }
+
+  // All days from start month to end month
+  let current = new Date(startMonth);
+  while (current <= endOfLastMonth) {
+    cells.push(buildDayCell(new Date(current)));
+    current.setDate(current.getDate() + 1);
+  }
+
+  // Pad end to Sunday
+  const remaining = (7 - (cells.length % 7)) % 7;
+  for (let i = 0; i < remaining; i++) {
+    const nextDate = new Date(current);
+    nextDate.setDate(current.getDate() + i);
+    cells.push(buildDayCell(nextDate));
+  }
+
+  return cells;
+}
+
+function buildDayCell(date: Date): DayCell {
+  const key = formatDateKey(date);
+  const dayOfWeek = date.getDay();
+  return {
+    date,
+    isToday: date.getTime() === today.getTime(),
+    isWeekend: dayOfWeek === 0 || dayOfWeek === 6,
+    isPast: date < today,
+    events: eventsByDate.get(key) || [],
+  };
+}
+
+function getDayCellClasses(cell: DayCell): string {
+  const classes = ['day-cell'];
+  if (cell.isToday) classes.push('today');
+  if (cell.isWeekend) classes.push('weekend');
+  if (cell.isPast) classes.push('past');
+  return classes.join(' ');
+}
+
+const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const grid = buildGrid();
+---
+
+<div class="month-calendar">
+  <div class="calendar-grid">
+    {weekdays.map((day) => (
+      <div class="weekday-header">{day}</div>
+    ))}
+    {grid.map((cell) => {
+      const visibleEvents = cell.events.slice(0, 3);
+      const moreCount = cell.events.length - 3;
+      return (
+        <div class={getDayCellClasses(cell)}>
+          <div class="day-header">
+            <span class:list={["day-number", { "today-circle": cell.isToday }]}>
+              {cell.date.getDate()}
+            </span>
+            <span class="month-label">{getShortMonth(cell.date)}</span>
+          </div>
+          <div class="day-events">
+            {visibleEvents.map((event) =>
+              event.url ? (
+                <a href={event.url} class={`event-chip ${getEventSourceClass(event)}`} title={event.summary}>
+                  {event.summary}
+                </a>
+              ) : (
+                <div class={`event-chip ${getEventSourceClass(event)}`} title={event.summary}>
+                  {event.summary}
+                </div>
+              )
+            )}
+            {moreCount > 0 && <div class="more-events">+{moreCount} more</div>}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
+
+<style>
+  .month-calendar {
+    margin: 1rem 0;
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: var(--color-border, #e5e5e5);
+    border: 1px solid var(--color-border, #e5e5e5);
+  }
+
+  .weekday-header {
+    background: var(--color-bg-muted, #f9fafb);
+    padding: 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--color-text-muted, #6b7280);
+  }
+
+  .day-cell {
+    background: white;
+    min-height: 80px;
+    min-width: 0;
+    padding: 0.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .day-cell.past {
+    background: var(--color-bg-muted, #f9fafb);
+    opacity: 0.6;
+  }
+
+  .day-cell.weekend .day-number {
+    color: var(--color-text-muted, #6b7280);
+  }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .day-number {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text, #111827);
+  }
+
+  .today-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--color-primary, #3b82f6);
+    color: white;
+    border-radius: 50%;
+    font-weight: 600;
+  }
+
+  .month-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted, #6b7280);
+    font-weight: 400;
+  }
+
+  .day-events {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+  }
+
+  .event-chip {
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 2px 4px;
+    border-radius: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+  }
+
+  .event-chip:hover {
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+    word-wrap: break-word;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+
+  a.event-chip:hover {
+    text-decoration: underline;
+  }
+
+  .event-chip.event-club {
+    background: #dbeafe;
+    border-left: 2px solid #3b82f6;
+  }
+
+  .event-chip.event-social {
+    background: #fef9c3;
+    border-left: 2px solid #eab308;
+  }
+
+  .event-chip.event-external {
+    background: #f3f4f6;
+    border-left: 2px solid #9ca3af;
+  }
+
+  .event-chip.event-other {
+    background: #f3f4f6;
+    border-left: 2px solid #d1d5db;
+  }
+
+  .more-events {
+    font-size: 0.7rem;
+    color: var(--color-text-muted, #6b7280);
+    padding: 2px 4px;
+  }
+
+  @media (max-width: 640px) {
+    .day-cell {
+      min-height: 60px;
+      padding: 0.125rem;
+    }
+
+    .day-number {
+      font-size: 0.75rem;
+    }
+
+    .today-circle {
+      width: 1.25rem;
+      height: 1.25rem;
+      font-size: 0.75rem;
+    }
+
+    .month-label {
+      font-size: 0.65rem;
+    }
+
+    .event-chip {
+      font-size: 0.6rem;
+      padding: 1px 2px;
+    }
+
+    .weekday-header {
+      font-size: 0.75rem;
+      padding: 0.25rem;
+    }
+  }
+</style>

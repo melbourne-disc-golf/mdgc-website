@@ -1,0 +1,18 @@
+---
+layout: "@layouts/MdxLayout.astro"
+title: Events calendar
+---
+
+import Text from '@components/Text.astro';
+import NavLink from '@components/NavLink.astro';
+import UpcomingEventsMonth from '@components/UpcomingEventsMonth.astro';
+
+<Text>
+
+A month view of upcoming MDGC events. Use the arrows to navigate between months.
+
+<UpcomingEventsMonth />
+
+<NavLink href="/events">Back to events list</NavLink>
+
+</Text>
