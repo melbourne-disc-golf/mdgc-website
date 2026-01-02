@@ -256,7 +256,7 @@ const grid = buildGrid();
     position: relative;
   }
 
-  .event-chip:hover {
+  .event-chip.expanded {
     overflow: visible;
     text-overflow: clip;
     white-space: normal;
@@ -267,7 +267,7 @@ const grid = buildGrid();
     z-index: 10;
   }
 
-  a.event-chip:hover {
+  a.event-chip.expanded {
     text-decoration: underline;
   }
 
@@ -328,3 +328,25 @@ const grid = buildGrid();
     }
   }
 </style>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const chip = (e.target as HTMLElement).closest('.event-chip');
+    
+    if (!chip) {
+      // Clicked outside - collapse all
+      document.querySelectorAll('.event-chip.expanded').forEach(el => el.classList.remove('expanded'));
+      return;
+    }
+
+    if (chip.classList.contains('expanded')) {
+      // Already expanded - allow link navigation
+      return;
+    }
+
+    // First tap - expand and prevent navigation
+    e.preventDefault();
+    document.querySelectorAll('.event-chip.expanded').forEach(el => el.classList.remove('expanded'));
+    chip.classList.add('expanded');
+  });
+</script>
