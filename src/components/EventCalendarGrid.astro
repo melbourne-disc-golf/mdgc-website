@@ -48,10 +48,19 @@ const maxDate = sortedEvents.length > 0 ? sortedEvents[sortedEvents.length - 1].
 
 const eventsByDate = new Map<string, CalendarEvent[]>();
 for (const event of filteredEvents) {
-  const key = formatDateKey(event.startDate);
-  const existing = eventsByDate.get(key) || [];
-  existing.push(event);
-  eventsByDate.set(key, existing);
+  const start = new Date(event.startDate);
+  start.setHours(0, 0, 0, 0);
+  const end = event.endDate ? new Date(event.endDate) : start;
+  end.setHours(0, 0, 0, 0);
+
+  const current = new Date(start);
+  while (current <= end) {
+    const key = formatDateKey(current);
+    const existing = eventsByDate.get(key) || [];
+    existing.push(event);
+    eventsByDate.set(key, existing);
+    current.setDate(current.getDate() + 1);
+  }
 }
 
 type DayCell = {
