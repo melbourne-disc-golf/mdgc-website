@@ -257,14 +257,18 @@ const grid = buildGrid();
   }
 
   .event-chip.expanded {
-    overflow: visible;
-    text-overflow: clip;
+    position: fixed;
+    z-index: 100;
+    min-width: 200px;
+    max-width: 280px;
     white-space: normal;
     word-wrap: break-word;
-    position: absolute;
-    left: 0;
-    right: 0;
-    z-index: 10;
+    overflow: visible;
+    text-overflow: clip;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    font-size: 0.9rem;
   }
 
   a.event-chip.expanded {
@@ -330,23 +334,40 @@ const grid = buildGrid();
 </style>
 
 <script>
+  function collapseAll() {
+    document.querySelectorAll('.event-chip.expanded').forEach(el => {
+      const chip = el as HTMLElement;
+      chip.style.top = '';
+      chip.style.left = '';
+      chip.style.right = '';
+      chip.classList.remove('expanded');
+    });
+  }
+
   document.addEventListener('click', (e) => {
-    const chip = (e.target as HTMLElement).closest('.event-chip');
+    const chip = (e.target as HTMLElement).closest('.event-chip') as HTMLElement | null;
     
     if (!chip) {
-      // Clicked outside - collapse all
-      document.querySelectorAll('.event-chip.expanded').forEach(el => el.classList.remove('expanded'));
+      collapseAll();
       return;
     }
 
     if (chip.classList.contains('expanded')) {
-      // Already expanded - allow link navigation
       return;
     }
 
-    // First tap - expand and prevent navigation
     e.preventDefault();
-    document.querySelectorAll('.event-chip.expanded').forEach(el => el.classList.remove('expanded'));
+    collapseAll();
+    
+    const rect = chip.getBoundingClientRect();
+    const viewportMid = window.innerWidth / 2;
+    
+    chip.style.top = `${rect.top}px`;
+    if (rect.left < viewportMid) {
+      chip.style.left = `${rect.left}px`;
+    } else {
+      chip.style.right = `${window.innerWidth - rect.right}px`;
+    }
     chip.classList.add('expanded');
   });
 </script>
