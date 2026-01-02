@@ -28,11 +28,11 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
     </div>
   </fieldset>
 
-  <div class="calendar-view" data-view="list">
+  <div class="calendar-view slide-left" data-view="list">
     <EventCalendarList events={events} maxDaysInPast={maxDaysInPast} maxDaysInFuture={maxDaysInFuture} />
   </div>
 
-  <div class="calendar-view" data-view="grid">
+  <div class="calendar-view slide-right" data-view="grid">
     <EventCalendarGrid events={events} maxDaysInPast={maxDaysInPast} maxDaysInFuture={maxDaysInFuture} />
   </div>
 </div>
@@ -40,7 +40,7 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
 <style>
   .sr-only {
     position: absolute;
-    width: 1px;
+    width: 1px; 
     height: 1px;
     padding: 0;
     margin: -1px;
@@ -79,12 +79,51 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
     cursor: pointer;
   }
 
+  .calendar-views {
+    position: relative;
+    overflow: hidden;
+  }
+
   .calendar-view {
     display: none;
   }
 
   .calendar-view.active {
     display: block;
+  }
+
+  .calendar-view.active.animate {
+    animation: 0.25s ease-out;
+  }
+
+  .calendar-view.slide-right.animate {
+    animation-name: slide-right;
+  }
+
+  .calendar-view.slide-left.animate {
+    animation-name: slide-left;
+  }
+
+  @keyframes slide-right {
+    from {
+      opacity: 0;
+      transform: translateX(-5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-left {
+    from {
+      opacity: 0;
+      transform: translateX(5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 </style>
 
@@ -94,20 +133,24 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
       const defaultView = container.getAttribute('data-default-view') || 'list';
       const radios = container.querySelectorAll('input[name="calendar-view"]');
       const views = container.querySelectorAll('.calendar-view');
+      let currentView = defaultView;
 
-      function showView(viewName: string) {
+      function showView(viewName: string, animate = false) {
         views.forEach((view) => {
+          view.classList.remove('active', 'animate');
           if (view.getAttribute('data-view') === viewName) {
+            if (animate && viewName !== currentView) {
+              view.classList.add('animate');
+            }
             view.classList.add('active');
-          } else {
-            view.classList.remove('active');
           }
         });
+        currentView = viewName;
       }
 
       function syncViewToRadio() {
         const checked = container.querySelector('input[name="calendar-view"]:checked') as HTMLInputElement | null;
-        showView(checked?.value || defaultView);
+        showView(checked?.value || defaultView, false);
       }
 
       syncViewToRadio();
@@ -116,7 +159,7 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
         radio.addEventListener('change', (e) => {
           const target = e.target as HTMLInputElement;
           if (target.checked) {
-            showView(target.value);
+            showView(target.value, true);
           }
         });
       });
