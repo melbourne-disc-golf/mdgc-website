@@ -1,311 +1,128 @@
 ---
 import type { CalendarEvent } from '@utils/events';
+import EventCalendarList from './EventCalendarList.astro';
+import EventCalendarGrid from './EventCalendarGrid.astro';
 
 interface Props {
   events: CalendarEvent[];
   maxDaysInPast?: number;
   maxDaysInFuture?: number;
+  defaultView?: 'list' | 'grid';
 }
 
-const { events, maxDaysInPast, maxDaysInFuture } = Astro.props;
-const sortedEvents = [...events].sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
-
-const TIMEZONE = 'Australia/Melbourne';
-
-// Format helpers
-function getDayNumber(date: Date): number {
-  return parseInt(date.toLocaleDateString('en-AU', { day: 'numeric', timeZone: TIMEZONE }), 10);
-}
-
-function getDayOfWeek(date: Date): string {
-  return date.toLocaleDateString('en-AU', { weekday: 'short', timeZone: TIMEZONE });
-}
-
-function getDurationDays(start: Date, end: Date): number {
-  const msPerDay = 24 * 60 * 60 * 1000;
-  return Math.round((end.getTime() - start.getTime()) / msPerDay) + 1;
-}
-
-function getMonthKey(date: Date): string {
-  return date.toLocaleDateString('en-AU', { month: 'numeric', year: 'numeric', timeZone: TIMEZONE });
-}
-
-function getMonthLabel(date: Date): string {
-  return date.toLocaleDateString('en-AU', { month: 'long', year: 'numeric', timeZone: TIMEZONE });
-}
-
-// Group events by month
-type MonthGroup = {
-  key: string;
-  label: string;
-  events: CalendarEvent[];
-};
-
-const groupedByMonth: MonthGroup[] = [];
-let currentGroup: MonthGroup | null = null;
-
-for (const event of sortedEvents) {
-  const monthKey = getMonthKey(event.startDate);
-  const monthLabel = getMonthLabel(event.startDate);
-
-  if (!currentGroup || currentGroup.key !== monthKey) {
-    currentGroup = { key: monthKey, label: monthLabel, events: [] };
-    groupedByMonth.push(currentGroup);
-  }
-  currentGroup.events.push(event);
-}
-
-function getEventSourceClass(event: CalendarEvent): string {
-  return `event-${event.source || 'other'}`;
-}
+const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.props;
 ---
 
-{sortedEvents.length === 0 ? (
-  <p class="no-events">No events scheduled at the moment. Check back soon!</p>
-) : (
-  <div
-    class="event-calendar"
-    data-max-days-in-past={maxDaysInPast}
-    data-max-days-in-future={maxDaysInFuture}
-  >
-    {groupedByMonth.map((group) => (
-      <div class="month-group">
-        <h3 class="month-header">{group.label}</h3>
-        <div class="events-list">
-          {group.events.map((event) => {
-            const rowContent = (
-              <>
-                <div class="event-date">
-                  <span class="day-number">{getDayNumber(event.startDate)}</span>
-                  <span class="day-name">{getDayOfWeek(event.startDate)}</span>
-                  {event.endDate && (
-                    <span class="duration">({getDurationDays(event.startDate, event.endDate)} days)</span>
-                  )}
-                </div>
-                <div class="event-details">
-                  <div class="event-title">
-                    {event.summary}
-                    {event.external && <span class="external-icon"> ↗</span>}
-                  </div>
-                  {event.location && (
-                    <div class="event-location">{event.location}</div>
-                  )}
-                </div>
-              </>
-            );
-            return event.url ? (
-              <a href={event.url} class={`event-row clickable ${getEventSourceClass(event)}`} data-date={event.startDate.toISOString()}>
-                {rowContent}
-              </a>
-            ) : (
-              <div class={`event-row ${getEventSourceClass(event)}`} data-date={event.startDate.toISOString()}>
-                {rowContent}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    ))}
+<div class="event-calendar-toggle" data-default-view={defaultView}>
+  <fieldset class="view-toggle">
+    <legend class="sr-only">Calendar view</legend>
+    <div class="toggle-options">
+      <label class="toggle-option">
+        <input type="radio" name="calendar-view" value="list" checked={defaultView === 'list'} />
+        <span>List</span>
+      </label>
+      <label class="toggle-option">
+        <input type="radio" name="calendar-view" value="grid" checked={defaultView === 'grid'} />
+        <span>Grid</span>
+      </label>
+    </div>
+  </fieldset>
+
+  <div class="calendar-view" data-view="list">
+    <EventCalendarList events={events} maxDaysInPast={maxDaysInPast} maxDaysInFuture={maxDaysInFuture} />
   </div>
-)}
+
+  <div class="calendar-view" data-view="grid">
+    <EventCalendarGrid events={events} maxDaysInPast={maxDaysInPast} maxDaysInFuture={maxDaysInFuture} />
+  </div>
+</div>
 
 <style>
-  .event-calendar {
-    margin: 1rem 0;
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
   }
 
-  .month-group {
-    margin-bottom: 1.5rem;
+  .view-toggle {
+    border: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
   }
 
-  .month-header {
-    font-weight: 600;
-    border-bottom: 1px solid var(--color-border, #e5e5e5);
-  }
-
-  .events-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .event-row {
+  .toggle-options {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    border-left: 4px solid transparent;
-    transition: all 0.2s ease;
   }
 
-  a.event-row {
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-    transform: none;
-  }
-
-  a.event-row.event-club:hover {
-    background: #dbeafe;
-  }
-
-  a.event-row.event-social:hover {
-    background: #fef9c3;
-  }
-
-  a.event-row.event-external:hover,
-  a.event-row.event-other:hover {
-    background: #f3f4f6;
-  }
-
-  .event-club {
-    background: #eff6ff;
-    border-left-color: #3b82f6;
-  }
-
-  .event-social {
-    background: #fefce8;
-    border-left-color: #eab308;
-  }
-
-  .event-external {
-    background: #f9fafb;
-    border-left-color: #9ca3af;
-  }
-
-  .event-other {
-    background: #f9fafb;
-    border-left-color: #d1d5db;
-  }
-
-  .event-date {
+  .toggle-option {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    min-width: 3rem;
-    text-align: center;
-  }
-
-  .day-number {
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
     color: var(--color-text, #111827);
   }
 
-  .day-name {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    color: var(--color-text-muted, #6b7280);
-    letter-spacing: 0.025em;
+  .toggle-option input {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--color-primary, #3b82f6);
+    cursor: pointer;
   }
 
-  .duration {
-    font-size: 0.8rem;
-    color: var(--color-text-muted, #6b7280);
-  }
-
-  .past-event {
-    opacity: 0.4;
-  }
-
-  .event-details {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .event-title {
-    font-weight: 600;
-    font-size: 1.1rem;
-    flex: 1;
-    transition: all 0.2s ease;
-  }
-
-  a.event-row:hover .event-title {
-    text-decoration: underline;
-    display: inline-block;
-  }
-
-  .external-icon {
-    font-size: 0.85em;
-    opacity: 0.6;
-  }
-
-  .event-location {
-    font-size: 0.875rem;
-    color: var(--color-text-muted, #6b7280);
-  }
-
-  @media (min-width: 640px) {
-    .event-details {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-    }
-
-    .event-location {
-      margin-top: 0;
-      flex-shrink: 0;
-    }
-  }
-
-  .no-events {
-    color: var(--color-text-muted, #6b7280);
-    font-style: italic;
-  }
-
-  .hidden {
+  .calendar-view {
     display: none;
   }
 
-  @media (max-width: 480px) {
-    .event-row {
-      padding: 0.5rem;
-    }
-
-    .day-number {
-      font-size: 1.25rem;
-    }
+  .calendar-view.active {
+    display: block;
   }
 </style>
 
 <script>
-  // Filter events based on configurable date range and mark past events
-  document.querySelectorAll('.event-calendar').forEach((calendar) => {
-    const maxDaysInPast = calendar.getAttribute('data-max-days-in-past');
-    const maxDaysInFuture = calendar.getAttribute('data-max-days-in-future');
+  function initCalendarToggles() {
+    document.querySelectorAll('.event-calendar-toggle').forEach((container) => {
+      const defaultView = container.getAttribute('data-default-view') || 'list';
+      const radios = container.querySelectorAll('input[name="calendar-view"]');
+      const views = container.querySelectorAll('.calendar-view');
 
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const minDate = maxDaysInPast
-      ? new Date(today.getTime() - parseInt(maxDaysInPast) * 24 * 60 * 60 * 1000)
-      : null;
-    const maxDate = maxDaysInFuture
-      ? new Date(today.getTime() + parseInt(maxDaysInFuture) * 24 * 60 * 60 * 1000)
-      : null;
-
-    calendar.querySelectorAll('.event-row[data-date]').forEach((row) => {
-      const eventDate = new Date(row.getAttribute('data-date')!);
-
-      // Dim past events
-      if (eventDate < today) {
-        row.classList.add('past-event');
+      function showView(viewName: string) {
+        views.forEach((view) => {
+          if (view.getAttribute('data-view') === viewName) {
+            view.classList.add('active');
+          } else {
+            view.classList.remove('active');
+          }
+        });
       }
 
-      // Hide events outside date range
-      if ((minDate && eventDate < minDate) || (maxDate && eventDate > maxDate)) {
-        row.classList.add('hidden');
+      function syncViewToRadio() {
+        const checked = container.querySelector('input[name="calendar-view"]:checked') as HTMLInputElement | null;
+        showView(checked?.value || defaultView);
       }
+
+      syncViewToRadio();
+
+      radios.forEach((radio) => {
+        radio.addEventListener('change', (e) => {
+          const target = e.target as HTMLInputElement;
+          if (target.checked) {
+            showView(target.value);
+          }
+        });
+      });
     });
+  }
 
-    // Hide month groups with no visible events
-    calendar.querySelectorAll('.month-group').forEach((group) => {
-      const visibleEvents = group.querySelectorAll('.event-row:not(.hidden)');
-      if (visibleEvents.length === 0) {
-        group.classList.add('hidden');
-      }
-    });
-  });
+  initCalendarToggles();
+  window.addEventListener('pageshow', initCalendarToggles);
 </script>
