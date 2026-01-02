@@ -62,34 +62,32 @@ type DayCell = {
   events: CalendarEvent[];
 };
 
+function getWeekStart(date: Date): Date {
+  const d = new Date(date);
+  const dayOfWeek = (d.getDay() + 6) % 7; // Monday = 0
+  d.setDate(d.getDate() - dayOfWeek);
+  return d;
+}
+
+function getWeekEnd(date: Date): Date {
+  const d = new Date(date);
+  const dayOfWeek = (d.getDay() + 6) % 7; // Monday = 0
+  d.setDate(d.getDate() + (6 - dayOfWeek));
+  return d;
+}
+
 function buildGrid(): DayCell[] {
   const cells: DayCell[] = [];
-  const startMonth = getMonthStart(minDate);
-  const endMonth = getMonthStart(maxDate);
-  const endOfLastMonth = new Date(endMonth.getFullYear(), endMonth.getMonth() + 1, 0);
 
-  // Monday = 0, Sunday = 6 (adjusted from JS where Sunday = 0)
-  const firstDayOfWeek = (startMonth.getDay() + 6) % 7;
+  // Start from Monday of the week containing first event
+  const gridStart = getWeekStart(minDate);
+  // End on Sunday of the week containing last event
+  const gridEnd = getWeekEnd(maxDate);
 
-  // Pad start to Monday
-  for (let i = 0; i < firstDayOfWeek; i++) {
-    const prevDate = new Date(startMonth.getFullYear(), startMonth.getMonth(), -firstDayOfWeek + i + 1);
-    cells.push(buildDayCell(prevDate));
-  }
-
-  // All days from start month to end month
-  let current = new Date(startMonth);
-  while (current <= endOfLastMonth) {
+  let current = new Date(gridStart);
+  while (current <= gridEnd) {
     cells.push(buildDayCell(new Date(current)));
     current.setDate(current.getDate() + 1);
-  }
-
-  // Pad end to Sunday
-  const remaining = (7 - (cells.length % 7)) % 7;
-  for (let i = 0; i < remaining; i++) {
-    const nextDate = new Date(current);
-    nextDate.setDate(current.getDate() + i);
-    cells.push(buildDayCell(nextDate));
   }
 
   return cells;
