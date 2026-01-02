@@ -116,9 +116,7 @@ function buildDayCell(date: Date): DayCell {
 
 function getDayCellClasses(cell: DayCell): string {
   const classes = ['day-cell'];
-  if (cell.isToday) classes.push('today');
   if (cell.isWeekend) classes.push('weekend');
-  if (cell.isPast) classes.push('past');
   return classes.join(' ');
 }
 
@@ -134,10 +132,11 @@ const grid = buildGrid();
     {grid.map((cell) => {
       const visibleEvents = cell.events.slice(0, 3);
       const moreCount = cell.events.length - 3;
+      const dateAttr = cell.date.toISOString().split('T')[0];
       return (
-        <div class={getDayCellClasses(cell)}>
+        <div class={getDayCellClasses(cell)} data-date={dateAttr}>
           <div class="day-header">
-            <span class:list={["day-number", { "today-circle": cell.isToday }]}>
+            <span class="day-number">
               {cell.date.getDate()}
             </span>
             <span class="month-label">{getShortMonth(cell.date)}</span>
@@ -338,6 +337,20 @@ const grid = buildGrid();
 </style>
 
 <script>
+  // Highlight today and grey out past dates dynamically
+  const today = new Date();
+  const todayStr = today.toLocaleDateString('en-CA', { timeZone: 'Australia/Melbourne' });
+  
+  document.querySelectorAll('.day-cell[data-date]').forEach((cell) => {
+    const cellDate = cell.getAttribute('data-date')!;
+    if (cellDate === todayStr) {
+      cell.classList.add('today');
+      cell.querySelector('.day-number')?.classList.add('today-circle');
+    } else if (cellDate < todayStr) {
+      cell.classList.add('past');
+    }
+  });
+
   let expandedChip: HTMLElement | null = null;
 
   function collapseAll() {
