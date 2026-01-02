@@ -253,11 +253,35 @@ const grid = buildGrid();
     color: inherit;
     display: block;
     position: relative;
+    border-style: solid;
+    border-width: 0px;
+    border-left-width: 2px;
+  }
+
+  .event-chip.event-club {
+    background: #dbeafe;
+    border-color: #3b82f6;
+  }
+
+  .event-chip.event-social {
+    background: #fef9c3;
+    border-color: #eab308;
+  }
+
+  .event-chip.event-external {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+  }
+
+  .event-chip.event-other {
+    background: #f3f4f6;
+    border-color: #d1d5db;
   }
 
   .event-chip.expanded {
     position: fixed;
     z-index: 100;
+    border-width: 1px 3px;
     min-width: 200px;
     max-width: 280px;
     white-space: normal;
@@ -277,30 +301,6 @@ const grid = buildGrid();
 
   a.event-chip.expanded {
     text-decoration: underline;
-  }
-
-  .event-chip.expanded {
-    opacity: 1;
-  }
-
-  .event-chip.event-club {
-    background: #dbeafe;
-    border-left: 2px solid #3b82f6;
-  }
-
-  .event-chip.event-social {
-    background: #fef9c3;
-    border-left: 2px solid #eab308;
-  }
-
-  .event-chip.event-external {
-    background: #f3f4f6;
-    border-left: 2px solid #9ca3af;
-  }
-
-  .event-chip.event-other {
-    background: #f3f4f6;
-    border-left: 2px solid #d1d5db;
   }
 
   .more-events {
