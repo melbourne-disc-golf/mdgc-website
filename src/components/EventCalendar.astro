@@ -89,30 +89,40 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
 </style>
 
 <script>
-  document.querySelectorAll('.event-calendar-toggle').forEach((container) => {
-    const defaultView = container.getAttribute('data-default-view') || 'list';
-    const radios = container.querySelectorAll('input[name="calendar-view"]');
-    const views = container.querySelectorAll('.calendar-view');
+  function initCalendarToggles() {
+    document.querySelectorAll('.event-calendar-toggle').forEach((container) => {
+      const defaultView = container.getAttribute('data-default-view') || 'list';
+      const radios = container.querySelectorAll('input[name="calendar-view"]');
+      const views = container.querySelectorAll('.calendar-view');
 
-    function showView(viewName: string) {
-      views.forEach((view) => {
-        if (view.getAttribute('data-view') === viewName) {
-          view.classList.add('active');
-        } else {
-          view.classList.remove('active');
-        }
-      });
-    }
+      function showView(viewName: string) {
+        views.forEach((view) => {
+          if (view.getAttribute('data-view') === viewName) {
+            view.classList.add('active');
+          } else {
+            view.classList.remove('active');
+          }
+        });
+      }
 
-    showView(defaultView);
+      function syncViewToRadio() {
+        const checked = container.querySelector('input[name="calendar-view"]:checked') as HTMLInputElement | null;
+        showView(checked?.value || defaultView);
+      }
 
-    radios.forEach((radio) => {
-      radio.addEventListener('change', (e) => {
-        const target = e.target as HTMLInputElement;
-        if (target.checked) {
-          showView(target.value);
-        }
+      syncViewToRadio();
+
+      radios.forEach((radio) => {
+        radio.addEventListener('change', (e) => {
+          const target = e.target as HTMLInputElement;
+          if (target.checked) {
+            showView(target.value);
+          }
+        });
       });
     });
-  });
+  }
+
+  initCalendarToggles();
+  window.addEventListener('pageshow', initCalendarToggles);
 </script>
