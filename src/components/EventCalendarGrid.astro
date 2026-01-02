@@ -268,6 +268,11 @@ const grid = buildGrid();
     border-radius: 8px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     font-size: 0.9rem;
+    transition: opacity 0.2s ease-out;
+  }
+
+  .event-chip.expanded.fading {
+    opacity: 0;
   }
 
   a.event-chip.expanded {
@@ -355,10 +360,14 @@ const grid = buildGrid();
 
   function collapseAll() {
     if (expandedChip) {
-      expandedChip.remove();
+      const chip = expandedChip;
       expandedChip = null;
+      chip.classList.add('fading');
+      chip.addEventListener('transitionend', () => chip.remove(), { once: true });
     }
   }
+
+  window.addEventListener('scroll', collapseAll);
 
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
@@ -367,15 +376,14 @@ const grid = buildGrid();
       return;
     }
     
-    const chip = target.closest('.event-chip') as HTMLElement | null;
+    collapseAll();
     
+    const chip = target.closest('.event-chip') as HTMLElement | null;
     if (!chip) {
-      collapseAll();
       return;
     }
 
     e.preventDefault();
-    collapseAll();
     
     const rect = chip.getBoundingClientRect();
     const viewportMid = window.innerWidth / 2;
