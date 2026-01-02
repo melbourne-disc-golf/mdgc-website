@@ -86,13 +86,14 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
 
   .calendar-view {
     display: none;
+    overflow: hidden;
   }
 
   .calendar-view.active {
     display: block;
   }
 
-  .calendar-view.active.animate {
+  .calendar-view.animate {
     animation: 0.25s ease-out;
   }
 
