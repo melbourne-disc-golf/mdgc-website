@@ -275,6 +275,10 @@ const grid = buildGrid();
     text-decoration: underline;
   }
 
+  .event-chip.expanded {
+    opacity: 1;
+  }
+
   .event-chip.event-club {
     background: #dbeafe;
     border-left: 2px solid #3b82f6;
@@ -334,25 +338,26 @@ const grid = buildGrid();
 </style>
 
 <script>
+  let expandedChip: HTMLElement | null = null;
+
   function collapseAll() {
-    document.querySelectorAll('.event-chip.expanded').forEach(el => {
-      const chip = el as HTMLElement;
-      chip.style.top = '';
-      chip.style.left = '';
-      chip.style.right = '';
-      chip.classList.remove('expanded');
-    });
+    if (expandedChip) {
+      expandedChip.remove();
+      expandedChip = null;
+    }
   }
 
   document.addEventListener('click', (e) => {
-    const chip = (e.target as HTMLElement).closest('.event-chip') as HTMLElement | null;
+    const target = e.target as HTMLElement;
+    
+    if (expandedChip?.contains(target)) {
+      return;
+    }
+    
+    const chip = target.closest('.event-chip') as HTMLElement | null;
     
     if (!chip) {
       collapseAll();
-      return;
-    }
-
-    if (chip.classList.contains('expanded')) {
       return;
     }
 
@@ -362,12 +367,14 @@ const grid = buildGrid();
     const rect = chip.getBoundingClientRect();
     const viewportMid = window.innerWidth / 2;
     
-    chip.style.top = `${rect.top}px`;
+    expandedChip = chip.cloneNode(true) as HTMLElement;
+    expandedChip.classList.add('expanded');
+    expandedChip.style.top = `${rect.top}px`;
     if (rect.left < viewportMid) {
-      chip.style.left = `${rect.left}px`;
+      expandedChip.style.left = `${rect.left}px`;
     } else {
-      chip.style.right = `${window.innerWidth - rect.right}px`;
+      expandedChip.style.right = `${window.innerWidth - rect.right}px`;
     }
-    chip.classList.add('expanded');
+    document.body.appendChild(expandedChip);
   });
 </script>
