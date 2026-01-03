@@ -21,14 +21,18 @@ const { Content } = await course.render();
 // Get disc library if referenced
 const discLibrary = course.data.discLibrary ? await getEntry(course.data.discLibrary) : null;
 
-// Get upcoming events at this course
+// Get upcoming events at this course (include events up to 2 days in past to match component display)
+const maxDaysInPast = 2;
+const cutoffDate = new Date();
+cutoffDate.setDate(cutoffDate.getDate() - maxDaysInPast);
 const allEvents = await getCollection('events');
 const allCourses = await getCollection('courses');
 const coursesBySlug = new Map(allCourses.map((c) => [c.slug, c]));
-const eventsAtThisCourse = allEvents.filter((event) =>
-  event.data.courses?.some((ref) => ref.id === course.slug)
+const upcomingEventsAtThisCourse = allEvents.filter((event) =>
+  event.data.courses?.some((ref) => ref.id === course.slug) &&
+  new Date(event.data.date) >= cutoffDate
 );
-const calendarEvents = eventsAtThisCourse.map((e) => clubEventToCalendarEvent(e, coursesBySlug));
+const calendarEvents = upcomingEventsAtThisCourse.map((e) => clubEventToCalendarEvent(e, coursesBySlug));
 
 // Parse location coordinates (mandatory)
 if (!course.data.location) {
@@ -99,7 +103,7 @@ const mapLinks = {
     {calendarEvents.length > 0 && (
       <section>
         <h2>Upcoming events</h2>
-        <EventCalendarList events={calendarEvents} maxDaysInPast={2} />
+        <EventCalendarList events={calendarEvents} maxDaysInPast={maxDaysInPast} />
       </section>
     )}
 
