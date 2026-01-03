@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import Text from '@components/Text.astro';
 import LocationsMap from '@components/LocationsMap.astro';
-import EventCalendar from '@components/EventCalendar.astro';
+import EventCalendarList from '@components/EventCalendarList.astro';
 import { clubEventToCalendarEvent } from '@utils/events';
 
 export async function getStaticPaths() {
@@ -99,7 +99,7 @@ const mapLinks = {
     {calendarEvents.length > 0 && (
       <section>
         <h2>Upcoming events</h2>
-        <EventCalendar events={calendarEvents} maxDaysInPast={2} />
+        <EventCalendarList events={calendarEvents} maxDaysInPast={2} />
       </section>
     )}
 
