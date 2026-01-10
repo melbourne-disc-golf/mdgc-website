@@ -22,6 +22,7 @@ interface MetrixEvent {
 interface MetrixResponse {
   Competition: MetrixCompetition & {
     Events?: MetrixEvent[];
+    SubCompetitions?: MetrixEvent[];
   };
 }
 
@@ -44,8 +45,8 @@ async function fetchSeasonData(seasonId: string) {
   // Fetch season data
   const seasonData = await fetchFromMetrix(seasonId);
 
-  // Fetch and collect each event
-  const events = seasonData.Competition.Events || [];
+  // Fetch and collect each event (API uses either Events or SubCompetitions)
+  const events = seasonData.Competition.Events || seasonData.Competition.SubCompetitions || [];
   const eventsList = [];
 
   for (const event of events) {

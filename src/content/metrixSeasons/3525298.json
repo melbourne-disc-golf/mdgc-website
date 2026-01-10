@@ -1,0 +1,33 @@
+{
+  "id": 3525298,
+  "name": "MDGC 2026 Social Days &rarr; Season 1",
+  "dateStart": "2026-02-08",
+  "dateEnd": "2026-06-29",
+  "eventCount": 3,
+  "events": [
+    {
+      "id": 3525299,
+      "name": "MDGC 2026 Social Days &rarr; Season 1 &rarr; Feb West Social Day - Stony Creek",
+      "date": "2026-02-08",
+      "time": "08:00:00",
+      "courseName": "Stony Creek Social Days",
+      "courseId": "41497"
+    },
+    {
+      "id": 3525305,
+      "name": "MDGC 2026 Social Days &rarr; Season 1 &rarr; Feb Southeast Social Day - Bald Hill",
+      "date": "2026-02-15",
+      "time": "08:00:00",
+      "courseName": "Stony Creek Social Days",
+      "courseId": "41497"
+    },
+    {
+      "id": 3525309,
+      "name": "MDGC 2026 Social Days &rarr; Season 1 &rarr; Feb Northeast Social Day - Llewellyn",
+      "date": "2026-02-21",
+      "time": "08:00:00",
+      "courseName": "Stony Creek Social Days",
+      "courseId": "41497"
+    }
+  ]
+}
