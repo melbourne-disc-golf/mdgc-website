@@ -152,12 +152,12 @@ const grid = buildGrid();
           <div class="day-events">
             {visibleEvents.map((event) =>
               event.url ? (
-                <a href={event.url} class={`event-chip ${getEventSourceClass(event)}`} title={event.summary}>
-                  {event.summary}
+                <a href={event.url} class={`event-chip ${getEventSourceClass(event)}`} title={event.summary} data-location={event.location || ''}>
+                  <span class="event-summary">{event.summary}</span>
                 </a>
               ) : (
-                <div class={`event-chip ${getEventSourceClass(event)}`} title={event.summary}>
-                  {event.summary}
+                <div class={`event-chip ${getEventSourceClass(event)}`} title={event.summary} data-location={event.location || ''}>
+                  <span class="event-summary">{event.summary}</span>
                 </div>
               )
             )}
@@ -312,8 +312,15 @@ const grid = buildGrid();
     opacity: 0;
   }
 
-  a.event-chip.expanded {
+  a.event-chip.expanded .event-summary {
     text-decoration: underline;
+  }
+
+  :global(.event-chip.expanded .event-location) {
+    font-size: 0.875rem;
+    color: var(--color-text-muted, #6b7280);
+    margin-top: 0.25rem;
+    font-weight: 300;
   }
 
   .more-events {
@@ -400,9 +407,19 @@ const grid = buildGrid();
     
     const rect = chip.getBoundingClientRect();
     const viewportMid = window.innerWidth / 2;
-    
+
     expandedChip = chip.cloneNode(true) as HTMLElement;
     expandedChip.classList.add('expanded');
+
+    // Add location if available
+    const location = chip.getAttribute('data-location');
+    if (location) {
+      const locationEl = document.createElement('div');
+      locationEl.className = 'event-location';
+      locationEl.textContent = location;
+      expandedChip.appendChild(locationEl);
+    }
+
     expandedChip.style.top = `${rect.top}px`;
     if (rect.left < viewportMid) {
       expandedChip.style.left = `${rect.left}px`;
