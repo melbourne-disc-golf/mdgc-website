@@ -7,11 +7,12 @@ import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import Section from '@components/Section.astro';
 
-const courses = await getCollection('courses');
+const allCourses = await getCollection('courses');
+const courses = allCourses.filter(course => course.data.featured);
 courses.sort((a, b) => a.data.title.localeCompare(b.data.title));
 
-// Prepare locations for the map
-const courseLocations = courses.flatMap(course => {
+// Prepare locations for the map (all courses, not just featured)
+const courseLocations = allCourses.flatMap(course => {
 	if (!course.data.location) return [];
 	try {
 		const parsed = JSON.parse(course.data.location);
@@ -21,7 +22,8 @@ const courseLocations = courses.flatMap(course => {
 				lng: parsed.coordinates[0] as number,
 				title: course.data.title,
 				subtitle: course.data.suburb,
-				href: `/courses/${course.slug}`
+				href: `/courses/${course.slug}`,
+				muted: !course.data.featured
 			}];
 		}
 	} catch (e) {

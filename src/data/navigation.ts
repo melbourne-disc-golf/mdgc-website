@@ -19,6 +19,7 @@ export interface NavItem {
 async function getCourseNavItems(): Promise<NavSubPage[]> {
   let courses = await getCollection('courses');
 
+  courses = courses.filter(course => course.data.featured);
   courses.sort((a, b) => a.data.title.localeCompare(b.data.title));
 
   return courses.map(course => ({
