@@ -1,10 +1,10 @@
 import { defineCollection, z, reference } from 'astro:content';
 
 // Helper for optional fields from Sveltia/Decap CMS.
-// The CMS outputs '' for empty optional fields instead of omitting them,
-// which breaks Zod validation. This wrapper converts '' to undefined.
+// The CMS outputs '' or null for empty optional fields instead of omitting them,
+// which breaks Zod validation. This wrapper converts '' and null to undefined.
 const cmsOptional = <T extends z.ZodTypeAny>(schema: T) =>
-  z.preprocess((val) => (val === '' ? undefined : val), schema.optional());
+  z.preprocess((val) => (val === '' || val === null ? undefined : val), schema.optional());
 
 const courses = defineCollection({
   type: 'content',
