@@ -75,10 +75,6 @@ a:hover {
   color: inherit;
 }
 
-.prose .not-prose {
-  margin-top: 0 !important;
-}
-
 .prose h3 {
   margin-top: 1.25em;
   margin-bottom: 0.5em;

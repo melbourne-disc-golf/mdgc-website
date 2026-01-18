@@ -6,10 +6,13 @@ import LocationsMap from '@components/LocationsMap.astro';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import Section from '@components/Section.astro';
+import Text from '@components/Text.astro';
 
 const allCourses = await getCollection('courses');
-const courses = allCourses.filter(course => course.data.featured);
-courses.sort((a, b) => a.data.title.localeCompare(b.data.title));
+const featuredCourses = allCourses.filter(course => course.data.featured);
+const otherCourses = allCourses.filter(course => !course.data.featured);
+featuredCourses.sort((a, b) => a.data.title.localeCompare(b.data.title));
+otherCourses.sort((a, b) => a.data.title.localeCompare(b.data.title));
 
 // Prepare locations for the map (all courses, not just featured)
 const courseLocations = allCourses.flatMap(course => {
@@ -34,36 +37,61 @@ const courseLocations = allCourses.flatMap(course => {
 ---
 
 <Layout title="Courses" subtitle="disc golf courses around Melbourne" cmsPath="/collections/courses">
-	<Grid>
-		{courses.map((course) => (
-			<CourseCard
-				name={course.data.title}
-				href={`/courses/${course.slug}`}
-				location={course.data.suburb}
-				image={course.data.thumbnail || course.data.mainImage}
-			/>
-		))}
-	</Grid>
+	<Text>
 
-	<div class="my-8">
 		<LocationsMap locations={courseLocations} />
-	</div>
 
-	<Section title="Further afield">
-		<Grid>
-			<LinkPanel
-				href="https://flyspot.com.au"
-				title="FlySpot"
-				description="Disc golf courses around Australia"
-				image="https://flyspot.com.au/wp-content/uploads/2016/09/FlySpot-Icon.svg"
-			/>
-			<LinkPanel
-				href="https://udisc.com"
-				title="UDisc"
-				description="Disc golf courses around the world!"
-				image="https://d1q6yb84lp43gi.cloudfront.net/logos2021/short/OB_U+Icon.svg"
-			/>
-		</Grid>
-	</Section>
+		<Section title="Main courses">
 
+			<p>
+				These are courses that we regularly play at, and recommend to new players.
+			</p>
+
+			<Grid>
+				{featuredCourses.map((course) => (
+					<CourseCard
+						name={course.data.title}
+						href={`/courses/${course.slug}`}
+						location={course.data.suburb}
+						image={course.data.thumbnail || course.data.mainImage}
+					/>
+				))}
+			</Grid>
+		</Section>
+
+		{otherCourses.length > 0 && (
+			<Section title="Other courses">
+				<p>
+					These courses are smaller, still in development, or further from Melbourne.
+				</p>
+				<Grid>
+					{otherCourses.map((course) => (
+						<CourseCard
+							name={course.data.title}
+							href={`/courses/${course.slug}`}
+							location={course.data.suburb}
+							image={course.data.thumbnail || course.data.mainImage}
+						/>
+					))}
+				</Grid>
+			</Section>
+		)}
+
+		<Section title="Further afield">
+			<Grid>
+				<LinkPanel
+					href="https://flyspot.com.au"
+					title="FlySpot"
+					description="Disc golf courses around Australia"
+					image="https://flyspot.com.au/wp-content/uploads/2016/09/FlySpot-Icon.svg"
+				/>
+				<LinkPanel
+					href="https://udisc.com"
+					title="UDisc"
+					description="Disc golf courses around the world!"
+					image="https://d1q6yb84lp43gi.cloudfront.net/logos2021/short/OB_U+Icon.svg"
+				/>
+			</Grid>
+		</Section>
+	</Text>
 </Layout>

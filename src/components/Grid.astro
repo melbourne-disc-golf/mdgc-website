@@ -7,7 +7,7 @@ export interface Props {
 const { minColWidth = "250px", class: className = "" } = Astro.props;
 ---
 
-<div class={`grid gap-4 sm:gap-6 lg:gap-8 my-8 items-stretch ${className}`} style={`grid-template-columns: repeat(auto-fit, minmax(${minColWidth}, 1fr))`}>
+<div class={`grid gap-4 sm:gap-6 lg:gap-8 my-8 items-stretch not-prose ${className}`} style={`grid-template-columns: repeat(auto-fit, minmax(${minColWidth}, 1fr))`}>
 	<slot />
 </div>
 
