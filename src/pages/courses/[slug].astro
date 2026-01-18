@@ -45,7 +45,7 @@ const lng = parsed.coordinates[0];
 // Generate map links
 const mapLinks = {
   google: course.data.googleMapsUrl || `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`,
-  apple: `https://maps.apple.com/?q=${encodeURIComponent(course.data.title)}&ll=${lat},${lng}`
+  apple: `https://maps.apple.com/?q=${encodeURIComponent(course.data.title + ' Disc Golf')}&ll=${lat},${lng}`
 };
 ---
 
