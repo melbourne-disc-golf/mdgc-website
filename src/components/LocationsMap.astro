@@ -5,7 +5,7 @@ interface Location {
   title: string;
   subtitle?: string;
   href?: string;
-  muted?: boolean;
+  secondary?: boolean;
 }
 
 interface Props {
@@ -87,7 +87,7 @@ const { locations, permanentTooltips = false, class: className } = Astro.props;
     });
 
     locations.forEach(location => {
-      const markerOptions = location.muted ? { icon: greyIcon } : {};
+      const markerOptions = location.secondary ? { icon: greyIcon } : {};
       const marker = L.marker([location.lat, location.lng], markerOptions).addTo(map);
 
       let content = location.title;
@@ -113,7 +113,8 @@ const { locations, permanentTooltips = false, class: className } = Astro.props;
       }
     });
 
-    const points = locations.map(l => [l.lat, l.lng]);
+    const primaryLocations = locations.filter(l => !l.secondary);
+    const points = primaryLocations.map(l => [l.lat, l.lng]);
     const bounds = L.latLngBounds(points).pad(0.1);
     map.fitBounds(bounds, { maxZoom: 12 });
   };

@@ -26,7 +26,7 @@ const courseLocations = allCourses.flatMap(course => {
 				title: course.data.title,
 				subtitle: course.data.suburb,
 				href: `/courses/${course.slug}`,
-				muted: !course.data.featured
+				secondary: !course.data.featured
 			}];
 		}
 	} catch (e) {
