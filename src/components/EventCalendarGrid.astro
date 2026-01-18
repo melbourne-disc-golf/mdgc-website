@@ -210,10 +210,6 @@ const grid = buildGrid();
     background: #f0fdf4;
   }
 
-  .day-cell.weekend .day-number {
-    color: var(--color-text-muted, #6b7280);
-  }
-
   .day-header {
     display: flex;
     align-items: center;
@@ -227,7 +223,7 @@ const grid = buildGrid();
     color: var(--color-text, #111827);
   }
 
-  .today-circle {
+  .day-number.today {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -339,7 +335,7 @@ const grid = buildGrid();
       font-size: 0.75rem;
     }
 
-    .today-circle {
+    .today {
       width: 1.25rem;
       height: 1.25rem;
       font-size: 0.75rem;
@@ -370,7 +366,7 @@ const grid = buildGrid();
     const cellDate = cell.getAttribute('data-date')!;
     if (cellDate === todayStr) {
       cell.classList.add('today');
-      cell.querySelector('.day-number')?.classList.add('today-circle');
+      cell.querySelector('.day-number')?.classList.add('today');
     } else if (cellDate < todayStr) {
       cell.classList.add('past');
     }
