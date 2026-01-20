@@ -15,6 +15,8 @@ import Text from '@components/Text.astro';
 import { Content as HomepageText } from './_homepage-text.mdx';
 import FollowUs from './club/_follow-us.astro';
 
+<Text>
+
 <Grid>
 	<NavLink href="/disc-golf" />
 	<NavLink href="/club" />
@@ -23,8 +25,8 @@ import FollowUs from './club/_follow-us.astro';
 	<NavLink href="/shop" />
 </Grid>
 
-<Text>
-	<HomepageText />
-</Text>
+<HomepageText />
 
 <FollowUs />
+
+</Text>
