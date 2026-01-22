@@ -97,7 +97,7 @@ Event data for Social Days is synced from [Disc Golf Metrix](https://discgolfmet
 
 A [GitHub Actions workflow](.github/workflows/sync-metrix.yml) runs nightly, fetching the latest event data and committing any changes back to the repository. This triggers a site rebuild, keeping the events page up to date.
 
-To sync manually, run the workflow via GitHub Actions, or locally:
+To sync manually, [run the workflow via GitHub Actions](https://github.com/melbourne-disc-golf/mdgc-website/actions/workflows/sync-metrix.yml), or locally:
 
 ```sh
 pnpm tsx scripts/fetch-metrix-data.ts 3525298
