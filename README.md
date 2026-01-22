@@ -80,7 +80,9 @@ web interface - it triggers an automatic "build" and "deployment" process, which
 You can observe the process on the [Cloudflare dashboard](https://dash.cloudflare.com/1dbfd2793b506e08151b86bd944859b5/pages/view/mdgc).
 Tip: if you're wondering whether your changes are live yet, check the "last updated" timestamp in bottom-left of the page footer.
 
-## News (via Mailchimp)
+## Integrations
+
+### News (via Mailchimp)
 
 The [News page](/club/news) displays recent newsletters from our Mailchimp mailing list. To add news:
 
@@ -88,6 +90,20 @@ The [News page](/club/news) displays recent newsletters from our Mailchimp maili
 2. File the campaign in the "Club News" folder
 
 The News page embeds a feed from Mailchimp, so it updates automatically - no changes to the website are required.
+
+### Social Days (via Disc Golf Metrix)
+
+Event data for Social Days is synced from [Disc Golf Metrix](https://discgolfmetrix.com/).
+
+A [GitHub Actions workflow](.github/workflows/sync-metrix.yml) runs nightly, fetching the latest event data and committing any changes back to the repository. This triggers a site rebuild, keeping the events page up to date.
+
+To sync manually, run the workflow via GitHub Actions, or locally:
+
+```sh
+pnpm tsx scripts/fetch-metrix-data.ts 3525298
+```
+
+(Replace `3525298` with the current season ID if it changes.)
 
 ## ⚙️ Development
 
