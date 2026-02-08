@@ -50,13 +50,14 @@ function cleanHtml(str: string): string {
   {events.map(event => (
     <div class="callout social-day-item hidden" data-date={event.date}>
       <p>
-        Our <strong><a href={`https://discgolfmetrix.com/${event.id}`}>next social day</a></strong> is
-        at{' '}
+        Our next social day is at
         {event.courseSlug ? (
           <strong><a href={`/courses/${event.courseSlug}/`}>{event.courseTitle}</a></strong>
         ) : (
           <strong>{cleanHtml(event.courseName)}</strong>
-        )}, on <strong>{formatDate(event.date)}</strong>.
+        )} 
+        on <strong>{formatDate(event.date)}</strong>.
+        <strong><a href={`https://discgolfmetrix.com/${event.id}`}>Register here</a></strong>.
       </p>
     </div>
   ))}
