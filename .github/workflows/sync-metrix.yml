@@ -29,7 +29,7 @@ jobs:
         run: pnpm install
 
       - name: Fetch Metrix data
-        run: pnpm tsx scripts/fetch-metrix-data.ts 3525298
+        run: pnpm tsx scripts/fetch-metrix-data.ts 3525269
 
       - name: Commit changes
         run: |
