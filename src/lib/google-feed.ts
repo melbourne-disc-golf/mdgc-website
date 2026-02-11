@@ -50,21 +50,16 @@ export interface AggregatedItem {
 }
 
 /**
- * Extract the base item name, removing variation suffixes.
- * e.g., "RURU - RURU - ATOMIC/PINK/171" -> "Ruru"
- * e.g., "Innova Destroyer - 170g Blue" -> "Innova Destroyer"
+ * Convert all-caps name to title case.
+ * e.g., "RURU" -> "Ruru"
+ * e.g., "Innova Destroyer" -> "Innova Destroyer" (unchanged)
  */
-export function extractBaseName(variantName: string): string {
-  // Split on " - " and take the first part
-  const parts = variantName.split(" - ");
-  let baseName = parts[0].trim();
-
+export function formatName(name: string): string {
   // If the name is all caps, convert to title case
-  if (baseName === baseName.toUpperCase() && baseName.length > 1) {
-    baseName = baseName.charAt(0) + baseName.slice(1).toLowerCase();
+  if (name === name.toUpperCase() && name.length > 1) {
+    return name.charAt(0) + name.slice(1).toLowerCase();
   }
-
-  return baseName;
+  return name;
 }
 
 /**
@@ -161,7 +156,11 @@ export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
     // Get product URL from ecom_uri
     const productUrl = itemData.ecomUri;
 
-    // Process each variation and aggregate
+    // Aggregate price and quantity across all variations
+    let minPrice = Infinity;
+    let currency = "AUD";
+    let totalQuantity = 0;
+
     for (const variation of variations) {
       if (!variation.id || !variation.itemVariationData) continue;
 
@@ -170,46 +169,32 @@ export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
       const price = varData.priceMoney?.amount
         ? Number(varData.priceMoney.amount)
         : 0;
-      const currency = varData.priceMoney?.currency ?? "AUD";
 
-      const existing = itemMap.get(obj.id);
-
-      if (existing) {
-        existing.totalQuantity += quantity;
-        if (price > 0 && price < existing.minPrice) {
-          existing.minPrice = price;
-          existing.currency = currency;
-        }
-        if (!existing.productUrl && productUrl) {
-          existing.productUrl = productUrl;
-        }
-        if (!existing.imageUrl && imageUrl) {
-          existing.imageUrl = imageUrl;
-        }
-      } else {
-        // Build name from first variation
-        const fullName = varData.name
-          ? `${itemData.name} - ${varData.name}`
-          : itemData.name ?? "";
-
-        itemMap.set(obj.id, {
-          itemId: obj.id,
-          name: extractBaseName(fullName),
-          description: itemData.description ?? "",
-          productUrl,
-          imageUrl,
-          category,
-          brand,
-          minPrice: price || Infinity,
-          currency,
-          totalQuantity: quantity,
-        });
+      totalQuantity += quantity;
+      if (price > 0 && price < minPrice) {
+        minPrice = price;
+        currency = varData.priceMoney?.currency ?? "AUD";
       }
     }
+
+    // Skip items without valid prices
+    if (minPrice === Infinity) continue;
+
+    itemMap.set(obj.id, {
+      itemId: obj.id,
+      name: formatName(itemData.name ?? ""),
+      description: itemData.description ?? "",
+      productUrl,
+      imageUrl,
+      category,
+      brand,
+      minPrice,
+      currency,
+      totalQuantity,
+    });
   }
 
-  // Filter out items with Infinity price (no valid prices found)
-  return Array.from(itemMap.values()).filter((item) => item.minPrice < Infinity);
+  return Array.from(itemMap.values());
 }
 
 /**

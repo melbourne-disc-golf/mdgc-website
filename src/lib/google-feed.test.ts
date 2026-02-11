@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import {
-  extractBaseName,
+  formatName,
   aggregateItems,
   toGoogleProduct,
   generateTsvFeed,
@@ -100,27 +100,21 @@ function makeInventoryCount(
   } as InventoryCount;
 }
 
-describe("extractBaseName", () => {
-  it("extracts base name from variant name with suffix", () => {
-    expect(extractBaseName("Innova Destroyer - 170g Blue")).toBe(
-      "Innova Destroyer"
-    );
-  });
-
-  it("handles double name pattern", () => {
-    expect(extractBaseName("RURU - RURU - ATOMIC/PINK/171")).toBe("Ruru");
-  });
-
+describe("formatName", () => {
   it("converts all-caps to title case", () => {
-    expect(extractBaseName("MAVERICK")).toBe("Maverick");
+    expect(formatName("MAVERICK")).toBe("Maverick");
+  });
+
+  it("converts all-caps multi-word names", () => {
+    expect(formatName("RURU")).toBe("Ruru");
   });
 
   it("preserves mixed case names", () => {
-    expect(extractBaseName("Innova Destroyer")).toBe("Innova Destroyer");
+    expect(formatName("Innova Destroyer")).toBe("Innova Destroyer");
   });
 
-  it("handles single word names", () => {
-    expect(extractBaseName("Envy")).toBe("Envy");
+  it("preserves single word mixed case", () => {
+    expect(formatName("Envy")).toBe("Envy");
   });
 });
 
