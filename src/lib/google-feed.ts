@@ -171,7 +171,8 @@ export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
         : 0;
 
       totalQuantity += quantity;
-      if (price > 0 && price < minPrice) {
+      // Only consider in-stock variations for minimum price
+      if (quantity > 0 && price > 0 && price < minPrice) {
         minPrice = price;
         currency = varData.priceMoney?.currency ?? "AUD";
       }

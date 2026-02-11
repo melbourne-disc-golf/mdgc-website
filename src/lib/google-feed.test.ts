@@ -153,6 +153,32 @@ describe("aggregateItems", () => {
     });
   });
 
+  it("uses minimum price from in-stock variants only", () => {
+    const data: SquareInventoryData = {
+      fetchedAt: "2024-01-01T00:00:00Z",
+      catalogObjects: [
+        makeItem({
+          id: "item-1",
+          name: "Disc",
+          ecomUri: "https://example.com/disc",
+          variations: [
+            { id: "var-1", name: "Cheap but out of stock", priceAmount: 1500n },
+            { id: "var-2", name: "In stock", priceAmount: 2500n },
+          ],
+        }),
+      ],
+      inventoryCounts: [
+        makeInventoryCount("var-1", 0), // out of stock
+        makeInventoryCount("var-2", 3), // in stock
+      ],
+    };
+
+    const items = aggregateItems(data);
+
+    expect(items[0].minPrice).toBe(2500); // not 1500
+    expect(items[0].totalQuantity).toBe(3);
+  });
+
   it("uses minimum price across variants", () => {
     const data: SquareInventoryData = {
       fetchedAt: "2024-01-01T00:00:00Z",
