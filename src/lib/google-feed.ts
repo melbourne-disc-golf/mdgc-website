@@ -5,6 +5,8 @@
 
 import type { CatalogObject, InventoryCount } from "square";
 
+const SHOP_DOMAIN = "mdgcshop.square.site";
+
 export interface GoogleProduct {
   id: string;
   title: string;
@@ -60,6 +62,18 @@ export function formatName(name: string): string {
     return name.charAt(0) + name.slice(1).toLowerCase();
   }
   return name;
+}
+
+/**
+ * Convert a name to a URL-safe slug.
+ * e.g., "RURU" -> "ruru"
+ * e.g., "Innova Destroyer" -> "innova-destroyer"
+ */
+export function slugify(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 }
 
 /**
@@ -121,7 +135,8 @@ function buildLookups(data: SquareInventoryData) {
  * Aggregate catalog items (combining variants into single items).
  */
 export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
-  const { images, categories, brandCategoryIds, inventory } = buildLookups(data);
+  const { images, categories, brandCategoryIds, inventory } =
+    buildLookups(data);
   const itemMap = new Map<string, AggregatedItem>();
 
   for (const obj of data.catalogObjects) {
@@ -153,8 +168,16 @@ export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
       }
     }
 
-    // Get product URL from ecom_uri
-    const productUrl = itemData.ecomUri;
+    // Construct product URL if item is visible on the online store
+    // URL format: https://{domain}/product/{slug}/{item-id}
+    // Requires: ecom_visibility not UNAVAILABLE and has channels
+    const hasChannels = (itemData.channels?.length ?? 0) > 0;
+    const isVisible = itemData.ecomVisibility !== "UNAVAILABLE";
+    const slug = slugify(itemData.name ?? "");
+    const productUrl =
+      hasChannels && isVisible && slug
+        ? `https://${SHOP_DOMAIN}/product/${slug}/${obj.id}`
+        : undefined;
 
     // Aggregate price and quantity across all variations
     let minPrice = Infinity;

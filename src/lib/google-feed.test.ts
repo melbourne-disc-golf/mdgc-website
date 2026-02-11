@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   formatName,
+  slugify,
   aggregateItems,
   toGoogleProduct,
   generateTsvFeed,
@@ -24,7 +25,8 @@ function makeItem(opts: {
   imageIds?: string[];
   categoryId?: string;
   categoryIds?: string[];
-  ecomUri?: string;
+  channels?: string[];
+  ecomVisibility?: string;
   productType?: string;
   variations: Array<{
     id: string;
@@ -42,7 +44,8 @@ function makeItem(opts: {
       imageIds: opts.imageIds,
       categoryId: opts.categoryId,
       categories: opts.categoryIds?.map((id) => ({ id })),
-      ecomUri: opts.ecomUri,
+      channels: opts.channels ?? ["CH_default"],
+      ecomVisibility: opts.ecomVisibility ?? "VISIBLE",
       productType: opts.productType ?? "REGULAR",
       variations: opts.variations.map((v) => ({
         type: "ITEM_VARIATION",
@@ -115,6 +118,28 @@ describe("formatName", () => {
 
   it("preserves single word mixed case", () => {
     expect(formatName("Envy")).toBe("Envy");
+  });
+});
+
+describe("slugify", () => {
+  it("converts to lowercase", () => {
+    expect(slugify("RURU")).toBe("ruru");
+  });
+
+  it("replaces spaces with hyphens", () => {
+    expect(slugify("Innova Destroyer")).toBe("innova-destroyer");
+  });
+
+  it("removes special characters", () => {
+    expect(slugify("Disc's & Things!")).toBe("disc-s-things");
+  });
+
+  it("collapses multiple hyphens", () => {
+    expect(slugify("foo  --  bar")).toBe("foo-bar");
+  });
+
+  it("trims leading/trailing hyphens", () => {
+    expect(slugify(" -Ruru- ")).toBe("ruru");
   });
 });
 
@@ -397,7 +422,6 @@ describe("generateTsvFeed", () => {
         description: "A putter",
         imageIds: ["img-1"],
         categoryId: "cat-1",
-        ecomUri: "https://mdgcshop.square.site/product/ruru/25",
         variations: [{ id: "var-1", name: "Atomic/Pink", priceAmount: 2200n }],
       }),
     ],
@@ -421,18 +445,19 @@ describe("generateTsvFeed", () => {
     expect(lines[1]).toContain("item-1");
     expect(lines[1]).toContain("Ruru");
     expect(lines[1]).toContain("22.00 AUD");
+    expect(lines[1]).toContain("https://mdgcshop.square.site/product/ruru/item-1");
   });
 
-  it("skips items without productUrl (ecomUri)", () => {
+  it("skips items without channels (no URL)", () => {
     const data: SquareInventoryData = {
       ...sampleData,
       catalogObjects: [
         ...sampleData.catalogObjects,
         makeItem({
           id: "item-2",
-          name: "No URL Disc",
+          name: "No Channels Disc",
           imageIds: ["img-1"],
-          // no ecomUri
+          channels: [], // no channels = no URL
           variations: [{ id: "var-2", priceAmount: 2000n }],
         }),
       ],
@@ -457,7 +482,6 @@ describe("generateTsvFeed", () => {
           id: "item-2",
           name: "No Image Disc",
           // no imageIds
-          ecomUri: "https://example.com/disc",
           variations: [{ id: "var-2", priceAmount: 2000n }],
         }),
       ],
@@ -483,7 +507,6 @@ describe("generateTsvFeed", () => {
           name: "Ruru",
           description: "Line 1\nLine 2\twith tab",
           imageIds: ["img-1"],
-          ecomUri: "https://example.com/ruru",
           variations: [{ id: "var-1", priceAmount: 2200n }],
         }),
       ],
@@ -504,7 +527,6 @@ describe("generateTsvFeed", () => {
           id: "item-2",
           name: "Out of Stock Disc",
           imageIds: ["img-1"],
-          ecomUri: "https://example.com/disc",
           variations: [{ id: "var-2", priceAmount: 2000n }],
         }),
       ],
