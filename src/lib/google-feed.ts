@@ -43,6 +43,7 @@ export interface AggregatedItem {
   productUrl?: string;
   imageUrl?: string;
   category?: string;
+  brand?: string;
   minPrice: number;
   currency: string;
   totalQuantity: number;
@@ -80,9 +81,31 @@ function buildLookups(data: SquareInventoryData) {
 
   // Category ID -> name
   const categories = new Map<string, string>();
+  // Category ID -> parent ID
+  const categoryParents = new Map<string, string | undefined>();
   for (const obj of data.catalogObjects) {
     if (obj.type === "CATEGORY" && obj.id && obj.categoryData?.name) {
       categories.set(obj.id, obj.categoryData.name);
+      categoryParents.set(obj.id, obj.categoryData.parentCategory?.id);
+    }
+  }
+
+  // Find the "BRANDS" parent category ID
+  let brandsCategoryId: string | undefined;
+  for (const [id, name] of categories) {
+    if (name === "BRANDS") {
+      brandsCategoryId = id;
+      break;
+    }
+  }
+
+  // Brand category IDs (categories whose parent is BRANDS)
+  const brandCategoryIds = new Set<string>();
+  if (brandsCategoryId) {
+    for (const [id, parentId] of categoryParents) {
+      if (parentId === brandsCategoryId) {
+        brandCategoryIds.add(id);
+      }
     }
   }
 
@@ -96,14 +119,14 @@ function buildLookups(data: SquareInventoryData) {
     }
   }
 
-  return { images, categories, inventory };
+  return { images, categories, brandCategoryIds, inventory };
 }
 
 /**
  * Aggregate catalog items (combining variants into single items).
  */
 export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
-  const { images, categories, inventory } = buildLookups(data);
+  const { images, categories, brandCategoryIds, inventory } = buildLookups(data);
   const itemMap = new Map<string, AggregatedItem>();
 
   for (const obj of data.catalogObjects) {
@@ -120,10 +143,20 @@ export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
     const imageIds = itemData.imageIds ?? [];
     const imageUrl = imageIds.length > 0 ? images.get(imageIds[0]) : undefined;
 
-    // Get category name
-    const category = itemData.categoryId
-      ? categories.get(itemData.categoryId)
+    // Get category name (from reportingCategory or first category)
+    const category = itemData.reportingCategory?.id
+      ? categories.get(itemData.reportingCategory.id)
       : undefined;
+
+    // Get brand from item's categories (find one that's a child of BRANDS)
+    let brand: string | undefined;
+    const itemCategories = itemData.categories ?? [];
+    for (const cat of itemCategories) {
+      if (cat.id && brandCategoryIds.has(cat.id)) {
+        brand = categories.get(cat.id);
+        break;
+      }
+    }
 
     // Get product URL from ecom_uri
     const productUrl = itemData.ecomUri;
@@ -166,6 +199,7 @@ export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
           productUrl,
           imageUrl,
           category,
+          brand,
           minPrice: price || Infinity,
           currency,
           totalQuantity: quantity,
@@ -198,7 +232,7 @@ export function toGoogleProduct(
     availability: item.totalQuantity > 0 ? "in_stock" : "out_of_stock",
     price,
     condition: "new",
-    brand: config.defaultBrand,
+    brand: item.brand ?? config.defaultBrand,
     mpn: undefined,
     product_type: item.category,
   };

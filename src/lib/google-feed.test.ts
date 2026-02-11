@@ -23,6 +23,7 @@ function makeItem(opts: {
   description?: string;
   imageIds?: string[];
   categoryId?: string;
+  categoryIds?: string[];
   ecomUri?: string;
   productType?: string;
   variations: Array<{
@@ -40,6 +41,7 @@ function makeItem(opts: {
       description: opts.description,
       imageIds: opts.imageIds,
       categoryId: opts.categoryId,
+      categories: opts.categoryIds?.map((id) => ({ id })),
       ecomUri: opts.ecomUri,
       productType: opts.productType ?? "REGULAR",
       variations: opts.variations.map((v) => ({
@@ -70,11 +72,18 @@ function makeImage(id: string, url: string): CatalogObject {
 /**
  * Helper to create a Square CATEGORY catalog object.
  */
-function makeCategory(id: string, name: string): CatalogObject {
+function makeCategory(
+  id: string,
+  name: string,
+  parentId?: string
+): CatalogObject {
   return {
     type: "CATEGORY",
     id,
-    categoryData: { name },
+    categoryData: {
+      name,
+      parentCategory: parentId ? { id: parentId } : undefined,
+    },
   } as CatalogObject;
 }
 
@@ -203,6 +212,36 @@ describe("aggregateItems", () => {
     expect(items).toHaveLength(2);
   });
 
+  it("extracts brand from category hierarchy", () => {
+    const data: SquareInventoryData = {
+      fetchedAt: "2024-01-01T00:00:00Z",
+      catalogObjects: [
+        makeImage("img-1", "https://example.com/ruru.jpg"),
+        // Parent category for brands
+        makeCategory("brands-cat", "BRANDS"),
+        // Brand category (child of BRANDS)
+        makeCategory("rpm-cat", "RPM", "brands-cat"),
+        // Other category (not a brand)
+        makeCategory("putters-cat", "PUTTERS"),
+        makeItem({
+          id: "item-1",
+          name: "Ruru",
+          description: "A putter",
+          imageIds: ["img-1"],
+          categoryIds: ["putters-cat", "rpm-cat"],
+          ecomUri: "https://example.com/ruru",
+          variations: [{ id: "var-1", priceAmount: 2200n }],
+        }),
+      ],
+      inventoryCounts: [makeInventoryCount("var-1", 5)],
+    };
+
+    const items = aggregateItems(data);
+
+    expect(items).toHaveLength(1);
+    expect(items[0].brand).toBe("RPM");
+  });
+
   it("skips non-REGULAR product types", () => {
     const data: SquareInventoryData = {
       fetchedAt: "2024-01-01T00:00:00Z",
@@ -309,6 +348,20 @@ describe("toGoogleProduct", () => {
     const result = toGoogleProduct(noDescription, config);
 
     expect(result.description).toBe("Ruru");
+  });
+
+  it("uses item brand when available", () => {
+    const withBrand = { ...sampleItem, brand: "RPM" };
+    const result = toGoogleProduct(withBrand, config);
+
+    expect(result.brand).toBe("RPM");
+  });
+
+  it("falls back to defaultBrand when item has no brand", () => {
+    const noBrand = { ...sampleItem, brand: undefined };
+    const result = toGoogleProduct(noBrand, config);
+
+    expect(result.brand).toBe("MDGC");
   });
 });
 
