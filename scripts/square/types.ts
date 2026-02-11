@@ -37,6 +37,12 @@ export interface SquareItemVariation {
   item_variation_data: SquareItemVariationData;
 }
 
+export interface SquareEcomSeoData {
+  page_title?: string;
+  page_description?: string;
+  permalink?: string;
+}
+
 export interface SquareItemData {
   name: string;
   description?: string;
@@ -45,6 +51,8 @@ export interface SquareItemData {
   variations?: SquareItemVariation[];
   product_type?: string;
   is_archived?: boolean;
+  ecom_uri?: string; // Deprecated but may contain product URL
+  ecom_seo_data?: SquareEcomSeoData;
 }
 
 export interface SquareCatalogItem {
@@ -118,6 +126,8 @@ export interface Product {
   imageUrl?: string;
   category?: string;
   quantity: number;
+  productUrl?: string; // Square Online product page URL (if available)
+  permalink?: string; // SEO permalink/slug (if available)
 }
 
 /**

@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-11T10:40:53.247Z",
+  "fetchedAt": "2026-02-11T11:11:18.328Z",
   "products": [
     {
       "id": "DR54UKPMZD3RZU4BKGPYEHFN",
@@ -230,7 +230,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/8aeb1f10d43c5e4b06fb1c8a26a854cda2d212af/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/ruru/25"
     },
     {
       "id": "CUMY5R5DO3JML47QRI4MYJUH",
@@ -241,7 +242,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/8aeb1f10d43c5e4b06fb1c8a26a854cda2d212af/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/ruru/25"
     },
     {
       "id": "TZUUS2MUQ5XAV6TVL6OLFKHT",
@@ -252,7 +254,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/8aeb1f10d43c5e4b06fb1c8a26a854cda2d212af/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/ruru/25"
     },
     {
       "id": "W3YGQQHGRU6AYNNCWLXSXBDV",
@@ -263,7 +266,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/8aeb1f10d43c5e4b06fb1c8a26a854cda2d212af/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/ruru/25"
     },
     {
       "id": "B57Q3E2BBPYE3MKBGDSLGSRU",
@@ -274,7 +278,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/8aeb1f10d43c5e4b06fb1c8a26a854cda2d212af/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/ruru/25"
     },
     {
       "id": "NVLXL3ZZC3J6LUKXBDJMVELC",
@@ -285,7 +290,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/8aeb1f10d43c5e4b06fb1c8a26a854cda2d212af/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/ruru/25"
     },
     {
       "id": "L24OEC6SPX5MFNYDAXJRYSUB",
@@ -296,7 +302,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/8aeb1f10d43c5e4b06fb1c8a26a854cda2d212af/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/ruru/25"
     },
     {
       "id": "3ITBYC2IYINOZLFDXRQALAIT",
@@ -307,7 +314,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/8aeb1f10d43c5e4b06fb1c8a26a854cda2d212af/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/ruru/25"
     },
     {
       "id": "KJ5KOPSXRB3RAVCVP5TATL4W",
@@ -318,7 +326,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/8aeb1f10d43c5e4b06fb1c8a26a854cda2d212af/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/ruru/25"
     },
     {
       "id": "YBLXEIW7BLKPMRGETJVSDCYY",
@@ -329,7 +338,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/8aeb1f10d43c5e4b06fb1c8a26a854cda2d212af/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/ruru/25"
     },
     {
       "id": "CJ4XKFABIMSUDOF4QJHT3FTG",
@@ -340,7 +350,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/8aeb1f10d43c5e4b06fb1c8a26a854cda2d212af/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/ruru/25"
     },
     {
       "id": "FROROOTZPTXWT6GPF437WLMZ",
@@ -351,7 +362,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/8aeb1f10d43c5e4b06fb1c8a26a854cda2d212af/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/ruru/25"
     },
     {
       "id": "RGAMRUYVVPJJEWGLN77OQ35L",
@@ -494,7 +506,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/32e2e8ac97094fcfe331e1ce9599a4851e1e315f/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kotare/27"
     },
     {
       "id": "BYVJZVVCWOIVMTIMRGEWZZOU",
@@ -505,7 +518,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/32e2e8ac97094fcfe331e1ce9599a4851e1e315f/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kotare/27"
     },
     {
       "id": "CYRY3PV3C5FA6R3G6V4CENGU",
@@ -516,7 +530,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/32e2e8ac97094fcfe331e1ce9599a4851e1e315f/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kotare/27"
     },
     {
       "id": "UY7R2GJIFGPH62T24XZS3XBQ",
@@ -527,7 +542,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/32e2e8ac97094fcfe331e1ce9599a4851e1e315f/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kotare/27"
     },
     {
       "id": "XLWFIHFYOGYTCYQCLG2VVRHO",
@@ -538,7 +554,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/32e2e8ac97094fcfe331e1ce9599a4851e1e315f/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kotare/27"
     },
     {
       "id": "DV5AYCXWYQRWLS5LNCME6GK6",
@@ -549,7 +566,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4bb8b3844180b9106e06dd24fa6e68cad1f65689/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kea/30"
     },
     {
       "id": "AGKA2KCBNZEXSJL6MUSE6MH2",
@@ -560,7 +578,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4bb8b3844180b9106e06dd24fa6e68cad1f65689/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kea/30"
     },
     {
       "id": "FMJNZKQU6SHZNAUMMAGD7M2P",
@@ -571,7 +590,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4bb8b3844180b9106e06dd24fa6e68cad1f65689/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kea/30"
     },
     {
       "id": "KZ6WKKS54MEAFPAGFUURL4SS",
@@ -582,7 +602,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4bb8b3844180b9106e06dd24fa6e68cad1f65689/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kea/30"
     },
     {
       "id": "NWNQWFHISDUVRQA5SGJUVZUK",
@@ -593,7 +614,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4bb8b3844180b9106e06dd24fa6e68cad1f65689/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kea/30"
     },
     {
       "id": "WBITFENHZN47RLJ2BGPXFIJG",
@@ -604,7 +626,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4bb8b3844180b9106e06dd24fa6e68cad1f65689/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kea/30"
     },
     {
       "id": "UPKD2AOMDX6NW4MQ66WHJRFJ",
@@ -615,7 +638,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4bb8b3844180b9106e06dd24fa6e68cad1f65689/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kea/30"
     },
     {
       "id": "U5ADEUHQIX2UNN45ICPOWN7O",
@@ -626,7 +650,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4bb8b3844180b9106e06dd24fa6e68cad1f65689/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kea/30"
     },
     {
       "id": "IX62KHOKEUABMSK2USCVJ32M",
@@ -637,7 +662,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4bb8b3844180b9106e06dd24fa6e68cad1f65689/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kea/30"
     },
     {
       "id": "SBXED6ZJLIU3SKYNOK6KLDUT",
@@ -648,7 +674,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4bb8b3844180b9106e06dd24fa6e68cad1f65689/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kea/30"
     },
     {
       "id": "ZY4FPHULBFHRM2P6ZNUGV6RJ",
@@ -659,7 +686,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4bb8b3844180b9106e06dd24fa6e68cad1f65689/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kea/30"
     },
     {
       "id": "4JDS256YLSUPZ34RWPOOYKQJ",
@@ -670,7 +698,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4bb8b3844180b9106e06dd24fa6e68cad1f65689/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kea/30"
     },
     {
       "id": "PCCBZD5HIKKANUKJIYAKC45A",
@@ -681,7 +710,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4bb8b3844180b9106e06dd24fa6e68cad1f65689/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/kea/30"
     },
     {
       "id": "7GGUAU3U4NEKEMG36YRG5W25",
@@ -692,7 +722,8 @@
       "price": 2800,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/428875d368536b62b9556a3ed01cde487c2f4efc/original.jpeg",
-      "quantity": 2
+      "quantity": 2,
+      "productUrl": "https://mdgcshop.square.site/product/takapu-glow/28"
     },
     {
       "id": "6TXHJKV4CTNXTYE7HXUS56NA",
@@ -703,7 +734,8 @@
       "price": 2800,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/428875d368536b62b9556a3ed01cde487c2f4efc/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/takapu-glow/28"
     },
     {
       "id": "BR7WCJRLAL3JKI2KYHK46UR7",
@@ -714,7 +746,8 @@
       "price": 2800,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/258a75d5c55532bfa4cb93855675a8e15b0b9cef/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kotuku-glow/33"
     },
     {
       "id": "ML6SJILTAPHWQST25V7H4T7H",
@@ -725,7 +758,8 @@
       "price": 2800,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/258a75d5c55532bfa4cb93855675a8e15b0b9cef/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/kotuku-glow/33"
     },
     {
       "id": "HLR5XS33YY5SCEUGKHWKNQWP",
@@ -868,7 +902,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d0156db0d2b876627f622b9d1bcd07775291ffb9/original.jpeg",
-      "quantity": 2
+      "quantity": 2,
+      "productUrl": "https://mdgcshop.square.site/product/takapu/41"
     },
     {
       "id": "ISUYEL64IRH5UBKM4IOLXHZH",
@@ -879,7 +914,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d0156db0d2b876627f622b9d1bcd07775291ffb9/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/takapu/41"
     },
     {
       "id": "SEN5GQUPIKFTZSN2VX2BFZ4O",
@@ -890,7 +926,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d0156db0d2b876627f622b9d1bcd07775291ffb9/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/takapu/41"
     },
     {
       "id": "RVFW5KZ6XLN4DD7NGM2N4MPE",
@@ -901,7 +938,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d0156db0d2b876627f622b9d1bcd07775291ffb9/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/takapu/41"
     },
     {
       "id": "3WZP27DEKKHYMUWY2UMGBVAZ",
@@ -912,7 +950,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d0156db0d2b876627f622b9d1bcd07775291ffb9/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/takapu/41"
     },
     {
       "id": "XO4KOJYQI62RB5A6FVUCY6O7",
@@ -923,7 +962,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d0156db0d2b876627f622b9d1bcd07775291ffb9/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/takapu/41"
     },
     {
       "id": "GHW5ENK5Y44AMV6GVLLQYDI6",
@@ -934,7 +974,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d0156db0d2b876627f622b9d1bcd07775291ffb9/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/takapu/41"
     },
     {
       "id": "OOOGTFDTD7U3Q37AVPMF34T7",
@@ -945,7 +986,8 @@
       "price": 1500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d0156db0d2b876627f622b9d1bcd07775291ffb9/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/takapu/41"
     },
     {
       "id": "W7FEYCZPFFJXYEYJWDUNE6DC",
@@ -956,7 +998,8 @@
       "price": 1900,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d0156db0d2b876627f622b9d1bcd07775291ffb9/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/takapu/41"
     },
     {
       "id": "OSP2DHESJNUC7I5PAJ7DUXYU",
@@ -967,7 +1010,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d0156db0d2b876627f622b9d1bcd07775291ffb9/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/takapu/41"
     },
     {
       "id": "DM2YPN75SFHDYOIISBL4BUI6",
@@ -978,7 +1022,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d0156db0d2b876627f622b9d1bcd07775291ffb9/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/takapu/41"
     },
     {
       "id": "UON3D2INYZ3MYQGVNA4KTCDX",
@@ -989,7 +1034,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d0156db0d2b876627f622b9d1bcd07775291ffb9/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/takapu/41"
     },
     {
       "id": "C6CCBKFZGUB3WYHBYLNUSTOX",
@@ -1000,7 +1046,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d0156db0d2b876627f622b9d1bcd07775291ffb9/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/takapu/41"
     },
     {
       "id": "B2M3BMVQ6OXFLUUBOR4ASBZL",
@@ -1011,7 +1058,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d0156db0d2b876627f622b9d1bcd07775291ffb9/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/takapu/41"
     },
     {
       "id": "AQPT4TZN54F2NAY4FN6ZOGVT",
@@ -1022,7 +1070,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d0156db0d2b876627f622b9d1bcd07775291ffb9/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/takapu/41"
     },
     {
       "id": "A3I2JKJ2EXOP3UQTOGTFJHB6",
@@ -1033,7 +1082,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d0156db0d2b876627f622b9d1bcd07775291ffb9/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/takapu/41"
     },
     {
       "id": "4FI3V4GSTOHH4IVDE235RUWZ",
@@ -1307,7 +1357,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4fe0034a0472bcceb8a68ef21b04ac618f6a4b34/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kiwi/37"
     },
     {
       "id": "IGDSZ33TQQS674G5NA4FI5LM",
@@ -1318,7 +1369,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4fe0034a0472bcceb8a68ef21b04ac618f6a4b34/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kiwi/37"
     },
     {
       "id": "NAMDMXI345U4NIVFTO5EMVNZ",
@@ -1329,7 +1381,8 @@
       "price": 2500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/3a933f3c6ca78f101d576477b3ad3fc2ac871f08/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kea-glow/31"
     },
     {
       "id": "WVOKAA2RY5D6K4ANAAINALQE",
@@ -1340,7 +1393,8 @@
       "price": 2500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/3a933f3c6ca78f101d576477b3ad3fc2ac871f08/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kea-glow/31"
     },
     {
       "id": "IPJCXVZDAKXYNVNWWZUZJOST",
@@ -1351,7 +1405,8 @@
       "price": 2500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/5dcecc4c3668d3df909563297dd311bca57e3363/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/tui-glow/38"
     },
     {
       "id": "TK5QZFZFJ5MXGEYP6UHSMY3J",
@@ -1362,7 +1417,8 @@
       "price": 2500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/5dcecc4c3668d3df909563297dd311bca57e3363/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/tui-glow/38"
     },
     {
       "id": "K3QJEBOTW7CXSUTWZHPECWQS",
@@ -1373,7 +1429,8 @@
       "price": 2500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/74da5c90acbd23248164098b5e59b9ee594ffe43/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kahu-glow/35"
     },
     {
       "id": "GGZE56SLZ6GVFVM2IXZZ6LVX",
@@ -1384,7 +1441,8 @@
       "price": 2500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/241e5cf77f29acc9a1c62e993da3abdac5c5dd30/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/pekapeka-glow/40"
     },
     {
       "id": "6RJOFDWEKMMADPLC27TMYAWD",
@@ -1395,7 +1453,8 @@
       "price": 2800,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/241e5cf77f29acc9a1c62e993da3abdac5c5dd30/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/pekapeka-glow/40"
     },
     {
       "id": "O2U2IPPQLATANIBUHUGVBO2S",
@@ -1603,7 +1662,8 @@
       "price": 2800,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/2ace3bae36ce78df335b0fdb3f84863ef927815b/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/nuke-ss/49"
     },
     {
       "id": "D2J3VAO7ZISUAW2TJ4EYZJT4",
@@ -2163,7 +2223,8 @@
       "price": 3995,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/87a26d9426308b8f5c0e8431a3a65e51623c5dd9/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tilt/98"
     },
     {
       "id": "O3F5Q2HGI5RFXP5Z6YEBJKB7",
@@ -2174,7 +2235,8 @@
       "price": 3995,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/87a26d9426308b8f5c0e8431a3a65e51623c5dd9/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tilt/98"
     },
     {
       "id": "4FLQCYIS7WSWIXXMNX2NZ7AD",
@@ -2217,7 +2279,8 @@
       "price": 3000,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/f49cfb3dfecdcf9387f2e9e3eff681b8fae969e7/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/evader/109"
     },
     {
       "id": "GQ6CPL5QZUQK35Y2UCFE7BKP",
@@ -2250,7 +2313,8 @@
       "price": 2400,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/fd5b6833deceea6be68e502b21d8aa759cd2955c/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/gote/117"
     },
     {
       "id": "5JQ4GEABD6S5F5IYH7XL2WHZ",
@@ -2283,7 +2347,8 @@
       "price": 2400,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/6aaf7aafed18b91c6324f4d4e6af3deb5dcc1f40/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kaxe-z/119"
     },
     {
       "id": "PXGZRIMHZGYD6NAACEKQZHCO",
@@ -2293,7 +2358,8 @@
       "price": 2800,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/6aaf7aafed18b91c6324f4d4e6af3deb5dcc1f40/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kaxe-z/119"
     },
     {
       "id": "XEBI3N5BUKWRTRT3ONXLPA2E",
@@ -2762,7 +2828,8 @@
       "price": 5500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/f43cc854435026af554bd3c98cb88535da47a4c7/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/x-com-starter-set/178"
     },
     {
       "id": "IJUZ3JTUBRECXG2BQFOV2TBB",
@@ -2773,7 +2840,8 @@
       "price": 4950,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/eadde0737fd713807601da91445c5e06e43860f3/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/innova-starter-set/179"
     },
     {
       "id": "BULVFT2E5EUGIHYF6EG3ULDM",
@@ -2784,7 +2852,8 @@
       "price": 5295,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/eadde0737fd713807601da91445c5e06e43860f3/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/innova-starter-set/179"
     },
     {
       "id": "M2SXUSQNPL5EZHT2Z5RG34I5",
@@ -3004,7 +3073,8 @@
       "price": 2700,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/a43f727561586dac33f096ec2d7c62e3e38a88d3/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/eagle/185"
     },
     {
       "id": "MHLDJKDJK7HGCDPFPPFEISZG",
@@ -3015,7 +3085,8 @@
       "price": 2700,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/a43f727561586dac33f096ec2d7c62e3e38a88d3/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/eagle/185"
     },
     {
       "id": "42WGWE5YDXPFQEME44JI2H7Y",
@@ -3026,7 +3097,8 @@
       "price": 2800,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/31807d3816c5ac9d704fbce6b79e4eb697d2d47b/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/getaway/184"
     },
     {
       "id": "UJ5FIP53NOXHJG4APRDM3IR6",
@@ -3037,7 +3109,8 @@
       "price": 2800,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/a75c785ca74bd6c9e4afbe60c44f944fbfb8bd96/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/dd3/187"
     },
     {
       "id": "7RI46P5J2EONTNKEFU7K2BH7",
@@ -3213,7 +3286,8 @@
       "price": 2600,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/f4054e9f52b123c39175298e4f8931b5b3aaf2ca/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/world/203"
     },
     {
       "id": "77ZAVF52LNOAQN6YR3XIOB4B",
@@ -3224,7 +3298,8 @@
       "price": 1900,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/67cb359e531a60da68720da835066809aa006232/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/aviar3/205"
     },
     {
       "id": "A2RGUE6BUOE6UW5QWRNJZ67N",
@@ -3279,7 +3354,8 @@
       "price": 2500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/98653f7de2af377c999bc061424a42cf161c313a/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/sword/216"
     },
     {
       "id": "POYE5GE5ZRIIB2HWIEOEIT6Q",
@@ -3290,7 +3366,8 @@
       "price": 2700,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/51eed605ba71350ba15201c21e002b5ef6a3c8b8/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tursas/220"
     },
     {
       "id": "7CFU7FAWI34NAVLEAUXII7TA",
@@ -3301,7 +3378,8 @@
       "price": 1500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4d7f151b07ace4714e46c32a4bd98eb78264a900/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/taki-sak-chalk-dirt-bags/222"
     },
     {
       "id": "IVGO2KCD5K6V23JOML3VNLXN",
@@ -3312,7 +3390,8 @@
       "price": 1500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4d7f151b07ace4714e46c32a4bd98eb78264a900/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/taki-sak-chalk-dirt-bags/222"
     },
     {
       "id": "5ICQC7C3553LAM3PSMOS342S",
@@ -3323,7 +3402,8 @@
       "price": 1500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4d7f151b07ace4714e46c32a4bd98eb78264a900/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/taki-sak-chalk-dirt-bags/222"
     },
     {
       "id": "2MHWLO3LH2PNZMV7D6WFLB6Q",
@@ -3334,7 +3414,8 @@
       "price": 1500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4d7f151b07ace4714e46c32a4bd98eb78264a900/original.jpeg",
-      "quantity": 7
+      "quantity": 7,
+      "productUrl": "https://mdgcshop.square.site/product/taki-sak-chalk-dirt-bags/222"
     },
     {
       "id": "XMXG5FJ4SQ6W7RVYKDMWZ3BR",
@@ -3345,7 +3426,8 @@
       "price": 1500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4d7f151b07ace4714e46c32a4bd98eb78264a900/original.jpeg",
-      "quantity": 2
+      "quantity": 2,
+      "productUrl": "https://mdgcshop.square.site/product/taki-sak-chalk-dirt-bags/222"
     },
     {
       "id": "3A2O3SW4YRX4R6W2EJPRWDGS",
@@ -3914,7 +3996,8 @@
       "price": 3200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/e4ca3c6ca174fb77a1f89e5296cfc5b0bc3871a1/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/fireball/297"
     },
     {
       "id": "3EHVUJSXUVYIKLYMT3MTQPZX",
@@ -3925,7 +4008,8 @@
       "price": 3200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/e4ca3c6ca174fb77a1f89e5296cfc5b0bc3871a1/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/fireball/297"
     },
     {
       "id": "CMFLJKOLKBHWS5JNOKX7UKW2",
@@ -4057,7 +4141,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/bf1a2d1b7de77195d3d4cfe310edcb1160743711/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/tui/303"
     },
     {
       "id": "D563ITFF4Z2OCKZPLEIRXIWH",
@@ -4068,7 +4153,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/bf1a2d1b7de77195d3d4cfe310edcb1160743711/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tui/303"
     },
     {
       "id": "KSRMNOMTSOYB2E3WVV6BOC5W",
@@ -4079,7 +4165,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/bf1a2d1b7de77195d3d4cfe310edcb1160743711/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tui/303"
     },
     {
       "id": "ER673EKN3PXLY43VJBDAQK63",
@@ -4090,7 +4177,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/bf1a2d1b7de77195d3d4cfe310edcb1160743711/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tui/303"
     },
     {
       "id": "PHSXKICHG6OIYDOHBMVQYE45",
@@ -4101,7 +4189,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/bf1a2d1b7de77195d3d4cfe310edcb1160743711/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/tui/303"
     },
     {
       "id": "XDNKD43AKBDPZJMZRXIXYNRA",
@@ -4112,7 +4201,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/bf1a2d1b7de77195d3d4cfe310edcb1160743711/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tui/303"
     },
     {
       "id": "PQXSYCSYXD5O2EJWNJ3AMXV2",
@@ -4123,7 +4213,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/bf1a2d1b7de77195d3d4cfe310edcb1160743711/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tui/303"
     },
     {
       "id": "2K6FHSFFCWSVFVIMMHAKXE4F",
@@ -4134,7 +4225,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/bf1a2d1b7de77195d3d4cfe310edcb1160743711/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/tui/303"
     },
     {
       "id": "HO3EL4NM5W4Z5JJWKZSBLR3V",
@@ -4145,7 +4237,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/bf1a2d1b7de77195d3d4cfe310edcb1160743711/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tui/303"
     },
     {
       "id": "B4YI53VHEBULHCQXGFXQTWVK",
@@ -4156,7 +4249,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/bf1a2d1b7de77195d3d4cfe310edcb1160743711/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/tui/303"
     },
     {
       "id": "I4JYA47OBGBESHO3I24ACDTX",
@@ -4167,7 +4261,8 @@
       "price": 7000,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4c83638bbadee0018c44c808d91931b7300500eb/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/rpm-glow-disc-set/306"
     },
     {
       "id": "EBUONGJAAJAXKGTQRQIOL3MJ",
@@ -4519,7 +4614,8 @@
       "price": 5000,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/68b85430ba220636c7bc88981c2000620981bb1f/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/towel-mini-pdga/340"
     },
     {
       "id": "KIRXQXUCJZJGHQTOYWSCNSE4",
@@ -4530,7 +4626,8 @@
       "price": 300,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/104639aa865b33011989b8210b5fb77cdb73744b/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/zuca-cart-handle-grips/342"
     },
     {
       "id": "P6LRFJNP2YEFESEBFWXEKOAP",
@@ -4649,7 +4746,8 @@
       "price": 3000,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/dabc71ee456db9653040ac695cfd638133f4b2ea/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/towel-disc-baron/371"
     },
     {
       "id": "MD3K7P54XI3VLJWGRFCHXEGC",
@@ -4660,7 +4758,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/0e271beaed0a6344080646ca641fcd923a6c33fb/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/tara-iti/403"
     },
     {
       "id": "LDZSBIEUJ36OUL3BSHP7S7A5",
@@ -4671,7 +4770,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/0e271beaed0a6344080646ca641fcd923a6c33fb/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tara-iti/403"
     },
     {
       "id": "GZ5WYNRLALVD7XOENG6BFLCC",
@@ -4682,7 +4782,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/0e271beaed0a6344080646ca641fcd923a6c33fb/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tara-iti/403"
     },
     {
       "id": "7D642YGEBTP4CPLW3XR3SQTQ",
@@ -4693,7 +4794,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/0e271beaed0a6344080646ca641fcd923a6c33fb/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tara-iti/403"
     },
     {
       "id": "HA33GLZA2VO2YBA2XY5BAKS5",
@@ -4704,7 +4806,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/0e271beaed0a6344080646ca641fcd923a6c33fb/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/tara-iti/403"
     },
     {
       "id": "GTAR3R4BJ6XY67G2ALBOGOQR",
@@ -4715,7 +4818,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/0e271beaed0a6344080646ca641fcd923a6c33fb/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tara-iti/403"
     },
     {
       "id": "2CHH6JFVBPXXEKAP5V3ZLDDE",
@@ -4726,7 +4830,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/0e271beaed0a6344080646ca641fcd923a6c33fb/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tara-iti/403"
     },
     {
       "id": "SG43FYGL4VUCOZHCGGA3EUZX",
@@ -4737,7 +4842,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/0e271beaed0a6344080646ca641fcd923a6c33fb/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tara-iti/403"
     },
     {
       "id": "2Q2UBDNXC3VGBYVRNWUN6UJU",
@@ -4748,7 +4854,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/0e271beaed0a6344080646ca641fcd923a6c33fb/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tara-iti/403"
     },
     {
       "id": "XBGTTGCEUTKKU6J7YTCKWXLL",
@@ -4759,7 +4866,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/0e271beaed0a6344080646ca641fcd923a6c33fb/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tara-iti/403"
     },
     {
       "id": "2DQ4Q4T3X65BSETFWEPL5MP5",
@@ -4770,7 +4878,8 @@
       "price": 2200,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/0e271beaed0a6344080646ca641fcd923a6c33fb/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tara-iti/403"
     },
     {
       "id": "DJ3TIG7BOEHSG5JS2UEPBSZL",
@@ -4880,7 +4989,8 @@
       "price": 2500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/eb7d9c02199bf6cbd1fd18a20e17d23f325b3206/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/tara-iti-glow/409"
     },
     {
       "id": "ZPKDZM6H64VVZWHO2UQDCFUR",
@@ -4891,7 +5001,8 @@
       "price": 2800,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/eb7d9c02199bf6cbd1fd18a20e17d23f325b3206/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tara-iti-glow/409"
     },
     {
       "id": "CFZ2ZAEZRZYRX5QYAGIBYTVU",
@@ -4902,7 +5013,8 @@
       "price": 2500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/53887134d9d2d537dd33cd56b55142e3852fafbf/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/kahu-xg-glow/410"
     },
     {
       "id": "TMTXYLNZALIUSPNVHY2HD2UU",
@@ -5086,7 +5198,8 @@
       "sku": "DM035",
       "price": 1800,
       "currency": "AUD",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/method/467"
     },
     {
       "id": "NRVRKQ7KBAMJZCBB5GKPYEAQ",
@@ -5382,7 +5495,8 @@
       "price": 2800,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/2e77b46e069ee9cdc83521c02107d669d2248114/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/saint-pro/482"
     },
     {
       "id": "SCCL4GSFEZPC7ICRIYC2PCIS",
@@ -5393,7 +5507,8 @@
       "price": 2800,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/2e77b46e069ee9cdc83521c02107d669d2248114/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/saint-pro/482"
     },
     {
       "id": "QEYQ4SLELCXQ2CFXRNP3VHHG",
@@ -5796,7 +5911,8 @@
       "price": 2600,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/a531351b4bbc9f98c81ed92ccaf1fc877c00ee0a/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/bounty/500"
     },
     {
       "id": "53IM7VQB7X5JZRFEZF3BFV4J",
@@ -5807,7 +5923,8 @@
       "price": 2600,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/f5bbdb7561f257cc50a1367cd76e08b71d30268e/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/harp-glow/501"
     },
     {
       "id": "OQOSKCTNAJX4DAPSHWFA2VRW",
@@ -5818,7 +5935,8 @@
       "price": 3100,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/213e60388c836784f584be5d4dd2d435daf55caf/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/berg-glow/502"
     },
     {
       "id": "HGN45CGSNGCHXRZ7KMMN3Z5I",
@@ -5828,7 +5946,8 @@
       "price": 3100,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/213e60388c836784f584be5d4dd2d435daf55caf/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/berg-glow/502"
     },
     {
       "id": "4C6Q572IZUVCC3WOGZY3I7LE",
@@ -6026,7 +6145,8 @@
       "price": 3000,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/a944fc72f7407fa707c607336303955c9c15c17b/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/vulture/510"
     },
     {
       "id": "VOCLBZQKQRQ3OKSRII3BX6AR",
@@ -6036,7 +6156,8 @@
       "price": 3000,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/a944fc72f7407fa707c607336303955c9c15c17b/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/vulture/510"
     },
     {
       "id": "O5GSWVVMLSVYKOHEBOTOJNMR",
@@ -6047,7 +6168,8 @@
       "price": 2700,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/99af01b4acca2876751744c03d90777a56d6bbc8/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/rocx3/511"
     },
     {
       "id": "EDWQ2F5AZGNQ32U35OXSH2UB",
@@ -6058,7 +6180,8 @@
       "price": 2700,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/99af01b4acca2876751744c03d90777a56d6bbc8/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/rocx3/511"
     },
     {
       "id": "6WLZS755QKZQ73P57JOWCJ4M",
@@ -6168,7 +6291,8 @@
       "price": 4995,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/3dde4e34523ceae2c287f0e6ad9da0a15b034722/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/latitude-64-starter-set/515"
     },
     {
       "id": "N5TWMWN67JUZO7SV2HMWDDR4",
@@ -6179,7 +6303,8 @@
       "price": 4995,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/3dde4e34523ceae2c287f0e6ad9da0a15b034722/original.jpeg",
-      "quantity": 7
+      "quantity": 7,
+      "productUrl": "https://mdgcshop.square.site/product/latitude-64-starter-set/515"
     },
     {
       "id": "SHB3XMLRB5JO4KEEPNFKR4CU",
@@ -6190,7 +6315,8 @@
       "price": 2400,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/f28efcf4f3b29047cc8894efc7da87dbc9e0be77/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/starter-bag-discmania/516"
     },
     {
       "id": "RCQSQSZXTVHP7KBJTATTLG6L",
@@ -6311,7 +6437,8 @@
       "price": 3000,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d8539923c046c0fcb38d21391d84931e3e20b3ad/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/pyro/520"
     },
     {
       "id": "JEKETAA4KAGARC5YGVUO77SV",
@@ -6322,7 +6449,8 @@
       "price": 3000,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d8539923c046c0fcb38d21391d84931e3e20b3ad/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/pyro/520"
     },
     {
       "id": "QJCOWNJZESMW2JXIHJHDC6MP",
@@ -6398,7 +6526,8 @@
       "price": 3300,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/e0e4441ff245dd103b515cac71be63b0f8c8b837/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/river-glow/526"
     },
     {
       "id": "YNONVDSEYX7NF7NNE37BGAOP",
@@ -6409,7 +6538,8 @@
       "price": 3300,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/fec3bc65a731e705cf35781dc1fffa8738d7bf96/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/diamond-glow/527"
     },
     {
       "id": "7TD6X7BLFKISFQCZFLXA2T7I",
@@ -6420,7 +6550,8 @@
       "price": 3600,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/2951478bd045f2ee9b20f502112c351796cf7f87/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/hades/528"
     },
     {
       "id": "GEWOIKJ5OKJIYEG4P5A7XIPA",
@@ -6431,7 +6562,8 @@
       "price": 3500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/7ddff056b935e8a831b20883e4986589b91ad147/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/anax/529"
     },
     {
       "id": "W4W52HIG7HKWEY6YOLYGRRBM",
@@ -6442,7 +6574,8 @@
       "price": 3500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/7ddff056b935e8a831b20883e4986589b91ad147/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/anax/529"
     },
     {
       "id": "6VLRNXT7WEBE5JXL7FMHJPTA",
@@ -6453,7 +6586,8 @@
       "price": 3600,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d23db32f77655ff9e0fd95d22a2e6df28245b155/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/athena/530"
     },
     {
       "id": "JJBFICCG6BDVN6UUTNB7DKWG",
@@ -6475,7 +6609,8 @@
       "price": 3900,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/791c585448c9dd421babb4e91d197d3e47f48457/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/discmania-starter-set/532"
     },
     {
       "id": "LQYASKDUBNQPYGZEVZK7SCRP",
@@ -6486,7 +6621,8 @@
       "price": 4100,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/791c585448c9dd421babb4e91d197d3e47f48457/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/discmania-starter-set/532"
     },
     {
       "id": "JZYGNAFIO6WWBIWTFFIZOBHJ",
@@ -6497,7 +6633,8 @@
       "price": 5100,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/791c585448c9dd421babb4e91d197d3e47f48457/original.jpeg",
-      "quantity": 7
+      "quantity": 7,
+      "productUrl": "https://mdgcshop.square.site/product/discmania-starter-set/532"
     },
     {
       "id": "S4ZWMWQUD7DMKNIKUCV4AXW5",
@@ -6519,7 +6656,8 @@
       "price": 3400,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/731889020e9f660578c5e09ae2a55716dbd37194/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/mako3-glow/534"
     },
     {
       "id": "NUBJJDGUVESYGXZZF5QQMYE7",
@@ -6732,7 +6870,8 @@
       "price": 3600,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/aeed7581b784b99b373ec01d3b6a2d8591a5de54/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/insanity-glow/547"
     },
     {
       "id": "OZX3FRMSGMGH2BIYR45KDHVH",
@@ -6743,7 +6882,8 @@
       "price": 3600,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/aeed7581b784b99b373ec01d3b6a2d8591a5de54/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/insanity-glow/547"
     },
     {
       "id": "IENUQYECERJQAXLI6OUKBOUK",
@@ -6754,7 +6894,8 @@
       "price": 3500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/0ebbadf372e31d5641a1c80de6e9f5a5f6737866/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/tesla-glow/548"
     },
     {
       "id": "PU54OLF6YQQ5I66TT5YD4JN7",
@@ -6764,7 +6905,8 @@
       "price": 3500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/0ebbadf372e31d5641a1c80de6e9f5a5f6737866/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/tesla-glow/548"
     },
     {
       "id": "263TB5BW6DSGVQ3F7VJL3Z67",
@@ -6775,7 +6917,8 @@
       "price": 3500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/e8776ae9e115dcb9e1d316e8fb99420295f3ac62/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/wave-glow/549"
     },
     {
       "id": "VS7QEHYHPFORVYAC25Y46EBV",
@@ -6785,7 +6928,8 @@
       "price": 3500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/e8776ae9e115dcb9e1d316e8fb99420295f3ac62/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/wave-glow/549"
     },
     {
       "id": "AY6PVFA2TRDWBHI3DSIHWCOU",
@@ -6817,7 +6961,8 @@
       "price": 3500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/3649cd4589fa9a4907e2aff3f79c47cd6666de5c/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/trust/551"
     },
     {
       "id": "VVFXDA3GI36ZW2UBNUEGH6C6",
@@ -6827,7 +6972,8 @@
       "price": 3500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/3649cd4589fa9a4907e2aff3f79c47cd6666de5c/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/trust/551"
     },
     {
       "id": "SDCUTVD35HIKZTHZCPOZFJV6",
@@ -6935,7 +7081,8 @@
       "price": 2800,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/b11e9a1048e71acff937587cd3a920211a7d8e51/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/fox/558"
     },
     {
       "id": "3QVYZKJDALOX6CYVN23SCBTW",
@@ -6946,7 +7093,8 @@
       "price": 2800,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/b11e9a1048e71acff937587cd3a920211a7d8e51/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/fox/558"
     },
     {
       "id": "QBK25RMBMUN76XGPZHJXK3S2",
@@ -6957,7 +7105,8 @@
       "price": 2800,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/b11e9a1048e71acff937587cd3a920211a7d8e51/original.jpeg",
-      "quantity": 1
+      "quantity": 1,
+      "productUrl": "https://mdgcshop.square.site/product/fox/558"
     },
     {
       "id": "XPPFAUR5QMAHCZYQTTCVHPRH",
@@ -6967,7 +7116,8 @@
       "price": 7500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/033060ac7c9f34dce1825c014eb8df1c860ad0c6/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/2026-mdgc-membership/559"
     },
     {
       "id": "WLIKTIKMZNSEZF5RLHC6F4BV",
@@ -6977,7 +7127,8 @@
       "price": 7500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/033060ac7c9f34dce1825c014eb8df1c860ad0c6/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/2026-mdgc-membership/559"
     },
     {
       "id": "HA5R2PNNWYYLASKFSI6XO7MT",
@@ -6987,7 +7138,8 @@
       "price": 3500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/033060ac7c9f34dce1825c014eb8df1c860ad0c6/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/2026-mdgc-membership/559"
     },
     {
       "id": "ICVIIBVDUEW4JBLP7V5SQ5WU",
@@ -6997,7 +7149,8 @@
       "price": 3500,
       "currency": "AUD",
       "imageUrl": "https://items-images-production.s3.us-west-2.amazonaws.com/files/033060ac7c9f34dce1825c014eb8df1c860ad0c6/original.jpeg",
-      "quantity": 0
+      "quantity": 0,
+      "productUrl": "https://mdgcshop.square.site/product/2026-mdgc-membership/559"
     },
     {
       "id": "LMYM2KFPL5LZ4I4534VUQVZT",

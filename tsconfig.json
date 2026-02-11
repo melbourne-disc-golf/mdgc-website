@@ -13,6 +13,7 @@
       "@layouts/*": ["layouts/*"],
       "@styles/*": ["styles/*"],
       "@data/*": ["data/*"],
+      "@lib/*": ["lib/*"],
       "@utils/*": ["utils/*"]
     },
     "types": ["astro/client"]

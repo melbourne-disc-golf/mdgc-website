@@ -70,6 +70,8 @@ export function extractProducts(
       imageUrl,
       category,
       quantity,
+      productUrl: itemData.ecom_uri,
+      permalink: itemData.ecom_seo_data?.permalink,
     };
   });
 }
