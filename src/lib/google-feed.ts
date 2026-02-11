@@ -18,7 +18,7 @@ export interface GoogleProduct {
   condition: "new" | "refurbished" | "used";
   brand?: string;
   gtin?: string;
-  mpn?: string;
+  google_product_category?: string;
   product_type?: string;
 }
 
@@ -222,6 +222,17 @@ export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
 }
 
 /**
+ * Map Square category to Google product category.
+ * See: https://support.google.com/merchants/answer/6324436
+ */
+function getGoogleProductCategory(category?: string): string {
+  if (category === "DISCS") {
+    return "Sporting Goods > Outdoor Recreation > Disc Golf > Disc Golf Discs";
+  }
+  return "Sporting Goods > Outdoor Recreation > Disc Golf";
+}
+
+/**
  * Convert an aggregated item to Google's format.
  */
 export function toGoogleProduct(
@@ -242,7 +253,7 @@ export function toGoogleProduct(
     price,
     condition: "new",
     brand: item.brand ?? config.defaultBrand,
-    mpn: undefined,
+    google_product_category: getGoogleProductCategory(item.category),
     product_type: item.category,
   };
 }
@@ -260,7 +271,7 @@ const FEED_COLUMNS: (keyof GoogleProduct)[] = [
   "price",
   "condition",
   "brand",
-  "mpn",
+  "google_product_category",
   "product_type",
 ];
 

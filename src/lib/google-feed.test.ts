@@ -376,7 +376,7 @@ describe("toGoogleProduct", () => {
       price: "22.00 AUD",
       condition: "new",
       brand: "MDGC",
-      mpn: undefined,
+      google_product_category: "Sporting Goods > Outdoor Recreation > Disc Golf",
       product_type: "Putters",
     });
   });
@@ -433,7 +433,7 @@ describe("generateTsvFeed", () => {
     const lines = result.split("\n");
 
     expect(lines[0]).toBe(
-      "id\ttitle\tdescription\tlink\timage_link\tavailability\tprice\tcondition\tbrand\tmpn\tproduct_type"
+      "id\ttitle\tdescription\tlink\timage_link\tavailability\tprice\tcondition\tbrand\tgoogle_product_category\tproduct_type"
     );
   });
 
