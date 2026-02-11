@@ -1,9 +1,9 @@
 /**
  * Google Merchant Center product feed generation.
- * Transforms our inventory data into Google's required format.
+ * Transforms Square catalog data into Google's required format.
  */
 
-import type { Product } from "../../scripts/square/types.js";
+import type { CatalogObject, InventoryCount } from "square";
 
 export interface GoogleProduct {
   id: string;
@@ -21,8 +21,16 @@ export interface GoogleProduct {
 }
 
 export interface FeedConfig {
-  storeUrl: string;
   defaultBrand?: string;
+}
+
+/**
+ * Square inventory data as stored in src/data/square-inventory.json
+ */
+export interface SquareInventoryData {
+  fetchedAt: string;
+  catalogObjects: CatalogObject[];
+  inventoryCounts: InventoryCount[];
 }
 
 /**
@@ -59,46 +67,115 @@ export function extractBaseName(variantName: string): string {
 }
 
 /**
- * Aggregate products by item (combining variants).
+ * Build lookup maps from Square data.
  */
-export function aggregateByItem(products: Product[]): AggregatedItem[] {
-  const itemMap = new Map<string, AggregatedItem>();
-
-  for (const product of products) {
-    const existing = itemMap.get(product.itemId);
-
-    if (existing) {
-      // Update aggregated values
-      existing.totalQuantity += product.quantity;
-      if (product.price < existing.minPrice && product.price > 0) {
-        existing.minPrice = product.price;
-        existing.currency = product.currency;
-      }
-      // Use productUrl if we don't have one yet
-      if (!existing.productUrl && product.productUrl) {
-        existing.productUrl = product.productUrl;
-      }
-      // Use imageUrl if we don't have one yet
-      if (!existing.imageUrl && product.imageUrl) {
-        existing.imageUrl = product.imageUrl;
-      }
-    } else {
-      // Create new aggregated item
-      itemMap.set(product.itemId, {
-        itemId: product.itemId,
-        name: extractBaseName(product.name),
-        description: product.description,
-        productUrl: product.productUrl,
-        imageUrl: product.imageUrl,
-        category: product.category,
-        minPrice: product.price,
-        currency: product.currency,
-        totalQuantity: product.quantity,
-      });
+function buildLookups(data: SquareInventoryData) {
+  // Image ID -> URL
+  const images = new Map<string, string>();
+  for (const obj of data.catalogObjects) {
+    if (obj.type === "IMAGE" && obj.id && obj.imageData?.url) {
+      images.set(obj.id, obj.imageData.url);
     }
   }
 
-  return Array.from(itemMap.values());
+  // Category ID -> name
+  const categories = new Map<string, string>();
+  for (const obj of data.catalogObjects) {
+    if (obj.type === "CATEGORY" && obj.id && obj.categoryData?.name) {
+      categories.set(obj.id, obj.categoryData.name);
+    }
+  }
+
+  // Variation ID -> total quantity (summed across locations)
+  const inventory = new Map<string, number>();
+  for (const count of data.inventoryCounts) {
+    if (count.catalogObjectId) {
+      const existing = inventory.get(count.catalogObjectId) ?? 0;
+      const qty = parseFloat(count.quantity ?? "0") || 0;
+      inventory.set(count.catalogObjectId, existing + qty);
+    }
+  }
+
+  return { images, categories, inventory };
+}
+
+/**
+ * Aggregate catalog items (combining variants into single items).
+ */
+export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
+  const { images, categories, inventory } = buildLookups(data);
+  const itemMap = new Map<string, AggregatedItem>();
+
+  for (const obj of data.catalogObjects) {
+    if (obj.type !== "ITEM" || !obj.id || !obj.itemData) continue;
+    if (obj.isDeleted || obj.itemData.isArchived) continue;
+    // Only include regular products (not events, memberships, etc.)
+    if (obj.itemData.productType !== "REGULAR") continue;
+
+    const itemData = obj.itemData;
+    const variations = itemData.variations ?? [];
+    if (variations.length === 0) continue;
+
+    // Get image URL (first image)
+    const imageIds = itemData.imageIds ?? [];
+    const imageUrl = imageIds.length > 0 ? images.get(imageIds[0]) : undefined;
+
+    // Get category name
+    const category = itemData.categoryId
+      ? categories.get(itemData.categoryId)
+      : undefined;
+
+    // Get product URL from ecom_uri
+    const productUrl = itemData.ecomUri;
+
+    // Process each variation and aggregate
+    for (const variation of variations) {
+      if (!variation.id || !variation.itemVariationData) continue;
+
+      const varData = variation.itemVariationData;
+      const quantity = inventory.get(variation.id) ?? 0;
+      const price = varData.priceMoney?.amount
+        ? Number(varData.priceMoney.amount)
+        : 0;
+      const currency = varData.priceMoney?.currency ?? "AUD";
+
+      const existing = itemMap.get(obj.id);
+
+      if (existing) {
+        existing.totalQuantity += quantity;
+        if (price > 0 && price < existing.minPrice) {
+          existing.minPrice = price;
+          existing.currency = currency;
+        }
+        if (!existing.productUrl && productUrl) {
+          existing.productUrl = productUrl;
+        }
+        if (!existing.imageUrl && imageUrl) {
+          existing.imageUrl = imageUrl;
+        }
+      } else {
+        // Build name from first variation
+        const fullName = varData.name
+          ? `${itemData.name} - ${varData.name}`
+          : itemData.name ?? "";
+
+        itemMap.set(obj.id, {
+          itemId: obj.id,
+          name: extractBaseName(fullName),
+          description: itemData.description ?? "",
+          productUrl,
+          imageUrl,
+          category,
+          minPrice: price || Infinity,
+          currency,
+          totalQuantity: quantity,
+        });
+      }
+    }
+  }
+
+  // Filter out items with Infinity price (no valid prices found)
+  return Array.from(itemMap.values()).filter((item) => item.minPrice < Infinity);
 }
 
 /**
@@ -122,7 +199,7 @@ export function toGoogleProduct(
     price,
     condition: "new",
     brand: config.defaultBrand,
-    mpn: undefined, // SKU doesn't make sense at item level
+    mpn: undefined,
     product_type: item.category,
   };
 }
@@ -146,8 +223,6 @@ const FEED_COLUMNS: (keyof GoogleProduct)[] = [
 
 /**
  * Escape a value for TSV format.
- * - Tabs and newlines are replaced with spaces
- * - No quoting needed for TSV (unlike CSV)
  */
 function escapeTsvValue(value: string | undefined): string {
   if (!value) return "";
@@ -155,11 +230,10 @@ function escapeTsvValue(value: string | undefined): string {
 }
 
 /**
- * Generate TSV feed content from products.
- * Aggregates by item (not variant) since we can't deep-link to variants.
+ * Generate TSV feed content from Square inventory data.
  */
 export function generateTsvFeed(
-  products: Product[],
+  data: SquareInventoryData,
   config: FeedConfig
 ): string {
   const lines: string[] = [];
@@ -168,7 +242,7 @@ export function generateTsvFeed(
   lines.push(FEED_COLUMNS.join("\t"));
 
   // Aggregate variants into items
-  const items = aggregateByItem(products);
+  const items = aggregateItems(data);
 
   // Data rows
   for (const item of items) {
@@ -179,7 +253,10 @@ export function generateTsvFeed(
     if (!item.imageUrl) continue;
 
     // Skip items without prices
-    if (!item.minPrice) continue;
+    if (!item.minPrice || item.minPrice === Infinity) continue;
+
+    // Skip out-of-stock items
+    if (item.totalQuantity <= 0) continue;
 
     const googleProduct = toGoogleProduct(item, config);
     const values = FEED_COLUMNS.map((col) =>

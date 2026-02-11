@@ -1,23 +1,16 @@
 import type { APIRoute } from "astro";
 import inventoryData from "@data/square-inventory.json";
-import { generateTsvFeed, type FeedConfig } from "@lib/google-feed";
-import type { InventoryData } from "../../../scripts/square/types.js";
+import { generateTsvFeed, type SquareInventoryData, type FeedConfig } from "@lib/google-feed";
 
 // Type assertion for the imported JSON
-const inventory = inventoryData as InventoryData;
+const data = inventoryData as unknown as SquareInventoryData;
 
-// Configure the feed
-// TODO: Move to site config or environment variable
-const STORE_URL = "https://mdgc-shop.square.site";
-const DEFAULT_BRAND = "MDGC";
+const config: FeedConfig = {
+  defaultBrand: "MDGC",
+};
 
 export const GET: APIRoute = async () => {
-  const config: FeedConfig = {
-    storeUrl: STORE_URL,
-    defaultBrand: DEFAULT_BRAND,
-  };
-
-  const tsvContent = generateTsvFeed(inventory.products, config);
+  const tsvContent = generateTsvFeed(data, config);
 
   return new Response(tsvContent, {
     headers: {
