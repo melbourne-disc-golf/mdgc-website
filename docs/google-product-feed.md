@@ -59,13 +59,14 @@ We show the **minimum price from in-stock variations only**. This ensures we don
 ### Data flow
 
 ```
-Square API  →  square-inventory.json  →  google-feed.ts  →  google-products.tsv
+Square API  →  square-inventory.json  →  git push  →  site build  →  google-products.tsv  →  Google Merchant Center
 ```
 
-1. **Fetch script** (`scripts/fetch-square-inventory.ts`) pulls catalog and inventory from Square API
-2. **Data file** (`src/data/square-inventory.json`) stores raw Square data
-3. **Feed generator** (`src/lib/google-feed.ts`) transforms data at build time
-4. **TSV feed** (`dist/feeds/google-products.tsv`) is the final Google-compatible output
+1. **GitHub Action** runs `scripts/fetch-square-inventory.ts` daily, pulling catalog and inventory from Square API
+2. **Data file** (`src/data/square-inventory.json`) is committed and pushed to the repo
+3. The push triggers a **Cloudflare Pages build**, which runs `src/lib/google-feed.ts` to transform the data
+4. **TSV feed** is published at `/feeds/google-products.tsv` on the live site
+5. **Google Merchant Center** fetches the TSV on a schedule via [Scheduled Fetch](https://support.google.com/merchants/answer/14991445?hl=en)
 
 ### Key functions
 
@@ -108,6 +109,10 @@ const config: FeedConfig = {
 
 ### Updating inventory data
 
+Inventory data is synced automatically by the **Sync Square Inventory** GitHub Action, which runs daily at 4am Melbourne time. It can also be triggered manually from the Actions tab.
+
+To run the fetch script locally:
+
 ```bash
 SQUARE_ACCESS_TOKEN=<token> pnpm tsx scripts/fetch-square-inventory.ts
 ```
@@ -131,10 +136,3 @@ pnpm test
 ```
 
 Tests cover aggregation logic, price calculation, URL construction, and TSV generation.
-
-## Future considerations
-
-- **Automated sync**: Could run the fetch script on a schedule via GitHub Actions
-- **Multiple sites**: If MDGC adds more Square Online sites, we'd need to correlate channels with sites
-- **Price ranges**: If Google adds support, we could show min-max prices
-- **Variant feeds**: Google does support item groups with variants, but requires more complex feed structure
