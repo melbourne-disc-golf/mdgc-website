@@ -2,9 +2,8 @@ name: Sync Square Inventory
 
 on:
   schedule:
-    # Run at 4am Melbourne time (UTC+10/+11)
-    # 6pm UTC covers both AEST and AEDT
-    - cron: '0 18 * * *'
+    # Run at 3pm UTC = around 1am Melbourne time (UTC+10/+11)
+    - cron: '0 15 * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
