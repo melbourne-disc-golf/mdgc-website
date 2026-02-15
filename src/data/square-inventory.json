@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-11T12:29:57.027Z",
+  "fetchedAt": "2026-02-15T23:41:13.408Z",
   "catalogObjects": [
     {
       "type": "ITEM",
@@ -6499,7 +6499,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -6514,8 +6515,8 @@
               ]
             },
             "id": "LGQGNCSUJUTSJHTUF3CRPVSD",
-            "updatedAt": "2026-01-15T04:55:07.856Z",
-            "version": 1768452907856,
+            "updatedAt": "2026-02-14T07:16:07.614Z",
+            "version": 1771053367614,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -6766,8 +6767,8 @@
         "isAlcoholic": false
       },
       "id": "QUMOVZKCSVP7RRE3YSS2DXIW",
-      "updatedAt": "2026-01-21T02:05:15.633Z",
-      "version": 1768961115633,
+      "updatedAt": "2026-02-14T07:16:07.614Z",
+      "version": 1771053367614,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -12593,7 +12594,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -12608,8 +12610,8 @@
               ]
             },
             "id": "TNEKHYK3WXIER7XHEWOT7GIU",
-            "updatedAt": "2025-12-11T02:11:46.953Z",
-            "version": 1765419106953,
+            "updatedAt": "2026-02-14T07:16:07.614Z",
+            "version": 1771053367614,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -12761,8 +12763,8 @@
         "isAlcoholic": false
       },
       "id": "6TZCRILTQPKNGE4JZCIOHAX7",
-      "updatedAt": "2025-12-12T01:36:15.401Z",
-      "version": 1765503375401,
+      "updatedAt": "2026-02-14T07:16:07.614Z",
+      "version": 1771053367614,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -14451,6 +14453,18 @@
           {
             "id": "OOPYHJJICDKBBYSVUMBBPW7K",
             "ordinal": 9758165696512
+          },
+          {
+            "id": "K5EWAR34GRJWWP4QIIIC25KC",
+            "ordinal": -2250631565803520
+          },
+          {
+            "id": "KNSIZ7JBEBDLPGVGHOJHXUZN",
+            "ordinal": -2249463334699008
+          },
+          {
+            "id": "LSIW7EJLG5KGMD2JMD7FZURJ",
+            "ordinal": -2251043882663936
           }
         ],
         "descriptionHtml": "The Paradox is capable of some truly unique lines. High-power players will be using the Paradox for utility shots like rollers, low speed flip ups, massive nose up anhyzers, and other touch shots. Low-power players will find the Paradox is a great first midrange for straight or hyzer-flip flights. Whether you’re using it as a teaching tool, or a utility disc for woods golf, the Paradox’s understability won’t let you down. If you need it to turn, the Paradox is the disc for you!\n\nSPEED: 5\n\nGLIDE: 4\n\nTURN: -4\n\nFADE: 0",
@@ -14467,8 +14481,8 @@
         "isAlcoholic": false
       },
       "id": "LIH7IDJ36KQLSG522YE3CDVP",
-      "updatedAt": "2026-01-15T05:19:35.556Z",
-      "version": 1768454375556,
+      "updatedAt": "2026-02-13T03:01:14.597Z",
+      "version": 1770951674597,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -15046,7 +15060,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -15058,8 +15073,8 @@
               ]
             },
             "id": "56ZGVJKG2YOY3M3BO6SXMFVS",
-            "updatedAt": "2026-01-07T04:34:29.63Z",
-            "version": 1767760469630,
+            "updatedAt": "2026-02-14T07:16:07.614Z",
+            "version": 1771053367614,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15483,8 +15498,8 @@
         "isAlcoholic": false
       },
       "id": "6CO6ZSK4LGGYUAHAMX6KE5PK",
-      "updatedAt": "2026-01-19T00:37:58.149Z",
-      "version": 1768783078149,
+      "updatedAt": "2026-02-14T07:16:07.614Z",
+      "version": 1771053367614,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -18868,7 +18883,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -18883,8 +18899,8 @@
               ]
             },
             "id": "6C5JE4HSBS46CXV5JXIAZ4TU",
-            "updatedAt": "2026-01-14T03:52:14.412Z",
-            "version": 1768362734412,
+            "updatedAt": "2026-02-14T07:16:07.614Z",
+            "version": 1771053367614,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -19131,8 +19147,8 @@
         "isAlcoholic": false
       },
       "id": "WOLEYTKY3XGSQ3JBYA657VV5",
-      "updatedAt": "2026-02-03T23:30:03.034Z",
-      "version": 1770161403034,
+      "updatedAt": "2026-02-14T07:16:07.614Z",
+      "version": 1771053367614,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -23120,7 +23136,7 @@
         "productType": "REGULAR",
         "skipModifierScreen": false,
         "ecom_available": false,
-        "ecom_visibility": "UNAVAILABLE",
+        "ecom_visibility": "VISIBLE",
         "imageIds": [
           "LCPEZ5WGWYWAT4QV7C2CNZRH"
         ],
@@ -23148,8 +23164,8 @@
         "isAlcoholic": false
       },
       "id": "XVJRER5EUELZTUVIYH6XA56P",
-      "updatedAt": "2026-01-16T01:09:23.939Z",
-      "version": 1768525763939,
+      "updatedAt": "2026-02-13T03:02:16.432Z",
+      "version": 1770951736432,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -23661,7 +23677,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -23676,8 +23693,8 @@
               ]
             },
             "id": "75HANIFIHUZF4XQIKRUGAMJQ",
-            "updatedAt": "2025-12-11T01:39:15.434Z",
-            "version": 1765417155434,
+            "updatedAt": "2026-02-14T07:16:07.614Z",
+            "version": 1771053367614,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -23806,7 +23823,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -23821,8 +23839,8 @@
               ]
             },
             "id": "BWEII47XJEYCDTL6M77KXOIS",
-            "updatedAt": "2026-01-29T06:57:37.301Z",
-            "version": 1769669857301,
+            "updatedAt": "2026-02-13T06:36:15.288Z",
+            "version": 1770964575288,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -23930,8 +23948,8 @@
         "isAlcoholic": false
       },
       "id": "DELGOWLSCWIR77IPJQSWLQYN",
-      "updatedAt": "2026-02-02T01:02:39.853Z",
-      "version": 1769994159853,
+      "updatedAt": "2026-02-14T07:16:07.614Z",
+      "version": 1771053367614,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -29131,16 +29149,16 @@
         ],
         "categories": [
           {
-            "id": "M3KFQBN4BG7ABT6ESVE5EZIX",
-            "ordinal": -2251731094209536
-          },
-          {
             "id": "OOPYHJJICDKBBYSVUMBBPW7K",
             "ordinal": 27968827031552
           },
           {
             "id": "CXIE4W57KHCVL3H7PE24DECQ",
             "ordinal": -2251250057871360
+          },
+          {
+            "id": "M3KFQBN4BG7ABT6ESVE5EZIX",
+            "ordinal": -2251731094209536
           }
         ],
         "descriptionHtml": "A straight flier with extra glide, the Roach is crafty in avoiding danger while incessantly pursuing chains. Just point and shoot. It&#39;s beadless too and feels great in the hand. Try a Roach on your next approach!\n\nSPEED: 2\nGLIDE: 4\nTURN: 0\nFADE: 1\n\n ",
@@ -29151,14 +29169,14 @@
         ],
         "isArchived": false,
         "reportingCategory": {
-          "id": "M3KFQBN4BG7ABT6ESVE5EZIX",
-          "ordinal": -2251731094209536
+          "id": "OOPYHJJICDKBBYSVUMBBPW7K",
+          "ordinal": 27968827031552
         },
         "isAlcoholic": false
       },
       "id": "IWUK43S7XD2S7BIXQIQ63HK6",
-      "updatedAt": "2025-11-16T07:21:51.586Z",
-      "version": 1763277711586,
+      "updatedAt": "2026-02-13T03:01:48.4Z",
+      "version": 1770951708400,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -31150,7 +31168,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -31165,8 +31184,8 @@
               ]
             },
             "id": "VD23A5BU2IM43R5X72KMP6SU",
-            "updatedAt": "2025-11-06T07:42:22.008Z",
-            "version": 1762414942008,
+            "updatedAt": "2026-02-14T23:29:10.273Z",
+            "version": 1771111750273,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -31218,8 +31237,8 @@
         "isAlcoholic": false
       },
       "id": "HQO5IFQU7JYA6QLM5OZAJPWM",
-      "updatedAt": "2026-01-07T03:37:49.681Z",
-      "version": 1767757069681,
+      "updatedAt": "2026-02-14T23:29:10.273Z",
+      "version": 1771111750273,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -35107,7 +35126,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -35122,8 +35142,8 @@
               ]
             },
             "id": "ZBK6TZEDCIMTQJY73HLVOKBG",
-            "updatedAt": "2026-01-15T05:05:12.22Z",
-            "version": 1768453512220,
+            "updatedAt": "2026-02-12T03:08:57.131Z",
+            "version": 1770865737131,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -35225,8 +35245,8 @@
         "isAlcoholic": false
       },
       "id": "STZQSVCW44X5GKDUODKMKKGD",
-      "updatedAt": "2026-02-05T11:38:09.119Z",
-      "version": 1770291489119,
+      "updatedAt": "2026-02-12T03:08:57.131Z",
+      "version": 1770865737131,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -35999,6 +36019,14 @@
           {
             "id": "OOPYHJJICDKBBYSVUMBBPW7K",
             "ordinal": 17798344474624
+          },
+          {
+            "id": "YGKPCUII6NP4NAJK3L7WQ2AV",
+            "ordinal": -2249532054175744
+          },
+          {
+            "id": "IY54P2OIB2HR4ZXNQSTA4FM6",
+            "ordinal": -2245889921908736
           }
         ],
         "descriptionHtml": "The Latitude 64 Royal Grand GLORY is an over-stable fairway that seems to just get better the longer it&#39;s in your bag. This dependable fairway driver will always have you reaching for it. The Glory can be thrown hard and with full confidence! It&#39;s trustable in the wind and has a reliable fade. The Glory is made for the advanced player, but players with slower arm speed will definitely enjoy the overstability during windy days.\n\nSPEED: 7\n\nGLIDE 5\n\nTURN: 0\n\nFADE: 3",
@@ -36015,8 +36043,8 @@
         "isAlcoholic": false
       },
       "id": "MVB5ZGAXHRZMSAKHVWKR4GBE",
-      "updatedAt": "2025-12-12T04:31:50.123Z",
-      "version": 1765513910123,
+      "updatedAt": "2026-02-13T03:54:37.643Z",
+      "version": 1770954877643,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -39965,7 +39993,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -39980,8 +40009,8 @@
               ]
             },
             "id": "3QVYZKJDALOX6CYVN23SCBTW",
-            "updatedAt": "2026-01-15T04:53:05.597Z",
-            "version": 1768452785597,
+            "updatedAt": "2026-02-14T23:30:51.096Z",
+            "version": 1771111851096,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -40013,7 +40042,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -40028,8 +40058,8 @@
               ]
             },
             "id": "QBK25RMBMUN76XGPZHJXK3S2",
-            "updatedAt": "2026-01-14T03:47:28.83Z",
-            "version": 1768362448830,
+            "updatedAt": "2026-02-13T18:01:23.175Z",
+            "version": 1771005683175,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -40086,8 +40116,8 @@
         "isAlcoholic": false
       },
       "id": "BD55YAAP53CDLJOAGGPMPOBB",
-      "updatedAt": "2026-01-15T04:53:05.597Z",
-      "version": 1768452785597,
+      "updatedAt": "2026-02-14T23:30:51.096Z",
+      "version": 1771111851096,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -40739,7 +40769,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -40754,8 +40785,8 @@
               ]
             },
             "id": "RWED6HCVMGPVAFQLRXBUNEXW",
-            "updatedAt": "2025-12-01T07:29:25.54Z",
-            "version": 1764574165540,
+            "updatedAt": "2026-02-12T03:17:11.985Z",
+            "version": 1770866231985,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -40905,8 +40936,8 @@
         "isAlcoholic": false
       },
       "id": "6KA4XTC46VHWI64UZS5GTK4K",
-      "updatedAt": "2026-01-11T02:21:25.171Z",
-      "version": 1768098085171,
+      "updatedAt": "2026-02-12T03:17:11.985Z",
+      "version": 1770866231985,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -42056,7 +42087,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -42071,8 +42103,8 @@
               ]
             },
             "id": "DROPXQYZLV244IF3RMGSBN4F",
-            "updatedAt": "2025-11-07T22:31:46.89Z",
-            "version": 1762554706890,
+            "updatedAt": "2026-02-14T03:08:13.606Z",
+            "version": 1771038493606,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -42104,7 +42136,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -42119,8 +42152,8 @@
               ]
             },
             "id": "SO7INXANDJ2IIASMATSZIBKM",
-            "updatedAt": "2025-11-07T22:31:46.89Z",
-            "version": 1762554706890,
+            "updatedAt": "2026-02-14T03:08:13.606Z",
+            "version": 1771038493606,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -42290,8 +42323,8 @@
         "isAlcoholic": false
       },
       "id": "4OF35QY6X5U4WGODJ7KNVKPL",
-      "updatedAt": "2026-02-08T05:27:20.226Z",
-      "version": 1770528440226,
+      "updatedAt": "2026-02-14T03:08:13.606Z",
+      "version": 1771038493606,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -44694,7 +44727,7 @@
       "created_at": "2026-01-30T02:29:45.227Z",
       "itemData": {
         "name": "2026 MDGC Ace Club",
-        "description": "ACE CLUB RULES FOR 2026\nThe Ace pool has been a part of the MDGC culture for a long time but ever growing number of members and events makes it very difficult to use the traditional ace pool system of collecting cash. Therefore, we have gone to an electronic and easy to manage format.\n\nThe rules are simple:\nYou can buy into the Ace club at any time you like (until the cut off date of Sept 30). Once you do, you will be entered into every remaining social day at each venue for the rest of the season.\nThe cost of entry will decrease each month. (See the table on the first tab).The Ace pool is spread across all of the social day events for the year so your entry fee will be split into $1 for each remaining rounds for the rest of the year.\nWe are capping the Ace Pot in 2026. The pot will be capped at $500. When that is reached the accumulated Ace Club funds will start building the next pot.The accumulated pool (up to $500) will be split between all aces for any particular round.\nAce Club memberships can only be purchased from our online store and you are welcome to use your gift cards for the purchase.\nWe understand that this is not for everyone but will certainly be worthwhile for those who plan to play regularly throughout the 2026 season. It’s a great, set and forget, way to insure your future Aces.\nThe Ace Club is for Social Days between February and November and does not include Club Champs or other comps, unless they are part of that schedule.\nThe Ace Club \"Early Bird\" deal: Is for 2025 Ace club members who renew before Feb 15th - they will receive $5 off the annual entry fee.\nI hope this makes sense, but if you have any questions, please contact Allen Brunsting for more information\nThe Ace Pool tables and who has joined so far can be seen here",
+        "description": "ACE CLUB RULES FOR 2026\nThe Ace pool has been a part of the MDGC culture for a long time but ever growing number of members and events makes it very difficult to use the traditional ace pool system of collecting cash. Therefore, we have gone to an electronic and easy to manage format.\n\n\nThe rules are simple:\nYou can buy into the Ace club at any time you like (until the cut off date of Sept 30). Once you do, you will be entered into every remaining social day at each venue for the rest of the season.\nThe cost of entry will decrease each month. (See the table on the first tab).The Ace pool is spread across all of the social day events for the year so your entry fee will be split into $1 for each remaining rounds for the rest of the year.\nWe are capping the Ace Pot in 2026. The pot will be capped at $500. When that is reached the accumulated Ace Club funds will start building the next pot.The accumulated pool (up to $500) will be split between all aces for any particular round.\nAce Club memberships can only be purchased from our online store and you are welcome to use your gift cards for the purchase.\nWe understand that this is not for everyone but will certainly be worthwhile for those who plan to play regularly throughout the 2026 season. It’s a great, set and forget, way to insure your future Aces.\nThe Ace Club is for Social Days between February and November and does not include Club Champs or other comps, unless they are part of that schedule.\nThe Ace Club \"Early Bird\" deal: Is for 2025 Ace club members who renew before Feb 15th - they will receive $5 off the annual entry fee.\nI hope this makes sense, but if you have any questions, please contact Allen Brunsting for more information\nThe Ace Pool tables and who has joined so far can be seen here",
         "isTaxable": false,
         "variations": [
           {
@@ -44710,6 +44743,12 @@
                 "amount": 2500,
                 "currency": "AUD"
               },
+              "locationOverrides": [
+                {
+                  "locationId": "LTD9BW2RXXBDV",
+                  "soldOut": true
+                }
+              ],
               "trackInventory": false,
               "sellable": true,
               "stockable": true,
@@ -44719,8 +44758,8 @@
               ]
             },
             "id": "IUKOZ7IMCHH4OMAKNTJDETUZ",
-            "updatedAt": "2026-02-06T04:11:40.332Z",
-            "version": 1770351100332,
+            "updatedAt": "2026-02-15T08:11:21.629Z",
+            "version": 1771143081629,
             "isDeleted": false,
             "presentAtAllLocations": true
           },
@@ -44746,8 +44785,8 @@
               ]
             },
             "id": "CUWYUHHYAYR5U6NAQN663ZJA",
-            "updatedAt": "2026-02-06T04:11:40.332Z",
-            "version": 1770351100332,
+            "updatedAt": "2026-02-15T07:28:55.151Z",
+            "version": 1771140535151,
             "isDeleted": false,
             "presentAtAllLocations": true
           }
@@ -44765,8 +44804,8 @@
             "ordinal": -2251799796908032
           }
         ],
-        "descriptionHtml": "<p><strong>ACE CLUB RULES FOR 2026</strong></p><p>The Ace pool has been a part of the MDGC culture for a long time but ever growing number of members and events makes it very difficult to use the traditional ace pool system of collecting cash. Therefore, we have gone to an electronic and easy to manage format.</p><p><br></p><p><strong>The rules are simple:</strong></p><ul><li>You can buy into the Ace club at any time you like (until the cut off date of Sept 30). Once you do, you will be entered into every remaining social day at each venue for the rest of the season.</li><li>The cost of entry will decrease each month. (See the table on the first tab).The Ace pool is spread across all of the social day events for the year so your entry fee will be split into $1 for each remaining rounds for the rest of the year.</li><li>We are capping the Ace Pot in 2026. The pot will be capped at $500. When that is reached the accumulated Ace Club funds will start building the next pot.The accumulated pool (up to $500) will be split between all aces for any particular round.</li><li>Ace Club memberships can only be purchased from our online store and you are welcome to use your gift cards for the purchase.</li><li>We understand that this is not for everyone but will certainly be worthwhile for those who plan to play regularly throughout the 2026 season. It’s a great, set and forget, way to insure your future Aces.</li><li>The Ace Club is for Social Days between February and November and does not include Club Champs or other comps, unless they are part of that schedule.</li><li>The Ace Club &#34;Early Bird&#34; deal: Is for 2025 Ace club members who renew before Feb 15th - they will receive $5 off the annual entry fee.</li><li>I hope this makes sense, but if you have any questions, please contact Allen Brunsting for more information</li></ul><p>The Ace Pool tables and who has joined so far can be seen <a href=\"https://docs.google.com/spreadsheets/d/1PoRahU2MmGd7X3wCf6pg68RgTMcCxEa6b9eDQurRKsI/edit?gid=2014371247#gid=2014371247\" rel=\"noopener noreferrer nofollow\" target=\"_blank\">here</a></p>",
-        "descriptionPlaintext": "ACE CLUB RULES FOR 2026\nThe Ace pool has been a part of the MDGC culture for a long time but ever growing number of members and events makes it very difficult to use the traditional ace pool system of collecting cash. Therefore, we have gone to an electronic and easy to manage format.\n\nThe rules are simple:\nYou can buy into the Ace club at any time you like (until the cut off date of Sept 30). Once you do, you will be entered into every remaining social day at each venue for the rest of the season.\nThe cost of entry will decrease each month. (See the table on the first tab).The Ace pool is spread across all of the social day events for the year so your entry fee will be split into $1 for each remaining rounds for the rest of the year.\nWe are capping the Ace Pot in 2026. The pot will be capped at $500. When that is reached the accumulated Ace Club funds will start building the next pot.The accumulated pool (up to $500) will be split between all aces for any particular round.\nAce Club memberships can only be purchased from our online store and you are welcome to use your gift cards for the purchase.\nWe understand that this is not for everyone but will certainly be worthwhile for those who plan to play regularly throughout the 2026 season. It’s a great, set and forget, way to insure your future Aces.\nThe Ace Club is for Social Days between February and November and does not include Club Champs or other comps, unless they are part of that schedule.\nThe Ace Club \"Early Bird\" deal: Is for 2025 Ace club members who renew before Feb 15th - they will receive $5 off the annual entry fee.\nI hope this makes sense, but if you have any questions, please contact Allen Brunsting for more information\nThe Ace Pool tables and who has joined so far can be seen here",
+        "descriptionHtml": "<strong>ACE CLUB RULES FOR 2026</strong><br/>The Ace pool has been a part of the MDGC culture for a long time but ever growing number of members and events makes it very difficult to use the traditional ace pool system of collecting cash. Therefore, we have gone to an electronic and easy to manage format.<br/><br><br/><strong>The rules are simple:</strong><br/><ul><li>You can buy into the Ace club at any time you like (until the cut off date of Sept 30). Once you do, you will be entered into every remaining social day at each venue for the rest of the season.</li><li>The cost of entry will decrease each month. (See the table on the first tab).The Ace pool is spread across all of the social day events for the year so your entry fee will be split into $1 for each remaining rounds for the rest of the year.</li><li>We are capping the Ace Pot in 2026. The pot will be capped at $500. When that is reached the accumulated Ace Club funds will start building the next pot.The accumulated pool (up to $500) will be split between all aces for any particular round.</li><li>Ace Club memberships can only be purchased from our online store and you are welcome to use your gift cards for the purchase.</li><li>We understand that this is not for everyone but will certainly be worthwhile for those who plan to play regularly throughout the 2026 season. It’s a great, set and forget, way to insure your future Aces.</li><li>The Ace Club is for Social Days between February and November and does not include Club Champs or other comps, unless they are part of that schedule.</li><li>The Ace Club &#34;Early Bird&#34; deal: Is for 2025 Ace club members who renew before Feb 15th - they will receive $5 off the annual entry fee.</li><li>I hope this makes sense, but if you have any questions, please contact Allen Brunsting for more information</li></ul>The Ace Pool tables and who has joined so far can be seen <a href=\"https://docs.google.com/spreadsheets/d/1PoRahU2MmGd7X3wCf6pg68RgTMcCxEa6b9eDQurRKsI/edit?gid=2014371247#gid=2014371247\" rel=\"noopener noreferrer nofollow\" target=\"_blank\">here</a><br/>",
+        "descriptionPlaintext": "ACE CLUB RULES FOR 2026\nThe Ace pool has been a part of the MDGC culture for a long time but ever growing number of members and events makes it very difficult to use the traditional ace pool system of collecting cash. Therefore, we have gone to an electronic and easy to manage format.\n\n\nThe rules are simple:\nYou can buy into the Ace club at any time you like (until the cut off date of Sept 30). Once you do, you will be entered into every remaining social day at each venue for the rest of the season.\nThe cost of entry will decrease each month. (See the table on the first tab).The Ace pool is spread across all of the social day events for the year so your entry fee will be split into $1 for each remaining rounds for the rest of the year.\nWe are capping the Ace Pot in 2026. The pot will be capped at $500. When that is reached the accumulated Ace Club funds will start building the next pot.The accumulated pool (up to $500) will be split between all aces for any particular round.\nAce Club memberships can only be purchased from our online store and you are welcome to use your gift cards for the purchase.\nWe understand that this is not for everyone but will certainly be worthwhile for those who plan to play regularly throughout the 2026 season. It’s a great, set and forget, way to insure your future Aces.\nThe Ace Club is for Social Days between February and November and does not include Club Champs or other comps, unless they are part of that schedule.\nThe Ace Club \"Early Bird\" deal: Is for 2025 Ace club members who renew before Feb 15th - they will receive $5 off the annual entry fee.\nI hope this makes sense, but if you have any questions, please contact Allen Brunsting for more information\nThe Ace Pool tables and who has joined so far can be seen here",
         "channels": [
           "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
           "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
@@ -44779,8 +44818,8 @@
         "isAlcoholic": false
       },
       "id": "CCTFKZXSNSYJQT7YOUVIMPLY",
-      "updatedAt": "2026-02-06T04:36:31.482Z",
-      "version": 1770352591482,
+      "updatedAt": "2026-02-15T08:11:21.629Z",
+      "version": 1771143081629,
       "isDeleted": false,
       "presentAtAllLocations": true
     },
@@ -70686,8 +70725,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-15T04:55:04.768Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-14T07:16:10.662Z"
     },
     {
       "catalogObjectId": "LVU67HQC4S5W7BXHBMQI4QTT",
@@ -71358,8 +71397,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-07T04:34:26.474Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-14T07:16:10.666Z"
     },
     {
       "catalogObjectId": "5A2JSEJF3FJYRABYNLQ5NZVA",
@@ -72510,8 +72549,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-08T23:30:23.13Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-14T07:16:10.652Z"
     },
     {
       "catalogObjectId": "UGKZCP7VQ4KLIS4VROWM76MC",
@@ -72958,8 +72997,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-14T03:52:11.767Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-14T07:16:10.659Z"
     },
     {
       "catalogObjectId": "6EN4GDVN3I5RK3CLLTXAAGUO",
@@ -73006,8 +73045,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-12-11T01:39:15.974Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-14T07:16:10.655Z"
     },
     {
       "catalogObjectId": "7CDRTB72VGLDKEJN54K3OJPW",
@@ -74742,8 +74781,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-29T06:57:37.833Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-13T06:36:18.298Z"
     },
     {
       "catalogObjectId": "C5YVS4UBI2WA2XR27U76ZWO6",
@@ -77326,8 +77365,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-06T07:42:22.56Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-14T23:29:07.572Z"
     },
     {
       "catalogObjectId": "VOCLBZQKQRQ3OKSRII3BX6AR",
@@ -77470,8 +77509,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-15T05:05:09.682Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-12T03:08:57.975Z"
     },
     {
       "catalogObjectId": "263TB5BW6DSGVQ3F7VJL3Z67",
@@ -77574,8 +77613,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-14T03:48:17.028Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-14T23:30:46.466Z"
     },
     {
       "catalogObjectId": "64JOL6HZFR5HP3MJXAZZ3HEM",
@@ -77774,8 +77813,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-07T04:37:42.541Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-14T03:08:14.91Z"
     },
     {
       "catalogObjectId": "EHVOXAHBL3FOQRELZ6Y3NOUH",
@@ -78254,8 +78293,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-14T03:47:25.654Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-13T18:01:29.149Z"
     },
     {
       "catalogObjectId": "RED5BT7IHUIU4MMJNVVBCQN5",
@@ -78318,8 +78357,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-12-01T07:29:22.02Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-12T03:17:14.259Z"
     },
     {
       "catalogObjectId": "RWED6HCVMGPVAFQLRXBUNEXW",
@@ -78374,8 +78413,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-07T04:38:16.431Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-14T03:08:14.913Z"
     },
     {
       "catalogObjectId": "TRJQBWU2IK6PJOQTZIG56XA3",
