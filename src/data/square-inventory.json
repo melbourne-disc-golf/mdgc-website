@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-15T23:41:13.408Z",
+  "fetchedAt": "2026-02-16T15:45:40.505Z",
   "catalogObjects": [
     {
       "type": "ITEM",
@@ -20843,7 +20843,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -20858,8 +20859,8 @@
               ]
             },
             "id": "JDWB65PJ43DWR4TGIECYCYPO",
-            "updatedAt": "2025-11-07T01:02:55.585Z",
-            "version": 1762477375585,
+            "updatedAt": "2026-02-16T08:01:04.582Z",
+            "version": 1771228864582,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -20915,8 +20916,8 @@
         "isAlcoholic": false
       },
       "id": "H22TME2A7CCXSBN4AJRS3UJK",
-      "updatedAt": "2025-11-07T01:02:55.585Z",
-      "version": 1762477375585,
+      "updatedAt": "2026-02-16T08:01:04.582Z",
+      "version": 1771228864582,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -22855,7 +22856,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -22870,8 +22872,8 @@
               ]
             },
             "id": "D6ZJ65U6SKWKYJBB7Z6VFFRG",
-            "updatedAt": "2025-11-06T23:40:08.551Z",
-            "version": 1762472408551,
+            "updatedAt": "2026-02-16T08:01:04.582Z",
+            "version": 1771228864582,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -23020,8 +23022,8 @@
         "isAlcoholic": false
       },
       "id": "YK7LAH6KXRP2S4IM5O3WKSZJ",
-      "updatedAt": "2026-02-01T02:00:44.469Z",
-      "version": 1769911244469,
+      "updatedAt": "2026-02-16T08:01:04.582Z",
+      "version": 1771228864582,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -29255,7 +29257,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -29270,8 +29273,8 @@
               ]
             },
             "id": "IZJ7Z5Y3MTOWAPTXPQHFRFID",
-            "updatedAt": "2025-11-04T23:20:58.915Z",
-            "version": 1762298458915,
+            "updatedAt": "2026-02-16T08:01:04.582Z",
+            "version": 1771228864582,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -29613,8 +29616,8 @@
         "isAlcoholic": false
       },
       "id": "HMUWBWUUP6HXR4SWSZLWJZBC",
-      "updatedAt": "2026-01-21T02:05:15.633Z",
-      "version": 1768961115633,
+      "updatedAt": "2026-02-16T08:01:04.582Z",
+      "version": 1771228864582,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -32346,7 +32349,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -32361,8 +32365,8 @@
               ]
             },
             "id": "LC5BFTNEOVN5SUJUESIAZS24",
-            "updatedAt": "2026-01-16T01:07:26.687Z",
-            "version": 1768525646687,
+            "updatedAt": "2026-02-16T08:01:04.582Z",
+            "version": 1771228864582,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -32418,8 +32422,8 @@
         "isAlcoholic": false
       },
       "id": "RPDEPUZUYOBE2NUPJBA2FTB2",
-      "updatedAt": "2026-01-16T01:07:26.687Z",
-      "version": 1768525646687,
+      "updatedAt": "2026-02-16T08:01:04.582Z",
+      "version": 1771228864582,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -32629,7 +32633,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -32644,8 +32649,8 @@
               ]
             },
             "id": "OQOSKCTNAJX4DAPSHWFA2VRW",
-            "updatedAt": "2026-01-28T23:19:14.882Z",
-            "version": 1769642354882,
+            "updatedAt": "2026-02-16T08:01:04.582Z",
+            "version": 1771228864582,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -32750,8 +32755,8 @@
         "isAlcoholic": false
       },
       "id": "SRK3ZKRJ2GBWHKDYE65OE6A2",
-      "updatedAt": "2026-01-28T23:22:21.061Z",
-      "version": 1769642541061,
+      "updatedAt": "2026-02-16T08:01:04.582Z",
+      "version": 1771228864582,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -41640,7 +41645,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -41655,8 +41661,8 @@
               ]
             },
             "id": "K6DOIPBP37EH5HNND7K3X4TW",
-            "updatedAt": "2025-11-07T01:59:38.14Z",
-            "version": 1762480778140,
+            "updatedAt": "2026-02-16T08:01:04.582Z",
+            "version": 1771228864582,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -41716,8 +41722,8 @@
         "isAlcoholic": false
       },
       "id": "A43CB5VOECVBI4QTZJPYXSA5",
-      "updatedAt": "2025-11-07T02:00:19.477Z",
-      "version": 1762480819477,
+      "updatedAt": "2026-02-16T08:01:04.582Z",
+      "version": 1771228864582,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -73205,8 +73211,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-10-20T06:59:31.24Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-16T08:01:06.902Z"
     },
     {
       "catalogObjectId": "DHEPVJRSJLN2B3LX6VFVSNLV",
@@ -73701,8 +73707,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-07T01:02:56.255Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-16T08:01:06.912Z"
     },
     {
       "catalogObjectId": "JENO5ZMVGVEOD6PUQFKIIPFY",
@@ -75117,8 +75123,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-04T23:20:59.634Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-16T08:01:06.905Z"
     },
     {
       "catalogObjectId": "JBUYQOO7H44FIPDGTCIJA33Z",
@@ -76965,8 +76971,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-16T01:07:21.86Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-16T08:01:06.909Z"
     },
     {
       "catalogObjectId": "LLCWUN67W3MEGVUDJJQRLD3O",
@@ -77125,8 +77131,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-02-08T04:55:34.369Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-16T08:01:06.899Z"
     },
     {
       "catalogObjectId": "OQWJSXU5O4ZKULQANQELFBZ6",
@@ -78061,8 +78067,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-07T01:59:38.736Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-16T08:01:06.915Z"
     },
     {
       "catalogObjectId": "LMYM2KFPL5LZ4I4534VUQVZT",
