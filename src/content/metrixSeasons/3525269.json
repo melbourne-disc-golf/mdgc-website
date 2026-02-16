@@ -2,8 +2,8 @@
   "id": 3525269,
   "name": "MDGC 2026 Social Days",
   "dateStart": "2026-02-02",
-  "dateEnd": "2026-12-07",
-  "eventCount": 3,
+  "dateEnd": "2026-03-22",
+  "eventCount": 6,
   "events": [
     {
       "id": 3525299,
@@ -28,6 +28,30 @@
       "time": "08:00:00",
       "courseName": "Llewellyn Park - 9 basket/ 18 hole",
       "courseId": "36930"
+    },
+    {
+      "id": 3532789,
+      "name": "MDGC 2026 Social Days &rarr; 4. Mar West Social Day - Melton",
+      "date": "2026-03-01",
+      "time": "08:00:00",
+      "courseName": "Little Blind Creek Disc Golf Course",
+      "courseId": "33710"
+    },
+    {
+      "id": 3532792,
+      "name": "MDGC 2026 Social Days &rarr; 5. Mar Southeast Social Day - Bald Hill",
+      "date": "2026-03-07",
+      "time": "08:00:00",
+      "courseName": "Bald Hill Park &rarr; 18 Hole Course (Red + Blue Combined)",
+      "courseId": "15455"
+    },
+    {
+      "id": 3532794,
+      "name": "MDGC 2026 Social Days &rarr; 6. Mar Northeast Social Day - Ruffey Lake",
+      "date": "2026-03-22",
+      "time": "08:00:00",
+      "courseName": "Ruffey Lake 2023 18 basket layout",
+      "courseId": "31614"
     }
   ]
 }
