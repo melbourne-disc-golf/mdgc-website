@@ -30,7 +30,6 @@ export interface FeedConfig {
  * Square inventory data as stored in src/data/square-inventory.json
  */
 export interface SquareInventoryData {
-  fetchedAt: string;
   catalogObjects: CatalogObject[];
   inventoryCounts: InventoryCount[];
 }

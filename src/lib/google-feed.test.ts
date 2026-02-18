@@ -146,7 +146,6 @@ describe("slugify", () => {
 describe("aggregateItems", () => {
   it("combines variants into single item", () => {
     const data: SquareInventoryData = {
-      fetchedAt: "2024-01-01T00:00:00Z",
       catalogObjects: [
         makeImage("img-1", "https://example.com/ruru.jpg"),
         makeItem({
@@ -180,7 +179,6 @@ describe("aggregateItems", () => {
 
   it("uses minimum price from in-stock variants only", () => {
     const data: SquareInventoryData = {
-      fetchedAt: "2024-01-01T00:00:00Z",
       catalogObjects: [
         makeItem({
           id: "item-1",
@@ -206,7 +204,6 @@ describe("aggregateItems", () => {
 
   it("uses minimum price across variants", () => {
     const data: SquareInventoryData = {
-      fetchedAt: "2024-01-01T00:00:00Z",
       catalogObjects: [
         makeItem({
           id: "item-1",
@@ -231,7 +228,6 @@ describe("aggregateItems", () => {
 
   it("keeps separate items separate", () => {
     const data: SquareInventoryData = {
-      fetchedAt: "2024-01-01T00:00:00Z",
       catalogObjects: [
         makeItem({
           id: "item-1",
@@ -259,7 +255,6 @@ describe("aggregateItems", () => {
 
   it("extracts brand from category hierarchy", () => {
     const data: SquareInventoryData = {
-      fetchedAt: "2024-01-01T00:00:00Z",
       catalogObjects: [
         makeImage("img-1", "https://example.com/ruru.jpg"),
         // Parent category for brands
@@ -289,7 +284,6 @@ describe("aggregateItems", () => {
 
   it("skips non-REGULAR product types", () => {
     const data: SquareInventoryData = {
-      fetchedAt: "2024-01-01T00:00:00Z",
       catalogObjects: [
         makeImage("img-1", "https://example.com/disc.jpg"),
         makeItem({
@@ -332,7 +326,6 @@ describe("aggregateItems", () => {
 
   it("skips items without price", () => {
     const data: SquareInventoryData = {
-      fetchedAt: "2024-01-01T00:00:00Z",
       catalogObjects: [
         makeItem({
           id: "item-1",
@@ -412,7 +405,6 @@ describe("toGoogleProduct", () => {
 
 describe("generateTsvFeed", () => {
   const sampleData: SquareInventoryData = {
-    fetchedAt: "2024-01-01T00:00:00Z",
     catalogObjects: [
       makeImage("img-1", "https://example.com/ruru.jpg"),
       makeCategory("cat-1", "Putters"),
@@ -545,7 +537,6 @@ describe("generateTsvFeed", () => {
 
   it("handles empty catalog", () => {
     const data: SquareInventoryData = {
-      fetchedAt: "2024-01-01T00:00:00Z",
       catalogObjects: [],
       inventoryCounts: [],
     };

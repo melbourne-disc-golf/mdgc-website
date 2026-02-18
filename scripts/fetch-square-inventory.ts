@@ -129,7 +129,6 @@ async function main() {
   fs.mkdirSync(DATA_DIR, { recursive: true });
 
   const output = {
-    fetchedAt: new Date().toISOString(),
     catalogObjects,
     inventoryCounts,
   };
