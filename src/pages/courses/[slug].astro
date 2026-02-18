@@ -81,7 +81,7 @@ const mapLinks = {
       </section>
     )}
 
-    {course.data.courseMap && (
+    {(course.data.courseMap || course.data.udiscUrl) && (
       <section>
         <h2>Course layout</h2>
         {course.data.udiscUrl && (
@@ -89,14 +89,16 @@ const mapLinks = {
             View on: <a href={course.data.udiscUrl} target="_blank" rel="noopener noreferrer">uDisc</a>
           </p>
         )}
-        <a href={course.data.courseMap.src}>
-          <Image
-            src={course.data.courseMap}
-            alt={`${course.data.title} course layout`}
-            class="w-full rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
-            inferSize={true}
-          />
-        </a>
+        {course.data.courseMap && (
+          <a href={course.data.courseMap.src}>
+            <Image
+              src={course.data.courseMap}
+              alt={`${course.data.title} course layout`}
+              class="w-full rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
+              inferSize={true}
+            />
+          </a>
+        )}
       </section>
     )}
 
