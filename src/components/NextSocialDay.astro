@@ -20,7 +20,7 @@ for (const course of courses) {
 const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 const events = seasons
   .flatMap(season => season.data.events)
-  .filter(e => e.date >= today)
+  .filter(e => e.date > today)
   .map(e => {
     const course = metrixToCourse.get(e.courseId);
     return {
@@ -80,7 +80,7 @@ function cleanHtml(str: string): string {
       const dateStr = (item as HTMLElement).dataset.date;
       if (dateStr) {
         const eventDate = new Date(dateStr);
-        if (eventDate >= now) {
+        if (eventDate > now) {
           item.classList.remove('hidden');
           break; // Only show the first future event
         }
