@@ -11013,8 +11013,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -11024,14 +11023,15 @@
               "imageIds": [
                 "6KGBEOJTK2IVHRDD45T3CQQ5"
               ],
+              "kitchenName": "",
               "channels": [
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "4FLQCYIS7WSWIXXMNX2NZ7AD",
-            "updatedAt": "2025-11-04T11:43:06.915Z",
-            "version": 1762256586915,
+            "updatedAt": "2026-02-24T00:04:47.663Z",
+            "version": 1771891487663,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -11062,8 +11062,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -11073,14 +11072,15 @@
               "imageIds": [
                 "2T4EV65OXCWOR7XFTAZJDYL6"
               ],
+              "kitchenName": "",
               "channels": [
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "2CRINXU7D2X2WAAWLNKYO3GI",
-            "updatedAt": "2025-11-04T11:43:06.915Z",
-            "version": 1762256586915,
+            "updatedAt": "2026-02-24T00:04:47.663Z",
+            "version": 1771891487663,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -11112,6 +11112,14 @@
           {
             "id": "MJGW2KCGPJIMHUSKPNPZ4YVZ",
             "ordinal": -2251662374731776
+          },
+          {
+            "id": "YUHBUCXSVWMETXBZGEY5KO4D",
+            "ordinal": 12713203859456
+          },
+          {
+            "id": "KNSIZ7JBEBDLPGVGHOJHXUZN",
+            "ordinal": -2249463317921792
           }
         ],
         "descriptionHtml": "The beautifully neutral and versatile flight of the EMAC Truth will remind you of the core of disc golf; to throw a disc where you want it to go. Let the EMAC Truth take you back to this satisfying feeling.\n\nSPEED: 5\n\nGLIDE: 5\n\nTURN: 0\n\nFADE: 2",
@@ -11128,8 +11136,8 @@
         "isAlcoholic": false
       },
       "id": "PFXH6SFEISTIGAFK32NWUY32",
-      "updatedAt": "2025-11-04T11:43:06.915Z",
-      "version": 1762256586915,
+      "updatedAt": "2026-02-24T00:04:47.663Z",
+      "version": 1771891487663,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -11315,8 +11323,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -11326,14 +11333,15 @@
               "imageIds": [
                 "YMUGLZXHGFQSMNGWTMWUP67E"
               ],
+              "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "GQ6CPL5QZUQK35Y2UCFE7BKP",
-            "updatedAt": "2025-11-04T11:43:06.915Z",
-            "version": 1762256586915,
+            "updatedAt": "2026-02-24T00:02:30.596Z",
+            "version": 1771891350596,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -11365,7 +11373,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -11376,14 +11383,15 @@
               "imageIds": [
                 "EDCGPRG3S4AJN2DVNJIRNWNH"
               ],
+              "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "BC6CWVJ3ARKAYXKCOUW6GSAM",
-            "updatedAt": "2025-11-17T10:28:21.469Z",
-            "version": 1763375301469,
+            "updatedAt": "2026-02-24T00:02:30.596Z",
+            "version": 1771891350596,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -11420,6 +11428,10 @@
           {
             "id": "IY54P2OIB2HR4ZXNQSTA4FM6",
             "ordinal": -2251731094208512
+          },
+          {
+            "id": "YUHBUCXSVWMETXBZGEY5KO4D",
+            "ordinal": 12713153527808
           }
         ],
         "descriptionHtml": "The Trespass is the high-speed driver for the masses. It is very neutral in its flight, not being too stable or flipping over. The wide rim is able to take all the power that you can throw at it and just keep gliding to new distances.\n\nSPEED: 12\n\nGLIDE: 5\n\nTURN: -0.5\n\nFADE: 3",
@@ -11436,8 +11448,8 @@
         "isAlcoholic": false
       },
       "id": "CDXPT4X4LVJUZLYFCFYZ7XUA",
-      "updatedAt": "2025-11-17T10:28:21.469Z",
-      "version": 1763375301469,
+      "updatedAt": "2026-02-24T00:02:30.596Z",
+      "version": 1771891350596,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -14753,8 +14765,8 @@
               ]
             },
             "id": "M2SXUSQNPL5EZHT2Z5RG34I5",
-            "updatedAt": "2026-02-22T10:55:31.832Z",
-            "version": 1771757731832,
+            "updatedAt": "2026-02-24T00:15:12.245Z",
+            "version": 1771892112245,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -14793,8 +14805,8 @@
               ]
             },
             "id": "KJX4IESUOA3LIKZCLAB7IBJ5",
-            "updatedAt": "2026-02-22T10:55:31.832Z",
-            "version": 1771757731832,
+            "updatedAt": "2026-02-24T00:15:12.245Z",
+            "version": 1771892112245,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -14839,8 +14851,8 @@
               ]
             },
             "id": "PQF5QVQKIZOGGO3L34ALDQQ7",
-            "updatedAt": "2026-02-22T10:55:31.832Z",
-            "version": 1771757731832,
+            "updatedAt": "2026-02-24T00:15:12.245Z",
+            "version": 1771892112245,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -14879,8 +14891,8 @@
               ]
             },
             "id": "WQXCYAZO5SAQBYC2VRPFLB65",
-            "updatedAt": "2026-02-22T10:55:31.832Z",
-            "version": 1771757731832,
+            "updatedAt": "2026-02-24T00:15:12.245Z",
+            "version": 1771892112245,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -14925,8 +14937,8 @@
               ]
             },
             "id": "C2WTX27HCRWKH7MBUTVVFXFM",
-            "updatedAt": "2026-02-22T10:55:31.832Z",
-            "version": 1771757731832,
+            "updatedAt": "2026-02-24T00:15:12.245Z",
+            "version": 1771892112245,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -14965,8 +14977,8 @@
               ]
             },
             "id": "ENBN5DRWDSWFXEBAZGCXP4NX",
-            "updatedAt": "2026-02-22T10:55:31.832Z",
-            "version": 1771757731832,
+            "updatedAt": "2026-02-24T00:15:12.245Z",
+            "version": 1771892112245,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15011,8 +15023,8 @@
               ]
             },
             "id": "S357WNBOWHQRWBWOSBX5OYEP",
-            "updatedAt": "2026-02-22T10:55:31.832Z",
-            "version": 1771757731832,
+            "updatedAt": "2026-02-24T00:15:12.245Z",
+            "version": 1771892112245,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15057,8 +15069,8 @@
               ]
             },
             "id": "56ZGVJKG2YOY3M3BO6SXMFVS",
-            "updatedAt": "2026-02-22T10:55:31.832Z",
-            "version": 1771757731832,
+            "updatedAt": "2026-02-24T00:15:12.245Z",
+            "version": 1771892112245,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15103,8 +15115,8 @@
               ]
             },
             "id": "TGQURURFFOXTZGCM2UTM6FYJ",
-            "updatedAt": "2026-02-22T10:55:31.832Z",
-            "version": 1771757731832,
+            "updatedAt": "2026-02-24T00:15:12.245Z",
+            "version": 1771892112245,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15149,8 +15161,8 @@
               ]
             },
             "id": "7IXXWWXXX4OJAVHMJQUQNI7G",
-            "updatedAt": "2026-02-22T10:55:31.832Z",
-            "version": 1771757731832,
+            "updatedAt": "2026-02-24T00:15:12.245Z",
+            "version": 1771892112245,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15195,8 +15207,8 @@
               ]
             },
             "id": "PMVZHYSLXIPZEAHLQDCAZ5QK",
-            "updatedAt": "2026-02-22T10:55:31.832Z",
-            "version": 1771757731832,
+            "updatedAt": "2026-02-24T00:15:12.245Z",
+            "version": 1771892112245,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15235,8 +15247,8 @@
               ]
             },
             "id": "DYYWKBRB66O4GFBGVKO3Q4WG",
-            "updatedAt": "2026-02-22T10:55:31.832Z",
-            "version": 1771757731832,
+            "updatedAt": "2026-02-24T00:15:12.245Z",
+            "version": 1771892112245,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15281,8 +15293,8 @@
               ]
             },
             "id": "BGD3Y5SQ5EHOW5ISDH5SXOG6",
-            "updatedAt": "2026-02-22T10:55:31.832Z",
-            "version": 1771757731832,
+            "updatedAt": "2026-02-24T00:15:12.245Z",
+            "version": 1771892112245,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15327,8 +15339,8 @@
               ]
             },
             "id": "VHRN5KB64A7OJ4BB2XRJVR2Y",
-            "updatedAt": "2026-02-22T10:55:31.832Z",
-            "version": 1771757731832,
+            "updatedAt": "2026-02-24T00:15:12.245Z",
+            "version": 1771892112245,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15373,8 +15385,8 @@
               ]
             },
             "id": "4PSOWLSASRQC4ICBL7O2RR5V",
-            "updatedAt": "2026-02-22T10:55:31.832Z",
-            "version": 1771757731832,
+            "updatedAt": "2026-02-24T00:15:12.245Z",
+            "version": 1771892112245,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15419,8 +15431,8 @@
               ]
             },
             "id": "RMSDW2NNU53KTKSKAYMLV2CK",
-            "updatedAt": "2026-02-22T10:55:31.832Z",
-            "version": 1771757731832,
+            "updatedAt": "2026-02-24T00:15:12.245Z",
+            "version": 1771892112245,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15461,6 +15473,10 @@
           {
             "id": "DKLB7SDZQO6NHAJSE7RQVQTV",
             "ordinal": -2251387496824832
+          },
+          {
+            "id": "YUHBUCXSVWMETXBZGEY5KO4D",
+            "ordinal": 12713287745536
           }
         ],
         "descriptionHtml": "RPM Disc Golf starter pack is ideal for beginners to advanced and will get you out and throwing a variety of shots in no time.\n\n<strong>This standard set includes RPM Strata plastic.</strong>  In this set you will receive three discs;\n\n<strong>Driver:  PEKAPEKA or HUIA or TARA ITI</strong>\n\n<strong>Mid-Range:  KOTUKU or PIWAKAWAKA</strong>\n\n<strong>Putter:   TAKAPU or RURU or TUI</strong>\n\n<em>Colours may vary from display image, note also, this is a generic image - the actual discs may not be the same as in the image.  The variations will indicate the combination of discs in each set, however colours vary from set to set.</em>\n\n ",
@@ -15477,8 +15493,8 @@
         "isAlcoholic": false
       },
       "id": "6CO6ZSK4LGGYUAHAMX6KE5PK",
-      "updatedAt": "2026-02-22T11:00:27.963Z",
-      "version": 1771758027963,
+      "updatedAt": "2026-02-24T00:15:12.245Z",
+      "version": 1771892112245,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -17038,8 +17054,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -17048,14 +17063,15 @@
               "imageIds": [
                 "6TUBC2IRDK7BS76O66TK7RXY"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "A2RGUE6BUOE6UW5QWRNJZ67N",
-            "updatedAt": "2025-12-11T02:13:45.622Z",
-            "version": 1765419225622,
+            "updatedAt": "2026-02-24T00:06:01.47Z",
+            "version": 1771891561470,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -17086,8 +17102,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -17096,14 +17111,15 @@
               "imageIds": [
                 "K6YIIWBG23U5ZKHZZ62SZBLT"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "3ND3JLJUJ65TDPZD5X5TOUFR",
-            "updatedAt": "2025-12-01T07:29:25.54Z",
-            "version": 1764574165540,
+            "updatedAt": "2026-02-24T00:06:01.47Z",
+            "version": 1771891561470,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -17134,8 +17150,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -17144,14 +17159,15 @@
               "imageIds": [
                 "KFMEM757MT6Y7MBFO3BF56RV"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "CRWLO5FIYJZWRXNBTERGQRBC",
-            "updatedAt": "2025-11-14T06:29:48.796Z",
-            "version": 1763101788796,
+            "updatedAt": "2026-02-24T00:06:01.47Z",
+            "version": 1771891561470,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -17182,8 +17198,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -17192,14 +17207,15 @@
               "imageIds": [
                 "P53JMP4TPWIKATDS5LMXX3FU"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "T6ZDUOVQY2FXXGHOBC7QU4ZD",
-            "updatedAt": "2025-11-14T06:29:18.154Z",
-            "version": 1763101758154,
+            "updatedAt": "2026-02-24T00:06:01.47Z",
+            "version": 1771891561470,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -17239,6 +17255,14 @@
           {
             "id": "BDL63JBZDSNY2CIBVDM7WBWN",
             "ordinal": -2250975179964416
+          },
+          {
+            "id": "LSIW7EJLG5KGMD2JMD7FZURJ",
+            "ordinal": -2251043798777856
+          },
+          {
+            "id": "YUHBUCXSVWMETXBZGEY5KO4D",
+            "ordinal": 12713220636672
           }
         ],
         "descriptionHtml": "Designed with the newer player in mind, the Underworld will allow any player to accomplish an anhyzer shot. It is under stable and low profile. Great for players to buy as their first disc, the Underworld will be just what a beginner needs. For professional players it makes a great continuous anhyzer line and is great for rolling right out of the box.\n\nSPEED: 7\n\nGLIDE: 6\n\nTURN: -3\n\nFADE: 1",
@@ -17255,8 +17279,8 @@
         "isAlcoholic": false
       },
       "id": "IPGODVDWUTQHGB2JMHUJVCWC",
-      "updatedAt": "2025-12-11T02:13:45.622Z",
-      "version": 1765419225622,
+      "updatedAt": "2026-02-24T00:06:01.47Z",
+      "version": 1771891561470,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -21506,8 +21530,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -21516,14 +21539,15 @@
               "imageIds": [
                 "PQWYGW3YWBWJX3YBLNGMHIFP"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "4QP6YE76CZBIBS44ZZKIG6YS",
-            "updatedAt": "2025-11-06T22:00:11.576Z",
-            "version": 1762466411576,
+            "updatedAt": "2026-02-24T00:03:12.446Z",
+            "version": 1771891392446,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -21555,7 +21579,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -21565,14 +21588,15 @@
               "imageIds": [
                 "STZIWXUE4CABB3XTOCPV5HTS"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "ZJGRTXEY5GTP6HXXI54DASJQ",
-            "updatedAt": "2026-01-09T05:59:56.875Z",
-            "version": 1767938396875,
+            "updatedAt": "2026-02-24T00:03:12.446Z",
+            "version": 1771891392446,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -21603,8 +21627,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -21613,14 +21636,15 @@
               "imageIds": [
                 "HBFYCNLCXMJIZ22ZS4VWL2F3"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "P5EW7MDIYESCBSXOVTS32OPU",
-            "updatedAt": "2025-11-06T22:00:11.576Z",
-            "version": 1762466411576,
+            "updatedAt": "2026-02-24T00:03:12.446Z",
+            "version": 1771891392446,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -21656,6 +21680,14 @@
           {
             "id": "CXIE4W57KHCVL3H7PE24DECQ",
             "ordinal": -2251593655255040
+          },
+          {
+            "id": "LSIW7EJLG5KGMD2JMD7FZURJ",
+            "ordinal": -2251043815555072
+          },
+          {
+            "id": "YUHBUCXSVWMETXBZGEY5KO4D",
+            "ordinal": 12713170305024
           }
         ],
         "descriptionHtml": "Why was the Judge named the 2013 Disc of the Year in the Player&#39;s Choice Awards? It is incredibly predictable in flying and hitting the chains. It is a fantastic throwing putter that will fly straight and glide for amazing distances. It comes in several different plastics so that your preferred feel is available in this disc. Come see why this disc has become so popular and judged other, more well-known discs, to be insufficient.\n\nSPEED: 2\n\nGLIDE: 4\n\nTURN: 0\n\nFADE: 1",
@@ -21672,8 +21704,8 @@
         "isAlcoholic": false
       },
       "id": "7OQKYMS5Q2PUPIFGDLMOSAYS",
-      "updatedAt": "2026-01-09T05:59:56.875Z",
-      "version": 1767938396875,
+      "updatedAt": "2026-02-24T00:03:12.446Z",
+      "version": 1771891392446,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -21703,8 +21735,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -21714,14 +21745,15 @@
               "imageIds": [
                 "YLP3XZ7RS5I4IG3EW2NUJIBP"
               ],
+              "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "UOENZVNV4SH54OARCIHSIVWV",
-            "updatedAt": "2025-11-04T11:43:06.915Z",
-            "version": 1762256586915,
+            "updatedAt": "2026-02-24T00:03:58.512Z",
+            "version": 1771891438512,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -21752,8 +21784,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -21763,14 +21794,15 @@
               "imageIds": [
                 "OUG3Z6KMQDG5GTM6HPELRBZ3"
               ],
+              "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "JENO5ZMVGVEOD6PUQFKIIPFY",
-            "updatedAt": "2025-11-04T11:43:06.915Z",
-            "version": 1762256586915,
+            "updatedAt": "2026-02-24T00:03:58.512Z",
+            "version": 1771891438512,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -21808,6 +21840,10 @@
           {
             "id": "KNSIZ7JBEBDLPGVGHOJHXUZN",
             "ordinal": -2251731094208512
+          },
+          {
+            "id": "YUHBUCXSVWMETXBZGEY5KO4D",
+            "ordinal": 12713187082240
           }
         ],
         "descriptionHtml": "Strong winds will make the most experienced player look like a novice. They have forced us back into the laboratory to solve the midrange question. The Justice is going to become your new utility disc. It will not turn over. Throw the Justice one time and you will not need to reach for anything else for a short distance, overstable answer.\n\nSPEED: 5\n\nGLIDE: 1\n\nTURN: 0.5\n\nFADE: 4",
@@ -21824,8 +21860,8 @@
         "isAlcoholic": false
       },
       "id": "J4YUNP7X4IVNMHRCF32HDFN4",
-      "updatedAt": "2025-11-04T11:43:06.915Z",
-      "version": 1762256586915,
+      "updatedAt": "2026-02-24T00:03:58.512Z",
+      "version": 1771891438512,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -24833,8 +24869,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -24844,14 +24879,15 @@
               "imageIds": [
                 "HF63Y5F4CKMZJCMPWUZPH7XW"
               ],
+              "kitchenName": "",
               "channels": [
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "XPUBY4TQSGCHUOTHESVRFU7W",
-            "updatedAt": "2025-11-04T11:38:35.623Z",
-            "version": 1762256315623,
+            "updatedAt": "2026-02-24T00:01:04.895Z",
+            "version": 1771891264895,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -24882,7 +24918,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -24890,14 +24925,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "AFBJUSQB5BVEHMEKQ5U77GSN",
-            "updatedAt": "2025-11-04T11:38:35.623Z",
-            "version": 1762256315623,
+            "updatedAt": "2026-02-24T00:01:04.895Z",
+            "version": 1771891264895,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -24924,6 +24960,10 @@
           {
             "id": "KNSIZ7JBEBDLPGVGHOJHXUZN",
             "ordinal": -2250562863104000
+          },
+          {
+            "id": "LSIW7EJLG5KGMD2JMD7FZURJ",
+            "ordinal": -2251043832332288
           }
         ],
         "descriptionHtml": "The Fuse is one of the most dynamic midrange discs on the market. This disc is larger than the average disc in both diameter and height and can weigh up to 178 grams. The Fuse has a an understable/stable flight path and can hold curves and lines with very minimal fade. This is a great disc for weaving through trees and obstacles.\n\nSPEED: 5\n\nGLIDE 6\n\nTURN: -1\n\nFADE: 0",
@@ -24940,8 +24980,8 @@
         "isAlcoholic": false
       },
       "id": "IMLNKY6QICAYJPMYTJO5NQEO",
-      "updatedAt": "2025-11-04T11:38:35.623Z",
-      "version": 1762256315623,
+      "updatedAt": "2026-02-24T00:01:04.895Z",
+      "version": 1771891264895,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -34333,8 +34373,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -34343,14 +34382,15 @@
               "imageIds": [
                 "SXNQYWDLPBUKW5OPHH4ZIM6H"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "7EVUIQITP2D7LCJ425DEWC5A",
-            "updatedAt": "2025-11-04T23:32:05.083Z",
-            "version": 1762299125083,
+            "updatedAt": "2026-02-24T00:11:48.853Z",
+            "version": 1771891908853,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34382,7 +34422,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -34392,14 +34431,15 @@
               "imageIds": [
                 "6MQCVUOR3E72ZK72DZJGWH6T"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "7K5CNVHMJUAIPYZRPQ3KULNH",
-            "updatedAt": "2025-12-09T06:55:42.927Z",
-            "version": 1765263342927,
+            "updatedAt": "2026-02-24T00:11:48.853Z",
+            "version": 1771891908853,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34430,8 +34470,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -34440,14 +34479,15 @@
               "imageIds": [
                 "XUWCC3YOETYD4GUDFKF23QDE"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "6ZD7ZKWSQAUYSRZCUF4J6TPT",
-            "updatedAt": "2025-11-04T23:32:05.083Z",
-            "version": 1762299125083,
+            "updatedAt": "2026-02-24T00:11:48.853Z",
+            "version": 1771891908853,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34478,8 +34518,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -34488,14 +34527,15 @@
               "imageIds": [
                 "6RV2OD64WTPHMQRYIJOSBMUS"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "6QAETIJHE7NWR2U2KZKTWWH2",
-            "updatedAt": "2025-11-04T23:32:05.083Z",
-            "version": 1762299125083,
+            "updatedAt": "2026-02-24T00:11:48.853Z",
+            "version": 1771891908853,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34527,7 +34567,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -34537,14 +34576,15 @@
               "imageIds": [
                 "TLMHB2YJKXBA6X3ATZBBVYZK"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "4FT6V5MYDZ7RC5U5DU3ZBR2B",
-            "updatedAt": "2025-11-24T06:41:54.219Z",
-            "version": 1763966514219,
+            "updatedAt": "2026-02-24T00:11:48.853Z",
+            "version": 1771891908853,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34576,7 +34616,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -34586,14 +34625,15 @@
               "imageIds": [
                 "46ZEP6W73OPUSGPEMSQRO6E4"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "7SWU724XXQKNQZKLPVFTGFJF",
-            "updatedAt": "2025-11-18T00:20:01.169Z",
-            "version": 1763425201169,
+            "updatedAt": "2026-02-24T00:11:48.853Z",
+            "version": 1771891908853,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34624,8 +34664,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -34634,14 +34673,15 @@
               "imageIds": [
                 "L3ASX7IVWV2YJNXFGGOE76RS"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "GNM6O4BK35GKHMFT5YR6GY3S",
-            "updatedAt": "2025-11-04T23:32:05.083Z",
-            "version": 1762299125083,
+            "updatedAt": "2026-02-24T00:11:48.853Z",
+            "version": 1771891908853,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34672,8 +34712,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -34682,14 +34721,15 @@
               "imageIds": [
                 "RP2SKMEJE7THNNSG3QCLMJD7"
               ],
+              "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "HQKCDR76ZDIJ43R53IZBMTOG",
-            "updatedAt": "2025-11-04T23:32:05.083Z",
-            "version": 1762299125083,
+            "updatedAt": "2026-02-24T00:11:48.853Z",
+            "version": 1771891908853,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34725,6 +34765,10 @@
           {
             "id": "KNSIZ7JBEBDLPGVGHOJHXUZN",
             "ordinal": -2250150546243584
+          },
+          {
+            "id": "YUHBUCXSVWMETXBZGEY5KO4D",
+            "ordinal": 12713270968320
           }
         ],
         "descriptionHtml": "The Wonder by Loop Discs is the straight flying mid we have all been looking for. And we mean <strong>straight</strong>!  Just when you think it will fade out, the glide holds your line that touch longer than you expect. This disc is the perfect disc for beginners right through to advanced players. We&#39;re already calling it the &#39;one disc wonder&#39; because it&#39;s fantastic off the tee, amazing for approach shots, and landing in chains on glidey putts. Everything you need to get started on the course!\n\nExperienced players will love the incredible glide that floats for <strong>extra distance on this straight shooting mid.</strong>\n\nBest of all, the Wonder, it&#39;s 100% Australian made, designed, and owned, using only Australian plastics.\n\n&#34;Flies like a Fuse, but pushes straighter / glides further and can handle torque&#34;  Darren Stace-Smith\n\nSPEED: 5   GLIDE 6   TURN: -1   FADE: 1\n\nPlastic Options:\n<ul>\n \t<li><strong>Soft Touch</strong>: This gummy, flexible plastic is slightly lighter, making it ideal for beginners, kids, and players seeking a disc that requires less effort to achieve optimal spin. (~164-170g)</li>\n \t<li><strong>Happy Medium</strong>: Balancing grip, flexibility, and durability, this plastic suits players of all skill levels. (~168-174g).</li>\n</ul>",
@@ -34741,8 +34785,8 @@
         "isAlcoholic": false
       },
       "id": "FRTK63BEWR7SPUJYYOTQTULZ",
-      "updatedAt": "2025-12-09T06:55:42.927Z",
-      "version": 1765263342927,
+      "updatedAt": "2026-02-24T00:11:48.853Z",
+      "version": 1771891908853,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -39640,8 +39684,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -39651,14 +39694,15 @@
               "imageIds": [
                 "B3XYCTEHMYOWJLOQD4C7KB34"
               ],
+              "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "C34CPNALGDXLCP7TEGCTNW6Y",
-            "updatedAt": "2025-11-04T11:45:25.176Z",
-            "version": 1762256725176,
+            "updatedAt": "2026-02-24T00:06:42.769Z",
+            "version": 1771891602769,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -39689,7 +39733,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -39697,14 +39740,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "PI53WDMKYVI72UY24WBKVCCQ",
-            "updatedAt": "2025-11-04T11:45:25.176Z",
-            "version": 1762256725176,
+            "updatedAt": "2026-02-24T00:06:42.769Z",
+            "version": 1771891602769,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -39731,6 +39775,10 @@
           {
             "id": "IY54P2OIB2HR4ZXNQSTA4FM6",
             "ordinal": -2247058169790464
+          },
+          {
+            "id": "YUHBUCXSVWMETXBZGEY5KO4D",
+            "ordinal": 12713237413888
           }
         ],
         "descriptionHtml": "Part Underworld, part Hatchet. With a play off of the success of the Underworld this fairway driver uses the same upper-mold, the Hatchet is slightly faster, and more stable.\n\nSPEED: 9\n\nGLIDE: 6\n\nTURN: -2\n\nFADE: 1",
@@ -39747,8 +39795,8 @@
         "isAlcoholic": false
       },
       "id": "MDEUFWULEIXIHCCGSDMQNF3G",
-      "updatedAt": "2025-11-04T11:45:25.176Z",
-      "version": 1762256725176,
+      "updatedAt": "2026-02-24T00:06:42.769Z",
+      "version": 1771891602769,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -39778,8 +39826,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -39789,14 +39836,15 @@
               "imageIds": [
                 "7MF2NVDGKXAFO2YUHXSMU4PI"
               ],
+              "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "TTECZTEP2NBZBCRYLFUOSX57",
-            "updatedAt": "2025-11-04T11:45:25.176Z",
-            "version": 1762256725176,
+            "updatedAt": "2026-02-24T00:07:23.985Z",
+            "version": 1771891643985,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -39827,7 +39875,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -39835,14 +39882,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "GE7OCLPR5DWSFBUQAGAAJ2J6",
-            "updatedAt": "2025-11-04T11:45:25.176Z",
-            "version": 1762256725176,
+            "updatedAt": "2026-02-24T00:07:23.985Z",
+            "version": 1771891643985,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -39873,6 +39921,10 @@
           {
             "id": "LSIW7EJLG5KGMD2JMD7FZURJ",
             "ordinal": -2251387496824832
+          },
+          {
+            "id": "YUHBUCXSVWMETXBZGEY5KO4D",
+            "ordinal": 12713254191104
           }
         ],
         "descriptionHtml": "The Westside Seer is an understable control driver designed to improve the games of disc golfers with low power and small hands. This glidey disc will be easy to throw for players of all skill levels.\n\nSPEED: 7\n\nGLIDE: 5\n\nTURN: -2\n\nFADE: 1",
@@ -39889,8 +39941,8 @@
         "isAlcoholic": false
       },
       "id": "4VQESK6WLZED6C2NWJPUJ47M",
-      "updatedAt": "2025-11-04T11:45:25.176Z",
-      "version": 1762256725176,
+      "updatedAt": "2026-02-24T00:07:23.985Z",
+      "version": 1771891643985,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -44650,8 +44702,8 @@
               ]
             },
             "id": "ODXFBGXZGVIYA4VIF4SREEEV",
-            "updatedAt": "2026-01-26T20:08:44.104Z",
-            "version": 1769458124104,
+            "updatedAt": "2026-02-24T08:48:03.147Z",
+            "version": 1771922883147,
             "isDeleted": false,
             "presentAtAllLocations": true
           }
@@ -44694,8 +44746,8 @@
         "isAlcoholic": false
       },
       "id": "V5RMBG5BHHWFGERZDRZJ7HGC",
-      "updatedAt": "2026-01-26T20:08:44.104Z",
-      "version": 1769458124104,
+      "updatedAt": "2026-02-24T08:48:03.147Z",
+      "version": 1771922883147,
       "isDeleted": false,
       "presentAtAllLocations": true
     },
@@ -78135,7 +78187,15 @@
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
       "quantity": "0",
-      "calculatedAt": "2026-01-26T20:08:48.496Z"
+      "calculatedAt": "2026-02-24T08:48:07.673Z"
+    },
+    {
+      "catalogObjectId": "ODXFBGXZGVIYA4VIF4SREEEV",
+      "catalogObjectType": "ITEM_VARIATION",
+      "state": "RETURNED_BY_CUSTOMER",
+      "locationId": "LTD9BW2RXXBDV",
+      "quantity": "0",
+      "calculatedAt": "2026-02-24T08:35:32.946Z"
     },
     {
       "catalogObjectId": "OZX3FRMSGMGH2BIYR45KDHVH",
