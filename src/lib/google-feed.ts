@@ -22,10 +22,6 @@ export interface GoogleProduct {
   product_type?: string;
 }
 
-export interface FeedConfig {
-  defaultBrand?: string;
-}
-
 /**
  * Square inventory data as stored in src/data/square-inventory.json
  */
@@ -234,24 +230,28 @@ function getGoogleProductCategory(category?: string): string {
 /**
  * Convert an aggregated item to Google's format.
  */
-export function toGoogleProduct(
-  item: AggregatedItem,
-  config: FeedConfig
-): GoogleProduct {
+export function toGoogleProduct(item: AggregatedItem): GoogleProduct {
   // Format price as "29.00 AUD"
   const priceValue = (item.minPrice / 100).toFixed(2);
   const price = `${priceValue} ${item.currency}`;
 
+  // Prefix brand to title (e.g. "Pekapeka" -> "RPM Pekapeka")
+  // Only use the item's own brand, not the default brand
+  const title =
+    item.brand && !item.name.startsWith(item.brand)
+      ? `${item.brand} ${item.name}`
+      : item.name;
+
   return {
     id: item.itemId,
-    title: item.name,
+    title,
     description: item.description || item.name,
     link: item.productUrl || "",
     image_link: item.imageUrl || "",
     availability: item.totalQuantity > 0 ? "in_stock" : "out_of_stock",
     price,
     condition: "new",
-    brand: item.brand ?? config.defaultBrand,
+    brand: item.brand,
     google_product_category: getGoogleProductCategory(item.category),
     product_type: item.category,
   };
@@ -285,10 +285,7 @@ function escapeTsvValue(value: string | undefined): string {
 /**
  * Generate TSV feed content from Square inventory data.
  */
-export function generateTsvFeed(
-  data: SquareInventoryData,
-  config: FeedConfig
-): string {
+export function generateTsvFeed(data: SquareInventoryData): string {
   const lines: string[] = [];
 
   // Header row
@@ -311,7 +308,7 @@ export function generateTsvFeed(
     // Skip out-of-stock items
     if (item.totalQuantity <= 0) continue;
 
-    const googleProduct = toGoogleProduct(item, config);
+    const googleProduct = toGoogleProduct(item);
     const values = FEED_COLUMNS.map((col) =>
       escapeTsvValue(googleProduct[col]?.toString())
     );

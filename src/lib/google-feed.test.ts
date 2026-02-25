@@ -5,15 +5,10 @@ import {
   aggregateItems,
   toGoogleProduct,
   generateTsvFeed,
-  type FeedConfig,
   type AggregatedItem,
   type SquareInventoryData,
 } from "./google-feed.js";
 import type { CatalogObject, InventoryCount } from "square";
-
-const config: FeedConfig = {
-  defaultBrand: "MDGC",
-};
 
 /**
  * Helper to create a minimal Square ITEM catalog object.
@@ -357,7 +352,7 @@ describe("toGoogleProduct", () => {
   };
 
   it("converts aggregated item to Google format", () => {
-    const result = toGoogleProduct(sampleItem, config);
+    const result = toGoogleProduct(sampleItem);
 
     expect(result).toEqual({
       id: "item-1",
@@ -368,7 +363,7 @@ describe("toGoogleProduct", () => {
       availability: "in_stock",
       price: "22.00 AUD",
       condition: "new",
-      brand: "MDGC",
+      brand: undefined,
       google_product_category: "Sporting Goods > Outdoor Recreation > Disc Golf",
       product_type: "Putters",
     });
@@ -376,30 +371,51 @@ describe("toGoogleProduct", () => {
 
   it("sets availability to out_of_stock when quantity is 0", () => {
     const outOfStock = { ...sampleItem, totalQuantity: 0 };
-    const result = toGoogleProduct(outOfStock, config);
+    const result = toGoogleProduct(outOfStock);
 
     expect(result.availability).toBe("out_of_stock");
   });
 
   it("uses title as description fallback", () => {
     const noDescription = { ...sampleItem, description: "" };
-    const result = toGoogleProduct(noDescription, config);
+    const result = toGoogleProduct(noDescription);
 
     expect(result.description).toBe("Ruru");
   });
 
+  it("prefixes brand to title", () => {
+    const withBrand = { ...sampleItem, brand: "RPM" };
+    const result = toGoogleProduct(withBrand);
+
+    expect(result.title).toBe("RPM Ruru");
+  });
+
+  it("does not duplicate brand if name already starts with it", () => {
+    const alreadyPrefixed = { ...sampleItem, name: "RPM Ruru", brand: "RPM" };
+    const result = toGoogleProduct(alreadyPrefixed);
+
+    expect(result.title).toBe("RPM Ruru");
+  });
+
   it("uses item brand when available", () => {
     const withBrand = { ...sampleItem, brand: "RPM" };
-    const result = toGoogleProduct(withBrand, config);
+    const result = toGoogleProduct(withBrand);
 
     expect(result.brand).toBe("RPM");
   });
 
-  it("falls back to defaultBrand when item has no brand", () => {
+  it("leaves brand undefined when item has no brand", () => {
     const noBrand = { ...sampleItem, brand: undefined };
-    const result = toGoogleProduct(noBrand, config);
+    const result = toGoogleProduct(noBrand);
 
-    expect(result.brand).toBe("MDGC");
+    expect(result.brand).toBeUndefined();
+  });
+
+  it("does not prefix brand to title when item has no brand", () => {
+    const noBrand = { ...sampleItem, brand: undefined };
+    const result = toGoogleProduct(noBrand);
+
+    expect(result.title).toBe("Ruru");
   });
 });
 
@@ -421,7 +437,7 @@ describe("generateTsvFeed", () => {
   };
 
   it("generates TSV with header row", () => {
-    const result = generateTsvFeed(sampleData, config);
+    const result = generateTsvFeed(sampleData);
     const lines = result.split("\n");
 
     expect(lines[0]).toBe(
@@ -430,7 +446,7 @@ describe("generateTsvFeed", () => {
   });
 
   it("generates aggregated data rows", () => {
-    const result = generateTsvFeed(sampleData, config);
+    const result = generateTsvFeed(sampleData);
     const lines = result.split("\n");
 
     expect(lines).toHaveLength(2); // header + 1 item
@@ -459,7 +475,7 @@ describe("generateTsvFeed", () => {
       ],
     };
 
-    const result = generateTsvFeed(data, config);
+    const result = generateTsvFeed(data);
     const lines = result.split("\n");
 
     expect(lines).toHaveLength(2); // header + 1 item (not 3)
@@ -483,7 +499,7 @@ describe("generateTsvFeed", () => {
       ],
     };
 
-    const result = generateTsvFeed(data, config);
+    const result = generateTsvFeed(data);
     const lines = result.split("\n");
 
     expect(lines).toHaveLength(2); // header + 1 item
@@ -504,7 +520,7 @@ describe("generateTsvFeed", () => {
       ],
     };
 
-    const result = generateTsvFeed(data, config);
+    const result = generateTsvFeed(data);
 
     expect(result).not.toContain("\nLine 2");
     expect(result).toContain("Line 1 Line 2 with tab");
@@ -528,7 +544,7 @@ describe("generateTsvFeed", () => {
       ],
     };
 
-    const result = generateTsvFeed(data, config);
+    const result = generateTsvFeed(data);
     const lines = result.split("\n");
 
     expect(lines).toHaveLength(2); // header + 1 in-stock item
@@ -541,7 +557,7 @@ describe("generateTsvFeed", () => {
       inventoryCounts: [],
     };
 
-    const result = generateTsvFeed(data, config);
+    const result = generateTsvFeed(data);
     const lines = result.split("\n");
 
     expect(lines).toHaveLength(1); // just header
