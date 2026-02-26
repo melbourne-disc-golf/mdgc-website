@@ -114,7 +114,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -129,8 +130,8 @@
               ]
             },
             "id": "5CBMABKZFPSPIEGDMGVNVIEA",
-            "updatedAt": "2026-01-07T04:12:54.269Z",
-            "version": 1767759174269,
+            "updatedAt": "2026-02-26T03:20:24.11Z",
+            "version": 1772076024110,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -162,7 +163,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -177,8 +179,8 @@
               ]
             },
             "id": "RPCBFWHUHGZEEDXGODKFX4AB",
-            "updatedAt": "2026-01-07T04:09:41.709Z",
-            "version": 1767758981709,
+            "updatedAt": "2026-02-26T03:20:24.11Z",
+            "version": 1772076024110,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -462,7 +464,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -477,8 +480,8 @@
               ]
             },
             "id": "H4JN622HANL4KMROAJYSPQVS",
-            "updatedAt": "2026-01-08T02:39:48.653Z",
-            "version": 1767839988653,
+            "updatedAt": "2026-02-26T03:20:24.11Z",
+            "version": 1772076024110,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -970,8 +973,8 @@
         "isAlcoholic": false
       },
       "id": "5FVJQC76WXQ772SFZZOM46LY",
-      "updatedAt": "2026-01-11T02:26:21.551Z",
-      "version": 1768098381551,
+      "updatedAt": "2026-02-26T03:20:24.11Z",
+      "version": 1772076024110,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -1804,7 +1807,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -1819,8 +1823,8 @@
               ]
             },
             "id": "OO77GJ374NQFN5TPC432FMLH",
-            "updatedAt": "2026-02-22T08:43:55.885Z",
-            "version": 1771749835885,
+            "updatedAt": "2026-02-26T03:20:24.11Z",
+            "version": 1772076024110,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -2171,8 +2175,8 @@
         "isAlcoholic": false
       },
       "id": "6RB3GBYGR2TAVQQVH3RU2DJJ",
-      "updatedAt": "2026-02-22T08:43:55.885Z",
-      "version": 1771749835885,
+      "updatedAt": "2026-02-26T03:20:24.11Z",
+      "version": 1772076024110,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -9890,15 +9894,14 @@
               "imageIds": [
                 "PK2IRFEF5ZIHQPLJABWCPIXH"
               ],
-              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "25LUPZPKAORY2SYJY3KRIYR4",
-            "updatedAt": "2026-02-22T10:49:21.069Z",
-            "version": 1771757361069,
+            "updatedAt": "2026-02-26T05:37:15.419Z",
+            "version": 1772084235419,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -9919,42 +9922,41 @@
             "created_at": "2023-04-15T05:11:57.255Z",
             "itemVariationData": {
               "itemId": "MC37BAF2CFZLFVW7LKD5FEBR",
-              "name": "STAR/PINK/171",
+              "name": "CHAMPION/LT BLUE/168",
               "sku": "I19844",
               "ordinal": 2,
               "pricingType": "FIXED_PRICING",
               "priceMoney": {
-                "amount": 2800,
+                "amount": 2700,
                 "currency": "AUD"
               },
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "soldOut": true
+                  "trackInventory": true
                 }
               ],
               "trackInventory": true,
               "sellable": true,
               "stockable": true,
               "imageIds": [
-                "EQA6MKEL5F4CWBTAXFG2W2WF"
+                "RC72VOCHONUDROD3H4TMKFX3"
               ],
-              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "M2WTJHGJ3V3QBOREPCBJX4CW",
-            "updatedAt": "2026-02-22T10:49:21.069Z",
-            "version": 1771757361069,
+            "updatedAt": "2026-02-26T05:46:09.086Z",
+            "version": 1772084769086,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
                 "name": "Item Cost",
                 "customAttributeDefinitionId": "UWPDOT3RIAVMUPQB6KROWEZJ",
                 "type": "NUMBER",
-                "numberValue": "20.0",
+                "numberValue": "18.0",
                 "key": "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2"
               }
             },
@@ -9987,15 +9989,14 @@
               "imageIds": [
                 "XDJZTJDFVC7WBILCPFDHZGWA"
               ],
-              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "K3ENHXK73H5UWGYDCEXD6G42",
-            "updatedAt": "2026-02-22T10:49:21.069Z",
-            "version": 1771757361069,
+            "updatedAt": "2026-02-26T05:37:15.419Z",
+            "version": 1772084235419,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -10035,15 +10036,14 @@
               "imageIds": [
                 "PK2IRFEF5ZIHQPLJABWCPIXH"
               ],
-              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "APVTFNZTHSURQ2DXV4KZ6LVK",
-            "updatedAt": "2026-02-22T10:49:21.069Z",
-            "version": 1771757361069,
+            "updatedAt": "2026-02-26T05:37:15.419Z",
+            "version": 1772084235419,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -10083,15 +10083,14 @@
               "imageIds": [
                 "ADTKGBE6IGRXEW3CZNKNR2I4"
               ],
-              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "JJRZOPMT2P5AHH6CLJYWXR5R",
-            "updatedAt": "2026-02-22T10:49:21.069Z",
-            "version": 1771757361069,
+            "updatedAt": "2026-02-26T05:37:15.419Z",
+            "version": 1772084235419,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -10131,15 +10130,14 @@
               "imageIds": [
                 "VH5ZPUXDOBQMQ4LKWBFRCXN5"
               ],
-              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "ZAKCX6NGRD2B2IY3C4YF2RH2",
-            "updatedAt": "2026-02-22T10:49:21.069Z",
-            "version": 1771757361069,
+            "updatedAt": "2026-02-26T05:37:15.419Z",
+            "version": 1772084235419,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -10180,15 +10178,14 @@
               "imageIds": [
                 "EQA6MKEL5F4CWBTAXFG2W2WF"
               ],
-              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "NWV7T3MYFL2ORUXCUNAPNG3A",
-            "updatedAt": "2026-02-22T10:49:21.069Z",
-            "version": 1771757361069,
+            "updatedAt": "2026-02-26T05:37:15.419Z",
+            "version": 1772084235419,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -10228,15 +10225,14 @@
               "imageIds": [
                 "N5TVHJN4BMIYT43CEAZQSVX5"
               ],
-              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "LBXASF6G4O4RAJAVG7PDMTPT",
-            "updatedAt": "2026-02-22T10:49:21.069Z",
-            "version": 1771757361069,
+            "updatedAt": "2026-02-26T05:37:15.419Z",
+            "version": 1772084235419,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -10297,8 +10293,8 @@
         "isAlcoholic": false
       },
       "id": "MC37BAF2CFZLFVW7LKD5FEBR",
-      "updatedAt": "2026-02-22T10:49:21.069Z",
-      "version": 1771757361069,
+      "updatedAt": "2026-02-26T05:46:09.086Z",
+      "version": 1772084769086,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -14860,8 +14856,8 @@
               ]
             },
             "id": "M2SXUSQNPL5EZHT2Z5RG34I5",
-            "updatedAt": "2026-02-24T00:15:12.245Z",
-            "version": 1771892112245,
+            "updatedAt": "2026-02-26T06:30:18.124Z",
+            "version": 1772087418124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -14890,6 +14886,12 @@
                 "amount": 4500,
                 "currency": "AUD"
               },
+              "locationOverrides": [
+                {
+                  "locationId": "LTD9BW2RXXBDV",
+                  "soldOut": true
+                }
+              ],
               "trackInventory": true,
               "sellable": true,
               "stockable": true,
@@ -14900,8 +14902,8 @@
               ]
             },
             "id": "KJX4IESUOA3LIKZCLAB7IBJ5",
-            "updatedAt": "2026-02-24T00:15:12.245Z",
-            "version": 1771892112245,
+            "updatedAt": "2026-02-26T08:58:41.046Z",
+            "version": 1772096321046,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -14946,8 +14948,8 @@
               ]
             },
             "id": "PQF5QVQKIZOGGO3L34ALDQQ7",
-            "updatedAt": "2026-02-24T00:15:12.245Z",
-            "version": 1771892112245,
+            "updatedAt": "2026-02-26T06:30:18.124Z",
+            "version": 1772087418124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -14976,6 +14978,12 @@
                 "amount": 4500,
                 "currency": "AUD"
               },
+              "locationOverrides": [
+                {
+                  "locationId": "LTD9BW2RXXBDV",
+                  "soldOut": true
+                }
+              ],
               "trackInventory": true,
               "sellable": true,
               "stockable": true,
@@ -14986,8 +14994,8 @@
               ]
             },
             "id": "WQXCYAZO5SAQBYC2VRPFLB65",
-            "updatedAt": "2026-02-24T00:15:12.245Z",
-            "version": 1771892112245,
+            "updatedAt": "2026-02-26T06:30:18.124Z",
+            "version": 1772087418124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15032,8 +15040,8 @@
               ]
             },
             "id": "C2WTX27HCRWKH7MBUTVVFXFM",
-            "updatedAt": "2026-02-24T00:15:12.245Z",
-            "version": 1771892112245,
+            "updatedAt": "2026-02-26T06:30:18.124Z",
+            "version": 1772087418124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15072,8 +15080,8 @@
               ]
             },
             "id": "ENBN5DRWDSWFXEBAZGCXP4NX",
-            "updatedAt": "2026-02-24T00:15:12.245Z",
-            "version": 1771892112245,
+            "updatedAt": "2026-02-26T06:30:18.124Z",
+            "version": 1772087418124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15118,8 +15126,8 @@
               ]
             },
             "id": "S357WNBOWHQRWBWOSBX5OYEP",
-            "updatedAt": "2026-02-24T00:15:12.245Z",
-            "version": 1771892112245,
+            "updatedAt": "2026-02-26T06:30:18.124Z",
+            "version": 1772087418124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15164,8 +15172,8 @@
               ]
             },
             "id": "56ZGVJKG2YOY3M3BO6SXMFVS",
-            "updatedAt": "2026-02-24T00:15:12.245Z",
-            "version": 1771892112245,
+            "updatedAt": "2026-02-26T08:58:41.046Z",
+            "version": 1772096321046,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15210,8 +15218,8 @@
               ]
             },
             "id": "TGQURURFFOXTZGCM2UTM6FYJ",
-            "updatedAt": "2026-02-24T00:15:12.245Z",
-            "version": 1771892112245,
+            "updatedAt": "2026-02-26T06:30:18.124Z",
+            "version": 1772087418124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15256,8 +15264,8 @@
               ]
             },
             "id": "7IXXWWXXX4OJAVHMJQUQNI7G",
-            "updatedAt": "2026-02-24T00:15:12.245Z",
-            "version": 1771892112245,
+            "updatedAt": "2026-02-26T06:30:18.124Z",
+            "version": 1772087418124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15302,8 +15310,8 @@
               ]
             },
             "id": "PMVZHYSLXIPZEAHLQDCAZ5QK",
-            "updatedAt": "2026-02-24T00:15:12.245Z",
-            "version": 1771892112245,
+            "updatedAt": "2026-02-26T06:30:18.124Z",
+            "version": 1772087418124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15342,8 +15350,8 @@
               ]
             },
             "id": "DYYWKBRB66O4GFBGVKO3Q4WG",
-            "updatedAt": "2026-02-24T00:15:12.245Z",
-            "version": 1771892112245,
+            "updatedAt": "2026-02-26T06:30:18.124Z",
+            "version": 1772087418124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15388,8 +15396,8 @@
               ]
             },
             "id": "BGD3Y5SQ5EHOW5ISDH5SXOG6",
-            "updatedAt": "2026-02-24T00:15:12.245Z",
-            "version": 1771892112245,
+            "updatedAt": "2026-02-26T06:30:18.124Z",
+            "version": 1772087418124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15434,8 +15442,8 @@
               ]
             },
             "id": "VHRN5KB64A7OJ4BB2XRJVR2Y",
-            "updatedAt": "2026-02-24T00:15:12.245Z",
-            "version": 1771892112245,
+            "updatedAt": "2026-02-26T06:30:18.124Z",
+            "version": 1772087418124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15480,8 +15488,8 @@
               ]
             },
             "id": "4PSOWLSASRQC4ICBL7O2RR5V",
-            "updatedAt": "2026-02-24T00:15:12.245Z",
-            "version": 1771892112245,
+            "updatedAt": "2026-02-26T06:30:18.124Z",
+            "version": 1772087418124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15526,8 +15534,8 @@
               ]
             },
             "id": "RMSDW2NNU53KTKSKAYMLV2CK",
-            "updatedAt": "2026-02-24T00:15:12.245Z",
-            "version": 1771892112245,
+            "updatedAt": "2026-02-26T06:30:18.124Z",
+            "version": 1772087418124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15588,8 +15596,8 @@
         "isAlcoholic": false
       },
       "id": "6CO6ZSK4LGGYUAHAMX6KE5PK",
-      "updatedAt": "2026-02-24T00:15:12.245Z",
-      "version": 1771892112245,
+      "updatedAt": "2026-02-26T08:58:41.046Z",
+      "version": 1772096321046,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -15777,7 +15785,7 @@
             "created_at": "2023-02-14T00:01:50.752Z",
             "itemVariationData": {
               "itemId": "TLEFUBK6ZSXL7ZV3DDC5WVEE",
-              "name": "CHAMPION/RED/173-5",
+              "name": "CHAMPION/BLUE/173-5",
               "sku": "I19322",
               "ordinal": 1,
               "pricingType": "FIXED_PRICING",
@@ -15788,17 +15796,14 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
-                  "soldOut": true
+                  "trackInventory": true
                 }
               ],
               "trackInventory": true,
               "sellable": true,
               "stockable": true,
               "imageIds": [
-                "PAHNDG2CTTQTHPVS7WXTJBUX",
-                "FNBMAU4TY2M62DRMDAJZRCGG",
-                "HFOCI6G6VNRCVA33U4XKRKWW"
+                "RPONSXJN3KA2LZGMBFTK6O3K"
               ],
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
@@ -15806,8 +15811,8 @@
               ]
             },
             "id": "KR7A6NQBPVSUEFMAMEJSUKA5",
-            "updatedAt": "2026-02-25T05:56:35.539Z",
-            "version": 1771998995539,
+            "updatedAt": "2026-02-26T05:35:16.061Z",
+            "version": 1772084116061,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -15961,8 +15966,8 @@
         "isAlcoholic": false
       },
       "id": "TLEFUBK6ZSXL7ZV3DDC5WVEE",
-      "updatedAt": "2026-02-25T05:56:35.539Z",
-      "version": 1771998995539,
+      "updatedAt": "2026-02-26T05:35:16.061Z",
+      "version": 1772084116061,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -16244,18 +16249,18 @@
             "created_at": "2025-11-05T01:24:03.336Z",
             "itemVariationData": {
               "itemId": "3DU6GXOBBDVBUS6CDKLE4CJC",
-              "name": "Juan : Firebird/Buzzz/Zone/Lion",
-              "sku": "JRFeb26",
+              "name": "Juan : Engine",
+              "sku": "JR2Feb26",
               "ordinal": 1,
               "pricingType": "FIXED_PRICING",
               "priceMoney": {
-                "amount": 13900,
+                "amount": 3300,
                 "currency": "AUD"
               },
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "soldOut": true
+                  "trackInventory": true
                 }
               ],
               "trackInventory": true,
@@ -16267,15 +16272,15 @@
               ]
             },
             "id": "GLZUCSSE4MY4XUBHFRL7BIQ4",
-            "updatedAt": "2026-02-25T04:36:16.086Z",
-            "version": 1771994176086,
+            "updatedAt": "2026-02-26T05:09:34.117Z",
+            "version": 1772082574117,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
                 "name": "Item Cost",
                 "customAttributeDefinitionId": "UWPDOT3RIAVMUPQB6KROWEZJ",
                 "type": "NUMBER",
-                "numberValue": "97.0",
+                "numberValue": "21.5",
                 "key": "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2"
               }
             },
@@ -16928,8 +16933,8 @@
         "isAlcoholic": false
       },
       "id": "3DU6GXOBBDVBUS6CDKLE4CJC",
-      "updatedAt": "2026-02-25T11:15:28.095Z",
-      "version": 1772018128095,
+      "updatedAt": "2026-02-26T05:09:34.117Z",
+      "version": 1772082574117,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -22616,7 +22621,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -22631,8 +22637,8 @@
               ]
             },
             "id": "KTOHOI4B4AMPTIOYFBNJANK4",
-            "updatedAt": "2026-01-08T02:32:29.927Z",
-            "version": 1767839549927,
+            "updatedAt": "2026-02-26T03:20:24.11Z",
+            "version": 1772076024110,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -23000,7 +23006,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -23015,8 +23022,8 @@
               ]
             },
             "id": "B4YI53VHEBULHCQXGFXQTWVK",
-            "updatedAt": "2025-12-28T04:38:26.181Z",
-            "version": 1766896706181,
+            "updatedAt": "2026-02-26T03:20:24.11Z",
+            "version": 1772076024110,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -23081,8 +23088,8 @@
         "isAlcoholic": false
       },
       "id": "IDRVOMRTDZ3BG6FQS366LMJI",
-      "updatedAt": "2026-01-08T02:33:25.361Z",
-      "version": 1767839605361,
+      "updatedAt": "2026-02-26T03:20:24.11Z",
+      "version": 1772076024110,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -30233,8 +30240,8 @@
             "created_at": "2024-03-26T07:59:17.777Z",
             "itemVariationData": {
               "itemId": "3KMKZYFMVNVG2WURZ3ATZZZ5",
-              "name": "NEUTRON/AQUA/166-9",
-              "sku": "M22501",
+              "name": "NEUTRON/WHITE-YELLOW/166",
+              "sku": "MV22501",
               "ordinal": 1,
               "pricingType": "FIXED_PRICING",
               "priceMoney": {
@@ -30244,15 +30251,14 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
-                  "soldOut": true
+                  "trackInventory": true
                 }
               ],
               "trackInventory": true,
               "sellable": true,
               "stockable": true,
               "imageIds": [
-                "MFVD4XPYYR6LEGFV5KUDAWRV"
+                "YVGVENSOFESOZCNF662O5YG4"
               ],
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
@@ -30260,15 +30266,15 @@
               ]
             },
             "id": "B6ZR5K5BYTC7OTY73ZUGWZ4B",
-            "updatedAt": "2026-01-11T02:10:57.216Z",
-            "version": 1768097457216,
+            "updatedAt": "2026-02-26T10:32:32.962Z",
+            "version": 1772101952962,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
                 "name": "Item Cost",
                 "customAttributeDefinitionId": "UWPDOT3RIAVMUPQB6KROWEZJ",
                 "type": "NUMBER",
-                "numberValue": "22.0",
+                "numberValue": "21.0",
                 "key": "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2"
               }
             },
@@ -30282,27 +30288,25 @@
             "created_at": "2024-10-19T01:48:56.982Z",
             "itemVariationData": {
               "itemId": "3KMKZYFMVNVG2WURZ3ATZZZ5",
-              "name": "NEUTRON/FLURO YELLOW/166-9",
+              "name": "NEUTRON/ROSE-YELLOW/172",
               "sku": "MV23922",
               "ordinal": 2,
               "pricingType": "FIXED_PRICING",
               "priceMoney": {
-                "amount": 3300,
+                "amount": 3200,
                 "currency": "AUD"
               },
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
-                  "soldOut": true
+                  "trackInventory": true
                 }
               ],
               "trackInventory": true,
-              "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
               "imageIds": [
-                "CWRN5DMKMO6FCSQXULBFXNKS"
+                "FTNH4QUUR5GID35YLVPYGJBW"
               ],
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
@@ -30310,15 +30314,15 @@
               ]
             },
             "id": "FVJPDQ4VPH7ZZ4VKE32UJ53J",
-            "updatedAt": "2025-11-04T11:37:25.803Z",
-            "version": 1762256245803,
+            "updatedAt": "2026-02-26T05:40:13.106Z",
+            "version": 1772084413106,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
                 "name": "Item Cost",
                 "customAttributeDefinitionId": "UWPDOT3RIAVMUPQB6KROWEZJ",
                 "type": "NUMBER",
-                "numberValue": "23.0",
+                "numberValue": "21.0",
                 "key": "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2"
               }
             },
@@ -30460,8 +30464,8 @@
         "isAlcoholic": false
       },
       "id": "3KMKZYFMVNVG2WURZ3ATZZZ5",
-      "updatedAt": "2026-02-25T06:16:07.054Z",
-      "version": 1772000167054,
+      "updatedAt": "2026-02-26T10:32:32.962Z",
+      "version": 1772101952962,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -30896,7 +30900,6 @@
                 }
               ],
               "trackInventory": true,
-              "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
               "imageIds": [
@@ -30908,8 +30911,8 @@
               ]
             },
             "id": "362XGGEN5ATTSPFXMMGAWYQX",
-            "updatedAt": "2025-11-04T11:38:35.623Z",
-            "version": 1762256315623,
+            "updatedAt": "2026-02-26T05:48:41.977Z",
+            "version": 1772084921977,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -30945,7 +30948,6 @@
                 }
               ],
               "trackInventory": true,
-              "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
               "imageIds": [
@@ -30957,8 +30959,8 @@
               ]
             },
             "id": "Q7D3K2O2XBVJ6ACOAFEBLTI2",
-            "updatedAt": "2025-11-04T11:38:35.623Z",
-            "version": 1762256315623,
+            "updatedAt": "2026-02-26T05:48:41.977Z",
+            "version": 1772084921977,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -30994,7 +30996,6 @@
                 }
               ],
               "trackInventory": true,
-              "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
               "imageIds": [
@@ -31006,8 +31007,8 @@
               ]
             },
             "id": "2TWYJ3VOFZNZ63HFROPL7W5W",
-            "updatedAt": "2025-11-04T11:38:35.623Z",
-            "version": 1762256315623,
+            "updatedAt": "2026-02-26T05:48:41.977Z",
+            "version": 1772084921977,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -31043,7 +31044,6 @@
                 }
               ],
               "trackInventory": true,
-              "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
               "imageIds": [
@@ -31055,8 +31055,8 @@
               ]
             },
             "id": "3NTBO73S5SN6LMVP3SEMH5R5",
-            "updatedAt": "2025-11-04T11:38:35.623Z",
-            "version": 1762256315623,
+            "updatedAt": "2026-02-26T05:48:41.977Z",
+            "version": 1772084921977,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -31111,8 +31111,8 @@
         "isAlcoholic": false
       },
       "id": "EFW6Y7XF5R3JBMDNTI6MWIIM",
-      "updatedAt": "2025-11-04T11:38:35.623Z",
-      "version": 1762256315623,
+      "updatedAt": "2026-02-26T05:48:41.977Z",
+      "version": 1772084921977,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -31707,26 +31707,25 @@
             "created_at": "2024-10-18T01:01:33.806Z",
             "itemVariationData": {
               "itemId": "HQO5IFQU7JYA6QLM5OZAJPWM",
-              "name": "ESP/PINK BURST/173-5",
+              "name": "ESP/BLUE SWIRL/170-2",
               "sku": "DC23867",
               "ordinal": 2,
               "pricingType": "FIXED_PRICING",
               "priceMoney": {
-                "amount": 3000,
+                "amount": 3200,
                 "currency": "AUD"
               },
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
-                  "soldOut": true
+                  "trackInventory": true
                 }
               ],
               "trackInventory": true,
               "sellable": true,
               "stockable": true,
               "imageIds": [
-                "QFA3Y3OPH5ZAXWRDGX74E5IZ"
+                "SQH3ZECK2UN3KDHJN774LDHN"
               ],
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
@@ -31734,15 +31733,15 @@
               ]
             },
             "id": "6CM7ACNHWCSDP5X6ZSWAASCF",
-            "updatedAt": "2026-01-07T03:37:49.681Z",
-            "version": 1767757069681,
+            "updatedAt": "2026-02-26T05:33:03.066Z",
+            "version": 1772083983066,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
                 "name": "Item Cost",
                 "customAttributeDefinitionId": "UWPDOT3RIAVMUPQB6KROWEZJ",
                 "type": "NUMBER",
-                "numberValue": "20.6",
+                "numberValue": "22.0",
                 "key": "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2"
               }
             },
@@ -31835,8 +31834,8 @@
         "isAlcoholic": false
       },
       "id": "HQO5IFQU7JYA6QLM5OZAJPWM",
-      "updatedAt": "2026-02-25T06:00:16.097Z",
-      "version": 1771999216097,
+      "updatedAt": "2026-02-26T05:33:03.066Z",
+      "version": 1772083983066,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -31904,32 +31903,44 @@
             "created_at": "2025-11-05T08:15:14.393Z",
             "itemVariationData": {
               "itemId": "FUOYNFKB5OHRRWDSVKB5UWLN",
-              "name": "ECLIPSE/Orange Rim/173",
+              "name": "ECLIPSE/GLOW-MARBLE RIM/169",
+              "sku": "ACRE02",
               "ordinal": 2,
               "pricingType": "FIXED_PRICING",
               "priceMoney": {
-                "amount": 3500,
+                "amount": 3400,
                 "currency": "AUD"
               },
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
-                  "soldOut": true
+                  "trackInventory": true
                 }
               ],
               "trackInventory": true,
               "sellable": true,
               "stockable": true,
+              "imageIds": [
+                "CBMKZ5C3ALSUEXW4WZWUHLYY"
+              ],
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "JEVH5P5VTMVAVHAZTXJ6ZCHB",
-            "updatedAt": "2025-11-05T08:15:18.176Z",
-            "version": 1762330518176,
+            "updatedAt": "2026-02-26T05:41:55.872Z",
+            "version": 1772084515872,
             "isDeleted": false,
+            "customAttributeValues": {
+              "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
+                "name": "Item Cost",
+                "customAttributeDefinitionId": "UWPDOT3RIAVMUPQB6KROWEZJ",
+                "type": "NUMBER",
+                "numberValue": "23.0",
+                "key": "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2"
+              }
+            },
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
               "LTD9BW2RXXBDV"
@@ -31975,8 +31986,8 @@
         "isAlcoholic": false
       },
       "id": "FUOYNFKB5OHRRWDSVKB5UWLN",
-      "updatedAt": "2026-02-25T06:07:04.063Z",
-      "version": 1771999624063,
+      "updatedAt": "2026-02-26T05:41:55.872Z",
+      "version": 1772084515872,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -38302,8 +38313,8 @@
               ]
             },
             "id": "IMXN65N4AHVUVQMUWM3Q76MW",
-            "updatedAt": "2025-11-03T03:00:50.574Z",
-            "version": 1762138850574,
+            "updatedAt": "2026-02-26T05:47:03.375Z",
+            "version": 1772084823375,
             "isDeleted": false,
             "presentAtAllLocations": false
           }
@@ -38311,7 +38322,7 @@
         "productType": "REGULAR",
         "skipModifierScreen": false,
         "ecom_available": false,
-        "ecom_visibility": "VISIBLE",
+        "ecom_visibility": "UNAVAILABLE",
         "imageIds": [
           "BAL42TCS6G4266JKTQYZGR35"
         ],
@@ -38331,7 +38342,7 @@
           "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
           "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
         ],
-        "isArchived": false,
+        "isArchived": true,
         "reportingCategory": {
           "id": "OOPYHJJICDKBBYSVUMBBPW7K",
           "ordinal": 32160715112448
@@ -38339,8 +38350,8 @@
         "isAlcoholic": false
       },
       "id": "KE6HARUZEQVXPLWLVAK2JCZS",
-      "updatedAt": "2025-11-03T03:00:50.574Z",
-      "version": 1762138850574,
+      "updatedAt": "2026-02-26T05:47:03.375Z",
+      "version": 1772084823375,
       "isDeleted": false,
       "presentAtAllLocations": false
     },
@@ -41370,7 +41381,7 @@
               "itemId": "6KA4XTC46VHWI64UZS5GTK4K",
               "name": "ESP/SUNSET/175-7",
               "sku": "DC26792",
-              "ordinal": 0,
+              "ordinal": 1,
               "pricingType": "FIXED_PRICING",
               "priceMoney": {
                 "amount": 3200,
@@ -41387,15 +41398,14 @@
               "imageIds": [
                 "SSP26YM7V35LQ2KHCT4TNSJX"
               ],
-              "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "RWED6HCVMGPVAFQLRXBUNEXW",
-            "updatedAt": "2026-02-25T08:47:35.113Z",
-            "version": 1772009255113,
+            "updatedAt": "2026-02-26T05:31:36.205Z",
+            "version": 1772083896205,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -41418,7 +41428,7 @@
               "itemId": "6KA4XTC46VHWI64UZS5GTK4K",
               "name": "Z/PINK/172",
               "sku": "DCCGZ01",
-              "ordinal": 1,
+              "ordinal": 2,
               "pricingType": "FIXED_PRICING",
               "priceMoney": {
                 "amount": 2800,
@@ -41436,15 +41446,14 @@
               "imageIds": [
                 "GWTJAIYYVDN4RIFYIDTSLHNT"
               ],
-              "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "2HTTERSZHD47HCCPQDIJKEER",
-            "updatedAt": "2026-02-25T08:47:35.113Z",
-            "version": 1772009255113,
+            "updatedAt": "2026-02-26T05:31:36.205Z",
+            "version": 1772083896205,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -41465,9 +41474,9 @@
             "created_at": "2025-11-06T09:20:10.947Z",
             "itemVariationData": {
               "itemId": "6KA4XTC46VHWI64UZS5GTK4K",
-              "name": "Z/YELLOW/173",
+              "name": "Z/YELLOW/175",
               "sku": "DCCGZ02",
-              "ordinal": 2,
+              "ordinal": 3,
               "pricingType": "FIXED_PRICING",
               "priceMoney": {
                 "amount": 2800,
@@ -41475,7 +41484,8 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV"
+                  "locationId": "LTD9BW2RXXBDV",
+                  "trackInventory": true
                 }
               ],
               "trackInventory": true,
@@ -41484,15 +41494,14 @@
               "imageIds": [
                 "YRN4WOU7HQ6MBEWB6VWDRHXL"
               ],
-              "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "FE67OXPAL4VJGRAPHVSXFVIW",
-            "updatedAt": "2026-02-25T08:47:35.113Z",
-            "version": 1772009255113,
+            "updatedAt": "2026-02-26T10:37:21.237Z",
+            "version": 1772102241237,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -41515,26 +41524,30 @@
               "itemId": "6KA4XTC46VHWI64UZS5GTK4K",
               "name": "ESP/BLUE SWIRL/170-2",
               "sku": "DCCGE01",
-              "ordinal": 3,
+              "ordinal": 4,
               "pricingType": "FIXED_PRICING",
               "priceMoney": {
                 "amount": 3200,
                 "currency": "AUD"
               },
+              "locationOverrides": [
+                {
+                  "locationId": "LTD9BW2RXXBDV",
+                  "trackInventory": true,
+                  "soldOut": true
+                }
+              ],
               "trackInventory": true,
               "sellable": true,
               "stockable": true,
-              "imageIds": [
-                "PZ4OF2SX4C6NGTCE5OHABJ5R"
-              ],
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "EHRXLRH6LUPKA2KCEJRUNI2E",
-            "updatedAt": "2026-02-25T08:47:35.113Z",
-            "version": 1772009255113,
+            "updatedAt": "2026-02-26T10:48:38.049Z",
+            "version": 1772102918049,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -41575,8 +41588,8 @@
         "descriptionHtml": "The Discraft Cigarra is an overstable evolution of the Cicada, designed in collaboration with Anthony Barela for players seeking more power, control, and distance. As Barela’s first signature disc with Discraft, the Cigarra delivers enhanced stability, allowing throwers to confidently attack lines with increased torque resistance. Built for those who push their limits, this disc offers the perfect balance of reliability and speed.<br/>\nSpeed: 7<br/>\nGlide: 6<br/>\nTurn: -1<br/>\nFade: 2<br/>\n<br/>",
         "descriptionPlaintext": "The Discraft Cigarra is an overstable evolution of the Cicada, designed in collaboration with Anthony Barela for players seeking more power, control, and distance. As Barela’s first signature disc with Discraft, the Cigarra delivers enhanced stability, allowing throwers to confidently attack lines with increased torque resistance. Built for those who push their limits, this disc offers the perfect balance of reliability and speed.\n\nSpeed: 7\n\nGlide: 6\n\nTurn: -1\n\nFade: 2",
         "channels": [
-          "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-          "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+          "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+          "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
         ],
         "isArchived": false,
         "reportingCategory": {
@@ -41586,8 +41599,8 @@
         "isAlcoholic": false
       },
       "id": "6KA4XTC46VHWI64UZS5GTK4K",
-      "updatedAt": "2026-02-25T08:47:35.113Z",
-      "version": 1772009255113,
+      "updatedAt": "2026-02-26T10:48:38.049Z",
+      "version": 1772102918049,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -41906,43 +41919,6 @@
               "itemId": "QAXAOVUA4SNU7HXPBND37BA2",
               "name": "MINI MARKERS - Red",
               "sku": "MM005-1",
-              "ordinal": 0,
-              "pricingType": "FIXED_PRICING",
-              "priceMoney": {
-                "amount": 50,
-                "currency": "AUD"
-              },
-              "locationOverrides": [
-                {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
-                  "soldOut": true
-                }
-              ],
-              "trackInventory": true,
-              "sellable": true,
-              "stockable": true,
-              "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
-              ]
-            },
-            "id": "NIDM6Z4BFQSJTNJ7U6VLVVCR",
-            "updatedAt": "2026-01-18T07:47:15.625Z",
-            "version": 1768722435625,
-            "isDeleted": false,
-            "presentAtAllLocations": false,
-            "presentAtLocationIds": [
-              "LTD9BW2RXXBDV"
-            ]
-          },
-          {
-            "type": "ITEM_VARIATION",
-            "created_at": "2025-10-22T05:45:05.315Z",
-            "itemVariationData": {
-              "itemId": "QAXAOVUA4SNU7HXPBND37BA2",
-              "name": "MINI MARKERS - Yellow",
-              "sku": "MM001-1",
               "ordinal": 1,
               "pricingType": "FIXED_PRICING",
               "priceMoney": {
@@ -41963,9 +41939,45 @@
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
+            "id": "NIDM6Z4BFQSJTNJ7U6VLVVCR",
+            "updatedAt": "2026-02-26T07:02:28.046Z",
+            "version": 1772089348046,
+            "isDeleted": false,
+            "presentAtAllLocations": false,
+            "presentAtLocationIds": [
+              "LTD9BW2RXXBDV"
+            ]
+          },
+          {
+            "type": "ITEM_VARIATION",
+            "created_at": "2025-10-22T05:45:05.315Z",
+            "itemVariationData": {
+              "itemId": "QAXAOVUA4SNU7HXPBND37BA2",
+              "name": "MINI MARKERS - Yellow",
+              "sku": "MM001-1",
+              "ordinal": 2,
+              "pricingType": "FIXED_PRICING",
+              "priceMoney": {
+                "amount": 50,
+                "currency": "AUD"
+              },
+              "locationOverrides": [
+                {
+                  "locationId": "LTD9BW2RXXBDV",
+                  "trackInventory": true
+                }
+              ],
+              "trackInventory": true,
+              "sellable": true,
+              "stockable": true,
+              "channels": [
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+              ]
+            },
             "id": "EZVEF4Y7VKE4O6B4YZ7YXLGY",
-            "updatedAt": "2025-12-02T06:48:00.145Z",
-            "version": 1764658080145,
+            "updatedAt": "2026-02-26T07:02:12.303Z",
+            "version": 1772089332303,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -41996,11 +42008,12 @@
         "reportingCategory": {
           "id": "XYOJH4NOGHKSZKJHN6QR5YKL",
           "ordinal": 2542620639232
-        }
+        },
+        "isAlcoholic": false
       },
       "id": "QAXAOVUA4SNU7HXPBND37BA2",
-      "updatedAt": "2026-01-18T07:47:15.625Z",
-      "version": 1768722435625,
+      "updatedAt": "2026-02-26T07:02:28.046Z",
+      "version": 1772089348046,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -68131,12 +68144,12 @@
       "type": "IMAGE",
       "created_at": "2026-02-25T08:44:53.562Z",
       "imageData": {
-        "name": "Cicada Sunset.JPEG",
+        "name": "Cigarra Sunset.JPEG",
         "url": "https://items-images-production.s3.us-west-2.amazonaws.com/files/86b71e49561b67e4e0fed3dc2fcc3da9bd9af5f5/original.jpeg"
       },
       "id": "SSP26YM7V35LQ2KHCT4TNSJX",
-      "updatedAt": "2026-02-25T08:44:53.523Z",
-      "version": 1772009093523,
+      "updatedAt": "2026-02-26T05:33:48.073Z",
+      "version": 1772084028073,
       "isDeleted": false,
       "presentAtAllLocations": true
     },
@@ -68189,6 +68202,84 @@
       "id": "6HGNXI7LG67FE5PM3WKV22BQ",
       "updatedAt": "2026-02-25T08:50:34.201Z",
       "version": 1772009434201,
+      "isDeleted": false,
+      "presentAtAllLocations": true
+    },
+    {
+      "type": "IMAGE",
+      "created_at": "2026-02-26T05:32:34.612Z",
+      "imageData": {
+        "name": "Cicada Blue Swirl.JPEG",
+        "url": "https://items-images-production.s3.us-west-2.amazonaws.com/files/d9e1d3cdd958c356e6f2905369203554d6002d65/original.jpeg"
+      },
+      "id": "SQH3ZECK2UN3KDHJN774LDHN",
+      "updatedAt": "2026-02-26T05:32:34.537Z",
+      "version": 1772083954537,
+      "isDeleted": false,
+      "presentAtAllLocations": true
+    },
+    {
+      "type": "IMAGE",
+      "created_at": "2026-02-26T05:35:03.551Z",
+      "imageData": {
+        "name": "EaGLE Blue.JPEG",
+        "url": "https://items-images-production.s3.us-west-2.amazonaws.com/files/bc7b3824f86c540889dff9ff345682119144d034/original.jpeg"
+      },
+      "id": "RPONSXJN3KA2LZGMBFTK6O3K",
+      "updatedAt": "2026-02-26T05:35:03.508Z",
+      "version": 1772084103508,
+      "isDeleted": false,
+      "presentAtAllLocations": true
+    },
+    {
+      "type": "IMAGE",
+      "created_at": "2026-02-26T05:37:04.35Z",
+      "imageData": {
+        "name": "Destroyer Lt Blue.JPEG",
+        "url": "https://items-images-production.s3.us-west-2.amazonaws.com/files/60d761373e34a71b3a1bc3a2b63bbc768e205bd0/original.jpeg"
+      },
+      "id": "RC72VOCHONUDROD3H4TMKFX3",
+      "updatedAt": "2026-02-26T05:37:04.31Z",
+      "version": 1772084224310,
+      "isDeleted": false,
+      "presentAtAllLocations": true
+    },
+    {
+      "type": "IMAGE",
+      "created_at": "2026-02-26T05:38:49.774Z",
+      "imageData": {
+        "name": "Crave White.JPEG",
+        "url": "https://items-images-production.s3.us-west-2.amazonaws.com/files/cc41cbf16e8a83adebf317c7d0dce83e1861e468/original.jpeg"
+      },
+      "id": "YVGVENSOFESOZCNF662O5YG4",
+      "updatedAt": "2026-02-26T05:38:49.735Z",
+      "version": 1772084329735,
+      "isDeleted": false,
+      "presentAtAllLocations": true
+    },
+    {
+      "type": "IMAGE",
+      "created_at": "2026-02-26T05:39:59.77Z",
+      "imageData": {
+        "name": "Crave brown.JPEG",
+        "url": "https://items-images-production.s3.us-west-2.amazonaws.com/files/4192bebe628cc93eb77bd562ce1cdaf6d322fd73/original.jpeg"
+      },
+      "id": "FTNH4QUUR5GID35YLVPYGJBW",
+      "updatedAt": "2026-02-26T05:39:59.735Z",
+      "version": 1772084399735,
+      "isDeleted": false,
+      "presentAtAllLocations": true
+    },
+    {
+      "type": "IMAGE",
+      "created_at": "2026-02-26T05:41:19.663Z",
+      "imageData": {
+        "name": "Crave Glow Aqua.JPEG",
+        "url": "https://items-images-production.s3.us-west-2.amazonaws.com/files/58d01e47bbf08dd068404153dda38b7ac935ad5a/original.jpeg"
+      },
+      "id": "CBMKZ5C3ALSUEXW4WZWUHLYY",
+      "updatedAt": "2026-02-26T05:41:19.63Z",
+      "version": 1772084479630,
       "isDeleted": false,
       "presentAtAllLocations": true
     },
@@ -69203,8 +69294,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-07T04:12:49.607Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-26T03:20:27.323Z"
     },
     {
       "catalogObjectId": "5VZTEE5NFW3VC6NGHMTNBRLP",
@@ -69539,8 +69630,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "2",
-      "calculatedAt": "2026-01-07T04:22:37.374Z"
+      "quantity": "1",
+      "calculatedAt": "2026-02-26T03:20:27.327Z"
     },
     {
       "catalogObjectId": "FMJNZKQU6SHZNAUMMAGD7M2P",
@@ -69667,8 +69758,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-08T02:39:45.784Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-26T03:20:27.311Z"
     },
     {
       "catalogObjectId": "HBDSOMKW7GROSRLBMZ3HGWXK",
@@ -70011,8 +70102,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-02-22T08:43:51.881Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-26T03:20:27.33Z"
     },
     {
       "catalogObjectId": "OOOGTFDTD7U3Q37AVPMF34T7",
@@ -70203,8 +70294,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-07T04:09:38.064Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-26T03:20:27.313Z"
     },
     {
       "catalogObjectId": "RVFW5KZ6XLN4DD7NGM2N4MPE",
@@ -71603,8 +71694,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "0",
-      "calculatedAt": "2026-02-02T01:02:39.858Z"
+      "quantity": "1",
+      "calculatedAt": "2026-02-26T05:46:09.669Z"
     },
     {
       "catalogObjectId": "NAMDMXI345U4NIVFTO5EMVNZ",
@@ -72252,7 +72343,7 @@
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
       "quantity": "0",
-      "calculatedAt": "2026-02-14T07:16:10.666Z"
+      "calculatedAt": "2026-02-26T08:58:43.322Z"
     },
     {
       "catalogObjectId": "5A2JSEJF3FJYRABYNLQ5NZVA",
@@ -72619,8 +72710,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "0",
-      "calculatedAt": "2026-02-25T04:36:19.174Z"
+      "quantity": "1",
+      "calculatedAt": "2026-02-26T05:09:31.116Z"
     },
     {
       "catalogObjectId": "GQ6CPL5QZUQK35Y2UCFE7BKP",
@@ -72827,8 +72918,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "4",
-      "calculatedAt": "2026-02-19T12:37:42.294Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-26T08:58:43.319Z"
     },
     {
       "catalogObjectId": "KL23F5NTXUL6EXLA5WF2CQJF",
@@ -72859,8 +72950,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "0",
-      "calculatedAt": "2026-02-25T05:56:36.08Z"
+      "quantity": "1",
+      "calculatedAt": "2026-02-26T05:35:13.374Z"
     },
     {
       "catalogObjectId": "KWONLXQF5DJ7PPEKZNDNI73T",
@@ -73531,8 +73622,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-07T04:35:15.813Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-26T03:20:27.325Z"
     },
     {
       "catalogObjectId": "WVQCLLADZZYOASAOVDJLC7MG",
@@ -74019,8 +74110,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-03T10:37:40.949Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-26T03:20:27.32Z"
     },
     {
       "catalogObjectId": "BPYXEJVCEW4LJJIQ3ALNQZ6T",
@@ -74675,8 +74766,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-08T02:32:26.469Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-26T03:20:27.316Z"
     },
     {
       "catalogObjectId": "KVW2Z2472H4OH3JBAQN7TPK7",
@@ -75547,8 +75638,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "0",
-      "calculatedAt": "2026-01-11T02:10:53.817Z"
+      "quantity": "1",
+      "calculatedAt": "2026-02-26T05:39:09.03Z"
     },
     {
       "catalogObjectId": "BEXJB5G3UQQEGSLIP2PKEBJT",
@@ -77019,8 +77110,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "0",
-      "calculatedAt": "2026-01-07T03:37:53.205Z"
+      "quantity": "1",
+      "calculatedAt": "2026-02-26T05:33:00.478Z"
     },
     {
       "catalogObjectId": "6EX3SMUOYXKPQY36P2O4ZOBC",
@@ -77491,8 +77582,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "0",
-      "calculatedAt": "2025-11-04T09:15:23.767Z"
+      "quantity": "1",
+      "calculatedAt": "2026-02-26T05:40:10Z"
     },
     {
       "catalogObjectId": "G34SA2JJBGIRL7MEU3UQRZ7H",
@@ -77651,8 +77742,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "0",
-      "calculatedAt": "2025-11-05T08:15:16.719Z"
+      "quantity": "1",
+      "calculatedAt": "2026-02-26T05:41:56.409Z"
     },
     {
       "catalogObjectId": "JRFK34JFYLJ5LWBTUCQWALCQ",
@@ -78491,8 +78582,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "3",
-      "calculatedAt": "2025-12-10T04:36:03.736Z"
+      "quantity": "2",
+      "calculatedAt": "2026-02-26T07:02:49.389Z"
     },
     {
       "catalogObjectId": "6VLRNXT7WEBE5JXL7FMHJPTA",
@@ -78723,8 +78814,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-02-25T08:47:34.294Z"
+      "quantity": "0",
+      "calculatedAt": "2026-02-26T10:48:35.518Z"
     },
     {
       "catalogObjectId": "EHVOXAHBL3FOQRELZ6Y3NOUH",
@@ -78787,8 +78878,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "2",
-      "calculatedAt": "2026-01-18T07:47:18.199Z"
+      "quantity": "6",
+      "calculatedAt": "2026-02-26T07:02:12.817Z"
     },
     {
       "catalogObjectId": "FDPB3L4HBVVBRCYRXR6HYDAD",
@@ -79163,8 +79254,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "0",
-      "calculatedAt": "2026-01-18T07:47:18.203Z"
+      "quantity": "6",
+      "calculatedAt": "2026-02-26T07:02:26.035Z"
     },
     {
       "catalogObjectId": "NUBJJDGUVESYGXZZF5QQMYE7",
