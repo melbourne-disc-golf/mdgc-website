@@ -23715,7 +23715,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -23730,8 +23731,8 @@
               ]
             },
             "id": "PN2BAFLWGLYNFZARAVP5Y3Z4",
-            "updatedAt": "2026-01-28T23:17:00.493Z",
-            "version": 1769642220493,
+            "updatedAt": "2026-03-03T23:57:31.043Z",
+            "version": 1772582251043,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -23937,8 +23938,8 @@
         "isAlcoholic": false
       },
       "id": "DELGOWLSCWIR77IPJQSWLQYN",
-      "updatedAt": "2026-03-01T01:44:14.054Z",
-      "version": 1772329454054,
+      "updatedAt": "2026-03-03T23:57:31.043Z",
+      "version": 1772582251043,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -75899,8 +75900,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-29T05:02:47.895Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-03T23:57:33.269Z"
     },
     {
       "catalogObjectId": "PZ7GMVUJDGGOLK6PYQPJAVEP",
