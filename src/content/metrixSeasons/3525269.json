@@ -2,8 +2,8 @@
   "id": 3525269,
   "name": "MDGC 2026 Social Days",
   "dateStart": "2026-02-02",
-  "dateEnd": "2026-03-22",
-  "eventCount": 6,
+  "dateEnd": "2026-06-20",
+  "eventCount": 15,
   "events": [
     {
       "id": 3525299,
@@ -49,6 +49,78 @@
       "id": 3532794,
       "name": "MDGC 2026 Social Days &rarr; 6. Mar Northeast Social Day - Ruffey Lake",
       "date": "2026-03-22",
+      "time": "08:00:00",
+      "courseName": "Ruffey Lake 2023 18 basket layout",
+      "courseId": "31614"
+    },
+    {
+      "id": 3539724,
+      "name": "MDGC 2026 Social Days &rarr; 7. Apr West Social Day - Werribee",
+      "date": "2026-04-04",
+      "time": "08:00:00",
+      "courseName": "Heathdale Glen Orden Trial Course &rarr; Full 18",
+      "courseId": "30043"
+    },
+    {
+      "id": 3539729,
+      "name": "MDGC 2026 Social Days &rarr; 8. Apr Southeast Social Day - Bicentennial",
+      "date": "2026-04-12",
+      "time": "08:00:00",
+      "courseName": "Bicentennial Park Chelsea Heights &rarr; 1",
+      "courseId": "36540"
+    },
+    {
+      "id": 3539734,
+      "name": "MDGC 2026 Social Days &rarr; 9. Apr Northeast Social Day - Ruffey Lake",
+      "date": "2026-04-19",
+      "time": "08:00:00",
+      "courseName": "Ruffey Lake 2023 18 basket layout",
+      "courseId": "31614"
+    },
+    {
+      "id": 3539735,
+      "name": "MDGC 2026 Social Days &rarr; 10. May West Social Day - Stony Creek",
+      "date": "2026-05-03",
+      "time": "08:00:00",
+      "courseName": "Stony Creek Social Days",
+      "courseId": "41497"
+    },
+    {
+      "id": 3539736,
+      "name": "MDGC 2026 Social Days &rarr; 11. May Southeast Social Day - Bald Hill",
+      "date": "2026-05-09",
+      "time": "08:00:00",
+      "courseName": "Bald Hill Park &rarr; 18 Hole Course (Red + Blue Combined)",
+      "courseId": "15455"
+    },
+    {
+      "id": 3539737,
+      "name": "MDGC 2026 Social Days &rarr; 12. May Northeast Social Day - Llewellyn",
+      "date": "2026-05-17",
+      "time": "08:00:00",
+      "courseName": "Llewellyn Park - 9 basket/ 18 hole",
+      "courseId": "36930"
+    },
+    {
+      "id": 3539738,
+      "name": "MDGC 2026 Social Days &rarr; 13. Jun West Social Day - Melton",
+      "date": "2026-06-06",
+      "time": "08:00:00",
+      "courseName": "Little Blind Creek Disc Golf Course",
+      "courseId": "33710"
+    },
+    {
+      "id": 3539739,
+      "name": "MDGC 2026 Social Days &rarr; 14. Jun Southeast Social Day - Bicentennial",
+      "date": "2026-06-14",
+      "time": "08:00:00",
+      "courseName": "Bicentennial Park Chelsea Heights &rarr; 1",
+      "courseId": "36540"
+    },
+    {
+      "id": 3539740,
+      "name": "MDGC 2026 Social Days &rarr; 15. Jun Northeast Social Day - Ruffey Lake",
+      "date": "2026-06-20",
       "time": "08:00:00",
       "courseName": "Ruffey Lake 2023 18 basket layout",
       "courseId": "31614"
