@@ -40534,7 +40534,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -40549,8 +40550,8 @@
               ]
             },
             "id": "2RER7IY6WITGH7WT3H7FXM4B",
-            "updatedAt": "2026-02-25T08:48:54.976Z",
-            "version": 1772009334976,
+            "updatedAt": "2026-03-12T02:20:29.184Z",
+            "version": 1773282029184,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -40651,8 +40652,8 @@
         "isAlcoholic": false
       },
       "id": "XCSMIWQLQWSGJELX3JYFJQNI",
-      "updatedAt": "2026-02-28T22:55:33.329Z",
-      "version": 1772319333329,
+      "updatedAt": "2026-03-12T02:20:29.184Z",
+      "version": 1773282029184,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -78011,8 +78012,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-02-25T02:03:27.38Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-12T02:20:30.227Z"
     },
     {
       "catalogObjectId": "3DS3KNMTSFJMSCBT55SEWQDE",
