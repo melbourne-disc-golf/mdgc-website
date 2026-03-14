@@ -29645,7 +29645,8 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV"
+                  "locationId": "LTD9BW2RXXBDV",
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -29661,8 +29662,8 @@
               ]
             },
             "id": "FVJPDQ4VPH7ZZ4VKE32UJ53J",
-            "updatedAt": "2026-02-28T07:30:42.087Z",
-            "version": 1772263842087,
+            "updatedAt": "2026-03-14T08:25:20.067Z",
+            "version": 1773476720067,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -29812,8 +29813,8 @@
         "isAlcoholic": false
       },
       "id": "3KMKZYFMVNVG2WURZ3ATZZZ5",
-      "updatedAt": "2026-02-28T07:30:42.087Z",
-      "version": 1772263842087,
+      "updatedAt": "2026-03-14T08:25:20.067Z",
+      "version": 1773476720067,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -75348,8 +75349,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-02-28T07:30:22.574Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-14T08:25:22.259Z"
     },
     {
       "catalogObjectId": "G34SA2JJBGIRL7MEU3UQRZ7H",
