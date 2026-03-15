@@ -3,7 +3,8 @@ import {
   titleCase,
   titleCaseKeepAcronyms,
   formatVariationTitle,
-  discTypeLabel,
+  discTypeFromCategory,
+  DISC_TYPES,
   parseVariationParts,
   parseVariationColor,
   parseVariationPlastic,
@@ -178,6 +179,16 @@ describe("formatVariationTitle", () => {
     expect(formatVariationTitle("ROC3", "Champion/Yellow/180", "Innova"))
       .toBe("Innova Roc3 - Champion/Yellow/180");
   });
+
+  it("includes disc type between name and variation detail", () => {
+    expect(formatVariationTitle("KOTARE", "KOTARE - ATOMIC/BURNT ORANGE/173", "RPM", "Disc Golf Putter"))
+      .toBe("RPM Kotare - Disc Golf Putter - Atomic/Burnt Orange/173");
+  });
+
+  it("includes disc type without brand", () => {
+    expect(formatVariationTitle("RURU", "ATOMIC/PINK/171", undefined, "Midrange Golf Disc"))
+      .toBe("Ruru - Midrange Golf Disc - Atomic/Pink/171");
+  });
 });
 
 describe("titleCaseKeepAcronyms", () => {
@@ -205,22 +216,36 @@ describe("titleCaseKeepAcronyms", () => {
   });
 });
 
-describe("discTypeLabel", () => {
+describe("discTypeFromCategory", () => {
   it("maps putt and approach to Putter", () => {
-    expect(discTypeLabel("PUTT AND APPROACH")).toBe("Putter");
+    expect(discTypeFromCategory("PUTT AND APPROACH")).toBe("Putter");
   });
 
   it("maps mid-range to Midrange", () => {
-    expect(discTypeLabel("MID-RANGE")).toBe("Midrange");
+    expect(discTypeFromCategory("MID-RANGE")).toBe("Midrange");
   });
 
   it("maps drivers to Driver", () => {
-    expect(discTypeLabel("DRIVERS")).toBe("Driver");
+    expect(discTypeFromCategory("DRIVERS")).toBe("Driver");
   });
 
   it("returns undefined for unknown categories", () => {
-    expect(discTypeLabel("GLOW")).toBeUndefined();
-    expect(discTypeLabel("STARTER SETS")).toBeUndefined();
+    expect(discTypeFromCategory("GLOW")).toBeUndefined();
+    expect(discTypeFromCategory("STARTER SETS")).toBeUndefined();
+  });
+});
+
+describe("DISC_TYPES", () => {
+  it("has long-form descriptions", () => {
+    expect(DISC_TYPES.Putter.long).toBe("Disc Golf Putter");
+    expect(DISC_TYPES.Midrange.long).toBe("Midrange Golf Disc");
+    expect(DISC_TYPES.Driver.long).toBe("Disc Golf Driver");
+  });
+
+  it("has Square category names", () => {
+    expect(DISC_TYPES.Putter.category).toBe("PUTT AND APPROACH");
+    expect(DISC_TYPES.Midrange.category).toBe("MID-RANGE");
+    expect(DISC_TYPES.Driver.category).toBe("DRIVERS");
   });
 });
 
@@ -808,6 +833,7 @@ describe("expandVariations", () => {
 
     expect(items[0].brand).toBe("RPM");
     expect(items[0].discType).toBe("Putter");
+    expect(items[0].name).toBe("RPM Ruru - Disc Golf Putter - Atomic/Pink/171");
     expect(items[0].productDetails).toContain("Disc:Type:Putter");
   });
 });
@@ -822,7 +848,7 @@ describe("variationToGoogleProduct", () => {
     imageUrl: "https://example.com/ruru-pink.jpg",
     category: "DISCS",
     brand: "RPM",
-    discType: "Disc Golf Putter",
+    discType: "Putter",
     color: "Pink",
     price: 2200,
     currency: "AUD",

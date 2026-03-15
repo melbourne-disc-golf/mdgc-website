@@ -47,7 +47,7 @@ export interface VariationItem {
   imageUrl?: string;
   category?: string;
   brand?: string;
-  discType?: string;
+  discType?: DiscType;
   plastic?: string;
   color?: string;
   weight?: string;
@@ -180,15 +180,16 @@ export function titleCase(name: string): string {
  * - Item names may include a variant suffix, e.g. "TAKAPU - GLOW" → strip " - GLOW"
  * - Variation names may include the disc name prefix, e.g. "KOTARE - ATOMIC/BURNT ORANGE/173" → strip "KOTARE - "
  *
- * e.g., "RPM" + "KOTARE" + "KOTARE - ATOMIC/BURNT ORANGE/173"
- *    -> "RPM Kotare - Atomic/Burnt Orange/173"
- * e.g., undefined + "RURU" + "ATOMIC/PINK/171"
+ * e.g., "RPM" + "KOTARE" + "KOTARE - ATOMIC/BURNT ORANGE/173" + "Disc Golf Putter"
+ *    -> "RPM Kotare - Disc Golf Putter - Atomic/Burnt Orange/173"
+ * e.g., undefined + "RURU" + "ATOMIC/PINK/171" + undefined
  *    -> "Ruru - Atomic/Pink/171"
  */
 export function formatVariationTitle(
   itemName: string,
   varName: string,
   brand?: string,
+  discType?: string,
 ): string {
   // Strip variant suffix from item name (e.g. "TAKAPU - GLOW" -> "TAKAPU")
   const cleanItemName = itemName.includes(" - ")
@@ -208,7 +209,8 @@ export function formatVariationTitle(
   const formattedItem = titleCaseKeepAcronyms(cleanItemName, 2);
   const needsBrand = brand && !formattedItem.toUpperCase().startsWith(brand.toUpperCase());
   const prefix = needsBrand ? `${brand} ${formattedItem}` : formattedItem;
-  return `${prefix} - ${formattedDetail}`;
+  const parts = discType ? [prefix, discType, formattedDetail] : [prefix, formattedDetail];
+  return parts.join(" - ");
 }
 
 /**
@@ -242,20 +244,25 @@ export function titleCaseKeepAcronyms(
 }
 
 /**
- * Map Square's disc type category name to a search-friendly label.
+ * Known disc types: short label, long description, and Square category name.
+ */
+export const DISC_TYPES = {
+  Putter: { long: "Disc Golf Putter", category: "PUTT AND APPROACH" },
+  Midrange: { long: "Midrange Golf Disc", category: "MID-RANGE" },
+  Driver: { long: "Disc Golf Driver", category: "DRIVERS" },
+} as const;
+
+export type DiscType = keyof typeof DISC_TYPES;
+
+/**
+ * Map Square's disc type category name to a DiscType.
  * e.g., "PUTT AND APPROACH" -> "Putter"
  */
-export function discTypeLabel(categoryName: string): string | undefined {
-  switch (categoryName) {
-    case "PUTT AND APPROACH":
-      return "Putter";
-    case "MID-RANGE":
-      return "Midrange";
-    case "DRIVERS":
-      return "Driver";
-    default:
-      return undefined;
+export function discTypeFromCategory(categoryName: string): DiscType | undefined {
+  for (const [key, val] of Object.entries(DISC_TYPES)) {
+    if (val.category === categoryName) return key as DiscType;
   }
+  return undefined;
 }
 
 /**
@@ -417,13 +424,13 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
       }
     }
 
-    let discType: string | undefined;
+    let discType: DiscType | undefined;
     for (const cat of itemCategories) {
       if (cat.id && discTypeCategoryIds.has(cat.id)) {
         const rawType = categories.get(cat.id);
-        const label = rawType ? discTypeLabel(rawType) : undefined;
-        if (label) {
-          discType = label;
+        const matched = rawType ? discTypeFromCategory(rawType) : undefined;
+        if (matched) {
+          discType = matched;
           break;
         }
       }
@@ -483,7 +490,7 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
         variationId: variation.id,
         itemId: obj.id,
         name: varName
-          ? formatVariationTitle(itemData.name ?? "", varName, brand)
+          ? formatVariationTitle(itemData.name ?? "", varName, brand, discType ? DISC_TYPES[discType].long : undefined)
           : titleCase(itemData.name ?? ""),
         description,
         productUrl,
