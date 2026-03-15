@@ -646,7 +646,7 @@ describe("parseVariationColor", () => {
   });
 
   it("handles multi-word colors", () => {
-    expect(parseVariationColor("COSMIC/LIGHT BLUE/177+")).toBe("Light blue");
+    expect(parseVariationColor("COSMIC/LIGHT BLUE/177+")).toBe("Blue");
   });
 
   it("returns undefined for non-standard names", () => {
@@ -660,9 +660,12 @@ describe("parseVariationColor", () => {
 });
 
 describe("normalizeColor", () => {
-  it("expands abbreviations", () => {
-    expect(normalizeColor("Lt blue")).toBe("Light blue");
-    expect(normalizeColor("Lt lilac swirl")).toBe("Light lilac");
+  it("strips shade modifiers and abbreviations", () => {
+    expect(normalizeColor("Lt blue")).toBe("Blue");
+    expect(normalizeColor("Lt lilac swirl")).toBe("Lilac");
+    expect(normalizeColor("Dark pink")).toBe("Pink");
+    expect(normalizeColor("Pale pink")).toBe("Pink");
+    expect(normalizeColor("Fluorescent yellow")).toBe("Yellow");
   });
 
   it("strips 'trans' prefix", () => {

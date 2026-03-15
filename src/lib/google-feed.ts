@@ -139,6 +139,9 @@ export function normalizeColor(raw: string): string | undefined {
   // Strip "trans" (translucent) prefix — not a color
   color = color.replace(/^Trans(parent|lucent)?\s+/i, "");
 
+  // Strip shade modifiers — keep the base color
+  color = color.replace(/^(Light|Dark|Pale|Fluorescent)\s+/i, "");
+
   // Capitalise first letter (may have been lowered by prefix stripping)
   color = color.charAt(0).toUpperCase() + color.slice(1);
 
@@ -152,13 +155,7 @@ export function normalizeColor(raw: string): string | undefined {
   }
 
   // Check the base color is recognisable
-  // For "Light blue", "Dark green" etc, check the second word
-  const words = color.split(/[\s\-\/]/);
-  const baseColor = (
-    /^(light|dark|pale|fluorescent)$/i.test(words[0]) && words.length > 1
-      ? words[1]
-      : words[0]
-  ).toLowerCase();
+  const baseColor = color.split(/[\s\-\/]/)[0].toLowerCase();
   if (!KNOWN_COLORS.has(baseColor)) return undefined;
 
   return color;
