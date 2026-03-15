@@ -142,9 +142,18 @@ export function normalizeColor(raw: string): string | undefined {
   // Capitalise first letter (may have been lowered by prefix stripping)
   color = color.charAt(0).toUpperCase() + color.slice(1);
 
+  // Convert hyphenated color pairs to Google's slash format
+  // e.g. "Lime-purple" -> "Lime/Purple"
+  if (color.includes("-")) {
+    const parts = color.split("-");
+    if (parts.every((p) => KNOWN_COLORS.has(p.toLowerCase()))) {
+      color = parts.map((p) => p.charAt(0).toUpperCase() + p.slice(1)).join("/");
+    }
+  }
+
   // Check the base color is recognisable
   // For "Light blue", "Dark green" etc, check the second word
-  const words = color.split(/[\s-]/);
+  const words = color.split(/[\s\-\/]/);
   const baseColor = (
     /^(light|dark|pale|fluorescent)$/i.test(words[0]) && words.length > 1
       ? words[1]

@@ -674,7 +674,14 @@ describe("normalizeColor", () => {
   it("strips 'swirl' suffix", () => {
     expect(normalizeColor("Pink swirl")).toBe("Pink");
     expect(normalizeColor("Orange swirl")).toBe("Orange");
-    expect(normalizeColor("Blue-pink swirl")).toBe("Blue-pink");
+    expect(normalizeColor("Blue-pink swirl")).toBe("Blue/Pink");
+  });
+
+  it("converts hyphenated color pairs to slash-separated", () => {
+    expect(normalizeColor("Lime-purple")).toBe("Lime/Purple");
+    expect(normalizeColor("Pink-blue")).toBe("Pink/Blue");
+    expect(normalizeColor("White-orange")).toBe("White/Orange");
+    expect(normalizeColor("Charcoal-red")).toBe("Charcoal/Red");
   });
 
   it("passes through standard colors unchanged", () => {
