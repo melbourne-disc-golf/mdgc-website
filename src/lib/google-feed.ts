@@ -20,6 +20,8 @@ export interface GoogleProduct {
   gtin?: string;
   item_group_id?: string;
   color?: string;
+  product_weight?: string;
+  product_detail?: string;
   google_product_category?: string;
   product_type?: string;
 }
@@ -46,9 +48,31 @@ export interface VariationItem {
   brand?: string;
   discType?: string;
   color?: string;
+  weight?: string;
+  productDetails?: string[];
   price: number;
   currency: string;
   quantity: number;
+}
+
+/**
+ * Split a Square variation name into its PLASTIC/COLOR/WEIGHT parts.
+ * Handles optional item name prefix: "RURU - ATOMIC/PINK/171" -> ["ATOMIC", "PINK", "171"]
+ * Returns undefined if the name doesn't follow this format.
+ */
+export function parseVariationParts(
+  name: string,
+): { plastic: string; color: string; weight: string } | undefined {
+  const stripped = name.includes(" - ") ? name.split(" - ").pop()! : name;
+  const parts = stripped.split("/");
+  if (parts.length !== 3) return undefined;
+
+  const plastic = parts[0].trim();
+  const color = parts[1].trim();
+  const weight = parts[2].trim();
+  if (!plastic || !color || !weight) return undefined;
+
+  return { plastic, color, weight };
 }
 
 /**
@@ -59,14 +83,31 @@ export interface VariationItem {
  * e.g., "RURU - ATOMIC/PINK/171" -> "Pink"
  */
 export function parseVariationColor(name: string): string | undefined {
-  // Strip item name prefix (e.g. "RURU - ATOMIC/PINK/171" -> "ATOMIC/PINK/171")
-  const stripped = name.includes(" - ") ? name.split(" - ").pop()! : name;
-  const parts = stripped.split("/");
-  if (parts.length !== 3) return undefined;
+  const parsed = parseVariationParts(name);
+  if (!parsed) return undefined;
+  return normalizeColor(formatName(parsed.color));
+}
 
-  const rawColor = parts[1].trim();
-  if (!rawColor) return undefined;
-  return normalizeColor(formatName(rawColor));
+/**
+ * Parse a Square variation name to extract the weight in grams.
+ * Returns the weight formatted for Google's product_weight attribute.
+ * Weights may be single values ("177") or ranges ("166-9").
+ * For ranges, we use the lower bound.
+ * e.g., "COSMIC/YELLOW/177" -> "177 g"
+ * e.g., "ATOMIC/PINK/166-9" -> "166 g"
+ * e.g., "COSMIC/BLUE/177+" -> "177 g"
+ */
+export function parseVariationWeight(name: string): string | undefined {
+  const parsed = parseVariationParts(name);
+  if (!parsed) return undefined;
+
+  // Strip trailing "+" (means "or heavier")
+  const raw = parsed.weight.replace(/\+$/, "");
+  // Take the first number (handles ranges like "166-9")
+  const match = raw.match(/^(\d+)/);
+  if (!match) return undefined;
+
+  return `${match[1]} g`;
 }
 
 /**
@@ -159,6 +200,52 @@ export function discTypeLabel(categoryName: string): string | undefined {
     default:
       return undefined;
   }
+}
+
+/**
+ * Flight rating numbers for a disc golf disc.
+ */
+export interface FlightNumbers {
+  speed: string;
+  glide: string;
+  turn: string;
+  fade: string;
+}
+
+/**
+ * Parse flight numbers (Speed/Glide/Turn/Fade) from a product description.
+ * These appear in most disc descriptions in formats like:
+ *   "Speed: 7.0\nGlide: 4.0\nTurn: -1.5\nFade: 2.0"
+ *   "SPEED: 6\nGLIDE: 6\nTURN: -3\nFADE: 0"
+ */
+export function parseFlightNumbers(
+  description: string,
+): FlightNumbers | undefined {
+  const m = description.match(
+    /speed\s*:?\s*(-?\d[\d.]*)\s*glide\s*:?\s*(-?\d[\d.]*)\s*turn\s*:?\s*(-?\d[\d.]*)\s*fade\s*:?\s*(-?\d[\d.]*)/i,
+  );
+  if (!m) return undefined;
+
+  const strip = (v: string) => v.replace(/\.0$/, "");
+  return {
+    speed: strip(m[1]),
+    glide: strip(m[2]),
+    turn: strip(m[3]),
+    fade: strip(m[4]),
+  };
+}
+
+/**
+ * Build product_detail entries from flight numbers.
+ * Uses Google's TSV product_detail format: "section_name:attribute_name:attribute_value".
+ */
+export function flightProductDetails(flight: FlightNumbers): string[] {
+  return [
+    `Flight ratings:Speed:${flight.speed}`,
+    `Flight ratings:Glide:${flight.glide}`,
+    `Flight ratings:Turn:${flight.turn}`,
+    `Flight ratings:Fade:${flight.fade}`,
+  ];
 }
 
 /**
@@ -308,18 +395,29 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
       const color = varData.name
         ? parseVariationColor(varData.name)
         : undefined;
+      const weight = varData.name
+        ? parseVariationWeight(varData.name)
+        : undefined;
+
+      const description = itemData.description ?? "";
+      const flight = parseFlightNumbers(description);
+      const productDetails = flight
+        ? flightProductDetails(flight)
+        : undefined;
 
       results.push({
         variationId: variation.id,
         itemId: obj.id,
         name: formatName(itemData.name ?? ""),
-        description: itemData.description ?? "",
+        description,
         productUrl,
         imageUrl: varImageUrl ?? itemImageUrl,
         category,
         brand,
         discType,
+        productDetails,
         color,
+        weight,
         price,
         currency: varData.priceMoney?.currency ?? "AUD",
         quantity,
@@ -357,6 +455,8 @@ export function variationToGoogleProduct(item: VariationItem): GoogleProduct {
     brand: item.brand,
     item_group_id: item.itemId,
     color: item.color,
+    product_weight: item.weight,
+    product_detail: item.productDetails?.join(","),
     google_product_category: getGoogleProductCategory(item.category),
     product_type: item.category,
   };
@@ -388,6 +488,8 @@ const FEED_COLUMNS: (keyof GoogleProduct)[] = [
   "brand",
   "item_group_id",
   "color",
+  "product_weight",
+  "product_detail",
   "google_product_category",
   "product_type",
 ];

@@ -3,9 +3,13 @@ import {
   formatName,
   formatBrand,
   discTypeLabel,
+  parseVariationParts,
   parseVariationColor,
+  parseVariationWeight,
   normalizeColor,
   slugify,
+  parseFlightNumbers,
+  flightProductDetails,
   expandVariations,
   variationToGoogleProduct,
   generateTsvFeed,
@@ -335,6 +339,132 @@ describe("generateTsvFeed", () => {
   });
 });
 
+describe("parseVariationParts", () => {
+  it("splits standard PLASTIC/COLOR/WEIGHT format", () => {
+    expect(parseVariationParts("COSMIC/YELLOW/177")).toEqual({
+      plastic: "COSMIC",
+      color: "YELLOW",
+      weight: "177",
+    });
+  });
+
+  it("strips item name prefix", () => {
+    expect(parseVariationParts("RURU - ATOMIC/PINK/171")).toEqual({
+      plastic: "ATOMIC",
+      color: "PINK",
+      weight: "171",
+    });
+  });
+
+  it("returns undefined for non-standard names", () => {
+    expect(parseVariationParts("STANDARD")).toBeUndefined();
+    expect(parseVariationParts("COSMIC/YELLOW")).toBeUndefined();
+  });
+});
+
+describe("parseVariationWeight", () => {
+  it("extracts weight from standard format", () => {
+    expect(parseVariationWeight("COSMIC/YELLOW/177")).toBe("177 g");
+  });
+
+  it("extracts weight from prefixed variation name", () => {
+    expect(parseVariationWeight("RURU - ATOMIC/PINK/171")).toBe("171 g");
+  });
+
+  it("uses lower bound for weight ranges", () => {
+    expect(parseVariationWeight("MAVERICK - FUZION/ORANGE/166-9")).toBe("166 g");
+  });
+
+  it("strips trailing + from weight", () => {
+    expect(parseVariationWeight("COSMIC/BLUE/177+")).toBe("177 g");
+  });
+
+  it("returns undefined for non-standard names", () => {
+    expect(parseVariationWeight("STANDARD")).toBeUndefined();
+  });
+});
+
+describe("parseFlightNumbers", () => {
+  it("parses flight numbers and strips .0 suffix", () => {
+    const desc = "Great disc.\n\nSpeed: 7.0\nGlide: 4.0\nTurn: -1.5\nFade: 2.0";
+    expect(parseFlightNumbers(desc)).toEqual({
+      speed: "7",
+      glide: "4",
+      turn: "-1.5",
+      fade: "2",
+    });
+  });
+
+  it("parses integer flight numbers (case-insensitive)", () => {
+    const desc = "A good disc\n\nSPEED: 6\nGLIDE: 6\nTURN: -3\nFADE: 0";
+    expect(parseFlightNumbers(desc)).toEqual({
+      speed: "6",
+      glide: "6",
+      turn: "-3",
+      fade: "0",
+    });
+  });
+
+  it("returns undefined when flight numbers are missing", () => {
+    expect(parseFlightNumbers("Just a description")).toBeUndefined();
+  });
+
+  it("returns undefined when only some stats are present", () => {
+    expect(parseFlightNumbers("Speed: 7.0\nGlide: 4.0")).toBeUndefined();
+  });
+
+  it("ignores stat keywords in prose, matches the actual stats", () => {
+    const desc = "stable flight with a gentle late fade. The bead-less rim\n\nSPEED: 2\nGLIDE: 3\nTURN: 0\nFADE: 2";
+    const result = parseFlightNumbers(desc)!;
+    expect(result).toEqual({ speed: "2", glide: "3", turn: "0", fade: "2" });
+  });
+
+  it("returns undefined when one stat is missing", () => {
+    expect(parseFlightNumbers("SPEED: 5\nGLIDE: 4\nTURN: -1")).toBeUndefined();
+  });
+
+  it("returns undefined when a stat value is garbled", () => {
+    expect(parseFlightNumbers("SPEED: 5\nGLIDE: 5\nTURN: -!\nFADE: 1")).toBeUndefined();
+  });
+
+  it("parses flight numbers on a single line", () => {
+    const desc = "A great disc. SPEED: 9GLIDE: 5TURN: -1FADE: 2";
+    expect(parseFlightNumbers(desc)).toEqual({
+      speed: "9",
+      glide: "5",
+      turn: "-1",
+      fade: "2",
+    });
+  });
+
+  it("parses flight numbers without colons", () => {
+    const desc = "A disc\n\nSPEED: 3\nGLIDE 3\nTURN: -1\nFADE: 1";
+    expect(parseFlightNumbers(desc)).toEqual({
+      speed: "3",
+      glide: "3",
+      turn: "-1",
+      fade: "1",
+    });
+  });
+});
+
+describe("flightProductDetails", () => {
+  it("builds product_detail entries from flight numbers", () => {
+    const details = flightProductDetails({
+      speed: "7",
+      glide: "4",
+      turn: "-1.5",
+      fade: "2",
+    });
+    expect(details).toEqual([
+      "Flight ratings:Speed:7",
+      "Flight ratings:Glide:4",
+      "Flight ratings:Turn:-1.5",
+      "Flight ratings:Fade:2",
+    ]);
+  });
+});
+
 describe("parseVariationColor", () => {
   it("extracts color from PLASTIC/COLOR/WEIGHT format", () => {
     expect(parseVariationColor("COSMIC/YELLOW/177")).toBe("Yellow");
@@ -486,6 +616,70 @@ describe("expandVariations", () => {
     expect(items[0].variationId).toBe("var-2");
   });
 
+  it("extracts weight from variation name", () => {
+    const data: SquareInventoryData = {
+      catalogObjects: [
+        makeItem({
+          id: "item-1",
+          name: "Ruru",
+          variations: [
+            { id: "var-1", name: "ATOMIC/PINK/171", priceAmount: 2200n },
+          ],
+        }),
+      ],
+      inventoryCounts: [makeInventoryCount("var-1", 1)],
+    };
+
+    const items = expandVariations(data);
+
+    expect(items[0].weight).toBe("171 g");
+  });
+
+  it("builds product highlights from flight numbers in description", () => {
+    const data: SquareInventoryData = {
+      catalogObjects: [
+        makeItem({
+          id: "item-1",
+          name: "Ruru",
+          description: "A putter\n\nSpeed: 2.0\nGlide: 5.0\nTurn: 0\nFade: 1.0",
+          variations: [
+            { id: "var-1", name: "ATOMIC/PINK/171", priceAmount: 2200n },
+          ],
+        }),
+      ],
+      inventoryCounts: [makeInventoryCount("var-1", 1)],
+    };
+
+    const items = expandVariations(data);
+
+    expect(items[0].productDetails).toEqual([
+      "Flight ratings:Speed:2",
+      "Flight ratings:Glide:5",
+      "Flight ratings:Turn:0",
+      "Flight ratings:Fade:1",
+    ]);
+  });
+
+  it("omits product details when description lacks flight numbers", () => {
+    const data: SquareInventoryData = {
+      catalogObjects: [
+        makeItem({
+          id: "item-1",
+          name: "Disc bag",
+          description: "A bag for discs",
+          variations: [
+            { id: "var-1", name: "STANDARD", priceAmount: 5000n },
+          ],
+        }),
+      ],
+      inventoryCounts: [makeInventoryCount("var-1", 1)],
+    };
+
+    const items = expandVariations(data);
+
+    expect(items[0].productDetails).toBeUndefined();
+  });
+
   it("inherits brand and disc type from parent item", () => {
     const data: SquareInventoryData = {
       catalogObjects: [
@@ -562,6 +756,26 @@ describe("variationToGoogleProduct", () => {
     expect(variationToGoogleProduct(sampleVariation).availability).toBe(
       "in_stock"
     );
+  });
+
+  it("includes product_weight when weight is set", () => {
+    const withWeight = { ...sampleVariation, weight: "171 g" };
+    const result = variationToGoogleProduct(withWeight);
+    expect(result.product_weight).toBe("171 g");
+  });
+
+  it("includes product_detail from flight numbers", () => {
+    const withDetails = {
+      ...sampleVariation,
+      productDetails: [
+        "Flight ratings:Speed:7",
+        "Flight ratings:Glide:5",
+        "Flight ratings:Turn:-2",
+        "Flight ratings:Fade:1",
+      ],
+    };
+    const result = variationToGoogleProduct(withDetails);
+    expect(result.product_detail).toBe("Flight ratings:Speed:7,Flight ratings:Glide:5,Flight ratings:Turn:-2,Flight ratings:Fade:1");
   });
 });
 
