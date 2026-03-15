@@ -60,6 +60,31 @@ export function formatName(name: string): string {
 }
 
 /**
+ * Convert all-caps brand name to proper casing.
+ * Short words (≤3 chars) are kept as-is, since they're likely acronyms.
+ * e.g., "INNOVA" -> "Innova"
+ * e.g., "LATITUDE 64" -> "Latitude 64"
+ * e.g., "AXIOM DISCS" -> "Axiom Discs"
+ * e.g., "RPM" -> "RPM"
+ * e.g., "MVP" -> "MVP"
+ */
+export function formatBrand(name: string): string {
+  if (name !== name.toUpperCase()) return name;
+  return name
+    .split(" ")
+    .map((word) =>
+      word
+        .split("-")
+        .map((part) => {
+          if (part.length <= 3) return part;
+          return part.charAt(0) + part.slice(1).toLowerCase();
+        })
+        .join("-"),
+    )
+    .join(" ");
+}
+
+/**
  * Convert a name to a URL-safe slug.
  * e.g., "RURU" -> "ruru"
  * e.g., "Innova Destroyer" -> "innova-destroyer"
@@ -158,7 +183,8 @@ export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
     const itemCategories = itemData.categories ?? [];
     for (const cat of itemCategories) {
       if (cat.id && brandCategoryIds.has(cat.id)) {
-        brand = categories.get(cat.id);
+        const rawBrand = categories.get(cat.id);
+        brand = rawBrand ? formatBrand(rawBrand) : undefined;
         break;
       }
     }

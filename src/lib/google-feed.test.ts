@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   formatName,
+  formatBrand,
   slugify,
   aggregateItems,
   toGoogleProduct,
@@ -113,6 +114,31 @@ describe("formatName", () => {
 
   it("preserves single word mixed case", () => {
     expect(formatName("Envy")).toBe("Envy");
+  });
+});
+
+describe("formatBrand", () => {
+  it("converts all-caps brand to title case", () => {
+    expect(formatBrand("INNOVA")).toBe("Innova");
+  });
+
+  it("converts multi-word all-caps brand", () => {
+    expect(formatBrand("AXIOM DISCS")).toBe("Axiom Discs");
+    expect(formatBrand("DYNAMIC DISCS")).toBe("Dynamic Discs");
+    expect(formatBrand("LATITUDE 64")).toBe("Latitude 64");
+  });
+
+  it("keeps short words as acronyms", () => {
+    expect(formatBrand("RPM")).toBe("RPM");
+    expect(formatBrand("MVP")).toBe("MVP");
+  });
+
+  it("keeps hyphenated acronyms intact", () => {
+    expect(formatBrand("X-COM")).toBe("X-COM");
+  });
+
+  it("preserves already mixed-case brands", () => {
+    expect(formatBrand("Kastaplast")).toBe("Kastaplast");
   });
 });
 
