@@ -83,6 +83,7 @@ Dear agent: when working with humans on this project, please:
 
 - Explain the changes you make: why you decided to do them, and how they work.
 - Don't commit changes to Git without checking first.
+- For complex (but testable) code, write tests first.
 
 ## Status
 
