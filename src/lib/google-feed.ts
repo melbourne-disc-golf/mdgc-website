@@ -87,7 +87,7 @@ export function parseVariationParts(
 export function parseVariationColor(name: string): string | undefined {
   const parsed = parseVariationParts(name);
   if (!parsed) return undefined;
-  return normalizeColor(formatName(parsed.color));
+  return normalizeColor(titleCase(parsed.color));
 }
 
 /**
@@ -98,7 +98,7 @@ export function parseVariationColor(name: string): string | undefined {
 export function parseVariationPlastic(name: string): string | undefined {
   const parsed = parseVariationParts(name);
   if (!parsed) return undefined;
-  return formatBrand(parsed.plastic);
+  return titleCaseKeepAcronyms(parsed.plastic);
 }
 
 /**
@@ -165,7 +165,7 @@ export function normalizeColor(raw: string): string | undefined {
  * e.g., "RURU" -> "Ruru"
  * e.g., "Innova Destroyer" -> "Innova Destroyer" (unchanged)
  */
-export function formatName(name: string): string {
+export function titleCase(name: string): string {
   // If the name is all caps, convert to title case
   if (name === name.toUpperCase() && name.length > 1) {
     return name.charAt(0) + name.slice(1).toLowerCase();
@@ -199,13 +199,13 @@ export function formatVariationTitle(
   const detail = varName.includes(" - ") ? varName.split(" - ").pop()!.trim() : varName;
 
   const formatWords = (s: string) =>
-    s.split(" ").map((w) => formatName(w)).join(" ");
+    s.split(" ").map((w) => titleCase(w)).join(" ");
   const detailParts = detail.split("/");
   const formattedDetail = detailParts
-    .map((seg, i) => (i === 0 ? formatBrand(seg) : formatWords(seg)))
+    .map((seg, i) => (i === 0 ? titleCaseKeepAcronyms(seg) : formatWords(seg)))
     .join("/");
 
-  const formattedItem = formatName(cleanItemName);
+  const formattedItem = titleCaseKeepAcronyms(cleanItemName, 2);
   const needsBrand = brand && !formattedItem.toUpperCase().startsWith(brand.toUpperCase());
   const prefix = needsBrand ? `${brand} ${formattedItem}` : formattedItem;
   return `${prefix} - ${formattedDetail}`;
@@ -220,7 +220,10 @@ export function formatVariationTitle(
  * e.g., "RPM" -> "RPM"
  * e.g., "MVP" -> "MVP"
  */
-export function formatBrand(name: string): string {
+export function titleCaseKeepAcronyms(
+  name: string,
+  maxAcronymLength = 3,
+): string {
   if (name !== name.toUpperCase()) return name;
   return name
     .split(" ")
@@ -228,7 +231,9 @@ export function formatBrand(name: string): string {
       word
         .split("-")
         .map((part) => {
-          if (part.length <= 3) return part;
+          if (part.length <= maxAcronymLength) return part;
+          const alpha = part.replace(/[^a-zA-Z]/g, "");
+          if (/\d/.test(part) && alpha.length <= maxAcronymLength) return part;
           return part.charAt(0) + part.slice(1).toLowerCase();
         })
         .join("-"),
@@ -407,7 +412,7 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
     for (const cat of itemCategories) {
       if (cat.id && brandCategoryIds.has(cat.id)) {
         const rawBrand = categories.get(cat.id);
-        brand = rawBrand ? formatBrand(rawBrand) : undefined;
+        brand = rawBrand ? titleCaseKeepAcronyms(rawBrand) : undefined;
         break;
       }
     }
@@ -479,7 +484,7 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
         itemId: obj.id,
         name: varName
           ? formatVariationTitle(itemData.name ?? "", varName, brand)
-          : formatName(itemData.name ?? ""),
+          : titleCase(itemData.name ?? ""),
         description,
         productUrl,
         imageUrl: varImageUrl ?? itemImageUrl,

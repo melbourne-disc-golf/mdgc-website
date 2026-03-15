@@ -1,8 +1,8 @@
 import { describe, it, expect } from "vitest";
 import {
-  formatName,
+  titleCase,
+  titleCaseKeepAcronyms,
   formatVariationTitle,
-  formatBrand,
   discTypeLabel,
   parseVariationParts,
   parseVariationColor,
@@ -108,21 +108,21 @@ function makeInventoryCount(
   } as InventoryCount;
 }
 
-describe("formatName", () => {
+describe("titleCase", () => {
   it("converts all-caps to title case", () => {
-    expect(formatName("MAVERICK")).toBe("Maverick");
+    expect(titleCase("MAVERICK")).toBe("Maverick");
   });
 
   it("converts all-caps multi-word names", () => {
-    expect(formatName("RURU")).toBe("Ruru");
+    expect(titleCase("RURU")).toBe("Ruru");
   });
 
   it("preserves mixed case names", () => {
-    expect(formatName("Innova Destroyer")).toBe("Innova Destroyer");
+    expect(titleCase("Innova Destroyer")).toBe("Innova Destroyer");
   });
 
   it("preserves single word mixed case", () => {
-    expect(formatName("Envy")).toBe("Envy");
+    expect(titleCase("Envy")).toBe("Envy");
   });
 });
 
@@ -151,30 +151,57 @@ describe("formatVariationTitle", () => {
     expect(formatVariationTitle("RPM Starter Disc Set", "Pekapeka/Kotuku/Ruru", "RPM"))
       .toBe("RPM Starter Disc Set - Pekapeka/Kotuku/Ruru");
   });
+
+  it("title-cases multi-word item names", () => {
+    expect(formatVariationTitle("TIME LAPSE", "Neutron/Red-grey/173-5", "Axiom Discs"))
+      .toBe("Axiom Discs Time Lapse - Neutron/Red-grey/173-5");
+  });
+
+  it("keeps short abbreviations in item names", () => {
+    expect(formatVariationTitle("BUZZZ OS", "ESP/Pink Swirl/164-6", "Discraft"))
+      .toBe("Discraft Buzzz OS - ESP/Pink Swirl/164-6");
+    expect(formatVariationTitle("BUZZZ SS", "ESP/Pink Swirl/170-2", "Discraft"))
+      .toBe("Discraft Buzzz SS - ESP/Pink Swirl/170-2");
+  });
+
+  it("title-cases short disc names", () => {
+    expect(formatVariationTitle("TUI", "Glow/White/173-5", "RPM"))
+      .toBe("RPM Tui - Glow/White/173-5");
+  });
+
+  it("keeps short alphanumeric model codes in item names", () => {
+    expect(formatVariationTitle("TL3", "Star/Orange/172", "Innova"))
+      .toBe("Innova TL3 - Star/Orange/172");
+  });
+
+  it("title-cases longer alphanumeric names", () => {
+    expect(formatVariationTitle("ROC3", "Champion/Yellow/180", "Innova"))
+      .toBe("Innova Roc3 - Champion/Yellow/180");
+  });
 });
 
-describe("formatBrand", () => {
+describe("titleCaseKeepAcronyms", () => {
   it("converts all-caps brand to title case", () => {
-    expect(formatBrand("INNOVA")).toBe("Innova");
+    expect(titleCaseKeepAcronyms("INNOVA")).toBe("Innova");
   });
 
   it("converts multi-word all-caps brand", () => {
-    expect(formatBrand("AXIOM DISCS")).toBe("Axiom Discs");
-    expect(formatBrand("DYNAMIC DISCS")).toBe("Dynamic Discs");
-    expect(formatBrand("LATITUDE 64")).toBe("Latitude 64");
+    expect(titleCaseKeepAcronyms("AXIOM DISCS")).toBe("Axiom Discs");
+    expect(titleCaseKeepAcronyms("DYNAMIC DISCS")).toBe("Dynamic Discs");
+    expect(titleCaseKeepAcronyms("LATITUDE 64")).toBe("Latitude 64");
   });
 
   it("keeps short words as acronyms", () => {
-    expect(formatBrand("RPM")).toBe("RPM");
-    expect(formatBrand("MVP")).toBe("MVP");
+    expect(titleCaseKeepAcronyms("RPM")).toBe("RPM");
+    expect(titleCaseKeepAcronyms("MVP")).toBe("MVP");
   });
 
   it("keeps hyphenated acronyms intact", () => {
-    expect(formatBrand("X-COM")).toBe("X-COM");
+    expect(titleCaseKeepAcronyms("X-COM")).toBe("X-COM");
   });
 
   it("preserves already mixed-case brands", () => {
-    expect(formatBrand("Kastaplast")).toBe("Kastaplast");
+    expect(titleCaseKeepAcronyms("Kastaplast")).toBe("Kastaplast");
   });
 });
 
