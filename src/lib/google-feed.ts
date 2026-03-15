@@ -434,6 +434,9 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
         ? `https://${SHOP_DOMAIN}/product/${slug}/${obj.id}`
         : undefined;
 
+    const rawDescription = itemData.description ?? "";
+    const extracted = extractFlightRatings(rawDescription);
+
     for (const variation of variations) {
       if (variation.type !== "ITEM_VARIATION" || !variation.id) continue;
       const varData = variation.itemVariationData;
@@ -454,18 +457,11 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
           ? images.get(varImageIds[0])
           : undefined;
 
-      const plastic = varData.name
-        ? parseVariationPlastic(varData.name)
-        : undefined;
-      const color = varData.name
-        ? parseVariationColor(varData.name)
-        : undefined;
-      const weight = varData.name
-        ? parseVariationWeight(varData.name)
-        : undefined;
+      const varName = varData.name;
+      const plastic = varName ? parseVariationPlastic(varName) : undefined;
+      const color = varName ? parseVariationColor(varName) : undefined;
+      const weight = varName ? parseVariationWeight(varName) : undefined;
 
-      const rawDescription = itemData.description ?? "";
-      const extracted = extractFlightRatings(rawDescription);
       const productDetails: string[] = [];
       if (discType) {
         productDetails.push(`Disc:Type:${discType}`);
@@ -481,8 +477,8 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
       results.push({
         variationId: variation.id,
         itemId: obj.id,
-        name: varData.name
-          ? formatVariationTitle(itemData.name ?? "", varData.name, brand)
+        name: varName
+          ? formatVariationTitle(itemData.name ?? "", varName, brand)
           : formatName(itemData.name ?? ""),
         description,
         productUrl,
