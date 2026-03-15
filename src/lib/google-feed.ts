@@ -218,9 +218,9 @@ export interface FlightNumbers {
  *   "Speed: 7.0\nGlide: 4.0\nTurn: -1.5\nFade: 2.0"
  *   "SPEED: 6\nGLIDE: 6\nTURN: -3\nFADE: 0"
  */
-export function parseFlightNumbers(
+export function parseFlightRatings(
   description: string,
-): FlightNumbers | undefined {
+): FlightRatings | undefined {
   const m = description.match(
     /speed\s*:?\s*(-?\d[\d.]*)\s*glide\s*:?\s*(-?\d[\d.]*)\s*turn\s*:?\s*(-?\d[\d.]*)\s*fade\s*:?\s*(-?\d[\d.]*)/i,
   );
@@ -236,7 +236,7 @@ export function parseFlightNumbers(
 }
 
 /**
- * Build product_detail entries from flight numbers.
+ * Build product_detail entries from flight ratings.
  * Uses Google's TSV product_detail format: "section_name:attribute_name:attribute_value".
  */
 export function flightProductDetails(flight: FlightNumbers): string[] {
@@ -400,7 +400,7 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
         : undefined;
 
       const description = itemData.description ?? "";
-      const flight = parseFlightNumbers(description);
+      const flight = parseFlightRatings(description);
       const productDetails = flight
         ? flightProductDetails(flight)
         : undefined;

@@ -8,7 +8,7 @@ import {
   parseVariationWeight,
   normalizeColor,
   slugify,
-  parseFlightNumbers,
+  parseFlightRatings,
   flightProductDetails,
   expandVariations,
   variationToGoogleProduct,
@@ -384,10 +384,10 @@ describe("parseVariationWeight", () => {
   });
 });
 
-describe("parseFlightNumbers", () => {
-  it("parses flight numbers and strips .0 suffix", () => {
+describe("parseFlightRatings", () => {
+  it("parses flight ratings and strips .0 suffix", () => {
     const desc = "Great disc.\n\nSpeed: 7.0\nGlide: 4.0\nTurn: -1.5\nFade: 2.0";
-    expect(parseFlightNumbers(desc)).toEqual({
+    expect(parseFlightRatings(desc)).toEqual({
       speed: "7",
       glide: "4",
       turn: "-1.5",
@@ -395,9 +395,9 @@ describe("parseFlightNumbers", () => {
     });
   });
 
-  it("parses integer flight numbers (case-insensitive)", () => {
+  it("parses integer flight ratings (case-insensitive)", () => {
     const desc = "A good disc\n\nSPEED: 6\nGLIDE: 6\nTURN: -3\nFADE: 0";
-    expect(parseFlightNumbers(desc)).toEqual({
+    expect(parseFlightRatings(desc)).toEqual({
       speed: "6",
       glide: "6",
       turn: "-3",
@@ -405,31 +405,31 @@ describe("parseFlightNumbers", () => {
     });
   });
 
-  it("returns undefined when flight numbers are missing", () => {
-    expect(parseFlightNumbers("Just a description")).toBeUndefined();
+  it("returns undefined when flight ratings are missing", () => {
+    expect(parseFlightRatings("Just a description")).toBeUndefined();
   });
 
   it("returns undefined when only some stats are present", () => {
-    expect(parseFlightNumbers("Speed: 7.0\nGlide: 4.0")).toBeUndefined();
+    expect(parseFlightRatings("Speed: 7.0\nGlide: 4.0")).toBeUndefined();
   });
 
   it("ignores stat keywords in prose, matches the actual stats", () => {
     const desc = "stable flight with a gentle late fade. The bead-less rim\n\nSPEED: 2\nGLIDE: 3\nTURN: 0\nFADE: 2";
-    const result = parseFlightNumbers(desc)!;
+    const result = parseFlightRatings(desc)!;
     expect(result).toEqual({ speed: "2", glide: "3", turn: "0", fade: "2" });
   });
 
   it("returns undefined when one stat is missing", () => {
-    expect(parseFlightNumbers("SPEED: 5\nGLIDE: 4\nTURN: -1")).toBeUndefined();
+    expect(parseFlightRatings("SPEED: 5\nGLIDE: 4\nTURN: -1")).toBeUndefined();
   });
 
   it("returns undefined when a stat value is garbled", () => {
-    expect(parseFlightNumbers("SPEED: 5\nGLIDE: 5\nTURN: -!\nFADE: 1")).toBeUndefined();
+    expect(parseFlightRatings("SPEED: 5\nGLIDE: 5\nTURN: -!\nFADE: 1")).toBeUndefined();
   });
 
   it("parses flight numbers on a single line", () => {
     const desc = "A great disc. SPEED: 9GLIDE: 5TURN: -1FADE: 2";
-    expect(parseFlightNumbers(desc)).toEqual({
+    expect(parseFlightRatings(desc)).toEqual({
       speed: "9",
       glide: "5",
       turn: "-1",
@@ -439,7 +439,7 @@ describe("parseFlightNumbers", () => {
 
   it("parses flight numbers without colons", () => {
     const desc = "A disc\n\nSPEED: 3\nGLIDE 3\nTURN: -1\nFADE: 1";
-    expect(parseFlightNumbers(desc)).toEqual({
+    expect(parseFlightRatings(desc)).toEqual({
       speed: "3",
       glide: "3",
       turn: "-1",
