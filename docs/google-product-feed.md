@@ -44,9 +44,9 @@ Not all catalog items are available on the online store. We need to check:
 
 ### 4. Brand extraction
 
-Google requires a brand for each product. Square doesn't have a dedicated brand field, but MDGC uses a category hierarchy where brands are child categories of a "BRANDS" parent category.
+Square doesn't have a dedicated brand field, but MDGC uses a category hierarchy where brands are child categories of a "BRANDS" parent category.
 
-We traverse the category tree to find which of an item's categories has "BRANDS" as its parent.
+We traverse the category tree to find which of an item's categories has "BRANDS" as its parent. Items without a brand category are left with no brand in the feed.
 
 ### 5. Price selection
 
@@ -73,7 +73,7 @@ Square API  →  square-inventory.json  →  git push  →  site build  →  goo
 | Function | Purpose |
 |----------|---------|
 | `aggregateItems()` | Combines variations into single items, extracts brand, calculates min price |
-| `toGoogleProduct()` | Converts aggregated item to Google's required fields |
+| `toGoogleProduct()` | Converts aggregated item to Google's required fields (prefixes brand to title) |
 | `generateTsvFeed()` | Produces the final TSV with header row |
 | `slugify()` | Converts product names to URL-safe slugs |
 | `formatName()` | Converts ALL-CAPS names to Title Case |
@@ -95,14 +95,6 @@ The shop domain is hardcoded in `google-feed.ts`:
 
 ```typescript
 const SHOP_DOMAIN = "mdgcshop.square.site";
-```
-
-The default brand (used when no brand category is found) is configured when calling `generateTsvFeed()`:
-
-```typescript
-const config: FeedConfig = {
-  defaultBrand: "MDGC",
-};
 ```
 
 ## Usage
