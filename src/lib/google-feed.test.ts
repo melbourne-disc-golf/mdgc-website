@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   formatName,
+  formatVariationTitle,
   formatBrand,
   discTypeLabel,
   parseVariationParts,
@@ -122,6 +123,33 @@ describe("formatName", () => {
 
   it("preserves single word mixed case", () => {
     expect(formatName("Envy")).toBe("Envy");
+  });
+});
+
+describe("formatVariationTitle", () => {
+  it("combines brand, item name, and variation detail", () => {
+    expect(formatVariationTitle("KOTARE", "KOTARE - ATOMIC/BURNT ORANGE/173", "RPM"))
+      .toBe("RPM Kotare - Atomic/Burnt Orange/173");
+  });
+
+  it("works without brand", () => {
+    expect(formatVariationTitle("RURU", "ATOMIC/PINK/171"))
+      .toBe("Ruru - Atomic/Pink/171");
+  });
+
+  it("strips variant suffix from item name", () => {
+    expect(formatVariationTitle("TAKAPU - GLOW", "Glow/White/170-2", "RPM"))
+      .toBe("RPM Takapu - Glow/White/170-2");
+  });
+
+  it("strips item name prefix from variation name", () => {
+    expect(formatVariationTitle("KOTARE", "KOTARE - ATOMIC/RED/175"))
+      .toBe("Kotare - Atomic/Red/175");
+  });
+
+  it("avoids duplicating brand already in item name", () => {
+    expect(formatVariationTitle("RPM Starter Disc Set", "Pekapeka/Kotuku/Ruru", "RPM"))
+      .toBe("RPM Starter Disc Set - Pekapeka/Kotuku/Ruru");
   });
 });
 
@@ -507,8 +535,9 @@ describe("parseVariationPlastic", () => {
     expect(parseVariationPlastic("KOTARE - ATOMIC/BURNT ORANGE/173")).toBe("Atomic");
   });
 
-  it("preserves mixed-case plastic names", () => {
-    expect(parseVariationPlastic("VIP-X/RED/175")).toBe("Vip-x");
+  it("keeps short plastic names as acronyms", () => {
+    expect(parseVariationPlastic("ESP/RED/175")).toBe("ESP");
+    expect(parseVariationPlastic("VIP-X/RED/175")).toBe("VIP-X");
   });
 
   it("returns undefined for non-standard names", () => {
@@ -587,7 +616,7 @@ describe("expandVariations", () => {
     expect(items[0]).toMatchObject({
       variationId: "var-1",
       itemId: "item-1",
-      name: "Ruru",
+      name: "Ruru - Atomic/Pink/171",  
       color: "Pink",
       price: 2200,
       quantity: 2,
@@ -793,9 +822,9 @@ describe("variationToGoogleProduct", () => {
     expect(result.price).toBe("22.00 AUD");
   });
 
-  it("builds title with brand prefix", () => {
+  it("uses name as title", () => {
     const result = variationToGoogleProduct(sampleVariation);
-    expect(result.title).toBe("RPM Ruru");
+    expect(result.title).toBe("Ruru");
   });
 
   it("sets availability from variation quantity", () => {

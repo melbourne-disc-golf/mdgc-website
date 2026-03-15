@@ -98,7 +98,7 @@ export function parseVariationColor(name: string): string | undefined {
 export function parseVariationPlastic(name: string): string | undefined {
   const parsed = parseVariationParts(name);
   if (!parsed) return undefined;
-  return formatName(parsed.plastic);
+  return formatBrand(parsed.plastic);
 }
 
 /**
@@ -171,6 +171,44 @@ export function formatName(name: string): string {
     return name.charAt(0) + name.slice(1).toLowerCase();
   }
   return name;
+}
+
+/**
+ * Build a display title from brand, item name and variation name.
+ *
+ * Handles two quirks of Square naming:
+ * - Item names may include a variant suffix, e.g. "TAKAPU - GLOW" → strip " - GLOW"
+ * - Variation names may include the disc name prefix, e.g. "KOTARE - ATOMIC/BURNT ORANGE/173" → strip "KOTARE - "
+ *
+ * e.g., "RPM" + "KOTARE" + "KOTARE - ATOMIC/BURNT ORANGE/173"
+ *    -> "RPM Kotare - Atomic/Burnt Orange/173"
+ * e.g., undefined + "RURU" + "ATOMIC/PINK/171"
+ *    -> "Ruru - Atomic/Pink/171"
+ */
+export function formatVariationTitle(
+  itemName: string,
+  varName: string,
+  brand?: string,
+): string {
+  // Strip variant suffix from item name (e.g. "TAKAPU - GLOW" -> "TAKAPU")
+  const cleanItemName = itemName.includes(" - ")
+    ? itemName.split(" - ")[0].trim()
+    : itemName;
+
+  // Strip item name prefix from variation name
+  const detail = varName.includes(" - ") ? varName.split(" - ").pop()!.trim() : varName;
+
+  const formatWords = (s: string) =>
+    s.split(" ").map((w) => formatName(w)).join(" ");
+  const detailParts = detail.split("/");
+  const formattedDetail = detailParts
+    .map((seg, i) => (i === 0 ? formatBrand(seg) : formatWords(seg)))
+    .join("/");
+
+  const formattedItem = formatName(cleanItemName);
+  const needsBrand = brand && !formattedItem.toUpperCase().startsWith(brand.toUpperCase());
+  const prefix = needsBrand ? `${brand} ${formattedItem}` : formattedItem;
+  return `${prefix} - ${formattedDetail}`;
 }
 
 /**
@@ -443,7 +481,9 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
       results.push({
         variationId: variation.id,
         itemId: obj.id,
-        name: formatName(itemData.name ?? ""),
+        name: varData.name
+          ? formatVariationTitle(itemData.name ?? "", varData.name, brand)
+          : formatName(itemData.name ?? ""),
         description,
         productUrl,
         imageUrl: varImageUrl ?? itemImageUrl,
@@ -471,14 +511,9 @@ export function variationToGoogleProduct(item: VariationItem): GoogleProduct {
   const priceValue = (item.price / 100).toFixed(2);
   const price = `${priceValue} ${item.currency}`;
 
-  let title = item.name;
-  if (item.brand && !title.startsWith(item.brand)) {
-    title = `${item.brand} ${title}`;
-  }
-
   return {
     id: item.variationId,
-    title,
+    title: item.name,
     description: item.description || item.name,
     link: item.productUrl || "",
     image_link: item.imageUrl || "",
