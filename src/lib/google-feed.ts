@@ -105,6 +105,7 @@ const KNOWN_COLORS = new Set([
   "indigo",
   "lilac",
   "lime",
+  "magenta",
   "orange",
   "peach",
   "pearl",
