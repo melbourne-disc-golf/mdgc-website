@@ -213,26 +213,34 @@ export interface FlightNumbers {
 }
 
 /**
- * Parse flight numbers (Speed/Glide/Turn/Fade) from a product description.
- * These appear in most disc descriptions in formats like:
+ * Extract flight numbers (Speed/Glide/Turn/Fade) from a product description.
+ * Returns the parsed numbers and a cleaned description with the verbose
+ * flight rating lines replaced by a compact summary, e.g. "(7/5/-1/2)".
+ *
+ * Input formats handled:
  *   "Speed: 7.0\nGlide: 4.0\nTurn: -1.5\nFade: 2.0"
  *   "SPEED: 6\nGLIDE: 6\nTURN: -3\nFADE: 0"
  */
-export function parseFlightRatings(
+export function extractFlightRatings(
   description: string,
-): FlightRatings | undefined {
-  const m = description.match(
-    /speed\s*:?\s*(-?\d[\d.]*)\s*glide\s*:?\s*(-?\d[\d.]*)\s*turn\s*:?\s*(-?\d[\d.]*)\s*fade\s*:?\s*(-?\d[\d.]*)/i,
-  );
+): { flight: FlightNumbers; description: string } | undefined {
+  const pattern =
+    /\s*speed\s*:?\s*(-?\d[\d.]*)\s*glide\s*:?\s*(-?\d[\d.]*)\s*turn\s*:?\s*(-?\d[\d.]*)\s*fade\s*:?\s*(-?\d[\d.]*)/i;
+  const m = description.match(pattern);
   if (!m) return undefined;
 
   const strip = (v: string) => v.replace(/\.0$/, "");
-  return {
+  const flight: FlightNumbers = {
     speed: strip(m[1]),
     glide: strip(m[2]),
     turn: strip(m[3]),
     fade: strip(m[4]),
   };
+
+  const compact = `(${flight.speed} / ${flight.glide} / ${flight.turn} / ${flight.fade})`;
+  const cleaned = description.replace(pattern, ` ${compact}`).trim();
+
+  return { flight, description: cleaned };
 }
 
 /**
@@ -399,11 +407,12 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
         ? parseVariationWeight(varData.name)
         : undefined;
 
-      const description = itemData.description ?? "";
-      const flight = parseFlightRatings(description);
-      const productDetails = flight
-        ? flightProductDetails(flight)
+      const rawDescription = itemData.description ?? "";
+      const extracted = extractFlightRatings(rawDescription);
+      const productDetails = extracted
+        ? flightProductDetails(extracted.flight)
         : undefined;
+      const description = extracted?.description ?? rawDescription;
 
       results.push({
         variationId: variation.id,
