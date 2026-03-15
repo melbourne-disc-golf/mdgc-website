@@ -1,6 +1,9 @@
 help:
     just -l
 
+test:
+    pnpm vitest run
+
 build:
     pnpm run build
 
