@@ -193,7 +193,10 @@ export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
     // URL format: https://{domain}/product/{slug}/{item-id}
     // Requires: ecom_visibility not UNAVAILABLE and has channels
     const hasChannels = (itemData.channels?.length ?? 0) > 0;
-    const isVisible = itemData.ecomVisibility !== "UNAVAILABLE";
+    // ecom_visibility exists in the raw JSON but is missing from the SDK types
+    const ecomVisibility = (itemData as Record<string, unknown>)
+      .ecom_visibility as string | undefined;
+    const isVisible = ecomVisibility !== "UNAVAILABLE";
     const slug = slugify(itemData.name ?? "");
     const productUrl =
       hasChannels && isVisible && slug
@@ -206,9 +209,10 @@ export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
     let totalQuantity = 0;
 
     for (const variation of variations) {
-      if (!variation.id || !variation.itemVariationData) continue;
+      if (variation.type !== "ITEM_VARIATION" || !variation.id) continue;
 
       const varData = variation.itemVariationData;
+      if (!varData) continue;
       const quantity = inventory.get(variation.id) ?? 0;
       const price = varData.priceMoney?.amount
         ? Number(varData.priceMoney.amount)
