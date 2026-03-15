@@ -82,7 +82,77 @@ export function parseVariationColor(name: string): string | undefined {
   if (parts.length !== 3) return undefined;
 
   const rawColor = parts[1].trim();
-  return rawColor ? formatName(rawColor) : undefined;
+  if (!rawColor) return undefined;
+  return normalizeColor(formatName(rawColor));
+}
+
+/**
+ * Standard color names that Google will recognise.
+ */
+const KNOWN_COLORS = new Set([
+  "amber",
+  "aqua",
+  "black",
+  "blue",
+  "bronze",
+  "brown",
+  "charcoal",
+  "cream",
+  "gold",
+  "grape",
+  "green",
+  "grey",
+  "indigo",
+  "lilac",
+  "lime",
+  "orange",
+  "peach",
+  "pearl",
+  "pink",
+  "purple",
+  "red",
+  "rose",
+  "sand",
+  "sunset",
+  "teal",
+  "turquoise",
+  "white",
+  "yellow",
+]);
+
+/**
+ * Normalize a raw color string from Square variation names into
+ * a Google-friendly color. Returns undefined if the value isn't
+ * a recognisable color.
+ */
+export function normalizeColor(raw: string): string | undefined {
+  let color = raw;
+
+  // Expand abbreviations
+  color = color.replace(/^Lt /i, "Light ");
+  color = color.replace(/^Dk /i, "Dark ");
+  color = color.replace(/^Fluro /i, "Fluorescent ");
+
+  // Strip modifiers that aren't color-relevant
+  color = color.replace(/\s+(swirl|burst|orbit|halo|marble|rim)$/i, "");
+
+  // Strip "trans" (translucent) prefix — not a color
+  color = color.replace(/^Trans(parent|lucent)?\s+/i, "");
+
+  // Capitalise first letter (may have been lowered by prefix stripping)
+  color = color.charAt(0).toUpperCase() + color.slice(1);
+
+  // Check the base color is recognisable
+  // For "Light blue", "Dark green" etc, check the second word
+  const words = color.split(/[\s-]/);
+  const baseColor = (
+    /^(light|dark|pale|fluorescent)$/i.test(words[0]) && words.length > 1
+      ? words[1]
+      : words[0]
+  ).toLowerCase();
+  if (!KNOWN_COLORS.has(baseColor)) return undefined;
+
+  return color;
 }
 
 /**

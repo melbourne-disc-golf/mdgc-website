@@ -4,6 +4,7 @@ import {
   formatBrand,
   discTypeLabel,
   parseVariationColor,
+  normalizeColor,
   slugify,
   aggregateItems,
   expandVariations,
@@ -655,6 +656,37 @@ describe("parseVariationColor", () => {
 
   it("returns undefined for names with wrong number of parts", () => {
     expect(parseVariationColor("COSMIC/YELLOW")).toBeUndefined();
+  });
+});
+
+describe("normalizeColor", () => {
+  it("expands abbreviations", () => {
+    expect(normalizeColor("Lt blue")).toBe("Light blue");
+    expect(normalizeColor("Lt lilac swirl")).toBe("Light lilac");
+  });
+
+  it("strips 'trans' prefix", () => {
+    expect(normalizeColor("Trans pink")).toBe("Pink");
+    expect(normalizeColor("Trans lime")).toBe("Lime");
+    expect(normalizeColor("Trans orange")).toBe("Orange");
+  });
+
+  it("strips 'swirl' suffix", () => {
+    expect(normalizeColor("Pink swirl")).toBe("Pink");
+    expect(normalizeColor("Orange swirl")).toBe("Orange");
+    expect(normalizeColor("Blue-pink swirl")).toBe("Blue-pink");
+  });
+
+  it("passes through standard colors unchanged", () => {
+    expect(normalizeColor("Pink")).toBe("Pink");
+    expect(normalizeColor("Yellow")).toBe("Yellow");
+    expect(normalizeColor("Blue")).toBe("Blue");
+  });
+
+  it("returns undefined for non-color values", () => {
+    expect(normalizeColor("Idye3")).toBeUndefined();
+    expect(normalizeColor("Kotuku")).toBeUndefined();
+    expect(normalizeColor("Glow-white rim")).toBeUndefined();
   });
 });
 
