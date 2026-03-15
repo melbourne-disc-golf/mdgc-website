@@ -813,7 +813,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -828,8 +829,8 @@
               ]
             },
             "id": "4SMOQOPGWZDM7GX6YUJN5KCM",
-            "updatedAt": "2026-01-07T04:11:30.304Z",
-            "version": 1767759090304,
+            "updatedAt": "2026-03-15T01:36:50.094Z",
+            "version": 1773538610094,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -973,8 +974,8 @@
         "isAlcoholic": false
       },
       "id": "5FVJQC76WXQ772SFZZOM46LY",
-      "updatedAt": "2026-02-26T03:20:24.11Z",
-      "version": 1772076024110,
+      "updatedAt": "2026-03-15T01:36:50.094Z",
+      "version": 1773538610094,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -6816,7 +6817,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -6832,8 +6834,8 @@
               ]
             },
             "id": "JRJTKNELJDQTGH4VYOSBUFP6",
-            "updatedAt": "2025-11-04T11:35:46.181Z",
-            "version": 1762256146181,
+            "updatedAt": "2026-03-15T00:59:40.131Z",
+            "version": 1773536380131,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -6887,8 +6889,8 @@
         "isAlcoholic": false
       },
       "id": "Q64YHJMVO3M7LCXQN3JW26KE",
-      "updatedAt": "2025-11-04T11:35:46.181Z",
-      "version": 1762256146181,
+      "updatedAt": "2026-03-15T00:59:40.131Z",
+      "version": 1773536380131,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -7305,7 +7307,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -7313,14 +7314,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "PHLQK3KFUNTKGI2QH6OOPA5P",
-            "updatedAt": "2025-11-04T11:35:46.181Z",
-            "version": 1762256146181,
+            "updatedAt": "2026-03-15T04:57:52.155Z",
+            "version": 1773550672155,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -7343,6 +7345,10 @@
           {
             "id": "M3KFQBN4BG7ABT6ESVE5EZIX",
             "ordinal": -2251731094208576
+          },
+          {
+            "id": "IY54P2OIB2HR4ZXNQSTA4FM6",
+            "ordinal": -2245889754136576
           }
         ],
         "descriptionHtml": "<p>Created for expert players and windy conditions, NUKE OS (Over Stable) is a super fast driver that rewards power throwers with insane distance potential. Will finish on a hyzer even in strong winds, and offers the most dependable consistency of any high speed driver on the market.</p>\n<p>Speed: 13</p>\n<p>Glide: 4</p>\n<p>Turn: 0</p>\n<p>Fade: 4</p>\n<p></p>",
@@ -7359,8 +7365,8 @@
         "isAlcoholic": false
       },
       "id": "IIPB4LWRUVBJOOEWZ6DYMO7E",
-      "updatedAt": "2025-11-04T11:35:46.181Z",
-      "version": 1762256146181,
+      "updatedAt": "2026-03-15T04:57:52.155Z",
+      "version": 1773550672155,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -7592,7 +7598,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -7600,14 +7605,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "LVU67HQC4S5W7BXHBMQI4QTT",
-            "updatedAt": "2025-11-04T11:35:46.181Z",
-            "version": 1762256146181,
+            "updatedAt": "2026-03-15T04:58:04.088Z",
+            "version": 1773550684088,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -7634,6 +7640,10 @@
           {
             "id": "M3KFQBN4BG7ABT6ESVE5EZIX",
             "ordinal": -2251731094208640
+          },
+          {
+            "id": "IY54P2OIB2HR4ZXNQSTA4FM6",
+            "ordinal": -2245889737359360
           }
         ],
         "descriptionHtml": "<p>Nuke SS gives developing players the means to get the distance of more advanced throwers without needing years of experience. You can get very long turnovers at medium speed, or throw your longest rollers ever at high speed! Give it a rip and see for yourself.</p>\n<p>Speed: 13</p>\n<p>Glide: 5</p>\n<p>Turn: -3</p>\n<p>Fade: 3</p>\n<p></p>",
@@ -7650,8 +7660,8 @@
         "isAlcoholic": false
       },
       "id": "KI5D4SIAW5UPG5PJLIAY4NJ7",
-      "updatedAt": "2025-11-04T11:35:46.181Z",
-      "version": 1762256146181,
+      "updatedAt": "2026-03-15T04:58:04.088Z",
+      "version": 1773550684088,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -7682,7 +7692,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -7690,14 +7699,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "D2J3VAO7ZISUAW2TJ4EYZJT4",
-            "updatedAt": "2025-11-04T11:35:46.181Z",
-            "version": 1762256146181,
+            "updatedAt": "2026-03-15T04:53:15.061Z",
+            "version": 1773550395061,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -7723,6 +7733,10 @@
           {
             "id": "M3KFQBN4BG7ABT6ESVE5EZIX",
             "ordinal": -2251731094212608
+          },
+          {
+            "id": "KNSIZ7JBEBDLPGVGHOJHXUZN",
+            "ordinal": -2249463150149632
           }
         ],
         "descriptionHtml": "<p>Slightly understable midrange, throw the Sol with speed and watch it float out gently to the right. The perfect disc for straight and anhyzer approaches. The Sol was the 2018 Ace Race disc.</p>\n<p>Speed: 4</p>\n<p>Glide: 5</p>\n<p>Turn: -3</p>\n<p>Fade: 0</p>\n<p></p>",
@@ -7739,8 +7753,8 @@
         "isAlcoholic": false
       },
       "id": "UDICXEJPQMCWJELM3XMTKJSI",
-      "updatedAt": "2025-11-04T11:35:46.181Z",
-      "version": 1762256146181,
+      "updatedAt": "2026-03-15T04:53:15.061Z",
+      "version": 1773550395061,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -10515,7 +10529,8 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV"
+                  "locationId": "LTD9BW2RXXBDV",
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -10530,8 +10545,8 @@
               ]
             },
             "id": "BXHBNFLZBTP2HHM2FOMBFVZP",
-            "updatedAt": "2026-02-25T08:50:43.506Z",
-            "version": 1772009443506,
+            "updatedAt": "2026-03-15T01:43:33.178Z",
+            "version": 1773539013178,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -10562,7 +10577,8 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV"
+                  "locationId": "LTD9BW2RXXBDV",
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -10578,8 +10594,8 @@
               ]
             },
             "id": "JGHVOWGIRHGZK6YFEFNWG7MM",
-            "updatedAt": "2026-02-25T08:50:43.506Z",
-            "version": 1772009443506,
+            "updatedAt": "2026-03-15T01:22:06.158Z",
+            "version": 1773537726158,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -10726,8 +10742,8 @@
         "isAlcoholic": false
       },
       "id": "7ERID6PCD5UC7AZMFB2AAXDC",
-      "updatedAt": "2026-02-25T08:50:47.054Z",
-      "version": 1772009447054,
+      "updatedAt": "2026-03-15T01:43:33.178Z",
+      "version": 1773539013178,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -11158,7 +11174,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -11166,14 +11181,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "ZLGD3YGWQOGS2HA26C2LTRD7",
-            "updatedAt": "2025-11-04T11:39:29.497Z",
-            "version": 1762256369497,
+            "updatedAt": "2026-03-15T04:50:54.185Z",
+            "version": 1773550254185,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -11200,13 +11216,17 @@
           {
             "id": "SOFVBF3FXFIAGMN3VTR4B7PB",
             "ordinal": -2251318777348096
+          },
+          {
+            "id": "KNSIZ7JBEBDLPGVGHOJHXUZN",
+            "ordinal": -2249463234035712
           }
         ],
         "descriptionHtml": "Point and shoot. With enough high-speed stability, lots of glide and a gentle fade, the Göte holds the line on both drives and touch shots.\n\nSPEED: 4\n\nGLIDE: 5\n\nTURN: 0\n\nFADE: 1",
         "descriptionPlaintext": "Point and shoot. With enough high-speed stability, lots of glide and a gentle fade, the Göte holds the line on both drives and touch shots.\n\nSPEED: 4\n\nGLIDE: 5\n\nTURN: 0\n\nFADE: 1",
         "channels": [
-          "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-          "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+          "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+          "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
         ],
         "isArchived": false,
         "reportingCategory": {
@@ -11216,8 +11236,8 @@
         "isAlcoholic": false
       },
       "id": "WNAWBLUKMWFHHFOD4AKIGBQF",
-      "updatedAt": "2025-11-04T11:39:29.497Z",
-      "version": 1762256369497,
+      "updatedAt": "2026-03-15T04:50:54.185Z",
+      "version": 1773550254185,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -11248,7 +11268,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -11258,14 +11277,15 @@
               "imageIds": [
                 "D7HEEOJAV6UIN47Z6WT4BPNX"
               ],
+              "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "5JQ4GEABD6S5F5IYH7XL2WHZ",
-            "updatedAt": "2026-02-19T12:38:01.028Z",
-            "version": 1771504681028,
+            "updatedAt": "2026-03-15T04:52:02.124Z",
+            "version": 1773550322124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -11296,8 +11316,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -11306,14 +11325,15 @@
               "imageIds": [
                 "QDA6DMKIS4EJTIHOBYONZ3OI"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "KL23F5NTXUL6EXLA5WF2CQJF",
-            "updatedAt": "2026-01-29T06:33:51.125Z",
-            "version": 1769668431125,
+            "updatedAt": "2026-03-15T04:52:02.124Z",
+            "version": 1773550322124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -11345,6 +11365,10 @@
           {
             "id": "SOFVBF3FXFIAGMN3VTR4B7PB",
             "ordinal": -2251181338394624
+          },
+          {
+            "id": "KNSIZ7JBEBDLPGVGHOJHXUZN",
+            "ordinal": -2249463217258496
           }
         ],
         "descriptionHtml": "The Järn’s flight pattern makes it just as competent for touchy flex shots as for flat-out hyzers. It can handle headwinds and also provides a solid end-fade. Its low profile makes it easy to grip and to release. Järn is the Swedish word for iron\n\nSPEED: 4.5\n\nGLIDE: 3\n\nTURN: 0\n\nFADE: 3",
@@ -11361,8 +11385,8 @@
         "isAlcoholic": false
       },
       "id": "OUTIL6AGMFKDESMUCYOS5EXV",
-      "updatedAt": "2026-02-19T12:38:01.028Z",
-      "version": 1771504681028,
+      "updatedAt": "2026-03-15T04:52:02.124Z",
+      "version": 1773550322124,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -13385,7 +13409,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -13400,8 +13425,8 @@
               ]
             },
             "id": "PBEVHWV3BPMZMKUZNZAPUHL3",
-            "updatedAt": "2025-11-04T23:48:39.259Z",
-            "version": 1762300119259,
+            "updatedAt": "2026-03-15T01:22:06.158Z",
+            "version": 1773537726158,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -13554,8 +13579,8 @@
         "isAlcoholic": false
       },
       "id": "WMBOAGGAZMUZTIQF2I2ZIPQ3",
-      "updatedAt": "2026-02-28T22:59:14.049Z",
-      "version": 1772319554049,
+      "updatedAt": "2026-03-15T01:22:06.158Z",
+      "version": 1773537726158,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -17027,7 +17052,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -17035,14 +17059,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "77ZAVF52LNOAQN6YR3XIOB4B",
-            "updatedAt": "2025-11-03T03:00:50.574Z",
-            "version": 1762138850574,
+            "updatedAt": "2026-03-15T04:49:38.088Z",
+            "version": 1773550178088,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -17071,6 +17096,10 @@
           {
             "id": "I7NDTPYCM2WPMZAJ6GG4RIM5",
             "ordinal": -2251662374731776
+          },
+          {
+            "id": "CXIE4W57KHCVL3H7PE24DECQ",
+            "ordinal": -2249600672989184
           }
         ],
         "descriptionHtml": "\n\n\nThe Aviar3 has the same comfortable grip you&#39;d expect in an Aviar putter but with a distinctive flat top.\n\nIn the hand you feel the lower profile. It feels fast. Even better, it can handle the speed.\n\nThrow the Aviar3 with power, backhand or forehand, and you can trust it to drop on target.\n\n\n\nSPEED: 3\n\nGLIDE: 2\n\nTURN: 0\n\nFADE: 2",
@@ -17087,8 +17116,8 @@
         "isAlcoholic": false
       },
       "id": "WEEGMPZJ7FQI3OMK7DLWONSC",
-      "updatedAt": "2025-11-03T03:07:49.474Z",
-      "version": 1762139269474,
+      "updatedAt": "2026-03-15T04:49:38.088Z",
+      "version": 1773550178088,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -17701,7 +17730,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -17709,14 +17737,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "3A2O3SW4YRX4R6W2EJPRWDGS",
-            "updatedAt": "2025-11-04T11:43:06.915Z",
-            "version": 1762256586915,
+            "updatedAt": "2026-03-15T04:49:14.115Z",
+            "version": 1773550154115,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -17741,6 +17770,10 @@
           {
             "id": "MJGW2KCGPJIMHUSKPNPZ4YVZ",
             "ordinal": -2251043899441152
+          },
+          {
+            "id": "CXIE4W57KHCVL3H7PE24DECQ",
+            "ordinal": -2249600689766400
           }
         ],
         "descriptionHtml": "The Warden is a beadless putter. With an extremely smooth release and neutral flight, the Warden will come out of your hand easily and fly dead straight to the chains.\n\nWith more glide than the Judge, it will stay in the air longer to help deflate those high scores.\n\n\n\n\n\n\n\nSPEED: 2\n\nGLIDE: 4\n\nTURN: 0\n\nFADE: 0.5",
@@ -17757,8 +17790,8 @@
         "isAlcoholic": false
       },
       "id": "MBVZRUFTC6Z67QG5UEQ2RRVO",
-      "updatedAt": "2025-11-04T11:43:06.915Z",
-      "version": 1762256586915,
+      "updatedAt": "2026-03-15T04:49:14.115Z",
+      "version": 1773550154115,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -17790,22 +17823,26 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
+                },
+                {
+                  "locationId": "LN88KDBGR4D45",
+                  "trackInventory": false
                 }
               ],
-              "trackInventory": false,
+              "trackInventory": true,
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "WMYMSHIHZCL75PBVKTX4VIPM",
-            "updatedAt": "2025-11-03T03:00:50.574Z",
-            "version": 1762138850574,
+            "updatedAt": "2026-03-15T04:52:35.051Z",
+            "version": 1773550355051,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -17829,6 +17866,10 @@
           {
             "id": "I7NDTPYCM2WPMZAJ6GG4RIM5",
             "ordinal": -2251112618917888
+          },
+          {
+            "id": "KNSIZ7JBEBDLPGVGHOJHXUZN",
+            "ordinal": -2249463183704064
           }
         ],
         "descriptionHtml": "\n\n\nThe Roc is the number one professional mid-range disc.\n\nIt&#39;s very reliable at the high speeds that pros throw. It ages slowly, becoming an excellent slow turning disc as it wears.\n\n \n\n\n\nSPEED: 4\n\nGLIDE: 4\n\nTURN: 0\n\nFADE: 3",
@@ -17845,8 +17886,8 @@
         "isAlcoholic": false
       },
       "id": "LEJJN4RZGUAVQZNWP3RBNLQT",
-      "updatedAt": "2025-11-03T03:00:50.574Z",
-      "version": 1762138850574,
+      "updatedAt": "2026-03-15T04:52:35.051Z",
+      "version": 1773550355051,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -19168,7 +19209,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -19176,14 +19216,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "IE2YITE7QK6G5YHYPGBJLKBJ",
-            "updatedAt": "2025-11-04T11:35:46.181Z",
-            "version": 1762256146181,
+            "updatedAt": "2026-03-15T04:55:55.065Z",
+            "version": 1773550555065,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -19205,8 +19246,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -19215,14 +19255,15 @@
               "imageIds": [
                 "QNY4EXGLUFKFP6EQS5H3UMVH"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "VSPM2TZLE5G3ANQWE3XYZFN2",
-            "updatedAt": "2026-02-25T06:20:27.037Z",
-            "version": 1772000427037,
+            "updatedAt": "2026-03-15T04:55:55.065Z",
+            "version": 1773550555065,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -19253,8 +19294,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -19263,14 +19303,15 @@
               "imageIds": [
                 "FWAUJRWROMN7GTKV3PKNR523"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "GN5XC5BPR2DFLSIPOT2OMC3W",
-            "updatedAt": "2025-11-07T01:18:42.037Z",
-            "version": 1762478322037,
+            "updatedAt": "2026-03-15T04:55:55.065Z",
+            "version": 1773550555065,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -19303,6 +19344,10 @@
           {
             "id": "M3KFQBN4BG7ABT6ESVE5EZIX",
             "ordinal": -2251250057871376
+          },
+          {
+            "id": "KNSIZ7JBEBDLPGVGHOJHXUZN",
+            "ordinal": -2249463133372416
           }
         ],
         "descriptionHtml": "As one of the understable midrange discs in Discraft’s lineup, the Meteor is great for controlled turnover throws. If you are right handed, throw backhand, and need a disc that is going to fly to the right, this is the disc you’re looking for. The Meteor will turn and glide giving beginners more control and distance. The Meteor comes in premium ESP and Z plastics. This is one of the best golf disc plastics on the market, providing superior grip and durability. The Meteor is available in weights between 167-178 grams. Lighter weight discs will turnover more easily.\n\nSPEED: 5\nGLIDE: 5\nTURN: -3\nFADE: 1",
@@ -19319,8 +19364,8 @@
         "isAlcoholic": false
       },
       "id": "F7FH7TQF2AJCSPYYAIXAFT2V",
-      "updatedAt": "2026-02-25T06:20:27.037Z",
-      "version": 1772000427037,
+      "updatedAt": "2026-03-15T04:55:55.065Z",
+      "version": 1773550555065,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -20465,7 +20510,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -20480,8 +20526,8 @@
               ]
             },
             "id": "BPYXEJVCEW4LJJIQ3ALNQZ6T",
-            "updatedAt": "2025-11-06T22:42:11.509Z",
-            "version": 1762468931509,
+            "updatedAt": "2026-03-15T00:56:08.082Z",
+            "version": 1773536168082,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -20533,8 +20579,8 @@
         "isAlcoholic": false
       },
       "id": "WCK4DY3IFNAM3OMW2EQJ4FQS",
-      "updatedAt": "2025-11-06T22:42:11.509Z",
-      "version": 1762468931509,
+      "updatedAt": "2026-03-15T00:56:08.082Z",
+      "version": 1773536168082,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -22299,7 +22345,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -22314,8 +22361,8 @@
               ]
             },
             "id": "2K6FHSFFCWSVFVIMMHAKXE4F",
-            "updatedAt": "2025-12-28T04:38:26.181Z",
-            "version": 1766896706181,
+            "updatedAt": "2026-03-15T01:10:08.258Z",
+            "version": 1773537008258,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -22467,8 +22514,8 @@
         "isAlcoholic": false
       },
       "id": "IDRVOMRTDZ3BG6FQS366LMJI",
-      "updatedAt": "2026-02-26T03:20:24.11Z",
-      "version": 1772076024110,
+      "updatedAt": "2026-03-15T01:10:08.258Z",
+      "version": 1773537008258,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -23086,7 +23133,8 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV"
+                  "locationId": "LTD9BW2RXXBDV",
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -23102,8 +23150,8 @@
               ]
             },
             "id": "IWRD54ERTRGLC65R7ZZM7XSC",
-            "updatedAt": "2026-02-25T07:55:21.174Z",
-            "version": 1772006121174,
+            "updatedAt": "2026-03-15T01:43:33.178Z",
+            "version": 1773539013178,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -23155,8 +23203,8 @@
         "isAlcoholic": false
       },
       "id": "XVJRER5EUELZTUVIYH6XA56P",
-      "updatedAt": "2026-02-25T07:55:21.174Z",
-      "version": 1772006121174,
+      "updatedAt": "2026-03-15T01:43:33.178Z",
+      "version": 1773539013178,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -24695,7 +24743,8 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV"
+                  "locationId": "LTD9BW2RXXBDV",
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -24711,8 +24760,8 @@
               ]
             },
             "id": "GB2RUQOZ6FQMREZ6EUD5JZAR",
-            "updatedAt": "2026-02-25T08:33:22.067Z",
-            "version": 1772008402067,
+            "updatedAt": "2026-03-15T01:25:48.244Z",
+            "version": 1773537948244,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -24818,8 +24867,8 @@
         "isAlcoholic": false
       },
       "id": "TZYJQKHYN566KCMXSOFKZEC5",
-      "updatedAt": "2026-03-03T12:22:12.076Z",
-      "version": 1772540532076,
+      "updatedAt": "2026-03-15T01:25:48.244Z",
+      "version": 1773537948244,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -25950,22 +25999,26 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
+                },
+                {
+                  "locationId": "LN88KDBGR4D45",
+                  "trackInventory": false
                 }
               ],
-              "trackInventory": false,
+              "trackInventory": true,
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "DJ3TIG7BOEHSG5JS2UEPBSZL",
-            "updatedAt": "2025-11-03T03:00:50.574Z",
-            "version": 1762138850574,
+            "updatedAt": "2026-03-15T04:52:53.086Z",
+            "version": 1773550373086,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -25988,6 +26041,10 @@
           {
             "id": "I7NDTPYCM2WPMZAJ6GG4RIM5",
             "ordinal": -2250287985197056
+          },
+          {
+            "id": "KNSIZ7JBEBDLPGVGHOJHXUZN",
+            "ordinal": -2249463166926848
           }
         ],
         "descriptionHtml": "The Shark is an excellent beginner disc, and is included in Innova&#39;s DX starter set. Many boast that this disc holds a fantastic line, while the throwing style of others creates an extremely sharp fade at the end of flight. This disc is an ideal disc for getting through areas full of small obstacles.\n\nSPEED: 4\n\nGLIDE: 4\n\nTURN: 0\n\nFADE: 2",
@@ -26004,8 +26061,8 @@
         "isAlcoholic": false
       },
       "id": "525SPL4KJSWXSMBMZQQCGOJE",
-      "updatedAt": "2025-11-03T03:00:50.574Z",
-      "version": 1762138850574,
+      "updatedAt": "2026-03-15T04:52:53.086Z",
+      "version": 1773550373086,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -27469,21 +27526,21 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
               "trackInventory": true,
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "MKMOREZZRGXLYNA7GBE5RZYT",
-            "updatedAt": "2026-01-15T05:09:32.956Z",
-            "version": 1768453772956,
+            "updatedAt": "2026-03-15T04:56:46.141Z",
+            "version": 1773550606141,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -27514,8 +27571,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -27524,14 +27580,15 @@
               "imageIds": [
                 "HO55B3UBQLZ2DWGKID6QT56X"
               ],
+              "kitchenName": "",
               "channels": [
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "USPLFXYEJEVUKCBSZKAV6YHB",
-            "updatedAt": "2026-01-15T05:09:33.65Z",
-            "version": 1768453773650,
+            "updatedAt": "2026-03-15T04:56:46.141Z",
+            "version": 1773550606141,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -27563,6 +27620,10 @@
           {
             "id": "I7NDTPYCM2WPMZAJ6GG4RIM5",
             "ordinal": -2247814084034560
+          },
+          {
+            "id": "IY54P2OIB2HR4ZXNQSTA4FM6",
+            "ordinal": -2245889770913792
           }
         ],
         "descriptionHtml": "Do you love to throw anhyzer on a nice flick and watch your disc do a beautiful S-Curve? Then the X-Caliber is your disc! Right from launch the X-Caliber has a gradual fade, so feel free to launch this disc slightly higher than normal with a steep pitch and watch the rollover take over. This disc is also excellent for getting around a short range obstacle. The X-Caliber is a low-profile, wide-rimmed disc made for flying at high speed and keeping a nice glide.\n\nSPEED: 12\n\nGLIDE: 5\n\nTURN: 0\n\nFADE: 4",
@@ -27579,8 +27640,8 @@
         "isAlcoholic": false
       },
       "id": "QYKTFFLYWNTX3BXUGE54IYBY",
-      "updatedAt": "2026-01-15T05:09:33.65Z",
-      "version": 1768453773650,
+      "updatedAt": "2026-03-15T04:56:46.141Z",
+      "version": 1773550606141,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -27611,21 +27672,21 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
               "trackInventory": true,
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "H6FWLTGF27IDCQBAZH3XERQI",
-            "updatedAt": "2026-01-29T06:38:23.181Z",
-            "version": 1769668703181,
+            "updatedAt": "2026-03-15T04:50:01.046Z",
+            "version": 1773550201046,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -27648,7 +27709,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -27658,14 +27718,15 @@
               "imageIds": [
                 "36IULITFLBBEQFZD2R276R5C"
               ],
+              "kitchenName": "",
               "channels": [
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "PZ7GMVUJDGGOLK6PYQPJAVEP",
-            "updatedAt": "2026-02-01T23:37:24.01Z",
-            "version": 1769989044010,
+            "updatedAt": "2026-03-15T04:50:01.046Z",
+            "version": 1773550201046,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -27699,6 +27760,10 @@
           {
             "id": "SOFVBF3FXFIAGMN3VTR4B7PB",
             "ordinal": -2250975179964416
+          },
+          {
+            "id": "CXIE4W57KHCVL3H7PE24DECQ",
+            "ordinal": -2249600656211968
           }
         ],
         "descriptionHtml": "Reko has a comfortable rounded profile and a smooth bead, which fits most players’ hands. Easy to grip and easy to throw. It features a strengthened shoulder which adds a little extra durability compared to the average putter. Reko is Swedish for good, reliable or decent. The world needs more Reko.\n\nSpeed 3\n\nGlide 3\n\nTurn 0\n\nFade 1\n\n ",
@@ -27715,8 +27780,8 @@
         "isAlcoholic": false
       },
       "id": "LMJI6OTG3M3AZZVBH346AV32",
-      "updatedAt": "2026-02-01T23:37:24.01Z",
-      "version": 1769989044010,
+      "updatedAt": "2026-03-15T04:50:01.046Z",
+      "version": 1773550201046,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -27832,21 +27897,21 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
               "trackInventory": true,
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "ZMLR7V6BBTVAPYZDFHA7AJPP",
-            "updatedAt": "2026-01-15T05:27:27.894Z",
-            "version": 1768454847894,
+            "updatedAt": "2026-03-15T04:50:38.13Z",
+            "version": 1773550238130,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -27868,8 +27933,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -27878,14 +27942,15 @@
               "imageIds": [
                 "ZOR34G26TNQDUAXLVCE4EBE5"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "7XOWYLURAHXKF4S2PHMSHGBV",
-            "updatedAt": "2026-01-15T05:26:47.494Z",
-            "version": 1768454807494,
+            "updatedAt": "2026-03-15T04:50:38.13Z",
+            "version": 1773550238130,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -27918,6 +27983,10 @@
           {
             "id": "I7NDTPYCM2WPMZAJ6GG4RIM5",
             "ordinal": -2247745364557824
+          },
+          {
+            "id": "KNSIZ7JBEBDLPGVGHOJHXUZN",
+            "ordinal": -2249463250812928
           }
         ],
         "descriptionHtml": "Unique in both look and feel, its top resembles a Sonic, its rim is like a mid-range. Its flight is surprisingly stable, maybe a tad overstable. The Alien thrives in a universe of spin putts, approach shots, and short-range drives.\n\nSPEED: 4\nGLIDE: 2\nTURN: 0\nFADE: 1",
@@ -27934,8 +28003,8 @@
         "isAlcoholic": false
       },
       "id": "HSQGCPCJWZ2JR3UYE37CA7NY",
-      "updatedAt": "2026-01-15T05:27:27.894Z",
-      "version": 1768454847894,
+      "updatedAt": "2026-03-15T04:50:38.13Z",
+      "version": 1773550238130,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -30293,7 +30362,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -30308,8 +30378,8 @@
               ]
             },
             "id": "Q7D3K2O2XBVJ6ACOAFEBLTI2",
-            "updatedAt": "2026-02-26T05:48:41.977Z",
-            "version": 1772084921977,
+            "updatedAt": "2026-03-15T01:24:24.121Z",
+            "version": 1773537864121,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -30460,8 +30530,8 @@
         "isAlcoholic": false
       },
       "id": "EFW6Y7XF5R3JBMDNTI6MWIIM",
-      "updatedAt": "2026-02-26T05:48:41.977Z",
-      "version": 1772084921977,
+      "updatedAt": "2026-03-15T01:24:24.121Z",
+      "version": 1773537864121,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -30822,7 +30892,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -30837,8 +30908,8 @@
               ]
             },
             "id": "LZRBVGVJHM7K2SRMNHW2TD5Q",
-            "updatedAt": "2025-11-04T23:47:29.155Z",
-            "version": 1762300049155,
+            "updatedAt": "2026-03-15T01:44:08.111Z",
+            "version": 1773539048111,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -30987,8 +31058,8 @@
         "isAlcoholic": false
       },
       "id": "MH2LJ6SXQHDRYDWPCM7JF3CU",
-      "updatedAt": "2025-11-06T10:13:18.537Z",
-      "version": 1762423998537,
+      "updatedAt": "2026-03-15T01:44:08.111Z",
+      "version": 1773539048111,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -31452,8 +31523,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -31462,14 +31532,15 @@
               "imageIds": [
                 "N3YZKQO6RUYDNFSYTLITGPMQ"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "D7S2WU6DNVDJUKC2CEVRP2FQ",
-            "updatedAt": "2026-01-29T06:34:30.207Z",
-            "version": 1769668470207,
+            "updatedAt": "2026-03-15T04:48:10.069Z",
+            "version": 1773550090069,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -31500,8 +31571,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -31510,14 +31580,15 @@
               "imageIds": [
                 "RIYQ7L3T566MAT6QFQE35HTT"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "BXNDMVY67R2Q2OEYCNYO434Y",
-            "updatedAt": "2026-01-29T06:34:44.082Z",
-            "version": 1769668484082,
+            "updatedAt": "2026-03-15T04:48:10.069Z",
+            "version": 1773550090069,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -31550,6 +31621,10 @@
           {
             "id": "SOFVBF3FXFIAGMN3VTR4B7PB",
             "ordinal": -2251524935778304
+          },
+          {
+            "id": "CXIE4W57KHCVL3H7PE24DECQ",
+            "ordinal": -2249600740098048
           }
         ],
         "descriptionHtml": "<p>Consistency is a prized quality in disc golf, instilling confidence in players. The Kastsaplast Berg X epitomizes such dependability. Retaining the core traits of the original Berg in terms of feel and flight, the Berg X shines when given more power. No matter how much you put into it, the flight path remains unwavering, making it an ideal choice for forehand approaches.</p>\n<p>Compared to the Berg, the Berg X will have more torque-resistance and a more prominent fade.</p>\nSpeed 1\n\nGlide 1\n\nTurn 1\n\nFade 2",
@@ -31566,8 +31641,8 @@
         "isAlcoholic": false
       },
       "id": "4B5HZ3ODSHRAMPASRJFRAPP2",
-      "updatedAt": "2026-01-29T06:34:44.082Z",
-      "version": 1769668484082,
+      "updatedAt": "2026-03-15T04:48:10.069Z",
+      "version": 1773550090069,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -31890,14 +31965,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "YZTMJI34VXHDFW7UZH2VNVM4",
-            "updatedAt": "2025-11-04T11:38:35.623Z",
-            "version": 1762256315623,
+            "updatedAt": "2026-03-15T04:48:49.881Z",
+            "version": 1773550129881,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -31920,6 +31996,10 @@
           {
             "id": "YGKPCUII6NP4NAJK3L7WQ2AV",
             "ordinal": -2250494143627264
+          },
+          {
+            "id": "CXIE4W57KHCVL3H7PE24DECQ",
+            "ordinal": -2249600706543616
           }
         ],
         "descriptionHtml": "A good short game is what ties everything together on the course. The Keystone is here to support you. It has a beadless, rounded edge and medium depth. The flight path is understable. With the Keystone you will get easy turnovers and straight flights even at low speeds. Build your short game on the Keystone and reach new heights!\n\nSPEED: 2\n\nGLIDE 5\n\nTURN: -1\n\nFADE: 1",
@@ -31936,8 +32016,8 @@
         "isAlcoholic": false
       },
       "id": "PG52LWF6RPYDGBTPLJTCZFTP",
-      "updatedAt": "2025-11-04T11:38:35.623Z",
-      "version": 1762256315623,
+      "updatedAt": "2026-03-15T04:48:49.881Z",
+      "version": 1773550129881,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -31967,8 +32047,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -31977,14 +32056,15 @@
               "imageIds": [
                 "YR4SRAPYAUEQCEM2JCZNYRYB"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "IJNTIULRD2KUHOR4UQZCW2N5",
-            "updatedAt": "2026-01-14T03:50:31.753Z",
-            "version": 1768362631753,
+            "updatedAt": "2026-03-15T04:56:26.205Z",
+            "version": 1773550586205,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -32016,7 +32096,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -32026,14 +32105,15 @@
               "imageIds": [
                 "3GGVPRBJXEAZ2WKO6HWS5Z2I"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "ADP4523E3KDZGWOZHBPEEZJI",
-            "updatedAt": "2026-01-21T04:27:16.318Z",
-            "version": 1768969636318,
+            "updatedAt": "2026-03-15T04:56:26.205Z",
+            "version": 1773550586205,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -32065,6 +32145,10 @@
           {
             "id": "ERBJP2RBYEWJPT6ACGA7I5JZ",
             "ordinal": -2250975179964416
+          },
+          {
+            "id": "IY54P2OIB2HR4ZXNQSTA4FM6",
+            "ordinal": -2245889787691008
           }
         ],
         "descriptionHtml": "The Resistor is an overstable Fairway driver. The Resistor is part of a slower family of fairway drivers with a more controllable speed. The combination of its flat overstable profile and GYRO® technology allows it to resist turn and experience a strong reliable fade.\n<div>SPEED: 6.5</div>\n<div>GLIDE: 4</div>\n<div>TURN: 0</div>\n<div>FADE: 3.5</div>",
@@ -32081,8 +32165,8 @@
         "isAlcoholic": false
       },
       "id": "DZ4CDXVM63IRYVPBWMXOAYNV",
-      "updatedAt": "2026-01-21T04:27:16.318Z",
-      "version": 1768969636318,
+      "updatedAt": "2026-03-15T04:56:26.205Z",
+      "version": 1773550586205,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -32505,7 +32589,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -32513,14 +32596,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "53IM7VQB7X5JZRFEZF3BFV4J",
-            "updatedAt": "2025-11-04T11:45:25.176Z",
-            "version": 1762256725176,
+            "updatedAt": "2026-03-15T04:52:17.09Z",
+            "version": 1773550337090,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -32547,6 +32631,10 @@
           {
             "id": "PXTM2ERI6FZK5IJEWU5DYEBX",
             "ordinal": -2251662374731776
+          },
+          {
+            "id": "KNSIZ7JBEBDLPGVGHOJHXUZN",
+            "ordinal": -2249463200481280
           }
         ],
         "descriptionHtml": "The Westside Harp is an overstable putt and approach disc with an ultra flat top. This putter is also utilized for straight drives with a bite at the end of flight. This is the glow version\n\nSPEED: 4\n\nGLIDE: 3\n\nTURN: 0\n\nFADE: 4\n\n ",
@@ -32563,8 +32651,8 @@
         "isAlcoholic": false
       },
       "id": "TB6RS22HNBPP7ZYTMJBEXRD3",
-      "updatedAt": "2025-11-04T11:45:25.176Z",
-      "version": 1762256725176,
+      "updatedAt": "2026-03-15T04:52:17.09Z",
+      "version": 1773550337090,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -33493,7 +33581,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -33508,8 +33597,8 @@
               ]
             },
             "id": "Y5VA3YBVCBXPH27TJHYLNB56",
-            "updatedAt": "2025-11-07T00:51:06.991Z",
-            "version": 1762476666991,
+            "updatedAt": "2026-03-15T06:56:38.111Z",
+            "version": 1773557798111,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -33614,8 +33703,8 @@
         "isAlcoholic": false
       },
       "id": "OS6LRBDKV3BN6FICTHH4US5B",
-      "updatedAt": "2026-02-28T22:59:14.049Z",
-      "version": 1772319554049,
+      "updatedAt": "2026-03-15T06:56:38.111Z",
+      "version": 1773557798111,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -33694,7 +33783,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -33709,8 +33799,8 @@
               ]
             },
             "id": "4X2NRNJK43JFQMK6AAKDZNFY",
-            "updatedAt": "2026-02-25T07:19:58.087Z",
-            "version": 1772003998087,
+            "updatedAt": "2026-03-15T06:56:38.111Z",
+            "version": 1773557798111,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -33811,8 +33901,8 @@
         "isAlcoholic": false
       },
       "id": "WM6QTLPMZKLD7Q2UJ4AZUOOW",
-      "updatedAt": "2026-02-25T08:34:47.098Z",
-      "version": 1772008487098,
+      "updatedAt": "2026-03-15T06:56:38.111Z",
+      "version": 1773557798111,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -34081,21 +34171,21 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
               "trackInventory": true,
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "O5GSWVVMLSVYKOHEBOTOJNMR",
-            "updatedAt": "2026-01-16T01:11:48.167Z",
-            "version": 1768525908167,
+            "updatedAt": "2026-03-15T04:57:26.075Z",
+            "version": 1773550646075,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34126,8 +34216,7 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "locationId": "LTD9BW2RXXBDV"
                 }
               ],
               "trackInventory": true,
@@ -34136,14 +34225,15 @@
               "imageIds": [
                 "VV4S2FUIROLEDBAL3TMP4FDK"
               ],
+              "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "EDWQ2F5AZGNQ32U35OXSH2UB",
-            "updatedAt": "2026-01-16T01:11:48.167Z",
-            "version": 1768525908167,
+            "updatedAt": "2026-03-15T04:57:26.075Z",
+            "version": 1773550646075,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34179,6 +34269,10 @@
           {
             "id": "I7NDTPYCM2WPMZAJ6GG4RIM5",
             "ordinal": -2250700302057472
+          },
+          {
+            "id": "KNSIZ7JBEBDLPGVGHOJHXUZN",
+            "ordinal": -2249463116595200
           }
         ],
         "descriptionHtml": "Thirty years after we first launched the Roc, we introduce our most torque-resistant version yet, the RocX3. We’ve given our legendary disc a low profile and a hefty rim to create extra control, making it the ideal Mid-Range for windy conditions and forehand throws. Power players will love the control. X-Factor fueled, the evolution continues. RocX3.\n\nSPEED: 5\n\nGLIDE: 4\n\nTURN: 0\n\nFADE: 3.5",
@@ -34195,8 +34289,8 @@
         "isAlcoholic": false
       },
       "id": "RFZOTXD6QIVHFGBNXY2JVDUW",
-      "updatedAt": "2026-01-16T01:11:48.167Z",
-      "version": 1768525908167,
+      "updatedAt": "2026-03-15T04:57:26.075Z",
+      "version": 1773550646075,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -34339,13 +34433,13 @@
               ],
               "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "7EVUIQITP2D7LCJ425DEWC5A",
-            "updatedAt": "2026-02-24T00:11:48.853Z",
-            "version": 1771891908853,
+            "updatedAt": "2026-03-14T21:11:28.74Z",
+            "version": 1773522688740,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34388,13 +34482,13 @@
               ],
               "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "7K5CNVHMJUAIPYZRPQ3KULNH",
-            "updatedAt": "2026-02-24T00:11:48.853Z",
-            "version": 1771891908853,
+            "updatedAt": "2026-03-14T21:11:28.74Z",
+            "version": 1773522688740,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34437,13 +34531,13 @@
               ],
               "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "6ZD7ZKWSQAUYSRZCUF4J6TPT",
-            "updatedAt": "2026-02-28T22:55:33.329Z",
-            "version": 1772319333329,
+            "updatedAt": "2026-03-14T21:11:28.74Z",
+            "version": 1773522688740,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34485,13 +34579,13 @@
               ],
               "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "6QAETIJHE7NWR2U2KZKTWWH2",
-            "updatedAt": "2026-02-24T00:11:48.853Z",
-            "version": 1771891908853,
+            "updatedAt": "2026-03-14T21:11:28.74Z",
+            "version": 1773522688740,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34534,13 +34628,13 @@
               ],
               "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "4FT6V5MYDZ7RC5U5DU3ZBR2B",
-            "updatedAt": "2026-02-24T00:11:48.853Z",
-            "version": 1771891908853,
+            "updatedAt": "2026-03-14T21:11:28.74Z",
+            "version": 1773522688740,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34583,13 +34677,13 @@
               ],
               "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "7SWU724XXQKNQZKLPVFTGFJF",
-            "updatedAt": "2026-02-24T00:11:48.853Z",
-            "version": 1771891908853,
+            "updatedAt": "2026-03-14T21:11:28.74Z",
+            "version": 1773522688740,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34631,13 +34725,13 @@
               ],
               "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "GNM6O4BK35GKHMFT5YR6GY3S",
-            "updatedAt": "2026-02-24T00:11:48.853Z",
-            "version": 1771891908853,
+            "updatedAt": "2026-03-14T21:11:28.74Z",
+            "version": 1773522688740,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34684,8 +34778,8 @@
               ]
             },
             "id": "HQKCDR76ZDIJ43R53IZBMTOG",
-            "updatedAt": "2026-02-24T00:11:48.853Z",
-            "version": 1771891908853,
+            "updatedAt": "2026-03-14T21:11:28.74Z",
+            "version": 1773522688740,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34730,8 +34824,8 @@
         "descriptionHtml": "The Wonder by Loop Discs is the straight flying mid we have all been looking for. And we mean <strong>straight</strong>!  Just when you think it will fade out, the glide holds your line that touch longer than you expect. This disc is the perfect disc for beginners right through to advanced players. We&#39;re already calling it the &#39;one disc wonder&#39; because it&#39;s fantastic off the tee, amazing for approach shots, and landing in chains on glidey putts. Everything you need to get started on the course!\n\nExperienced players will love the incredible glide that floats for <strong>extra distance on this straight shooting mid.</strong>\n\nBest of all, the Wonder, it&#39;s 100% Australian made, designed, and owned, using only Australian plastics.\n\n&#34;Flies like a Fuse, but pushes straighter / glides further and can handle torque&#34;  Darren Stace-Smith\n\nSPEED: 5   GLIDE 6   TURN: -1   FADE: 1\n\nPlastic Options:\n<ul>\n \t<li><strong>Soft Touch</strong>: This gummy, flexible plastic is slightly lighter, making it ideal for beginners, kids, and players seeking a disc that requires less effort to achieve optimal spin. (~164-170g)</li>\n \t<li><strong>Happy Medium</strong>: Balancing grip, flexibility, and durability, this plastic suits players of all skill levels. (~168-174g).</li>\n</ul>",
         "descriptionPlaintext": "The Wonder by Loop Discs is the straight flying mid we have all been looking for. And we mean straight!  Just when you think it will fade out, the glide holds your line that touch longer than you expect. This disc is the perfect disc for beginners right through to advanced players. We're already calling it the 'one disc wonder' because it's fantastic off the tee, amazing for approach shots, and landing in chains on glidey putts. Everything you need to get started on the course!\n\nExperienced players will love the incredible glide that floats for extra distance on this straight shooting mid.\n\nBest of all, the Wonder, it's 100% Australian made, designed, and owned, using only Australian plastics.\n\n\"Flies like a Fuse, but pushes straighter / glides further and can handle torque\"  Darren Stace-Smith\n\nSPEED: 5   GLIDE 6   TURN: -1   FADE: 1\n\nPlastic Options:\nSoft Touch: This gummy, flexible plastic is slightly lighter, making it ideal for beginners, kids, and players seeking a disc that requires less effort to achieve optimal spin. (~164-170g)\nHappy Medium: Balancing grip, flexibility, and durability, this plastic suits players of all skill levels. (~168-174g).",
         "channels": [
-          "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-          "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+          "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+          "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
         ],
         "isArchived": false,
         "reportingCategory": {
@@ -34741,8 +34835,8 @@
         "isAlcoholic": false
       },
       "id": "FRTK63BEWR7SPUJYYOTQTULZ",
-      "updatedAt": "2026-02-28T22:55:33.329Z",
-      "version": 1772319333329,
+      "updatedAt": "2026-03-14T21:11:28.74Z",
+      "version": 1773522688740,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -37242,7 +37336,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -37257,8 +37352,8 @@
               ]
             },
             "id": "KODQSACD4TKJE5LEJXUY2QCL",
-            "updatedAt": "2026-02-25T05:22:31.304Z",
-            "version": 1771996951304,
+            "updatedAt": "2026-03-15T01:20:34.186Z",
+            "version": 1773537634186,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -37310,8 +37405,8 @@
         "isAlcoholic": false
       },
       "id": "LV2NNS6ZGEIRHP2AVETEJIQ7",
-      "updatedAt": "2026-03-07T13:29:05.496Z",
-      "version": 1772890145496,
+      "updatedAt": "2026-03-15T01:20:34.186Z",
+      "version": 1773537634186,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -40335,14 +40430,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "LMYM2KFPL5LZ4I4534VUQVZT",
-            "updatedAt": "2025-11-04T11:39:29.497Z",
-            "version": 1762256369497,
+            "updatedAt": "2026-03-15T04:48:31.387Z",
+            "version": 1773550111387,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -40360,6 +40456,10 @@
           {
             "id": "OOPYHJJICDKBBYSVUMBBPW7K",
             "ordinal": 22196390985728
+          },
+          {
+            "id": "CXIE4W57KHCVL3H7PE24DECQ",
+            "ordinal": -2249600723320832
           },
           {
             "id": "SOFVBF3FXFIAGMN3VTR4B7PB",
@@ -40380,8 +40480,8 @@
         "isAlcoholic": false
       },
       "id": "LELGMA3YNIWS5TK2VVYRL7RY",
-      "updatedAt": "2025-11-04T11:39:29.497Z",
-      "version": 1762256369497,
+      "updatedAt": "2026-03-15T04:48:31.387Z",
+      "version": 1773550111387,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -41416,18 +41516,24 @@
                 "amount": 1000,
                 "currency": "AUD"
               },
+              "locationOverrides": [
+                {
+                  "locationId": "LTD9BW2RXXBDV",
+                  "soldOut": true
+                }
+              ],
               "trackInventory": true,
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "JTJZOWLV364V7E3RNRU2FOGR",
-            "updatedAt": "2026-01-15T00:34:56.907Z",
-            "version": 1768437296907,
+            "updatedAt": "2026-03-14T21:11:08.462Z",
+            "version": 1773522668462,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -41451,8 +41557,8 @@
         "descriptionHtml": "One off black cap with disc golfer emblem.\n\n \n\n ",
         "descriptionPlaintext": "One off black cap with disc golfer emblem.",
         "channels": [
-          "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-          "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+          "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+          "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
         ],
         "isArchived": false,
         "reportingCategory": {
@@ -41462,8 +41568,8 @@
         "isAlcoholic": false
       },
       "id": "FUFGXVXLGUOOM5A5L6AW3W6V",
-      "updatedAt": "2026-01-15T00:34:56.907Z",
-      "version": 1768437296907,
+      "updatedAt": "2026-03-14T21:11:08.462Z",
+      "version": 1773522668462,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -68653,8 +68759,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-07T04:11:30.807Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T01:36:47.695Z"
     },
     {
       "catalogObjectId": "5CBMABKZFPSPIEGDMGVNVIEA",
@@ -70525,8 +70631,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-02-25T05:57:41.618Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T01:43:30.285Z"
     },
     {
       "catalogObjectId": "CPCD4NHC3YAJK5PM4APSNBX5",
@@ -70893,8 +70999,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-02-25T06:01:57.775Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T01:22:03.159Z"
     },
     {
       "catalogObjectId": "JJRZOPMT2P5AHH6CLJYWXR5R",
@@ -70957,8 +71063,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-04T08:50:56.72Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T00:59:37.705Z"
     },
     {
       "catalogObjectId": "K3ENHXK73H5UWGYDCEXD6G42",
@@ -72749,8 +72855,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-04T23:48:40.335Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T01:22:03.156Z"
     },
     {
       "catalogObjectId": "PMVZHYSLXIPZEAHLQDCAZ5QK",
@@ -73229,8 +73335,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-03T10:36:44.89Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T01:10:05.228Z"
     },
     {
       "catalogObjectId": "2MHWLO3LH2PNZMV7D6WFLB6Q",
@@ -73549,8 +73655,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-06T22:42:12.136Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T00:56:05.949Z"
     },
     {
       "catalogObjectId": "CMFLJKOLKBHWS5JNOKX7UKW2",
@@ -74093,8 +74199,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-16T01:09:24.554Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T01:43:30.288Z"
     },
     {
       "catalogObjectId": "JDWB65PJ43DWR4TGIECYCYPO",
@@ -75413,8 +75519,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-10-20T10:21:17.502Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T01:25:45.522Z"
     },
     {
       "catalogObjectId": "GTAR3R4BJ6XY67G2ALBOGOQR",
@@ -75957,8 +76063,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-04T00:40:49.334Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T01:24:20.99Z"
     },
     {
       "catalogObjectId": "QEYQ4SLELCXQ2CFXRNP3VHHG",
@@ -76501,8 +76607,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-02-25T07:19:55.466Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T06:56:40.266Z"
     },
     {
       "catalogObjectId": "53IM7VQB7X5JZRFEZF3BFV4J",
@@ -76741,8 +76847,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "3",
-      "calculatedAt": "2025-11-24T06:41:55.682Z"
+      "quantity": "1",
+      "calculatedAt": "2026-03-14T21:11:26.249Z"
     },
     {
       "catalogObjectId": "7G456MJWEYOSXM4RK3TMKYPC",
@@ -77373,8 +77479,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-02-25T05:22:31.736Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T01:20:31.777Z"
     },
     {
       "catalogObjectId": "KPLZFH7V4XJXXQYZW2II3ZY5",
@@ -77485,8 +77591,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-04T23:47:29.752Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T01:44:05.611Z"
     },
     {
       "catalogObjectId": "M7ZSOVF4OJE6P4WHV4S64SYX",
@@ -77869,8 +77975,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-07T00:51:02.996Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T06:56:40.264Z"
     },
     {
       "catalogObjectId": "YF3YGD5LZELQ2S2MWUDISHGF",
@@ -78533,8 +78639,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-12-02T06:46:36.048Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-14T21:10:33.212Z"
     },
     {
       "catalogObjectId": "K6DOIPBP37EH5HNND7K3X4TW",
