@@ -378,8 +378,11 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
     for (const cat of itemCategories) {
       if (cat.id && discTypeCategoryIds.has(cat.id)) {
         const rawType = categories.get(cat.id);
-        discType = rawType ? discTypeLabel(rawType) : undefined;
-        break;
+        const label = rawType ? discTypeLabel(rawType) : undefined;
+        if (label) {
+          discType = label;
+          break;
+        }
       }
     }
 
