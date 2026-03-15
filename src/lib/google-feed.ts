@@ -41,6 +41,7 @@ export interface AggregatedItem {
   imageUrl?: string;
   category?: string;
   brand?: string;
+  discType?: string;
   minPrice: number;
   currency: string;
   totalQuantity: number;
@@ -85,6 +86,23 @@ export function formatBrand(name: string): string {
 }
 
 /**
+ * Map Square's disc type category name to a search-friendly label.
+ * e.g., "PUTT AND APPROACH" -> "Putter"
+ */
+export function discTypeLabel(categoryName: string): string | undefined {
+  switch (categoryName) {
+    case "PUTT AND APPROACH":
+      return "Disc Golf Putter";
+    case "MID-RANGE":
+      return "Midrange Golf Disc";
+    case "DRIVERS":
+      return "Disc Golf Driver";
+    default:
+      return undefined;
+  }
+}
+
+/**
  * Convert a name to a URL-safe slug.
  * e.g., "RURU" -> "ruru"
  * e.g., "Innova Destroyer" -> "innova-destroyer"
@@ -119,22 +137,24 @@ function buildLookups(data: SquareInventoryData) {
     }
   }
 
-  // Find the "BRANDS" parent category ID
+  // Find parent category IDs for BRANDS and DISC TYPES
   let brandsCategoryId: string | undefined;
+  let discTypesCategoryId: string | undefined;
   for (const [id, name] of categories) {
-    if (name === "BRANDS") {
-      brandsCategoryId = id;
-      break;
-    }
+    if (name === "BRANDS") brandsCategoryId = id;
+    if (name === "DISC TYPES") discTypesCategoryId = id;
   }
 
   // Brand category IDs (categories whose parent is BRANDS)
   const brandCategoryIds = new Set<string>();
-  if (brandsCategoryId) {
-    for (const [id, parentId] of categoryParents) {
-      if (parentId === brandsCategoryId) {
-        brandCategoryIds.add(id);
-      }
+  // Disc type category IDs (categories whose parent is DISC TYPES)
+  const discTypeCategoryIds = new Set<string>();
+  for (const [id, parentId] of categoryParents) {
+    if (brandsCategoryId && parentId === brandsCategoryId) {
+      brandCategoryIds.add(id);
+    }
+    if (discTypesCategoryId && parentId === discTypesCategoryId) {
+      discTypeCategoryIds.add(id);
     }
   }
 
@@ -148,14 +168,14 @@ function buildLookups(data: SquareInventoryData) {
     }
   }
 
-  return { images, categories, brandCategoryIds, inventory };
+  return { images, categories, brandCategoryIds, discTypeCategoryIds, inventory };
 }
 
 /**
  * Aggregate catalog items (combining variants into single items).
  */
 export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
-  const { images, categories, brandCategoryIds, inventory } =
+  const { images, categories, brandCategoryIds, discTypeCategoryIds, inventory } =
     buildLookups(data);
   const itemMap = new Map<string, AggregatedItem>();
 
@@ -185,6 +205,16 @@ export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
       if (cat.id && brandCategoryIds.has(cat.id)) {
         const rawBrand = categories.get(cat.id);
         brand = rawBrand ? formatBrand(rawBrand) : undefined;
+        break;
+      }
+    }
+
+    // Get disc type from item's categories (find one that's a child of DISC TYPES)
+    let discType: string | undefined;
+    for (const cat of itemCategories) {
+      if (cat.id && discTypeCategoryIds.has(cat.id)) {
+        const rawType = categories.get(cat.id);
+        discType = rawType ? discTypeLabel(rawType) : undefined;
         break;
       }
     }
@@ -237,6 +267,7 @@ export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
       imageUrl,
       category,
       brand,
+      discType,
       minPrice,
       currency,
       totalQuantity,
@@ -265,12 +296,15 @@ export function toGoogleProduct(item: AggregatedItem): GoogleProduct {
   const priceValue = (item.minPrice / 100).toFixed(2);
   const price = `${priceValue} ${item.currency}`;
 
-  // Prefix brand to title (e.g. "Pekapeka" -> "RPM Pekapeka")
-  // Only use the item's own brand, not the default brand
-  const title =
-    item.brand && !item.name.startsWith(item.brand)
-      ? `${item.brand} ${item.name}`
-      : item.name;
+  // Build title: prefix brand, suffix disc type
+  // e.g. "Pekapeka" -> "RPM Pekapeka Midrange Disc"
+  let title = item.name;
+  if (item.brand && !title.startsWith(item.brand)) {
+    title = `${item.brand} ${title}`;
+  }
+  if (item.discType) {
+    title = `${title} - ${item.discType}`;
+  }
 
   return {
     id: item.itemId,

@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   formatName,
   formatBrand,
+  discTypeLabel,
   slugify,
   aggregateItems,
   toGoogleProduct,
@@ -139,6 +140,25 @@ describe("formatBrand", () => {
 
   it("preserves already mixed-case brands", () => {
     expect(formatBrand("Kastaplast")).toBe("Kastaplast");
+  });
+});
+
+describe("discTypeLabel", () => {
+  it("maps putt and approach to Putter", () => {
+    expect(discTypeLabel("PUTT AND APPROACH")).toBe("Disc Golf Putter");
+  });
+
+  it("maps mid-range to Midrange Disc", () => {
+    expect(discTypeLabel("MID-RANGE")).toBe("Midrange Golf Disc");
+  });
+
+  it("maps drivers to Driver", () => {
+    expect(discTypeLabel("DRIVERS")).toBe("Disc Golf Driver");
+  });
+
+  it("returns undefined for unknown categories", () => {
+    expect(discTypeLabel("GLOW")).toBeUndefined();
+    expect(discTypeLabel("STARTER SETS")).toBeUndefined();
   });
 });
 
@@ -419,6 +439,27 @@ describe("toGoogleProduct", () => {
   it("does not duplicate brand if name already starts with it", () => {
     const alreadyPrefixed = { ...sampleItem, name: "RPM Ruru", brand: "RPM" };
     const result = toGoogleProduct(alreadyPrefixed);
+
+    expect(result.title).toBe("RPM Ruru");
+  });
+
+  it("appends disc type to title", () => {
+    const withType = { ...sampleItem, discType: "Disc Golf Putter" };
+    const result = toGoogleProduct(withType);
+
+    expect(result.title).toBe("Ruru - Disc Golf Putter");
+  });
+
+  it("includes both brand and disc type in title", () => {
+    const withBoth = { ...sampleItem, brand: "RPM", discType: "Disc Golf Putter" };
+    const result = toGoogleProduct(withBoth);
+
+    expect(result.title).toBe("RPM Ruru - Disc Golf Putter");
+  });
+
+  it("omits disc type from title when not set", () => {
+    const noType = { ...sampleItem, brand: "RPM", discType: undefined };
+    const result = toGoogleProduct(noType);
 
     expect(result.title).toBe("RPM Ruru");
   });
