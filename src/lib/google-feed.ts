@@ -33,24 +33,7 @@ export interface SquareInventoryData {
 }
 
 /**
- * An aggregated item (multiple variants combined into one).
- */
-export interface AggregatedItem {
-  itemId: string;
-  name: string;
-  description: string;
-  productUrl?: string;
-  imageUrl?: string;
-  category?: string;
-  brand?: string;
-  discType?: string;
-  minPrice: number;
-  currency: string;
-  totalQuantity: number;
-}
-
-/**
- * A single variation, expanded from an aggregated item.
+ * A single variation, extracted from Square catalog data.
  */
 export interface VariationItem {
   variationId: string;
@@ -248,113 +231,7 @@ function buildLookups(data: SquareInventoryData) {
 }
 
 /**
- * Aggregate catalog items (combining variants into single items).
- */
-export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
-  const { images, categories, brandCategoryIds, discTypeCategoryIds, inventory } =
-    buildLookups(data);
-  const itemMap = new Map<string, AggregatedItem>();
-
-  for (const obj of data.catalogObjects) {
-    if (obj.type !== "ITEM" || !obj.id || !obj.itemData) continue;
-    if (obj.isDeleted || obj.itemData.isArchived) continue;
-    // Only include regular products (not events, memberships, etc.)
-    if (obj.itemData.productType !== "REGULAR") continue;
-
-    const itemData = obj.itemData;
-    const variations = itemData.variations ?? [];
-    if (variations.length === 0) continue;
-
-    // Get image URL (first image)
-    const imageIds = itemData.imageIds ?? [];
-    const imageUrl = imageIds.length > 0 ? images.get(imageIds[0]) : undefined;
-
-    // Get category name (from reportingCategory or first category)
-    const category = itemData.reportingCategory?.id
-      ? categories.get(itemData.reportingCategory.id)
-      : undefined;
-
-    // Get brand from item's categories (find one that's a child of BRANDS)
-    let brand: string | undefined;
-    const itemCategories = itemData.categories ?? [];
-    for (const cat of itemCategories) {
-      if (cat.id && brandCategoryIds.has(cat.id)) {
-        const rawBrand = categories.get(cat.id);
-        brand = rawBrand ? formatBrand(rawBrand) : undefined;
-        break;
-      }
-    }
-
-    // Get disc type from item's categories (find one that's a child of DISC TYPES)
-    let discType: string | undefined;
-    for (const cat of itemCategories) {
-      if (cat.id && discTypeCategoryIds.has(cat.id)) {
-        const rawType = categories.get(cat.id);
-        discType = rawType ? discTypeLabel(rawType) : undefined;
-        break;
-      }
-    }
-
-    // Construct product URL if item is visible on the online store
-    // URL format: https://{domain}/product/{slug}/{item-id}
-    // Requires: ecom_visibility not UNAVAILABLE and has channels
-    const hasChannels = (itemData.channels?.length ?? 0) > 0;
-    // ecom_visibility exists in the raw JSON but is missing from the SDK types
-    const ecomVisibility = (itemData as Record<string, unknown>)
-      .ecom_visibility as string | undefined;
-    const isVisible = ecomVisibility !== "UNAVAILABLE";
-    const slug = slugify(itemData.name ?? "");
-    const productUrl =
-      hasChannels && isVisible && slug
-        ? `https://${SHOP_DOMAIN}/product/${slug}/${obj.id}`
-        : undefined;
-
-    // Aggregate price and quantity across all variations
-    let minPrice = Infinity;
-    let currency = "AUD";
-    let totalQuantity = 0;
-
-    for (const variation of variations) {
-      if (variation.type !== "ITEM_VARIATION" || !variation.id) continue;
-
-      const varData = variation.itemVariationData;
-      if (!varData) continue;
-      const quantity = inventory.get(variation.id) ?? 0;
-      const price = varData.priceMoney?.amount
-        ? Number(varData.priceMoney.amount)
-        : 0;
-
-      totalQuantity += quantity;
-      // Only consider in-stock variations for minimum price
-      if (quantity > 0 && price > 0 && price < minPrice) {
-        minPrice = price;
-        currency = varData.priceMoney?.currency ?? "AUD";
-      }
-    }
-
-    // Skip items without valid prices
-    if (minPrice === Infinity) continue;
-
-    itemMap.set(obj.id, {
-      itemId: obj.id,
-      name: formatName(itemData.name ?? ""),
-      description: itemData.description ?? "",
-      productUrl,
-      imageUrl,
-      category,
-      brand,
-      discType,
-      minPrice,
-      currency,
-      totalQuantity,
-    });
-  }
-
-  return Array.from(itemMap.values());
-}
-
-/**
- * Expand catalog items into one row per variation.
+ * Extract catalog items into one row per variation.
  */
 export function expandVariations(data: SquareInventoryData): VariationItem[] {
   const { images, categories, brandCategoryIds, discTypeCategoryIds, inventory } =
@@ -497,39 +374,6 @@ function getGoogleProductCategory(category?: string): string {
 }
 
 /**
- * Convert an aggregated item to Google's format.
- */
-export function toGoogleProduct(item: AggregatedItem): GoogleProduct {
-  // Format price as "29.00 AUD"
-  const priceValue = (item.minPrice / 100).toFixed(2);
-  const price = `${priceValue} ${item.currency}`;
-
-  // Build title: prefix brand, suffix disc type
-  // e.g. "Pekapeka" -> "RPM Pekapeka Midrange Disc"
-  let title = item.name;
-  if (item.brand && !title.startsWith(item.brand)) {
-    title = `${item.brand} ${title}`;
-  }
-  if (item.discType) {
-    title = `${title} - ${item.discType}`;
-  }
-
-  return {
-    id: item.itemId,
-    title,
-    description: item.description || item.name,
-    link: item.productUrl || "",
-    image_link: item.imageUrl || "",
-    availability: item.totalQuantity > 0 ? "in_stock" : "out_of_stock",
-    price,
-    condition: "new",
-    brand: item.brand,
-    google_product_category: getGoogleProductCategory(item.category),
-    product_type: item.category,
-  };
-}
-
-/**
  * Google feed column headers (order matters).
  */
 const FEED_COLUMNS: (keyof GoogleProduct)[] = [
@@ -542,14 +386,10 @@ const FEED_COLUMNS: (keyof GoogleProduct)[] = [
   "price",
   "condition",
   "brand",
-  "google_product_category",
-  "product_type",
-];
-
-const VARIATION_FEED_COLUMNS: (keyof GoogleProduct)[] = [
-  ...FEED_COLUMNS,
   "item_group_id",
   "color",
+  "google_product_category",
+  "product_type",
 ];
 
 /**
@@ -560,48 +400,12 @@ function escapeTsvValue(value: string | undefined): string {
   return value.replace(/[\t\n\r]/g, " ");
 }
 
-export interface FeedOptions {
-  perVariation?: boolean;
-}
-
 /**
  * Generate TSV feed content from Square inventory data.
  */
-export function generateTsvFeed(
-  data: SquareInventoryData,
-  options?: FeedOptions
-): string {
-  if (options?.perVariation) {
-    return generateVariationFeed(data);
-  }
-  return generateAggregatedFeed(data);
-}
-
-function generateAggregatedFeed(data: SquareInventoryData): string {
+export function generateTsvFeed(data: SquareInventoryData): string {
   const lines: string[] = [];
   lines.push(FEED_COLUMNS.join("\t"));
-
-  const items = aggregateItems(data);
-
-  for (const item of items) {
-    if (!item.productUrl) continue;
-    if (!item.imageUrl) continue;
-    if (!item.minPrice || item.minPrice === Infinity) continue;
-    if (item.totalQuantity <= 0) continue;
-
-    const googleProduct = toGoogleProduct(item);
-    const values = FEED_COLUMNS.map((col) =>
-      escapeTsvValue(googleProduct[col]?.toString())
-    );
-    lines.push(values.join("\t"));
-  }
-
-  return lines.join("\n");
-}
-
-function generateVariationFeed(data: SquareInventoryData): string {
-  const lines: string[] = [];
-  lines.push(VARIATION_FEED_COLUMNS.join("\t"));
 
   const variations = expandVariations(data);
 
@@ -611,7 +415,7 @@ function generateVariationFeed(data: SquareInventoryData): string {
     if (item.quantity <= 0) continue;
 
     const googleProduct = variationToGoogleProduct(item);
-    const values = VARIATION_FEED_COLUMNS.map((col) =>
+    const values = FEED_COLUMNS.map((col) =>
       escapeTsvValue(googleProduct[col]?.toString())
     );
     lines.push(values.join("\t"));

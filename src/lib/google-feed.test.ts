@@ -6,12 +6,9 @@ import {
   parseVariationColor,
   normalizeColor,
   slugify,
-  aggregateItems,
   expandVariations,
-  toGoogleProduct,
   variationToGoogleProduct,
   generateTsvFeed,
-  type AggregatedItem,
   type VariationItem,
   type SquareInventoryData,
 } from "./google-feed.js";
@@ -189,308 +186,6 @@ describe("slugify", () => {
   });
 });
 
-describe("aggregateItems", () => {
-  it("combines variants into single item", () => {
-    const data: SquareInventoryData = {
-      catalogObjects: [
-        makeImage("img-1", "https://example.com/ruru.jpg"),
-        makeItem({
-          id: "item-1",
-          name: "Ruru",
-          description: "A putter",
-          imageIds: ["img-1"],
-          ecomUri: "https://mdgcshop.square.site/product/ruru/25",
-          variations: [
-            { id: "var-1", name: "Atomic/Pink/171", priceAmount: 2200n },
-            { id: "var-2", name: "Cosmic/Blue/170", priceAmount: 2500n },
-          ],
-        }),
-      ],
-      inventoryCounts: [
-        makeInventoryCount("var-1", 2),
-        makeInventoryCount("var-2", 3),
-      ],
-    };
-
-    const items = aggregateItems(data);
-
-    expect(items).toHaveLength(1);
-    expect(items[0]).toMatchObject({
-      itemId: "item-1",
-      name: "Ruru",
-      totalQuantity: 5,
-      minPrice: 2200,
-    });
-  });
-
-  it("uses minimum price from in-stock variants only", () => {
-    const data: SquareInventoryData = {
-      catalogObjects: [
-        makeItem({
-          id: "item-1",
-          name: "Disc",
-          ecomUri: "https://example.com/disc",
-          variations: [
-            { id: "var-1", name: "Cheap but out of stock", priceAmount: 1500n },
-            { id: "var-2", name: "In stock", priceAmount: 2500n },
-          ],
-        }),
-      ],
-      inventoryCounts: [
-        makeInventoryCount("var-1", 0), // out of stock
-        makeInventoryCount("var-2", 3), // in stock
-      ],
-    };
-
-    const items = aggregateItems(data);
-
-    expect(items[0].minPrice).toBe(2500); // not 1500
-    expect(items[0].totalQuantity).toBe(3);
-  });
-
-  it("uses minimum price across variants", () => {
-    const data: SquareInventoryData = {
-      catalogObjects: [
-        makeItem({
-          id: "item-1",
-          name: "Disc",
-          ecomUri: "https://example.com/disc",
-          variations: [
-            { id: "var-1", name: "Cheap", priceAmount: 1500n },
-            { id: "var-2", name: "Expensive", priceAmount: 3000n },
-          ],
-        }),
-      ],
-      inventoryCounts: [
-        makeInventoryCount("var-1", 1),
-        makeInventoryCount("var-2", 1),
-      ],
-    };
-
-    const items = aggregateItems(data);
-
-    expect(items[0].minPrice).toBe(1500);
-  });
-
-  it("keeps separate items separate", () => {
-    const data: SquareInventoryData = {
-      catalogObjects: [
-        makeItem({
-          id: "item-1",
-          name: "Ruru",
-          ecomUri: "https://example.com/ruru",
-          variations: [{ id: "var-1", priceAmount: 2200n }],
-        }),
-        makeItem({
-          id: "item-2",
-          name: "Tui",
-          ecomUri: "https://example.com/tui",
-          variations: [{ id: "var-2", priceAmount: 2200n }],
-        }),
-      ],
-      inventoryCounts: [
-        makeInventoryCount("var-1", 2),
-        makeInventoryCount("var-2", 3),
-      ],
-    };
-
-    const items = aggregateItems(data);
-
-    expect(items).toHaveLength(2);
-  });
-
-  it("extracts brand from category hierarchy", () => {
-    const data: SquareInventoryData = {
-      catalogObjects: [
-        makeImage("img-1", "https://example.com/ruru.jpg"),
-        // Parent category for brands
-        makeCategory("brands-cat", "BRANDS"),
-        // Brand category (child of BRANDS)
-        makeCategory("rpm-cat", "RPM", "brands-cat"),
-        // Other category (not a brand)
-        makeCategory("putters-cat", "PUTTERS"),
-        makeItem({
-          id: "item-1",
-          name: "Ruru",
-          description: "A putter",
-          imageIds: ["img-1"],
-          categoryIds: ["putters-cat", "rpm-cat"],
-          ecomUri: "https://example.com/ruru",
-          variations: [{ id: "var-1", priceAmount: 2200n }],
-        }),
-      ],
-      inventoryCounts: [makeInventoryCount("var-1", 5)],
-    };
-
-    const items = aggregateItems(data);
-
-    expect(items).toHaveLength(1);
-    expect(items[0].brand).toBe("RPM");
-  });
-
-  it("skips non-REGULAR product types", () => {
-    const data: SquareInventoryData = {
-      catalogObjects: [
-        makeImage("img-1", "https://example.com/disc.jpg"),
-        makeItem({
-          id: "item-1",
-          name: "Regular Disc",
-          imageIds: ["img-1"],
-          ecomUri: "https://example.com/disc",
-          productType: "REGULAR",
-          variations: [{ id: "var-1", priceAmount: 2200n }],
-        }),
-        makeItem({
-          id: "item-2",
-          name: "Event Registration",
-          imageIds: ["img-1"],
-          ecomUri: "https://example.com/event",
-          productType: "EVENT",
-          variations: [{ id: "var-2", priceAmount: 1500n }],
-        }),
-        makeItem({
-          id: "item-3",
-          name: "Membership",
-          imageIds: ["img-1"],
-          ecomUri: "https://example.com/membership",
-          productType: "LEGACY_SQUARE_ONLINE_SERVICE",
-          variations: [{ id: "var-3", priceAmount: 5000n }],
-        }),
-      ],
-      inventoryCounts: [
-        makeInventoryCount("var-1", 5),
-        makeInventoryCount("var-2", 10),
-        makeInventoryCount("var-3", 100),
-      ],
-    };
-
-    const items = aggregateItems(data);
-
-    expect(items).toHaveLength(1);
-    expect(items[0].name).toBe("Regular Disc");
-  });
-
-  it("skips items without price", () => {
-    const data: SquareInventoryData = {
-      catalogObjects: [
-        makeItem({
-          id: "item-1",
-          name: "No Price Disc",
-          ecomUri: "https://example.com/disc",
-          variations: [{ id: "var-1" }], // no price
-        }),
-      ],
-      inventoryCounts: [makeInventoryCount("var-1", 5)],
-    };
-
-    const items = aggregateItems(data);
-
-    expect(items).toHaveLength(0);
-  });
-});
-
-describe("toGoogleProduct", () => {
-  const sampleItem: AggregatedItem = {
-    itemId: "item-1",
-    name: "Ruru",
-    description: "A putter disc",
-    productUrl: "https://mdgcshop.square.site/product/ruru/25",
-    imageUrl: "https://example.com/ruru.jpg",
-    category: "Putters",
-    minPrice: 2200,
-    currency: "AUD",
-    totalQuantity: 5,
-  };
-
-  it("converts aggregated item to Google format", () => {
-    const result = toGoogleProduct(sampleItem);
-
-    expect(result).toEqual({
-      id: "item-1",
-      title: "Ruru",
-      description: "A putter disc",
-      link: "https://mdgcshop.square.site/product/ruru/25",
-      image_link: "https://example.com/ruru.jpg",
-      availability: "in_stock",
-      price: "22.00 AUD",
-      condition: "new",
-      brand: undefined,
-      google_product_category: "Sporting Goods > Outdoor Recreation > Disc Golf",
-      product_type: "Putters",
-    });
-  });
-
-  it("sets availability to out_of_stock when quantity is 0", () => {
-    const outOfStock = { ...sampleItem, totalQuantity: 0 };
-    const result = toGoogleProduct(outOfStock);
-
-    expect(result.availability).toBe("out_of_stock");
-  });
-
-  it("uses title as description fallback", () => {
-    const noDescription = { ...sampleItem, description: "" };
-    const result = toGoogleProduct(noDescription);
-
-    expect(result.description).toBe("Ruru");
-  });
-
-  it("prefixes brand to title", () => {
-    const withBrand = { ...sampleItem, brand: "RPM" };
-    const result = toGoogleProduct(withBrand);
-
-    expect(result.title).toBe("RPM Ruru");
-  });
-
-  it("does not duplicate brand if name already starts with it", () => {
-    const alreadyPrefixed = { ...sampleItem, name: "RPM Ruru", brand: "RPM" };
-    const result = toGoogleProduct(alreadyPrefixed);
-
-    expect(result.title).toBe("RPM Ruru");
-  });
-
-  it("appends disc type to title", () => {
-    const withType = { ...sampleItem, discType: "Disc Golf Putter" };
-    const result = toGoogleProduct(withType);
-
-    expect(result.title).toBe("Ruru - Disc Golf Putter");
-  });
-
-  it("includes both brand and disc type in title", () => {
-    const withBoth = { ...sampleItem, brand: "RPM", discType: "Disc Golf Putter" };
-    const result = toGoogleProduct(withBoth);
-
-    expect(result.title).toBe("RPM Ruru - Disc Golf Putter");
-  });
-
-  it("omits disc type from title when not set", () => {
-    const noType = { ...sampleItem, brand: "RPM", discType: undefined };
-    const result = toGoogleProduct(noType);
-
-    expect(result.title).toBe("RPM Ruru");
-  });
-
-  it("uses item brand when available", () => {
-    const withBrand = { ...sampleItem, brand: "RPM" };
-    const result = toGoogleProduct(withBrand);
-
-    expect(result.brand).toBe("RPM");
-  });
-
-  it("leaves brand undefined when item has no brand", () => {
-    const noBrand = { ...sampleItem, brand: undefined };
-    const result = toGoogleProduct(noBrand);
-
-    expect(result.brand).toBeUndefined();
-  });
-
-  it("does not prefix brand to title when item has no brand", () => {
-    const noBrand = { ...sampleItem, brand: undefined };
-    const result = toGoogleProduct(noBrand);
-
-    expect(result.title).toBe("Ruru");
-  });
-});
-
 describe("generateTsvFeed", () => {
   const sampleData: SquareInventoryData = {
     catalogObjects: [
@@ -502,33 +197,37 @@ describe("generateTsvFeed", () => {
         description: "A putter",
         imageIds: ["img-1"],
         categoryId: "cat-1",
-        variations: [{ id: "var-1", name: "Atomic/Pink", priceAmount: 2200n }],
+        variations: [
+          { id: "var-1", name: "ATOMIC/PINK/171", priceAmount: 2200n },
+          { id: "var-2", name: "COSMIC/BLUE/170", priceAmount: 2500n },
+        ],
       }),
     ],
-    inventoryCounts: [makeInventoryCount("var-1", 5)],
+    inventoryCounts: [
+      makeInventoryCount("var-1", 2),
+      makeInventoryCount("var-2", 3),
+    ],
   };
 
-  it("generates TSV with header row", () => {
+  it("generates TSV with header row including variation columns", () => {
+    const result = generateTsvFeed(sampleData);
+    const headers = result.split("\n")[0].split("\t");
+
+    expect(headers).toContain("item_group_id");
+    expect(headers).toContain("color");
+  });
+
+  it("generates one row per variation", () => {
     const result = generateTsvFeed(sampleData);
     const lines = result.split("\n");
 
-    expect(lines[0]).toBe(
-      "id\ttitle\tdescription\tlink\timage_link\tavailability\tprice\tcondition\tbrand\tgoogle_product_category\tproduct_type"
-    );
+    // 1 header + 2 variations
+    expect(lines).toHaveLength(3);
+    expect(lines[1]).toContain("var-1");
+    expect(lines[2]).toContain("var-2");
   });
 
-  it("generates aggregated data rows", () => {
-    const result = generateTsvFeed(sampleData);
-    const lines = result.split("\n");
-
-    expect(lines).toHaveLength(2); // header + 1 item
-    expect(lines[1]).toContain("item-1");
-    expect(lines[1]).toContain("Ruru");
-    expect(lines[1]).toContain("22.00 AUD");
-    expect(lines[1]).toContain("https://mdgcshop.square.site/product/ruru/item-1");
-  });
-
-  it("skips items without channels (no URL)", () => {
+  it("skips variations without channels (no URL)", () => {
     const data: SquareInventoryData = {
       ...sampleData,
       catalogObjects: [
@@ -537,23 +236,22 @@ describe("generateTsvFeed", () => {
           id: "item-2",
           name: "No Channels Disc",
           imageIds: ["img-1"],
-          channels: [], // no channels = no URL
-          variations: [{ id: "var-2", priceAmount: 2000n }],
+          channels: [],
+          variations: [{ id: "var-3", name: "ATOMIC/RED/175", priceAmount: 2000n }],
         }),
       ],
       inventoryCounts: [
         ...sampleData.inventoryCounts,
-        makeInventoryCount("var-2", 1),
+        makeInventoryCount("var-3", 1),
       ],
     };
 
     const result = generateTsvFeed(data);
-    const lines = result.split("\n");
 
-    expect(lines).toHaveLength(2); // header + 1 item (not 3)
+    expect(result).not.toContain("var-3");
   });
 
-  it("skips items without images", () => {
+  it("skips variations without images", () => {
     const data: SquareInventoryData = {
       ...sampleData,
       catalogObjects: [
@@ -561,25 +259,22 @@ describe("generateTsvFeed", () => {
         makeItem({
           id: "item-2",
           name: "No Image Disc",
-          // no imageIds
-          variations: [{ id: "var-2", priceAmount: 2000n }],
+          variations: [{ id: "var-3", name: "ATOMIC/RED/175", priceAmount: 2000n }],
         }),
       ],
       inventoryCounts: [
         ...sampleData.inventoryCounts,
-        makeInventoryCount("var-2", 1),
+        makeInventoryCount("var-3", 1),
       ],
     };
 
     const result = generateTsvFeed(data);
-    const lines = result.split("\n");
 
-    expect(lines).toHaveLength(2); // header + 1 item
+    expect(result).not.toContain("var-3");
   });
 
   it("escapes tabs and newlines in values", () => {
     const data: SquareInventoryData = {
-      ...sampleData,
       catalogObjects: [
         makeImage("img-1", "https://example.com/ruru.jpg"),
         makeItem({
@@ -587,9 +282,10 @@ describe("generateTsvFeed", () => {
           name: "Ruru",
           description: "Line 1\nLine 2\twith tab",
           imageIds: ["img-1"],
-          variations: [{ id: "var-1", priceAmount: 2200n }],
+          variations: [{ id: "var-1", name: "ATOMIC/PINK/171", priceAmount: 2200n }],
         }),
       ],
+      inventoryCounts: [makeInventoryCount("var-1", 5)],
     };
 
     const result = generateTsvFeed(data);
@@ -598,29 +294,32 @@ describe("generateTsvFeed", () => {
     expect(result).toContain("Line 1 Line 2 with tab");
   });
 
-  it("skips out-of-stock items", () => {
+  it("skips out-of-stock variations", () => {
     const data: SquareInventoryData = {
-      ...sampleData,
       catalogObjects: [
-        ...sampleData.catalogObjects,
+        makeImage("img-1", "https://example.com/ruru.jpg"),
         makeItem({
-          id: "item-2",
-          name: "Out of Stock Disc",
+          id: "item-1",
+          name: "Ruru",
           imageIds: ["img-1"],
-          variations: [{ id: "var-2", priceAmount: 2000n }],
+          variations: [
+            { id: "var-1", name: "ATOMIC/PINK/171", priceAmount: 2200n },
+            { id: "var-2", name: "COSMIC/BLUE/170", priceAmount: 2500n },
+          ],
         }),
       ],
       inventoryCounts: [
-        ...sampleData.inventoryCounts,
-        makeInventoryCount("var-2", 0),
+        makeInventoryCount("var-1", 0),
+        makeInventoryCount("var-2", 3),
       ],
     };
 
     const result = generateTsvFeed(data);
     const lines = result.split("\n");
 
-    expect(lines).toHaveLength(2); // header + 1 in-stock item
-    expect(result).not.toContain("Out of Stock Disc");
+    expect(lines).toHaveLength(2); // header + 1 in-stock variation
+    expect(result).not.toContain("var-1");
+    expect(result).toContain("var-2");
   });
 
   it("handles empty catalog", () => {
@@ -866,114 +565,4 @@ describe("variationToGoogleProduct", () => {
   });
 });
 
-describe("generateTsvFeed with variations", () => {
-  it("includes item_group_id and color columns", () => {
-    const data: SquareInventoryData = {
-      catalogObjects: [
-        makeImage("img-1", "https://example.com/ruru.jpg"),
-        makeItem({
-          id: "item-1",
-          name: "Ruru",
-          description: "A putter",
-          imageIds: ["img-1"],
-          variations: [
-            { id: "var-1", name: "ATOMIC/PINK/171", priceAmount: 2200n },
-            { id: "var-2", name: "COSMIC/BLUE/170", priceAmount: 2500n },
-          ],
-        }),
-      ],
-      inventoryCounts: [
-        makeInventoryCount("var-1", 2),
-        makeInventoryCount("var-2", 3),
-      ],
-    };
 
-    const result = generateTsvFeed(data, { perVariation: true });
-    const lines = result.split("\n");
-    const headers = lines[0].split("\t");
-
-    expect(headers).toContain("item_group_id");
-    expect(headers).toContain("color");
-    // 1 header + 2 variations
-    expect(lines).toHaveLength(3);
-  });
-
-  it("uses variation ID as product ID", () => {
-    const data: SquareInventoryData = {
-      catalogObjects: [
-        makeImage("img-1", "https://example.com/ruru.jpg"),
-        makeItem({
-          id: "item-1",
-          name: "Ruru",
-          imageIds: ["img-1"],
-          variations: [
-            { id: "var-1", name: "ATOMIC/PINK/171", priceAmount: 2200n },
-          ],
-        }),
-      ],
-      inventoryCounts: [makeInventoryCount("var-1", 2)],
-    };
-
-    const result = generateTsvFeed(data, { perVariation: true });
-    const lines = result.split("\n");
-
-    expect(lines[1]).toContain("var-1");
-  });
-
-  it("skips out-of-stock variations", () => {
-    const data: SquareInventoryData = {
-      catalogObjects: [
-        makeImage("img-1", "https://example.com/ruru.jpg"),
-        makeItem({
-          id: "item-1",
-          name: "Ruru",
-          imageIds: ["img-1"],
-          variations: [
-            { id: "var-1", name: "ATOMIC/PINK/171", priceAmount: 2200n },
-            { id: "var-2", name: "COSMIC/BLUE/170", priceAmount: 2500n },
-          ],
-        }),
-      ],
-      inventoryCounts: [
-        makeInventoryCount("var-1", 0),
-        makeInventoryCount("var-2", 3),
-      ],
-    };
-
-    const result = generateTsvFeed(data, { perVariation: true });
-    const lines = result.split("\n");
-
-    expect(lines).toHaveLength(2); // header + 1 in-stock variation
-    expect(result).not.toContain("var-1");
-    expect(result).toContain("var-2");
-  });
-
-  it("defaults to aggregated mode when perVariation is false", () => {
-    const data: SquareInventoryData = {
-      catalogObjects: [
-        makeImage("img-1", "https://example.com/ruru.jpg"),
-        makeItem({
-          id: "item-1",
-          name: "Ruru",
-          imageIds: ["img-1"],
-          variations: [
-            { id: "var-1", name: "ATOMIC/PINK/171", priceAmount: 2200n },
-            { id: "var-2", name: "COSMIC/BLUE/170", priceAmount: 2500n },
-          ],
-        }),
-      ],
-      inventoryCounts: [
-        makeInventoryCount("var-1", 2),
-        makeInventoryCount("var-2", 3),
-      ],
-    };
-
-    const result = generateTsvFeed(data);
-    const lines = result.split("\n");
-    const headers = lines[0].split("\t");
-
-    // Aggregated: 1 header + 1 item (not 2 variations)
-    expect(lines).toHaveLength(2);
-    expect(headers).not.toContain("item_group_id");
-  });
-});
