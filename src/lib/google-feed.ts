@@ -205,11 +205,11 @@ export function formatBrand(name: string): string {
 export function discTypeLabel(categoryName: string): string | undefined {
   switch (categoryName) {
     case "PUTT AND APPROACH":
-      return "Disc Golf Putter";
+      return "Putter";
     case "MID-RANGE":
-      return "Midrange Golf Disc";
+      return "Midrange";
     case "DRIVERS":
-      return "Disc Golf Driver";
+      return "Driver";
     default:
       return undefined;
   }
@@ -429,6 +429,9 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
       const rawDescription = itemData.description ?? "";
       const extracted = extractFlightRatings(rawDescription);
       const productDetails: string[] = [];
+      if (discType) {
+        productDetails.push(`Disc:Type:${discType}`);
+      }
       if (extracted) {
         productDetails.push(...flightProductDetails(extracted.flight));
       }
@@ -471,9 +474,6 @@ export function variationToGoogleProduct(item: VariationItem): GoogleProduct {
   let title = item.name;
   if (item.brand && !title.startsWith(item.brand)) {
     title = `${item.brand} ${title}`;
-  }
-  if (item.discType) {
-    title = `${title} - ${item.discType}`;
   }
 
   return {

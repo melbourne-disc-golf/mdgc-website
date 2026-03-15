@@ -152,15 +152,15 @@ describe("formatBrand", () => {
 
 describe("discTypeLabel", () => {
   it("maps putt and approach to Putter", () => {
-    expect(discTypeLabel("PUTT AND APPROACH")).toBe("Disc Golf Putter");
+    expect(discTypeLabel("PUTT AND APPROACH")).toBe("Putter");
   });
 
-  it("maps mid-range to Midrange Disc", () => {
-    expect(discTypeLabel("MID-RANGE")).toBe("Midrange Golf Disc");
+  it("maps mid-range to Midrange", () => {
+    expect(discTypeLabel("MID-RANGE")).toBe("Midrange");
   });
 
   it("maps drivers to Driver", () => {
-    expect(discTypeLabel("DRIVERS")).toBe("Disc Golf Driver");
+    expect(discTypeLabel("DRIVERS")).toBe("Driver");
   });
 
   it("returns undefined for unknown categories", () => {
@@ -751,7 +751,8 @@ describe("expandVariations", () => {
     const items = expandVariations(data);
 
     expect(items[0].brand).toBe("RPM");
-    expect(items[0].discType).toBe("Disc Golf Putter");
+    expect(items[0].discType).toBe("Putter");
+    expect(items[0].productDetails).toContain("Disc:Type:Putter");
   });
 });
 
@@ -792,9 +793,9 @@ describe("variationToGoogleProduct", () => {
     expect(result.price).toBe("22.00 AUD");
   });
 
-  it("builds title with brand and disc type", () => {
+  it("builds title with brand prefix", () => {
     const result = variationToGoogleProduct(sampleVariation);
-    expect(result.title).toBe("RPM Ruru - Disc Golf Putter");
+    expect(result.title).toBe("RPM Ruru");
   });
 
   it("sets availability from variation quantity", () => {
