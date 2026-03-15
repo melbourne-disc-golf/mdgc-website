@@ -5,6 +5,7 @@ import {
   discTypeLabel,
   parseVariationParts,
   parseVariationColor,
+  parseVariationPlastic,
   parseVariationWeight,
   normalizeColor,
   slugify,
@@ -466,10 +467,10 @@ describe("flightProductDetails", () => {
       fade: "2",
     });
     expect(details).toEqual([
-      "Flight ratings:Speed:7",
-      "Flight ratings:Glide:4",
-      "Flight ratings:Turn:-1.5",
-      "Flight ratings:Fade:2",
+      "Disc:Speed:7",
+      "Disc:Glide:4",
+      "Disc:Turn:-1.5",
+      "Disc:Fade:2",
     ]);
   });
 });
@@ -494,6 +495,24 @@ describe("parseVariationColor", () => {
 
   it("returns undefined for names with wrong number of parts", () => {
     expect(parseVariationColor("COSMIC/YELLOW")).toBeUndefined();
+  });
+});
+
+describe("parseVariationPlastic", () => {
+  it("extracts plastic from standard format", () => {
+    expect(parseVariationPlastic("COSMIC/YELLOW/177")).toBe("Cosmic");
+  });
+
+  it("extracts plastic from prefixed variation name", () => {
+    expect(parseVariationPlastic("KOTARE - ATOMIC/BURNT ORANGE/173")).toBe("Atomic");
+  });
+
+  it("preserves mixed-case plastic names", () => {
+    expect(parseVariationPlastic("VIP-X/RED/175")).toBe("Vip-x");
+  });
+
+  it("returns undefined for non-standard names", () => {
+    expect(parseVariationPlastic("STANDARD")).toBeUndefined();
   });
 });
 
@@ -625,6 +644,26 @@ describe("expandVariations", () => {
     expect(items[0].variationId).toBe("var-2");
   });
 
+  it("extracts plastic type from variation name", () => {
+    const data: SquareInventoryData = {
+      catalogObjects: [
+        makeItem({
+          id: "item-1",
+          name: "Kotare",
+          variations: [
+            { id: "var-1", name: "ATOMIC/PINK/171", priceAmount: 2200n },
+          ],
+        }),
+      ],
+      inventoryCounts: [makeInventoryCount("var-1", 1)],
+    };
+
+    const items = expandVariations(data);
+
+    expect(items[0].plastic).toBe("Atomic");
+    expect(items[0].productDetails).toContain("Disc:Plastic:Atomic");
+  });
+
   it("extracts weight from variation name", () => {
     const data: SquareInventoryData = {
       catalogObjects: [
@@ -662,10 +701,11 @@ describe("expandVariations", () => {
     const items = expandVariations(data);
 
     expect(items[0].productDetails).toEqual([
-      "Flight ratings:Speed:2",
-      "Flight ratings:Glide:5",
-      "Flight ratings:Turn:0",
-      "Flight ratings:Fade:1",
+      "Disc:Speed:2",
+      "Disc:Glide:5",
+      "Disc:Turn:0",
+      "Disc:Fade:1",
+      "Disc:Plastic:Atomic",
     ]);
   });
 
@@ -767,6 +807,16 @@ describe("variationToGoogleProduct", () => {
     );
   });
 
+  it("sets material to Plastic for discs", () => {
+    const result = variationToGoogleProduct(sampleVariation);
+    expect(result.material).toBe("Plastic");
+  });
+
+  it("omits material for non-disc items", () => {
+    const nonDisc = { ...sampleVariation, category: "BAGS" };
+    expect(variationToGoogleProduct(nonDisc).material).toBeUndefined();
+  });
+
   it("includes product_weight when weight is set", () => {
     const withWeight = { ...sampleVariation, weight: "171 g" };
     const result = variationToGoogleProduct(withWeight);
@@ -777,14 +827,14 @@ describe("variationToGoogleProduct", () => {
     const withDetails = {
       ...sampleVariation,
       productDetails: [
-        "Flight ratings:Speed:7",
-        "Flight ratings:Glide:5",
-        "Flight ratings:Turn:-2",
-        "Flight ratings:Fade:1",
+        "Disc:Speed:7",
+        "Disc:Glide:5",
+        "Disc:Turn:-2",
+        "Disc:Fade:1",
       ],
     };
     const result = variationToGoogleProduct(withDetails);
-    expect(result.product_detail).toBe("Flight ratings:Speed:7,Flight ratings:Glide:5,Flight ratings:Turn:-2,Flight ratings:Fade:1");
+    expect(result.product_detail).toBe("Disc:Speed:7,Disc:Glide:5,Disc:Turn:-2,Disc:Fade:1");
   });
 });
 

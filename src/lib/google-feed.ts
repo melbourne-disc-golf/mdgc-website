@@ -20,6 +20,7 @@ export interface GoogleProduct {
   gtin?: string;
   item_group_id?: string;
   color?: string;
+  material?: string;
   product_weight?: string;
   product_detail?: string;
   google_product_category?: string;
@@ -47,6 +48,7 @@ export interface VariationItem {
   category?: string;
   brand?: string;
   discType?: string;
+  plastic?: string;
   color?: string;
   weight?: string;
   productDetails?: string[];
@@ -86,6 +88,17 @@ export function parseVariationColor(name: string): string | undefined {
   const parsed = parseVariationParts(name);
   if (!parsed) return undefined;
   return normalizeColor(formatName(parsed.color));
+}
+
+/**
+ * Parse a Square variation name to extract the plastic type.
+ * e.g., "COSMIC/YELLOW/177" -> "Cosmic"
+ * e.g., "KOTARE - ATOMIC/BURNT ORANGE/173" -> "Atomic"
+ */
+export function parseVariationPlastic(name: string): string | undefined {
+  const parsed = parseVariationParts(name);
+  if (!parsed) return undefined;
+  return formatName(parsed.plastic);
 }
 
 /**
@@ -249,10 +262,10 @@ export function extractFlightRatings(
  */
 export function flightProductDetails(flight: FlightNumbers): string[] {
   return [
-    `Flight ratings:Speed:${flight.speed}`,
-    `Flight ratings:Glide:${flight.glide}`,
-    `Flight ratings:Turn:${flight.turn}`,
-    `Flight ratings:Fade:${flight.fade}`,
+    `Disc:Speed:${flight.speed}`,
+    `Disc:Glide:${flight.glide}`,
+    `Disc:Turn:${flight.turn}`,
+    `Disc:Fade:${flight.fade}`,
   ];
 }
 
@@ -400,6 +413,9 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
           ? images.get(varImageIds[0])
           : undefined;
 
+      const plastic = varData.name
+        ? parseVariationPlastic(varData.name)
+        : undefined;
       const color = varData.name
         ? parseVariationColor(varData.name)
         : undefined;
@@ -409,9 +425,13 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
 
       const rawDescription = itemData.description ?? "";
       const extracted = extractFlightRatings(rawDescription);
-      const productDetails = extracted
-        ? flightProductDetails(extracted.flight)
-        : undefined;
+      const productDetails: string[] = [];
+      if (extracted) {
+        productDetails.push(...flightProductDetails(extracted.flight));
+      }
+      if (plastic) {
+        productDetails.push(`Disc:Plastic:${plastic}`);
+      }
       const description = extracted?.description ?? rawDescription;
 
       results.push({
@@ -424,7 +444,8 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
         category,
         brand,
         discType,
-        productDetails,
+        plastic,
+        productDetails: productDetails.length > 0 ? productDetails : undefined,
         color,
         weight,
         price,
@@ -464,6 +485,7 @@ export function variationToGoogleProduct(item: VariationItem): GoogleProduct {
     brand: item.brand,
     item_group_id: item.itemId,
     color: item.color,
+    material: item.category === "DISCS" ? "Plastic" : undefined,
     product_weight: item.weight,
     product_detail: item.productDetails?.join(","),
     google_product_category: getGoogleProductCategory(item.category),
@@ -497,6 +519,7 @@ const FEED_COLUMNS: (keyof GoogleProduct)[] = [
   "brand",
   "item_group_id",
   "color",
+  "material",
   "product_weight",
   "product_detail",
   "google_product_category",
