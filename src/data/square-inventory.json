@@ -24,7 +24,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -32,14 +31,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "DR54UKPMZD3RZU4BKGPYEHFN",
-            "updatedAt": "2025-11-04T11:43:06.915Z",
-            "version": 1762256586915,
+            "updatedAt": "2026-03-15T07:48:27.053Z",
+            "version": 1773560907053,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -66,6 +66,10 @@
           {
             "id": "MJGW2KCGPJIMHUSKPNPZ4YVZ",
             "ordinal": -2251250057871360
+          },
+          {
+            "id": "IY54P2OIB2HR4ZXNQSTA4FM6",
+            "ordinal": -2245889619918848
           }
         ],
         "descriptionHtml": "The Maverick has a spot nearly every player’s bag. The Maverick&#39;s smaller rim offers controllable fairway speed and straighter flights for slower arms with trustworthy anhyzers and slow turns for experienced players. The Maverick is great in the woods with low ceilings and tunnel shots.\n\nSpeed: 7.0\nGlide: 4.0\nTurn: -1.5\nFade: 2.0",
@@ -82,8 +86,8 @@
         "isAlcoholic": false
       },
       "id": "JM6Y5O2IHC6LF5ZMZSW6227C",
-      "updatedAt": "2025-11-04T11:43:06.915Z",
-      "version": 1762256586915,
+      "updatedAt": "2026-03-15T07:48:27.053Z",
+      "version": 1773560907053,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -2208,7 +2212,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -2216,14 +2219,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "V5CQWZV7EMBPHGNK4XYO6LMB",
-            "updatedAt": "2025-11-04T11:42:31.882Z",
-            "version": 1762256551882,
+            "updatedAt": "2026-03-15T07:46:25.071Z",
+            "version": 1773560785071,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -2246,7 +2250,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -2254,14 +2257,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "BYVJZVVCWOIVMTIMRGEWZZOU",
-            "updatedAt": "2025-11-04T11:42:31.882Z",
-            "version": 1762256551882,
+            "updatedAt": "2026-03-15T07:46:25.071Z",
+            "version": 1773560785071,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -2284,7 +2288,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -2292,14 +2295,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "CYRY3PV3C5FA6R3G6V4CENGU",
-            "updatedAt": "2025-11-04T11:42:31.882Z",
-            "version": 1762256551882,
+            "updatedAt": "2026-03-15T07:46:25.071Z",
+            "version": 1773560785071,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -2322,7 +2326,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -2330,14 +2333,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "UY7R2GJIFGPH62T24XZS3XBQ",
-            "updatedAt": "2025-11-04T11:42:31.882Z",
-            "version": 1762256551882,
+            "updatedAt": "2026-03-15T07:46:25.071Z",
+            "version": 1773560785071,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -2360,7 +2364,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -2368,14 +2371,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "XLWFIHFYOGYTCYQCLG2VVRHO",
-            "updatedAt": "2025-11-04T11:42:31.882Z",
-            "version": 1762256551882,
+            "updatedAt": "2026-03-15T07:46:25.071Z",
+            "version": 1773560785071,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -2404,6 +2408,10 @@
           {
             "id": "QKFQNR56USIO7MHPFURSTFUO",
             "ordinal": -2251318777348096
+          },
+          {
+            "id": "IY54P2OIB2HR4ZXNQSTA4FM6",
+            "ordinal": -2245889670250496
           }
         ],
         "descriptionHtml": "The Kotare will provide you with a predictable flight no matter what the conditions. High power drives will glide but not turn and have a long slow Fade, Anhyzers will give a nice full flight S curve. The Kotare makes an excellent Flick disc.\n\nSPEED: 12\n\nGLIDE: 5\n\nTURN: 0\n\nFADE: 3",
@@ -2420,8 +2428,8 @@
         "isAlcoholic": false
       },
       "id": "F264TFNAOC6EHHAAWWI3N6U4",
-      "updatedAt": "2025-11-04T11:42:31.882Z",
-      "version": 1762256551882,
+      "updatedAt": "2026-03-15T07:46:25.071Z",
+      "version": 1773560785071,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -7446,7 +7454,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -7462,8 +7471,8 @@
               ]
             },
             "id": "J4HMJJVLWJL4UCZLN3CZLVHC",
-            "updatedAt": "2025-11-04T11:35:46.181Z",
-            "version": 1762256146181,
+            "updatedAt": "2026-03-15T10:58:20.043Z",
+            "version": 1773572300043,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -7566,8 +7575,8 @@
         "isAlcoholic": false
       },
       "id": "JTREQKQTYAT67UTJZ76KEWZW",
-      "updatedAt": "2025-11-04T11:35:46.181Z",
-      "version": 1762256146181,
+      "updatedAt": "2026-03-15T10:58:20.043Z",
+      "version": 1773572300043,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -12087,7 +12096,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -12102,8 +12112,8 @@
               ]
             },
             "id": "MXYRWQTIEZNTSBSVXFIIBCCG",
-            "updatedAt": "2025-12-11T02:11:46.953Z",
-            "version": 1765419106953,
+            "updatedAt": "2026-03-15T08:55:53.062Z",
+            "version": 1773564953062,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -12352,8 +12362,8 @@
         "isAlcoholic": false
       },
       "id": "6TZCRILTQPKNGE4JZCIOHAX7",
-      "updatedAt": "2026-02-14T07:16:07.614Z",
-      "version": 1771053367614,
+      "updatedAt": "2026-03-15T08:55:53.062Z",
+      "version": 1773564953062,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -19876,7 +19886,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -19891,8 +19902,8 @@
               ]
             },
             "id": "RPFMHV6TFAEVGKGYPGE2LTMR",
-            "updatedAt": "2026-02-01T02:05:47.963Z",
-            "version": 1769911547963,
+            "updatedAt": "2026-03-15T08:55:53.062Z",
+            "version": 1773564953062,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -20140,8 +20151,8 @@
         "isAlcoholic": false
       },
       "id": "BXY6U6RFMQDST3DMADQ3UT5V",
-      "updatedAt": "2026-02-01T02:05:47.963Z",
-      "version": 1769911547963,
+      "updatedAt": "2026-03-15T08:55:53.062Z",
+      "version": 1773564953062,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -27812,7 +27823,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -27820,14 +27830,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "YKQWWLQKYSYZ7T2CD3NRWZR5",
-            "updatedAt": "2025-11-04T11:43:06.915Z",
-            "version": 1762256586915,
+            "updatedAt": "2026-03-15T07:46:07.083Z",
+            "version": 1773560767083,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -27850,6 +27861,10 @@
           {
             "id": "MJGW2KCGPJIMHUSKPNPZ4YVZ",
             "ordinal": -2251456216301568
+          },
+          {
+            "id": "IY54P2OIB2HR4ZXNQSTA4FM6",
+            "ordinal": -2245889687027712
           }
         ],
         "descriptionHtml": "The Felon is a very overstable fairway driver in the DD line. This is what Dynamic Discs has to say about the Felon.\n\n&#34;Dynamic Discs is bringing the disc that so many of you have been asking and hoping for. The Felon is here. In the same vein as our game changing Escape, the Felon is a fairway driver that feels great in your hand and comes out easy. Crafted in response to the unforgiving Kansas winds, the Felon is the wind-fighting fairway driver that your bag is calling for. It will continue to sail, without turning over, despite that headwind. When the wind is down, it has an incredibly predictable hyzer finish. When you are facing a low ceiling shot where you need good glide and a strong finish the Felon is your answer.&#34;\n\nSpeed: 9\n\nGlide: 3\n\nTurn: 0.5\n\nFade: 4",
@@ -27866,8 +27881,8 @@
         "isAlcoholic": false
       },
       "id": "KPXPH7GLSQ2CZK7D4I2UHGY2",
-      "updatedAt": "2025-11-04T11:43:06.915Z",
-      "version": 1762256586915,
+      "updatedAt": "2026-03-15T07:46:07.083Z",
+      "version": 1773560767083,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -28035,7 +28050,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -28043,13 +28057,14 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "AGXCDJT2C5TH3D2X4B7DW3US",
-            "updatedAt": "2025-10-29T22:21:13.532Z",
-            "version": 1761776473532,
+            "updatedAt": "2026-03-15T07:45:33.117Z",
+            "version": 1773560733117,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -28072,6 +28087,10 @@
           {
             "id": "YUHBUCXSVWMETXBZGEY5KO4D",
             "ordinal": 8383776161792
+          },
+          {
+            "id": "IY54P2OIB2HR4ZXNQSTA4FM6",
+            "ordinal": -2245889720582144
           }
         ],
         "descriptionHtml": "The Magician is a stable fairway driver designed to give all players a fairway driver that can be trusted in all conditions. Previously known as the Fox Spirit, this disc flies straight with minimal turn and a reliable fade at the end giving this disc a flight that can be trusted and repeated. The stability allows it to be a great forehand approach disc in addition to its backhand capabilities.\n\nSPEED: 6\n\nGLIDE: 4\n\nTURN: 0\n\nFADE: 2",
@@ -28087,8 +28106,8 @@
         "isAlcoholic": false
       },
       "id": "OIYAMM233ICZ2WZEJAYVAN6F",
-      "updatedAt": "2025-10-29T22:21:13.532Z",
-      "version": 1761776473532,
+      "updatedAt": "2026-03-15T07:45:33.117Z",
+      "version": 1773560733117,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -28209,7 +28228,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -28217,14 +28235,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "NRVRKQ7KBAMJZCBB5GKPYEAQ",
-            "updatedAt": "2025-11-04T11:38:35.623Z",
-            "version": 1762256315623,
+            "updatedAt": "2026-03-15T07:47:18.085Z",
+            "version": 1773560838085,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -28247,6 +28266,10 @@
           {
             "id": "YGKPCUII6NP4NAJK3L7WQ2AV",
             "ordinal": -2251250057871360
+          },
+          {
+            "id": "IY54P2OIB2HR4ZXNQSTA4FM6",
+            "ordinal": -2245889636696064
           }
         ],
         "descriptionHtml": "The Latitude 64 Ballista is a fast overstable ultra high speed driver. It is described as &#34;a more understable world&#34; and will exhibit a slight degree of high speed turn for the advanced disc golfer. This disc offers a predictable flight path every throw, and is often used for shaped shots that require a good amount of fade\n\nSPEED: 14\n\nGLIDE: 5\n\nTURN: -1\n\nFADE:  3",
@@ -28263,8 +28286,8 @@
         "isAlcoholic": false
       },
       "id": "AKBQ3P3D4YFCY4WH2CMYDZAQ",
-      "updatedAt": "2025-11-04T11:38:35.623Z",
-      "version": 1762256315623,
+      "updatedAt": "2026-03-15T07:47:18.085Z",
+      "version": 1773560838085,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -31186,7 +31209,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -31201,8 +31225,8 @@
               ]
             },
             "id": "VD23A5BU2IM43R5X72KMP6SU",
-            "updatedAt": "2026-02-25T06:00:16.097Z",
-            "version": 1771999216097,
+            "updatedAt": "2026-03-15T10:58:20.043Z",
+            "version": 1773572300043,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -31254,8 +31278,8 @@
         "isAlcoholic": false
       },
       "id": "HQO5IFQU7JYA6QLM5OZAJPWM",
-      "updatedAt": "2026-02-26T05:33:03.066Z",
-      "version": 1772083983066,
+      "updatedAt": "2026-03-15T10:58:20.043Z",
+      "version": 1773572300043,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -31438,7 +31462,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -31446,14 +31469,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "KLPMHEQLWXKCSQ27FLHOLIXC",
-            "updatedAt": "2025-11-04T11:43:06.915Z",
-            "version": 1762256586915,
+            "updatedAt": "2026-03-15T07:47:03.071Z",
+            "version": 1773560823071,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -31476,6 +31500,10 @@
           {
             "id": "MJGW2KCGPJIMHUSKPNPZ4YVZ",
             "ordinal": -2251112618917888
+          },
+          {
+            "id": "IY54P2OIB2HR4ZXNQSTA4FM6",
+            "ordinal": -2245889653473280
           }
         ],
         "descriptionHtml": "The Dynamic Discs Vandal is an extremely versatile disc that can perform well for players of all skill levels. It is described as a longer Maverick that will fly straight and glide far.\n\nThe Vandal was initially released as the Dynamic Discs contribution to to the 2023 Trilogy Challenge Player pack.\n\nSpeed: 9.0\nGlide: 5.0\nTurn: -1.5\nFade: 2.0",
@@ -31492,8 +31520,8 @@
         "isAlcoholic": false
       },
       "id": "HYZPWN7IE2IFJW2JQV7K2LPC",
-      "updatedAt": "2025-11-04T11:43:06.915Z",
-      "version": 1762256586915,
+      "updatedAt": "2026-03-15T07:47:03.071Z",
+      "version": 1773560823071,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -35746,7 +35774,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -35756,14 +35783,15 @@
               "imageIds": [
                 "ODM4WV4D6EGPNYEU5CZ3IAX3"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "BPDCZWP5CX6AXSZI6DIBGWU7",
-            "updatedAt": "2025-11-04T23:21:45.915Z",
-            "version": 1762298505915,
+            "updatedAt": "2026-03-15T07:44:41.047Z",
+            "version": 1773560681047,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -35786,7 +35814,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -35794,14 +35821,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "JEKETAA4KAGARC5YGVUO77SV",
-            "updatedAt": "2025-11-04T11:37:25.803Z",
-            "version": 1762256245803,
+            "updatedAt": "2026-03-15T07:44:41.047Z",
+            "version": 1773560681047,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -35828,6 +35856,10 @@
           {
             "id": "K5EWAR34GRJWWP4QIIIC25KC",
             "ordinal": -2250975179964416
+          },
+          {
+            "id": "KNSIZ7JBEBDLPGVGHOJHXUZN",
+            "ordinal": -2249463099817984
           }
         ],
         "descriptionHtml": "Light a fire this season with Axiom Prism Pyro. The Pyro is an overstable mid that will hold the hyzer line. You may get some straight flight out of it before it fades, but it will always come back.\n<div>SPEED: 5</div>\n<div>GLIDE: 4</div>\n<div>TURN: 0</div>\n<div>FADE: 2.5</div>",
@@ -35844,8 +35876,8 @@
         "isAlcoholic": false
       },
       "id": "4U64ZJB52RUVIQFLQFIE4BIY",
-      "updatedAt": "2025-11-04T23:21:45.915Z",
-      "version": 1762298505915,
+      "updatedAt": "2026-03-15T07:44:41.047Z",
+      "version": 1773560681047,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -36720,14 +36752,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "6VLRNXT7WEBE5JXL7FMHJPTA",
-            "updatedAt": "2025-11-04T11:35:46.181Z",
-            "version": 1762256146181,
+            "updatedAt": "2026-03-15T07:45:48.299Z",
+            "version": 1773560748299,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -36754,6 +36787,10 @@
           {
             "id": "M3KFQBN4BG7ABT6ESVE5EZIX",
             "ordinal": -2251765453946880
+          },
+          {
+            "id": "IY54P2OIB2HR4ZXNQSTA4FM6",
+            "ordinal": -2245889703804928
           }
         ],
         "descriptionHtml": "<p>The Athena is the sixth disc in the Paul McBeth line from Discraft. It is an all purpose fairway driver with a light end-fade. The Athena can be used when distance is not as important as landing in exactly the right position with excellent control.</p>\n<p>Speed: 7</p>\n<p>Glide: 5</p>\n<p>Turn: 0</p>\n<p>Fade: 2</p>\n<p></p>",
@@ -36770,8 +36807,8 @@
         "isAlcoholic": false
       },
       "id": "BVBW665KZQCYH4HFYJ6WP56I",
-      "updatedAt": "2025-11-04T11:35:46.181Z",
-      "version": 1762256146181,
+      "updatedAt": "2026-03-15T07:45:48.299Z",
+      "version": 1773560748299,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -37852,14 +37889,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "RIJPM4QLLG5UINBSAKLMOSVP",
-            "updatedAt": "2025-11-04T11:36:29.135Z",
-            "version": 1762256189135,
+            "updatedAt": "2026-03-15T07:44:56.209Z",
+            "version": 1773560696209,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -37882,6 +37920,10 @@
           {
             "id": "ERBJP2RBYEWJPT6ACGA7I5JZ",
             "ordinal": -2250494143627264
+          },
+          {
+            "id": "KNSIZ7JBEBDLPGVGHOJHXUZN",
+            "ordinal": -2249463083040768
           }
         ],
         "descriptionHtml": "The Uplink is here! MVP’s newest understable midrange, the Uplink is a line shaper’s dream. With a speed of 5, glide of 5, turn of -3, and a fade of 0.5, the Uplink is both a touch straighter and a little easier for power players to control than the Paradox. An extremely versatile disc for players of all arm speeds, this will be the only place to get the Uplink for a while — get yours before they’re all gone!\n<div>SPEED: 5</div>\n<div>GLIDE: 5</div>\n<div>TURN: -3</div>\n<div>FADE: 0.5</div>",
@@ -37898,8 +37940,8 @@
         "isAlcoholic": false
       },
       "id": "2KJAWBT5YOG6YCBRYU3NIOFJ",
-      "updatedAt": "2025-11-04T11:36:29.135Z",
-      "version": 1762256189135,
+      "updatedAt": "2026-03-15T07:44:56.209Z",
+      "version": 1773560696209,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -39356,7 +39398,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -39364,14 +39405,15 @@
               "inventoryAlertType": "NONE",
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
-                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
-                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
+                "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
+                "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "SDCUTVD35HIKZTHZCPOZFJV6",
-            "updatedAt": "2025-11-04T11:38:35.623Z",
-            "version": 1762256315623,
+            "updatedAt": "2026-03-15T07:48:50.117Z",
+            "version": 1773560930117,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -39397,6 +39439,10 @@
           {
             "id": "YGKPCUII6NP4NAJK3L7WQ2AV",
             "ordinal": -2249806948859904
+          },
+          {
+            "id": "IY54P2OIB2HR4ZXNQSTA4FM6",
+            "ordinal": -2245889603141632
           }
         ],
         "descriptionHtml": "The Latitude 64 Strive is said to be the big brother of the popular Rive disc. The Strive is what you reach for when you need maximum distance. With its cutting-edge design, the Strive offers effortless flight dynamics, enabling it to outperform other distance drivers with significantly less effort. Boasting an optimal combination of rapid speed and exceptional glide, the Strive ensures your throws are both longer and more precise.\n\nSPEED: 13\n\nGLIDE: 5\n\nTURN: -1\n\nFADE:  3",
@@ -39413,8 +39459,8 @@
         "isAlcoholic": false
       },
       "id": "HROGKXI36UDTTRBIFAIJ33VO",
-      "updatedAt": "2025-11-04T11:38:35.623Z",
-      "version": 1762256315623,
+      "updatedAt": "2026-03-15T07:48:50.117Z",
+      "version": 1773560930117,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -40458,12 +40504,12 @@
             "ordinal": 22196390985728
           },
           {
-            "id": "CXIE4W57KHCVL3H7PE24DECQ",
-            "ordinal": -2249600723320832
-          },
-          {
             "id": "SOFVBF3FXFIAGMN3VTR4B7PB",
             "ordinal": -2250700302057472
+          },
+          {
+            "id": "CXIE4W57KHCVL3H7PE24DECQ",
+            "ordinal": -2249600723320832
           }
         ],
         "descriptionHtml": "<div><strong>STEN</strong> is the perfect pre-round warm up and catch disc for any player. But not only that, it’s an ideal introduction to disc golf, a great beach thrower, and an all-around fun disc for everyone.\n\n</div>\n<div>Despite its name (<em>which translates to “stone”</em>), the <strong>STEN</strong> is a super soft, grippy and lightweight floater - made in K4, a hybrid plastic with traits of both base and premium.</div>\nSPEED: 1\n\nGLIDE: 4\n\nTURN: 0\n\nFADE: 1",
@@ -40785,7 +40831,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -40797,8 +40844,8 @@
               ]
             },
             "id": "64JOL6HZFR5HP3MJXAZZ3HEM",
-            "updatedAt": "2025-12-10T04:36:06.455Z",
-            "version": 1765341366455,
+            "updatedAt": "2026-03-15T08:55:53.062Z",
+            "version": 1773564953062,
             "isDeleted": false,
             "presentAtAllLocations": false,
             "presentAtLocationIds": [
@@ -40833,8 +40880,8 @@
         "isAlcoholic": false
       },
       "id": "3UKEBYVEJZL2GKSCQBCKHSUX",
-      "updatedAt": "2025-12-10T04:36:06.455Z",
-      "version": 1765341366455,
+      "updatedAt": "2026-03-15T08:55:53.062Z",
+      "version": 1773564953062,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -40960,7 +41007,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -40975,8 +41023,8 @@
               ]
             },
             "id": "FE67OXPAL4VJGRAPHVSXFVIW",
-            "updatedAt": "2026-02-26T10:37:21.237Z",
-            "version": 1772102241237,
+            "updatedAt": "2026-03-15T10:58:20.043Z",
+            "version": 1773572300043,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -41074,8 +41122,8 @@
         "isAlcoholic": false
       },
       "id": "6KA4XTC46VHWI64UZS5GTK4K",
-      "updatedAt": "2026-02-26T10:48:38.049Z",
-      "version": 1772102918049,
+      "updatedAt": "2026-03-15T10:58:20.043Z",
+      "version": 1773572300043,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -70983,8 +71031,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-04T09:14:53.036Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T10:58:23.232Z"
     },
     {
       "catalogObjectId": "JGHVOWGIRHGZK6YFEFNWG7MM",
@@ -72727,8 +72775,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-10-17T09:24:15.181Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T08:55:55.213Z"
     },
     {
       "catalogObjectId": "NCW53GVMNG6VZK7UV7SBEA64",
@@ -74567,8 +74615,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-04T05:27:43.854Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T08:55:55.21Z"
     },
     {
       "catalogObjectId": "SXCMFXGB2PGTSIUOQFSEFXOH",
@@ -77911,8 +77959,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-02-25T06:00:13.772Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T10:58:23.235Z"
     },
     {
       "catalogObjectId": "VOCLBZQKQRQ3OKSRII3BX6AR",
@@ -78175,8 +78223,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-03-10T05:42:49.859Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T08:55:55.218Z"
     },
     {
       "catalogObjectId": "7FBSCVO2FKG7OXBUPPOFWCWG",
@@ -78423,8 +78471,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "6",
-      "calculatedAt": "2026-02-26T07:02:12.817Z"
+      "quantity": "4",
+      "calculatedAt": "2026-03-15T08:55:55.216Z"
     },
     {
       "catalogObjectId": "FDPB3L4HBVVBRCYRXR6HYDAD",
@@ -78455,8 +78503,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-02-25T08:44:14.562Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-15T10:58:23.229Z"
     },
     {
       "catalogObjectId": "FVQ57KE4V52Q6EU4GVLOD2LF",
