@@ -18,6 +18,8 @@ export interface GoogleProduct {
   condition: "new" | "refurbished" | "used";
   brand?: string;
   gtin?: string;
+  item_group_id?: string;
+  color?: string;
   google_product_category?: string;
   product_type?: string;
 }
@@ -45,6 +47,42 @@ export interface AggregatedItem {
   minPrice: number;
   currency: string;
   totalQuantity: number;
+}
+
+/**
+ * A single variation, expanded from an aggregated item.
+ */
+export interface VariationItem {
+  variationId: string;
+  itemId: string;
+  name: string;
+  description: string;
+  productUrl?: string;
+  imageUrl?: string;
+  category?: string;
+  brand?: string;
+  discType?: string;
+  color?: string;
+  price: number;
+  currency: string;
+  quantity: number;
+}
+
+/**
+ * Parse a Square variation name to extract color.
+ * Variation names typically follow "PLASTIC/COLOR/WEIGHT" or
+ * "ITEM_NAME - PLASTIC/COLOR/WEIGHT".
+ * e.g., "COSMIC/YELLOW/177" -> "Yellow"
+ * e.g., "RURU - ATOMIC/PINK/171" -> "Pink"
+ */
+export function parseVariationColor(name: string): string | undefined {
+  // Strip item name prefix (e.g. "RURU - ATOMIC/PINK/171" -> "ATOMIC/PINK/171")
+  const stripped = name.includes(" - ") ? name.split(" - ").pop()! : name;
+  const parts = stripped.split("/");
+  if (parts.length !== 3) return undefined;
+
+  const rawColor = parts[1].trim();
+  return rawColor ? formatName(rawColor) : undefined;
 }
 
 /**
@@ -278,6 +316,138 @@ export function aggregateItems(data: SquareInventoryData): AggregatedItem[] {
 }
 
 /**
+ * Expand catalog items into one row per variation.
+ */
+export function expandVariations(data: SquareInventoryData): VariationItem[] {
+  const { images, categories, brandCategoryIds, discTypeCategoryIds, inventory } =
+    buildLookups(data);
+  const results: VariationItem[] = [];
+
+  for (const obj of data.catalogObjects) {
+    if (obj.type !== "ITEM" || !obj.id || !obj.itemData) continue;
+    if (obj.isDeleted || obj.itemData.isArchived) continue;
+    if (obj.itemData.productType !== "REGULAR") continue;
+
+    const itemData = obj.itemData;
+    const variations = itemData.variations ?? [];
+    if (variations.length === 0) continue;
+
+    // Item-level image (fallback for variations without their own)
+    const itemImageIds = itemData.imageIds ?? [];
+    const itemImageUrl =
+      itemImageIds.length > 0 ? images.get(itemImageIds[0]) : undefined;
+
+    const category = itemData.reportingCategory?.id
+      ? categories.get(itemData.reportingCategory.id)
+      : undefined;
+
+    let brand: string | undefined;
+    const itemCategories = itemData.categories ?? [];
+    for (const cat of itemCategories) {
+      if (cat.id && brandCategoryIds.has(cat.id)) {
+        const rawBrand = categories.get(cat.id);
+        brand = rawBrand ? formatBrand(rawBrand) : undefined;
+        break;
+      }
+    }
+
+    let discType: string | undefined;
+    for (const cat of itemCategories) {
+      if (cat.id && discTypeCategoryIds.has(cat.id)) {
+        const rawType = categories.get(cat.id);
+        discType = rawType ? discTypeLabel(rawType) : undefined;
+        break;
+      }
+    }
+
+    const hasChannels = (itemData.channels?.length ?? 0) > 0;
+    const ecomVisibility = (itemData as Record<string, unknown>)
+      .ecom_visibility as string | undefined;
+    const isVisible = ecomVisibility !== "UNAVAILABLE";
+    const slug = slugify(itemData.name ?? "");
+    const productUrl =
+      hasChannels && isVisible && slug
+        ? `https://${SHOP_DOMAIN}/product/${slug}/${obj.id}`
+        : undefined;
+
+    for (const variation of variations) {
+      if (variation.type !== "ITEM_VARIATION" || !variation.id) continue;
+      const varData = variation.itemVariationData;
+      if (!varData) continue;
+
+      const price = varData.priceMoney?.amount
+        ? Number(varData.priceMoney.amount)
+        : 0;
+      if (price <= 0) continue;
+
+      const quantity = inventory.get(variation.id) ?? 0;
+
+      // Per-variation image, falling back to item-level image
+      const varImageIds = (varData as Record<string, unknown>)
+        .imageIds as string[] | undefined;
+      const varImageUrl =
+        varImageIds && varImageIds.length > 0
+          ? images.get(varImageIds[0])
+          : undefined;
+
+      const color = varData.name
+        ? parseVariationColor(varData.name)
+        : undefined;
+
+      results.push({
+        variationId: variation.id,
+        itemId: obj.id,
+        name: formatName(itemData.name ?? ""),
+        description: itemData.description ?? "",
+        productUrl,
+        imageUrl: varImageUrl ?? itemImageUrl,
+        category,
+        brand,
+        discType,
+        color,
+        price,
+        currency: varData.priceMoney?.currency ?? "AUD",
+        quantity,
+      });
+    }
+  }
+
+  return results;
+}
+
+/**
+ * Convert a variation item to Google's format.
+ */
+export function variationToGoogleProduct(item: VariationItem): GoogleProduct {
+  const priceValue = (item.price / 100).toFixed(2);
+  const price = `${priceValue} ${item.currency}`;
+
+  let title = item.name;
+  if (item.brand && !title.startsWith(item.brand)) {
+    title = `${item.brand} ${title}`;
+  }
+  if (item.discType) {
+    title = `${title} - ${item.discType}`;
+  }
+
+  return {
+    id: item.variationId,
+    title,
+    description: item.description || item.name,
+    link: item.productUrl || "",
+    image_link: item.imageUrl || "",
+    availability: item.quantity > 0 ? "in_stock" : "out_of_stock",
+    price,
+    condition: "new",
+    brand: item.brand,
+    item_group_id: item.itemId,
+    color: item.color,
+    google_product_category: getGoogleProductCategory(item.category),
+    product_type: item.category,
+  };
+}
+
+/**
  * Map Square category to Google product category.
  * See: https://support.google.com/merchants/answer/6324436
  */
@@ -338,6 +508,12 @@ const FEED_COLUMNS: (keyof GoogleProduct)[] = [
   "product_type",
 ];
 
+const VARIATION_FEED_COLUMNS: (keyof GoogleProduct)[] = [
+  ...FEED_COLUMNS,
+  "item_group_id",
+  "color",
+];
+
 /**
  * Escape a value for TSV format.
  */
@@ -346,34 +522,58 @@ function escapeTsvValue(value: string | undefined): string {
   return value.replace(/[\t\n\r]/g, " ");
 }
 
+export interface FeedOptions {
+  perVariation?: boolean;
+}
+
 /**
  * Generate TSV feed content from Square inventory data.
  */
-export function generateTsvFeed(data: SquareInventoryData): string {
-  const lines: string[] = [];
+export function generateTsvFeed(
+  data: SquareInventoryData,
+  options?: FeedOptions
+): string {
+  if (options?.perVariation) {
+    return generateVariationFeed(data);
+  }
+  return generateAggregatedFeed(data);
+}
 
-  // Header row
+function generateAggregatedFeed(data: SquareInventoryData): string {
+  const lines: string[] = [];
   lines.push(FEED_COLUMNS.join("\t"));
 
-  // Aggregate variants into items
   const items = aggregateItems(data);
 
-  // Data rows
   for (const item of items) {
-    // Skip items without a product URL (can't link to them)
     if (!item.productUrl) continue;
-
-    // Skip items without images (Google requires images)
     if (!item.imageUrl) continue;
-
-    // Skip items without prices
     if (!item.minPrice || item.minPrice === Infinity) continue;
-
-    // Skip out-of-stock items
     if (item.totalQuantity <= 0) continue;
 
     const googleProduct = toGoogleProduct(item);
     const values = FEED_COLUMNS.map((col) =>
+      escapeTsvValue(googleProduct[col]?.toString())
+    );
+    lines.push(values.join("\t"));
+  }
+
+  return lines.join("\n");
+}
+
+function generateVariationFeed(data: SquareInventoryData): string {
+  const lines: string[] = [];
+  lines.push(VARIATION_FEED_COLUMNS.join("\t"));
+
+  const variations = expandVariations(data);
+
+  for (const item of variations) {
+    if (!item.productUrl) continue;
+    if (!item.imageUrl) continue;
+    if (item.quantity <= 0) continue;
+
+    const googleProduct = variationToGoogleProduct(item);
+    const values = VARIATION_FEED_COLUMNS.map((col) =>
       escapeTsvValue(googleProduct[col]?.toString())
     );
     lines.push(values.join("\t"));
