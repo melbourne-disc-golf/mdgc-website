@@ -87,41 +87,6 @@ export function parseVariationColor(name: string): string | undefined {
 }
 
 /**
- * Standard color names that Google will recognise.
- */
-const KNOWN_COLORS = new Set([
-  "amber",
-  "aqua",
-  "black",
-  "blue",
-  "bronze",
-  "brown",
-  "charcoal",
-  "cream",
-  "gold",
-  "grape",
-  "green",
-  "grey",
-  "indigo",
-  "lilac",
-  "lime",
-  "magenta",
-  "orange",
-  "peach",
-  "pearl",
-  "pink",
-  "purple",
-  "red",
-  "rose",
-  "sand",
-  "sunset",
-  "teal",
-  "turquoise",
-  "white",
-  "yellow",
-]);
-
-/**
  * Normalize a raw color string from Square variation names into
  * a Google-friendly color. Returns undefined if the value isn't
  * a recognisable color.
@@ -129,35 +94,31 @@ const KNOWN_COLORS = new Set([
 export function normalizeColor(raw: string): string | undefined {
   let color = raw;
 
-  // Expand abbreviations
-  color = color.replace(/^Lt /i, "Light ");
-  color = color.replace(/^Dk /i, "Dark ");
-  color = color.replace(/^Fluro /i, "Fluorescent ");
-
   // Strip modifiers that aren't color-relevant
   color = color.replace(/\s+(swirl|burst|orbit|halo|marble|rim)$/i, "");
 
-  // Strip "trans" (translucent) prefix — not a color
+  // Strip "trans" (translucent) prefix
   color = color.replace(/^Trans(parent|lucent)?\s+/i, "");
 
-  // Strip shade modifiers — keep the base color
-  color = color.replace(/^(Light|Dark|Pale|Fluorescent)\s+/i, "");
+  // Expand then strip shade modifiers — keep the base color
+  color = color.replace(/^Lt /i, "Light ");
+  color = color.replace(/^Dk /i, "Dark ");
+  color = color.replace(/^(Light|Dark|Pale|Fluro|Fluorescent)\s+/i, "");
 
   // Capitalise first letter (may have been lowered by prefix stripping)
   color = color.charAt(0).toUpperCase() + color.slice(1);
 
   // Convert hyphenated color pairs to Google's slash format
   // e.g. "Lime-purple" -> "Lime/Purple"
-  if (color.includes("-")) {
-    const parts = color.split("-");
-    if (parts.every((p) => KNOWN_COLORS.has(p.toLowerCase()))) {
-      color = parts.map((p) => p.charAt(0).toUpperCase() + p.slice(1)).join("/");
-    }
-  }
+  color = color
+    .split("-")
+    .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+    .join("/");
 
-  // Check the base color is recognisable
-  const baseColor = color.split(/[\s\-\/]/)[0].toLowerCase();
-  if (!KNOWN_COLORS.has(baseColor)) return undefined;
+  // Reject values that don't look like colors
+  if (/\d/.test(color)) return undefined;
+  if (color.split(/[\s\/]/).length > 3) return undefined;
+  if (color.length > 40) return undefined;
 
   return color;
 }

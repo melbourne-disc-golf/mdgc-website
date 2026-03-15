@@ -693,10 +693,12 @@ describe("normalizeColor", () => {
     expect(normalizeColor("Blue")).toBe("Blue");
   });
 
-  it("returns undefined for non-color values", () => {
+  it("returns undefined for values with digits", () => {
     expect(normalizeColor("Idye3")).toBeUndefined();
-    expect(normalizeColor("Kotuku")).toBeUndefined();
-    expect(normalizeColor("Glow-white rim")).toBeUndefined();
+  });
+
+  it("strips 'rim' suffix and normalizes", () => {
+    expect(normalizeColor("Glow-white rim")).toBe("Glow/White");
   });
 });
 
