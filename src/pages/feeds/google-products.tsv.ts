@@ -6,7 +6,7 @@ import { generateTsvFeed, type SquareInventoryData } from "@lib/google-feed";
 const data = inventoryData as unknown as SquareInventoryData;
 
 export const GET: APIRoute = async () => {
-  const tsvContent = generateTsvFeed(data);
+  const tsvContent = generateTsvFeed(data, { perVariation: true });
 
   return new Response(tsvContent, {
     headers: {
