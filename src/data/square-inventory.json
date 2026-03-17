@@ -13873,6 +13873,12 @@
                 "amount": 5500,
                 "currency": "AUD"
               },
+              "locationOverrides": [
+                {
+                  "locationId": "LTD9BW2RXXBDV",
+                  "soldOut": true
+                }
+              ],
               "trackInventory": true,
               "sellable": true,
               "stockable": true,
@@ -13883,8 +13889,8 @@
               ]
             },
             "id": "YGEZIIUTD6OY3FGDRZUVQPNK",
-            "updatedAt": "2026-02-22T10:56:22.111Z",
-            "version": 1771757782111,
+            "updatedAt": "2026-03-16T22:44:45.208Z",
+            "version": 1773701085208,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -13940,8 +13946,8 @@
         "isAlcoholic": false
       },
       "id": "SLAYJGOAEHJIOSLM6HNOLRIF",
-      "updatedAt": "2026-02-22T10:56:22.111Z",
-      "version": 1771757782111,
+      "updatedAt": "2026-03-16T22:44:45.208Z",
+      "version": 1773701085208,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -30321,27 +30327,22 @@
                 "amount": 2200,
                 "currency": "AUD"
               },
-              "locationOverrides": [
-                {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
-                }
-              ],
               "trackInventory": true,
               "sellable": true,
               "stockable": true,
               "imageIds": [
-                "WFTGWEG34ZUQPOAFPTUBVN2H",
-                "DTTESNGN4E2ZJSEJSUTG246B"
+                "KCF6XSAH5I6RNANYP6QENFPN",
+                "WFTGWEG34ZUQPOAFPTUBVN2H"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "LLZVNTQ6WSSUS76IN5ET4DRP",
-            "updatedAt": "2026-03-16T07:43:35.313Z",
-            "version": 1773647015313,
+            "updatedAt": "2026-03-16T23:54:42.747Z",
+            "version": 1773705282747,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -30373,7 +30374,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -30383,14 +30383,15 @@
               "imageIds": [
                 "5TIOS35F3A7ZWGVBPMALLVQC"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "ITHZYQY6I6GYPLAWEH3ZEDG3",
-            "updatedAt": "2026-03-16T07:43:35.313Z",
-            "version": 1773647015313,
+            "updatedAt": "2026-03-16T23:54:42.747Z",
+            "version": 1773705282747,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -30419,26 +30420,21 @@
                 "amount": 2200,
                 "currency": "AUD"
               },
-              "locationOverrides": [
-                {
-                  "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
-                }
-              ],
               "trackInventory": true,
               "sellable": true,
               "stockable": true,
               "imageIds": [
                 "IKEF4YFBYNM3SVHTZMTCZRSL"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "4NEVXY3IPJMXDUJJH4BGPE4E",
-            "updatedAt": "2026-03-16T07:43:35.313Z",
-            "version": 1773647015313,
+            "updatedAt": "2026-03-16T23:54:42.747Z",
+            "version": 1773705282747,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -30470,7 +30466,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -30480,14 +30475,15 @@
               "imageIds": [
                 "GHTFQLH3HTOP3BMPLHACYPT4"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "6BMT3PXADX5WQJRKU224PHAA",
-            "updatedAt": "2026-03-16T07:43:35.313Z",
-            "version": 1773647015313,
+            "updatedAt": "2026-03-16T23:54:42.747Z",
+            "version": 1773705282747,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -30519,7 +30515,6 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
@@ -30529,14 +30524,15 @@
               "imageIds": [
                 "6NEZGZ43Z3HUSSSTLTJK5XV3"
               ],
+              "kitchenName": "",
               "channels": [
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o",
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC"
               ]
             },
             "id": "WLIXNELZMRORITEYPTK6QWJF",
-            "updatedAt": "2026-03-16T07:43:35.313Z",
-            "version": 1773647015313,
+            "updatedAt": "2026-03-16T23:54:42.747Z",
+            "version": 1773705282747,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -30558,7 +30554,7 @@
         "ecom_available": true,
         "ecom_visibility": "VISIBLE",
         "imageIds": [
-          "DTTESNGN4E2ZJSEJSUTG246B"
+          "KCF6XSAH5I6RNANYP6QENFPN"
         ],
         "categories": [
           {
@@ -30588,8 +30584,8 @@
         "isAlcoholic": false
       },
       "id": "N5VMY7SUM6LB2AOZ3LIRAPDB",
-      "updatedAt": "2026-03-16T07:43:35.313Z",
-      "version": 1773647015313,
+      "updatedAt": "2026-03-16T23:54:42.747Z",
+      "version": 1773705282747,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -34658,8 +34654,8 @@
               ]
             },
             "id": "JRFK34JFYLJ5LWBTUCQWALCQ",
-            "updatedAt": "2026-02-22T10:45:21.887Z",
-            "version": 1771757121887,
+            "updatedAt": "2026-03-17T06:52:57.075Z",
+            "version": 1773730377075,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34701,8 +34697,8 @@
               ]
             },
             "id": "N5TWMWN67JUZO7SV2HMWDDR4",
-            "updatedAt": "2026-02-22T10:45:21.887Z",
-            "version": 1771757121887,
+            "updatedAt": "2026-03-17T06:52:57.075Z",
+            "version": 1773730377075,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -34745,10 +34741,6 @@
             "ordinal": -2251662374731776
           },
           {
-            "id": "LSIW7EJLG5KGMD2JMD7FZURJ",
-            "ordinal": -2251043849109504
-          },
-          {
             "id": "YUHBUCXSVWMETXBZGEY5KO4D",
             "ordinal": 12713136750592
           }
@@ -34767,8 +34759,8 @@
         "isAlcoholic": false
       },
       "id": "JN27VB2BEIVNL4CZYGHC4H3P",
-      "updatedAt": "2026-02-22T10:45:21.887Z",
-      "version": 1771757121887,
+      "updatedAt": "2026-03-17T06:52:57.075Z",
+      "version": 1773730377075,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -67697,13 +67689,14 @@
     },
     {
       "type": "IMAGE",
-      "created_at": "2026-03-16T07:42:40.74Z",
+      "created_at": "2026-03-16T23:54:14.75Z",
       "imageData": {
-        "url": "https://items-images-production.s3.us-west-2.amazonaws.com/files/c66f787273403d46f65168a722e4fefe6e572dcd/original.jpeg"
+        "name": "Kahu XG Yellow.JPEG",
+        "url": "https://items-images-production.s3.us-west-2.amazonaws.com/files/65db3b400d4d0560c6efab7831b8d90b90fa4068/original.jpeg"
       },
-      "id": "DTTESNGN4E2ZJSEJSUTG246B",
-      "updatedAt": "2026-03-16T07:43:47.897Z",
-      "version": 1773647027897,
+      "id": "KCF6XSAH5I6RNANYP6QENFPN",
+      "updatedAt": "2026-03-16T23:54:14.712Z",
+      "version": 1773705254712,
       "isDeleted": false,
       "presentAtAllLocations": true
     },
@@ -73286,8 +73279,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-02-08T02:07:17.249Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-16T22:44:47.271Z"
     },
     {
       "catalogObjectId": "25N3IDQFB45QYSQA6AXYJEYN",
@@ -77558,8 +77551,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "7",
-      "calculatedAt": "2026-02-11T07:49:34.724Z"
+      "quantity": "4",
+      "calculatedAt": "2026-03-16T22:44:47.274Z"
     },
     {
       "catalogObjectId": "NUBJJDGUVESYGXZZF5QQMYE7",
