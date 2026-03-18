@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import path from 'path';
@@ -38,8 +38,23 @@ export default defineConfig({
     icon(),
     sitemap(),
   ],
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: 'Inter',
+      weights: [400, 600, 700, 800, 900],
+      cssVariable: '--font-inter',
+    },
+    {
+      provider: fontProviders.google(),
+      name: 'Nunito',
+      weights: [300, 400, 600, 700],
+      cssVariable: '--font-nunito',
+    },
+  ],
   image: {
-    layout: 'constrained'
+    layout: 'constrained',
+    responsiveStyles: true,
   },
   vite: {
     plugins: [
