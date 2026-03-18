@@ -6290,7 +6290,8 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LTD9BW2RXXBDV"
+                  "locationId": "LTD9BW2RXXBDV",
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -6306,8 +6307,8 @@
               ]
             },
             "id": "XTISGJLDBQOX34CWBSXHY7Q7",
-            "updatedAt": "2026-02-25T11:43:33.089Z",
-            "version": 1772019813089,
+            "updatedAt": "2026-03-18T12:06:25.051Z",
+            "version": 1773835585051,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -6461,8 +6462,8 @@
         "isAlcoholic": false
       },
       "id": "QUMOVZKCSVP7RRE3YSS2DXIW",
-      "updatedAt": "2026-02-25T11:43:35.091Z",
-      "version": 1772019815091,
+      "updatedAt": "2026-03-18T12:06:25.051Z",
+      "version": 1773835585051,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -19465,7 +19466,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -19480,8 +19482,8 @@
               ]
             },
             "id": "7EPLT74O6DA4TPAQYUUKYUKN",
-            "updatedAt": "2026-02-01T02:05:47.963Z",
-            "version": 1769911547963,
+            "updatedAt": "2026-03-18T12:06:25.051Z",
+            "version": 1773835585051,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -19802,7 +19804,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -19817,8 +19820,8 @@
               ]
             },
             "id": "6FNR6XE5RBEMIVFYMQSYOPYX",
-            "updatedAt": "2026-02-01T02:05:47.963Z",
-            "version": 1769911547963,
+            "updatedAt": "2026-03-18T12:06:25.051Z",
+            "version": 1773835585051,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -19874,8 +19877,8 @@
         "isAlcoholic": false
       },
       "id": "BXY6U6RFMQDST3DMADQ3UT5V",
-      "updatedAt": "2026-03-15T08:55:53.062Z",
-      "version": 1773564953062,
+      "updatedAt": "2026-03-18T12:06:25.051Z",
+      "version": 1773835585051,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -26985,7 +26988,8 @@
               "locationOverrides": [
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true
+                  "trackInventory": true,
+                  "soldOut": true
                 }
               ],
               "trackInventory": true,
@@ -27000,8 +27004,8 @@
               ]
             },
             "id": "G3ZM4GHMMIOHXY3GW3SUMHM7",
-            "updatedAt": "2026-01-14T03:45:52.288Z",
-            "version": 1768362352288,
+            "updatedAt": "2026-03-18T01:41:32.124Z",
+            "version": 1773798092124,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -27102,8 +27106,8 @@
         "isAlcoholic": false
       },
       "id": "EV22EUO3CEDNXF2YAAFLHQGR",
-      "updatedAt": "2026-01-14T03:45:52.288Z",
-      "version": 1768362352288,
+      "updatedAt": "2026-03-18T01:41:32.124Z",
+      "version": 1773798092124,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -36683,8 +36687,8 @@
               ]
             },
             "id": "EQCJ3OL46QCI3Y5XZXQYGWDY",
-            "updatedAt": "2026-02-22T10:53:34.074Z",
-            "version": 1771757614074,
+            "updatedAt": "2026-03-18T06:50:45.09Z",
+            "version": 1773816645090,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -36732,8 +36736,8 @@
               ]
             },
             "id": "LQYASKDUBNQPYGZEVZK7SCRP",
-            "updatedAt": "2026-02-22T10:53:34.074Z",
-            "version": 1771757614074,
+            "updatedAt": "2026-03-18T06:50:45.09Z",
+            "version": 1773816645090,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -36775,8 +36779,8 @@
               ]
             },
             "id": "JZYGNAFIO6WWBIWTFFIZOBHJ",
-            "updatedAt": "2026-02-22T10:53:34.074Z",
-            "version": 1771757614074,
+            "updatedAt": "2026-03-18T06:50:45.09Z",
+            "version": 1773816645090,
             "isDeleted": false,
             "customAttributeValues": {
               "Square:b01c91bb-e58e-497c-9f8c-4fd4ad855ba2": {
@@ -36819,6 +36823,10 @@
           {
             "id": "DKLB7SDZQO6NHAJSE7RQVQTV",
             "ordinal": -2251731094208512
+          },
+          {
+            "id": "YUHBUCXSVWMETXBZGEY5KO4D",
+            "ordinal": 12713321299968
           }
         ],
         "descriptionHtml": "This premium but low cost Starter Set from Discmania will get you started on your disc golf journey. Each set consists of a Putter, a stable fairway driver &amp; an under-stable driver to give you the full range of shot shapes in your first set.  The Active plastic is extra grippy for use even in wet conditions. It has a medium stiffness with some give on the flight plate. Putter:   Shogun: 2/4/0/2 OR Sensei: 3/3/0/1 - Straight slow speed for putting and short range approach shots. Mid/Stable Fairway: Maestro: 4/3/0/2 OR Magician: 6/4/0/2 - Mid range drives and approach shots with reliable fade, even in a head wind Under-stable Driver: Genius: 7/5/-4/1 - Long range drives with full S shape for maximum distance. Use downwind or uphill. Can be used as a roller disc Colours vary with each set.<br/>",
@@ -36835,8 +36843,8 @@
         "isAlcoholic": false
       },
       "id": "ELWFGWIHE2OGNUHE3PYUKPCR",
-      "updatedAt": "2026-02-22T10:53:34.074Z",
-      "version": 1771757614074,
+      "updatedAt": "2026-03-18T06:50:45.09Z",
+      "version": 1773816645090,
       "isDeleted": false,
       "presentAtAllLocations": false,
       "presentAtLocationIds": [
@@ -71591,8 +71599,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "2",
-      "calculatedAt": "2026-02-25T01:55:30.947Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-18T12:06:30.499Z"
     },
     {
       "catalogObjectId": "YMQ5BJKII42VAKQUMS4T5R2R",
@@ -73503,8 +73511,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-12-11T01:55:54.906Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-18T12:06:30.503Z"
     },
     {
       "catalogObjectId": "75HANIFIHUZF4XQIKRUGAMJQ",
@@ -73551,8 +73559,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2025-11-04T05:27:54.581Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-18T12:06:30.506Z"
     },
     {
       "catalogObjectId": "7X6RIFQGSQOXISKSOOSBVUT5",
@@ -75511,8 +75519,8 @@
       "catalogObjectType": "ITEM_VARIATION",
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
-      "quantity": "1",
-      "calculatedAt": "2026-01-14T03:45:49.598Z"
+      "quantity": "0",
+      "calculatedAt": "2026-03-18T01:41:36.406Z"
     },
     {
       "catalogObjectId": "G722EPPEZ62YJ2GG57WDX4AL",
