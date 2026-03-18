@@ -17,7 +17,7 @@ import { clubEventToCalendarEvent, externalEventToCalendarEvent } from '@utils/e
 export const clubEvents = await getCollection('events');
 export const externalEvents = await getCollection('externalEvents');
 export const allCourses = await getCollection('courses');
-export const coursesBySlug = new Map(allCourses.map((c) => [c.slug, c]));
+export const coursesBySlug = new Map(allCourses.map((c) => [c.id, c]));
 
 export const calendarEvents = [
   ...clubEvents.map((e) => clubEventToCalendarEvent(e, coursesBySlug)),

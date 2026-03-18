@@ -21,7 +21,7 @@ const librariesWithCourses = discLibraries
         {nearbyCourses.map((course, i) => (
           <>
             {i > 0 && (i === nearbyCourses.length - 1 ? ' and ' : ', ')}
-            <a href={`/courses/${course.slug}`}>{course.data.title}</a>
+            <a href={`/courses/${course.id}`}>{course.data.title}</a>
           </>
         ))}
       </>

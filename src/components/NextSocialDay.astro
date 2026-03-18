@@ -10,7 +10,7 @@ for (const course of courses) {
   const ids = course.data.metrixCourseIds || [];
   for (const id of ids) {
     metrixToCourse.set(id, {
-      slug: course.id.replace(/\.mdx?$/, ''),
+      slug: course.id,
       title: course.data.title,
     });
   }

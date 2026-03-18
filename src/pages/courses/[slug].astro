@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import Text from '@components/Text.astro';
@@ -10,13 +10,13 @@ import { clubEventToCalendarEvent } from '@utils/events';
 export async function getStaticPaths() {
   const courses = await getCollection('courses');
   return courses.map((course) => ({
-    params: { slug: course.slug },
+    params: { slug: course.id },
     props: { course },
   }));
 }
 
 const { course } = Astro.props;
-const { Content } = await course.render();
+const { Content } = await render(course);
 
 // Get disc library if referenced
 const discLibrary = course.data.discLibrary ? await getEntry(course.data.discLibrary) : null;
@@ -27,16 +27,16 @@ const cutoffDate = new Date();
 cutoffDate.setDate(cutoffDate.getDate() - maxDaysInPast);
 const allEvents = await getCollection('events');
 const allCourses = await getCollection('courses');
-const coursesBySlug = new Map(allCourses.map((c) => [c.slug, c]));
+const coursesBySlug = new Map(allCourses.map((c) => [c.id, c]));
 const upcomingEventsAtThisCourse = allEvents.filter((event) =>
-  event.data.courses?.some((ref) => ref.id === course.slug) &&
+  event.data.courses?.some((ref) => ref.id === course.id) &&
   new Date(event.data.date) >= cutoffDate
 );
 const calendarEvents = upcomingEventsAtThisCourse.map((e) => clubEventToCalendarEvent(e, coursesBySlug));
 
 // Parse location coordinates (mandatory)
 if (!course.data.location) {
-  throw new Error(`Course ${course.slug} is missing required location data`);
+  throw new Error(`Course ${course.id} is missing required location data`);
 }
 const parsed = JSON.parse(course.data.location);
 const lat = parsed.coordinates[1];
@@ -52,7 +52,7 @@ const mapLinks = {
 <Layout
   title={course.data.title}
   subtitle={course.data.suburb}
-  cmsPath={`/collections/courses/entries/${course.slug}`}
+  cmsPath={`/collections/courses/entries/${course.id}`}
   heroImage={course.data.mainImage && {
     src: course.data.mainImage,
     alt: course.data.title,

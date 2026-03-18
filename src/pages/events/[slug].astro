@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import Text from '@components/Text.astro';
 import Grid from '@components/Grid.astro';
@@ -10,13 +10,13 @@ import { formatDateRange } from '@utils/dates';
 export async function getStaticPaths() {
   const events = await getCollection('events');
   return events.map((event) => ({
-    params: { slug: event.slug },
+    params: { slug: event.id },
     props: { event },
   }));
 }
 
 const { event } = Astro.props;
-const { Content } = await event.render();
+const { Content } = await render(event);
 
 // Get course locations for the map
 const courseLocations = [];
@@ -31,7 +31,7 @@ if (event.data.courses) {
             lat: parsed.coordinates[1],
             lng: parsed.coordinates[0],
             title: course.data.title,
-            href: `/courses/${course.slug}`
+            href: `/courses/${course.id}`
           });
         }
       } catch (e) {
@@ -45,7 +45,7 @@ if (event.data.courses) {
 <Layout
   title={event.data.title}
   subtitle={formatDateRange(event.data.date, event.data.endDate)}
-  cmsPath={`/collections/events/entries/${event.slug}`}
+  cmsPath={`/collections/events/entries/${event.id}`}
   heroImage={event.data.heroImage && {
     src: event.data.heroImage,
     alt: event.data.title,

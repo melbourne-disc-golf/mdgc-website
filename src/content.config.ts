@@ -1,4 +1,5 @@
 import { defineCollection, z, reference } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 // Helper for optional fields from Sveltia/Decap CMS.
 // The CMS outputs '' or null for empty optional fields instead of omitting them,
@@ -7,7 +8,7 @@ const cmsOptional = <T extends z.ZodTypeAny>(schema: T) =>
   z.preprocess((val) => (val === '' || val === null ? undefined : val), schema.optional());
 
 const courses = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/courses' }),
   schema: ({ image }) => z.object({
     title: z.string(),
     suburb: z.string(),
@@ -24,7 +25,7 @@ const courses = defineCollection({
 });
 
 const board = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/board' }),
   schema: ({ image }) => z.object({
     name: z.string(),
     role: z.string().optional(),
@@ -33,7 +34,7 @@ const board = defineCollection({
 });
 
 const discLibraries = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.json', base: './src/content/discLibraries' }),
   schema: z.object({
     council: z.string(),
     location: z.string(),
@@ -43,7 +44,7 @@ const discLibraries = defineCollection({
 
 // Club events (organised by MDGC)
 const events = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/events' }),
   schema: ({ image }) => z.object({
     title: z.string(),
     date: z.date(),
@@ -57,7 +58,7 @@ const events = defineCollection({
 
 // External events (not organised by MDGC)
 const externalEvents = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.yaml', base: './src/content/externalEvents' }),
   schema: z.object({
     title: z.string(),
     date: z.date(),
@@ -68,7 +69,7 @@ const externalEvents = defineCollection({
 });
 
 const metrixSeasons = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.json', base: './src/content/metrixSeasons' }),
   schema: z.object({
     id: z.number(),
     name: z.string(),

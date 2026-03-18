@@ -88,7 +88,7 @@ export const GET: APIRoute = async ({ site }) => {
   const courses = await getCollection('courses');
 
   // Build course lookup maps
-  const coursesBySlug = new Map(courses.map((c) => [c.slug, c]));
+  const coursesBySlug = new Map(courses.map((c) => [c.id, c]));
   const metrixToCourse = new Map(
     courses.flatMap((c) =>
       (c.data.metrixCourseIds || []).map((id) => [id, c] as const)

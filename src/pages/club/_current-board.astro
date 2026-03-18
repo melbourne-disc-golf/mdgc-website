@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import IllustrationImage from '@components/IllustrationImage.astro';
 
 const boardMembers = await getCollection('board');
@@ -26,7 +26,7 @@ const sortedMembers = boardMembers.sort((a, b) => {
 const renderedMembers = await Promise.all(
 	sortedMembers.map(async (member) => ({
 		...member,
-		Content: (await member.render()).Content
+		Content: (await render(member)).Content
 	}))
 );
 ---

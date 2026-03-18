@@ -86,7 +86,7 @@ export function clubEventToCalendarEvent(
     summary: event.data.title,
     startDate: event.data.date,
     endDate: event.data.endDate,
-    url: `/events/${event.slug}`,
+    url: `/events/${event.id}`,
     location: locationText || undefined,
     geo,
     description: extractFirstParagraph(event.body),

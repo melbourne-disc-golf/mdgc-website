@@ -24,7 +24,7 @@ async function getCourseNavItems(): Promise<NavSubPage[]> {
 
   return courses.map(course => ({
     title: course.data.title,
-    href: `/courses/${course.slug}`
+    href: `/courses/${course.id}`
   }));
 }
 

@@ -25,7 +25,7 @@ const courseLocations = allCourses.flatMap(course => {
 				lng: parsed.coordinates[0] as number,
 				title: course.data.title,
 				subtitle: course.data.suburb,
-				href: `/courses/${course.slug}`,
+				href: `/courses/${course.id}`,
 				secondary: !course.data.featured
 			}];
 		}
@@ -51,7 +51,7 @@ const courseLocations = allCourses.flatMap(course => {
 				{featuredCourses.map((course) => (
 					<CourseCard
 						name={course.data.title}
-						href={`/courses/${course.slug}`}
+						href={`/courses/${course.id}`}
 						location={course.data.suburb}
 						image={course.data.thumbnail || course.data.mainImage}
 					/>
@@ -68,7 +68,7 @@ const courseLocations = allCourses.flatMap(course => {
 					{otherCourses.map((course) => (
 						<CourseCard
 							name={course.data.title}
-							href={`/courses/${course.slug}`}
+							href={`/courses/${course.id}`}
 							location={course.data.suburb}
 							image={course.data.thumbnail || course.data.mainImage}
 						/>
