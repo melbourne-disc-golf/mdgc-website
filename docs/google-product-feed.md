@@ -79,7 +79,7 @@ Square API  →  square-inventory.json  →  git push  →  site build  →  goo
 2. **Data file** (`src/data/square-inventory.json`) is committed and pushed to the repo
 3. The push triggers a **Cloudflare Pages build**, which runs `src/lib/google-feed.ts` to transform the data
 4. **TSV feed** is published at `/feeds/google-products.tsv` on the live site
-5. **Google Merchant Center** fetches the TSV on a schedule via [Scheduled Fetch](https://support.google.com/merchants/answer/14991445?hl=en)
+5. **Google Merchant Center** fetches the TSV daily at 05:00 via [Scheduled Fetch](https://support.google.com/merchants/answer/14991445?hl=en)
 
 ### Key functions
 
