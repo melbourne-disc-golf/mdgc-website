@@ -17,22 +17,25 @@ Square's catalog has a hierarchical structure that doesn't map directly to Googl
 - **Images** and **categories** are separate catalog objects linked by ID
 - **Prices** are stored as integers in cents (e.g., 2200 = $22.00)
 
-Google expects one row per product with a single price, not multiple variations.
+We expand each variation into its own row in the feed, using `item_group_id` to group variations of the same item.
 
 ### 2. Product URL construction
 
-Square's `ecomUri` field (which previously held the product URL) is deprecated and missing from many items. We needed to construct URLs ourselves.
+Square's `ecomUri` field (which previously held the product URL) is deprecated and missing from many items. We construct URLs ourselves.
 
 After research (including finding a Slack thread from Square developer relations), we determined the URL format is:
 
 ```
-https://{domain}/product/{slug}/{item-id}
+https://{domain}/product/{slug}/{item-id}?variationId={variation-id}
 ```
 
 Where:
 - `{domain}` is the Square Online site domain (e.g., `mdgcshop.square.site`)
 - `{slug}` is a URL-safe version of the product name (can be any value, including `-`)
 - `{item-id}` is the Square catalog item ID
+- `{variation-id}` is appended as a query parameter to make each variation's URL unique
+
+Note: Square Online doesn't actually use the `variationId` parameter to pre-select a variation on the page. It's included so that Google treats each variation as a distinct product.
 
 ### 3. Determining online availability
 
@@ -48,11 +51,21 @@ Square doesn't have a dedicated brand field, but MDGC uses a category hierarchy 
 
 We traverse the category tree to find which of an item's categories has "BRANDS" as its parent. Items without a brand category are left with no brand in the feed.
 
-### 5. Price selection
+### 5. Disc type extraction
 
-With multiple variations at different prices, we need to choose which price to show. Google doesn't support price ranges.
+Similar to brands, disc types (Putter, Midrange, Driver) are child categories of a "DISC TYPES" parent category. The disc type is included in the product title and as a `product_detail` attribute.
 
-We show the **minimum price from in-stock variations only**. This ensures we don't advertise a low price that's actually unavailable.
+### 6. Variation name parsing
+
+Square variation names follow the pattern `PLASTIC/COLOR/WEIGHT` (e.g., `ATOMIC/PINK/171`), sometimes prefixed with the item name (e.g., `KOTARE - ATOMIC/BURNT ORANGE/173`). We parse these to extract:
+
+- **Plastic type** — included as a `product_detail` attribute
+- **Color** — mapped to Google's `color` field, with normalization (stripping modifiers like "Trans", "Light", "Swirl")
+- **Weight** — mapped to Google's `product_weight` field (e.g., `177 g`)
+
+### 7. Flight ratings
+
+Product descriptions may contain flight rating numbers (Speed/Glide/Turn/Fade). These are extracted and included as `product_detail` attributes, and the verbose lines in the description are replaced with a compact summary like `(7 / 5 / -1 / 2)`.
 
 ## Solution
 
@@ -72,22 +85,29 @@ Square API  →  square-inventory.json  →  git push  →  site build  →  goo
 
 | Function | Purpose |
 |----------|---------|
-| `aggregateItems()` | Combines variations into single items, extracts brand, calculates min price |
-| `toGoogleProduct()` | Converts aggregated item to Google's required fields (prefixes brand to title) |
-| `generateTsvFeed()` | Produces the final TSV with header row |
+| `expandVariations()` | Expands items into one row per variation, extracting brand, disc type, color, weight, etc. |
+| `variationToGoogleProduct()` | Converts a variation item to Google's required fields |
+| `generateTsvFeed()` | Produces the final TSV with header row, filtering out ineligible items |
+| `formatVariationTitle()` | Builds display title from brand, item name, disc type, and variation details |
+| `parseVariationParts()` | Splits variation name into plastic/color/weight components |
+| `extractFlightRatings()` | Extracts Speed/Glide/Turn/Fade from product descriptions |
 | `slugify()` | Converts product names to URL-safe slugs |
-| `formatName()` | Converts ALL-CAPS names to Title Case |
+| `titleCaseKeepAcronyms()` | Converts ALL-CAPS names to title case, preserving short acronyms (e.g., RPM, MVP) |
 
-### Filtering
+### Feed filtering
 
-Items are excluded from the feed if they:
+`generateTsvFeed()` excludes variations that:
 
+- Have no product URL (not on the online store, or item is deleted/archived)
+- Have no image
+- Are out of stock (quantity ≤ 0)
+
+Earlier in `expandVariations()`, items are skipped if they:
+
+- Are deleted or archived
 - Have `productType` other than `REGULAR`
-- Have no channels (not on online store)
-- Have `ecomVisibility` of `UNAVAILABLE`
-- Have no images
-- Have no valid price
-- Are out of stock (total quantity = 0)
+- Have no variations
+- Have no price (or price ≤ 0)
 
 ### Configuration
 
@@ -127,4 +147,4 @@ Output: `dist/feeds/google-products.tsv`
 pnpm test
 ```
 
-Tests cover aggregation logic, price calculation, URL construction, and TSV generation.
+Tests cover variation expansion, name parsing, color normalization, flight rating extraction, URL construction, and TSV generation.
