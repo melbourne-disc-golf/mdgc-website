@@ -681,6 +681,34 @@ describe("expandVariations", () => {
     });
   });
 
+  it("generates unique productUrl per variation", () => {
+    const data: SquareInventoryData = {
+      catalogObjects: [
+        makeItem({
+          id: "item-1",
+          name: "Ruru",
+          variations: [
+            { id: "var-1", name: "ATOMIC/PINK/171", priceAmount: 2200n },
+            { id: "var-2", name: "COSMIC/BLUE/170", priceAmount: 2500n },
+          ],
+        }),
+      ],
+      inventoryCounts: [
+        makeInventoryCount("var-1", 2),
+        makeInventoryCount("var-2", 3),
+      ],
+    };
+
+    const items = expandVariations(data);
+
+    expect(items[0].productUrl).toBe(
+      "https://mdgcshop.square.site/product/ruru/item-1?variationId=var-1",
+    );
+    expect(items[1].productUrl).toBe(
+      "https://mdgcshop.square.site/product/ruru/item-1?variationId=var-2",
+    );
+  });
+
   it("includes out-of-stock variations", () => {
     const data: SquareInventoryData = {
       catalogObjects: [

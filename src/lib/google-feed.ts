@@ -332,6 +332,15 @@ export function slugify(name: string): string {
 }
 
 /**
+ * Append a query parameter to a URL, handling both clean URLs and
+ * URLs that already contain query parameters.
+ */
+function appendQueryParam(url: string, key: string, value: string): string {
+  const separator = url.includes("?") ? "&" : "?";
+  return `${url}${separator}${key}=${encodeURIComponent(value)}`;
+}
+
+/**
  * Build lookup maps from Square data.
  */
 function buildLookups(data: SquareInventoryData) {
@@ -441,7 +450,7 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
       .ecom_visibility as string | undefined;
     const isVisible = ecomVisibility !== "UNAVAILABLE";
     const slug = slugify(itemData.name ?? "");
-    const productUrl =
+    const productBaseUrl =
       hasChannels && isVisible && slug
         ? `https://${SHOP_DOMAIN}/product/${slug}/${obj.id}`
         : undefined;
@@ -468,6 +477,10 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
         varImageIds && varImageIds.length > 0
           ? images.get(varImageIds[0])
           : undefined;
+
+      const productUrl = productBaseUrl
+        ? appendQueryParam(productBaseUrl, "variationId", variation.id)
+        : undefined;
 
       const varName = varData.name;
       const plastic = varName ? parseVariationPlastic(varName) : undefined;
