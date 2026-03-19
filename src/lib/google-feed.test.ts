@@ -702,10 +702,10 @@ describe("expandVariations", () => {
     const items = expandVariations(data);
 
     expect(items[0].productUrl).toBe(
-      "https://mdgcshop.square.site/product/ruru/item-1?variationId=var-1",
+      "https://mdgcshop.square.site/product/ruru/item-1?sku_id=var-1",
     );
     expect(items[1].productUrl).toBe(
-      "https://mdgcshop.square.site/product/ruru/item-1?variationId=var-2",
+      "https://mdgcshop.square.site/product/ruru/item-1?sku_id=var-2",
     );
   });
 

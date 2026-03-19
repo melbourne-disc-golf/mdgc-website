@@ -26,16 +26,16 @@ Square's `ecomUri` field (which previously held the product URL) is deprecated a
 After research (including finding a Slack thread from Square developer relations), we determined the URL format is:
 
 ```
-https://{domain}/product/{slug}/{item-id}?variationId={variation-id}
+https://{domain}/product/{slug}/{item-id}?sku_id={sku-id}
 ```
 
 Where:
 - `{domain}` is the Square Online site domain (e.g., `mdgcshop.square.site`)
 - `{slug}` is a URL-safe version of the product name (can be any value, including `-`)
 - `{item-id}` is the Square catalog item ID
-- `{variation-id}` is appended as a query parameter to make each variation's URL unique
+- `{sku-id}` is appended as a query parameter to make each variation's URL unique
 
-Note: Square Online doesn't actually use the `variationId` parameter to pre-select a variation on the page. It's included so that Google treats each variation as a distinct product.
+Note: Square Online doesn't currently use the `sku_id` parameter to pre-select a variation on the page. It's included so that Google treats each variation as a distinct product.
 
 ### 3. Determining online availability
 

@@ -479,7 +479,7 @@ export function expandVariations(data: SquareInventoryData): VariationItem[] {
           : undefined;
 
       const productUrl = productBaseUrl
-        ? appendQueryParam(productBaseUrl, "variationId", variation.id)
+        ? appendQueryParam(productBaseUrl, "sku_id", variation.id)
         : undefined;
 
       const varName = varData.name;
