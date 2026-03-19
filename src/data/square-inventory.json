@@ -44408,10 +44408,7 @@
         "modifierListInfo": [
           {
             "modifierListId": "RRYQV6GAORJDYMSUWD6X7OTO",
-            "minSelectedModifiers": -1,
-            "maxSelectedModifiers": -1,
             "enabled": true,
-            "hidden_from_customer": false,
             "ordinal": 0,
             "allowQuantities": "NOT_SET",
             "isConversational": "NOT_SET",
@@ -44419,21 +44416,128 @@
           },
           {
             "modifierListId": "PDARUKQJRH7YR26UZPRBMTEV",
-            "minSelectedModifiers": -1,
-            "maxSelectedModifiers": -1,
+            "modifierOverrides": [
+              {
+                "modifierId": "LH7LKUHTSZJ4MRFS2QSQFS76",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "NO",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "2OD7FFWKJ7R3DKLA7LNSYBB2",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "NO",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "IT7WI7D4Z26Y3SQW3OK4434H",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "YES",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "DCCIVEJ3RASKHNK3QFARRE5U",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "YES",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "CGFUZIL7WVTGWT6XKIQVGY4U",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "NO",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "MX2532ALHYDJV3JACF3FTQIA",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "NO",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "WYKM5VLH2X6SU4K6HP2JOH45",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "NO",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "BEX6P3RTFZANXLPJNFJBMFKF",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "NO",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "YOOAR2WSMJJMGRGDMAIZHPSS",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "YES",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "TXZKARC2IJPS5VFZ5OYJFYU6",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "NO",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "H44ZV42SHMP4YT4RFSQOPGWM",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "YES",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "IY5IR2UEHB52SUEERKSYPYWB",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "NO",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "Q2AV4LJGW5LNIUTKA2STMSOZ",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "YES",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "5UAQZB5RPA3WOUYM3SCSYJPG",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "YES",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "T232AEVGNLSNCLZVDZZSZWKJ",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "YES",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "DAWLP5TQ72MLCZ5DIVP6ARH6",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "YES",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "EZFIUQF2JA76M7O565DXSVCF",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "YES",
+                "onByDefaultOverride": "NO"
+              },
+              {
+                "modifierId": "5Y3ZLZXMMYI2UVT5Y6QNBA4B",
+                "onByDefault": false,
+                "hiddenOnlineOverride": "YES",
+                "onByDefaultOverride": "NO"
+              }
+            ],
+            "minSelectedModifiers": 1,
+            "maxSelectedModifiers": 1,
             "enabled": true,
             "hidden_from_customer": false,
             "ordinal": 1,
-            "allowQuantities": "NOT_SET",
-            "isConversational": "NOT_SET",
-            "hiddenFromCustomerOverride": "NOT_SET"
+            "allowQuantities": "NO",
+            "isConversational": "NO",
+            "hiddenFromCustomerOverride": "NO"
           },
           {
             "modifierListId": "SR3QWJ7LCS2VSYJSR42ZA6UY",
-            "minSelectedModifiers": -1,
-            "maxSelectedModifiers": -1,
             "enabled": true,
-            "hidden_from_customer": false,
             "ordinal": 2,
             "allowQuantities": "NOT_SET",
             "isConversational": "NOT_SET",
@@ -44441,10 +44545,7 @@
           },
           {
             "modifierListId": "RPXXM5W7CLHKOLY45EWJ2O5X",
-            "minSelectedModifiers": -1,
-            "maxSelectedModifiers": -1,
             "enabled": true,
-            "hidden_from_customer": false,
             "ordinal": 3,
             "allowQuantities": "NOT_SET",
             "isConversational": "NOT_SET",
@@ -44537,41 +44638,49 @@
               },
               {
                 "modifierId": "IY3H2ENKAKARPN24RDCIZJXP",
+                "onByDefault": false,
                 "hiddenOnlineOverride": "NO",
                 "onByDefaultOverride": "NO"
               },
               {
                 "modifierId": "WBNZFM76334CFQDD2P2WLKA4",
+                "onByDefault": false,
                 "hiddenOnlineOverride": "NO",
                 "onByDefaultOverride": "NO"
               },
               {
                 "modifierId": "XNPCTOTJHWKKFRTELMNPKNEA",
+                "onByDefault": false,
                 "hiddenOnlineOverride": "NO",
                 "onByDefaultOverride": "NO"
               },
               {
                 "modifierId": "ESYCPMA5WDR6OG4K4YH6CWWS",
+                "onByDefault": false,
                 "hiddenOnlineOverride": "NO",
                 "onByDefaultOverride": "NO"
               },
               {
                 "modifierId": "E6OZXIGI3OA5Z63RPN3W2ILG",
+                "onByDefault": false,
                 "hiddenOnlineOverride": "NO",
                 "onByDefaultOverride": "NO"
               },
               {
                 "modifierId": "MUM7SUFNPOMXMBWA3BMYFXPE",
+                "onByDefault": false,
                 "hiddenOnlineOverride": "NO",
                 "onByDefaultOverride": "NO"
               },
               {
                 "modifierId": "PLNZELT33SPQBYTL3LHOGYPQ",
+                "onByDefault": false,
                 "hiddenOnlineOverride": "NO",
                 "onByDefaultOverride": "NO"
               },
               {
                 "modifierId": "Y2PKRK2IZM5ZLXMP2BHOUS22",
+                "onByDefault": false,
                 "hiddenOnlineOverride": "NO",
                 "onByDefaultOverride": "NO"
               }
@@ -44601,28 +44710,30 @@
               },
               "locationOverrides": [
                 {
-                  "locationId": "LN88KDBGR4D45",
-                  "trackInventory": true
+                  "locationId": "LN88KDBGR4D45"
                 },
                 {
                   "locationId": "LTD9BW2RXXBDV",
-                  "trackInventory": true,
                   "soldOut": true
                 }
               ],
               "trackInventory": true,
               "sellable": true,
               "stockable": true,
+              "kitchenName": "",
               "channels": [
                 "CH_Ae1d80fKdnRD5vI7XB9rqpSutyq8IvhMxZvfYRlQuYC",
                 "CH_56srZTDnHTZuaIT7nslifBY82G6DBRKAkbdskVR29945o"
               ]
             },
             "id": "ODXFBGXZGVIYA4VIF4SREEEV",
-            "updatedAt": "2026-02-24T08:48:03.147Z",
-            "version": 1771922883147,
+            "updatedAt": "2026-03-19T00:19:37.09Z",
+            "version": 1773879577090,
             "isDeleted": false,
-            "presentAtAllLocations": true
+            "presentAtAllLocations": true,
+            "absentAtLocationIds": [
+              "LN88KDBGR4D45"
+            ]
           }
         ],
         "productType": "EVENT",
@@ -44663,10 +44774,13 @@
         "isAlcoholic": false
       },
       "id": "V5RMBG5BHHWFGERZDRZJ7HGC",
-      "updatedAt": "2026-02-24T08:48:03.147Z",
-      "version": 1771922883147,
+      "updatedAt": "2026-03-19T00:19:37.09Z",
+      "version": 1773879577090,
       "isDeleted": false,
-      "presentAtAllLocations": true
+      "presentAtAllLocations": true,
+      "absentAtLocationIds": [
+        "LN88KDBGR4D45"
+      ]
     },
     {
       "type": "ITEM",
@@ -78656,7 +78770,7 @@
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
       "quantity": "0",
-      "calculatedAt": "2026-02-24T08:48:07.673Z"
+      "calculatedAt": "2026-03-19T00:19:39.261Z"
     },
     {
       "catalogObjectId": "ODXFBGXZGVIYA4VIF4SREEEV",
@@ -78664,7 +78778,7 @@
       "state": "RETURNED_BY_CUSTOMER",
       "locationId": "LTD9BW2RXXBDV",
       "quantity": "0",
-      "calculatedAt": "2026-02-24T08:35:32.946Z"
+      "calculatedAt": "2026-03-19T00:06:50.39Z"
     },
     {
       "catalogObjectId": "OZX3FRMSGMGH2BIYR45KDHVH",
