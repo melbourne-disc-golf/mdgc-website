@@ -44727,8 +44727,8 @@
               ]
             },
             "id": "ODXFBGXZGVIYA4VIF4SREEEV",
-            "updatedAt": "2026-03-19T00:19:37.09Z",
-            "version": 1773879577090,
+            "updatedAt": "2026-03-19T21:42:59.478Z",
+            "version": 1773956579478,
             "isDeleted": false,
             "presentAtAllLocations": true,
             "absentAtLocationIds": [
@@ -44774,8 +44774,8 @@
         "isAlcoholic": false
       },
       "id": "V5RMBG5BHHWFGERZDRZJ7HGC",
-      "updatedAt": "2026-03-19T00:19:37.09Z",
-      "version": 1773879577090,
+      "updatedAt": "2026-03-19T21:42:59.478Z",
+      "version": 1773956579478,
       "isDeleted": false,
       "presentAtAllLocations": true,
       "absentAtLocationIds": [
@@ -78770,7 +78770,7 @@
       "state": "IN_STOCK",
       "locationId": "LTD9BW2RXXBDV",
       "quantity": "0",
-      "calculatedAt": "2026-03-19T00:19:39.261Z"
+      "calculatedAt": "2026-03-19T21:43:04.205Z"
     },
     {
       "catalogObjectId": "ODXFBGXZGVIYA4VIF4SREEEV",
@@ -78778,7 +78778,7 @@
       "state": "RETURNED_BY_CUSTOMER",
       "locationId": "LTD9BW2RXXBDV",
       "quantity": "0",
-      "calculatedAt": "2026-03-19T00:06:50.39Z"
+      "calculatedAt": "2026-03-19T21:37:27.218Z"
     },
     {
       "catalogObjectId": "OZX3FRMSGMGH2BIYR45KDHVH",
