@@ -4,7 +4,7 @@ import LinkPanel from './LinkPanel.astro';
 
 const siteHost = Astro.site ? new URL(Astro.site).host : 'mdgc.pages.dev';
 const webcalUrl = `webcal://${siteHost}/events.ics`;
-const googleUrl = `https://calendar.google.com/calendar/render?cid=${webcalUrl}`;
+const googleUrl = `https://calendar.google.com/calendar/render?cid=${encodeURIComponent(webcalUrl)}`;
 ---
 
 <Grid>
