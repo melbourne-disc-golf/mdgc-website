@@ -21,6 +21,37 @@ function escapeText(text: string): string {
     .replace(/\n/g, '\\n');
 }
 
+// Fold a content line to respect the 75-octet limit (RFC 5545 §3.1)
+function foldLine(line: string): string {
+  const encoder = new TextEncoder();
+  const bytes = encoder.encode(line);
+  if (bytes.length <= 75) return line;
+
+  const parts: string[] = [];
+  let offset = 0;
+  let isFirst = true;
+
+  while (offset < bytes.length) {
+    // First line: 75 octets max; continuation lines: 74 (75 minus the leading space)
+    const maxChunk = isFirst ? 75 : 74;
+    let end = Math.min(offset + maxChunk, bytes.length);
+
+    // Don't split in the middle of a multi-byte UTF-8 character
+    if (end < bytes.length) {
+      while (end > offset && (bytes[end] & 0xC0) === 0x80) {
+        end--;
+      }
+    }
+
+    const chunk = new TextDecoder().decode(bytes.slice(offset, end));
+    parts.push(isFirst ? chunk : ' ' + chunk);
+    offset = end;
+    isFirst = false;
+  }
+
+  return parts.join('\r\n');
+}
+
 // Make relative URLs absolute
 function absoluteUrl(url: string | undefined, base: string | undefined): string | undefined {
   if (!url || !base) return url;
@@ -58,9 +89,10 @@ function toVEvent(event: CalendarEvent, now: Temporal.Instant): string {
 
   if (event.endTime) {
     lines.push(formatDateProp('DTEND', event.endDate || event.startDate, event.endTime));
-  } else if (event.endDate) {
+  } else {
     // iCal DTEND is exclusive for all-day events, so add 1 day
-    lines.push(formatDateProp('DTEND', event.endDate.add({ days: 1 })));
+    const lastDate = event.endDate || event.startDate;
+    lines.push(formatDateProp('DTEND', lastDate.add({ days: 1 })));
   }
 
   lines.push(`SUMMARY:${escapeText(event.summary)}`);
@@ -88,7 +120,7 @@ function toVEvent(event: CalendarEvent, now: Temporal.Instant): string {
   }
 
   lines.push('END:VEVENT');
-  return lines.join('\r\n');
+  return lines.map(foldLine).join('\r\n');
 }
 
 export const GET: APIRoute = async ({ site }) => {
