@@ -1,20 +1,20 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent, type CalendarEvent, type TimeOfDay } from '@utils/events';
+import { clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent, type CalendarEvent } from '@utils/events';
 
-// Format date as iCal DATE (YYYYMMDD)
-function formatDate(date: Date): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}${month}${day}`;
-}
-
-// Format date + time-of-day as iCal DATETIME (YYYYMMDDTHHMMSS)
-function formatDateWithTime(date: Date, time: TimeOfDay): string {
-  const hours = String(time.hour).padStart(2, '0');
-  const minutes = String(time.minute).padStart(2, '0');
-  return `${formatDate(date)}T${hours}${minutes}00`;
+// Format a Date as an iCal date property value.
+// Dates with non-zero UTC hours are treated as Melbourne local times:
+//   "TZID=Australia/Melbourne:20260315T080000"
+// Dates at UTC midnight are treated as all-day:
+//   "VALUE=DATE:20260315"
+function formatICalDate(date: Date): string {
+  const ymd = formatYMD(date);
+  const hours = date.getUTCHours();
+  const minutes = date.getUTCMinutes();
+  if (hours !== 0 || minutes !== 0) {
+    return `TZID=Australia/Melbourne:${ymd}T${String(hours).padStart(2, '0')}${String(minutes).padStart(2, '0')}00`;
+  }
+  return `VALUE=DATE:${ymd}`;
 }
 
 // Escape special characters in iCal text fields
@@ -32,11 +32,17 @@ function absoluteUrl(url: string | undefined, base: string | undefined): string 
   return new URL(url, base).toString();
 }
 
+function formatYMD(date: Date): string {
+  const year = date.getUTCFullYear();
+  const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+  const day = String(date.getUTCDate()).padStart(2, '0');
+  return `${year}${month}${day}`;
+}
+
 // Generate a unique ID for an event
 function generateUID(event: CalendarEvent): string {
-  const dateStr = formatDate(event.startDate);
   const slug = event.summary.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  return `${dateStr}-${slug}@melbournediscgolf.com`;
+  return `${formatYMD(event.startDate)}-${slug}@melbournediscgolf.com`;
 }
 
 // Convert a CalendarEvent to iCal VEVENT format
@@ -44,22 +50,17 @@ function toVEvent(event: CalendarEvent): string {
   const lines: string[] = [
     'BEGIN:VEVENT',
     `UID:${generateUID(event)}`,
-    `DTSTAMP:${formatDate(new Date())}T000000Z`,
+    `DTSTAMP:${formatYMD(new Date())}T000000Z`,
+    `DTSTART;${formatICalDate(event.startDate)}`,
   ];
 
-  if (event.startTime) {
-    lines.push(`DTSTART;TZID=Australia/Melbourne:${formatDateWithTime(event.startDate, event.startTime)}`);
-    if (event.endTime) {
-      lines.push(`DTEND;TZID=Australia/Melbourne:${formatDateWithTime(event.endDate || event.startDate, event.endTime)}`);
+  if (event.endDate) {
+    const endDate = new Date(event.endDate);
+    // iCal DTEND is exclusive for all-day events, so add 1 day
+    if (endDate.getUTCHours() === 0 && endDate.getUTCMinutes() === 0) {
+      endDate.setUTCDate(endDate.getUTCDate() + 1);
     }
-  } else {
-    lines.push(`DTSTART;VALUE=DATE:${formatDate(event.startDate)}`);
-    if (event.endDate) {
-      // iCal DTEND is exclusive, so add 1 day for all-day events
-      const endDate = new Date(event.endDate);
-      endDate.setDate(endDate.getDate() + 1);
-      lines.push(`DTEND;VALUE=DATE:${formatDate(endDate)}`);
-    }
+    lines.push(`DTEND;${formatICalDate(endDate)}`);
   }
 
   lines.push(`SUMMARY:${escapeText(event.summary)}`);

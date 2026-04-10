@@ -2,15 +2,10 @@ import type { CollectionEntry } from 'astro:content';
 
 export type EventSource = 'club' | 'social' | 'external';
 
-export type TimeOfDay = { hour: number; minute: number };
-
 export type CalendarEvent = {
   summary: string;
   startDate: Date;
   endDate?: Date;
-  /** Start/end times in Melbourne local time. When set, the .ics feed emits timed events instead of all-day. */
-  startTime?: TimeOfDay;
-  endTime?: TimeOfDay;
   url?: string;
   location?: string;
   geo?: { lat: number; lon: number };
@@ -142,16 +137,22 @@ export function socialDayToCalendarEvent(
   const location = course ? `${course.data.title}, ${course.data.suburb}` : undefined;
   const geo = course ? parseGeoJson(course.data.location) : undefined;
 
+  // Social days run 8am–1pm Melbourne time.
+  // We store Melbourne hours in the UTC fields of the Date; the .ics
+  // formatter outputs them with TZID=Australia/Melbourne.
+  const startDate = new Date(event.date);
+  startDate.setUTCHours(8, 0);
+  const endDate = new Date(event.date);
+  endDate.setUTCHours(13, 0);
+
   return {
     summary: shortName,
-    startDate: new Date(event.date),
+    startDate,
+    endDate,
     url: `https://discgolfmetrix.com/${event.id}`,
     location,
     geo,
     external: true,
     source: 'social',
-    // Social days run 8am–1pm Melbourne time
-    startTime: { hour: 8, minute: 0 },
-    endTime: { hour: 13, minute: 0 },
   };
 }

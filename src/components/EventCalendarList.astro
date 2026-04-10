@@ -78,7 +78,7 @@ function getEventSourceClass(event: CalendarEvent): string {
                 <div class="event-date">
                   <span class="day-number">{getDayNumber(event.startDate)}</span>
                   <span class="day-name">{getDayOfWeek(event.startDate)}</span>
-                  {event.endDate && (
+                  {event.endDate && getDurationDays(event.startDate, event.endDate) > 1 && (
                     <span class="duration">({getDurationDays(event.startDate, event.endDate)} days)</span>
                   )}
                 </div>
