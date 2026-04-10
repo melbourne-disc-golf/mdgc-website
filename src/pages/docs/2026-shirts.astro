@@ -1,0 +1,16 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+const files = import.meta.glob('/public/docs/2026-shirts/*.pdf');
+const filenames = Object.keys(files)
+  .map(path => path.split('/').pop()!)
+  .sort();
+---
+
+<Layout title="2026 shirt size charts">
+  <ul class="py-8 list-none space-y-2 font-mono text-sm">
+    {filenames.map(name =>
+      <li><a href={`/docs/2026-shirts/${name}`} class="text-mdgc-blue-dark hover:underline">{name}</a></li>
+    )}
+  </ul>
+</Layout>
