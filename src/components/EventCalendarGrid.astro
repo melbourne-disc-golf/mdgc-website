@@ -1,118 +1,96 @@
 ---
+import { Temporal } from '@js-temporal/polyfill';
 import type { CalendarEvent } from '@utils/events';
 
 interface Props {
   events: CalendarEvent[];
   maxDaysInPast?: number;
   maxDaysInFuture?: number;
-  weekStartDay?: number; // 0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat
+  weekStartDay?: number; // 1=Mon ... 7=Sun (ISO weekday)
 }
 
 const { events, maxDaysInPast, maxDaysInFuture, weekStartDay = 4 } = Astro.props;
-const TIMEZONE = 'Australia/Melbourne';
+
+const SHORT_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 function getEventSourceClass(event: CalendarEvent): string {
   return `event-${event.source || 'other'}`;
 }
 
-function formatDateKey(date: Date): string {
-  return date.toLocaleDateString('en-AU', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: TIMEZONE });
-}
-
-function getMonthStart(date: Date): Date {
-  return new Date(date.getFullYear(), date.getMonth(), 1);
-}
-
-function getShortMonth(date: Date): string {
-  return date.toLocaleDateString('en-AU', { month: 'short', timeZone: TIMEZONE });
-}
-
-const today = new Date();
-today.setHours(0, 0, 0, 0);
+const today = Temporal.Now.plainDateISO();
 
 const minDateLimit = maxDaysInPast !== undefined
-  ? new Date(today.getTime() - maxDaysInPast * 24 * 60 * 60 * 1000)
+  ? today.subtract({ days: maxDaysInPast })
   : undefined;
 const maxDateLimit = maxDaysInFuture !== undefined
-  ? new Date(today.getTime() + maxDaysInFuture * 24 * 60 * 60 * 1000)
+  ? today.add({ days: maxDaysInFuture })
   : undefined;
 
+const cmp = Temporal.PlainDate.compare;
+
 const filteredEvents = events.filter((e) => {
-  if (minDateLimit && e.startDate < minDateLimit) return false;
-  if (maxDateLimit && e.startDate > maxDateLimit) return false;
+  if (minDateLimit && cmp(e.startDate, minDateLimit) < 0) return false;
+  if (maxDateLimit && cmp(e.startDate, maxDateLimit) > 0) return false;
   return true;
 });
 
-const sortedEvents = [...filteredEvents].sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
+const sortedEvents = [...filteredEvents].sort((a, b) => cmp(a.startDate, b.startDate));
 const minDate = sortedEvents.length > 0 ? sortedEvents[0].startDate : today;
 const maxDate = sortedEvents.length > 0 ? sortedEvents[sortedEvents.length - 1].startDate : today;
 
+// Map each date (as ISO string) to its events, expanding multi-day events
 const eventsByDate = new Map<string, CalendarEvent[]>();
 for (const event of filteredEvents) {
-  const start = new Date(event.startDate);
-  start.setHours(0, 0, 0, 0);
-  const end = event.endDate ? new Date(event.endDate) : start;
-  end.setHours(0, 0, 0, 0);
-
-  const current = new Date(start);
-  while (current <= end) {
-    const key = formatDateKey(current);
+  const end = event.endDate || event.startDate;
+  let current = event.startDate;
+  while (cmp(current, end) <= 0) {
+    const key = current.toString();
     const existing = eventsByDate.get(key) || [];
     existing.push(event);
     eventsByDate.set(key, existing);
-    current.setDate(current.getDate() + 1);
+    current = current.add({ days: 1 });
   }
 }
 
 type DayCell = {
-  date: Date;
+  date: Temporal.PlainDate;
   isToday: boolean;
   isWeekend: boolean;
   isPast: boolean;
   events: CalendarEvent[];
 };
 
-function getWeekStart(date: Date): Date {
-  const d = new Date(date);
-  const dayOfWeek = (d.getDay() - weekStartDay + 7) % 7;
-  d.setDate(d.getDate() - dayOfWeek);
-  return d;
+function getWeekStart(date: Temporal.PlainDate): Temporal.PlainDate {
+  // dayOfWeek: 1=Mon .. 7=Sun; weekStartDay uses same convention
+  const offset = (date.dayOfWeek - weekStartDay + 7) % 7;
+  return date.subtract({ days: offset });
 }
 
-function getWeekEnd(date: Date): Date {
-  const d = new Date(date);
-  const dayOfWeek = (d.getDay() - weekStartDay + 7) % 7;
-  d.setDate(d.getDate() + (6 - dayOfWeek));
-  return d;
+function getWeekEnd(date: Temporal.PlainDate): Temporal.PlainDate {
+  const offset = (date.dayOfWeek - weekStartDay + 7) % 7;
+  return date.add({ days: 6 - offset });
 }
 
 function buildGrid(): DayCell[] {
   const cells: DayCell[] = [];
-
-  // Start from Monday of the week containing first event
   const gridStart = getWeekStart(minDate);
-  // End on Sunday of the week containing last event
   const gridEnd = getWeekEnd(maxDate);
 
-  let current = new Date(gridStart);
-  while (current <= gridEnd) {
-    cells.push(buildDayCell(new Date(current)));
-    current.setDate(current.getDate() + 1);
+  let current = gridStart;
+  while (cmp(current, gridEnd) <= 0) {
+    const key = current.toString();
+    const dow = current.dayOfWeek;
+    cells.push({
+      date: current,
+      isToday: cmp(current, today) === 0,
+      isWeekend: dow === 6 || dow === 7,
+      isPast: cmp(current, today) < 0,
+      events: eventsByDate.get(key) || [],
+    });
+    current = current.add({ days: 1 });
   }
 
   return cells;
-}
-
-function buildDayCell(date: Date): DayCell {
-  const key = formatDateKey(date);
-  const dayOfWeek = date.getDay();
-  return {
-    date,
-    isToday: date.getTime() === today.getTime(),
-    isWeekend: dayOfWeek === 0 || dayOfWeek === 6,
-    isPast: date < today,
-    events: eventsByDate.get(key) || [],
-  };
 }
 
 function getDayCellClasses(cell: DayCell): string {
@@ -121,10 +99,11 @@ function getDayCellClasses(cell: DayCell): string {
   return classes.join(' ');
 }
 
-const allDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-const weekdays = Array.from({ length: 7 }, (_, i) => allDays[(weekStartDay + i) % 7]);
+// ISO weekdays: 1=Mon .. 7=Sun
+const allDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const weekdays = Array.from({ length: 7 }, (_, i) => allDays[(weekStartDay - 1 + i) % 7]);
 
-// Compute which column indices are weekends (Sat=6, Sun=0)
+// Compute which column indices are weekends
 const weekendColumns = weekdays
   .map((day, i) => (day === 'Sat' || day === 'Sun' ? i : -1))
   .filter((i) => i >= 0);
@@ -140,14 +119,13 @@ const grid = buildGrid();
     {grid.map((cell) => {
       const visibleEvents = cell.events.slice(0, 3);
       const moreCount = cell.events.length - 3;
-      const dateAttr = cell.date.toISOString().split('T')[0];
       return (
-        <div class={getDayCellClasses(cell)} data-date={dateAttr}>
+        <div class={getDayCellClasses(cell)} data-date={cell.date.toString()}>
           <div class="day-header">
             <span class="day-number">
-              {cell.date.getDate()}
+              {cell.date.day}
             </span>
-            <span class="month-label">{getShortMonth(cell.date)}</span>
+            <span class="month-label">{SHORT_MONTHS[cell.date.month - 1]}</span>
           </div>
           <div class="day-events">
             {visibleEvents.map((event) =>

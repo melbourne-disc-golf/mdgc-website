@@ -1,3 +1,8 @@
+import { Temporal } from '@js-temporal/polyfill';
+
+const MONTHS_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 /**
  * Format a date range for display.
  *
@@ -14,40 +19,28 @@
  * - Different years: "30 Dec, 2025 - 2 Jan, 2026"
  */
 export function formatDateRange(
-  startDate: Date,
-  endDate?: Date,
+  startDate: Temporal.PlainDate,
+  endDate?: Temporal.PlainDate,
   format: 'long' | 'short' = 'long',
 ): string {
-  const formatOptions: Intl.DateTimeFormatOptions = {
-    day: 'numeric',
-    month: format,
-    year: 'numeric',
-  };
+  const months = format === 'long' ? MONTHS_LONG : MONTHS_SHORT;
 
-  const addComma = (s: string) => s.replace(/ (\d{4})$/, ', $1');
-
-  if (!endDate || startDate.getTime() === endDate.getTime()) {
-    return addComma(startDate.toLocaleDateString('en-AU', formatOptions));
+  function fmt(date: Temporal.PlainDate): string {
+    return `${date.day} ${months[date.month - 1]}, ${date.year}`;
   }
 
-  const sameMonth =
-    startDate.getMonth() === endDate.getMonth() &&
-    startDate.getFullYear() === endDate.getFullYear();
-  const sameYear = startDate.getFullYear() === endDate.getFullYear();
+  if (!endDate || Temporal.PlainDate.compare(startDate, endDate) === 0) {
+    return fmt(startDate);
+  }
+
+  const sameMonth = startDate.month === endDate.month && startDate.year === endDate.year;
+  const sameYear = startDate.year === endDate.year;
 
   if (sameMonth) {
-    const endFormatted = endDate.toLocaleDateString('en-AU', formatOptions);
-    return `${startDate.getDate()}-${addComma(endFormatted)}`;
+    return `${startDate.day}-${fmt(endDate)}`;
   } else if (sameYear) {
-    const startFormatted = startDate.toLocaleDateString('en-AU', {
-      day: 'numeric',
-      month: format,
-    });
-    const endFormatted = endDate.toLocaleDateString('en-AU', formatOptions);
-    return `${startFormatted} - ${addComma(endFormatted)}`;
+    return `${startDate.day} ${months[startDate.month - 1]} - ${fmt(endDate)}`;
   } else {
-    const startFormatted = addComma(startDate.toLocaleDateString('en-AU', formatOptions));
-    const endFormatted = addComma(endDate.toLocaleDateString('en-AU', formatOptions));
-    return `${startFormatted} - ${endFormatted}`;
+    return `${fmt(startDate)} - ${fmt(endDate)}`;
   }
 }

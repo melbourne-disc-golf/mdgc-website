@@ -6,6 +6,7 @@ import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import LocationsMap from '@components/LocationsMap.astro';
 import { formatDateRange } from '@utils/dates';
+import { dateToPlainDate } from '@utils/events';
 
 export async function getStaticPaths() {
   const events = await getCollection('events');
@@ -44,7 +45,7 @@ if (event.data.courses) {
 
 <Layout
   title={event.data.title}
-  subtitle={formatDateRange(event.data.date, event.data.endDate)}
+  subtitle={formatDateRange(dateToPlainDate(event.data.date), event.data.endDate ? dateToPlainDate(event.data.endDate) : undefined)}
   cmsPath={`/collections/events/entries/${event.id}`}
   heroImage={event.data.heroImage && {
     src: event.data.heroImage,

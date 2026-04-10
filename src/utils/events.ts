@@ -1,11 +1,14 @@
+import { Temporal } from '@js-temporal/polyfill';
 import type { CollectionEntry } from 'astro:content';
 
 export type EventSource = 'club' | 'social' | 'external';
 
 export type CalendarEvent = {
   summary: string;
-  startDate: Date;
-  endDate?: Date;
+  startDate: Temporal.PlainDate;
+  endDate?: Temporal.PlainDate;
+  startTime?: Temporal.PlainTime;
+  endTime?: Temporal.PlainTime;
   url?: string;
   location?: string;
   geo?: { lat: number; lon: number };
@@ -13,6 +16,11 @@ export type CalendarEvent = {
   external?: boolean;
   source?: EventSource;
 };
+
+/** Convert a JS Date (from Zod z.date()) to a Temporal.PlainDate. */
+export function dateToPlainDate(date: Date): Temporal.PlainDate {
+  return Temporal.PlainDate.from(date.toISOString().slice(0, 10));
+}
 
 type ClubEventEntry = CollectionEntry<'events'>;
 type ExternalEventEntry = CollectionEntry<'externalEvents'>;
@@ -84,12 +92,12 @@ export function clubEventToCalendarEvent(
 
   return {
     summary: event.data.title,
-    startDate: event.data.date,
-    endDate: event.data.endDate,
+    startDate: dateToPlainDate(event.data.date),
+    endDate: event.data.endDate ? dateToPlainDate(event.data.endDate) : undefined,
     url: `/events/${event.id}`,
     location: locationText || undefined,
     geo,
-    description: extractFirstParagraph(event.body),
+    description: event.body ? extractFirstParagraph(event.body) : undefined,
     source: 'club',
   };
 }
@@ -104,8 +112,8 @@ export function externalEventToCalendarEvent(
 ): CalendarEvent {
   return {
     summary: event.data.title,
-    startDate: new Date(event.data.date),
-    endDate: event.data.endDate ? new Date(event.data.endDate) : undefined,
+    startDate: dateToPlainDate(event.data.date),
+    endDate: event.data.endDate ? dateToPlainDate(event.data.endDate) : undefined,
     url: event.data.url,
     location: event.data.location,
     external: true,
@@ -137,22 +145,16 @@ export function socialDayToCalendarEvent(
   const location = course ? `${course.data.title}, ${course.data.suburb}` : undefined;
   const geo = course ? parseGeoJson(course.data.location) : undefined;
 
-  // Social days run 8am–1pm Melbourne time.
-  // We store Melbourne hours in the UTC fields of the Date; the .ics
-  // formatter outputs them with TZID=Australia/Melbourne.
-  const startDate = new Date(event.date);
-  startDate.setUTCHours(8, 0);
-  const endDate = new Date(event.date);
-  endDate.setUTCHours(13, 0);
-
   return {
     summary: shortName,
-    startDate,
-    endDate,
+    startDate: Temporal.PlainDate.from(event.date),
     url: `https://discgolfmetrix.com/${event.id}`,
     location,
     geo,
     external: true,
     source: 'social',
+    // Social days run 8am–1pm Melbourne time
+    startTime: Temporal.PlainTime.from({ hour: 8, minute: 0 }),
+    endTime: Temporal.PlainTime.from({ hour: 13, minute: 0 }),
   };
 }

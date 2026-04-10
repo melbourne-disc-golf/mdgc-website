@@ -17,9 +17,6 @@ const metrixToCourse = new Map(
   )
 );
 
-const today = new Date();
-today.setHours(0, 0, 0, 0);
-
 // Convert club events to CalendarEvents
 const clubCalendarEvents = clubEvents
   .map(e => clubEventToCalendarEvent(e, coursesBySlug));
