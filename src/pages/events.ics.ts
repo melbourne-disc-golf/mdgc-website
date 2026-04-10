@@ -41,13 +41,18 @@ function formatDateProp(prop: string, date: Temporal.PlainDate, time?: Temporal.
   return `${prop};VALUE=DATE:${formatYMD(date)}`;
 }
 
+// Format an Instant as iCal UTC datetime (YYYYMMDDTHHMMSSZ)
+function formatInstant(instant: Temporal.Instant): string {
+  const dt = instant.toZonedDateTimeISO('UTC');
+  return `${dt.year}${pad2(dt.month)}${pad2(dt.day)}T${pad2(dt.hour)}${pad2(dt.minute)}${pad2(dt.second)}Z`;
+}
+
 // Convert a CalendarEvent to iCal VEVENT format
-function toVEvent(event: CalendarEvent): string {
-  const now = Temporal.Now.plainDateISO();
+function toVEvent(event: CalendarEvent, now: Temporal.Instant): string {
   const lines: string[] = [
     'BEGIN:VEVENT',
     `UID:${generateUID(event)}`,
-    `DTSTAMP:${formatYMD(now)}T000000Z`,
+    `DTSTAMP:${formatInstant(now)}`,
     formatDateProp('DTSTART', event.startDate, event.startTime),
   ];
 
@@ -155,7 +160,7 @@ export const GET: APIRoute = async ({ site }) => {
     'METHOD:PUBLISH',
     'X-WR-CALNAME:MDGC Events',
     vtimezone,
-    ...allEvents.map(toVEvent),
+    ...allEvents.map((e) => toVEvent(e, Temporal.Now.instant())),
     'END:VCALENDAR',
   ];
 
