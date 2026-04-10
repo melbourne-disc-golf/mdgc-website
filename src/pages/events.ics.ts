@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent, type CalendarEvent } from '@utils/events';
+import { clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent, type CalendarEvent, type TimeOfDay } from '@utils/events';
 
 // Format date as iCal DATE (YYYYMMDD)
 function formatDate(date: Date): string {
@@ -8,6 +8,13 @@ function formatDate(date: Date): string {
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
   return `${year}${month}${day}`;
+}
+
+// Format date + time-of-day as iCal DATETIME (YYYYMMDDTHHMMSS)
+function formatDateWithTime(date: Date, time: TimeOfDay): string {
+  const hours = String(time.hour).padStart(2, '0');
+  const minutes = String(time.minute).padStart(2, '0');
+  return `${formatDate(date)}T${hours}${minutes}00`;
 }
 
 // Escape special characters in iCal text fields
@@ -38,14 +45,21 @@ function toVEvent(event: CalendarEvent): string {
     'BEGIN:VEVENT',
     `UID:${generateUID(event)}`,
     `DTSTAMP:${formatDate(new Date())}T000000Z`,
-    `DTSTART;VALUE=DATE:${formatDate(event.startDate)}`,
   ];
 
-  if (event.endDate) {
-    // iCal DTEND is exclusive, so add 1 day for all-day events
-    const endDate = new Date(event.endDate);
-    endDate.setDate(endDate.getDate() + 1);
-    lines.push(`DTEND;VALUE=DATE:${formatDate(endDate)}`);
+  if (event.startTime) {
+    lines.push(`DTSTART;TZID=Australia/Melbourne:${formatDateWithTime(event.startDate, event.startTime)}`);
+    if (event.endTime) {
+      lines.push(`DTEND;TZID=Australia/Melbourne:${formatDateWithTime(event.endDate || event.startDate, event.endTime)}`);
+    }
+  } else {
+    lines.push(`DTSTART;VALUE=DATE:${formatDate(event.startDate)}`);
+    if (event.endDate) {
+      // iCal DTEND is exclusive, so add 1 day for all-day events
+      const endDate = new Date(event.endDate);
+      endDate.setDate(endDate.getDate() + 1);
+      lines.push(`DTEND;VALUE=DATE:${formatDate(endDate)}`);
+    }
   }
 
   lines.push(`SUMMARY:${escapeText(event.summary)}`);
@@ -119,6 +133,27 @@ export const GET: APIRoute = async ({ site }) => {
   // Sort by date
   allEvents.sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
 
+  // VTIMEZONE for Australia/Melbourne (AEST/AEDT)
+  const vtimezone = [
+    'BEGIN:VTIMEZONE',
+    'TZID:Australia/Melbourne',
+    'BEGIN:STANDARD',
+    'DTSTART:19700405T030000',
+    'RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=4',
+    'TZOFFSETFROM:+1100',
+    'TZOFFSETTO:+1000',
+    'TZNAME:AEST',
+    'END:STANDARD',
+    'BEGIN:DAYLIGHT',
+    'DTSTART:19701004T020000',
+    'RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=10',
+    'TZOFFSETFROM:+1000',
+    'TZOFFSETTO:+1100',
+    'TZNAME:AEDT',
+    'END:DAYLIGHT',
+    'END:VTIMEZONE',
+  ].join('\r\n');
+
   // Build iCal content
   const icalLines = [
     'BEGIN:VCALENDAR',
@@ -127,6 +162,7 @@ export const GET: APIRoute = async ({ site }) => {
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'X-WR-CALNAME:MDGC Events',
+    vtimezone,
     ...allEvents.map(toVEvent),
     'END:VCALENDAR',
   ];

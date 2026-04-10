@@ -2,10 +2,15 @@ import type { CollectionEntry } from 'astro:content';
 
 export type EventSource = 'club' | 'social' | 'external';
 
+export type TimeOfDay = { hour: number; minute: number };
+
 export type CalendarEvent = {
   summary: string;
   startDate: Date;
   endDate?: Date;
+  /** Start/end times in Melbourne local time. When set, the .ics feed emits timed events instead of all-day. */
+  startTime?: TimeOfDay;
+  endTime?: TimeOfDay;
   url?: string;
   location?: string;
   geo?: { lat: number; lon: number };
@@ -145,5 +150,8 @@ export function socialDayToCalendarEvent(
     geo,
     external: true,
     source: 'social',
+    // Social days run 8am–1pm Melbourne time
+    startTime: { hour: 8, minute: 0 },
+    endTime: { hour: 13, minute: 0 },
   };
 }
