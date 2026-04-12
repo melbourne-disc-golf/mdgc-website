@@ -27,7 +27,7 @@ export default defineConfig({
     '/upcoming-events': '/events',
     '/what-is-disc-golf': '/disc-golf',
     '/club/shop': '/club#shop',
-    // Event alias redirects are handled by aliasSlugs in event frontmatter
+    // Event alias redirects are handled by aliases in event frontmatter
   },
   markdown: {
     rehypePlugins: [rehypeSectionize],

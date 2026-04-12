@@ -15,7 +15,7 @@ export async function getStaticPaths() {
       params: { slug: event.data.slug },
       props: { event, redirect: undefined as string | undefined },
     },
-    ...(event.data.aliasSlugs ?? []).map((alias) => ({
+    ...(event.data.aliases ?? []).map((alias) => ({
       params: { slug: alias },
       props: { event: undefined as typeof event | undefined, redirect: `/events/${event.data.slug}` },
     })),
