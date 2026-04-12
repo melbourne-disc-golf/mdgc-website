@@ -100,7 +100,7 @@ export function clubEventToCalendarEvent(
     summary: event.data.title,
     startDate: dateToPlainDate(event.data.date),
     endDate: event.data.endDate ? dateToPlainDate(event.data.endDate) : undefined,
-    url: `/events/${event.id}`,
+    url: `/events/${event.data.slug}`,
     location: locationText || undefined,
     geo,
     description: event.body ? extractFirstParagraph(event.body) : undefined,

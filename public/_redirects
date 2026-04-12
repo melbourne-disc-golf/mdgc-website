@@ -20,8 +20,7 @@
 /what-is-disc-golf /disc-golf 301
 /what-is-disc-golf/ /disc-golf 301
 
-# Renamed event pages (301 permanent)
-/events/2026-04-09-2026-mdgc-womens-global-event /events/2026-05-17-womens-global-event 301
+# Event alias redirects are handled by aliasSlugs in event frontmatter
 
 # Legacy shop URLs (301 permanent)
 /shop-3/ /shop 301

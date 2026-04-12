@@ -10,13 +10,22 @@ import { getPublishedEvents, dateToPlainDate } from '@utils/events';
 
 export async function getStaticPaths() {
   const events = await getPublishedEvents();
-  return events.map((event) => ({
-    params: { slug: event.id },
-    props: { event },
-  }));
+  return events.flatMap((event) => [
+    {
+      params: { slug: event.data.slug },
+      props: { event, redirect: undefined as string | undefined },
+    },
+    ...(event.data.aliasSlugs ?? []).map((alias) => ({
+      params: { slug: alias },
+      props: { event: undefined as typeof event | undefined, redirect: `/events/${event.data.slug}` },
+    })),
+  ]);
 }
 
-const { event } = Astro.props;
+const { event: eventProp, redirect } = Astro.props;
+if (redirect) return Astro.redirect(redirect, 301);
+
+const event = eventProp!;
 const { Content } = await render(event);
 const eventDateStr = dateToPlainDate(event.data.date).toString();
 
@@ -47,7 +56,7 @@ if (event.data.courses) {
 <Layout
   title={event.data.title}
   subtitle={formatDateRange(dateToPlainDate(event.data.date), event.data.endDate ? dateToPlainDate(event.data.endDate) : undefined)}
-  cmsPath={`/collections/events/entries/${event.id}`}
+  cmsPath={`/collections/events/entries/${event.data.slug}`}
   heroImage={event.data.heroImage && {
     src: event.data.heroImage,
     alt: event.data.title,

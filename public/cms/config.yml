@@ -88,16 +88,19 @@ collections:
     create: true
     editor:
       preview: false
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    identifier_field: "slug"
+    slug: "{{slug}}"
     extension: "mdx"
     format: "frontmatter"
     sortable_fields: ["date", "title"]
-    summary: "{{slug}}"
+    summary: "{{fields.slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Draft", name: "draft", widget: "boolean", default: false, required: false, hint: "Draft events have a page but don't appear on calendars or listings" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "Controls the URL for this event. Must start with a date (YYYY-MM-DD) followed by a short description, e.g. 2026-05-09-come-and-try. Changing this will change the event's URL — add the old slug to 'Alias slugs' to set up a redirect." }
+      - { label: "Alias slugs", name: "aliasSlugs", widget: "list", required: false, hint: "Old slugs that should redirect to this event" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "End Date", name: "endDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: false }
+      - { label: "Draft", name: "draft", widget: "boolean", default: false, required: false, hint: "Draft events have a page but don't appear on calendars or listings" }
       - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Courses", name: "courses", widget: "relation", collection: "courses", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], multiple: true, required: false }

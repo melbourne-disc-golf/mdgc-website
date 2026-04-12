@@ -48,6 +48,8 @@ const events = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/events' }),
   schema: ({ image }) => z.object({
     title: z.string(),
+    slug: z.string().regex(/^\d{4}-\d{2}-\d{2}-.+$/, 'Slug must start with a date (YYYY-MM-DD-...)'),
+    aliasSlugs: z.array(z.string()).optional(),
     draft: z.boolean().optional(),
     date: z.date(),
     endDate: cmsOptional(z.date()),
