@@ -92,7 +92,11 @@ collections:
     slug: "{{slug}}"
     extension: "mdx"
     format: "frontmatter"
-    sortable_fields: ["date", "title"]
+    sortable_fields:
+      default:
+        field: date
+        direction: Descending
+      fields: ["date"]
     summary: "{{fields.slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
@@ -116,7 +120,11 @@ collections:
       preview: false
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     extension: "yaml"
-    sortable_fields: ["date", "title"]
+    sortable_fields:
+      default:
+        field: date
+        direction: Descending
+      fields: ["date"]
     summary: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
