@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntry, render } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import Text from '@components/Text.astro';
 import Grid from '@components/Grid.astro';
@@ -18,6 +18,7 @@ export async function getStaticPaths() {
 
 const { event } = Astro.props;
 const { Content } = await render(event);
+const eventDateStr = dateToPlainDate(event.data.date).toString();
 
 // Get course locations for the map
 const courseLocations = [];
@@ -57,6 +58,19 @@ if (event.data.courses) {
 
     <Content />
 
+    {event.data.registrationUrl && (
+      <section class="hide-after-date" data-hide-after={eventDateStr}>
+        <h2>Registration</h2>
+        <Grid>
+          <LinkPanel
+            href={event.data.registrationUrl}
+            title="Register here"
+            icon="mdi:calendar-check"
+          />
+        </Grid>
+      </section>
+    )}
+
     {courseLocations.length > 0 && (
       <section>
         <h2>Location</h2>
@@ -82,19 +96,15 @@ if (event.data.courses) {
       </section>
     )}
 
-    {event.data.registrationUrl && (
-      <section>
-        <h2>Registration</h2>
-        <Grid>
-          <LinkPanel
-            href={event.data.registrationUrl}
-            title="Register here"
-            icon="mdi:calendar-check"
-          />
-        </Grid>
-      </section>
-    )}
-
 </Text>
 
 </Layout>
+
+<script>
+  document.querySelectorAll('.hide-after-date').forEach((el) => {
+    const hideAfter = el.getAttribute('data-hide-after');
+    if (hideAfter && new Date().toISOString().slice(0, 10) > hideAfter) {
+      el.remove();
+    }
+  });
+</script>
