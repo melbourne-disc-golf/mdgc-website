@@ -27,6 +27,7 @@ export default defineConfig({
     '/upcoming-events': '/events',
     '/what-is-disc-golf': '/disc-golf',
     '/club/shop': '/club#shop',
+    '/events/2026-04-09-2026-mdgc-womens-global-event': '/events/2026-05-17-womens-global-event',
   },
   markdown: {
     rehypePlugins: [rehypeSectionize],
