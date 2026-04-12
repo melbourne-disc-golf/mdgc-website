@@ -165,6 +165,7 @@ const faviconSizes = [16, 32, 48, 192];
 						<Image
 							src={heroImage.src}
 							alt={heroImage.alt}
+							fit={heroImage.class?.includes('object-contain') ? 'contain' : 'cover'}
 							class={`w-full rounded-lg ${heroImage.class?.includes('object-') ? '' : 'object-cover'} ${heroImage.class || ''}`}
 						/>
 						{heroImage.caption && (
