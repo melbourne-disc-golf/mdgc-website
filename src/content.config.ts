@@ -56,7 +56,7 @@ const events = defineCollection({
     courses: z.array(reference('courses')).optional(),
     heroImage: cmsOptional(image()),
     registrationUrl: cmsOptional(z.string().url()),
-    pdgaEventId: cmsOptional(z.number().int().min(98000).max(120000)),
+    pdgaEventId: cmsOptional(z.string().regex(/^\d{5,6}$/, 'PDGA Event ID must be 5-6 digits')),
   }),
 });
 
