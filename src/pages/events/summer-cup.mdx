@@ -12,10 +12,10 @@ heroImage:
 import { getCollection } from 'astro:content';
 import Text from '@components/Text.astro';
 import EventCalendar from '@components/EventCalendar.astro';
-import { clubEventToCalendarEvent } from '@utils/events';
+import { getPublishedEvents, clubEventToCalendarEvent } from '@utils/events';
 import { Content as SummerCupDetails } from './_summer-cup-details.mdx';
 
-export const allEvents = await getCollection('events');
+export const allEvents = await getPublishedEvents();
 export const summerCupEvents = allEvents.filter((e) => e.data.title.includes('Summer Cup'));
 export const allCourses = await getCollection('courses');
 export const coursesBySlug = new Map(allCourses.map((c) => [c.id, c]));

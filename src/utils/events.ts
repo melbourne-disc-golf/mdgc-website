@@ -1,4 +1,5 @@
 import { Temporal } from '@js-temporal/polyfill';
+import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
 export type EventSource = 'club' | 'social' | 'external';
@@ -16,6 +17,11 @@ export type CalendarEvent = {
   external?: boolean;
   source?: EventSource;
 };
+
+/** Get all published (non-draft) club events. */
+export function getPublishedEvents() {
+  return getCollection('events', ({ data }) => !data.draft);
+}
 
 /** Convert a JS Date (from Zod z.date()) to a Temporal.PlainDate. */
 export function dateToPlainDate(date: Date): Temporal.PlainDate {

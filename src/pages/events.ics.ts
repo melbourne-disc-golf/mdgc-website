@@ -1,7 +1,7 @@
 import { Temporal } from '@js-temporal/polyfill';
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent, type CalendarEvent } from '@utils/events';
+import { getPublishedEvents, clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent, type CalendarEvent } from '@utils/events';
 
 function pad2(n: number): string {
   return String(n).padStart(2, '0');
@@ -126,7 +126,7 @@ function toVEvent(event: CalendarEvent, now: Temporal.Instant): string {
 export const GET: APIRoute = async ({ site }) => {
   const siteUrl = site?.toString();
   // Get data from collections
-  const clubEvents = await getCollection('events');
+  const clubEvents = await getPublishedEvents();
   const externalEvents = await getCollection('externalEvents');
   const metrixSeasons = await getCollection('metrixSeasons');
   const courses = await getCollection('courses');

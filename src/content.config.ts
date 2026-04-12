@@ -48,6 +48,7 @@ const events = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/events' }),
   schema: ({ image }) => z.object({
     title: z.string(),
+    draft: z.boolean().optional(),
     date: z.date(),
     endDate: cmsOptional(z.date()),
     courses: z.array(reference('courses')).optional(),

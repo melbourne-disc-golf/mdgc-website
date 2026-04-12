@@ -6,7 +6,7 @@ import Text from '@components/Text.astro';
 import LocationsMap from '@components/LocationsMap.astro';
 import EventCalendarList from '@components/EventCalendarList.astro';
 import { Temporal } from '@js-temporal/polyfill';
-import { clubEventToCalendarEvent, dateToPlainDate } from '@utils/events';
+import { getPublishedEvents, clubEventToCalendarEvent, dateToPlainDate } from '@utils/events';
 
 export async function getStaticPaths() {
   const courses = await getCollection('courses');
@@ -25,7 +25,7 @@ const discLibrary = course.data.discLibrary ? await getEntry(course.data.discLib
 // Get upcoming events at this course (include events up to 2 days in past to match component display)
 const maxDaysInPast = 2;
 const cutoff = Temporal.Now.plainDateISO().subtract({ days: maxDaysInPast });
-const allEvents = await getCollection('events');
+const allEvents = await getPublishedEvents();
 const allCourses = await getCollection('courses');
 const coursesBySlug = new Map(allCourses.map((c) => [c.id, c]));
 const upcomingEventsAtThisCourse = allEvents.filter((event) =>

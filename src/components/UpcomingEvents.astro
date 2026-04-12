@@ -1,10 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
 import EventCalendar from '@components/EventCalendar.astro';
-import { clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent } from '@utils/events';
+import { getPublishedEvents, clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent } from '@utils/events';
 
 // Get data from collections
-const clubEvents = await getCollection('events');
+const clubEvents = await getPublishedEvents();
 const externalEvents = await getCollection('externalEvents');
 const metrixSeasons = await getCollection('metrixSeasons');
 const courses = await getCollection('courses');

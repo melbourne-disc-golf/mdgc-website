@@ -6,10 +6,10 @@ import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import LocationsMap from '@components/LocationsMap.astro';
 import { formatDateRange } from '@utils/dates';
-import { dateToPlainDate } from '@utils/events';
+import { getPublishedEvents, dateToPlainDate } from '@utils/events';
 
 export async function getStaticPaths() {
-  const events = await getCollection('events');
+  const events = await getPublishedEvents();
   return events.map((event) => ({
     params: { slug: event.id },
     props: { event },
