@@ -88,8 +88,7 @@ collections:
     create: true
     editor:
       preview: false
-    identifier_field: "id"
-    slug: "{{fields.id}}"
+    slug: "{{date | date('YYYY-MM-DD')}}-{{slug}}"
     preview_path: "events/{{slug}}"
     extension: "mdx"
     format: "frontmatter"
@@ -98,19 +97,18 @@ collections:
         field: date
         direction: descending
       fields: ["date"]
-    summary: "{{fields.id}}"
+    summary: "{{slug}}"
     fields:
-      - { label: "ID", name: "id", widget: "string", hint: "Controls the URL for this event. Must start with a date (YYYY-MM-DD) followed by a short description, e.g. 2026-05-09-come-and-try. Changing this will change the event's URL — add the old value to 'Aliases' to set up a redirect." }
-      - { label: "Aliases", name: "aliases", widget: "string", required: false, hint: "Old IDs that should redirect to this event (space or comma separated). Should be blank for most events." }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "End Date", name: "endDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: false }
-      - { label: "Draft", name: "draft", widget: "boolean", default: false, required: false, hint: "Draft events have a page but don't appear on calendars or listings" }
+      - { label: "Draft", name: "draft", widget: "boolean", default: false, required: false, hint: "Draft events have a page but don't appear on calendars or listings." }
       - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Courses", name: "courses", widget: "relation", collection: "courses", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], multiple: true, required: false }
       - { label: "Registration URL", name: "registrationUrl", widget: "string", required: false, hint: "Link to registration page" }
       - { label: "PDGA Event ID", name: "pdgaEventId", widget: "string", required: false, hint: "Numeric ID from pdga.com (e.g. 123456)" }
+      - { label: "Aliases", name: "aliases", widget: "string", required: false, hint: "Old 'slugs' for this event that should redirect. Usually blank." }
 
   - name: "externalEvents"
     label: "External Events"

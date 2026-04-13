@@ -48,7 +48,6 @@ const events = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/events' }),
   schema: ({ image }) => z.object({
     title: z.string(),
-    id: z.string().regex(/^\d{4}-\d{2}-\d{2}-.+$/, 'ID must start with a date (YYYY-MM-DD-...)'),
     aliases: cmsOptional(z.string().transform(s => s.split(/[\s,]+/).filter(Boolean))),
     draft: z.boolean().optional(),
     date: z.date(),
