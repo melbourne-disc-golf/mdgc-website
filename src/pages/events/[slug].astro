@@ -12,12 +12,12 @@ export async function getStaticPaths() {
   const events = await getPublishedEvents();
   return events.flatMap((event) => [
     {
-      params: { slug: event.data.slug },
+      params: { slug: event.data.id },
       props: { event, redirect: undefined as string | undefined },
     },
     ...(event.data.aliases ?? []).map((alias) => ({
       params: { slug: alias },
-      props: { event: undefined as typeof event | undefined, redirect: `/events/${event.data.slug}` },
+      props: { event: undefined as typeof event | undefined, redirect: `/events/${event.data.id}` },
     })),
   ]);
 }
@@ -56,7 +56,7 @@ if (event.data.courses) {
 <Layout
   title={event.data.title}
   subtitle={formatDateRange(dateToPlainDate(event.data.date), event.data.endDate ? dateToPlainDate(event.data.endDate) : undefined)}
-  cmsPath={`/collections/events/entries/${event.data.slug}`}
+  cmsPath={`/collections/events/entries/${event.data.id}`}
   heroImage={event.data.heroImage && {
     src: event.data.heroImage,
     alt: event.data.title,

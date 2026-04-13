@@ -88,21 +88,21 @@ collections:
     create: true
     editor:
       preview: false
-    identifier_field: "slug"
-    slug: "{{slug}}"
+    identifier_field: "id"
+    slug: "{{fields.id}}"
     preview_path: "events/{{slug}}"
     extension: "mdx"
     format: "frontmatter"
     sortable_fields:
       default:
         field: date
-        direction: Descending
+        direction: descending
       fields: ["date"]
-    summary: "{{fields.slug}}"
+    summary: "{{fields.id}}"
     fields:
+      - { label: "ID", name: "id", widget: "string", hint: "Controls the URL for this event. Must start with a date (YYYY-MM-DD) followed by a short description, e.g. 2026-05-09-come-and-try. Changing this will change the event's URL — add the old value to 'Aliases' to set up a redirect." }
+      - { label: "Aliases", name: "aliases", widget: "string", required: false, hint: "Old IDs that should redirect to this event (space or comma separated). Should be blank for most events." }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string", hint: "Controls the URL for this event. Must start with a date (YYYY-MM-DD) followed by a short description, e.g. 2026-05-09-come-and-try. Changing this will change the event's URL — add the old slug to 'Alias slugs' to set up a redirect." }
-      - { label: "Aliases", name: "aliases", widget: "string", required: false, hint: "Old slugs that should redirect to this event (space or comma separated)" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "End Date", name: "endDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: false }
       - { label: "Draft", name: "draft", widget: "boolean", default: false, required: false, hint: "Draft events have a page but don't appear on calendars or listings" }
@@ -124,7 +124,7 @@ collections:
     sortable_fields:
       default:
         field: date
-        direction: Descending
+        direction: descending
       fields: ["date"]
     summary: "{{slug}}"
     fields:
