@@ -38,7 +38,7 @@ const renderedMembers = await Promise.all(
 		<section>
 			<h3>{data.name}{data.role ? ` (${data.role})` : ''}</h3>
 			{data.photo && (
-				<IllustrationImage src={data.photo} alt={data.name} imageClass="aspect-square" />
+				<IllustrationImage src={data.photo} alt={data.name} />
 			)}
 			<Content />
 		</section>
