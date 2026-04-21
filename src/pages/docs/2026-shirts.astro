@@ -1,7 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 
-const files = import.meta.glob('/public/docs/2026-shirts/*.pdf');
+const files = import.meta.glob('/public/docs/2026-shirts/*.*');
 const filenames = Object.keys(files)
   .map(path => path.split('/').pop()!)
   .sort();
