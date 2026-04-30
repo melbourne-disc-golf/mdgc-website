@@ -106,7 +106,7 @@ collections:
       - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Courses", name: "courses", widget: "relation", collection: "courses", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], multiple: true, required: false }
-      - { label: "Registration URL", name: "registrationUrl", widget: "string", required: false, hint: "Link to registration page" }
+      - { label: "Registration URL", name: "registrationUrl", widget: "string", required: false, hint: "Link to registration page (leave blank if not applicable)", pattern: ['^https?://.+', "Must be a URL starting with http:// or https://"] }
       - { label: "PDGA Event ID", name: "pdgaEventId", widget: "string", required: false, hint: "Numeric ID from pdga.com (e.g. 123456)" }
       - { label: "Aliases", name: "aliases", widget: "string", required: false, hint: "Old 'slugs' for this event that should redirect. Usually blank." }
 
