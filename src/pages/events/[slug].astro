@@ -27,7 +27,10 @@ if (redirect) return Astro.redirect(redirect, 301);
 
 const event = eventProp!;
 const { Content } = await render(event);
-const eventDateStr = dateToPlainDate(event.data.date).toString();
+const eventStartDate = dateToPlainDate(event.data.date);
+const eventEndDate = event.data.endDate ? dateToPlainDate(event.data.endDate) : eventStartDate;
+const eventDateStr = eventStartDate.toString();
+const liveScoringUntilStr = eventEndDate.add({ days: 1 }).toString();
 
 // Get course locations for the map
 const courseLocations = [];
@@ -96,11 +99,18 @@ if (event.data.courses) {
             title="Official event page"
             icon="heroicons:information-circle"
           />
-          <LinkPanel
-            href={`https://www.pdga.com/live/event/${event.data.pdgaEventId}/`}
-            title="Live scoring"
-            icon="heroicons:presentation-chart-line"
-          />
+          <div
+            class="show-during-event"
+            data-show-from={eventDateStr}
+            data-show-until={liveScoringUntilStr}
+            hidden
+          >
+            <LinkPanel
+              href={`https://www.pdga.com/live/event/${event.data.pdgaEventId}/`}
+              title="Live scoring"
+              icon="heroicons:presentation-chart-line"
+            />
+          </div>
         </Grid>
       </section>
     )}
@@ -110,10 +120,18 @@ if (event.data.courses) {
 </Layout>
 
 <script>
+  const today = new Date().toISOString().slice(0, 10);
   document.querySelectorAll('.hide-after-date').forEach((el) => {
     const hideAfter = el.getAttribute('data-hide-after');
-    if (hideAfter && new Date().toISOString().slice(0, 10) > hideAfter) {
+    if (hideAfter && today > hideAfter) {
       el.remove();
+    }
+  });
+  document.querySelectorAll('.show-during-event').forEach((el) => {
+    const from = el.getAttribute('data-show-from');
+    const until = el.getAttribute('data-show-until');
+    if (from && until && today >= from && today <= until) {
+      el.removeAttribute('hidden');
     }
   });
 </script>
