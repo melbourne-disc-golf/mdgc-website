@@ -19,9 +19,11 @@
 /upcoming-events/ /events 301
 /what-is-disc-golf /disc-golf 301
 /what-is-disc-golf/ /disc-golf 301
-/wordpress/wp-content/uploads/2021/07/Basic-rules-of-disc-golf.pdf /disc-golf/try#disc-golf-rules-101 301
+/wordpress/wp-content/uploads/2021/07/Basic-rules-of-disc-golf.pdf /disc-golf/rules 301
 
-# Event alias redirects are handled by aliases in event frontmatter
+# Other
+/disc-golf/rules /disc-golf/try#disc-golf-rules-101 302
+/disc-golf/rules/ /disc-golf/try#disc-golf-rules-101 302
 
 # Legacy shop URLs (301 permanent)
 /shop-3/ /shop 301
