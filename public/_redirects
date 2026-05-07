@@ -19,6 +19,7 @@
 /upcoming-events/ /events 301
 /what-is-disc-golf /disc-golf 301
 /what-is-disc-golf/ /disc-golf 301
+/wordpress/wp-content/uploads/2021/07/Basic-rules-of-disc-golf.pdf /disc-golf/try#disc-golf-rules-101 301
 
 # Event alias redirects are handled by aliases in event frontmatter
 
