@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Text from '@components/Text.astro';
+import { Image } from 'astro:assets';
 import CurrentBoardMembers from './_current-board.astro';
 import PastBoardMembers from './_past-boards.mdx';
 import foundersImage from '@images/MDGC-founders.jpg';
@@ -10,12 +11,6 @@ import foundersImage from '@images/MDGC-founders.jpg';
   title="Board"
   subtitle="our volunteer committee members"
   cmsPath="/collections/board"
-  heroImage={{
-    src: foundersImage,
-    alt: "inaugural MDGC board, 2008",
-    caption: "inaugural board members (Ben Ayres, Dr. Greg Bowers, Paul Arden, Ian Bycroft, Oliver Pauli, Daniel Hartley)",
-    class: "aspect-2/1"
-  }}
 >
 	<Text>
 		<p>
@@ -25,6 +20,8 @@ import foundersImage from '@images/MDGC-founders.jpg';
 		<CurrentBoardMembers />
 
 		<PastBoardMembers />
+
+    <Image src={foundersImage} alt="inaugural MDGC board, 2008" title="inaugural board members (Ben Ayres, Dr. Greg Bowers, Paul Arden, Ian Bycroft, Oliver Pauli, Daniel Hartley)" class="aspect-2/1" />
 
 	</Text>
 </Layout>
