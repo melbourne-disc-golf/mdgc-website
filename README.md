@@ -105,6 +105,20 @@ pnpm tsx scripts/fetch-metrix-data.ts 3525298
 
 (Replace `3525298` with the current season ID if it changes.)
 
+## Maintenance
+
+### Cleaning up old deployments
+
+Every push builds a new Cloudflare Pages deployment, so they accumulate over time. A [GitHub Actions workflow](.github/workflows/cleanup-deployments.yml) runs weekly (Sunday 2am UTC) and deletes deployments older than 30 days that have no aliases (i.e. not production or an active branch preview), via [`scripts/cleanup-deployments.sh`](scripts/cleanup-deployments.sh). You can also run it manually from the [Actions tab](https://github.com/melbourne-disc-golf/mdgc-website/actions/workflows/cleanup-deployments.yml), with a `dry_run` option to preview deletions.
+
+The workflow authenticates to the Cloudflare API using the `CLOUDFLARE_API_TOKEN` GitHub Actions secret. This holds a Cloudflare **account-owned API token** named **`mdgc-github-actions`**, scoped to **Pages: Edit**.
+
+**The token has a 1-year expiry.** When it expires, the workflow fails with `Authentication error` (Cloudflare error code `10000`). To rotate it:
+
+1. In the [Cloudflare dashboard](https://dash.cloudflare.com/1dbfd2793b506e08151b86bd944859b5), go to **Manage Account → API Tokens** and roll (or recreate) the `mdgc-github-actions` token, keeping the **Pages: Edit** permission.
+2. Update the GitHub secret with the new value: `gh secret set CLOUDFLARE_API_TOKEN`.
+3. Verify by running the workflow with `dry_run` enabled.
+
 ## ⚙️ Development
 
 ### 🏗️ Tech Stack

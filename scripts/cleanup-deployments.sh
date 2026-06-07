@@ -3,7 +3,10 @@
 # Clean up old Cloudflare Pages deployments
 #
 # Required environment variables:
-#   CLOUDFLARE_API_TOKEN   - API token with Pages:Edit permission
+#   CLOUDFLARE_API_TOKEN   - API token with Pages:Edit permission.
+#                            In CI this is the "mdgc-github-actions" account-owned
+#                            Cloudflare API token (see README "Cleaning up old
+#                            deployments" for rotation instructions).
 #   CLOUDFLARE_ACCOUNT_ID  - Cloudflare account ID
 #   CLOUDFLARE_PROJECT     - Cloudflare Pages project name
 #
