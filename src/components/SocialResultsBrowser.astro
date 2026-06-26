@@ -1,0 +1,835 @@
+---
+import type { Division, EventDetail, Player, Season } from '@utils/metrix';
+import { getEvent } from '@utils/metrix';
+
+interface Props {
+  season: Season;
+  seasons: Season[];
+  baseHref?: string;
+  defaultSeasonId?: number;
+}
+
+const { season, seasons, baseHref = '/events/social/results', defaultSeasonId = season.id } = Astro.props;
+
+const rounds = season.rounds.map((round) => ({
+  ...round,
+  detail: round.played ? getEvent(round.id) : null,
+}));
+
+const defaultIndex = (() => {
+  for (let index = rounds.length - 1; index >= 0; index -= 1) {
+    if (rounds[index].detail) return index;
+  }
+  return 0;
+})();
+
+const playedCount = rounds.filter((round) => round.detail).length;
+const seasonLabel = season.name.includes('S2') ? 'S2' : 'S1';
+
+function seasonShortLabel(value: Season): string {
+  if (value.name.includes('S2')) return 'S2';
+  if (value.name.includes('S1')) return 'S1';
+  if (/MDGC\s+2026\s+Social\s+Days$/i.test(value.name.trim())) return 'S1';
+  const match = value.name.match(/Season\s+(\d+)/i);
+  return match ? `S${match[1]}` : String(value.id);
+}
+
+function seasonHref(value: Season): string {
+  return value.id === defaultSeasonId ? baseHref : `${baseHref}/${value.id}`;
+}
+
+function tabId(round: { round: number }): string {
+  return `social-results-${season.id}-rd-${String(round.round).padStart(2, '0')}`;
+}
+
+function formatShortDate(date: string): string {
+  const d = new Date(date);
+  return d.toLocaleDateString('en-AU', { day: 'numeric', month: 'numeric' });
+}
+
+function formatLongDate(date: string): string {
+  const d = new Date(date);
+  return d.toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' });
+}
+
+function courseTitle(round: { courseName: string; name: string }): string {
+  return round.courseName.split('&rarr;').pop()?.trim() || round.name.split('-').pop()?.trim() || round.name;
+}
+
+function formatDiff(diff: number): string {
+  return diff > 0 ? `+${diff}` : String(diff);
+}
+
+function fmt2(n: number | null): string {
+  return n === null ? '-' : n.toFixed(2);
+}
+
+function holeClass(score: number | null, holePar: number): string {
+  if (score === null) return 'score-cell';
+  if (score === 1) return 'score-cell score-holeinone';
+  const diff = score - holePar;
+  if (diff <= -2) return 'score-cell score-eagle';
+  if (diff === -1) return 'score-cell score-birdie';
+  if (diff === 1) return 'score-cell score-bogey';
+  if (diff >= 2) return 'score-cell score-dbogey';
+  return 'score-cell';
+}
+
+function divisionLeader(division: Division): Player | null {
+  const withNet = division.players.filter((player) => player.net !== null);
+  if (withNet.length) {
+    return withNet.reduce((best, player) => (player.net! < best.net! ? player : best));
+  }
+  return division.players[0] ?? null;
+}
+
+function totalPlayers(event: EventDetail): number {
+  return event.divisions.reduce((sum, division) => sum + division.players.length, 0);
+}
+---
+
+<div class="social-results-browser" data-social-results-browser>
+  <section class="results-topbar">
+    <div>
+      <p class="results-eyebrow">MDGC Social Days / Results</p>
+      <h2>MDGC 2026 Social Day Results</h2>
+      <p>{playedCount} of {rounds.length} rounds have imported scorecards.</p>
+    </div>
+
+    <div class="results-top-actions">
+      <div class="season-switch" aria-label="Season selector">
+        {seasons.map((item) => (
+          item.id === season.id ? (
+            <span class="season-switch-item is-active">{seasonShortLabel(item)}</span>
+          ) : (
+            <a class="season-switch-item" href={seasonHref(item)}>{seasonShortLabel(item)}</a>
+          )
+        ))}
+      </div>
+      <a class="result-top-button" href="/events/social">Info</a>
+      <a class="result-top-button is-primary" href={`https://discgolfmetrix.com/${season.id}`} target="_blank" rel="noopener noreferrer">Metrix</a>
+    </div>
+  </section>
+
+  <section class="results-browser-band">
+    <div class="results-tabs" role="tablist" aria-label={`${seasonLabel} social days`}>
+      {rounds.map((round, index) => {
+        const id = tabId(round);
+        const active = index === defaultIndex;
+        return (
+          <button
+            id={`${id}-tab`}
+            class={`results-tab ${active ? 'is-active' : ''}`}
+            type="button"
+            role="tab"
+            aria-selected={active ? 'true' : 'false'}
+            aria-controls={id}
+            data-results-tab={id}
+          >
+            <strong>Rd {round.round} <em>{formatShortDate(round.date)}</em></strong>
+            <span>{courseTitle(round)}</span>
+          </button>
+        );
+      })}
+    </div>
+
+    <div class="results-panels">
+      {rounds.map((round, index) => {
+        const id = tabId(round);
+        const active = index === defaultIndex;
+        const event = round.detail;
+
+        if (!event) {
+          return (
+            <section id={id} class="results-panel" role="tabpanel" aria-labelledby={`${id}-tab`} data-results-panel hidden={!active}>
+              <div class="notice-card">
+                <strong>Not played yet, check back later</strong>
+                <a href={`https://discgolfmetrix.com/${round.id}`} target="_blank" rel="noopener noreferrer">Open on Metrix</a>
+              </div>
+            </section>
+          );
+        }
+
+        return (
+          <section id={id} class="results-panel" role="tabpanel" aria-labelledby={`${id}-tab`} data-results-panel hidden={!active}>
+            <div class="results-panel-head">
+              <div>
+                <div class="results-panel-kicker">
+                  <span>{seasonLabel}</span>
+                  <span>Round {round.round}</span>
+                </div>
+                <h3>{courseTitle(round)}</h3>
+                <p>{formatLongDate(round.date)} | {round.name}</p>
+              </div>
+              <div class="results-panel-actions">
+                <span class="result-status imported">Imported</span>
+                <a class="result-metrix-link" href={`https://discgolfmetrix.com/${round.id}`} target="_blank" rel="noopener noreferrer">Metrix</a>
+                <a class="result-metrix-link" href={`${baseHref}/${season.id}/${round.id}`}>Full scorecard</a>
+              </div>
+            </div>
+
+            <div class="results-section-grid">
+              <section class="leader-card" aria-label="Handicap leaders">
+                <div class="leader-card-head">
+                  <div>
+                    <span>MDGC Social Days</span>
+                    <h3>Handicap Leaders</h3>
+                    <p><strong>{courseTitle(round)}</strong><em>Round {round.round} | {formatLongDate(round.date)}</em></p>
+                  </div>
+                </div>
+
+                <div class="leader-list">
+                  {event.divisions.map((division) => {
+                    const leader = divisionLeader(division);
+                    return leader ? (
+                      <article class="leader-row">
+                        <span class="leader-icon">HC</span>
+                        <span class="leader-copy">
+                          <span>Div {division.letter} Handicap</span>
+                          <strong>{leader.name}</strong>
+                          <em>Net {fmt2(leader.net)}, Raw {leader.sum} ({formatDiff(leader.diff)})</em>
+                        </span>
+                      </article>
+                    ) : null;
+                  })}
+                </div>
+              </section>
+
+              <section class="results-division-section">
+                <div class="results-section-head">
+                  <div>
+                    <h3>Division Results</h3>
+                    <p>{totalPlayers(event)} players across {event.divisions.length} divisions.</p>
+                  </div>
+                </div>
+
+                <div class="result-division-grid">
+                  {event.divisions.map((division) => (
+                    <article class="result-division-block">
+                      <div class="result-division-head">
+                        <h4>Div {division.letter}</h4>
+                        <span>{division.players.length} player{division.players.length === 1 ? '' : 's'}</span>
+                      </div>
+
+                      <div class="results-table-wrap">
+                        <table class="scorecard-table">
+                          <thead>
+                            <tr>
+                              <th class="pos-col">Pos</th>
+                              <th class="name-col">Name</th>
+                              <th class="rating-col">Rating</th>
+                              <th class="to-par-col">+/-</th>
+                              {event.tracks.map((track) => <th class="hole-col">{track.number}</th>)}
+                              <th class="raw-col">Raw</th>
+                              <th class="hc-col">HC</th>
+                              <th class="net-col">Net</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {division.players.map((player) => (
+                              <tr>
+                                <td class="pos-col">
+                                  {player.pos <= 3 ? <span class={`podium-badge podium-${player.pos}`}>{player.pos}</span> : player.pos}
+                                </td>
+                                <td class="name-col">{player.name}</td>
+                                <td class="rating-col">{player.rating ?? '-'}</td>
+                                <td class="to-par-col">{formatDiff(player.diff)}</td>
+                                {player.holes.map((score, holeIndex) => (
+                                  <td class={holeClass(score, event.tracks[holeIndex]?.par ?? 3)}>{score ?? '-'}</td>
+                                ))}
+                                <td class="raw-col">{player.sum}</td>
+                                <td class="hc-col">{fmt2(player.hc)}</td>
+                                <td class="net-col">{fmt2(player.net)}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            </div>
+          </section>
+        );
+      })}
+    </div>
+  </section>
+</div>
+
+<script>
+  document.querySelectorAll('[data-social-results-browser]').forEach((browser) => {
+    const tabs = Array.from(browser.querySelectorAll('[data-results-tab]'));
+    const panels = Array.from(browser.querySelectorAll('[data-results-panel]'));
+
+    const activate = (panelId, updateHash = true, behavior = 'smooth') => {
+      tabs.forEach((tab) => {
+        const active = tab.dataset.resultsTab === panelId;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', String(active));
+        if (active) tab.scrollIntoView({ behavior, block: 'nearest', inline: 'center' });
+      });
+
+      panels.forEach((panel) => {
+        const active = panel.id === panelId;
+        panel.toggleAttribute('hidden', !active);
+      });
+
+      if (updateHash) history.replaceState(null, '', `#${panelId}`);
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => activate(tab.dataset.resultsTab, true, 'smooth'));
+    });
+
+    const initial = location.hash.replace('#', '');
+    const initialTab = tabs.find((tab) => tab.dataset.resultsTab === initial) || tabs.find((tab) => tab.classList.contains('is-active')) || tabs[0];
+    if (initialTab) activate(initialTab.dataset.resultsTab, false, 'auto');
+  });
+</script>
+
+<style>
+  .social-results-browser {
+    margin-inline: auto;
+    max-width: 1320px;
+  }
+
+  .results-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    background:
+      linear-gradient(115deg, rgba(5, 7, 8, 0.98) 0%, rgba(6, 61, 99, 0.97) 58%, rgba(34, 122, 183, 0.94) 100%),
+      repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 18px);
+    color: white;
+    padding: 14px 18px;
+  }
+
+  .results-eyebrow {
+    margin: 0 0 4px;
+    color: var(--color-mdgc-amber);
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .results-topbar h2 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  .results-topbar p {
+    margin: 5px 0 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 13px;
+  }
+
+  .results-top-actions,
+  .season-switch {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .season-switch {
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .season-switch-item,
+  .result-top-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30px;
+    border-radius: 6px;
+    padding: 5px 10px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 12px;
+    font-weight: 850;
+    text-decoration: none;
+  }
+
+  .season-switch-item.is-active {
+    background: #ffffff;
+    color: var(--color-mdgc-accent-deep);
+  }
+
+  .result-top-button {
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  .result-top-button.is-primary {
+    background: var(--color-mdgc-accent);
+    border-color: var(--color-mdgc-accent);
+  }
+
+  .results-tabs {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    border: 1px solid var(--color-mdgc-blue-light);
+    border-radius: 8px;
+    background: linear-gradient(180deg, #ffffff, #eaf6fd);
+    box-shadow: 0 10px 28px rgba(6, 61, 99, 0.1);
+    padding: 8px;
+  }
+
+  .results-tab {
+    flex: 0 0 92px;
+    min-height: 54px;
+    min-width: 0;
+    border: 1px solid rgba(183, 215, 233, 0.9);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: inset 0 -2px 0 rgba(57, 160, 223, 0.08);
+    color: var(--color-mdgc-ink);
+    cursor: pointer;
+    font: inherit;
+    padding: 7px 8px;
+    text-align: left;
+  }
+
+  .results-tab:hover {
+    border-color: var(--color-mdgc-accent);
+    background: white;
+  }
+
+  .results-tab.is-active {
+    border-color: var(--color-mdgc-blue);
+    background: linear-gradient(180deg, var(--color-mdgc-accent), var(--color-mdgc-blue));
+    box-shadow: 0 9px 18px rgba(6, 61, 99, 0.2), inset 0 -3px 0 var(--color-mdgc-amber);
+    color: white;
+  }
+
+  .results-tab strong {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    font-size: 13px;
+    line-height: 1.1;
+  }
+
+  .results-tab em {
+    color: var(--color-text-body);
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 650;
+  }
+
+  .results-tab.is-active em {
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .results-tab span {
+    display: block;
+    margin-top: 4px;
+    overflow: hidden;
+    color: var(--color-text-body);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .results-tab.is-active span {
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .results-panels {
+    margin-top: 18px;
+  }
+
+  .results-panel[hidden] {
+    display: none;
+  }
+
+  .results-panel-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    border: 1px solid var(--color-mdgc-blue-light);
+    border-radius: 8px;
+    background: linear-gradient(180deg, #ffffff, var(--color-mdgc-accent-soft));
+    box-shadow: 0 10px 28px rgba(6, 61, 99, 0.1);
+    padding: 12px 14px;
+  }
+
+  .results-panel-kicker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 7px;
+  }
+
+  .results-panel-kicker span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 22px;
+    border-radius: 999px;
+    background: var(--color-mdgc-accent-soft);
+    color: var(--color-mdgc-accent-deep);
+    font-size: 11px;
+    font-weight: 850;
+    padding: 3px 8px;
+  }
+
+  .results-panel-kicker span:last-child {
+    background: var(--color-mdgc-amber-soft);
+    color: #7a4b00;
+  }
+
+  .results-panel-head h3 {
+    margin: 0;
+    color: var(--color-mdgc-ink);
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1.2;
+  }
+
+  .results-panel-head p {
+    margin: 5px 0 0;
+    color: var(--color-text-body);
+    font-size: 13px;
+  }
+
+  .results-panel-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .result-status,
+  .result-metrix-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 850;
+    padding: 5px 10px;
+    text-decoration: none;
+  }
+
+  .result-status.imported {
+    border: 1px solid rgba(57, 160, 223, 0.25);
+    background: var(--color-mdgc-accent-soft);
+    color: var(--color-mdgc-accent-deep);
+  }
+
+  .result-metrix-link {
+    border: 1px solid rgba(57, 160, 223, 0.45);
+    background: #ffffff;
+    color: var(--color-mdgc-blue);
+  }
+
+  .results-section-grid {
+    display: grid;
+    gap: 20px;
+    margin-top: 18px;
+  }
+
+  .leader-card {
+    overflow: hidden;
+    border: 1px solid rgba(6, 61, 99, 0.22);
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 18px 44px rgba(6, 61, 99, 0.13);
+  }
+
+  .leader-card::after {
+    content: "";
+    display: block;
+    height: 5px;
+    background: linear-gradient(90deg, var(--color-mdgc-amber), #f47a1f, var(--color-mdgc-accent), var(--color-mdgc-blue));
+  }
+
+  .leader-card-head {
+    background:
+      linear-gradient(115deg, rgba(5, 7, 8, 0.98) 0%, rgba(6, 61, 99, 0.97) 58%, rgba(34, 122, 183, 0.94) 100%),
+      repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 18px);
+    color: white;
+    padding: 19px 20px 17px;
+  }
+
+  .leader-card-head span {
+    color: var(--color-mdgc-amber);
+    display: block;
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .leader-card-head h3 {
+    margin: 5px 0 0;
+    font-size: 31px;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .leader-card-head p {
+    margin: 8px 0 0;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 13px;
+    font-weight: 750;
+  }
+
+  .leader-card-head strong,
+  .leader-card-head em {
+    display: block;
+  }
+
+  .leader-card-head strong {
+    color: white;
+    font-size: 20px;
+    line-height: 1.1;
+  }
+
+  .leader-card-head em {
+    margin-top: 3px;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 12px;
+    font-style: normal;
+  }
+
+  .leader-list {
+    display: grid;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .leader-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 12px;
+    align-items: center;
+    border: 1px solid var(--color-mdgc-blue-light);
+    border-radius: 8px;
+    background: #ffffff;
+    padding: 10px 12px;
+  }
+
+  .leader-icon {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    background: var(--color-mdgc-accent-soft);
+    color: var(--color-mdgc-accent-deep);
+    font-size: 11px;
+    font-weight: 900;
+  }
+
+  .leader-copy span,
+  .leader-copy em {
+    color: var(--color-text-body);
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+  }
+
+  .leader-copy strong {
+    color: var(--color-mdgc-ink);
+    display: block;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 1.15;
+  }
+
+  .results-section-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  .results-section-head h3 {
+    margin: 0;
+    color: var(--color-mdgc-ink);
+    font-size: 22px;
+    font-weight: 900;
+  }
+
+  .results-section-head p {
+    color: var(--color-text-body);
+    margin: 4px 0 0;
+    font-size: 13px;
+  }
+
+  .result-division-grid {
+    display: grid;
+    gap: 16px;
+  }
+
+  .result-division-block {
+    overflow: hidden;
+    border: 1px solid var(--color-mdgc-blue-light);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 10px 28px rgba(6, 61, 99, 0.08);
+  }
+
+  .result-division-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: var(--color-mdgc-accent-deep);
+    color: white;
+    padding: 11px 13px;
+  }
+
+  .result-division-head h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 900;
+  }
+
+  .result-division-head span {
+    color: rgba(255, 255, 255, 0.74);
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .results-table-wrap {
+    overflow-x: auto;
+  }
+
+  .scorecard-table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+    background: white;
+    font-size: 13px;
+  }
+
+  .scorecard-table th,
+  .scorecard-table td {
+    border-bottom: 1px solid #eef4f8;
+    padding: 7px 8px;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .scorecard-table th {
+    background: #e8f5fc;
+    color: var(--color-mdgc-accent-deep);
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .scorecard-table tbody tr:nth-child(even) td {
+    background: #fbfdfe;
+  }
+
+  .scorecard-table .name-col {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    min-width: 190px;
+    max-width: 280px;
+    background: inherit;
+    color: var(--color-mdgc-ink);
+    font-weight: 850;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .scorecard-table th.name-col {
+    z-index: 2;
+    background: #e8f5fc;
+  }
+
+  .score-cell {
+    min-width: 28px;
+    text-align: center;
+  }
+
+  .score-holeinone { background: #ffd60a; color: #3f2600; font-weight: 900; }
+  .score-eagle { background: var(--color-mdgc-accent); color: white; font-weight: 900; }
+  .score-birdie { background: var(--color-mdgc-accent-soft); color: var(--color-mdgc-accent-deep); font-weight: 850; }
+  .score-bogey { background: #ffe1c2; color: #7a3b00; }
+  .score-dbogey { background: #f8e7e4; color: #8c2c27; }
+
+  .podium-badge {
+    display: inline-grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    color: #152018;
+    font-size: 12px;
+    font-weight: 900;
+    line-height: 1;
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.75), 0 2px 5px rgba(31, 54, 44, 0.18);
+  }
+
+  .podium-1 { background: linear-gradient(145deg, #fff4ba, #e2a51d); }
+  .podium-2 { background: linear-gradient(145deg, #ffffff, #aeb9c2); }
+  .podium-3 { background: linear-gradient(145deg, #ffd9aa, #b36b27); color: #271606; }
+
+  .notice-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border: 1px solid var(--color-mdgc-blue-light);
+    border-radius: 8px;
+    background: white;
+    color: var(--color-mdgc-accent-deep);
+    padding: 18px;
+  }
+
+  .notice-card a {
+    color: var(--color-mdgc-blue);
+    font-weight: 900;
+  }
+
+  @media (max-width: 760px) {
+    .results-topbar,
+    .results-panel-head {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .results-panel-actions {
+      justify-content: flex-start;
+    }
+
+    .results-topbar h2 {
+      font-size: 21px;
+    }
+
+    .leader-card-head h3 {
+      font-size: 27px;
+    }
+
+    .scorecard-table {
+      min-width: 720px;
+      font-size: 12px;
+    }
+
+    .scorecard-table .name-col {
+      min-width: 150px;
+    }
+  }
+</style>

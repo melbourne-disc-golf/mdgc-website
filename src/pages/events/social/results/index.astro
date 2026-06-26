@@ -1,99 +1,18 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import SocialResultsBrowser from '@components/SocialResultsBrowser.astro';
 import { getSeasons } from '@utils/metrix';
 
 const seasons = getSeasons();
-const totalRounds = seasons.reduce((sum, season) => sum + season.rounds.length, 0);
-const playedRounds = seasons.reduce((sum, season) => sum + season.rounds.filter((round) => round.played).length, 0);
-const currentSeason = seasons[0];
-
-function formatRange(start?: string, end?: string): string {
-  if (!start && !end) return 'Dates TBC';
-  const fmt = (d: string) =>
-    new Date(d).toLocaleDateString('en-AU', { month: 'short', year: 'numeric' });
-  if (start && end) return `${fmt(start)} - ${fmt(end)}`;
-  return fmt((start ?? end)!);
-}
-
-function percent(value: number, total: number): number {
-  return total ? Math.round((value / total) * 100) : 0;
-}
+const defaultSeason = seasons.find((season) => season.rounds.some((round) => round.played)) ?? seasons[0];
 ---
 
-<Layout title="Social Day results" subtitle="Season dashboards, round scorecards and division results from Disc Golf Metrix.">
-  <div class="space-y-8">
-    <section class="grid gap-4 lg:grid-cols-[minmax(0,1.6fr)_minmax(18rem,0.8fr)]">
-      <div class="surface p-6 sm:p-7">
-        <p class="eyebrow">Results hub</p>
-        <h2 class="mt-3 font-display text-3xl font-black text-mdgc-ink sm:text-4xl">Browse every Social Day season</h2>
-        <p class="mt-4 max-w-3xl text-slate-600">
-          Results are sourced from <a class="font-semibold text-mdgc-accent-deep underline" href="https://discgolfmetrix.com/" target="_blank" rel="noopener noreferrer">Disc Golf Metrix</a>.
-          Each season links through to its rounds, with division scorecards and handicap standings for played events.
-        </p>
-        {currentSeason && (
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a class="primary-action" href={`/events/social/results/${currentSeason.id}`}>Open latest season</a>
-            <a class="secondary-action" href="/events/social">Social Days info</a>
-          </div>
-        )}
-      </div>
-
-      <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-        <div class="metric-pill">
-          <span class="block text-xs uppercase text-slate-500">Seasons</span>
-          <strong class="mt-1 block text-3xl text-mdgc-ink">{seasons.length}</strong>
-        </div>
-        <div class="metric-pill">
-          <span class="block text-xs uppercase text-slate-500">Rounds played</span>
-          <strong class="mt-1 block text-3xl text-mdgc-ink">{playedRounds}</strong>
-        </div>
-        <div class="metric-pill">
-          <span class="block text-xs uppercase text-slate-500">Total rounds</span>
-          <strong class="mt-1 block text-3xl text-mdgc-ink">{totalRounds}</strong>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p class="eyebrow">Seasons</p>
-          <h2 class="font-display text-3xl font-black text-mdgc-ink">Choose a season</h2>
-        </div>
-        <p class="text-sm text-slate-500">{playedRounds} of {totalRounds} scheduled rounds have results.</p>
-      </div>
-
-      <div class="grid gap-4 md:grid-cols-2">
-        {seasons.map((season) => {
-          const played = season.rounds.filter((round) => round.played).length;
-          const completion = percent(played, season.rounds.length);
-          const nextRound = season.rounds.find((round) => !round.played);
-          return (
-            <a href={`/events/social/results/${season.id}`} class="surface group block p-5 hover:border-mdgc-accent hover:shadow-lg">
-              <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                <div>
-                  <span class="inline-flex rounded-md bg-mdgc-accent-soft px-2.5 py-1 text-xs font-bold uppercase text-mdgc-accent-deep">Social Days</span>
-                  <h3 class="mt-3 text-2xl font-black text-mdgc-ink group-hover:text-mdgc-accent-deep">{season.name}</h3>
-                  <p class="mt-1 text-sm text-slate-500">{formatRange(season.dateStart, season.dateEnd)}</p>
-                </div>
-                <div class="rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-right">
-                  <strong class="block text-xl text-mdgc-ink">{played}/{season.rounds.length}</strong>
-                  <span class="text-xs text-slate-500">rounds</span>
-                </div>
-              </div>
-
-              <div class="mt-5 h-2 overflow-hidden rounded-full bg-slate-100">
-                <div class="h-full rounded-full bg-mdgc-accent" style={`width: ${completion}%`}></div>
-              </div>
-
-              <div class="mt-4 flex flex-col gap-1 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between">
-                <span>{completion}% complete</span>
-                <span>{nextRound ? `Next: Round ${nextRound.round}` : 'Season complete'}</span>
-              </div>
-            </a>
-          );
-        })}
-      </div>
-    </section>
-  </div>
+<Layout title="Social Day results" subtitle="Round tabs, handicap leaders and division scorecards from Disc Golf Metrix.">
+  {defaultSeason ? (
+    <SocialResultsBrowser season={defaultSeason} seasons={seasons} defaultSeasonId={defaultSeason.id} />
+  ) : (
+    <div class="surface p-6">
+      <p class="text-slate-600">No Social Day results are available yet.</p>
+    </div>
+  )}
 </Layout>
