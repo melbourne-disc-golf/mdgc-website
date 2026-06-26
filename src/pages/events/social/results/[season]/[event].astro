@@ -3,9 +3,9 @@ import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
+import { getEvent, getPlayedEventRefs } from '@utils/metrix';
 
 export async function getStaticPaths() {
-  const events = await getCollection('metrixEvents');
   const courses = await getCollection('courses');
   const courseByMetrixId = new Map<string, { slug: string; title: string }>();
   for (const course of courses) {
@@ -13,16 +13,17 @@ export async function getStaticPaths() {
       courseByMetrixId.set(metrixId, { slug: course.id, title: course.data.title });
     }
   }
-  return events
-    .filter((event) => event.data.divisions.length > 0)
-    .map((event) => ({
-      params: { season: String(event.data.seasonId), event: String(event.data.id) },
-      props: { event, course: courseByMetrixId.get(event.data.courseId) ?? null },
-    }));
+  return getPlayedEventRefs().map(({ seasonId, eventId }) => {
+    const event = getEvent(eventId)!;
+    return {
+      params: { season: String(seasonId), event: String(eventId) },
+      props: { event, course: courseByMetrixId.get(event.courseId) ?? null },
+    };
+  });
 }
 
 const { event, course } = Astro.props;
-const { name, date, courseName, par, tracks, divisions } = event.data;
+const { name, date, courseName, par, tracks, divisions } = event;
 
 const subtitle = formatDateRange(Temporal.PlainDate.from(date));
 
@@ -52,9 +53,9 @@ function fmt2(n: number | null): string {
   <div class="my-8 space-y-10">
 
     <p>
-      <a href={`/events/social/results/${event.data.seasonId}`} class="text-mdgc-blue underline">← Back to season</a>
+      <a href={`/events/social/results/${event.seasonId}`} class="text-mdgc-blue underline">← Back to season</a>
       <span class="text-gray-400 mx-2">·</span>
-      <a href={`https://discgolfmetrix.com/${event.data.id}`} class="text-mdgc-blue underline" target="_blank" rel="noopener noreferrer">View on Metrix</a>
+      <a href={`https://discgolfmetrix.com/${event.id}`} class="text-mdgc-blue underline" target="_blank" rel="noopener noreferrer">View on Metrix</a>
     </p>
 
     <p class="text-gray-600">

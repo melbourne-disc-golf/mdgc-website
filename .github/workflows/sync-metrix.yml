@@ -29,14 +29,14 @@ jobs:
         run: pnpm install
 
       - name: Fetch Metrix data
-        # 3525269 = 2026 Social Days S1, 3647062 = S2
-        run: pnpm tsx scripts/fetch-metrix-data.ts 3525269 3647062
+        # Season IDs are configured in the script (SEASON_IDS).
+        run: pnpm tsx scripts/fetch-metrix-data.ts
 
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/content/metrixSeasons/ src/content/metrixStandings/ src/content/metrixEvents/
+          git add src/data/metrix/ src/content/metrixSeasons/
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else

@@ -1,10 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
+import { getSeasons } from '@utils/metrix';
 
-const seasons = (await getCollection('metrixStandings')).sort((a, b) =>
-  (b.data.dateStart ?? '').localeCompare(a.data.dateStart ?? '')
-);
+const seasons = getSeasons();
 
 function formatRange(start?: string, end?: string): string {
   if (!start && !end) return '';
@@ -23,19 +21,19 @@ function formatRange(start?: string, end?: string): string {
 
     <ul class="space-y-4">
       {seasons.map((season) => {
-        const playedRounds = season.data.rounds.filter((r) => r.played).length;
+        const playedRounds = season.rounds.filter((r) => r.played).length;
         return (
           <li>
             <a
-              href={`/events/social/results/${season.data.id}`}
+              href={`/events/social/results/${season.id}`}
               class="block rounded-lg border border-gray-200 p-5 hover:border-mdgc-blue hover:shadow-md transition"
             >
               <div class="flex items-baseline justify-between gap-4">
-                <h2 class="text-xl font-semibold text-mdgc-blue-dark">{season.data.name}</h2>
-                <span class="text-sm text-gray-500 whitespace-nowrap">{formatRange(season.data.dateStart, season.data.dateEnd)}</span>
+                <h2 class="text-xl font-semibold text-mdgc-blue-dark">{season.name}</h2>
+                <span class="text-sm text-gray-500 whitespace-nowrap">{formatRange(season.dateStart, season.dateEnd)}</span>
               </div>
               <p class="text-sm text-gray-600 mt-1">
-                {playedRounds} of {season.data.rounds.length} rounds played
+                {playedRounds} of {season.rounds.length} rounds played
               </p>
             </a>
           </li>

@@ -1,0 +1,113 @@
+{
+  "Competition": {
+    "ID": 3647218,
+    "Name": "MDGC 2026 Social Days S2 &rarr; Sep Northeast Social Day - Ruffey Lake (Rd 8)",
+    "Type": "2",
+    "TourDateStart": null,
+    "TourDateEnd": null,
+    "Date": "2026-09-12",
+    "Time": "08:00:00",
+    "Comment": "",
+    "CourseName": "Ruffey Lake 2023 18 basket layout",
+    "CourseID": "31614",
+    "MetrixMode": "1",
+    "ShowPreviousRoundsSum": null,
+    "HasSubcompetitions": 0,
+    "WeeklyHCSummary": null,
+    "WeeklyHC": [],
+    "Results": [],
+    "Tracks": [
+      {
+        "Number": "1",
+        "NumberAlt": "",
+        "Par": "3"
+      },
+      {
+        "Number": "2",
+        "NumberAlt": "",
+        "Par": "3"
+      },
+      {
+        "Number": "3",
+        "NumberAlt": "",
+        "Par": "3"
+      },
+      {
+        "Number": "4",
+        "NumberAlt": "",
+        "Par": "3"
+      },
+      {
+        "Number": "5",
+        "NumberAlt": "",
+        "Par": "4"
+      },
+      {
+        "Number": "6",
+        "NumberAlt": "",
+        "Par": "3"
+      },
+      {
+        "Number": "7",
+        "NumberAlt": "",
+        "Par": "3"
+      },
+      {
+        "Number": "8",
+        "NumberAlt": "",
+        "Par": "3"
+      },
+      {
+        "Number": "9",
+        "NumberAlt": "",
+        "Par": "3"
+      },
+      {
+        "Number": "10",
+        "NumberAlt": "",
+        "Par": "3"
+      },
+      {
+        "Number": "11",
+        "NumberAlt": "",
+        "Par": "3"
+      },
+      {
+        "Number": "12",
+        "NumberAlt": "",
+        "Par": "3"
+      },
+      {
+        "Number": "13",
+        "NumberAlt": "",
+        "Par": "3"
+      },
+      {
+        "Number": "14",
+        "NumberAlt": "",
+        "Par": "4"
+      },
+      {
+        "Number": "15",
+        "NumberAlt": "",
+        "Par": "3"
+      },
+      {
+        "Number": "16",
+        "NumberAlt": "",
+        "Par": "3"
+      },
+      {
+        "Number": "17",
+        "NumberAlt": "",
+        "Par": "3"
+      },
+      {
+        "Number": "18",
+        "NumberAlt": "",
+        "Par": "3"
+      }
+    ]
+  },
+  "Errors": []
+}

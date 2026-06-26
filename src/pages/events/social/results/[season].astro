@@ -1,17 +1,17 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
+import { getSeasons } from '@utils/metrix';
 
 export async function getStaticPaths() {
-  const seasons = await getCollection('metrixStandings');
-  return seasons.map((season) => ({
-    params: { season: String(season.data.id) },
+  return getSeasons().map((season) => ({
+    params: { season: String(season.id) },
     props: { season },
   }));
 }
 
 const { season } = Astro.props;
-const { name, rounds } = season.data;
+const { id: seasonId, name, rounds } = season;
 
 // Map Metrix course ids to our course pages.
 const courses = await getCollection('courses');
@@ -40,7 +40,7 @@ function formatDate(d: string): string {
             <li class="mb-2 break-inside-avoid">
               {r.played ? (
                 <a
-                  href={`/events/social/results/${season.data.id}/${r.id}`}
+                  href={`/events/social/results/${seasonId}/${r.id}`}
                   class="block rounded-lg border border-mdgc-blue bg-mdgc-blue/5 px-3 py-2 text-sm font-medium text-mdgc-blue-dark hover:bg-mdgc-blue hover:text-white transition"
                 >{label}</a>
               ) : (
