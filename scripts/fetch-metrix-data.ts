@@ -256,24 +256,9 @@ async function fetchSeasonData(seasonId: string) {
     )
   );
 
-  // Season standings (Metrix tour points) plus the round list, for the results pages.
-  // Metrix's TourResults occasionally repeats a player's row verbatim, so dedupe by user.
-  const seenUsers = new Set<string>();
-  const standings = (season.TourResults ?? [])
-    .filter((r) => {
-      const userId = String(r.UserID);
-      if (seenUsers.has(userId)) return false;
-      seenUsers.add(userId);
-      return true;
-    })
-    .map((r) => ({
-      userId: String(r.UserID),
-      name: r.Name,
-      place: r.Place,
-      total: r.Total,
-      eventResults: r.EventResults,
-    }));
-
+  // The round list for the season landing page. (Metrix's JSON tour standings are
+  // raw-score sums / rounds-played order — not the points standing the website shows —
+  // so we don't surface a season-standings table.)
   fs.writeFileSync(
     path.join(STANDINGS_DIR, `${seasonId}.json`),
     JSON.stringify(
@@ -283,7 +268,6 @@ async function fetchSeasonData(seasonId: string) {
         dateStart: season.TourDateStart,
         dateEnd: season.TourDateEnd,
         rounds,
-        standings,
       },
       null,
       2
@@ -291,7 +275,7 @@ async function fetchSeasonData(seasonId: string) {
   );
 
   console.log(
-    `\nSaved season ${seasonId}: ${season.Name} (${events.length} events, ${standings.length} season standings)`
+    `\nSaved season ${seasonId}: ${season.Name} (${events.length} events)`
   );
 }
 

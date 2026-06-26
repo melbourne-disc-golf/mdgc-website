@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 }
 
 const { season } = Astro.props;
-const { name, rounds, standings } = season.data;
+const { name, rounds } = season.data;
 
 // Map Metrix course ids to our course pages.
 const courses = await getCollection('courses');
@@ -22,14 +22,12 @@ for (const course of courses) {
   }
 }
 
-const hasStandings = standings.some((p) => p.total > 0);
-
 function formatDate(d: string): string {
   return new Date(d).toLocaleDateString('en-AU', { day: 'numeric', month: 'short' }).replace(' ', '-');
 }
 ---
 
-<Layout title={name} subtitle="Social day results and season standings">
+<Layout title={name} subtitle="Social day results">
   <div class="my-8 space-y-12">
 
     <section>
@@ -56,39 +54,6 @@ function formatDate(d: string): string {
         })}
       </ul>
     </section>
-
-    {hasStandings && (
-      <section>
-        <h2 class="text-2xl font-bold text-mdgc-blue-dark mb-4">Season standings</h2>
-        <p class="text-sm text-gray-600 mb-3">Metrix tour points across all rounds. Higher is better.</p>
-        <div class="overflow-x-auto">
-          <table class="min-w-full text-sm border-collapse">
-            <thead>
-              <tr class="bg-mdgc-blue-dark text-white">
-                <th class="px-2 py-2 text-right">#</th>
-                <th class="px-3 py-2 text-left sticky left-0 bg-mdgc-blue-dark">Player</th>
-                {rounds.map((r) => (
-                  <th class="px-2 py-2 text-right" title={r.name}>R{r.round}</th>
-                ))}
-                <th class="px-3 py-2 text-right">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {standings.map((p, i) => (
-                <tr class={i % 2 ? 'bg-gray-50' : 'bg-white'}>
-                  <td class="px-2 py-1.5 text-right text-gray-500">{p.place}</td>
-                  <td class={`px-3 py-1.5 font-medium whitespace-nowrap sticky left-0 ${i % 2 ? 'bg-gray-50' : 'bg-white'}`}>{p.name}</td>
-                  {p.eventResults.map((pts) => (
-                    <td class="px-2 py-1.5 text-right text-gray-600">{pts ?? '·'}</td>
-                  ))}
-                  <td class="px-3 py-1.5 text-right font-semibold">{p.total}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-    )}
 
   </div>
 </Layout>

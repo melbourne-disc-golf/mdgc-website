@@ -90,7 +90,7 @@ const metrixSeasons = defineCollection({
   }),
 });
 
-// Season standings (Metrix tour points) plus the round list, for the results pages.
+// Season metadata plus its round list, for the results season landing page.
 const metrixStandings = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/metrixStandings' }),
   schema: z.object({
@@ -106,13 +106,6 @@ const metrixStandings = defineCollection({
       courseName: z.string(),
       courseId: z.string(),
       played: z.boolean(),
-    })),
-    standings: z.array(z.object({
-      userId: z.string(),
-      name: z.string(),
-      place: z.number(),
-      total: z.number(),
-      eventResults: z.array(z.number().nullable()),
     })),
   }),
 });
