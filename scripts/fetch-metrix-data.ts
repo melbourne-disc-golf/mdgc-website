@@ -134,7 +134,7 @@ function buildDivisions(competition: MetrixCompetition) {
       diff: r.Diff,
       hc: hc ? round2(hc.HC) : null,
       net: hc ? round2(hc.Result - hc.HC) : null,
-      place: r.Place,
+      pos: 0, // assigned per division below
     };
   });
 
@@ -146,17 +146,20 @@ function buildDivisions(competition: MetrixCompetition) {
   }
 
   return [...byDivision.entries()]
-    .map(([letter, list]) => ({
-      letter,
-      name: list[0]?.divisionName ?? letter,
-      // Score to par ascending (best gross result first), net as a tie-breaker.
-      players: list.sort((a, b) => {
-        if (a.diff !== b.diff) return a.diff - b.diff;
+    .map(([letter, list]) => {
+      // Rank by raw score ascending (best first), net as a tie-breaker.
+      list.sort((a, b) => {
+        if (a.sum !== b.sum) return a.sum - b.sum;
         if (a.net === null) return 1;
         if (b.net === null) return -1;
         return a.net - b.net;
-      }),
-    }))
+      });
+      // Finishing position by raw score, with ties sharing a position.
+      list.forEach((p, i) => {
+        p.pos = i > 0 && p.sum === list[i - 1].sum ? list[i - 1].pos : i + 1;
+      });
+      return { letter, name: list[0]?.divisionName ?? letter, players: list };
+    })
     .sort((a, b) => divisionRank(a.letter) - divisionRank(b.letter));
 }
 

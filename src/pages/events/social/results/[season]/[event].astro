@@ -29,17 +29,19 @@ const subtitle = formatDateRange(Temporal.PlainDate.from(date));
 // Shade a hole score's background relative to its par (disc-golf scorecard colours).
 function holeClass(score: number | null, holePar: number): string {
   if (score === null) return 'text-gray-300';
+  if (score === 1) return 'bg-[#ffd60a] text-[#3f2600]';       // ace
   const diff = score - holePar;
-  if (diff <= -2) return 'bg-yellow-200 text-yellow-900';
-  if (diff === -1) return 'bg-green-100 text-green-900';
-  if (diff === 0) return 'text-gray-700';
-  if (diff === 1) return 'bg-orange-100 text-orange-900';
-  return 'bg-red-200 text-red-900';
+  if (diff <= -2) return 'bg-[#55d57d] text-[#06351f]';        // eagle or better
+  if (diff === -1) return 'bg-[#d8f0e5] text-[#0b3f38]';       // birdie
+  if (diff === 0) return 'text-gray-700';                      // par
+  if (diff === 1) return 'bg-[#ffe1c2] text-[#7a3b00]';        // bogey
+  return 'bg-[#f8e7e4] text-[#8c2c27]';                        // double bogey or worse
 }
 
 function formatDiff(diff: number): string {
   return diff > 0 ? `+${diff}` : String(diff);
 }
+
 ---
 
 <Layout title={name} subtitle={subtitle}>
@@ -62,40 +64,44 @@ function formatDiff(diff: number): string {
 
     {divisions.map((division) => (
       <section>
-        <h2 class="text-xl font-bold text-mdgc-blue-dark mb-3">{division.name}</h2>
-        <div class="overflow-x-auto">
+        <h2 class="text-lg font-bold text-white px-4 py-2.5 rounded-t-lg bg-linear-to-r from-mdgc-blue-dark to-mdgc-blue">{division.name}</h2>
+        <div class="overflow-x-auto border border-t-0 border-gray-200 rounded-b-lg">
           <table class="min-w-full text-sm border-collapse">
             <thead>
-              <tr class="bg-mdgc-blue-dark text-white">
-                <th class="px-2 py-2 text-right">#</th>
-                <th class="px-3 py-2 text-left sticky left-0 bg-mdgc-blue-dark">Player</th>
-                <th class="px-2 py-2 text-right">Rating</th>
+              <tr class="bg-[#d7eaff] text-mdgc-blue-dark">
+                <th class="px-2 py-2 text-center">Pos</th>
+                <th class="px-3 py-2 text-left sticky left-0 bg-inherit">Player</th>
                 <th class="px-2 py-2 text-right">+/-</th>
                 {tracks.map((t) => (
-                  <th class="px-1.5 py-2 text-right font-normal" title={`Par ${t.par}`}>{t.number}</th>
+                  <th class="px-1.5 py-2 text-right font-medium" title={`Par ${t.par}`}>{t.number}</th>
                 ))}
                 <th class="px-2 py-2 text-right">Raw</th>
                 <th class="px-2 py-2 text-right">HC</th>
                 <th class="px-2 py-2 text-right">Net</th>
+                <th class="px-2 py-2 text-right">Rating</th>
               </tr>
-              <tr class="bg-mdgc-blue text-white/90 text-xs">
+              <tr class="bg-[#eaf4ff] text-mdgc-blue-dark/70 text-xs">
                 <th></th>
-                <th class="px-3 py-1 text-left sticky left-0 bg-mdgc-blue">Par</th>
-                <th></th>
-                <th></th>
+                <th class="px-3 py-1 sticky left-0 bg-inherit"></th>
+                <th class="px-2 py-1 text-right">Par</th>
                 {tracks.map((t) => (
                   <th class="px-1.5 py-1 text-right font-normal">{t.par}</th>
                 ))}
                 <th class="px-2 py-1 text-right">{par}</th>
-                <th colspan="2"></th>
+                <th colspan="3"></th>
               </tr>
             </thead>
-            <tbody>
-              {division.players.map((p, i) => (
-                <tr class={i % 2 ? 'bg-gray-50' : 'bg-white'}>
-                  <td class="px-2 py-1.5 text-right text-gray-500">{i + 1}</td>
-                  <td class={`px-3 py-1.5 font-medium whitespace-nowrap sticky left-0 ${i % 2 ? 'bg-gray-50' : 'bg-white'}`}>{p.name}</td>
-                  <td class="px-2 py-1.5 text-right text-gray-500">{p.rating ?? '–'}</td>
+            <tbody class="divide-y divide-gray-100">
+              {division.players.map((p) => (
+                <tr class="odd:bg-white even:bg-gray-50/70 hover:bg-mdgc-blue-light/10">
+                  <td class="px-2 py-1.5 text-center">
+                    {p.pos <= 3 ? (
+                      <span class={`podium-badge podium-${p.pos}`}>{p.pos}</span>
+                    ) : (
+                      <span class="text-gray-500">{p.pos}</span>
+                    )}
+                  </td>
+                  <td class="px-3 py-1.5 font-medium whitespace-nowrap sticky left-0 bg-inherit">{p.name}</td>
                   <td class="px-2 py-1.5 text-right font-semibold">{formatDiff(p.diff)}</td>
                   {p.holes.map((score, h) => (
                     <td class={`px-1.5 py-1.5 text-right tabular-nums ${holeClass(score, tracks[h]?.par ?? par)}`}>{score ?? '–'}</td>
@@ -103,6 +109,7 @@ function formatDiff(diff: number): string {
                   <td class="px-2 py-1.5 text-right text-gray-600">{p.sum}</td>
                   <td class="px-2 py-1.5 text-right text-gray-600">{p.hc ?? '–'}</td>
                   <td class="px-2 py-1.5 text-right font-bold text-mdgc-blue-dark">{p.net ?? '–'}</td>
+                  <td class="px-2 py-1.5 text-right text-gray-500">{p.rating ?? '–'}</td>
                 </tr>
               ))}
             </tbody>
@@ -113,3 +120,22 @@ function formatDiff(diff: number): string {
 
   </div>
 </Layout>
+
+<style>
+  /* Gold / silver / bronze position badges. */
+  .podium-badge {
+    display: inline-grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    color: #152018;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1;
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.75), 0 2px 5px rgba(31, 54, 44, 0.18);
+  }
+  .podium-1 { background: linear-gradient(145deg, #fff4ba, #e2a51d); }
+  .podium-2 { background: linear-gradient(145deg, #ffffff, #aeb9c2); }
+  .podium-3 { background: linear-gradient(145deg, #ffd9aa, #b36b27); color: #271606; }
+</style>

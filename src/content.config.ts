@@ -149,7 +149,7 @@ const metrixEvents = defineCollection({
         diff: z.number(),
         hc: z.number().nullable(),
         net: z.number().nullable(),
-        place: z.number(),
+        pos: z.number(),
       })),
     })),
   }),
