@@ -1,5 +1,7 @@
 ---
-import type { Division, EventDetail, Player, Season } from '@utils/metrix';
+import s1ResultsData from '@data/social-results/s1.json';
+import s2ResultsData from '@data/social-results/s2.json';
+import type { EventDetail, Season } from '@utils/metrix';
 import { getEvent } from '@utils/metrix';
 
 interface Props {
@@ -9,22 +11,102 @@ interface Props {
   defaultSeasonId?: number;
 }
 
+interface PrizeRow {
+  prize?: string;
+  name?: string;
+  detail?: string;
+  division?: string;
+  hole?: string | number;
+  note?: string;
+}
+
+interface ResultHole {
+  hole?: string | number;
+  score?: string | number | null;
+  scoreClass?: string;
+}
+
+type PublicResultRow = Record<string, unknown> & {
+  holes?: ResultHole[];
+};
+
+interface PublicResultEvent {
+  round: string | number;
+  label?: string;
+  name?: string;
+  date?: string;
+  venue?: string;
+  metrixId?: string | number;
+  status?: string;
+  prizeWinners?: PrizeRow[];
+  prizeEmailRows?: PrizeRow[];
+  prizes?: PrizeRow[];
+  prizeNotes?: string[];
+  handicapLeaders?: PrizeRow[];
+  divisions?: Record<string, PublicResultRow[]>;
+}
+
+interface PublicResultsData {
+  season?: {
+    label?: string;
+    name?: string;
+    metrixId?: string | number;
+    metrixUrl?: string;
+    sourceName?: string;
+  };
+  events?: PublicResultEvent[];
+}
+
+interface DisplayHole {
+  hole: number;
+  score: string;
+  scoreClass: string;
+}
+
+interface DisplayRow {
+  position: string;
+  name: string;
+  rating: string;
+  toPar: string;
+  holes: DisplayHole[];
+  rawScore: string;
+  handicap: string;
+  net: string;
+}
+
+interface DisplayDivision {
+  label: string;
+  rows: DisplayRow[];
+  holeHeaders: number[];
+}
+
 const { season, seasons, baseHref = '/events/social/results', defaultSeasonId = season.id } = Astro.props;
+const publicResultsData = [s1ResultsData, s2ResultsData] as PublicResultsData[];
+const publicSeason = publicResultsData.find((data) => String(data.season?.metrixId ?? '') === String(season.id));
+const publicEventsByMetrixId = new Map(
+  (publicSeason?.events ?? [])
+    .filter((event) => event.metrixId !== undefined && event.metrixId !== null)
+    .map((event) => [String(event.metrixId), event])
+);
+const publicEventsByRound = new Map(
+  (publicSeason?.events ?? []).map((event) => [Number(event.round), event])
+);
 
 const rounds = season.rounds.map((round) => ({
   ...round,
   detail: round.played ? getEvent(round.id) : null,
+  resultEvent: publicEventsByMetrixId.get(String(round.id)) ?? publicEventsByRound.get(round.round) ?? null,
 }));
 
 const defaultIndex = (() => {
   for (let index = rounds.length - 1; index >= 0; index -= 1) {
-    if (rounds[index].detail) return index;
+    if (resultEventImported(rounds[index])) return index;
   }
   return 0;
 })();
 
-const playedCount = rounds.filter((round) => round.detail).length;
-const seasonLabel = season.name.includes('S2') ? 'S2' : 'S1';
+const playedCount = rounds.filter((round) => resultEventImported(round)).length;
+const seasonLabel = publicSeason?.season?.label ?? (season.name.includes('S2') ? 'Season 2' : 'Season 1');
 
 function seasonShortLabel(value: Season): string {
   if (value.name.includes('S2')) return 'S2';
@@ -53,7 +135,14 @@ function formatLongDate(date: string): string {
 }
 
 function courseTitle(round: { courseName: string; name: string }): string {
-  return round.courseName.split('&rarr;').pop()?.trim() || round.name.split('-').pop()?.trim() || round.name;
+  const source = round.courseName.includes('&rarr;') ? round.name : round.courseName;
+  const cleaned = source
+    .replace(/&rarr;/g, '->')
+    .split('->')
+    .pop()
+    ?.trim();
+  if (cleaned && cleaned !== '1') return cleaned;
+  return round.name.split('-').pop()?.trim() || round.name;
 }
 
 function formatDiff(diff: number): string {
@@ -64,7 +153,7 @@ function fmt2(n: number | null): string {
   return n === null ? '-' : n.toFixed(2);
 }
 
-function holeClass(score: number | null, holePar: number): string {
+function metrixHoleScoreClass(score: number | null, holePar: number): string {
   if (score === null) return 'score-cell';
   if (score === 1) return 'score-cell score-holeinone';
   const diff = score - holePar;
@@ -75,16 +164,146 @@ function holeClass(score: number | null, holePar: number): string {
   return 'score-cell';
 }
 
-function divisionLeader(division: Division): Player | null {
-  const withNet = division.players.filter((player) => player.net !== null);
-  if (withNet.length) {
-    return withNet.reduce((best, player) => (player.net! < best.net! ? player : best));
-  }
-  return division.players[0] ?? null;
+function isBlank(value: unknown): boolean {
+  return value === undefined || value === null || String(value).trim() === '';
 }
 
-function totalPlayers(event: EventDetail): number {
-  return event.divisions.reduce((sum, division) => sum + division.players.length, 0);
+function valueAsString(value: unknown): string {
+  return isBlank(value) ? '' : String(value);
+}
+
+function rowValue(row: PublicResultRow, keys: string[]): string {
+  for (const key of keys) {
+    if (!isBlank(row[key])) return valueAsString(row[key]);
+  }
+  return '';
+}
+
+function prizeRowsForResultEvent(event: PublicResultEvent | null): PrizeRow[] {
+  if (!event) return [];
+  return (event.prizeWinners || event.prizeEmailRows || event.prizes || [])
+    .filter((row) => !isBlank(row.prize) || !isBlank(row.name));
+}
+
+function prizeDisplayOrder(row: PrizeRow): number {
+  if (/Handicap/i.test(row.prize || '')) return 0;
+  if (/CTB/i.test(row.prize || '')) return 1;
+  return 2;
+}
+
+function displayedPrizeRowsForResultEvent(event: PublicResultEvent | null): PrizeRow[] {
+  return prizeRowsForResultEvent(event)
+    .map((row, index) => ({ row, index }))
+    .sort((a, b) => prizeDisplayOrder(a.row) - prizeDisplayOrder(b.row) || a.index - b.index)
+    .map((item) => item.row);
+}
+
+function prizeNotesForResultEvent(event: PublicResultEvent | null): string[] {
+  return (event?.prizeNotes ?? [])
+    .map((note) => String(note || '').trim())
+    .filter(Boolean);
+}
+
+function resultPrizeDetail(row: PrizeRow): string {
+  return valueAsString(row.detail || row.division || row.hole || row.note);
+}
+
+function resultPrizeKind(row: PrizeRow): 'ctb' | 'handicap' {
+  return /CTB/i.test(row.prize || '') ? 'ctb' : 'handicap';
+}
+
+function publicDivisionKeys(event: PublicResultEvent | null): string[] {
+  const divisions = event?.divisions ?? {};
+  const rank = ['A', 'B', 'C', 'D', 'X/Z', 'X', 'Z'];
+  return Object.keys(divisions)
+    .filter((key) => (divisions[key] ?? []).length > 0)
+    .sort((a, b) => {
+      const ai = rank.indexOf(a);
+      const bi = rank.indexOf(b);
+      return (ai === -1 ? rank.length : ai) - (bi === -1 ? rank.length : bi) || a.localeCompare(b);
+    });
+}
+
+function resultEventImported(round: { detail: EventDetail | null; resultEvent?: PublicResultEvent | null }): boolean {
+  const resultEvent = round.resultEvent ?? null;
+  return displayedPrizeRowsForResultEvent(resultEvent).length > 0
+    || (resultEvent?.handicapLeaders ?? []).length > 0
+    || publicDivisionKeys(resultEvent).length > 0
+    || round.detail !== null;
+}
+
+function panelTitle(round: { courseName: string; name: string; resultEvent?: PublicResultEvent | null }): string {
+  return round.resultEvent?.venue || courseTitle(round);
+}
+
+function panelEventTitle(round: { name: string; resultEvent?: PublicResultEvent | null }): string {
+  return round.resultEvent?.name || round.name;
+}
+
+function panelDate(round: { date: string; resultEvent?: PublicResultEvent | null }): string {
+  return round.resultEvent?.date || round.date;
+}
+
+function publicDisplayRow(row: PublicResultRow): DisplayRow {
+  const holes = Array.isArray(row.holes) ? row.holes : [];
+  return {
+    position: rowValue(row, ['rank', 'position', 'place', 'No', 'no']),
+    name: rowValue(row, ['name', 'Name', 'player', 'Player']),
+    rating: rowValue(row, ['rating', 'Rating']),
+    toPar: rowValue(row, ['toPar', 'plusMinus']),
+    holes: holes.map((hole) => ({
+      hole: Number(hole.hole) || 0,
+      score: valueAsString(hole.score),
+      scoreClass: valueAsString(hole.scoreClass),
+    })),
+    rawScore: rowValue(row, ['rawScore', 'raw', 'Result', 'score']),
+    handicap: rowValue(row, ['handicap', 'HC']),
+    net: rowValue(row, ['handicapScore', 'net', 'Sum (Result-HC)']),
+  };
+}
+
+function displayDivisions(round: { resultEvent?: PublicResultEvent | null }, event: EventDetail): DisplayDivision[] {
+  const resultEvent = round.resultEvent ?? null;
+  const publicKeys = publicDivisionKeys(resultEvent);
+  if (resultEvent && publicKeys.length) {
+    return publicKeys.map((key) => {
+      const rows = (resultEvent.divisions?.[key] ?? []).map(publicDisplayRow);
+      const maxHole = Math.max(18, ...rows.flatMap((row) => row.holes.map((hole) => hole.hole || 0)));
+      return {
+        label: key,
+        rows,
+        holeHeaders: Array.from({ length: maxHole }, (_, index) => index + 1),
+      };
+    });
+  }
+
+  return event.divisions.map((division) => ({
+    label: division.letter,
+    rows: division.players.map((player) => ({
+      position: String(player.pos),
+      name: player.name,
+      rating: player.rating === null ? '' : String(player.rating),
+      toPar: formatDiff(player.diff),
+      holes: player.holes.map((score, holeIndex) => ({
+        hole: holeIndex + 1,
+        score: score === null ? '' : String(score),
+        scoreClass: metrixHoleScoreClass(score, event.tracks[holeIndex]?.par ?? 3).replace('score-cell', '').replace('score-', '').trim(),
+      })),
+      rawScore: String(player.sum),
+      handicap: fmt2(player.hc),
+      net: fmt2(player.net),
+    })),
+    holeHeaders: event.tracks.map((_, index) => index + 1),
+  }));
+}
+
+function displayHoleClass(hole: DisplayHole): string {
+  const allowed = new Set(['holeinone', 'eagle', 'birdie', 'bogey', 'dbogey', 'fail']);
+  return allowed.has(hole.scoreClass) ? `score-cell score-${hole.scoreClass}` : 'score-cell';
+}
+
+function totalDisplayPlayers(divisions: DisplayDivision[]): number {
+  return divisions.reduce((sum, division) => sum + division.rows.length, 0);
 }
 ---
 
@@ -127,7 +346,7 @@ function totalPlayers(event: EventDetail): number {
             data-results-tab={id}
           >
             <strong>Rd {round.round} <em>{formatShortDate(round.date)}</em></strong>
-            <span>{courseTitle(round)}</span>
+            <span>{panelTitle(round)}</span>
           </button>
         );
       })}
@@ -138,6 +357,9 @@ function totalPlayers(event: EventDetail): number {
         const id = tabId(round);
         const active = index === defaultIndex;
         const event = round.detail;
+        const resultEvent = round.resultEvent;
+        const prizes = displayedPrizeRowsForResultEvent(resultEvent);
+        const prizeNotes = prizeNotesForResultEvent(resultEvent);
 
         if (!event) {
           return (
@@ -158,8 +380,8 @@ function totalPlayers(event: EventDetail): number {
                   <span>{seasonLabel}</span>
                   <span>Round {round.round}</span>
                 </div>
-                <h3>{courseTitle(round)}</h3>
-                <p>{formatLongDate(round.date)} | {round.name}</p>
+                <h3>{panelTitle(round)}</h3>
+                <p>{formatLongDate(panelDate(round))} | {panelEventTitle(round)}</p>
               </div>
               <div class="results-panel-actions">
                 <span class="result-status imported">Imported</span>
@@ -169,46 +391,76 @@ function totalPlayers(event: EventDetail): number {
             </div>
 
             <div class="results-section-grid">
-              <section class="leader-card" aria-label="Handicap leaders">
-                <div class="leader-card-head">
+              <section class="results-prize-section prize-graphic" aria-label="Prize winners">
+                <div class="prize-graphic-head">
                   <div>
-                    <span>MDGC Social Days</span>
-                    <h3>Handicap Leaders</h3>
-                    <p><strong>{courseTitle(round)}</strong><em>Round {round.round} | {formatLongDate(round.date)}</em></p>
+                    <span class="prize-graphic-kicker">MDGC Social Days</span>
+                    <h3>Prize Winners</h3>
+                    <p class="prize-graphic-event">
+                      <strong>{panelTitle(round)}</strong>
+                      <span>Round {round.round} | {formatLongDate(panelDate(round))}</span>
+                    </p>
                   </div>
+                  <img class="prize-card-logo" src="/images/social-results/mdgc-logo.png" alt="MDGC logo" />
                 </div>
 
-                <div class="leader-list">
-                  {event.divisions.map((division) => {
-                    const leader = divisionLeader(division);
-                    return leader ? (
-                      <article class="leader-row">
-                        <span class="leader-icon">HC</span>
-                        <span class="leader-copy">
-                          <span>Div {division.letter} Handicap</span>
-                          <strong>{leader.name}</strong>
-                          <em>Net {fmt2(leader.net)}, Raw {leader.sum} ({formatDiff(leader.diff)})</em>
+                <div class="prize-graphic-list">
+                  {prizes.length ? prizes.map((row) => {
+                    const kind = resultPrizeKind(row);
+                    const detail = resultPrizeDetail(row);
+                    return (
+                      <article class={`prize-winner-row prize-row-${kind}`}>
+                        <span class="prize-winner-icon" aria-hidden="true">
+                          {kind === 'ctb' ? (
+                            <svg viewBox="0 0 24 24">
+                              <circle cx="12" cy="12" r="8"></circle>
+                              <circle cx="12" cy="12" r="3"></circle>
+                              <path d="M12 2v4M12 18v4M2 12h4M18 12h4"></path>
+                            </svg>
+                          ) : (
+                            <svg viewBox="0 0 24 24">
+                              <path d="M8 4h8v5a4 4 0 0 1-8 0V4Z"></path>
+                              <path d="M8 6H5a3 3 0 0 0 3 5M16 6h3a3 3 0 0 1-3 5M12 13v4M9 20h6M10 17h4"></path>
+                            </svg>
+                          )}
+                        </span>
+                        <span class="prize-winner-copy">
+                          <span class="prize-winner-type">{row.prize}</span>
+                          <strong>{row.name}</strong>
+                          {detail ? <em>{detail}</em> : null}
                         </span>
                       </article>
-                    ) : null;
-                  })}
+                    );
+                  }) : (
+                    <p class="results-empty prize-graphic-empty">No prize winners imported yet.</p>
+                  )}
                 </div>
+
+                {prizeNotes.length ? (
+                  <div class="prize-graphic-notes">
+                    {prizeNotes.map((note) => <p>{note}</p>)}
+                  </div>
+                ) : null}
               </section>
 
               <section class="results-division-section">
+                {(() => {
+                  const divisions = displayDivisions(round, event);
+                  return (
+                    <>
                 <div class="results-section-head">
                   <div>
                     <h3>Division Results</h3>
-                    <p>{totalPlayers(event)} players across {event.divisions.length} divisions.</p>
+                    <p>{totalDisplayPlayers(divisions)} players across {divisions.length} divisions.</p>
                   </div>
                 </div>
 
                 <div class="result-division-grid">
-                  {event.divisions.map((division) => (
+                  {divisions.map((division) => (
                     <article class="result-division-block">
                       <div class="result-division-head">
-                        <h4>Div {division.letter}</h4>
-                        <span>{division.players.length} player{division.players.length === 1 ? '' : 's'}</span>
+                        <h4>Div {division.label}</h4>
+                        <span>{division.rows.length} player{division.rows.length === 1 ? '' : 's'}</span>
                       </div>
 
                       <div class="results-table-wrap">
@@ -219,27 +471,28 @@ function totalPlayers(event: EventDetail): number {
                               <th class="name-col">Name</th>
                               <th class="rating-col">Rating</th>
                               <th class="to-par-col">+/-</th>
-                              {event.tracks.map((track) => <th class="hole-col">{track.number}</th>)}
+                              {division.holeHeaders.map((holeNumber) => <th class="hole-col">{holeNumber}</th>)}
                               <th class="raw-col">Raw</th>
                               <th class="hc-col">HC</th>
                               <th class="net-col">Net</th>
                             </tr>
                           </thead>
                           <tbody>
-                            {division.players.map((player) => (
+                            {division.rows.map((player) => (
                               <tr>
                                 <td class="pos-col">
-                                  {player.pos <= 3 ? <span class={`podium-badge podium-${player.pos}`}>{player.pos}</span> : player.pos}
+                                  {[1, 2, 3].includes(Number(player.position)) ? <span class={`podium-badge podium-${player.position}`}>{player.position}</span> : player.position}
                                 </td>
                                 <td class="name-col">{player.name}</td>
-                                <td class="rating-col">{player.rating ?? '-'}</td>
-                                <td class="to-par-col">{formatDiff(player.diff)}</td>
-                                {player.holes.map((score, holeIndex) => (
-                                  <td class={holeClass(score, event.tracks[holeIndex]?.par ?? 3)}>{score ?? '-'}</td>
-                                ))}
-                                <td class="raw-col">{player.sum}</td>
-                                <td class="hc-col">{fmt2(player.hc)}</td>
-                                <td class="net-col">{fmt2(player.net)}</td>
+                                <td class="rating-col">{player.rating || '-'}</td>
+                                <td class="to-par-col">{player.toPar}</td>
+                                {division.holeHeaders.map((holeNumber) => {
+                                  const hole = player.holes.find((item) => item.hole === holeNumber) ?? { hole: holeNumber, score: '', scoreClass: '' };
+                                  return <td class={displayHoleClass(hole)}>{hole.score || '-'}</td>;
+                                })}
+                                <td class="raw-col">{player.rawScore}</td>
+                                <td class="hc-col">{player.handicap}</td>
+                                <td class="net-col">{player.net}</td>
                               </tr>
                             ))}
                           </tbody>
@@ -248,6 +501,9 @@ function totalPlayers(event: EventDetail): number {
                     </article>
                   ))}
                 </div>
+                    </>
+                  );
+                })()}
               </section>
             </div>
           </section>
@@ -546,7 +802,13 @@ function totalPlayers(event: EventDetail): number {
     margin-top: 18px;
   }
 
-  .leader-card {
+  .results-prize-section,
+  .results-division-section {
+    min-width: 0;
+  }
+
+  .prize-graphic {
+    position: relative;
     overflow: hidden;
     border: 1px solid rgba(6, 61, 99, 0.22);
     border-radius: 8px;
@@ -554,14 +816,18 @@ function totalPlayers(event: EventDetail): number {
     box-shadow: 0 18px 44px rgba(6, 61, 99, 0.13);
   }
 
-  .leader-card::after {
+  .prize-graphic::after {
     content: "";
     display: block;
     height: 5px;
     background: linear-gradient(90deg, var(--color-mdgc-amber), #f47a1f, var(--color-mdgc-accent), var(--color-mdgc-blue));
   }
 
-  .leader-card-head {
+  .prize-graphic-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
     background:
       linear-gradient(115deg, rgba(5, 7, 8, 0.98) 0%, rgba(6, 61, 99, 0.97) 58%, rgba(34, 122, 183, 0.94) 100%),
       repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 18px);
@@ -569,89 +835,182 @@ function totalPlayers(event: EventDetail): number {
     padding: 19px 20px 17px;
   }
 
-  .leader-card-head span {
+  .prize-graphic-kicker {
     color: var(--color-mdgc-amber);
     display: block;
+    margin-bottom: 5px;
     font-size: 12px;
     font-weight: 900;
     text-transform: uppercase;
   }
 
-  .leader-card-head h3 {
-    margin: 5px 0 0;
+  .prize-graphic-head h3 {
+    margin: 0;
     font-size: 31px;
     font-weight: 900;
     line-height: 1;
   }
 
-  .leader-card-head p {
+  .prize-graphic-head p {
     margin: 8px 0 0;
     color: rgba(255, 255, 255, 0.82);
     font-size: 13px;
     font-weight: 750;
   }
 
-  .leader-card-head strong,
-  .leader-card-head em {
+  .prize-graphic-event strong {
     display: block;
-  }
-
-  .leader-card-head strong {
     color: white;
     font-size: 20px;
     line-height: 1.1;
+    overflow-wrap: anywhere;
   }
 
-  .leader-card-head em {
+  .prize-graphic-event span {
+    display: block;
     margin-top: 3px;
     color: rgba(255, 255, 255, 0.68);
     font-size: 12px;
-    font-style: normal;
   }
 
-  .leader-list {
+  .prize-card-logo {
+    flex: 0 0 auto;
+    width: 76px;
+    height: 76px;
+    padding: 7px;
+    border-radius: 8px;
+    background: white;
+    object-fit: contain;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+  }
+
+  .prize-graphic-list {
     display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
+    background: linear-gradient(180deg, white, #f4f9fb);
     padding: 14px;
   }
 
-  .leader-row {
+  .prize-winner-row {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 12px;
+    grid-template-columns: 50px minmax(0, 1fr);
+    gap: 11px;
     align-items: center;
+    min-width: 0;
+    min-height: 88px;
     border: 1px solid var(--color-mdgc-blue-light);
+    border-left: 5px solid var(--color-mdgc-accent);
     border-radius: 8px;
-    background: #ffffff;
-    padding: 10px 12px;
+    background: white;
+    box-shadow: 0 8px 18px rgba(6, 61, 99, 0.07);
+    padding: 12px;
   }
 
-  .leader-icon {
+  .prize-row-handicap {
+    border-left-color: var(--color-mdgc-amber);
+  }
+
+  .prize-winner-icon {
     display: grid;
     place-items: center;
-    width: 36px;
-    height: 36px;
+    width: 50px;
+    height: 50px;
     border-radius: 999px;
     background: var(--color-mdgc-accent-soft);
     color: var(--color-mdgc-accent-deep);
+  }
+
+  .prize-row-handicap .prize-winner-icon {
+    background: var(--color-mdgc-amber-soft);
+    color: #815400;
+  }
+
+  .prize-winner-icon svg {
+    width: 28px;
+    height: 28px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2.2;
+  }
+
+  .prize-winner-copy {
+    min-width: 0;
+  }
+
+  .prize-winner-type {
+    display: block;
+    color: var(--color-mdgc-accent-deep);
     font-size: 11px;
     font-weight: 900;
+    line-height: 1.2;
+    text-transform: uppercase;
   }
 
-  .leader-copy span,
-  .leader-copy em {
-    color: var(--color-text-body);
+  .prize-row-handicap .prize-winner-type {
+    color: #815400;
+  }
+
+  .prize-winner-copy strong {
     display: block;
+    margin-top: 3px;
+    color: var(--color-mdgc-ink);
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+  }
+
+  .prize-winner-copy em {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 6px;
+    border-radius: 999px;
+    background: var(--color-mdgc-accent-soft);
+    color: var(--color-mdgc-accent-deep);
     font-size: 12px;
     font-style: normal;
+    font-weight: 850;
+    line-height: 1.2;
+    padding: 3px 7px;
   }
 
-  .leader-copy strong {
-    color: var(--color-mdgc-ink);
-    display: block;
-    font-size: 16px;
-    font-weight: 900;
-    line-height: 1.15;
+  .prize-row-handicap .prize-winner-copy em {
+    background: #e8f5fc;
+    color: #174d79;
+  }
+
+  .prize-graphic-empty {
+    grid-column: 1 / -1;
+    border: 1px dashed var(--color-mdgc-blue-light);
+    border-radius: 8px;
+    background: white;
+    color: var(--color-text-body);
+    margin: 0;
+    padding: 16px;
+  }
+
+  .prize-graphic-notes {
+    display: grid;
+    gap: 6px;
+    background: #f4f9fb;
+    padding: 0 14px 14px;
+  }
+
+  .prize-graphic-notes p {
+    margin: 0;
+    border: 1px solid rgba(229, 160, 48, 0.36);
+    border-radius: 8px;
+    background: #fff8ea;
+    color: #5d430e;
+    font-size: 12px;
+    font-weight: 750;
+    line-height: 1.35;
+    padding: 9px 11px;
   }
 
   .results-section-head {
@@ -819,8 +1178,16 @@ function totalPlayers(event: EventDetail): number {
       font-size: 21px;
     }
 
-    .leader-card-head h3 {
+    .prize-graphic-head h3 {
       font-size: 27px;
+    }
+
+    .prize-graphic-head {
+      align-items: flex-start;
+    }
+
+    .prize-graphic-list {
+      grid-template-columns: 1fr;
     }
 
     .scorecard-table {
