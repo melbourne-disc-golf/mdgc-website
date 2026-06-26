@@ -1,7 +1,7 @@
 ---
 layout: "@layouts/MdxLayout.astro"
-title: Welcome
-subtitle: to the home of disc golf in Melbourne (Australia)
+title: Melbourne Disc Golf
+subtitle: Courses, social rounds, tournaments and community disc golf across Melbourne.
 cmsPath: "/collections/fragments/entries/homepage-text"
 heroImage:
   src: "@images/royal-park-group.jpg"
@@ -17,12 +17,37 @@ import FollowUs from './club/_follow-us.astro';
 
 <Text>
 
+<div class="not-prose -mt-4 mb-10 grid gap-3 sm:grid-cols-3">
+	<a class="primary-action" href="/events/social">Find a Social Day</a>
+	<a class="secondary-action" href="/courses">Browse Courses</a>
+	<a class="secondary-action" href="/disc-golf/try">Try Disc Golf</a>
+</div>
+
+<div class="not-prose mb-12 grid gap-4 md:grid-cols-3">
+	<div class="surface p-5">
+		<p class="eyebrow">Play</p>
+		<p class="mt-2 text-3xl font-black text-mdgc-ink">Regular rounds</p>
+		<p class="mt-2 text-sm leading-6 text-slate-600">Social Days rotate around Melbourne with friendly groups, Metrix scoring and simple divisions.</p>
+	</div>
+	<div class="surface p-5">
+		<p class="eyebrow">Learn</p>
+		<p class="mt-2 text-3xl font-black text-mdgc-ink">New players welcome</p>
+		<p class="mt-2 text-sm leading-6 text-slate-600">Borrow discs, learn scoring and get paired with people who can help you through the round.</p>
+	</div>
+	<div class="surface p-5">
+		<p class="eyebrow">Compete</p>
+		<p class="mt-2 text-3xl font-black text-mdgc-ink">Results that make sense</p>
+		<p class="mt-2 text-sm leading-6 text-slate-600">Browse Social Day seasons, rounds, divisions, handicaps and scorecards from Metrix.</p>
+	</div>
+</div>
+
+## Start here
+
 <Grid>
 	<NavLink href="/disc-golf" />
-	<NavLink href="/club" />
 	<NavLink href="/courses" />
-	<NavLink href="/events" />
-	<NavLink href="/shop" />
+	<NavLink href="/events/social" title="Social Days" description="regular club rounds" icon="heroicons:heart" />
+	<NavLink href="/events/social/results" title="Results" description="Social Day seasons and scorecards" icon="heroicons:trophy" />
 </Grid>
 
 <HomepageText />

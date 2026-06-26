@@ -1,7 +1,7 @@
 ---
 layout: "@layouts/MdxLayout.astro"
 title: Social Days
-subtitle: our regular meetups
+subtitle: Friendly club rounds, simple divisions, Metrix scoring and season-long results.
 heroImage:
   src: "@images/mike-and-jeff-play-it-foward.jpeg"
   alt: "Mike and Jeff playing it forward"
@@ -16,121 +16,125 @@ import NextSocialDay from '@components/NextSocialDay.astro';
 
 <Text>
 
+<div class="not-prose -mt-4 mb-10 grid gap-3 sm:grid-cols-3">
+	<a class="primary-action" href="https://discgolfmetrix.com/?u=club_events&id=235">Register on Metrix</a>
+	<a class="secondary-action" href="/events/social/results">View Results</a>
+	<a class="secondary-action" href="/club/membership">Join MDGC</a>
+</div>
+
+<div class="not-prose mb-12 grid gap-4 md:grid-cols-3">
+	<div class="surface p-5">
+		<p class="eyebrow">Format</p>
+		<p class="mt-2 text-3xl font-black text-mdgc-ink">18 holes</p>
+		<p class="mt-2 text-sm leading-6 text-slate-600">A relaxed rated-style round with groups assigned through Metrix.</p>
+	</div>
+	<div class="surface p-5">
+		<p class="eyebrow">Season</p>
+		<p class="mt-2 text-3xl font-black text-mdgc-ink">15 rounds</p>
+		<p class="mt-2 text-sm leading-6 text-slate-600">Two seasons each year, rotating across Melbourne courses and zones.</p>
+	</div>
+	<div class="surface p-5">
+		<p class="eyebrow">Prizes</p>
+		<p class="mt-2 text-3xl font-black text-mdgc-ink">Handicap + CTB</p>
+		<p class="mt-2 text-sm leading-6 text-slate-600">Division prizes and closest-to-basket prizes keep every card in the mix.</p>
+	</div>
+</div>
+
 ## What
 
-Social Days are the mainstay of the MDGC calendar, where most new players get their first experience of organised events.
-We aim to make Social Days welcoming and friendly -- a great place for new players to come and learn the rules and
-pick up tips from more experienced players.
+Social Days are the mainstay of the MDGC calendar, where most new players get their first experience of organised disc golf.
+They are welcoming, friendly rounds where newer players can learn the rules and pick up tips from more experienced players.
 
-A Social Day involves playing a round of 18 holes, which generally takes about 2½ hours.
-We typically get 30–60 players at each one, ranging from beginners to professionals, young (kids) to old (die-hards).
+A Social Day is usually one round of 18 holes and takes about 2.5 hours.
+We typically get 30-60 players, from first-timers through to experienced tournament players.
 
-We play in groups of (up to) four players.
-Event organisers will assign players to semi-random groups, mixing skill levels to help new players learn.
-If you have a friend you'd like to play with, mention it when you sign up, and we'll do our best to make it happen.
-
+Groups are usually up to four players.
+Event organisers mix cards by skill level so newer players have people around them who can help.
+If you have a friend you would like to play with, mention it when you sign up and we will do our best.
 
 ## When and where
 
-We split the year into two seasons (Feb-Jun and Jul-Nov), with 15 Social Days in each season.
-We alternate between Saturdays and Sundays, and rotate around three "zones":
+We split the year into two seasons, usually February-June and July-November, with 15 Social Days in each season.
+We alternate between Saturdays and Sundays and rotate around three zones:
 
-- **West Melbourne** - 1st weekend of month
-- **South East Melbourne** - 2nd weekend of month
-- **North East Melbourne** - 3rd weekend of month
+- **West Melbourne** - 1st weekend of the month
+- **South East Melbourne** - 2nd weekend of the month
+- **North East Melbourne** - 3rd weekend of the month
 
 <NextSocialDay />
 
-We usually have an early round starting at 8:00am, and a later one at 10:30am -- you can choose which time suits you best when you register.
+We usually have an early round starting at 8:00am and a later one at 10:30am. You can choose the time that suits you when you register.
 
 <Grid>
 	<LinkPanel
 		image="https://discgolfmetrix.com/assets/img/favicon.png"
 		href="https://discgolfmetrix.com/?u=club_events&id=235"
 		title="MDGC Social Days"
-		description="on Disc Golf Metrix"
+		description="Upcoming registrations on Disc Golf Metrix"
+	/>
+	<LinkPanel
+		href="/events/social/results"
+		title="Social Day results"
+		description="Seasons, round scorecards and division results"
+		icon="heroicons:trophy"
 	/>
 </Grid>
 
 ## Registering
 
-Social Days are free for club [members](/club/membership). Casual players are welcome too -- first time is free, $12 per round after that.
+Social Days are free for club [members](/club/membership).
+Casual players are welcome too: your first round is free, then it is $12 per round after that.
 
 <div class="callout">
 **Pre-registration is required** for all Social Days.
 </div>
 
-We use [Disc Golf Metrix](https://discgolfmetrix.com/?u=club_events&id=235) (aka "Metrix") to manage registration.
+We use [Disc Golf Metrix](https://discgolfmetrix.com/?u=club_events&id=235) to manage registration.
 Registration closes on the evening before the event.
-Once you've found an upcoming event you're interested in, click on the <span class="metrix-button">Register here</span> button on the top right to sign up.
+Once you have found an upcoming event, click the <span class="metrix-button">Register here</span> button on Metrix.
 
-You'll need an [Australian Disc Golf](https://www.australiandiscgolf.com/) number, for insurance purposes (but it's free and easy to [join](https://www.australiandiscgolf.com/join/)).
+You will need an [Australian Disc Golf](https://www.australiandiscgolf.com/) number for insurance. It is free and easy to [join](https://www.australiandiscgolf.com/join/).
 
 ## Scoring
 
 We also use Metrix to keep scores on the day.
 Each group will have at least one experienced player who can help with scoring and using the app.
-We prefer to have 2 people scoring on each card for accuracy.
-
-Start scoring for your group by pressing <span class="metrix-button">Enter</span>, then <span class="metrix-button">Start...</span>.
-More details on scoring are available [here](https://discgolfmetrix.com/?u=rule&ID=6).
+We prefer to have two people scoring on each card for accuracy.
 
 ## Divisions and ratings
 
-Once you've played three rounds, Metrix will calculate your rating based on your scores.
-Your rating will continue to be automatically adjusted after every round you play.
-
-Social Days have 6 different divisions, based on your Metrix rating and whether you are a club member:
+Once you have played three rounds, Metrix calculates your rating based on your scores.
+Social Days have six divisions based on rating and membership:
 
 - **Div A** - Members with rating above 890
 - **Div B** - Members with rating 845 to 890
 - **Div C** - Members with rating 790 to 845
 - **Div D** - Members with rating below 790
-- **Div X** - Members who don't have a rating yet
-- **Div Z** - Non-members (any rating)
+- **Div X** - Members who do not have a rating yet
+- **Div Z** - Non-members
 
 ## Prizes
 
-Various prizes are up for grabs at Social Days, to encourage friendly competition.
-They come in the form of $25 vouchers for use at the [MDGC shop](/shop), and are awarded for:
+Prizes are designed to encourage friendly competition across the whole field.
+They are usually MDGC shop vouchers and are awarded for:
 
-- **best handicap score** (per division, for club members)
-- landing **closest to the basket** (CTB) on a designated hole (per division)
+- **best handicap score** by division
+- landing **closest to the basket** on a designated CTB hole
 
-There is an optional **Ace Club** that pays out a cash prize to members who get an ace (hole-in-one) at a Social Day.
-Ace Club membership costs $30 and covers you for the calendar year. The pot is topped up at each event, to a maximum of $500. If multiple players ace on the same day, they share the pot.
+There is also an optional Ace Club that pays a cash prize to members who get an ace at a Social Day.
 
-There is also a **leaderboard** for each season -- a combined ladder for all divisions.
-Prizes are awarded to top finishers, as well as to the top female players.
-To qualify for these prizes, you must be a MDGC member, and play 5 or more rounds.
+## Results
 
-## Club Champs
-
-We run a Club Championship tournament at the end of each year.
-It typically involves two rounds, and two different Melbourne courses.
-
-To complete in the Champs, Players must qualify by playing at Social Days, and performing well in their division.
-
-## Results (work in progress)
-
-We're trialling a new way to browse Social Day results -- based on data from Metrix.
+The new results area is the best way to browse seasons, rounds, divisions, handicaps and scorecards.
 
 <Grid>
-	<LinkPanel
-		href="/events/social/results"
-		title="Social Day results"
-		description="standings and scorecards"
-		icon="heroicons:trophy"
-	/>
+	<NavLink href="/events/social/results" title="Browse results" description="Social Day seasons and scorecards" icon="heroicons:trophy" />
+	<NavLink href="/events/tournaments" />
+	<NavLink href="/shop" />
 </Grid>
 
 ## Need more info?
 
-If you have any questions, drop us a note at socialdays@melbournediscgolf.com.
-
-<Grid>
-	<NavLink href="/disc-golf" />
-	<NavLink href="/shop" />
-</Grid>
+Email socialdays@melbournediscgolf.com if you have questions.
 
 </Text>

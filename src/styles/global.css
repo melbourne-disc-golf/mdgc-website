@@ -6,21 +6,25 @@
   --color-mdgc-blue: #579EDA;
   --color-mdgc-blue-light: #A3D0FF;
   --color-mdgc-blue-dark: #3F79B2;
+  --color-mdgc-paper: #f4f7f1;
+  --color-mdgc-ink: #17231f;
+  --color-mdgc-green: #2f7d5c;
+  --color-mdgc-mint: #9fe0bd;
+  --color-mdgc-sun: #f3c65f;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
-  --color-text-body: #4b5563; /* gray-600 - lighter for body text */
-  --color-text-heading: #111827; /* gray-900 - darker for headings */
+  --color-text-body: #3f4f49;
+  --color-text-heading: #17231f;
 }
 
-/* Subtle zoom effect on all links */
 a {
-  transition: transform 0.2s ease-in-out;
-  font-weight: 400;
+  transition: color 0.16s ease, background-color 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+  font-weight: 500;
   text-underline-offset: 0.3em;
 }
 
 a:hover {
-  transform: scale(1.05);
+  color: var(--color-mdgc-green);
 }
 
 .text-width {
@@ -30,6 +34,8 @@ a:hover {
 .prose {
 	@apply max-w-4xl mx-auto;
   color: var(--color-text-body);
+  font-size: 1.05rem;
+  line-height: 1.75;
 }
 
 .prose p {
@@ -42,9 +48,9 @@ a:hover {
 }
 
 .prose h2 {
-  background: linear-gradient(to right, #f3f4f6, transparent);
-  padding: 0.5rem 1.5rem;
-  margin-left: -1.5rem;
+  border-top: 1px solid #dfe7dd;
+  padding-top: 1.35rem;
+  margin-top: 2.25rem;
 }
 
 /* Heading permalink anchors - positioned left of the heading background */
@@ -68,7 +74,7 @@ a:hover {
 }
 
 .prose h3, .prose h4 {
-  color: var(--color-text-body);
+  color: var(--color-text-heading);
 }
 
 .prose strong, .prose b {
@@ -100,6 +106,8 @@ a:hover {
   width: auto;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 .prose td,
@@ -158,11 +166,11 @@ a:hover {
 }
 
 .metrix-button {
-	@apply bg-orange-500 text-white px-1.5 py-0.5 font-semibold;
+	@apply bg-mdgc-sun text-slate-950 px-1.5 py-0.5 font-semibold;
 }
 
 .callout {
-	@apply bg-amber-50 border-l-4 border-amber-500 px-6 py-4 my-6 rounded-r-lg;
+	@apply bg-white border-l-4 border-mdgc-sun px-6 py-4 my-6 rounded-r-md shadow-sm;
 }
 
 .callout p {
@@ -171,5 +179,29 @@ a:hover {
 
 time {
   @apply text-sm text-gray-500;
+}
+
+.eyebrow {
+  @apply text-sm font-bold uppercase tracking-[0.16em] text-mdgc-green;
+}
+
+.surface {
+  @apply rounded-md border border-slate-200 bg-white shadow-sm;
+}
+
+.section-panel {
+  @apply rounded-md border border-slate-200 bg-white p-5 shadow-sm sm:p-6;
+}
+
+.metric-pill {
+  @apply rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm;
+}
+
+.primary-action {
+  @apply inline-flex items-center justify-center rounded-md bg-mdgc-green px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-slate-950 hover:text-white;
+}
+
+.secondary-action {
+  @apply inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-800 hover:border-mdgc-green hover:text-mdgc-green;
 }
 

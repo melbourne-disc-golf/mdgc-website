@@ -1,9 +1,9 @@
 ---
-import '@styles/global.css'
+import '@styles/global.css';
 import logoImage from '@images/mdgc-logo.png';
 import defaultOgImage from '@images/ruffey-lake-hole-1.jpg';
 import { getNavItems, type NavItem } from '@data/navigation.ts';
-import { Icon } from 'astro-icon/components'
+import { Icon } from 'astro-icon/components';
 import ReportIssue from '@components/ReportIssue.astro';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
@@ -23,15 +23,14 @@ export interface BackLink {
 export interface Props {
   title: string;
   subtitle?: string;
-  description?: string;  // for og:description, falls back to subtitle
+  description?: string;
   heroImage?: HeroImage;
-  cmsPath?: string;  // e.g., '/collections/courses/entries/bald-hill-park'
-  backLink?: BackLink;  // override the automatic (nav-derived) back-link
+  cmsPath?: string;
+  backLink?: BackLink;
 }
 
 const { title, subtitle, description, heroImage, cmsPath, backLink: backLinkProp } = Astro.props;
 
-// Build page metadata
 const pageTitle = `${title} | Melbourne Disc Golf Club`;
 const pageDescription = description || subtitle || 'Melbourne Disc Golf Club - promoting disc golf in Melbourne since 2007';
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
@@ -39,32 +38,21 @@ const ogImageUrl = heroImage
   ? new URL(heroImage.src.src, Astro.site)
   : new URL(defaultOgImage.src, Astro.site);
 
-// Check if current page is under a nav item
+const currentPath = Astro.url.pathname;
+const navItems: NavItem[] = await getNavItems();
+
 function isActiveNavItem(itemHref: string): boolean {
   if (itemHref === '/' && currentPath === '/') return true;
   if (itemHref !== '/' && currentPath.startsWith(itemHref)) return true;
   return false;
 }
 
-// Get color class for nav item based on active state
-function navItemColor(itemHref: string): string {
-  return isActiveNavItem(itemHref) ? 'text-white' : 'text-mdgc-blue-light';
-}
-
-const currentPath = Astro.url.pathname;
-
-// Get navigation items dynamically
-const navItems: NavItem[] = await getNavItems();
-
-// Systematic back-link: the nearest ancestor of the current path that appears
-// in the navigation (e.g. /club/membership → /club "Club"). Saves having to add
-// tactical per-page back-links. Top-level pages get none — the logo above
-// already links Home.
 const titleByPath = new Map<string, string>();
 for (const item of navItems) {
   titleByPath.set(item.href, item.title);
   for (const sub of item.subPages ?? []) titleByPath.set(sub.href, sub.title);
 }
+
 function computeBackLink(path: string): BackLink | null {
   const parts = path.replace(/\/+$/, '').split('/').filter(Boolean);
   for (let i = parts.length - 1; i >= 1; i--) {
@@ -74,240 +62,266 @@ function computeBackLink(path: string): BackLink | null {
   }
   return null;
 }
-// An explicit backLink prop overrides the automatic one.
-const backLink = backLinkProp ?? computeBackLink(currentPath);
 
-// Generate footer links
+const backLink = backLinkProp ?? computeBackLink(currentPath);
 const githubUrl = 'https://github.com/melbourne-disc-golf/mdgc-website';
 const cmsUrl = cmsPath ? `/cms/sveltia#${cmsPath}` : null;
-
-// Favicon sizes to generate links for
 const faviconSizes = [16, 32, 48, 192];
+
+function navItemClass(itemHref: string): string {
+  return isActiveNavItem(itemHref)
+    ? 'bg-white text-slate-950 shadow-sm'
+    : 'text-slate-200 hover:bg-white/10 hover:text-white';
+}
+
+function submenuItemClass(itemHref: string): string {
+  return isActiveNavItem(itemHref)
+    ? 'bg-mdgc-green text-white'
+    : 'text-slate-700 hover:bg-slate-100 hover:text-slate-950';
+}
+
+function footerLinkClass(itemHref: string): string {
+  return isActiveNavItem(itemHref) ? 'text-white' : 'text-slate-400';
+}
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<title>{pageTitle}</title>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="description" content={pageDescription} />
+  <head>
+    <title>{pageTitle}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={pageDescription} />
 
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content={canonicalUrl} />
-		<meta property="og:title" content={pageTitle} />
-		<meta property="og:description" content={pageDescription} />
-		<meta property="og:image" content={ogImageUrl} />
-		<meta property="og:site_name" content="Melbourne Disc Golf Club" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content="Melbourne Disc Golf Club" />
 
-		<!-- Twitter -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:url" content={canonicalUrl} />
-		<meta name="twitter:title" content={pageTitle} />
-		<meta name="twitter:description" content={pageDescription} />
-		<meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImageUrl} />
 
-		<link rel="canonical" href={canonicalUrl} />
-		{faviconSizes.map(size => (
-			<link rel="icon" type="image/png" sizes={`${size}x${size}`} href={`/images/favicon-${size}x${size}.png`} />
-		))}
-	</head>
-	<body class="flex flex-col min-h-screen">
-		<header>
-			<div id="menu-strip" class="bg-linear-to-b from-mdgc-blue-dark to-slate-900 text-white shadow-lg">
-				<div id="menu-content" class="content-width flex items-center h-16 space-x-8">
-					<div id="menu-logo" class="flex items-center gap-3">
-						<a href="/" title="Home" class="logo-link">
-							<img src={logoImage.src} alt="Melbourne Disc Golf Club" class="h-12 w-auto" />
-						</a>
-						<span class="lg:text-lg font-display">Melbourne Disc Golf</span>
-					</div>
+    <link rel="canonical" href={canonicalUrl} />
+    {faviconSizes.map(size => (
+      <link rel="icon" type="image/png" sizes={`${size}x${size}`} href={`/images/favicon-${size}x${size}.png`} />
+    ))}
+  </head>
+  <body class="flex min-h-screen flex-col bg-mdgc-paper text-slate-900 antialiased">
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/95 text-white shadow-sm backdrop-blur">
+      <div id="menu-content" class="content-width flex min-h-[4.5rem] items-center gap-5 py-3">
+        <a href="/" title="Home" class="logo-link flex items-center gap-3">
+          <img src={logoImage.src} alt="Melbourne Disc Golf Club" class="h-12 w-auto" />
+          <span class="hidden font-display text-base font-extrabold leading-tight tracking-normal sm:block">
+            Melbourne<br class="lg:hidden" /> Disc Golf
+          </span>
+        </a>
 
-					<div id="menu-links" class="mx-auto">
-						<nav class="hidden md:flex items-center space-x-8">
-							{navItems.map(item => (
-								item.subPages ? (
-									<div class="relative group">
-										<div class="flex items-center -ml-4">
-											<a href={item.href} class={`${navItemColor(item.href)} hover:text-white hover:underline transition-colors px-4 py-1 rounded-t-md group-hover:bg-slate-800 group-hover:text-mdgc-blue-light group-hover:rounded-b-none`}>{item.title}</a>
-										</div>
-										<div class="absolute -left-4 mt-0 pb-2 w-auto min-w-30 bg-slate-800 text-mdgc-blue-light rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:transition-all group-hover:duration-200 group-hover:delay-300 z-1000">
-											{item.subPages.map(subItem => {
-												const isActive = navItemColor(subItem.href) === 'text-white';
-												return (
-													<a href={subItem.href} class={`block px-4 py-1 hover:text-white hover:underline transition-colors whitespace-nowrap ${navItemColor(subItem.href)} ${isActive ? 'bg-mdgc-blue-dark/30' : ''}`}>{subItem.title}</a>
-												);
-											})}
-										</div>
-									</div>
-								) : (
-									<a href={item.href} class={`${navItemColor(item.href)} hover:text-white hover:underline transition-colors`}>{item.title}</a>
-								)
-							))}
-						</nav>
-					</div>
+        <nav class="ml-auto hidden items-center gap-1 md:flex" aria-label="Main navigation">
+          {navItems.map(item => (
+            item.subPages ? (
+              <div class="group relative">
+                <a href={item.href} class={`inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-semibold transition-colors ${navItemClass(item.href)}`}>
+                  {item.icon && <Icon name={item.icon} class="h-4 w-4" />}
+                  {item.title}
+                </a>
+                <div class="invisible absolute right-0 top-full min-w-56 pt-2 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100">
+                  <div class="rounded-md border border-slate-200 bg-white p-2 text-slate-900 shadow-xl">
+                    {item.subPages.map(subItem => (
+                      <a href={subItem.href} class={`flex items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors ${submenuItemClass(subItem.href)}`}>
+                        {subItem.icon && <Icon name={subItem.icon} class="h-4 w-4" />}
+                        <span>{subItem.title}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <a href={item.href} class={`inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-semibold transition-colors ${navItemClass(item.href)}`}>
+                {item.icon && <Icon name={item.icon} class="h-4 w-4" />}
+                {item.title}
+              </a>
+            )
+          ))}
+        </nav>
 
-					<!-- Mobile menu button -->
-					<div class="md:hidden ml-auto">
-						<button id="mobile-menu-button" class="text-mdgc-blue-light hover:text-white" aria-label="Toggle mobile menu">
-							<Icon name="heroicons:bars-3" class="h-6 w-6" />
-						</button>
-					</div>
-				</div>
+        <button id="mobile-menu-button" class="ml-auto rounded-md border border-white/15 p-2 text-slate-100 hover:bg-white/10 md:hidden" aria-label="Toggle mobile menu" aria-expanded="false">
+          <Icon name="heroicons:bars-3" class="h-6 w-6" />
+        </button>
+      </div>
 
-				<!-- Mobile menu -->
-				<div id="mobile-menu" class="md:hidden hidden">
-					<nav class="px-2 pt-2 pb-3 space-y-1">
-						{navItems.map(item => (
-							item.subPages ? (
-								<div>
-									<a href={item.href} class={`block px-3 py-2 hover:bg-mdgc-blue-dark rounded-md font-semibold ${navItemColor(item.href)} hover:text-white transition-colors`}>{item.title}</a>
-									{item.subPages.map(subItem => (
-										<a href={subItem.href} class={`block px-6 py-1 text-sm hover:bg-mdgc-blue-dark rounded-md ${navItemColor(subItem.href)} hover:text-white transition-colors`}>{subItem.title}</a>
-									))}
-								</div>
-							) : (
-								<a href={item.href} class={`block px-3 py-2 hover:bg-mdgc-blue-dark rounded-md ${navItemColor(item.href)} hover:text-white transition-colors`}>{item.title}</a>
-							)
-						))}
-					</nav>
-				</div>
-			</div>
-		</header>
+      <div id="mobile-menu" class="hidden border-t border-white/10 bg-slate-950 md:hidden">
+        <nav class="content-width space-y-2 py-3" aria-label="Mobile navigation">
+          {navItems.map(item => (
+            item.subPages ? (
+              <div class="rounded-md bg-white/5 p-2">
+                <a href={item.href} class={`flex items-center gap-2 rounded-md px-3 py-2 text-sm font-bold ${isActiveNavItem(item.href) ? 'bg-white text-slate-950' : 'text-slate-100'}`}>
+                  {item.icon && <Icon name={item.icon} class="h-4 w-4" />}
+                  {item.title}
+                </a>
+                <div class="mt-1 grid gap-1 pl-4">
+                  {item.subPages.map(subItem => (
+                    <a href={subItem.href} class={`rounded-md px-3 py-2 text-sm ${isActiveNavItem(subItem.href) ? 'bg-mdgc-green text-white' : 'text-slate-300 hover:bg-white/10 hover:text-white'}`}>
+                      {subItem.title}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <a href={item.href} class={`flex items-center gap-2 rounded-md px-3 py-2 text-sm font-bold ${isActiveNavItem(item.href) ? 'bg-white text-slate-950' : 'text-slate-100 hover:bg-white/10'}`}>
+                {item.icon && <Icon name={item.icon} class="h-4 w-4" />}
+                {item.title}
+              </a>
+            )
+          ))}
+        </nav>
+      </div>
+    </header>
 
-		<main class="grow">
-			<div class="bg-mdgc-blue-dark text-white">
-				<div id="title-content" class={`content-width px-6 pb-6 ${backLink ? 'pt-3' : 'pt-6'}`}>
-					<div id="title-and-subtitle">
-						{backLink && (
-							<a href={backLink.href} class="no-print inline-block text-sm text-mdgc-blue-light hover:text-white hover:underline mb-3">← {backLink.text}</a>
-						)}
-						<h1 class="text-4xl font-bold">{title}</h1>
-						{subtitle && <p class="text-xl mt-2">{subtitle}</p>}
-					</div>
-				</div>
-			</div>
-			<div class="content-width">
+    <main class="grow">
+      {heroImage ? (
+        <section class="relative isolate overflow-hidden bg-slate-950 text-white">
+          <Image
+            src={heroImage.src}
+            alt={heroImage.alt}
+            fit="cover"
+            class="absolute inset-0 -z-20 h-full w-full object-cover"
+            loading="eager"
+          />
+          <div class="absolute inset-0 -z-10 bg-slate-950/55"></div>
+          <div class="absolute inset-x-0 bottom-0 -z-10 h-32 bg-linear-to-t from-mdgc-paper to-transparent"></div>
+          <div class="content-width flex min-h-[26rem] items-end pb-14 pt-20 sm:min-h-[30rem]">
+            <div class="max-w-3xl">
+              {backLink && (
+                <a href={backLink.href} class="no-print mb-5 inline-flex items-center rounded-md bg-white/10 px-3 py-1.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/20">
+                  &larr; {backLink.text}
+                </a>
+              )}
+              <p class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-mdgc-mint">Melbourne Disc Golf Club</p>
+              <h1 class="font-display text-5xl font-black leading-none sm:text-6xl lg:text-7xl">{title}</h1>
+              {subtitle && <p class="mt-5 max-w-2xl text-lg leading-8 text-slate-100 sm:text-xl">{subtitle}</p>}
+            </div>
+          </div>
+          {heroImage.caption && (
+            <p class="content-width -mt-9 pb-5 text-xs text-slate-200/80">{heroImage.caption}</p>
+          )}
+        </section>
+      ) : (
+        <section class="bg-slate-950 text-white">
+          <div class={`content-width ${backLink ? 'pb-9 pt-5' : 'py-10'}`}>
+            {backLink && (
+              <a href={backLink.href} class="no-print mb-5 inline-flex items-center rounded-md bg-white/10 px-3 py-1.5 text-sm font-semibold text-slate-100 hover:bg-white/20">
+                &larr; {backLink.text}
+              </a>
+            )}
+            <p class="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-mdgc-mint">Melbourne Disc Golf Club</p>
+            <h1 class="font-display text-4xl font-black leading-tight sm:text-5xl">{title}</h1>
+            {subtitle && <p class="mt-3 max-w-3xl text-lg leading-8 text-slate-200">{subtitle}</p>}
+          </div>
+        </section>
+      )}
 
-				{heroImage && (
-					<figure class="my-8">
-						<Image
-							src={heroImage.src}
-							alt={heroImage.alt}
-							fit={heroImage.class?.includes('object-contain') ? 'contain' : 'cover'}
-							class={`w-full rounded-lg ${heroImage.class?.includes('object-') ? '' : 'object-cover'} ${heroImage.class || ''}`}
-						/>
-						{heroImage.caption && (
-							<figcaption class="text-sm text-gray-600 mt-2 text-center italic">
-								{heroImage.caption}
-							</figcaption>
-						)}
-					</figure>
-				)}
+      <div class="content-width py-10 sm:py-12">
+        <slot />
+      </div>
+    </main>
 
-				<slot />
+    <footer class="mt-auto bg-slate-950 py-12 text-white sm:px-6 lg:px-8">
+      <div class="no-print content-width grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,2fr)]">
+        <div>
+          <a href="/" title="Home" class="logo-link inline-flex items-center gap-3">
+            <img src={logoImage.src} alt="Melbourne Disc Golf Club" class="h-14 w-auto" />
+            <span class="font-display text-xl font-black">Melbourne Disc Golf</span>
+          </a>
+          <p class="mt-4 max-w-md text-sm leading-6 text-slate-400">
+            Local courses, social rounds, club events and community disc golf across Melbourne.
+          </p>
+        </div>
 
-			</div>
-		</main>
+        <nav class="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5" aria-label="Footer navigation">
+          {navItems.map((section) => (
+            <div>
+              <h3 class="mb-3 font-semibold">
+                <a href={section.href} class={`inline-flex items-center gap-1 whitespace-nowrap ${footerLinkClass(section.href)} hover:text-white`}>
+                  {section.icon && <Icon name={section.icon} class="h-4 w-4" />}
+                  {section.title}
+                </a>
+              </h3>
+              {section.subPages && (
+                <ul class="space-y-2">
+                  {section.subPages.map(link => (
+                    <li>
+                      <a href={link.href} class={`text-sm ${footerLinkClass(link.href)} hover:text-white`}>
+                        {link.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </nav>
+      </div>
 
-		<footer class="bg-gray-900 text-white sm:px-6 lg:px-8 py-12 mt-auto">
-			<div class="no-print content-width flex flex-row gap-8">
-
-				<!-- Logo section -->
-				<div class="shrink-0">
-					<a href="/" title="Home" class="logo-link">
-						<img src={logoImage.src} alt="Melbourne Disc Golf Club" class="h-12 sm:h-16 w-auto" />
-					</a>
-				</div>
-
-				<!-- Navigation sections grid -->
-				<nav class="flex flex-wrap mx-auto gap-4 sm:gap-6 md:gap-8 lg:gap-16 items-start">
-					{navItems.map((section) => (
-						<div>
-							<h3 class="font-semibold mb-2">
-								<a href={section.href} class={`inline-flex items-center gap-1 ${navItemColor(section.href)} whitespace-nowrap`}>
-									{section.icon && <Icon name={section.icon} class="w-4 h-4" />}
-									{section.title}
-								</a>
-							</h3>
-							{section.subPages && (
-								<ul class="space-y-1 hidden md:block pl-2">
-									{section.subPages.map(link => (
-										<li>
-											<a href={link.href} class={`inline-block text-sm ${navItemColor(link.href)}`}>
-												{link.title}
-											</a>
-										</li>
-									))}
-								</ul>
-							)}
-						</div>
-					))}
-				</nav>
-
-			</div>
-
-			<!-- Bottom section -->
-			<div class="border-t border-gray-700 mt-8 pt-2 flex flex-col md:flex-row justify-between items-center gap-4">
-				<div class="text-gray-400 text-sm text-center md:text-left">
-					<p>© {new Date().getFullYear()} Melbourne Disc Golf Club. All rights reserved.</p>
-					<p class="text-xs text-gray-500 mt-1">last updated: {new Date().toLocaleString('en-AU', { timeZone: 'Australia/Melbourne', dateStyle: 'medium', timeStyle: 'short' })}</p>
-				</div>
-				<div class="no-print flex items-center gap-4">
-					{cmsUrl && (
-						<a href={cmsUrl} target="_blank" rel="noopener noreferrer" class="inline-block text-gray-400 hover:text-white transition-colors" aria-label="Edit page in CMS" title="Edit in CMS">
-							<Icon name="mdi:pencil" class="h-5 w-5" />
-						</a>
-					)}
-					<a href={githubUrl} target="_blank" rel="noopener noreferrer" class="inline-block text-gray-400 hover:text-white transition-colors" aria-label="View source on GitHub" title="View source on GitHub">
-						<Icon name="mdi:github" class="h-5 w-5" />
-					</a>
-					<ReportIssue />
-				</div>
-			</div>
-
-		</footer>
-
-	</body>
+      <div class="content-width mt-10 flex flex-col gap-4 border-t border-white/10 pt-5 md:flex-row md:items-center md:justify-between">
+        <div class="text-sm text-slate-500">
+          <p>&copy; {new Date().getFullYear()} Melbourne Disc Golf Club. All rights reserved.</p>
+          <p class="mt-1 text-xs">Last updated: {new Date().toLocaleString('en-AU', { timeZone: 'Australia/Melbourne', dateStyle: 'medium', timeStyle: 'short' })}</p>
+        </div>
+        <div class="no-print flex items-center gap-4">
+          {cmsUrl && (
+            <a href={cmsUrl} target="_blank" rel="noopener noreferrer" class="inline-flex rounded-md p-2 text-slate-400 hover:bg-white/10 hover:text-white" aria-label="Edit page in CMS" title="Edit in CMS">
+              <Icon name="mdi:pencil" class="h-5 w-5" />
+            </a>
+          )}
+          <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="inline-flex rounded-md p-2 text-slate-400 hover:bg-white/10 hover:text-white" aria-label="View source on GitHub" title="View source on GitHub">
+            <Icon name="mdi:github" class="h-5 w-5" />
+          </a>
+          <ReportIssue />
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
 
 <style>
-	@import "tailwindcss";
+  @import "tailwindcss";
 
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+  }
 
-	.logo-link {
-		display: inline-block;
-	}
+  .logo-link {
+    text-decoration: none;
+  }
 
-	.logo-link:hover {
-		transform: scale(1.15);
-	}
+  footer nav a {
+    @apply transition-colors;
+  }
 
-	footer nav a {
-		@apply hover:text-white hover:underline transition-colors;
-	}
-
-	@media print {
-		.no-print {
-			display: none;
-		}
-	}
+  @media print {
+    .no-print {
+      display: none;
+    }
+  }
 </style>
 
 <script>
-	const mobileMenuButton = document.getElementById('mobile-menu-button');
-	const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-	mobileMenuButton?.addEventListener('click', () => {
-		mobileMenu?.classList.toggle('hidden');
-	});
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+    mobileMenuButton.setAttribute('aria-expanded', String(!expanded));
+  });
 </script>
 
 <script src="../scripts/heading-links.ts"></script>
