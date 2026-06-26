@@ -1,7 +1,7 @@
 ---
 layout: "@layouts/MdxLayout.astro"
-title: Melbourne Disc Golf
-subtitle: Courses, social rounds, tournaments and community disc golf across Melbourne.
+title: Welcome
+subtitle: to the home of disc golf in Melbourne (Australia)
 cmsPath: "/collections/fragments/entries/homepage-text"
 heroImage:
   src: "@images/royal-park-group.jpg"
@@ -17,37 +17,12 @@ import FollowUs from './club/_follow-us.astro';
 
 <Text>
 
-<div class="not-prose -mt-4 mb-10 grid gap-3 sm:grid-cols-3">
-	<a class="primary-action" href="/events/social">Find a Social Day</a>
-	<a class="secondary-action" href="/courses">Browse Courses</a>
-	<a class="secondary-action" href="/disc-golf/try">Try Disc Golf</a>
-</div>
-
-<div class="results-card-grid mb-12">
-	<article class="results-card">
-		<span class="results-card-kicker">Play</span>
-		<strong class="results-card-title">Regular rounds</strong>
-		<p>Social Days rotate around Melbourne with friendly groups, Metrix scoring and simple divisions.</p>
-	</article>
-	<article class="results-card">
-		<span class="results-card-kicker">Learn</span>
-		<strong class="results-card-title">New players welcome</strong>
-		<p>Borrow discs, learn scoring and get paired with people who can help you through the round.</p>
-	</article>
-	<article class="results-card">
-		<span class="results-card-kicker">Compete</span>
-		<strong class="results-card-title">Results that make sense</strong>
-		<p>Browse Social Day prize winners, divisions, handicaps and scorecards round by round.</p>
-	</article>
-</div>
-
-## Start here
-
 <Grid>
 	<NavLink href="/disc-golf" />
+	<NavLink href="/club" />
 	<NavLink href="/courses" />
-	<NavLink href="/events/social" title="Social Days" description="regular club rounds" icon="heroicons:heart" />
-	<NavLink href="/events/social/results" title="Results" description="Social Day seasons and scorecards" icon="heroicons:trophy" />
+	<NavLink href="/events" />
+	<NavLink href="/shop" />
 </Grid>
 
 <HomepageText />
