@@ -76,31 +76,33 @@ function fmt2(n: number | null): string {
           <table class="min-w-full text-sm border-collapse">
             <thead>
               <tr class="bg-[#d7eaff] text-mdgc-blue-dark">
-                <th class="px-2 py-2 text-center">Pos</th>
                 <th class="px-3 py-2 text-left sticky left-0 bg-inherit">Player</th>
+                <th class="px-2 py-2 text-right" title="Handicap score">HC</th>
+                <th class="px-2 py-2 text-center">Pos</th>
+                <th class="px-2 py-2 text-right" title="Raw score">Raw</th>
                 <th class="px-2 py-2 text-right">+/-</th>
                 {tracks.map((t) => (
                   <th class="px-1.5 py-2 text-right font-medium" title={`Par ${t.par}`}>{t.number}</th>
                 ))}
-                <th class="px-2 py-2 text-right">Raw</th>
-                <th class="px-2 py-2 text-right">Net</th>
-                <th class="px-2 py-2 text-right">Rating</th>
-                <th class="px-2 py-2 text-right">HC</th>
+                <th class="px-2 py-2 text-right" title="Metrix rating">Rating</th>
               </tr>
               <tr class="bg-[#eaf4ff] text-mdgc-blue-dark/70 text-xs">
-                <th></th>
                 <th class="px-3 py-1 sticky left-0 bg-inherit"></th>
+                <th></th>
+                <th></th>
+                <th class="px-2 py-1 text-right">{par}</th>
                 <th class="px-2 py-1 text-right">Par</th>
                 {tracks.map((t) => (
                   <th class="px-1.5 py-1 text-right font-normal">{t.par}</th>
                 ))}
-                <th class="px-2 py-1 text-right">{par}</th>
-                <th colspan="3"></th>
+                <th></th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
               {division.players.map((p) => (
                 <tr class="odd:bg-white even:bg-gray-50/70 hover:bg-mdgc-blue-light/10">
+                  <td class="px-3 py-1.5 font-medium whitespace-nowrap sticky left-0 bg-inherit">{p.name}</td>
+                  <td class={`px-2 py-1.5 text-right ${p.net !== null && p.net === bestNet ? 'font-bold text-gray-800' : 'text-gray-600'}`}>{fmt2(p.net)}</td>
                   <td class="px-2 py-1.5 text-center">
                     {p.pos <= 3 ? (
                       <span class={`podium-badge podium-${p.pos}`}>{p.pos}</span>
@@ -108,15 +110,12 @@ function fmt2(n: number | null): string {
                       <span class="text-gray-500">{p.pos}</span>
                     )}
                   </td>
-                  <td class="px-3 py-1.5 font-medium whitespace-nowrap sticky left-0 bg-inherit">{p.name}</td>
-                  <td class="px-2 py-1.5 text-right font-semibold">{formatDiff(p.diff)}</td>
+                  <td class="px-2 py-1.5 text-right text-gray-600">{p.sum}</td>
+                  <td class="px-2 py-1.5 text-right text-gray-600">{formatDiff(p.diff)}</td>
                   {p.holes.map((score, h) => (
                     <td class={`px-1.5 py-1.5 text-right tabular-nums ${holeClass(score, tracks[h]?.par ?? par)}`}>{score ?? '–'}</td>
                   ))}
-                  <td class="px-2 py-1.5 text-right text-gray-600">{p.sum}</td>
-                  <td class={`px-2 py-1.5 text-right ${p.net !== null && p.net === bestNet ? 'font-bold text-gray-800' : 'text-gray-600'}`}>{fmt2(p.net)}</td>
                   <td class="px-2 py-1.5 text-right text-gray-500">{p.rating ?? '–'}</td>
-                  <td class="px-2 py-1.5 text-right text-gray-600">{fmt2(p.hc)}</td>
                 </tr>
               ))}
             </tbody>
