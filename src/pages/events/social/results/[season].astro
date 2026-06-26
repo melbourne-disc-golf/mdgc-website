@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
+import { Temporal } from '@js-temporal/polyfill';
+import { formatDateRange } from '@utils/dates';
 import { getSeasons } from '@utils/metrix';
 
 export async function getStaticPaths() {
@@ -11,7 +13,14 @@ export async function getStaticPaths() {
 }
 
 const { season } = Astro.props;
-const { id: seasonId, name, rounds } = season;
+const { id: seasonId, name, dateStart, dateEnd, rounds } = season;
+
+const subtitle = dateStart
+  ? formatDateRange(
+      Temporal.PlainDate.from(dateStart),
+      dateEnd ? Temporal.PlainDate.from(dateEnd) : undefined
+    )
+  : undefined;
 
 // Map Metrix course ids to our course pages.
 const courses = await getCollection('courses');
@@ -27,7 +36,7 @@ function formatDate(d: string): string {
 }
 ---
 
-<Layout title={name} subtitle="Social day results">
+<Layout title={name} subtitle={subtitle}>
   <div class="my-8 space-y-12">
 
     <section>
