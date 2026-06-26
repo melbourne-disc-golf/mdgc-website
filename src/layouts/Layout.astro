@@ -15,15 +15,21 @@ export interface HeroImage {
   caption?: string;
 }
 
+export interface BackLink {
+  href: string;
+  text: string;
+}
+
 export interface Props {
   title: string;
   subtitle?: string;
   description?: string;  // for og:description, falls back to subtitle
   heroImage?: HeroImage;
   cmsPath?: string;  // e.g., '/collections/courses/entries/bald-hill-park'
+  backLink?: BackLink;  // override the automatic (nav-derived) back-link
 }
 
-const { title, subtitle, description, heroImage, cmsPath } = Astro.props;
+const { title, subtitle, description, heroImage, cmsPath, backLink: backLinkProp } = Astro.props;
 
 // Build page metadata
 const pageTitle = `${title} | Melbourne Disc Golf Club`;
@@ -49,6 +55,27 @@ const currentPath = Astro.url.pathname;
 
 // Get navigation items dynamically
 const navItems: NavItem[] = await getNavItems();
+
+// Systematic back-link: the nearest ancestor of the current path that appears
+// in the navigation (e.g. /club/membership → /club "Club"). Saves having to add
+// tactical per-page back-links. Top-level pages get none — the logo above
+// already links Home.
+const titleByPath = new Map<string, string>();
+for (const item of navItems) {
+  titleByPath.set(item.href, item.title);
+  for (const sub of item.subPages ?? []) titleByPath.set(sub.href, sub.title);
+}
+function computeBackLink(path: string): BackLink | null {
+  const parts = path.replace(/\/+$/, '').split('/').filter(Boolean);
+  for (let i = parts.length - 1; i >= 1; i--) {
+    const ancestor = '/' + parts.slice(0, i).join('/');
+    const text = titleByPath.get(ancestor);
+    if (text) return { href: ancestor, text };
+  }
+  return null;
+}
+// An explicit backLink prop overrides the automatic one.
+const backLink = backLinkProp ?? computeBackLink(currentPath);
 
 // Generate footer links
 const githubUrl = 'https://github.com/melbourne-disc-golf/mdgc-website';
@@ -151,8 +178,11 @@ const faviconSizes = [16, 32, 48, 192];
 
 		<main class="grow">
 			<div class="bg-mdgc-blue-dark text-white">
-				<div id="title-content" class="content-width p-6">
+				<div id="title-content" class={`content-width px-6 pb-6 ${backLink ? 'pt-3' : 'pt-6'}`}>
 					<div id="title-and-subtitle">
+						{backLink && (
+							<a href={backLink.href} class="no-print inline-block text-sm text-mdgc-blue-light hover:text-white hover:underline mb-3">← {backLink.text}</a>
+						)}
 						<h1 class="text-4xl font-bold">{title}</h1>
 						{subtitle && <p class="text-xl mt-2">{subtitle}</p>}
 					</div>
