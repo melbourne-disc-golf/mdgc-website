@@ -34,12 +34,12 @@ function formatDate(d: string): string {
 
     <section>
       <h2 class="text-2xl font-bold text-mdgc-blue-dark mb-4">Rounds</h2>
-      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+      <ul class="columns-1 sm:columns-2 lg:columns-3 gap-2">
         {rounds.map((r) => {
           const course = courseByMetrixId.get(r.courseId)?.title ?? r.courseName.split('&rarr;')[0].trim();
-          const label = `R${r.round}: ${formatDate(r.date)} @ ${course}`;
+          const label = (<><span class="font-bold">Round {r.round}</span>: {formatDate(r.date)} @ {course}</>);
           return (
-            <li>
+            <li class="mb-2 break-inside-avoid">
               {r.played ? (
                 <a
                   href={`/events/social/results/${season.data.id}/${r.id}`}
