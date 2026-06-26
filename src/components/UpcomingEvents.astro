@@ -2,11 +2,11 @@
 import { getCollection } from 'astro:content';
 import EventCalendar from '@components/EventCalendar.astro';
 import { getPublishedEvents, clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent } from '@utils/events';
+import { getSocialDays } from '@utils/metrix';
 
 // Get data from collections
 const clubEvents = await getPublishedEvents();
 const externalEvents = await getCollection('externalEvents');
-const metrixSeasons = await getCollection('metrixSeasons');
 const courses = await getCollection('courses');
 
 // Build course lookup maps
@@ -26,8 +26,7 @@ const externalCalendarEvents = externalEvents
   .map(e => externalEventToCalendarEvent(e));
 
 // Convert metrix social days to CalendarEvents
-const socialDays = metrixSeasons
-  .flatMap(season => season.data.events)
+const socialDays = getSocialDays()
   .map(e => socialDayToCalendarEvent(e, metrixToCourse));
 
 // Combine all events

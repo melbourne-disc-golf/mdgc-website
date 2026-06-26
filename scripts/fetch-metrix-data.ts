@@ -19,13 +19,6 @@ interface MetrixChild {
 interface MetrixResponse {
   Competition: {
     ID: number | string;
-    Name: string;
-    Date: string;
-    Time: string;
-    CourseName: string;
-    CourseID: string;
-    TourDateStart?: string;
-    TourDateEnd?: string;
     Events?: MetrixChild[];
     SubCompetitions?: MetrixChild[];
   } & Record<string, unknown>;
@@ -35,26 +28,14 @@ interface MetrixResponse {
 // the shaping at build time.
 const RAW_DIR = path.join(process.cwd(), 'src', 'data', 'metrix');
 
-// TODO(calendar cleanup): the events calendar still consumes the derived
-// `metrixSeasons` content collection written by writeCalendarSeason() below.
-// Once the calendar reads raw Metrix data via src/utils/metrix.ts, drop that
-// derivation and the metrixSeasons collection, leaving this a pure raw fetcher.
-const SEASONS_DIR = path.join(process.cwd(), 'src', 'content', 'metrixSeasons');
-
-const cache = new Map<string, MetrixResponse>();
-
 async function fetchFromMetrix(id: string): Promise<MetrixResponse> {
-  const cached = cache.get(id);
-  if (cached) return cached;
   const url = `https://discgolfmetrix.com/api.php?content=result&id=${id}`;
   console.log(`Fetching ${url}...`);
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`Failed to fetch ${id} from Metrix: ${response.statusText}`);
   }
-  const data = (await response.json()) as MetrixResponse;
-  cache.set(id, data);
-  return data;
+  return (await response.json()) as MetrixResponse;
 }
 
 function childIds(data: MetrixResponse): string[] {
@@ -76,52 +57,17 @@ async function fetchRawRecursive(id: string, seen: Set<string>) {
   }
 }
 
-// TODO(calendar cleanup): derive this from raw in src/utils/metrix.ts instead.
-function writeCalendarSeason(seasonId: string) {
-  const season = cache.get(seasonId)!.Competition;
-  const children = season.Events || season.SubCompetitions || [];
-  const events = children.map((c) => {
-    const ev = cache.get(c.ID)!.Competition;
-    return {
-      id: Number(ev.ID),
-      name: ev.Name,
-      date: ev.Date,
-      time: ev.Time,
-      courseName: ev.CourseName,
-      courseId: ev.CourseID,
-    };
-  });
-
-  fs.writeFileSync(
-    path.join(SEASONS_DIR, `${seasonId}.json`),
-    JSON.stringify(
-      {
-        id: Number(season.ID),
-        name: season.Name,
-        dateStart: season.TourDateStart,
-        dateEnd: season.TourDateEnd,
-        eventCount: events.length,
-        events,
-      },
-      null,
-      2
-    )
-  );
-}
-
 async function main() {
   const args = process.argv.slice(2);
   const seasonIds = args.length ? args : SEASON_IDS;
 
   fs.mkdirSync(RAW_DIR, { recursive: true });
-  fs.mkdirSync(SEASONS_DIR, { recursive: true });
 
   console.log(`Syncing ${seasonIds.length} season(s)...\n`);
 
   const seen = new Set<string>();
   for (const seasonId of seasonIds) {
     await fetchRawRecursive(seasonId, seen);
-    writeCalendarSeason(seasonId);
   }
 
   console.log(`\nDone. Synced ${seen.size} Metrix records across ${seasonIds.length} season(s).`);

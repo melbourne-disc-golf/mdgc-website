@@ -71,28 +71,9 @@ const externalEvents = defineCollection({
   }),
 });
 
-const metrixSeasons = defineCollection({
-  loader: glob({ pattern: '**/*.json', base: './src/content/metrixSeasons' }),
-  schema: z.object({
-    id: z.number(),
-    name: z.string(),
-    dateStart: z.string(),
-    dateEnd: z.string(),
-    eventCount: z.number(),
-    events: z.array(z.object({
-      id: z.number(),
-      name: z.string(),
-      date: z.string(),
-      time: z.string(),
-      courseName: z.string(),
-      courseId: z.string(),
-    })),
-  }),
-});
-
-// Note: results data (per-round scorecards, season standings) is NOT a content
-// collection. It's stored raw in src/data/metrix/ and shaped at build time by
-// src/utils/metrix.ts — see that module and scripts/fetch-metrix-data.ts.
+// Note: Metrix data (social days, per-round scorecards, season standings) is NOT a
+// content collection. It's stored raw in src/data/metrix/ and shaped at build time
+// by src/utils/metrix.ts — see that module and scripts/fetch-metrix-data.ts.
 
 export const collections = {
   courses,
@@ -100,5 +81,4 @@ export const collections = {
   discLibraries,
   events,
   externalEvents,
-  metrixSeasons,
 };

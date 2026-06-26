@@ -36,7 +36,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/metrix/ src/content/metrixSeasons/
+          git add src/data/metrix/
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else

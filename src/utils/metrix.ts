@@ -251,6 +251,11 @@ export function getSeasons(): Season[] {
   return seasons.sort((a, b) => (b.dateStart ?? '').localeCompare(a.dateStart ?? ''));
 }
 
+/** Every round across all seasons, flattened — for the events calendar. */
+export function getSocialDays(): Round[] {
+  return getSeasons().flatMap((season) => season.rounds);
+}
+
 /** {seasonId, eventId} for every round that has been played (has results). */
 export function getPlayedEventRefs(): { seasonId: number; eventId: number }[] {
   const refs: { seasonId: number; eventId: number }[] = [];

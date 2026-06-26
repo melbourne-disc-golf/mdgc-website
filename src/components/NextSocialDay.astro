@@ -1,8 +1,8 @@
 ---
 import { Temporal } from '@js-temporal/polyfill';
 import { getCollection } from 'astro:content';
+import { getSocialDays } from '@utils/metrix';
 
-const seasons = await getCollection('metrixSeasons');
 const courses = await getCollection('courses');
 
 // Build a map of metrix course ID -> course info
@@ -19,8 +19,7 @@ for (const course of courses) {
 
 // Get future events, sorted by date, and enrich with course info
 const today = Temporal.Now.plainDateISO().toString();
-const events = seasons
-  .flatMap(season => season.data.events)
+const events = getSocialDays()
   .filter(e => e.date > today)
   .map(e => {
     const course = metrixToCourse.get(e.courseId);

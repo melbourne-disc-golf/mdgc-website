@@ -2,6 +2,7 @@ import { Temporal } from '@js-temporal/polyfill';
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { getPublishedEvents, clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent, type CalendarEvent } from '@utils/events';
+import { getSocialDays } from '@utils/metrix';
 
 function pad2(n: number): string {
   return String(n).padStart(2, '0');
@@ -128,7 +129,6 @@ export const GET: APIRoute = async ({ site }) => {
   // Get data from collections
   const clubEvents = await getPublishedEvents();
   const externalEvents = await getCollection('externalEvents');
-  const metrixSeasons = await getCollection('metrixSeasons');
   const courses = await getCollection('courses');
 
   // Build course lookup maps
@@ -148,8 +148,7 @@ export const GET: APIRoute = async ({ site }) => {
     externalEventToCalendarEvent(e)
   );
 
-  const socialDays = metrixSeasons
-    .flatMap((season) => season.data.events)
+  const socialDays = getSocialDays()
     .map((e) => socialDayToCalendarEvent(e, metrixToCourse));
 
   // Filter out events more than 30 days in the past
