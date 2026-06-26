@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@layouts/Layout.astro';
+
+const seasons = (await getCollection('metrixStandings')).sort((a, b) =>
+  (b.data.dateStart ?? '').localeCompare(a.data.dateStart ?? '')
+);
+
+function formatRange(start?: string, end?: string): string {
+  if (!start && !end) return '';
+  const fmt = (d: string) =>
+    new Date(d).toLocaleDateString('en-AU', { month: 'short', year: 'numeric' });
+  if (start && end) return `${fmt(start)} – ${fmt(end)}`;
+  return fmt((start ?? end)!);
+}
+---
+
+<Layout title="Social day results" subtitle="Results, standings and handicaps from MDGC social days">
+  <div class="my-8">
+    <p class="text-gray-600 mb-6">
+      Results are sourced from <a class="text-mdgc-blue underline" href="https://discgolfmetrix.com/" target="_blank" rel="noopener noreferrer">Disc Golf Metrix</a> and updated automatically.
+    </p>
+
+    <ul class="space-y-4">
+      {seasons.map((season) => {
+        const playedRounds = season.data.rounds.filter((r) => r.played).length;
+        return (
+          <li>
+            <a
+              href={`/events/social/results/${season.data.id}`}
+              class="block rounded-lg border border-gray-200 p-5 hover:border-mdgc-blue hover:shadow-md transition"
+            >
+              <div class="flex items-baseline justify-between gap-4">
+                <h2 class="text-xl font-semibold text-mdgc-blue-dark">{season.data.name}</h2>
+                <span class="text-sm text-gray-500 whitespace-nowrap">{formatRange(season.data.dateStart, season.data.dateEnd)}</span>
+              </div>
+              <p class="text-sm text-gray-600 mt-1">
+                {playedRounds} of {season.data.rounds.length} rounds played
+              </p>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</Layout>
