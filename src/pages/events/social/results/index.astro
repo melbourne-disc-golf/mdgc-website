@@ -27,7 +27,7 @@ function percent(value: number, total: number): number {
         <p class="eyebrow">Results hub</p>
         <h2 class="mt-3 font-display text-3xl font-black text-mdgc-ink sm:text-4xl">Browse every Social Day season</h2>
         <p class="mt-4 max-w-3xl text-slate-600">
-          Results are sourced from <a class="font-semibold text-mdgc-green underline" href="https://discgolfmetrix.com/" target="_blank" rel="noopener noreferrer">Disc Golf Metrix</a>.
+          Results are sourced from <a class="font-semibold text-mdgc-accent-deep underline" href="https://discgolfmetrix.com/" target="_blank" rel="noopener noreferrer">Disc Golf Metrix</a>.
           Each season links through to its rounds, with division scorecards and handicap standings for played events.
         </p>
         {currentSeason && (
@@ -69,11 +69,11 @@ function percent(value: number, total: number): number {
           const completion = percent(played, season.rounds.length);
           const nextRound = season.rounds.find((round) => !round.played);
           return (
-            <a href={`/events/social/results/${season.id}`} class="surface group block p-5 hover:border-mdgc-green hover:shadow-lg">
+            <a href={`/events/social/results/${season.id}`} class="surface group block p-5 hover:border-mdgc-accent hover:shadow-lg">
               <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div>
-                  <span class="inline-flex rounded-md bg-mdgc-mint/35 px-2.5 py-1 text-xs font-bold uppercase text-mdgc-green">Social Days</span>
-                  <h3 class="mt-3 text-2xl font-black text-mdgc-ink group-hover:text-mdgc-green">{season.name}</h3>
+                  <span class="inline-flex rounded-md bg-mdgc-accent-soft px-2.5 py-1 text-xs font-bold uppercase text-mdgc-accent-deep">Social Days</span>
+                  <h3 class="mt-3 text-2xl font-black text-mdgc-ink group-hover:text-mdgc-accent-deep">{season.name}</h3>
                   <p class="mt-1 text-sm text-slate-500">{formatRange(season.dateStart, season.dateEnd)}</p>
                 </div>
                 <div class="rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-right">
@@ -83,7 +83,7 @@ function percent(value: number, total: number): number {
               </div>
 
               <div class="mt-5 h-2 overflow-hidden rounded-full bg-slate-100">
-                <div class="h-full rounded-full bg-mdgc-green" style={`width: ${completion}%`}></div>
+                <div class="h-full rounded-full bg-mdgc-accent" style={`width: ${completion}%`}></div>
               </div>
 
               <div class="mt-4 flex flex-col gap-1 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between">

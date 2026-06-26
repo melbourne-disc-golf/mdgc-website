@@ -55,7 +55,7 @@ function courseFor(courseId: string, courseName: string): { title: string; href?
           Upcoming rounds are shown here so the season still makes sense before every event has results.
         </p>
         <div class="mt-6 h-2 overflow-hidden rounded-full bg-slate-100">
-          <div class="h-full rounded-full bg-mdgc-green" style={`width: ${completion}%`}></div>
+          <div class="h-full rounded-full bg-mdgc-accent" style={`width: ${completion}%`}></div>
         </div>
       </div>
 
@@ -91,7 +91,7 @@ function courseFor(courseId: string, courseName: string): { title: string; href?
             <>
               <div class="flex items-start justify-between gap-4">
                 <div>
-                  <span class={`inline-flex rounded-md px-2.5 py-1 text-xs font-bold uppercase ${round.played ? 'bg-mdgc-mint/35 text-mdgc-green' : 'bg-slate-100 text-slate-500'}`}>
+                  <span class={`inline-flex rounded-md px-2.5 py-1 text-xs font-bold uppercase ${round.played ? 'bg-mdgc-accent-soft text-mdgc-accent-deep' : 'bg-slate-100 text-slate-500'}`}>
                     {round.played ? 'Results ready' : 'Upcoming'}
                   </span>
                   <h3 class="mt-3 text-xl font-black text-mdgc-ink">Round {round.round}</h3>
@@ -100,7 +100,7 @@ function courseFor(courseId: string, courseName: string): { title: string; href?
               </div>
               <p class="mt-4 text-base font-semibold text-slate-700">{round.name}</p>
               {course.href ? (
-                <a href={course.href} class="mt-1 inline-flex text-sm font-semibold text-mdgc-green">{course.title}</a>
+                <a href={course.href} class="mt-1 inline-flex text-sm font-semibold text-mdgc-accent-deep">{course.title}</a>
               ) : (
                 <p class="mt-1 text-sm text-slate-500">{course.title}</p>
               )}
@@ -108,9 +108,9 @@ function courseFor(courseId: string, courseName: string): { title: string; href?
           );
 
           return round.played ? (
-            <a href={`/events/social/results/${seasonId}/${round.id}`} class="surface group block p-5 hover:border-mdgc-green hover:shadow-lg">
+            <a href={`/events/social/results/${seasonId}/${round.id}`} class="surface group block p-5 hover:border-mdgc-accent hover:shadow-lg">
               {content}
-              <span class="mt-5 inline-flex text-sm font-bold text-mdgc-green group-hover:text-slate-950">Open scorecard</span>
+              <span class="mt-5 inline-flex text-sm font-bold text-mdgc-accent-deep group-hover:text-slate-950">Open scorecard</span>
             </a>
           ) : (
             <article class="surface border-dashed p-5 opacity-80">

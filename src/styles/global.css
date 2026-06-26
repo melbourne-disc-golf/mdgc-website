@@ -3,18 +3,20 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-mdgc-blue: #579EDA;
-  --color-mdgc-blue-light: #A3D0FF;
-  --color-mdgc-blue-dark: #3F79B2;
-  --color-mdgc-paper: #f4f7f1;
-  --color-mdgc-ink: #17231f;
-  --color-mdgc-green: #2f7d5c;
-  --color-mdgc-mint: #9fe0bd;
-  --color-mdgc-sun: #f3c65f;
+  --color-mdgc-blue: #227ab7;
+  --color-mdgc-blue-light: #e5f3fb;
+  --color-mdgc-blue-dark: #063d63;
+  --color-mdgc-paper: #f3f8fc;
+  --color-mdgc-ink: #101820;
+  --color-mdgc-accent: #39a0df;
+  --color-mdgc-accent-deep: #063d63;
+  --color-mdgc-accent-soft: #e7f6fe;
+  --color-mdgc-amber: #fccc00;
+  --color-mdgc-amber-soft: #fff6cf;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
-  --color-text-body: #3f4f49;
-  --color-text-heading: #17231f;
+  --color-text-body: #4f6372;
+  --color-text-heading: #101820;
 }
 
 a {
@@ -24,7 +26,7 @@ a {
 }
 
 a:hover {
-  color: var(--color-mdgc-green);
+  color: var(--color-mdgc-accent);
 }
 
 .text-width {
@@ -154,7 +156,7 @@ a:hover {
 
 .concept-list li::before {
 	content: counter(list-counter);
-	@apply absolute left-0 top-0.5 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-bold;
+	@apply absolute left-0 top-0.5 w-6 h-6 bg-mdgc-accent-soft text-mdgc-accent-deep rounded-full flex items-center justify-center text-sm font-bold;
 }
 
 .redbox {
@@ -166,11 +168,11 @@ a:hover {
 }
 
 .metrix-button {
-	@apply bg-mdgc-sun text-slate-950 px-1.5 py-0.5 font-semibold;
+	@apply bg-mdgc-amber text-slate-950 px-1.5 py-0.5 font-semibold;
 }
 
 .callout {
-	@apply bg-white border-l-4 border-mdgc-sun px-6 py-4 my-6 rounded-r-md shadow-sm;
+	@apply bg-white border-l-4 border-mdgc-amber px-6 py-4 my-6 rounded-r-md shadow-sm;
 }
 
 .callout p {
@@ -182,26 +184,26 @@ time {
 }
 
 .eyebrow {
-  @apply text-sm font-bold uppercase tracking-[0.16em] text-mdgc-green;
+  @apply text-sm font-bold uppercase tracking-[0.16em] text-mdgc-accent-deep;
 }
 
 .surface {
-  @apply rounded-md border border-slate-200 bg-white shadow-sm;
+  @apply rounded-md border border-sky-100 bg-white shadow-sm;
 }
 
 .section-panel {
-  @apply rounded-md border border-slate-200 bg-white p-5 shadow-sm sm:p-6;
+  @apply rounded-md border border-sky-100 bg-white p-5 shadow-sm sm:p-6;
 }
 
 .metric-pill {
-  @apply rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm;
+  @apply rounded-md border border-sky-100 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm;
 }
 
 .primary-action {
-  @apply inline-flex items-center justify-center rounded-md bg-mdgc-green px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-slate-950 hover:text-white;
+  @apply inline-flex items-center justify-center rounded-md bg-mdgc-accent px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-mdgc-accent-deep hover:text-white;
 }
 
 .secondary-action {
-  @apply inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-800 hover:border-mdgc-green hover:text-mdgc-green;
+  @apply inline-flex items-center justify-center rounded-md border border-sky-200 bg-white px-4 py-2 text-sm font-bold text-slate-800 hover:border-mdgc-accent hover:text-mdgc-accent-deep;
 }
 

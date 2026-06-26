@@ -76,7 +76,7 @@ function navItemClass(itemHref: string): string {
 
 function submenuItemClass(itemHref: string): string {
   return isActiveNavItem(itemHref)
-    ? 'bg-mdgc-green text-white'
+    ? 'bg-mdgc-accent text-white'
     : 'text-slate-700 hover:bg-slate-100 hover:text-slate-950';
 }
 
@@ -165,7 +165,7 @@ function footerLinkClass(itemHref: string): string {
                 </a>
                 <div class="mt-1 grid gap-1 pl-4">
                   {item.subPages.map(subItem => (
-                    <a href={subItem.href} class={`rounded-md px-3 py-2 text-sm ${isActiveNavItem(subItem.href) ? 'bg-mdgc-green text-white' : 'text-slate-300 hover:bg-white/10 hover:text-white'}`}>
+                    <a href={subItem.href} class={`rounded-md px-3 py-2 text-sm ${isActiveNavItem(subItem.href) ? 'bg-mdgc-accent text-white' : 'text-slate-300 hover:bg-white/10 hover:text-white'}`}>
                       {subItem.title}
                     </a>
                   ))}
@@ -201,7 +201,7 @@ function footerLinkClass(itemHref: string): string {
                   &larr; {backLink.text}
                 </a>
               )}
-              <p class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-mdgc-mint">Melbourne Disc Golf Club</p>
+              <p class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-mdgc-accent-soft">Melbourne Disc Golf Club</p>
               <h1 class="font-display text-5xl font-black leading-none sm:text-6xl lg:text-7xl">{title}</h1>
               {subtitle && <p class="mt-5 max-w-2xl text-lg leading-8 text-slate-100 sm:text-xl">{subtitle}</p>}
             </div>
@@ -218,7 +218,7 @@ function footerLinkClass(itemHref: string): string {
                 &larr; {backLink.text}
               </a>
             )}
-            <p class="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-mdgc-mint">Melbourne Disc Golf Club</p>
+            <p class="mb-2 text-sm font-bold uppercase tracking-[0.16em] text-mdgc-accent-soft">Melbourne Disc Golf Club</p>
             <h1 class="font-display text-4xl font-black leading-tight sm:text-5xl">{title}</h1>
             {subtitle && <p class="mt-3 max-w-3xl text-lg leading-8 text-slate-200">{subtitle}</p>}
           </div>
