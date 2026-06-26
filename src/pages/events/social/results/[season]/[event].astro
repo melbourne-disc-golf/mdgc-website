@@ -1,29 +1,20 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
+import Grid from '@components/Grid.astro';
+import LinkPanel from '@components/LinkPanel.astro';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
 import { getEvent, getPlayedEventRefs, getSeasons } from '@utils/metrix';
 
 export async function getStaticPaths() {
-  const courses = await getCollection('courses');
-  const courseByMetrixId = new Map<string, { slug: string; title: string }>();
-  for (const course of courses) {
-    for (const metrixId of course.data.metrixCourseIds ?? []) {
-      courseByMetrixId.set(metrixId, { slug: course.id, title: course.data.title });
-    }
-  }
-  return getPlayedEventRefs().map(({ seasonId, eventId }) => {
-    const event = getEvent(eventId)!;
-    return {
-      params: { season: String(seasonId), event: String(eventId) },
-      props: { event, course: courseByMetrixId.get(event.courseId) ?? null },
-    };
-  });
+  return getPlayedEventRefs().map(({ seasonId, eventId }) => ({
+    params: { season: String(seasonId), event: String(eventId) },
+    props: { event: getEvent(eventId)! },
+  }));
 }
 
-const { event, course } = Astro.props;
-const { name, date, courseName, par, tracks, divisions } = event;
+const { event } = Astro.props;
+const { name, date, par, tracks, divisions } = event;
 
 const subtitle = formatDateRange(Temporal.PlainDate.from(date));
 
@@ -58,19 +49,6 @@ function fmt2(n: number | null): string {
 
 <Layout title={name} subtitle={subtitle} backLink={backLink}>
   <div class="my-8 space-y-10">
-
-    <p>
-      <a href={`https://discgolfmetrix.com/${event.id}`} class="text-mdgc-blue underline" target="_blank" rel="noopener noreferrer">View on Metrix</a>
-    </p>
-
-    <p class="text-gray-600">
-      {course ? (
-        <a href={`/courses/${course.slug}`} class="text-mdgc-blue hover:underline font-medium">{course.title}</a>
-      ) : (
-        <span class="font-medium">{courseName.split('&rarr;')[0].trim()}</span>
-      )}
-      {' · '}Par {par} over {tracks.length} holes.
-    </p>
 
     {divisions.map((division) => {
       const nets = division.players.map((p) => p.net).filter((n): n is number => n !== null);
@@ -130,6 +108,15 @@ function fmt2(n: number | null): string {
       </section>
       );
     })}
+
+    <Grid>
+      <LinkPanel
+        image="https://discgolfmetrix.com/assets/img/favicon.png"
+        href={`https://discgolfmetrix.com/${event.id}`}
+        title="View on Metrix"
+        description="this round on Disc Golf Metrix"
+      />
+    </Grid>
 
   </div>
 </Layout>
