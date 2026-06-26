@@ -1,8 +1,7 @@
 ---
 import s1ResultsData from '@data/social-results/s1.json';
 import s2ResultsData from '@data/social-results/s2.json';
-import type { EventDetail, Player, Season } from '@utils/metrix';
-import { getEvent } from '@utils/metrix';
+import type { Season } from '@utils/metrix';
 
 interface Props {
   season: Season;
@@ -11,158 +10,800 @@ interface Props {
   defaultSeasonId?: number;
 }
 
+interface ResultHole {
+  hole?: string | number;
+  score?: string | number | null;
+  scoreClass?: string;
+}
+
+type ResultRow = Record<string, unknown> & {
+  name?: string;
+  division?: string;
+  rating?: string | number;
+  rawScore?: string | number;
+  toPar?: string | number;
+  holes?: ResultHole[];
+};
+
 interface PrizeRow {
   prize?: string;
   name?: string;
   detail?: string;
+  division?: string;
+  hole?: string | number;
+  note?: string;
 }
 
-interface PublicResultEvent {
+interface ResultEvent {
   round: string | number;
+  label?: string;
+  name?: string;
+  date?: string;
+  venue?: string;
   metrixId?: string | number;
+  status?: string;
   prizeWinners?: PrizeRow[];
   prizeEmailRows?: PrizeRow[];
   prizes?: PrizeRow[];
+  handicapLeaders?: PrizeRow[];
+  divisions?: Record<string, ResultRow[]>;
 }
 
-interface PublicResultsData {
+interface ResultsData {
   season?: {
     label?: string;
+    name?: string;
     metrixId?: string | number;
+    metrixUrl?: string;
   };
-  events?: PublicResultEvent[];
+  events?: ResultEvent[];
 }
 
-interface ScoreRow {
-  event: EventDetail;
-  player: Player;
-}
-
-interface Profile {
-  name: string;
+interface ResultEntry {
+  event: ResultEvent;
   division: string;
-  rounds: number;
-  totalDiff: number;
-  bestDiff: number;
+  row: ResultRow;
+}
+
+interface ScoreCounts {
+  aces: number;
+  eagles: number;
+  birdies: number;
+  pars: number;
+  bogeys: number;
+  doublePlus: number;
+}
+
+interface ScoreSummary {
+  total: number;
   birdieBetter: number;
+  birdieBetterPct: number;
+  parPct: number;
+  bogeyPct: number;
+  doublePlusPct: number;
+}
+
+interface PlayerProfile {
+  name: string;
+  rounds: number;
   holes: number;
+  counts: ScoreCounts;
+  toPars: number[];
+  rawScores: number[];
+  summary: ScoreSummary;
+  avgToPar: number | null;
+  bestToPar: number;
+}
+
+interface EventStats {
+  event: ResultEvent;
+  players: number;
+  counts: ScoreCounts;
+  summary: ScoreSummary;
+  avgRaw: number | null;
+  avgToPar: number | null;
+}
+
+interface PrizeProfile {
+  name: string;
+  total: number;
+  ctb: number;
+  handicap: number;
+}
+
+interface StatsVariant {
+  key: string;
+  label: string;
+  divisions: string[] | null;
+}
+
+interface SeasonStats {
+  events: ResultEvent[];
+  seasonLabel: string;
+  importedEvents: ResultEvent[];
+  rows: ResultEntry[];
+  players: Map<string, PlayerProfile>;
+  totalCounts: ScoreCounts;
+  totalSummary: ScoreSummary;
+  eventStats: EventStats[];
+  bestToPar: ResultEntry[];
+  playerProfiles: PlayerProfile[];
+  playerProfilesFivePlus: number;
+  playerProfilesThreePlus: number;
+  prizeBoard: PrizeProfile[];
+}
+
+interface TableHeader<T> {
+  label: string;
+  shortLabel?: string;
+  className?: string;
+  sortType?: 'text' | 'number';
+  value: (row: T) => string | number | null | undefined;
+  sortValue?: (row: T) => string | number | null | undefined;
+  cellClass?: string | ((row: T) => string);
 }
 
 const { season, seasons, baseHref = '/events/social/results', defaultSeasonId = season.id } = Astro.props;
-const publicResultsData = [s1ResultsData, s2ResultsData] as PublicResultsData[];
-const publicSeason = publicResultsData.find((data) => String(data.season?.metrixId ?? '') === String(season.id));
-const publicEventsByMetrixId = new Map(
-  (publicSeason?.events ?? [])
-    .filter((event) => event.metrixId !== undefined && event.metrixId !== null)
-    .map((event) => [String(event.metrixId), event])
-);
-const publicEventsByRound = new Map(
-  (publicSeason?.events ?? []).map((event) => [Number(event.round), event])
-);
+const RESULT_DIVISIONS = ['A', 'B', 'C', 'D', 'X/Z'];
+const STATS_FILTER_DIVISIONS = ['A', 'B', 'C', 'D'];
+const publicResultsData = [s1ResultsData, s2ResultsData] as ResultsData[];
+const publicSeason =
+  publicResultsData.find((data) => String(data.season?.metrixId ?? '') === String(season.id)) ??
+  publicResultsData.find((data) => data.season?.name?.includes('S1')) ??
+  publicResultsData[0];
+const events = resultEvents(publicSeason);
+const seasonLabel = publicSeason?.season?.label ?? (season.name.includes('S2') ? 'Season 2' : 'Season 1');
+const seasonMetrixUrl = publicSeason?.season?.metrixUrl ?? `https://discgolfmetrix.com/${season.id}`;
+const seasonsForSwitch = seasons
+  .slice()
+  .sort((a, b) => seasonShortLabel(a).localeCompare(seasonShortLabel(b), 'en-AU', { numeric: true }));
+const fmtCompactDate = new Intl.DateTimeFormat('en-AU', {
+  weekday: 'short',
+  day: 'numeric',
+  month: 'short',
+});
+const statsViewsHtml = statsDivisionVariants()
+  .map((variant) => statsViewMarkup(buildSeasonStats(variant.divisions, events, seasonLabel), variant))
+  .join('');
 
-const roundStats = season.rounds
-  .map((round) => ({
-    round,
-    detail: getEvent(round.id),
-    resultEvent: publicEventsByMetrixId.get(String(round.id)) ?? publicEventsByRound.get(round.round) ?? null,
-  }))
-  .filter((item): item is { round: Season['rounds'][number]; detail: EventDetail; resultEvent: PublicResultEvent | null } => item.detail !== null);
+function esc(value: unknown): string {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
 
-const scoreRows: ScoreRow[] = roundStats.flatMap(({ detail }) =>
-  detail.divisions.flatMap((division) => division.players.map((player) => ({ event: detail, player })))
-);
+function isBlank(value: unknown): boolean {
+  return String(value ?? '').trim() === '';
+}
 
-const scoreMix = {
-  ace: 0,
-  eagle: 0,
-  birdie: 0,
-  par: 0,
-  bogey: 0,
-  doubleBogeyPlus: 0,
-};
+function dateOnlyDate(value: unknown): Date | null {
+  const match = String(value || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return null;
+  return new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]), 12);
+}
 
-const profiles = new Map<string, Profile>();
+function resultDateLabel(value: unknown): string {
+  if (isBlank(value)) return 'Date TBC';
+  if (/^\d{4}-\d{2}-\d{2}$/.test(String(value))) {
+    const date = dateOnlyDate(value);
+    return date ? fmtCompactDate.format(date) : String(value);
+  }
+  return String(value);
+}
 
-for (const { event, player } of scoreRows) {
-  const profileKey = player.userId || player.name;
-  const profile = profiles.get(profileKey) ?? {
-    name: player.name,
-    division: player.division,
-    rounds: 0,
-    totalDiff: 0,
-    bestDiff: player.diff,
-    birdieBetter: 0,
-    holes: 0,
+function resultEventTitle(event: ResultEvent): string {
+  if (!isBlank(event.name)) return String(event.name);
+  if (!isBlank(event.venue)) return `${event.venue} Social Day`;
+  return event.label || `Round ${event.round}`;
+}
+
+function resultEvents(resultsData: ResultsData = publicSeason): ResultEvent[] {
+  const configured = Array.isArray(resultsData.events) ? resultsData.events.slice() : [];
+  const byRound = new Map(configured.map((event) => [Number(event.round), event]));
+  const maxRound = Math.max(15, ...configured.map((event) => Number(event.round) || 0));
+  for (let round = 1; round <= maxRound; round += 1) {
+    if (!byRound.has(round)) {
+      configured.push({
+        round,
+        label: `Round ${round}`,
+        status: 'needs-import',
+        prizeWinners: [],
+        divisions: Object.fromEntries(RESULT_DIVISIONS.map((division) => [division, []])),
+      });
+    }
+  }
+  return configured
+    .filter((event) => Number(event.round) >= 1 && Number(event.round) <= maxRound)
+    .sort((a, b) => Number(a.round) - Number(b.round));
+}
+
+function resultRowsForEvent(event: ResultEvent): ResultEntry[] {
+  return Object.entries(event.divisions || {})
+    .flatMap(([division, rows]) => (Array.isArray(rows) ? rows : [])
+      .map((row) => ({ event, division, row })));
+}
+
+function allResultRows(sourceEvents = events): ResultEntry[] {
+  return sourceEvents.flatMap((event) => resultRowsForEvent(event));
+}
+
+function normaliseDivision(value: unknown): string {
+  const text = String(value || '').trim().toUpperCase().replace(/\s+/g, '');
+  if (STATS_FILTER_DIVISIONS.includes(text)) return text;
+  if (text === 'X' || text === 'Z' || text === 'X/Z' || text === 'XZ') return 'X/Z';
+  return '';
+}
+
+function numberValue(value: unknown): number | null {
+  if (value === null || value === undefined || value === '') return null;
+  const number = Number(String(value).replace(/^\+/, ''));
+  return Number.isFinite(number) ? number : null;
+}
+
+function divisionFromRating(value: unknown): string {
+  const rating = numberValue(value);
+  if (!Number.isFinite(rating)) return '';
+  if (rating >= 890) return 'A';
+  if (rating >= 845) return 'B';
+  if (rating >= 790) return 'C';
+  return 'D';
+}
+
+function statsDivisionForEntry(entry: ResultEntry): string {
+  const importedDivision = normaliseDivision(entry.row.division || entry.division);
+  if (importedDivision) return importedDivision;
+  return divisionFromRating(entry.row.rating);
+}
+
+function entryMatchesStatsDivisions(entry: ResultEntry, divisions: string[] | null): boolean {
+  if (!divisions || !divisions.length) return true;
+  return divisions.includes(statsDivisionForEntry(entry));
+}
+
+function resultRowsForEventByStatsDivisions(event: ResultEvent, divisions: string[] | null = null): ResultEntry[] {
+  return resultRowsForEvent(event).filter((entry) => entryMatchesStatsDivisions(entry, divisions));
+}
+
+function statsViewKey(divisions: string[] | null): string {
+  return divisions && divisions.length ? divisions.join('-') : 'all';
+}
+
+function statsViewLabel(divisions: string[] | null): string {
+  return divisions && divisions.length ? `Div ${divisions.join('/')}` : 'All Divisions';
+}
+
+function statsDivisionVariants(): StatsVariant[] {
+  const variants: StatsVariant[] = [{ key: 'all', label: 'All Divisions', divisions: null }];
+  const total = 1 << STATS_FILTER_DIVISIONS.length;
+  for (let mask = 1; mask < total; mask += 1) {
+    const divisions = STATS_FILTER_DIVISIONS.filter((_, index) => mask & (1 << index));
+    variants.push({ key: statsViewKey(divisions), label: statsViewLabel(divisions), divisions });
+  }
+  return variants;
+}
+
+function inferPrizeDivisions(prize: PrizeRow): string[] {
+  const text = `${prize?.prize || ''} ${prize?.division || ''} ${prize?.detail || ''}`.toUpperCase();
+  if (/A\s*\/\s*B/.test(text)) return ['A', 'B'];
+  if (/C\s*\/\s*D/.test(text)) return ['C', 'D'];
+  if (/X\s*\/\s*Z|DIV\s*X|DIV\s*Z/.test(text)) return ['X/Z'];
+  for (const division of STATS_FILTER_DIVISIONS) {
+    if (new RegExp(`\\bDIV\\s*${division}\\b|\\b${division}\\s*HANDICAP\\b`).test(text)) return [division];
+  }
+  return [];
+}
+
+function playerKey(name: unknown): string {
+  return String(name || '')
+    .replace(/\s+\d{4,}$/, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
+
+function cleanPlayerName(name: unknown): string {
+  return String(name || '')
+    .replace(/\s+\d{4,}$/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function prizeDivisionsForEventPrize(event: ResultEvent, prize: PrizeRow): string[] {
+  const key = playerKey(prize?.name);
+  if (key) {
+    const divisions = resultRowsForEvent(event)
+      .filter((entry) => playerKey(entry.row.name) === key)
+      .map((entry) => statsDivisionForEntry(entry))
+      .filter(Boolean);
+    if (divisions.length) return Array.from(new Set(divisions));
+  }
+  return inferPrizeDivisions(prize);
+}
+
+function prizeMatchesStatsDivisions(event: ResultEvent, prize: PrizeRow, divisions: string[] | null): boolean {
+  if (!divisions || !divisions.length) return true;
+  return prizeDivisionsForEventPrize(event, prize).some((division) => divisions.includes(division));
+}
+
+function toParValue(value: unknown): number | null {
+  const text = String(value ?? '').trim();
+  if (!text || /^e$/i.test(text)) return 0;
+  return numberValue(text);
+}
+
+function average(values: Array<number | null>): number | null {
+  const numbers = values.filter((value): value is number => Number.isFinite(value));
+  if (!numbers.length) return null;
+  return numbers.reduce((sum, value) => sum + value, 0) / numbers.length;
+}
+
+function formatDecimal(value: number | null, digits = 1): string {
+  if (!Number.isFinite(value)) return '-';
+  return Number(value).toFixed(digits).replace(/\.0$/, '');
+}
+
+function formatSigned(value: number | null): string {
+  if (!Number.isFinite(value)) return '-';
+  if (value === 0) return 'E';
+  return value > 0 ? `+${formatDecimal(value, 1)}` : formatDecimal(value, 1);
+}
+
+function percent(value: number, total: number, digits = 1): string {
+  if (!total) return '0%';
+  return `${formatDecimal((value / total) * 100, digits)}%`;
+}
+
+function percentValue(value: number, total: number): number {
+  return total ? (value / total) * 100 : 0;
+}
+
+function heatLevel(value: unknown, thresholds: number[]): number {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return 0;
+  let level = 0;
+  for (const threshold of thresholds) {
+    if (number >= threshold) level += 1;
+  }
+  return Math.max(1, Math.min(4, level));
+}
+
+function heatClass(kind: string, value: unknown, thresholds = [10, 20, 30, 40]): string {
+  const level = heatLevel(value, thresholds);
+  return level ? `heat-${kind}-${level}` : '';
+}
+
+function difficultyHeatClass(value: unknown): string {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return '';
+  if (number <= 0) return 'heat-good-4';
+  if (number <= 3) return 'heat-good-2';
+  if (number <= 6) return 'heat-warn-2';
+  if (number <= 9) return 'heat-bad-2';
+  return 'heat-bad-4';
+}
+
+function scoreBucket(scoreClass: unknown): keyof ScoreCounts {
+  if (scoreClass === 'holeinone') return 'aces';
+  if (scoreClass === 'eagle') return 'eagles';
+  if (scoreClass === 'birdie') return 'birdies';
+  if (scoreClass === 'bogey') return 'bogeys';
+  if (scoreClass === 'dbogey' || scoreClass === 'fail') return 'doublePlus';
+  return 'pars';
+}
+
+function emptyScoreCounts(): ScoreCounts {
+  return { aces: 0, eagles: 0, birdies: 0, pars: 0, bogeys: 0, doublePlus: 0 };
+}
+
+function addScoreCounts(target: ScoreCounts, source: ScoreCounts): ScoreCounts {
+  for (const key of Object.keys(target) as Array<keyof ScoreCounts>) {
+    target[key] += source[key] || 0;
+  }
+  return target;
+}
+
+function scoreCountsForRow(row: ResultRow): ScoreCounts {
+  const counts = emptyScoreCounts();
+  for (const hole of row.holes || []) {
+    if (isBlank(hole.score)) continue;
+    counts[scoreBucket(hole.scoreClass)] += 1;
+  }
+  return counts;
+}
+
+function totalScores(counts: ScoreCounts): number {
+  return Object.values(counts).reduce((sum, value) => sum + value, 0);
+}
+
+function scoreSummary(counts: ScoreCounts): ScoreSummary {
+  const total = totalScores(counts);
+  const birdieBetter = counts.aces + counts.eagles + counts.birdies;
+  return {
+    total,
+    birdieBetter,
+    birdieBetterPct: total ? (birdieBetter / total) * 100 : 0,
+    parPct: total ? (counts.pars / total) * 100 : 0,
+    bogeyPct: total ? (counts.bogeys / total) * 100 : 0,
+    doublePlusPct: total ? (counts.doublePlus / total) * 100 : 0,
   };
-  profile.rounds += 1;
-  profile.totalDiff += player.diff;
-  profile.bestDiff = Math.min(profile.bestDiff, player.diff);
+}
 
-  player.holes.forEach((score, index) => {
-    if (score === null) return;
-    const par = event.tracks[index]?.par ?? 3;
-    const diff = score - par;
-    profile.holes += 1;
-    if (score === 1) scoreMix.ace += 1;
-    else if (diff <= -2) scoreMix.eagle += 1;
-    else if (diff === -1) scoreMix.birdie += 1;
-    else if (diff === 0) scoreMix.par += 1;
-    else if (diff === 1) scoreMix.bogey += 1;
-    else scoreMix.doubleBogeyPlus += 1;
-    if (diff < 0) profile.birdieBetter += 1;
+function roundLabel(event: ResultEvent): string {
+  return `Rd ${event.round}`;
+}
+
+function roundVenueLabel(event: ResultEvent): string {
+  return `${roundLabel(event)} - ${event.venue || resultEventTitle(event)}`;
+}
+
+function playerDisplayName(entry: ResultEntry): string {
+  return cleanPlayerName(entry.row.name);
+}
+
+function sortedByNumber(rows: ResultEntry[], valueFn: (entry: ResultEntry) => number | null, direction: 'asc' | 'desc' = 'asc'): ResultEntry[] {
+  return rows
+    .filter((item) => Number.isFinite(valueFn(item)))
+    .slice()
+    .sort((a, b) => {
+      const diff = Number(valueFn(a)) - Number(valueFn(b));
+      return direction === 'desc' ? -diff : diff;
+    });
+}
+
+function buildSeasonStats(divisions: string[] | null = null, sourceEvents = events, currentSeasonLabel = 'Season'): SeasonStats {
+  const importedEvents = sourceEvents.filter((event) => resultRowsForEventByStatsDivisions(event, divisions).length);
+  const rows = allResultRows(sourceEvents).filter((entry) => entryMatchesStatsDivisions(entry, divisions));
+  const totalCounts = emptyScoreCounts();
+  const players = new Map<string, PlayerProfile>();
+  const prizePlayers = new Map<string, PrizeProfile>();
+
+  for (const entry of rows) {
+    addScoreCounts(totalCounts, scoreCountsForRow(entry.row));
+    const key = playerKey(entry.row.name);
+    if (!key) continue;
+    if (!players.has(key)) {
+      players.set(key, {
+        name: playerDisplayName(entry),
+        rounds: 0,
+        holes: 0,
+        counts: emptyScoreCounts(),
+        toPars: [],
+        rawScores: [],
+        summary: scoreSummary(emptyScoreCounts()),
+        avgToPar: null,
+        bestToPar: 0,
+      });
+    }
+    const player = players.get(key);
+    if (!player) continue;
+    player.rounds += 1;
+    const counts = scoreCountsForRow(entry.row);
+    addScoreCounts(player.counts, counts);
+    player.holes += totalScores(counts);
+    const toPar = toParValue(entry.row.toPar);
+    if (Number.isFinite(toPar)) player.toPars.push(Number(toPar));
+    const raw = numberValue(entry.row.rawScore);
+    if (Number.isFinite(raw)) player.rawScores.push(Number(raw));
+  }
+
+  for (const event of sourceEvents) {
+    for (const prize of event.prizeWinners || []) {
+      if (!prizeMatchesStatsDivisions(event, prize, divisions)) continue;
+      const key = playerKey(prize.name);
+      if (!key) continue;
+      if (!prizePlayers.has(key)) {
+        prizePlayers.set(key, { name: cleanPlayerName(prize.name), total: 0, ctb: 0, handicap: 0 });
+      }
+      const player = prizePlayers.get(key);
+      if (!player) continue;
+      player.total += 1;
+      if (/CTB/i.test(prize.prize || '')) player.ctb += 1;
+      if (/Handicap/i.test(prize.prize || '')) player.handicap += 1;
+    }
+  }
+
+  const eventStats = importedEvents.map((event) => {
+    const eventRows = resultRowsForEventByStatsDivisions(event, divisions);
+    const counts = emptyScoreCounts();
+    const toPars: number[] = [];
+    const rawScores: number[] = [];
+    for (const entry of eventRows) {
+      addScoreCounts(counts, scoreCountsForRow(entry.row));
+      const toPar = toParValue(entry.row.toPar);
+      if (Number.isFinite(toPar)) toPars.push(Number(toPar));
+      const raw = numberValue(entry.row.rawScore);
+      if (Number.isFinite(raw)) rawScores.push(Number(raw));
+    }
+    const summary = scoreSummary(counts);
+    return {
+      event,
+      players: eventRows.length,
+      counts,
+      summary,
+      avgRaw: average(rawScores),
+      avgToPar: average(toPars),
+    };
   });
 
-  profiles.set(profileKey, profile);
-}
+  const bestToPar = sortedByNumber(rows, (entry) => toParValue(entry.row.toPar), 'asc')
+    .sort((a, b) => {
+      const toParDiff = Number(toParValue(a.row.toPar)) - Number(toParValue(b.row.toPar));
+      if (toParDiff) return toParDiff;
+      return (numberValue(a.row.rawScore) ?? 999) - (numberValue(b.row.rawScore) ?? 999);
+    })
+    .slice(0, 10);
 
-const prizeCounts = new Map<string, { name: string; handicap: number; ctb: number; total: number }>();
-for (const { resultEvent } of roundStats) {
-  const prizes = resultEvent?.prizeWinners || resultEvent?.prizeEmailRows || resultEvent?.prizes || [];
-  for (const prize of prizes) {
-    const name = String(prize.name || '').trim();
-    if (!name) continue;
-    const current = prizeCounts.get(name) ?? { name, handicap: 0, ctb: 0, total: 0 };
-    if (/CTB/i.test(prize.prize || '')) current.ctb += 1;
-    else current.handicap += 1;
-    current.total += 1;
-    prizeCounts.set(name, current);
-  }
-}
+  const playerProfiles = Array.from(players.values())
+    .filter((player) => player.rounds >= 1 && player.holes)
+    .map((player) => {
+      const summary = scoreSummary(player.counts);
+      return {
+        ...player,
+        summary,
+        avgToPar: average(player.toPars),
+        bestToPar: Math.min(...player.toPars),
+      };
+    })
+    .sort((a, b) => {
+      if (b.rounds !== a.rounds) return b.rounds - a.rounds;
+      return b.summary.birdieBetterPct - a.summary.birdieBetterPct;
+    });
 
-const totalHoles = Object.values(scoreMix).reduce((sum, value) => sum + value, 0);
-const uniquePlayers = profiles.size;
-const averageField = roundStats.length ? scoreRows.length / roundStats.length : 0;
-const seasonLabel = publicSeason?.season?.label ?? (season.name.includes('S2') ? 'Season 2' : 'Season 1');
+  const prizeBoard = Array.from(prizePlayers.values())
+    .sort((a, b) => b.total - a.total || b.handicap - a.handicap || a.name.localeCompare(b.name))
+    .slice(0, 12);
 
-const topRounds = scoreRows
-  .slice()
-  .sort((a, b) => a.player.diff - b.player.diff || a.player.sum - b.player.sum || a.player.name.localeCompare(b.player.name))
-  .slice(0, 10);
-
-const eventStats = roundStats.map(({ round, detail }) => {
-  const players = detail.divisions.flatMap((division) => division.players);
-  const avgToPar = players.length ? players.reduce((sum, player) => sum + player.diff, 0) / players.length : 0;
   return {
-    round,
-    detail,
-    players: players.length,
-    avgToPar,
+    events: sourceEvents,
+    seasonLabel: currentSeasonLabel,
+    importedEvents,
+    rows,
+    players,
+    totalCounts,
+    totalSummary: scoreSummary(totalCounts),
+    eventStats,
+    bestToPar,
+    playerProfiles,
+    playerProfilesFivePlus: playerProfiles.filter((player) => player.rounds >= 5).length,
+    playerProfilesThreePlus: playerProfiles.filter((player) => player.rounds >= 3).length,
+    prizeBoard,
   };
-});
+}
 
-const prizeBoard = [...prizeCounts.values()].sort((a, b) => b.total - a.total || a.name.localeCompare(b.name)).slice(0, 12);
-const playerProfiles = [...profiles.values()]
-  .sort((a, b) => b.rounds - a.rounds || (a.totalDiff / a.rounds) - (b.totalDiff / b.rounds) || a.name.localeCompare(b.name))
-  .slice(0, 20);
+function statsCard(label: string, value: unknown, detail = ''): string {
+  return `<article class="stats-card">
+    <span>${esc(label)}</span>
+    <strong>${esc(value)}</strong>
+    ${detail ? `<small>${esc(detail)}</small>` : ''}
+  </article>`;
+}
 
-const scoreMixRows = [
-  { label: 'Ace', value: scoreMix.ace },
-  { label: 'Eagle', value: scoreMix.eagle },
-  { label: 'Birdie', value: scoreMix.birdie },
-  { label: 'Par', value: scoreMix.par },
-  { label: 'Bogey', value: scoreMix.bogey },
-  { label: 'Double+', value: scoreMix.doubleBogeyPlus },
-];
+function statsTable<T>(headers: TableHeader<T>[], rows: T[], emptyText = 'No data yet.', options: { className?: string; rowAttributes?: (row: T) => string } = {}): string {
+  if (!rows.length) return `<p class="results-empty">${esc(emptyText)}</p>`;
+  const className = options.className ? ` ${options.className}` : '';
+  return `<div class="table-wrap stats-table-wrap${esc(className)}">
+    <table data-sortable-table>
+      <thead>
+        <tr>${headers.map((header, index) => {
+          const hasShortLabel = !isBlank(header.shortLabel) && header.shortLabel !== header.label;
+          return `<th${header.className ? ` class="${esc(header.className)}"` : ''}>
+          <button type="button"${hasShortLabel ? ' class="has-short-label"' : ''} data-sort-index="${index}" data-sort-type="${esc(header.sortType || 'text')}">
+            <span class="label-full">${esc(header.label)}</span>${hasShortLabel ? `<span class="label-short">${esc(header.shortLabel)}</span>` : ''}<span class="sort-indicator" aria-hidden="true"></span>
+          </button>
+        </th>`;
+        }).join('')}</tr>
+      </thead>
+      <tbody>
+        ${rows.map((row) => {
+          const rowAttributes = typeof options.rowAttributes === 'function' ? options.rowAttributes(row) : '';
+          return `<tr${rowAttributes ? ` ${rowAttributes}` : ''}>${headers.map((header) => {
+            const value = header.value(row);
+            const sortValue = typeof header.sortValue === 'function' ? header.sortValue(row) : value;
+            const cellClass = typeof header.cellClass === 'function' ? header.cellClass(row) : header.cellClass || '';
+            return `<td${cellClass ? ` class="${esc(cellClass)}"` : ''} data-sort-value="${esc(sortValue ?? '')}">${esc(value)}</td>`;
+          }).join('')}</tr>`;
+        }).join('')}
+      </tbody>
+    </table>
+  </div>`;
+}
+
+function scoreMixBlock(counts: ScoreCounts): string {
+  const total = totalScores(counts);
+  const buckets: Array<[keyof ScoreCounts, string, string]> = [
+    ['aces', 'Aces', 'mix-aces'],
+    ['eagles', 'Eagles', 'mix-eagles'],
+    ['birdies', 'Birdies', 'mix-birdies'],
+    ['pars', 'Pars', 'mix-pars'],
+    ['bogeys', 'Bogeys', 'mix-bogeys'],
+    ['doublePlus', 'Double+', 'mix-double-plus'],
+  ];
+  const segments = buckets
+    .filter(([key]) => counts[key] > 0)
+    .map(([key, label, className]) => {
+      const width = Math.max(1.5, (counts[key] / total) * 100);
+      return `<span class="score-mix-segment ${className}" style="width:${width.toFixed(2)}%" title="${esc(label)}: ${esc(percent(counts[key], total))}"></span>`;
+    }).join('');
+  const legend = buckets.map(([key, label, className]) => `
+    <div class="score-mix-pill ${className}">
+      <strong>${esc(label)}</strong>
+      <em>${esc(percent(counts[key], total))}</em>
+      <small>${esc(counts[key].toLocaleString('en-AU'))}</small>
+    </div>`).join('');
+  return `<div class="score-mix">
+    <div class="score-mix-bar" aria-label="Season scoring mix">${segments}</div>
+    <div class="score-mix-grid">${legend}</div>
+  </div>`;
+}
+
+function attendanceChart(eventStats: EventStats[]): string {
+  const maxPlayers = Math.max(1, ...eventStats.map((item) => item.players));
+  return `<div class="attendance-chart">
+    ${eventStats.map((item) => {
+      const width = (item.players / maxPlayers) * 100;
+      return `<div class="attendance-row">
+        <span>${esc(roundLabel(item.event))}</span>
+        <div><i style="width:${width.toFixed(2)}%"></i></div>
+        <strong>${esc(item.players)}</strong>
+        <small>${esc(item.event.venue || '')}</small>
+      </div>`;
+    }).join('')}
+  </div>`;
+}
+
+function topRoundRows(entries: ResultEntry[]): Array<Record<string, unknown>> {
+  return entries.map((entry) => ({
+    player: playerDisplayName(entry),
+    event: roundVenueLabel(entry.event),
+    toPar: formatSigned(toParValue(entry.row.toPar)),
+    toParValue: toParValue(entry.row.toPar),
+    raw: numberValue(entry.row.rawScore),
+    rating: numberValue(entry.row.rating),
+    division: statsDivisionForEntry(entry) || entry.row.division || entry.division,
+  }));
+}
+
+function profileFilterControl(): string {
+  return `<label class="profile-filter">
+    <span>Show</span>
+    <select data-profile-min>
+      <option value="5" selected>5+ days</option>
+      <option value="3">3+ days</option>
+      <option value="1">All players</option>
+    </select>
+  </label>`;
+}
+
+function profileRowAttributes(row: PlayerProfile): string {
+  return `data-profile-row data-profile-rounds="${esc(row.rounds)}"${row.rounds < 5 ? ' hidden' : ''}`;
+}
+
+function statsViewMarkup(stats: SeasonStats, variant: StatsVariant): string {
+  const totalPlayers = stats.players.size;
+  const totalRounds = stats.rows.length;
+  const totalHoles = stats.totalSummary.total;
+  const avgField = stats.importedEvents.length ? totalRounds / stats.importedEvents.length : 0;
+  const topAttendance = stats.eventStats.slice().sort((a, b) => b.players - a.players)[0];
+  const easiestEvent = stats.eventStats.slice().sort((a, b) => (a.avgToPar ?? 999) - (b.avgToPar ?? 999))[0];
+  const toughestEvent = stats.eventStats.slice().sort((a, b) => (b.avgToPar ?? -999) - (a.avgToPar ?? -999))[0];
+  const importedSummary = stats.importedEvents.length
+    ? `${stats.importedEvents.length} imported rounds from ${resultDateLabel(stats.importedEvents[0]?.date)} to ${resultDateLabel(stats.importedEvents.at(-1)?.date)}.`
+    : `No imported rounds for ${variant.label} yet.`;
+
+  return `<div class="stats-view" data-stats-view="${esc(variant.key)}"${variant.key === 'all' ? '' : ' hidden'}>
+  <section class="stats-overview-band">
+    <div class="section-head compact-section-head">
+      <div>
+        <h2>Season Snapshot</h2>
+        <p><strong>${esc(variant.label)}</strong> - ${esc(importedSummary)}</p>
+      </div>
+    </div>
+    <div class="stats-card-grid">
+      ${statsCard('Imported Rounds', stats.importedEvents.length, `${stats.events.length} ${stats.seasonLabel} rounds scheduled`)}
+      ${statsCard('Player Rounds', totalRounds.toLocaleString('en-AU'), `${formatDecimal(avgField, 1)} average field`)}
+      ${statsCard('Unique Players', totalPlayers.toLocaleString('en-AU'), `${stats.playerProfilesFivePlus} with 5+ rounds`)}
+      ${statsCard('Holes Scored', totalHoles.toLocaleString('en-AU'), `${percent(stats.totalSummary.birdieBetter, totalHoles)} birdie or better`)}
+    </div>
+  </section>
+
+  <section class="stats-panel scoring-panel">
+    <div class="section-head compact-section-head">
+      <div>
+        <h2>Scoring Mix</h2>
+        <p>Every imported hole score, grouped by Metrix score colour.</p>
+      </div>
+    </div>
+    ${scoreMixBlock(stats.totalCounts)}
+  </section>
+
+  <section class="stats-layout">
+    <article class="stats-panel">
+      <div class="section-head compact-section-head">
+        <div>
+          <h2>Attendance</h2>
+          <p>Largest field: ${esc(topAttendance ? `${topAttendance.players} at ${roundVenueLabel(topAttendance.event)}` : 'No rounds yet')}.</p>
+        </div>
+      </div>
+      ${attendanceChart(stats.eventStats)}
+    </article>
+
+    <article class="stats-panel">
+      <div class="section-head compact-section-head">
+        <div>
+          <h2>Best To-Par Rounds</h2>
+          <p>Lowest score to par, then raw score as the tiebreaker.</p>
+        </div>
+      </div>
+      ${statsTable([
+        { label: 'Player', className: 'player-col', value: (row) => row.player },
+        { label: 'Event', className: 'event-col', value: (row) => row.event },
+        { label: '+/-', className: 'number-col', sortType: 'number', value: (row) => row.toPar, sortValue: (row) => row.toParValue },
+        { label: 'Raw', className: 'number-col', sortType: 'number', value: (row) => row.raw ?? '', sortValue: (row) => row.raw },
+        { label: 'Div', className: 'tiny-col', value: (row) => row.division || '' },
+      ], topRoundRows(stats.bestToPar), 'No score rows imported yet.', { className: 'top-rounds-table compact-stats-table' })}
+    </article>
+  </section>
+
+  <section class="stats-layout">
+    <article class="stats-panel">
+      <div class="section-head compact-section-head">
+        <div>
+          <h2>Prize Count Board</h2>
+          <p>Checklist-imported prize winners only. CTB and handicap prizes are counted separately.</p>
+        </div>
+      </div>
+      ${statsTable([
+        { label: 'Player', className: 'player-col', value: (row: PrizeProfile) => row.name },
+        { label: 'Total', shortLabel: 'Tot', className: 'number-col', sortType: 'number', value: (row: PrizeProfile) => row.total, sortValue: (row: PrizeProfile) => row.total },
+        { label: 'CTB', className: 'number-col', sortType: 'number', value: (row: PrizeProfile) => row.ctb, sortValue: (row: PrizeProfile) => row.ctb },
+        { label: 'HC', className: 'number-col', sortType: 'number', value: (row: PrizeProfile) => row.handicap, sortValue: (row: PrizeProfile) => row.handicap },
+      ], stats.prizeBoard, 'No prize rows imported yet.', { className: 'prize-count-table compact-stats-table' })}
+    </article>
+
+    <article class="stats-panel">
+      <div class="section-head compact-section-head">
+        <div>
+          <h2>Round Difficulty</h2>
+          <p>Based on average score to par across each field.</p>
+        </div>
+      </div>
+      <div class="difficulty-pair">
+        ${statsCard('Lowest Field Average', easiestEvent ? roundVenueLabel(easiestEvent.event) : '-', easiestEvent ? `${formatSigned(easiestEvent.avgToPar)} average` : '')}
+        ${statsCard('Highest Field Average', toughestEvent ? roundVenueLabel(toughestEvent.event) : '-', toughestEvent ? `${formatSigned(toughestEvent.avgToPar)} average` : '')}
+      </div>
+      ${statsTable([
+        { label: 'Round', shortLabel: 'Rd', value: (row: EventStats) => roundLabel(row.event) },
+        { label: 'Venue', value: (row: EventStats) => row.event.venue || '' },
+        { label: 'Avg +/-', shortLabel: '+/-', className: 'number-col', sortType: 'number', value: (row: EventStats) => formatSigned(row.avgToPar), sortValue: (row: EventStats) => row.avgToPar, cellClass: (row: EventStats) => difficultyHeatClass(row.avgToPar) },
+        { label: 'Players', shortLabel: 'Plyrs', className: 'number-col', sortType: 'number', value: (row: EventStats) => row.players, sortValue: (row: EventStats) => row.players },
+        { label: 'Birdie+', shortLabel: 'Bird+', className: 'number-col', sortType: 'number', value: (row: EventStats) => percent(row.summary.birdieBetter, row.summary.total), sortValue: (row: EventStats) => percentValue(row.summary.birdieBetter, row.summary.total), cellClass: (row: EventStats) => heatClass('good', percentValue(row.summary.birdieBetter, row.summary.total), [8, 16, 24, 32]) },
+      ], stats.eventStats, 'No round stats yet.', { className: 'difficulty-table compact-stats-table' })}
+    </article>
+  </section>
+
+  <section class="stats-panel player-profile-panel">
+    <div class="section-head compact-section-head profile-panel-head">
+      <div>
+        <h2>Player Scoring Profiles</h2>
+        <p>Birdie+ includes aces, eagles, and birdies.</p>
+      </div>
+      ${profileFilterControl()}
+    </div>
+    ${statsTable([
+      { label: 'Player', value: (row: PlayerProfile) => row.name },
+      { label: 'Days', sortType: 'number', value: (row: PlayerProfile) => row.rounds, sortValue: (row: PlayerProfile) => row.rounds },
+      { label: 'Birdie+', shortLabel: 'Bird+', sortType: 'number', value: (row: PlayerProfile) => percent(row.summary.birdieBetter, row.summary.total), sortValue: (row: PlayerProfile) => percentValue(row.summary.birdieBetter, row.summary.total), cellClass: (row: PlayerProfile) => heatClass('good', percentValue(row.summary.birdieBetter, row.summary.total), [8, 16, 24, 32]) },
+      { label: 'Par', sortType: 'number', value: (row: PlayerProfile) => percent(row.counts.pars, row.summary.total), sortValue: (row: PlayerProfile) => percentValue(row.counts.pars, row.summary.total), cellClass: (row: PlayerProfile) => heatClass('neutral', percentValue(row.counts.pars, row.summary.total), [25, 35, 45, 55]) },
+      { label: 'Bogey', sortType: 'number', value: (row: PlayerProfile) => percent(row.counts.bogeys, row.summary.total), sortValue: (row: PlayerProfile) => percentValue(row.counts.bogeys, row.summary.total), cellClass: (row: PlayerProfile) => heatClass('warn', percentValue(row.counts.bogeys, row.summary.total), [15, 25, 35, 45]) },
+      { label: 'Double+', shortLabel: 'Dbl+', sortType: 'number', value: (row: PlayerProfile) => percent(row.counts.doublePlus, row.summary.total), sortValue: (row: PlayerProfile) => percentValue(row.counts.doublePlus, row.summary.total), cellClass: (row: PlayerProfile) => heatClass('bad', percentValue(row.counts.doublePlus, row.summary.total), [3, 7, 11, 15]) },
+      { label: 'Avg +/-', shortLabel: 'Avg', sortType: 'number', value: (row: PlayerProfile) => formatSigned(row.avgToPar), sortValue: (row: PlayerProfile) => row.avgToPar, cellClass: (row: PlayerProfile) => difficultyHeatClass(row.avgToPar) },
+      { label: 'Best +/-', shortLabel: 'Best', sortType: 'number', value: (row: PlayerProfile) => formatSigned(row.bestToPar), sortValue: (row: PlayerProfile) => row.bestToPar, cellClass: (row: PlayerProfile) => difficultyHeatClass(row.bestToPar) },
+    ], stats.playerProfiles, 'No player profile rows yet.', { className: 'player-profile-table', rowAttributes: profileRowAttributes })}
+  </section>
+</div>`;
+}
 
 function seasonShortLabel(value: Season): string {
   if (value.name.includes('S2')) return 'S2';
@@ -179,35 +820,19 @@ function resultHref(value: Season): string {
 function statsHref(value: Season): string {
   return value.id === defaultSeasonId ? `${baseHref}/stats` : `${baseHref}/${value.id}/stats`;
 }
-
-function formatDiff(diff: number): string {
-  return diff > 0 ? `+${diff}` : String(diff);
-}
-
-function formatDecimal(value: number, digits = 1): string {
-  return Number.isFinite(value) ? value.toFixed(digits) : '-';
-}
-
-function percent(value: number, total: number): string {
-  return total ? `${Math.round((value / total) * 100)}%` : '0%';
-}
-
-function formatShortDate(date: string): string {
-  return new Date(date).toLocaleDateString('en-AU', { day: 'numeric', month: 'short' });
-}
 ---
 
 <div class="social-results-stats">
-  <section class="stats-topbar">
+  <section class="results-topbar">
     <div>
-      <p class="stats-eyebrow">MDGC Social Days / Stats</p>
+      <p class="results-eyebrow">MDGC Social Days / Stats</p>
       <h2>MDGC 2026 Social Day Stats</h2>
       <p>{seasonLabel} scoring, attendance and prize summaries.</p>
     </div>
 
-    <div class="stats-top-actions">
-      <div class="season-switch" aria-label="Stats season selector">
-        {seasons.map((item) => (
+    <div class="results-top-actions">
+      <div class="season-switch" aria-label="Season selector">
+        {seasonsForSwitch.map((item) => (
           item.id === season.id ? (
             <span class="season-switch-item is-active">{seasonShortLabel(item)}</span>
           ) : (
@@ -215,275 +840,420 @@ function formatShortDate(date: string): string {
           )
         ))}
       </div>
-      <a class="stats-top-button" href={resultHref(season)}>Results</a>
-      <a class="stats-top-button" href="/events/social">Info</a>
-      <a class="stats-top-button is-primary" href={`https://discgolfmetrix.com/${season.id}`} target="_blank" rel="noopener noreferrer">Metrix</a>
+      <div class="view-switch" aria-label="Results page selector">
+        <a class="view-switch-item" href={resultHref(season)}>Results</a>
+        <span class="view-switch-item is-active">Stats</span>
+      </div>
+      <a class="result-top-button" href="/events/social">Info</a>
+      <a class="result-top-button is-primary" href={seasonMetrixUrl} target="_blank" rel="noopener noreferrer">Metrix</a>
     </div>
   </section>
 
-  {roundStats.length ? (
-    <>
-      <section class="stats-card-grid">
-        <article class="stats-card">
-          <span>Imported Rounds</span>
-          <strong>{roundStats.length}</strong>
-          <small>{season.rounds.length} scheduled</small>
-        </article>
-        <article class="stats-card">
-          <span>Player Rounds</span>
-          <strong>{scoreRows.length}</strong>
-          <small>{formatDecimal(averageField)} average field</small>
-        </article>
-        <article class="stats-card">
-          <span>Unique Players</span>
-          <strong>{uniquePlayers}</strong>
-          <small>{playerProfiles.filter((profile) => profile.rounds >= 5).length} with 5+ rounds</small>
-        </article>
-        <article class="stats-card">
-          <span>Holes Scored</span>
-          <strong>{totalHoles}</strong>
-          <small>{percent(scoreMix.birdie + scoreMix.eagle + scoreMix.ace, totalHoles)} birdie or better</small>
-        </article>
-      </section>
-
-      <section class="stats-panel">
-        <div class="stats-section-head">
-          <p class="stats-eyebrow">Scoring Mix</p>
-          <h3>All recorded holes</h3>
-        </div>
-        <div class="score-mix">
-          {scoreMixRows.map((row) => (
-            <div class="score-mix-row">
-              <span>{row.label}</span>
-              <div class="score-mix-track"><i style={`width:${totalHoles ? Math.max(3, (row.value / totalHoles) * 100) : 0}%`}></i></div>
-              <strong>{row.value}</strong>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section class="stats-layout">
-        <article class="stats-panel">
-          <div class="stats-section-head">
-            <p class="stats-eyebrow">Best To-Par Rounds</p>
-            <h3>Lowest raw scores against par</h3>
-          </div>
-          <div class="stats-table-wrap">
-            <table>
-              <thead>
-                <tr><th>Player</th><th>Round</th><th>Score</th><th>+/-</th></tr>
-              </thead>
-              <tbody>
-                {topRounds.map(({ event, player }) => (
-                  <tr>
-                    <td>{player.name}</td>
-                    <td>Rd {event.round} - {event.courseName}</td>
-                    <td>{player.sum}</td>
-                    <td>{formatDiff(player.diff)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </article>
-
-        <article class="stats-panel">
-          <div class="stats-section-head">
-            <p class="stats-eyebrow">Round Difficulty</p>
-            <h3>Field average by round</h3>
-          </div>
-          <div class="stats-table-wrap">
-            <table>
-              <thead>
-                <tr><th>Round</th><th>Players</th><th>Avg +/-</th></tr>
-              </thead>
-              <tbody>
-                {eventStats.map((item) => (
-                  <tr>
-                    <td>Rd {item.round.round} - {formatShortDate(item.round.date)} - {item.detail.courseName}</td>
-                    <td>{item.players}</td>
-                    <td>{formatDiff(Number(formatDecimal(item.avgToPar, 0)))}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </article>
-      </section>
-
-      <section class="stats-layout">
-        <article class="stats-panel">
-          <div class="stats-section-head">
-            <p class="stats-eyebrow">Prize Count Board</p>
-            <h3>Voucher winners</h3>
-          </div>
-          <div class="stats-table-wrap">
-            <table>
-              <thead>
-                <tr><th>Player</th><th>Total</th><th>Handicap</th><th>CTB</th></tr>
-              </thead>
-              <tbody>
-                {prizeBoard.length ? prizeBoard.map((row) => (
-                  <tr>
-                    <td>{row.name}</td>
-                    <td>{row.total}</td>
-                    <td>{row.handicap}</td>
-                    <td>{row.ctb}</td>
-                  </tr>
-                )) : (
-                  <tr><td colspan="4">No prize rows imported yet.</td></tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </article>
-
-        <article class="stats-panel">
-          <div class="stats-section-head">
-            <p class="stats-eyebrow">Player Scoring Profiles</p>
-            <h3>Most active players</h3>
-          </div>
-          <div class="stats-table-wrap">
-            <table>
-              <thead>
-                <tr><th>Player</th><th>Rounds</th><th>Avg +/-</th><th>Best</th><th>Birdie+</th></tr>
-              </thead>
-              <tbody>
-                {playerProfiles.map((profile) => (
-                  <tr>
-                    <td>{profile.name}</td>
-                    <td>{profile.rounds}</td>
-                    <td>{formatDiff(Number(formatDecimal(profile.totalDiff / profile.rounds, 0)))}</td>
-                    <td>{formatDiff(profile.bestDiff)}</td>
-                    <td>{percent(profile.birdieBetter, profile.holes)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </article>
-      </section>
-    </>
-  ) : (
-    <section class="stats-panel">
-      <div class="stats-section-head">
-        <p class="stats-eyebrow">Stats</p>
-        <h3>No imported scores yet</h3>
-        <p>Stats will appear here once this season has imported scorecards.</p>
+  <main class="stats-shell" data-stats-page>
+    <section class="stats-filter-bar" data-stats-controls>
+      <div class="stats-filter-group">
+        <span>Divisions</span>
+        <label class="division-check"><input type="checkbox" data-stats-all checked /><span>All</span></label>
+        {STATS_FILTER_DIVISIONS.map((division) => (
+          <label class="division-check"><input type="checkbox" data-stats-division value={division} /><span>{division}</span></label>
+        ))}
       </div>
     </section>
-  )}
+
+    <Fragment set:html={statsViewsHtml} />
+  </main>
 </div>
+
+<script>
+  document.querySelectorAll('[data-stats-page]').forEach((page) => {
+    const controls = page.querySelector('[data-stats-controls]');
+    if (!controls) return;
+    const allInput = controls.querySelector('[data-stats-all]');
+    const divisionInputs = Array.from(controls.querySelectorAll('[data-stats-division]'));
+    const profileSelects = Array.from(page.querySelectorAll('[data-profile-min]'));
+    let profileMinimum = 5;
+
+    const selectedDivisions = () => {
+      if (allInput && allInput.checked) return [];
+      return divisionInputs
+        .filter((input) => input.checked)
+        .map((input) => input.value)
+        .sort();
+    };
+
+    const applyProfileFilter = () => {
+      page.querySelectorAll('[data-profile-row]').forEach((row) => {
+        const rounds = Number(row.dataset.profileRounds || '0');
+        row.hidden = rounds < profileMinimum;
+      });
+    };
+
+    const applyStatsFilters = () => {
+      const divisions = selectedDivisions();
+      if (!divisions.length && allInput) {
+        allInput.checked = true;
+        divisionInputs.forEach((input) => {
+          input.checked = false;
+        });
+      }
+      const key = divisions.length ? divisions.join('-') : 'all';
+      page.querySelectorAll('[data-stats-view]').forEach((view) => {
+        view.hidden = view.dataset.statsView !== key;
+      });
+      applyProfileFilter();
+    };
+
+    if (allInput) {
+      allInput.addEventListener('change', () => {
+        if (allInput.checked) {
+          divisionInputs.forEach((input) => {
+            input.checked = false;
+          });
+        }
+        applyStatsFilters();
+      });
+    }
+
+    divisionInputs.forEach((input) => {
+      input.addEventListener('change', () => {
+        if (input.checked && allInput) allInput.checked = false;
+        if (!divisionInputs.some((item) => item.checked) && allInput) allInput.checked = true;
+        applyStatsFilters();
+      });
+    });
+
+    profileSelects.forEach((select) => {
+      select.addEventListener('change', () => {
+        profileMinimum = Number(select.value) || 1;
+        profileSelects.forEach((item) => {
+          item.value = String(profileMinimum);
+        });
+        applyProfileFilter();
+      });
+    });
+
+    applyStatsFilters();
+  });
+
+  document.querySelectorAll('[data-sortable-table]').forEach((table) => {
+    const headers = Array.from(table.querySelectorAll('thead th'));
+    const tbody = table.tBodies[0];
+    if (!headers.length || !tbody) return;
+
+    const valueFor = (row, index, type) => {
+      const cell = row.cells[index];
+      const raw = cell ? (cell.dataset.sortValue || cell.textContent || '').trim() : '';
+      if (type === 'number') {
+        const number = Number(raw.replace(/,/g, '').replace(/%/g, '').replace(/^\+/, ''));
+        return Number.isFinite(number) ? number : null;
+      }
+      return raw.toLocaleLowerCase('en-AU');
+    };
+
+    headers.forEach((header, index) => {
+      const button = header.querySelector('[data-sort-index]');
+      if (!button) return;
+      button.addEventListener('click', () => {
+        const type = button.dataset.sortType || 'text';
+        const current = header.getAttribute('aria-sort');
+        const next = current ? (current === 'ascending' ? 'descending' : 'ascending') : (type === 'number' ? 'descending' : 'ascending');
+        const direction = next === 'ascending' ? 1 : -1;
+        const rows = Array.from(tbody.rows);
+
+        headers.forEach((item) => item.removeAttribute('aria-sort'));
+        header.setAttribute('aria-sort', next);
+
+        rows.sort((rowA, rowB) => {
+          const valueA = valueFor(rowA, index, type);
+          const valueB = valueFor(rowB, index, type);
+          const missingA = valueA === null || valueA === '';
+          const missingB = valueB === null || valueB === '';
+          if (missingA && missingB) return 0;
+          if (missingA) return 1;
+          if (missingB) return -1;
+          if (type === 'number') return (valueA - valueB) * direction;
+          return String(valueA).localeCompare(String(valueB), 'en-AU', { numeric: true }) * direction;
+        });
+
+        rows.forEach((row) => tbody.appendChild(row));
+      });
+    });
+  });
+</script>
 
 <style>
   .social-results-stats {
-    display: grid;
-    gap: 1.25rem;
+    --stats-ink: var(--color-mdgc-ink);
+    --stats-muted: var(--color-text-body);
+    --stats-line: var(--color-mdgc-blue-light);
+    --stats-blue: var(--color-mdgc-accent);
+    --stats-blue-deep: var(--color-mdgc-accent-deep);
+    --stats-soft: var(--color-mdgc-accent-soft);
+    --stats-surface: #ffffff;
+    --stats-shadow: 0 10px 28px rgba(6, 61, 99, 0.1);
+    margin-inline: auto;
+    max-width: 1320px;
   }
 
-  .stats-topbar,
-  .stats-panel,
-  .stats-card {
-    border: 1px solid rgba(6, 61, 99, 0.16);
-    border-radius: 8px;
-    background: #ffffff;
-    box-shadow: 0 12px 30px rgba(6, 61, 99, 0.09);
-  }
-
-  .stats-topbar {
+  .results-topbar {
     display: flex;
-    gap: 1rem;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
-    padding: 1.15rem;
+    gap: 18px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    background:
+      linear-gradient(115deg, rgba(5, 7, 8, 0.98) 0%, rgba(6, 61, 99, 0.97) 58%, rgba(34, 122, 183, 0.94) 100%),
+      repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 18px);
+    color: white;
+    padding: 14px 18px;
   }
 
-  .stats-eyebrow {
-    margin: 0 0 0.4rem;
-    color: var(--color-mdgc-accent-deep);
-    font-size: 0.72rem;
+  .results-eyebrow {
+    margin: 0 0 4px;
+    color: var(--color-mdgc-amber);
+    font-size: 12px;
     font-weight: 900;
-    letter-spacing: 0.14em;
     text-transform: uppercase;
   }
 
-  .stats-topbar h2,
-  .stats-section-head h3 {
+  .results-topbar h2 {
     margin: 0;
-    color: var(--color-mdgc-ink);
     font-family: var(--font-display);
+    font-size: 24px;
     font-weight: 900;
     line-height: 1.1;
   }
 
-  .stats-topbar h2 {
-    font-size: 2rem;
+  .results-topbar p {
+    margin: 5px 0 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 13px;
   }
 
-  .stats-topbar p,
-  .stats-section-head p {
-    margin: 0.45rem 0 0;
-    color: var(--color-text-body);
-  }
-
-  .stats-top-actions {
+  .results-top-actions,
+  .season-switch,
+  .view-switch {
     display: flex;
+    align-items: center;
+    gap: 6px;
     flex-wrap: wrap;
-    gap: 0.45rem;
-    justify-content: flex-end;
   }
 
-  .season-switch {
-    display: inline-flex;
-    overflow: hidden;
-    border: 1px solid rgba(6, 61, 99, 0.16);
+  .season-switch,
+  .view-switch {
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
     border-radius: 8px;
-    background: var(--color-mdgc-accent-soft);
+    background: rgba(255, 255, 255, 0.12);
   }
 
   .season-switch-item,
-  .stats-top-button {
+  .view-switch-item,
+  .result-top-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 2.35rem;
-    padding: 0 0.8rem;
-    color: var(--color-mdgc-accent-deep);
-    font-size: 0.83rem;
-    font-weight: 900;
+    min-height: 30px;
+    border-radius: 6px;
+    padding: 5px 10px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 12px;
+    font-weight: 850;
     text-decoration: none;
   }
 
   .season-switch-item.is-active,
-  .stats-top-button.is-primary {
-    background: var(--color-mdgc-accent);
+  .view-switch-item.is-active {
+    background: #ffffff;
+    color: var(--stats-blue-deep);
+  }
+
+  .result-top-button {
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  .result-top-button.is-primary {
+    border-color: var(--stats-blue);
+    background: var(--stats-blue);
+  }
+
+  .stats-shell {
+    display: grid;
+    gap: 18px;
+    min-width: 0;
+  }
+
+  .stats-filter-bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: block;
+    min-width: 0;
+    max-width: 100%;
+    padding: 6px 8px;
+    border: 1px solid var(--stats-line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: var(--stats-shadow);
+    backdrop-filter: blur(10px);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .stats-filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .stats-filter-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 5px;
+    width: max-content;
+    min-width: 0;
+  }
+
+  .stats-filter-group > span,
+  .profile-filter > span {
+    color: var(--stats-muted);
+    font-size: 11px;
+    font-weight: 850;
+    text-transform: uppercase;
+  }
+
+  .division-check {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .division-check input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+  }
+
+  .division-check span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    min-height: 26px;
+    padding: 4px 8px;
+    border: 1px solid var(--stats-line);
+    border-radius: 999px;
+    background: var(--stats-soft);
+    color: var(--stats-blue-deep);
+    font-size: 12px;
+    font-weight: 850;
+  }
+
+  .division-check input:checked + span {
+    border-color: var(--stats-blue);
+    background: var(--stats-blue);
     color: #ffffff;
   }
 
-  .stats-top-button {
-    border: 1px solid rgba(6, 61, 99, 0.16);
-    border-radius: 8px;
-    background: #ffffff;
+  .division-check input:focus-visible + span,
+  .profile-filter select:focus-visible {
+    outline: 2px solid var(--stats-blue);
+    outline-offset: 2px;
   }
 
-  .stats-card-grid,
-  .stats-layout {
+  .profile-filter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+
+  .profile-filter select {
+    min-height: 32px;
+    border: 1px solid var(--stats-line);
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--stats-blue-deep);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 850;
+    padding: 5px 28px 5px 10px;
+  }
+
+  .profile-panel-head {
+    align-items: center;
+  }
+
+  .profile-panel-head .profile-filter {
+    flex: 0 0 auto;
+  }
+
+  .stats-view,
+  .stats-panel,
+  .stats-overview-band {
+    min-width: 0;
+  }
+
+  .stats-view {
     display: grid;
-    gap: 1rem;
+    gap: 18px;
+  }
+
+  .stats-view[hidden] {
+    display: none;
+  }
+
+  .stats-overview-band,
+  .stats-panel,
+  .stats-card {
+    border: 1px solid var(--stats-line);
+    border-radius: 8px;
+    background: var(--stats-surface);
+    box-shadow: var(--stats-shadow);
+  }
+
+  .stats-overview-band,
+  .stats-panel {
+    padding: 16px;
+  }
+
+  .section-head {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .section-head h2 {
+    margin: 0;
+    color: var(--stats-ink);
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1.08;
+  }
+
+  .section-head p {
+    margin: 5px 0 0;
+    color: var(--stats-muted);
+    font-size: 13px;
+    line-height: 1.45;
   }
 
   .stats-card-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  }
-
-  .stats-layout {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
   }
 
   .stats-card {
     position: relative;
     overflow: hidden;
-    padding: 1rem;
+    min-width: 0;
+    padding: 14px 15px;
+    background: linear-gradient(180deg, #ffffff, var(--stats-soft));
   }
 
   .stats-card::after {
@@ -492,119 +1262,451 @@ function formatShortDate(date: string): string {
     inset-inline: 0;
     bottom: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--color-mdgc-amber), var(--color-mdgc-accent), var(--color-mdgc-blue));
+    background: linear-gradient(90deg, var(--color-mdgc-amber), var(--stats-blue), var(--color-mdgc-blue));
   }
 
   .stats-card span {
     display: block;
-    color: var(--color-mdgc-accent-deep);
-    font-size: 0.72rem;
-    font-weight: 900;
+    color: var(--stats-muted);
+    font-size: 12px;
+    font-weight: 850;
     text-transform: uppercase;
   }
 
   .stats-card strong {
     display: block;
-    margin-top: 0.3rem;
-    color: var(--color-mdgc-ink);
+    margin-top: 6px;
+    color: var(--stats-blue-deep);
     font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 900;
-    line-height: 1;
+    font-size: 26px;
+    line-height: 1.05;
   }
 
   .stats-card small {
     display: block;
-    margin-top: 0.45rem;
-    color: var(--color-text-body);
+    margin-top: 6px;
+    color: var(--stats-muted);
+    font-size: 12px;
+    line-height: 1.35;
   }
 
-  .stats-panel {
-    min-width: 0;
-    padding: 1rem;
-  }
-
-  .stats-section-head {
-    margin-bottom: 0.9rem;
-  }
-
-  .score-mix {
+  .stats-layout {
     display: grid;
-    gap: 0.65rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
   }
 
-  .score-mix-row {
-    display: grid;
-    grid-template-columns: 5rem minmax(0, 1fr) 3rem;
-    gap: 0.65rem;
-    align-items: center;
-    color: var(--color-text-body);
-    font-size: 0.92rem;
-    font-weight: 800;
-  }
-
-  .score-mix-track {
+  .scoring-panel {
     overflow: hidden;
-    height: 0.7rem;
-    border-radius: 999px;
-    background: var(--color-mdgc-accent-soft);
   }
 
-  .score-mix-track i {
+  .score-mix-bar {
+    display: flex;
+    height: 22px;
+    overflow: hidden;
+    border: 1px solid var(--stats-line);
+    border-radius: 999px;
+    background: var(--stats-soft);
+  }
+
+  .score-mix-bar span {
+    display: block;
+    min-width: 2px;
+  }
+
+  .score-mix-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .score-mix-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    min-height: 26px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  .score-mix-pill strong,
+  .score-mix-pill em,
+  .score-mix-pill small {
+    font: inherit;
+    font-weight: 850;
+  }
+
+  .score-mix-pill em {
+    font-style: normal;
+  }
+
+  .score-mix-pill small {
+    opacity: 0.78;
+  }
+
+  .mix-aces {
+    background: #ffd60a;
+    color: #3f2600;
+  }
+
+  .mix-eagles {
+    background: #55d57d;
+    color: #06351f;
+  }
+
+  .mix-birdies {
+    background: #d8f0e5;
+    color: #0b3f38;
+  }
+
+  .mix-pars {
+    background: #ffffff;
+    color: var(--stats-ink);
+  }
+
+  .mix-bogeys {
+    background: #ffe1c2;
+    color: #7a3b00;
+  }
+
+  .mix-double-plus {
+    background: #f8e7e4;
+    color: #8c2c27;
+  }
+
+  .attendance-chart {
+    display: grid;
+    gap: 8px;
+  }
+
+  .attendance-row {
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr) 34px 92px;
+    gap: 8px;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  .attendance-row span {
+    color: var(--stats-blue-deep);
+    font-weight: 850;
+  }
+
+  .attendance-row div {
+    height: 11px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--stats-soft);
+  }
+
+  .attendance-row i {
     display: block;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(90deg, var(--color-mdgc-amber), var(--color-mdgc-accent));
+    background: linear-gradient(90deg, var(--stats-blue), var(--color-mdgc-blue));
+  }
+
+  .attendance-row strong {
+    color: var(--stats-ink);
+    text-align: right;
+  }
+
+  .attendance-row small {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--stats-muted);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .results-empty {
+    margin: 0;
+    padding: 13px 12px;
+    color: var(--stats-muted);
+    font-size: 13px;
   }
 
   .stats-table-wrap {
     overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: none;
   }
 
   .stats-table-wrap table {
     width: 100%;
-    min-width: 34rem;
+    min-width: 560px;
     border-collapse: collapse;
-    font-size: 0.88rem;
+  }
+
+  .compact-stats-table table {
+    min-width: 0;
+    table-layout: fixed;
+  }
+
+  .top-rounds-table th:nth-child(1),
+  .top-rounds-table td:nth-child(1) {
+    width: 22%;
+  }
+
+  .top-rounds-table th:nth-child(2),
+  .top-rounds-table td:nth-child(2) {
+    width: 34%;
+  }
+
+  .top-rounds-table th:nth-child(3),
+  .top-rounds-table td:nth-child(3) {
+    width: 16%;
+  }
+
+  .top-rounds-table th:nth-child(4),
+  .top-rounds-table td:nth-child(4) {
+    width: 14%;
+  }
+
+  .top-rounds-table th:nth-child(5),
+  .top-rounds-table td:nth-child(5) {
+    width: 14%;
+  }
+
+  .prize-count-table th:first-child,
+  .prize-count-table td:first-child {
+    width: 46%;
+  }
+
+  .prize-count-table th:not(:first-child),
+  .prize-count-table td:not(:first-child) {
+    width: 18%;
+    text-align: center;
+  }
+
+  .difficulty-table th:nth-child(1),
+  .difficulty-table td:nth-child(1) {
+    width: 16%;
+  }
+
+  .difficulty-table th:nth-child(2),
+  .difficulty-table td:nth-child(2) {
+    width: 31%;
+  }
+
+  .difficulty-table th:nth-child(3),
+  .difficulty-table td:nth-child(3) {
+    width: 19%;
+  }
+
+  .difficulty-table th:nth-child(4),
+  .difficulty-table td:nth-child(4),
+  .difficulty-table th:nth-child(5),
+  .difficulty-table td:nth-child(5) {
+    width: 17%;
   }
 
   .stats-table-wrap th,
   .stats-table-wrap td {
     border-bottom: 1px solid rgba(183, 215, 233, 0.75);
-    padding: 0.58rem 0.5rem;
+    padding: 8px 9px;
+    color: var(--stats-muted);
+    font-size: 12px;
     text-align: left;
+  }
+
+  .compact-stats-table th,
+  .compact-stats-table td {
+    padding: 7px 5px;
+    font-size: 11.5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
   }
 
+  .stats-table-wrap td:first-child {
+    color: var(--stats-ink);
+    font-weight: 750;
+  }
+
   .stats-table-wrap th {
-    color: var(--color-mdgc-accent-deep);
-    font-size: 0.72rem;
+    color: var(--stats-blue-deep);
+    font-size: 11px;
     font-weight: 900;
-    letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
-  .stats-table-wrap td {
-    color: var(--color-text-body);
+  .stats-table-wrap th button {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    max-width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 850;
   }
 
-  .stats-table-wrap td:first-child {
-    color: var(--color-mdgc-ink);
-    font-weight: 900;
+  .stats-table-wrap th .label-full,
+  .stats-table-wrap th .label-short {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  @media (max-width: 800px) {
-    .stats-topbar,
+  .stats-table-wrap th .label-short {
+    display: none;
+  }
+
+  .sort-indicator::after {
+    content: "\\2195";
+    color: var(--stats-muted);
+    font-size: 10px;
+  }
+
+  .stats-table-wrap th[aria-sort="ascending"] .sort-indicator::after {
+    content: "\\2191";
+    color: var(--stats-blue);
+  }
+
+  .stats-table-wrap th[aria-sort="descending"] .sort-indicator::after {
+    content: "\\2193";
+    color: var(--stats-blue);
+  }
+
+  .heat-good-1 { --heat-bg: #ebf8ef; --heat-fg: #0f5132; background: var(--heat-bg); color: var(--heat-fg); }
+  .heat-good-2 { --heat-bg: #d8f0e5; --heat-fg: #0b3f38; background: var(--heat-bg); color: var(--heat-fg); }
+  .heat-good-3 { --heat-bg: #b7e8cd; --heat-fg: #07351f; background: var(--heat-bg); color: var(--heat-fg); }
+  .heat-good-4 { --heat-bg: #8addae; --heat-fg: #062f1c; background: var(--heat-bg); color: var(--heat-fg); }
+  .heat-neutral-1 { --heat-bg: #eff8fc; --heat-fg: #17465f; background: var(--heat-bg); color: var(--heat-fg); }
+  .heat-neutral-2 { --heat-bg: #dff1fb; --heat-fg: #15425c; background: var(--heat-bg); color: var(--heat-fg); }
+  .heat-neutral-3 { --heat-bg: #cae8f7; --heat-fg: #11374c; background: var(--heat-bg); color: var(--heat-fg); }
+  .heat-neutral-4 { --heat-bg: #b5dff3; --heat-fg: #0e2f42; background: var(--heat-bg); color: var(--heat-fg); }
+  .heat-warn-1 { --heat-bg: #fff4e5; --heat-fg: #6e3f00; background: var(--heat-bg); color: var(--heat-fg); }
+  .heat-warn-2 { --heat-bg: #ffe1c2; --heat-fg: #7a3b00; background: var(--heat-bg); color: var(--heat-fg); }
+  .heat-warn-3 { --heat-bg: #ffc58e; --heat-fg: #612900; background: var(--heat-bg); color: var(--heat-fg); }
+  .heat-warn-4 { --heat-bg: #ffad66; --heat-fg: #552100; background: var(--heat-bg); color: var(--heat-fg); }
+  .heat-bad-1 { --heat-bg: #fdecea; --heat-fg: #7a2722; background: var(--heat-bg); color: var(--heat-fg); }
+  .heat-bad-2 { --heat-bg: #f8d1cc; --heat-fg: #8c2c27; background: var(--heat-bg); color: var(--heat-fg); }
+  .heat-bad-3 { --heat-bg: #efaaa4; --heat-fg: #711d1a; background: var(--heat-bg); color: var(--heat-fg); }
+  .heat-bad-4 { --heat-bg: #e68079; --heat-fg: #5f1714; background: var(--heat-bg); color: var(--heat-fg); }
+
+  .stats-table-wrap td[class*="heat-"] {
+    background: var(--heat-bg);
+    color: var(--heat-fg);
+  }
+
+  .difficulty-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .difficulty-pair .stats-card strong {
+    font-size: 17px;
+    line-height: 1.18;
+  }
+
+  .player-profile-panel {
+    overflow: hidden;
+  }
+
+  @media (max-width: 900px) {
+    .results-topbar,
+    .section-head {
+      display: block;
+    }
+
+    .results-top-actions {
+      justify-content: flex-start;
+      margin-top: 10px;
+    }
+
+    .season-switch,
+    .view-switch {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .season-switch-item,
+    .view-switch-item {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    .result-top-button {
+      flex: 1 1 8rem;
+    }
+
+    .stats-card-grid,
     .stats-layout {
       grid-template-columns: 1fr;
     }
 
-    .stats-topbar {
-      display: grid;
+    .profile-panel-head {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
     }
 
-    .stats-top-actions {
-      justify-content: flex-start;
+    .profile-panel-head .profile-filter {
+      flex-direction: column;
+      gap: 4px;
+      min-width: 106px;
+    }
+
+    .stats-card-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .stats-card {
+      padding: 11px 10px;
+    }
+
+    .stats-card strong {
+      font-size: 22px;
+    }
+
+    .score-mix-grid {
+      gap: 5px;
+    }
+
+    .score-mix-pill {
+      gap: 4px;
+      padding: 4px 6px;
+      font-size: 10px;
+    }
+
+    .difficulty-pair {
+      grid-template-columns: 1fr;
+    }
+
+    .attendance-row {
+      grid-template-columns: 42px minmax(0, 1fr) 30px;
+    }
+
+    .attendance-row small {
+      grid-column: 2 / 4;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .stats-table-wrap th .has-short-label .label-full {
+      display: none;
+    }
+
+    .stats-table-wrap th .has-short-label .label-short {
+      display: inline;
+    }
+
+    .compact-stats-table th,
+    .compact-stats-table td {
+      padding-left: 4px;
+      padding-right: 4px;
     }
   }
 </style>
