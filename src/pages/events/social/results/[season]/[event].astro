@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
-import { getEvent, getPlayedEventRefs } from '@utils/metrix';
+import { getEvent, getPlayedEventRefs, getSeasons } from '@utils/metrix';
 
 export async function getStaticPaths() {
   const courses = await getCollection('courses');
@@ -27,6 +27,13 @@ const { name, date, courseName, par, tracks, divisions } = event;
 
 const subtitle = formatDateRange(Temporal.PlainDate.from(date));
 
+// Back-link up to this round's season.
+const season = getSeasons().find((s) => s.id === event.seasonId);
+const backLink = {
+  href: `/events/social/results/${event.seasonId}`,
+  text: season?.name ?? 'Season',
+};
+
 // Shade a hole score's background relative to its par (disc-golf scorecard colours).
 function holeClass(score: number | null, holePar: number): string {
   if (score === null) return 'text-gray-300';
@@ -49,12 +56,10 @@ function fmt2(n: number | null): string {
 
 ---
 
-<Layout title={name} subtitle={subtitle}>
+<Layout title={name} subtitle={subtitle} backLink={backLink}>
   <div class="my-8 space-y-10">
 
     <p>
-      <a href={`/events/social/results/${event.seasonId}`} class="text-mdgc-blue underline">← Back to season</a>
-      <span class="text-gray-400 mx-2">·</span>
       <a href={`https://discgolfmetrix.com/${event.id}`} class="text-mdgc-blue underline" target="_blank" rel="noopener noreferrer">View on Metrix</a>
     </p>
 
