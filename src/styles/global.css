@@ -179,6 +179,14 @@ a:hover {
 	@apply m-0;
 }
 
+.upcoming-social-callout .callout {
+	@apply my-0 rounded-md border border-amber-200 border-l-4 border-l-mdgc-amber bg-amber-50 px-4 py-3 shadow-sm;
+}
+
+.upcoming-social-callout p {
+	@apply text-sm leading-6 text-slate-800;
+}
+
 time {
   @apply text-sm text-gray-500;
 }
