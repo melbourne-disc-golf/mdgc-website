@@ -1,0 +1,115 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@layouts/Layout.astro';
+import { Temporal } from '@js-temporal/polyfill';
+import { formatDateRange } from '@utils/dates';
+
+export async function getStaticPaths() {
+  const events = await getCollection('metrixEvents');
+  const courses = await getCollection('courses');
+  const courseByMetrixId = new Map<string, { slug: string; title: string }>();
+  for (const course of courses) {
+    for (const metrixId of course.data.metrixCourseIds ?? []) {
+      courseByMetrixId.set(metrixId, { slug: course.id, title: course.data.title });
+    }
+  }
+  return events
+    .filter((event) => event.data.divisions.length > 0)
+    .map((event) => ({
+      params: { season: String(event.data.seasonId), event: String(event.data.id) },
+      props: { event, course: courseByMetrixId.get(event.data.courseId) ?? null },
+    }));
+}
+
+const { event, course } = Astro.props;
+const { name, date, courseName, par, tracks, divisions } = event.data;
+
+const subtitle = formatDateRange(Temporal.PlainDate.from(date));
+
+// Shade a hole score's background relative to its par (disc-golf scorecard colours).
+function holeClass(score: number | null, holePar: number): string {
+  if (score === null) return 'text-gray-300';
+  const diff = score - holePar;
+  if (diff <= -2) return 'bg-yellow-200 text-yellow-900';
+  if (diff === -1) return 'bg-green-100 text-green-900';
+  if (diff === 0) return 'text-gray-700';
+  if (diff === 1) return 'bg-orange-100 text-orange-900';
+  return 'bg-red-200 text-red-900';
+}
+
+function formatDiff(diff: number): string {
+  return diff > 0 ? `+${diff}` : String(diff);
+}
+---
+
+<Layout title={name} subtitle={subtitle}>
+  <div class="my-8 space-y-10">
+
+    <p>
+      <a href={`/events/social/results/${event.data.seasonId}`} class="text-mdgc-blue underline">← Back to season</a>
+      <span class="text-gray-400 mx-2">·</span>
+      <a href={`https://discgolfmetrix.com/${event.data.id}`} class="text-mdgc-blue underline" target="_blank" rel="noopener noreferrer">View on Metrix</a>
+    </p>
+
+    <p class="text-gray-600">
+      {course ? (
+        <a href={`/courses/${course.slug}`} class="text-mdgc-blue hover:underline font-medium">{course.title}</a>
+      ) : (
+        <span class="font-medium">{courseName.split('&rarr;')[0].trim()}</span>
+      )}
+      {' · '}Par {par} over {tracks.length} holes.
+    </p>
+
+    {divisions.map((division) => (
+      <section>
+        <h2 class="text-xl font-bold text-mdgc-blue-dark mb-3">{division.name}</h2>
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-mdgc-blue-dark text-white">
+                <th class="px-2 py-2 text-right">#</th>
+                <th class="px-3 py-2 text-left sticky left-0 bg-mdgc-blue-dark">Player</th>
+                <th class="px-2 py-2 text-right">Rating</th>
+                <th class="px-2 py-2 text-right">+/-</th>
+                {tracks.map((t) => (
+                  <th class="px-1.5 py-2 text-right font-normal" title={`Par ${t.par}`}>{t.number}</th>
+                ))}
+                <th class="px-2 py-2 text-right">Raw</th>
+                <th class="px-2 py-2 text-right">HC</th>
+                <th class="px-2 py-2 text-right">Net</th>
+              </tr>
+              <tr class="bg-mdgc-blue text-white/90 text-xs">
+                <th></th>
+                <th class="px-3 py-1 text-left sticky left-0 bg-mdgc-blue">Par</th>
+                <th></th>
+                <th></th>
+                {tracks.map((t) => (
+                  <th class="px-1.5 py-1 text-right font-normal">{t.par}</th>
+                ))}
+                <th class="px-2 py-1 text-right">{par}</th>
+                <th colspan="2"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {division.players.map((p, i) => (
+                <tr class={i % 2 ? 'bg-gray-50' : 'bg-white'}>
+                  <td class="px-2 py-1.5 text-right text-gray-500">{i + 1}</td>
+                  <td class={`px-3 py-1.5 font-medium whitespace-nowrap sticky left-0 ${i % 2 ? 'bg-gray-50' : 'bg-white'}`}>{p.name}</td>
+                  <td class="px-2 py-1.5 text-right text-gray-500">{p.rating ?? '–'}</td>
+                  <td class="px-2 py-1.5 text-right font-semibold">{formatDiff(p.diff)}</td>
+                  {p.holes.map((score, h) => (
+                    <td class={`px-1.5 py-1.5 text-right tabular-nums ${holeClass(score, tracks[h]?.par ?? par)}`}>{score ?? '–'}</td>
+                  ))}
+                  <td class="px-2 py-1.5 text-right text-gray-600">{p.sum}</td>
+                  <td class="px-2 py-1.5 text-right text-gray-600">{p.hc ?? '–'}</td>
+                  <td class="px-2 py-1.5 text-right font-bold text-mdgc-blue-dark">{p.net ?? '–'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    ))}
+
+  </div>
+</Layout>

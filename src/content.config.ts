@@ -90,6 +90,71 @@ const metrixSeasons = defineCollection({
   }),
 });
 
+// Season standings (Metrix tour points) plus the round list, for the results pages.
+const metrixStandings = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/metrixStandings' }),
+  schema: z.object({
+    id: z.number(),
+    name: z.string(),
+    dateStart: z.string().optional(),
+    dateEnd: z.string().optional(),
+    rounds: z.array(z.object({
+      id: z.number(),
+      round: z.number(),
+      name: z.string(),
+      date: z.string(),
+      courseName: z.string(),
+      courseId: z.string(),
+      played: z.boolean(),
+    })),
+    standings: z.array(z.object({
+      userId: z.string(),
+      name: z.string(),
+      place: z.number(),
+      total: z.number(),
+      eventResults: z.array(z.number().nullable()),
+    })),
+  }),
+});
+
+// Per-round results: gross scorecards merged with handicap standings, grouped by division.
+const metrixEvents = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/metrixEvents' }),
+  schema: z.object({
+    id: z.number(),
+    seasonId: z.number(),
+    round: z.number(),
+    name: z.string(),
+    date: z.string(),
+    courseName: z.string(),
+    courseId: z.string(),
+    holeCount: z.number(),
+    par: z.number(),
+    tracks: z.array(z.object({
+      number: z.string(),
+      par: z.number(),
+    })),
+    divisions: z.array(z.object({
+      letter: z.string(),
+      name: z.string(),
+      players: z.array(z.object({
+        userId: z.string(),
+        name: z.string(),
+        group: z.string().nullable(),
+        division: z.string(),
+        divisionName: z.string(),
+        rating: z.number().nullable(),
+        holes: z.array(z.number().nullable()),
+        sum: z.number(),
+        diff: z.number(),
+        hc: z.number().nullable(),
+        net: z.number().nullable(),
+        place: z.number(),
+      })),
+    })),
+  }),
+});
+
 export const collections = {
   courses,
   board,
@@ -97,4 +162,6 @@ export const collections = {
   events,
   externalEvents,
   metrixSeasons,
+  metrixStandings,
+  metrixEvents,
 };
