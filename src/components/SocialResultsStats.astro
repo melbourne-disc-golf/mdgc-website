@@ -1,0 +1,610 @@
+---
+import s1ResultsData from '@data/social-results/s1.json';
+import s2ResultsData from '@data/social-results/s2.json';
+import type { EventDetail, Player, Season } from '@utils/metrix';
+import { getEvent } from '@utils/metrix';
+
+interface Props {
+  season: Season;
+  seasons: Season[];
+  baseHref?: string;
+  defaultSeasonId?: number;
+}
+
+interface PrizeRow {
+  prize?: string;
+  name?: string;
+  detail?: string;
+}
+
+interface PublicResultEvent {
+  round: string | number;
+  metrixId?: string | number;
+  prizeWinners?: PrizeRow[];
+  prizeEmailRows?: PrizeRow[];
+  prizes?: PrizeRow[];
+}
+
+interface PublicResultsData {
+  season?: {
+    label?: string;
+    metrixId?: string | number;
+  };
+  events?: PublicResultEvent[];
+}
+
+interface ScoreRow {
+  event: EventDetail;
+  player: Player;
+}
+
+interface Profile {
+  name: string;
+  division: string;
+  rounds: number;
+  totalDiff: number;
+  bestDiff: number;
+  birdieBetter: number;
+  holes: number;
+}
+
+const { season, seasons, baseHref = '/events/social/results', defaultSeasonId = season.id } = Astro.props;
+const publicResultsData = [s1ResultsData, s2ResultsData] as PublicResultsData[];
+const publicSeason = publicResultsData.find((data) => String(data.season?.metrixId ?? '') === String(season.id));
+const publicEventsByMetrixId = new Map(
+  (publicSeason?.events ?? [])
+    .filter((event) => event.metrixId !== undefined && event.metrixId !== null)
+    .map((event) => [String(event.metrixId), event])
+);
+const publicEventsByRound = new Map(
+  (publicSeason?.events ?? []).map((event) => [Number(event.round), event])
+);
+
+const roundStats = season.rounds
+  .map((round) => ({
+    round,
+    detail: getEvent(round.id),
+    resultEvent: publicEventsByMetrixId.get(String(round.id)) ?? publicEventsByRound.get(round.round) ?? null,
+  }))
+  .filter((item): item is { round: Season['rounds'][number]; detail: EventDetail; resultEvent: PublicResultEvent | null } => item.detail !== null);
+
+const scoreRows: ScoreRow[] = roundStats.flatMap(({ detail }) =>
+  detail.divisions.flatMap((division) => division.players.map((player) => ({ event: detail, player })))
+);
+
+const scoreMix = {
+  ace: 0,
+  eagle: 0,
+  birdie: 0,
+  par: 0,
+  bogey: 0,
+  doubleBogeyPlus: 0,
+};
+
+const profiles = new Map<string, Profile>();
+
+for (const { event, player } of scoreRows) {
+  const profileKey = player.userId || player.name;
+  const profile = profiles.get(profileKey) ?? {
+    name: player.name,
+    division: player.division,
+    rounds: 0,
+    totalDiff: 0,
+    bestDiff: player.diff,
+    birdieBetter: 0,
+    holes: 0,
+  };
+  profile.rounds += 1;
+  profile.totalDiff += player.diff;
+  profile.bestDiff = Math.min(profile.bestDiff, player.diff);
+
+  player.holes.forEach((score, index) => {
+    if (score === null) return;
+    const par = event.tracks[index]?.par ?? 3;
+    const diff = score - par;
+    profile.holes += 1;
+    if (score === 1) scoreMix.ace += 1;
+    else if (diff <= -2) scoreMix.eagle += 1;
+    else if (diff === -1) scoreMix.birdie += 1;
+    else if (diff === 0) scoreMix.par += 1;
+    else if (diff === 1) scoreMix.bogey += 1;
+    else scoreMix.doubleBogeyPlus += 1;
+    if (diff < 0) profile.birdieBetter += 1;
+  });
+
+  profiles.set(profileKey, profile);
+}
+
+const prizeCounts = new Map<string, { name: string; handicap: number; ctb: number; total: number }>();
+for (const { resultEvent } of roundStats) {
+  const prizes = resultEvent?.prizeWinners || resultEvent?.prizeEmailRows || resultEvent?.prizes || [];
+  for (const prize of prizes) {
+    const name = String(prize.name || '').trim();
+    if (!name) continue;
+    const current = prizeCounts.get(name) ?? { name, handicap: 0, ctb: 0, total: 0 };
+    if (/CTB/i.test(prize.prize || '')) current.ctb += 1;
+    else current.handicap += 1;
+    current.total += 1;
+    prizeCounts.set(name, current);
+  }
+}
+
+const totalHoles = Object.values(scoreMix).reduce((sum, value) => sum + value, 0);
+const uniquePlayers = profiles.size;
+const averageField = roundStats.length ? scoreRows.length / roundStats.length : 0;
+const seasonLabel = publicSeason?.season?.label ?? (season.name.includes('S2') ? 'Season 2' : 'Season 1');
+
+const topRounds = scoreRows
+  .slice()
+  .sort((a, b) => a.player.diff - b.player.diff || a.player.sum - b.player.sum || a.player.name.localeCompare(b.player.name))
+  .slice(0, 10);
+
+const eventStats = roundStats.map(({ round, detail }) => {
+  const players = detail.divisions.flatMap((division) => division.players);
+  const avgToPar = players.length ? players.reduce((sum, player) => sum + player.diff, 0) / players.length : 0;
+  return {
+    round,
+    detail,
+    players: players.length,
+    avgToPar,
+  };
+});
+
+const prizeBoard = [...prizeCounts.values()].sort((a, b) => b.total - a.total || a.name.localeCompare(b.name)).slice(0, 12);
+const playerProfiles = [...profiles.values()]
+  .sort((a, b) => b.rounds - a.rounds || (a.totalDiff / a.rounds) - (b.totalDiff / b.rounds) || a.name.localeCompare(b.name))
+  .slice(0, 20);
+
+const scoreMixRows = [
+  { label: 'Ace', value: scoreMix.ace },
+  { label: 'Eagle', value: scoreMix.eagle },
+  { label: 'Birdie', value: scoreMix.birdie },
+  { label: 'Par', value: scoreMix.par },
+  { label: 'Bogey', value: scoreMix.bogey },
+  { label: 'Double+', value: scoreMix.doubleBogeyPlus },
+];
+
+function seasonShortLabel(value: Season): string {
+  if (value.name.includes('S2')) return 'S2';
+  if (value.name.includes('S1')) return 'S1';
+  if (/MDGC\s+2026\s+Social\s+Days$/i.test(value.name.trim())) return 'S1';
+  const match = value.name.match(/Season\s+(\d+)/i);
+  return match ? `S${match[1]}` : String(value.id);
+}
+
+function resultHref(value: Season): string {
+  return value.id === defaultSeasonId ? baseHref : `${baseHref}/${value.id}`;
+}
+
+function statsHref(value: Season): string {
+  return value.id === defaultSeasonId ? `${baseHref}/stats` : `${baseHref}/${value.id}/stats`;
+}
+
+function formatDiff(diff: number): string {
+  return diff > 0 ? `+${diff}` : String(diff);
+}
+
+function formatDecimal(value: number, digits = 1): string {
+  return Number.isFinite(value) ? value.toFixed(digits) : '-';
+}
+
+function percent(value: number, total: number): string {
+  return total ? `${Math.round((value / total) * 100)}%` : '0%';
+}
+
+function formatShortDate(date: string): string {
+  return new Date(date).toLocaleDateString('en-AU', { day: 'numeric', month: 'short' });
+}
+---
+
+<div class="social-results-stats">
+  <section class="stats-topbar">
+    <div>
+      <p class="stats-eyebrow">MDGC Social Days / Stats</p>
+      <h2>MDGC 2026 Social Day Stats</h2>
+      <p>{seasonLabel} scoring, attendance and prize summaries.</p>
+    </div>
+
+    <div class="stats-top-actions">
+      <div class="season-switch" aria-label="Stats season selector">
+        {seasons.map((item) => (
+          item.id === season.id ? (
+            <span class="season-switch-item is-active">{seasonShortLabel(item)}</span>
+          ) : (
+            <a class="season-switch-item" href={statsHref(item)}>{seasonShortLabel(item)}</a>
+          )
+        ))}
+      </div>
+      <a class="stats-top-button" href={resultHref(season)}>Results</a>
+      <a class="stats-top-button" href="/events/social">Info</a>
+      <a class="stats-top-button is-primary" href={`https://discgolfmetrix.com/${season.id}`} target="_blank" rel="noopener noreferrer">Metrix</a>
+    </div>
+  </section>
+
+  {roundStats.length ? (
+    <>
+      <section class="stats-card-grid">
+        <article class="stats-card">
+          <span>Imported Rounds</span>
+          <strong>{roundStats.length}</strong>
+          <small>{season.rounds.length} scheduled</small>
+        </article>
+        <article class="stats-card">
+          <span>Player Rounds</span>
+          <strong>{scoreRows.length}</strong>
+          <small>{formatDecimal(averageField)} average field</small>
+        </article>
+        <article class="stats-card">
+          <span>Unique Players</span>
+          <strong>{uniquePlayers}</strong>
+          <small>{playerProfiles.filter((profile) => profile.rounds >= 5).length} with 5+ rounds</small>
+        </article>
+        <article class="stats-card">
+          <span>Holes Scored</span>
+          <strong>{totalHoles}</strong>
+          <small>{percent(scoreMix.birdie + scoreMix.eagle + scoreMix.ace, totalHoles)} birdie or better</small>
+        </article>
+      </section>
+
+      <section class="stats-panel">
+        <div class="stats-section-head">
+          <p class="stats-eyebrow">Scoring Mix</p>
+          <h3>All recorded holes</h3>
+        </div>
+        <div class="score-mix">
+          {scoreMixRows.map((row) => (
+            <div class="score-mix-row">
+              <span>{row.label}</span>
+              <div class="score-mix-track"><i style={`width:${totalHoles ? Math.max(3, (row.value / totalHoles) * 100) : 0}%`}></i></div>
+              <strong>{row.value}</strong>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="stats-layout">
+        <article class="stats-panel">
+          <div class="stats-section-head">
+            <p class="stats-eyebrow">Best To-Par Rounds</p>
+            <h3>Lowest raw scores against par</h3>
+          </div>
+          <div class="stats-table-wrap">
+            <table>
+              <thead>
+                <tr><th>Player</th><th>Round</th><th>Score</th><th>+/-</th></tr>
+              </thead>
+              <tbody>
+                {topRounds.map(({ event, player }) => (
+                  <tr>
+                    <td>{player.name}</td>
+                    <td>Rd {event.round} - {event.courseName}</td>
+                    <td>{player.sum}</td>
+                    <td>{formatDiff(player.diff)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="stats-panel">
+          <div class="stats-section-head">
+            <p class="stats-eyebrow">Round Difficulty</p>
+            <h3>Field average by round</h3>
+          </div>
+          <div class="stats-table-wrap">
+            <table>
+              <thead>
+                <tr><th>Round</th><th>Players</th><th>Avg +/-</th></tr>
+              </thead>
+              <tbody>
+                {eventStats.map((item) => (
+                  <tr>
+                    <td>Rd {item.round.round} - {formatShortDate(item.round.date)} - {item.detail.courseName}</td>
+                    <td>{item.players}</td>
+                    <td>{formatDiff(Number(formatDecimal(item.avgToPar, 0)))}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="stats-layout">
+        <article class="stats-panel">
+          <div class="stats-section-head">
+            <p class="stats-eyebrow">Prize Count Board</p>
+            <h3>Voucher winners</h3>
+          </div>
+          <div class="stats-table-wrap">
+            <table>
+              <thead>
+                <tr><th>Player</th><th>Total</th><th>Handicap</th><th>CTB</th></tr>
+              </thead>
+              <tbody>
+                {prizeBoard.length ? prizeBoard.map((row) => (
+                  <tr>
+                    <td>{row.name}</td>
+                    <td>{row.total}</td>
+                    <td>{row.handicap}</td>
+                    <td>{row.ctb}</td>
+                  </tr>
+                )) : (
+                  <tr><td colspan="4">No prize rows imported yet.</td></tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="stats-panel">
+          <div class="stats-section-head">
+            <p class="stats-eyebrow">Player Scoring Profiles</p>
+            <h3>Most active players</h3>
+          </div>
+          <div class="stats-table-wrap">
+            <table>
+              <thead>
+                <tr><th>Player</th><th>Rounds</th><th>Avg +/-</th><th>Best</th><th>Birdie+</th></tr>
+              </thead>
+              <tbody>
+                {playerProfiles.map((profile) => (
+                  <tr>
+                    <td>{profile.name}</td>
+                    <td>{profile.rounds}</td>
+                    <td>{formatDiff(Number(formatDecimal(profile.totalDiff / profile.rounds, 0)))}</td>
+                    <td>{formatDiff(profile.bestDiff)}</td>
+                    <td>{percent(profile.birdieBetter, profile.holes)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </>
+  ) : (
+    <section class="stats-panel">
+      <div class="stats-section-head">
+        <p class="stats-eyebrow">Stats</p>
+        <h3>No imported scores yet</h3>
+        <p>Stats will appear here once this season has imported scorecards.</p>
+      </div>
+    </section>
+  )}
+</div>
+
+<style>
+  .social-results-stats {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .stats-topbar,
+  .stats-panel,
+  .stats-card {
+    border: 1px solid rgba(6, 61, 99, 0.16);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 12px 30px rgba(6, 61, 99, 0.09);
+  }
+
+  .stats-topbar {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.15rem;
+  }
+
+  .stats-eyebrow {
+    margin: 0 0 0.4rem;
+    color: var(--color-mdgc-accent-deep);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .stats-topbar h2,
+  .stats-section-head h3 {
+    margin: 0;
+    color: var(--color-mdgc-ink);
+    font-family: var(--font-display);
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  .stats-topbar h2 {
+    font-size: 2rem;
+  }
+
+  .stats-topbar p,
+  .stats-section-head p {
+    margin: 0.45rem 0 0;
+    color: var(--color-text-body);
+  }
+
+  .stats-top-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    justify-content: flex-end;
+  }
+
+  .season-switch {
+    display: inline-flex;
+    overflow: hidden;
+    border: 1px solid rgba(6, 61, 99, 0.16);
+    border-radius: 8px;
+    background: var(--color-mdgc-accent-soft);
+  }
+
+  .season-switch-item,
+  .stats-top-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.35rem;
+    padding: 0 0.8rem;
+    color: var(--color-mdgc-accent-deep);
+    font-size: 0.83rem;
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .season-switch-item.is-active,
+  .stats-top-button.is-primary {
+    background: var(--color-mdgc-accent);
+    color: #ffffff;
+  }
+
+  .stats-top-button {
+    border: 1px solid rgba(6, 61, 99, 0.16);
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  .stats-card-grid,
+  .stats-layout {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .stats-card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .stats-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stats-card {
+    position: relative;
+    overflow: hidden;
+    padding: 1rem;
+  }
+
+  .stats-card::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-mdgc-amber), var(--color-mdgc-accent), var(--color-mdgc-blue));
+  }
+
+  .stats-card span {
+    display: block;
+    color: var(--color-mdgc-accent-deep);
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .stats-card strong {
+    display: block;
+    margin-top: 0.3rem;
+    color: var(--color-mdgc-ink);
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .stats-card small {
+    display: block;
+    margin-top: 0.45rem;
+    color: var(--color-text-body);
+  }
+
+  .stats-panel {
+    min-width: 0;
+    padding: 1rem;
+  }
+
+  .stats-section-head {
+    margin-bottom: 0.9rem;
+  }
+
+  .score-mix {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .score-mix-row {
+    display: grid;
+    grid-template-columns: 5rem minmax(0, 1fr) 3rem;
+    gap: 0.65rem;
+    align-items: center;
+    color: var(--color-text-body);
+    font-size: 0.92rem;
+    font-weight: 800;
+  }
+
+  .score-mix-track {
+    overflow: hidden;
+    height: 0.7rem;
+    border-radius: 999px;
+    background: var(--color-mdgc-accent-soft);
+  }
+
+  .score-mix-track i {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--color-mdgc-amber), var(--color-mdgc-accent));
+  }
+
+  .stats-table-wrap {
+    overflow-x: auto;
+  }
+
+  .stats-table-wrap table {
+    width: 100%;
+    min-width: 34rem;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  .stats-table-wrap th,
+  .stats-table-wrap td {
+    border-bottom: 1px solid rgba(183, 215, 233, 0.75);
+    padding: 0.58rem 0.5rem;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .stats-table-wrap th {
+    color: var(--color-mdgc-accent-deep);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .stats-table-wrap td {
+    color: var(--color-text-body);
+  }
+
+  .stats-table-wrap td:first-child {
+    color: var(--color-mdgc-ink);
+    font-weight: 900;
+  }
+
+  @media (max-width: 800px) {
+    .stats-topbar,
+    .stats-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .stats-topbar {
+      display: grid;
+    }
+
+    .stats-top-actions {
+      justify-content: flex-start;
+    }
+  }
+</style>

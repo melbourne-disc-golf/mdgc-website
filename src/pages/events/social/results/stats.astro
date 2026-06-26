@@ -1,0 +1,18 @@
+---
+import Layout from '@layouts/Layout.astro';
+import SocialResultsStats from '@components/SocialResultsStats.astro';
+import { getSeasons } from '@utils/metrix';
+
+const seasons = getSeasons();
+const defaultSeason = seasons.find((season) => season.rounds.some((round) => round.played)) ?? seasons[0];
+---
+
+<Layout title="Social Day stats" subtitle="Season scoring, attendance and prize summaries from Disc Golf Metrix." backLink={{ href: '/events/social/results', text: 'Social Day results' }}>
+  {defaultSeason ? (
+    <SocialResultsStats season={defaultSeason} seasons={seasons} defaultSeasonId={defaultSeason.id} />
+  ) : (
+    <div class="surface p-6">
+      <p class="text-slate-600">No Social Day stats are available yet.</p>
+    </div>
+  )}
+</Layout>

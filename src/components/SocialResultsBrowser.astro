@@ -120,6 +120,10 @@ function seasonHref(value: Season): string {
   return value.id === defaultSeasonId ? baseHref : `${baseHref}/${value.id}`;
 }
 
+function statsHref(value: Season): string {
+  return value.id === defaultSeasonId ? `${baseHref}/stats` : `${baseHref}/${value.id}/stats`;
+}
+
 function tabId(round: { round: number }): string {
   return `social-results-${season.id}-rd-${String(round.round).padStart(2, '0')}`;
 }
@@ -326,6 +330,7 @@ function totalDisplayPlayers(divisions: DisplayDivision[]): number {
         ))}
       </div>
       <a class="result-top-button" href="/events/social">Info</a>
+      <a class="result-top-button" href={statsHref(season)}>Stats</a>
       <a class="result-top-button is-primary" href={`https://discgolfmetrix.com/${season.id}`} target="_blank" rel="noopener noreferrer">Metrix</a>
     </div>
   </section>
