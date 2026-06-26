@@ -40,9 +40,11 @@ function formatDate(dateStr: string): string {
   return `${WEEKDAYS[date.dayOfWeek - 1]}, ${date.day} ${MONTHS[date.month - 1]}`;
 }
 
-// Clean HTML entities from Metrix data
-function cleanHtml(str: string): string {
-  return str.replace(/&rarr;/g, '→').replace(/&[a-z]+;/gi, '');
+// Metrix course names are a "Course → Layout" breadcrumb (e.g. "Heathdale Glen
+// Orden Trial Course &rarr; 2026 Redesign Social Day 20"). Keep just the course
+// and strip any HTML entities.
+function cleanCourseName(str: string): string {
+  return str.split(/&rarr;|→/)[0].replace(/&[a-z]+;/gi, '').trim();
 }
 ---
 
@@ -54,7 +56,7 @@ function cleanHtml(str: string): string {
         {event.courseSlug ? (
           <strong><a href={`/courses/${event.courseSlug}/`}>{event.courseTitle}</a></strong>
         ) : (
-          <strong>{cleanHtml(event.courseName)}</strong>
+          <strong>{cleanCourseName(event.courseName)}</strong>
         )} 
         on <strong>{formatDate(event.date)}</strong>.
         <strong><a href={`https://discgolfmetrix.com/${event.id}`}>Register here</a></strong>.
