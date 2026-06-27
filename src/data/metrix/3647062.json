@@ -586,8 +586,58 @@
         "Total": 0
       },
       {
+        "UserID": "40479",
+        "Name": "Jeff Brunsting",
+        "ClassName": "Div B - Metrix Rating 845-890",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "116375",
         "Name": "Mark Green",
+        "ClassName": "Div B - Metrix Rating 845-890",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "136105",
+        "Name": "Mat Daniels",
         "ClassName": "Div B - Metrix Rating 845-890",
         "CountryCode": "AU",
         "Place": 0,
@@ -861,6 +911,31 @@
         "Total": 0
       },
       {
+        "UserID": "136103",
+        "Name": "Kim Michell",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "219287",
         "Name": "Lennyanggriani Che Hosni",
         "ClassName": "Div C - Metrix Rating 790-845",
@@ -1013,6 +1088,31 @@
       {
         "UserID": "231284",
         "Name": "Liam Morley",
+        "ClassName": "Div D - Metrix Rating <790",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "217150",
+        "Name": "Mia Daniels",
         "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
         "Place": 0,
