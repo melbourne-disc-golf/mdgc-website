@@ -9,12 +9,22 @@ heroImage:
 ---
 
 import Text from '@components/Text.astro';
-import NavLink from '@components/NavLink.astro';
-import Grid from '@components/Grid.astro';
-import LinkPanel from '@components/LinkPanel.astro';
 import NextSocialDay from '@components/NextSocialDay.astro';
 
 <Text>
+
+<div class="not-prose -mt-4 mb-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+	<a class="primary-action" href="#general-info">General Info</a>
+	<a class="secondary-action" href="#divisions-prizes">Divisions & Prizes</a>
+	<a class="secondary-action" href="/events/social/results">View Results</a>
+	<a class="secondary-action" href="/club/membership">Join MDGC</a>
+</div>
+
+<div class="not-prose upcoming-social-callout mb-8">
+	<NextSocialDay />
+</div>
+
+<div id="general-info" class="scroll-mt-24"></div>
 
 ## What
 
@@ -29,7 +39,6 @@ We play in groups of (up to) four players.
 Event organisers will assign players to semi-random groups, mixing skill levels to help new players learn.
 If you have a friend you'd like to play with, mention it when you sign up, and we'll do our best to make it happen.
 
-
 ## When and where
 
 We split the year into two seasons (Feb-Jun and Jul-Nov), with 15 Social Days in each season.
@@ -39,18 +48,7 @@ We alternate between Saturdays and Sundays, and rotate around three "zones":
 - **South East Melbourne** - 2nd weekend of month
 - **North East Melbourne** - 3rd weekend of month
 
-<NextSocialDay />
-
 We usually have an early round starting at 8:00am, and a later one at 10:30am -- you can choose which time suits you best when you register.
-
-<Grid>
-	<LinkPanel
-		image="https://discgolfmetrix.com/assets/img/favicon.png"
-		href="https://discgolfmetrix.com/?u=club_events&id=235"
-		title="MDGC Social Days"
-		description="on Disc Golf Metrix"
-	/>
-</Grid>
 
 ## Registering
 
@@ -75,6 +73,8 @@ We prefer to have 2 people scoring on each card for accuracy.
 Start scoring for your group by pressing <span class="metrix-button">Enter</span>, then <span class="metrix-button">Start...</span>.
 More details on scoring are available [here](https://discgolfmetrix.com/?u=rule&ID=6).
 
+<div id="divisions-prizes" class="scroll-mt-24"></div>
+
 ## Divisions and ratings
 
 Once you've played three rounds, Metrix will calculate your rating based on your scores.
@@ -82,12 +82,14 @@ Your rating will continue to be automatically adjusted after every round you pla
 
 Social Days have 6 different divisions, based on your Metrix rating and whether you are a club member:
 
-- **Div A** - Members with rating above 890
-- **Div B** - Members with rating 845 to 890
-- **Div C** - Members with rating 790 to 845
-- **Div D** - Members with rating below 790
-- **Div X** - Members who don't have a rating yet
-- **Div Z** - Non-members (any rating)
+<div class="not-prose results-rule-grid my-6">
+	<div class="results-rule"><strong>Div A</strong><span>Members with rating above 890</span></div>
+	<div class="results-rule"><strong>Div B</strong><span>Members with rating 845 to 890</span></div>
+	<div class="results-rule"><strong>Div C</strong><span>Members with rating 790 to 845</span></div>
+	<div class="results-rule"><strong>Div D</strong><span>Members with rating below 790</span></div>
+	<div class="results-rule"><strong>Div X</strong><span>Members who don't have a rating yet</span></div>
+	<div class="results-rule"><strong>Div Z</strong><span>Non-members (any rating)</span></div>
+</div>
 
 ## Prizes
 
@@ -97,12 +99,54 @@ They come in the form of $25 vouchers for use at the [MDGC shop](/shop), and are
 - **best handicap score** (per division, for club members)
 - landing **closest to the basket** (CTB) on a designated hole (per division)
 
+<section class="not-prose results-section">
+	<div class="results-split">
+		<article class="results-info-panel">
+			<h3>Handicap Prizes</h3>
+			<div class="results-rule-grid">
+				<div class="results-rule is-prize"><strong>Four prizes</strong><span>Div A, Div B, Div C, and Div D each have a handicap voucher winner.</span></div>
+				<div class="results-rule is-prize"><strong>Best net score wins</strong><span>The lowest Metrix handicap score in the division wins.</span></div>
+				<div class="results-rule is-prize"><strong>Tie-break</strong><span>If net scores are tied, the better raw score wins.</span></div>
+				<div class="results-rule is-prize"><strong>Small divisions</strong><span>If a division has 5 or fewer players, it may merge with the smallest adjacent division.</span></div>
+			</div>
+		</article>
+		<article class="results-info-panel">
+			<h3>CTB Prizes</h3>
+			<div class="results-rule-grid">
+				<div class="results-rule"><strong>Two prizes</strong><span>One A/B/X/Z CTB and one C/D CTB each round.</span></div>
+				<div class="results-rule"><strong>Latest valid entry</strong><span>The winner is the latest valid CTB form entry for the day and prize group.</span></div>
+				<div class="results-rule"><strong>CTB takes priority</strong><span>If a player wins CTB and also leads handicap, the CTB stands and handicap passes to the next eligible player.</span></div>
+				<div class="results-rule"><strong>Voucher value</strong><span>Prize winners receive MDGC shop vouchers.</span></div>
+			</div>
+		</article>
+	</div>
+</section>
+
 There is an optional **Ace Club** that pays out a cash prize to members who get an ace (hole-in-one) at a Social Day.
 Ace Club membership costs $30 and covers you for the calendar year. The pot is topped up at each event, to a maximum of $500. If multiple players ace on the same day, they share the pot.
 
 There is also a **leaderboard** for each season -- a combined ladder for all divisions.
 Prizes are awarded to top finishers, as well as to the top female players.
 To qualify for these prizes, you must be a MDGC member, and play 5 or more rounds.
+
+<section class="not-prose results-section">
+	<div class="results-section-head">
+		<h2>How Metrix handicap works</h2>
+		<p>Handicap prizes use Metrix's handicap calculation, not your raw score alone.</p>
+	</div>
+	<div class="results-split">
+		<article class="score-demo-card">
+			<span>Prize graphic example</span>
+			<strong>Net 36.17, Raw 45 (-11)</strong>
+		</article>
+		<div class="results-card-grid">
+			<article class="results-card"><span class="results-card-kicker">Raw Score</span><strong class="results-card-title">Throws</strong><p>Your actual total throws for the round. Lower is better.</p></article>
+			<article class="results-card"><span class="results-card-kicker">+/-</span><strong class="results-card-title">To par</strong><p>Your raw score compared with course par. A score of -11 means eleven under par.</p></article>
+			<article class="results-card"><span class="results-card-kicker">Handicap</span><strong class="results-card-title">Metrix estimate</strong><p>Metrix estimates a handicap from your rating and the course. Higher-rated players receive less help; lower-rated players receive more.</p></article>
+			<article class="results-card"><span class="results-card-kicker">Net Score</span><strong class="results-card-title">Prize score</strong><p>Raw score minus handicap. Handicap prizes are awarded by lowest net score, so a player with Raw 45 and handicap 8.83 has Net 36.17.</p></article>
+		</div>
+	</div>
+</section>
 
 ## Club Champs
 
@@ -111,26 +155,8 @@ It typically involves two rounds, and two different Melbourne courses.
 
 To complete in the Champs, Players must qualify by playing at Social Days, and performing well in their division.
 
-## Results (work in progress)
-
-We're trialling a new way to browse Social Day results -- based on data from Metrix.
-
-<Grid>
-	<LinkPanel
-		href="/events/social/results"
-		title="Social Day results"
-		description="standings and scorecards"
-		icon="heroicons:trophy"
-	/>
-</Grid>
-
 ## Need more info?
 
 If you have any questions, drop us a note at socialdays@melbournediscgolf.com.
-
-<Grid>
-	<NavLink href="/disc-golf" />
-	<NavLink href="/shop" />
-</Grid>
 
 </Text>

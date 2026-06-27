@@ -1,0 +1,193 @@
+{
+  "season": {
+    "name": "MDGC 2026 Social Days S2 Results",
+    "label": "Season 2",
+    "metrixId": "3647062",
+    "metrixUrl": "https://discgolfmetrix.com/3647062",
+    "sourceName": "MDGC 2026 Social Days S2",
+    "description": "Public results archive rebuilt from Disc Golf Metrix. Prize winners are added after each closeout.",
+    "importedAt": ""
+  },
+  "events": [
+    {
+      "round": 1,
+      "label": "Round 1",
+      "name": "Jul West Social Day - Werribee",
+      "date": "2026-07-05",
+      "venue": "Werribee",
+      "metrixId": "3647171",
+      "status": "needs-import",
+      "prizeWinners": [],
+      "handicapLeaders": [],
+      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+    },
+    {
+      "round": 2,
+      "label": "Round 2",
+      "name": "Jul Northeast Social Day - Llewellyn",
+      "date": "2026-07-12",
+      "venue": "Llewellyn",
+      "metrixId": "3647209",
+      "status": "needs-import",
+      "prizeWinners": [],
+      "handicapLeaders": [],
+      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+    },
+    {
+      "round": 3,
+      "label": "Round 3",
+      "name": "Jul Southeast Social Day - Bald Hill",
+      "date": "2026-07-18",
+      "venue": "Bald Hill",
+      "metrixId": "3647211",
+      "status": "needs-import",
+      "prizeWinners": [],
+      "handicapLeaders": [],
+      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+    },
+    {
+      "round": 4,
+      "label": "Round 4",
+      "name": "Aug West Social Day - Stony Creek",
+      "date": "2026-08-08",
+      "venue": "Stony Creek",
+      "metrixId": "3647212",
+      "status": "needs-import",
+      "prizeWinners": [],
+      "handicapLeaders": [],
+      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+    },
+    {
+      "round": 5,
+      "label": "Round 5",
+      "name": "Aug Southeast Social Day - Bicentennial",
+      "date": "2026-08-16",
+      "venue": "Bicentennial Park",
+      "metrixId": "3647213",
+      "status": "needs-import",
+      "prizeWinners": [],
+      "handicapLeaders": [],
+      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+    },
+    {
+      "round": 6,
+      "label": "Round 6",
+      "name": "Aug Northeast Social Day - Llewellyn",
+      "date": "2026-08-29",
+      "venue": "Llewellyn",
+      "metrixId": "3647215",
+      "status": "needs-import",
+      "prizeWinners": [],
+      "handicapLeaders": [],
+      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+    },
+    {
+      "round": 7,
+      "label": "Round 7",
+      "name": "Sep West Social Day - Melton",
+      "date": "2026-09-06",
+      "venue": "Melton",
+      "metrixId": "3647217",
+      "status": "needs-import",
+      "prizeWinners": [],
+      "handicapLeaders": [],
+      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+    },
+    {
+      "round": 8,
+      "label": "Round 8",
+      "name": "Sep Northeast Social Day - Ruffey Lake",
+      "date": "2026-09-12",
+      "venue": "Ruffey Lake",
+      "metrixId": "3647218",
+      "status": "needs-import",
+      "prizeWinners": [],
+      "handicapLeaders": [],
+      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+    },
+    {
+      "round": 9,
+      "label": "Round 9",
+      "name": "Sep Southeast Social Day - Bald Hill",
+      "date": "2026-09-25",
+      "venue": "Bald Hill",
+      "metrixId": "3647219",
+      "status": "needs-import",
+      "prizeWinners": [],
+      "handicapLeaders": [],
+      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+    },
+    {
+      "round": 10,
+      "label": "Round 10",
+      "name": "Oct West Social Day - Werribee",
+      "date": "2026-10-11",
+      "venue": "Werribee",
+      "metrixId": "3647220",
+      "status": "needs-import",
+      "prizeWinners": [],
+      "handicapLeaders": [],
+      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+    },
+    {
+      "round": 11,
+      "label": "Round 11",
+      "name": "Oct Northeast Social Day - Llewellyn",
+      "date": "2026-10-17",
+      "venue": "Llewellyn",
+      "metrixId": "3647221",
+      "status": "needs-import",
+      "prizeWinners": [],
+      "handicapLeaders": [],
+      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+    },
+    {
+      "round": 12,
+      "label": "Round 12",
+      "name": "Oct Southeast Social Day - Bald Hill",
+      "date": "2026-10-24",
+      "venue": "Bald Hill",
+      "metrixId": "3647222",
+      "status": "needs-import",
+      "prizeWinners": [],
+      "handicapLeaders": [],
+      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+    },
+    {
+      "round": 13,
+      "label": "Round 13",
+      "name": "Nov West Social Day - Stony Creek",
+      "date": "2026-11-03",
+      "venue": "Stony Creek",
+      "metrixId": "3647223",
+      "status": "needs-import",
+      "prizeWinners": [],
+      "handicapLeaders": [],
+      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+    },
+    {
+      "round": 14,
+      "label": "Round 14",
+      "name": "Nov Northeast Social Day - Ruffey Lake",
+      "date": "2026-11-07",
+      "venue": "Ruffey Lake",
+      "metrixId": "3647224",
+      "status": "needs-import",
+      "prizeWinners": [],
+      "handicapLeaders": [],
+      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+    },
+    {
+      "round": 15,
+      "label": "Round 15",
+      "name": "Nov Southeast Social Day - Bicentennial",
+      "date": "2026-11-15",
+      "venue": "Bicentennial Park",
+      "metrixId": "3647226",
+      "status": "needs-import",
+      "prizeWinners": [],
+      "handicapLeaders": [],
+      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+    }
+  ]
+}

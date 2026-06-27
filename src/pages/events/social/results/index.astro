@@ -1,44 +1,18 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import SocialResultsBrowser from '@components/SocialResultsBrowser.astro';
 import { getSeasons } from '@utils/metrix';
 
 const seasons = getSeasons();
-
-function formatRange(start?: string, end?: string): string {
-  if (!start && !end) return '';
-  const fmt = (d: string) =>
-    new Date(d).toLocaleDateString('en-AU', { month: 'short', year: 'numeric' });
-  if (start && end) return `${fmt(start)} – ${fmt(end)}`;
-  return fmt((start ?? end)!);
-}
+const defaultSeason = seasons.find((season) => season.rounds.some((round) => round.played)) ?? seasons[0];
 ---
 
-<Layout title="Social day results" subtitle="Results, standings and handicaps from MDGC social days">
-  <div class="my-8">
-    <p class="text-gray-600 mb-6">
-      Results are sourced from <a class="text-mdgc-blue underline" href="https://discgolfmetrix.com/" target="_blank" rel="noopener noreferrer">Disc Golf Metrix</a> and updated automatically.
-    </p>
-
-    <ul class="space-y-4">
-      {seasons.map((season) => {
-        const playedRounds = season.rounds.filter((r) => r.played).length;
-        return (
-          <li>
-            <a
-              href={`/events/social/results/${season.id}`}
-              class="block rounded-lg border border-gray-200 p-5 hover:border-mdgc-blue hover:shadow-md transition"
-            >
-              <div class="flex items-baseline justify-between gap-4">
-                <h2 class="text-xl font-semibold text-mdgc-blue-dark">{season.name}</h2>
-                <span class="text-sm text-gray-500 whitespace-nowrap">{formatRange(season.dateStart, season.dateEnd)}</span>
-              </div>
-              <p class="text-sm text-gray-600 mt-1">
-                {playedRounds} of {season.rounds.length} rounds played
-              </p>
-            </a>
-          </li>
-        );
-      })}
-    </ul>
-  </div>
+<Layout title="Social Day results" subtitle="Round tabs, handicap leaders and division scorecards from Disc Golf Metrix.">
+  {defaultSeason ? (
+    <SocialResultsBrowser season={defaultSeason} seasons={seasons} defaultSeasonId={defaultSeason.id} />
+  ) : (
+    <div class="surface p-6">
+      <p class="text-slate-600">No Social Day results are available yet.</p>
+    </div>
+  )}
 </Layout>

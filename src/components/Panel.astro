@@ -6,6 +6,6 @@ export interface Props {
 const { class: className = "" } = Astro.props;
 ---
 
-<div class={`rounded border border-gray-300 my-8 px-8 h-full text-width ${className}`}>
+<div class={`surface my-8 h-full px-6 py-5 text-width sm:px-8 ${className}`}>
 	<slot />
 </div>
