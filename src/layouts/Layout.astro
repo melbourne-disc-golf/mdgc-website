@@ -120,17 +120,17 @@ const faviconSizes = [16, 32, 48, 192];
 					<div id="menu-logo" class="flex items-center gap-3">
 						<a href="/" title="Home" class="logo-link flex items-center gap-3">
 							<img src={logoImage.src} class="h-12 w-auto" />
-							<span class="text-sm md:text-base lg:text-lg font-display">Melbourne Disc Golf Club</span>
+							<span class="text-sm lg:text-base font-display">Melbourne Disc Golf Club</span>
 						</a>
 					</div>
 
 					<div id="menu-links" class="mx-auto">
-						<nav class="hidden md:flex items-center space-x-8">
+						<nav class="hidden md:flex items-center space-x-4">
 							{navItems.map(item => (
 								item.subPages ? (
 									<div class="relative group">
 										<div class="flex items-center">
-											<a href={item.href} class={`${navItemColor(item.href)} hover:text-white transition-colors px-4 py-2 rounded-lg border border-mdgc-blue-light/25 relative z-1001 group-hover:bg-slate-900 group-hover:text-mdgc-blue-light group-hover:rounded-b-none group-hover:border-b-transparent`}>{item.title}</a>
+											<a href={item.href} class={`${navItemColor(item.href)} hover:text-white transition-colors text-sm lg:text-base px-4 py-2 rounded-lg border border-mdgc-blue-light/25 relative z-1001 group-hover:bg-slate-900 group-hover:text-mdgc-blue-light group-hover:rounded-b-none group-hover:border-b-transparent`}>{item.title}</a>
 										</div>
 										<div class="absolute left-0 top-full -mt-px w-max min-w-full rounded-b-lg rounded-tr-lg border border-mdgc-blue-light/25 bg-slate-900 p-1.5 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-1000">
 											{item.subPages.map(subItem => {
@@ -142,7 +142,7 @@ const faviconSizes = [16, 32, 48, 192];
 										</div>
 									</div>
 								) : (
-									<a href={item.href} class={`${navItemColor(item.href)} hover:text-white transition-colors px-4 py-2 rounded-lg border border-mdgc-blue-light/25 hover:bg-slate-900`}>{item.title}</a>
+									<a href={item.href} class={`${navItemColor(item.href)} hover:text-white transition-colors text-sm lg:text-base px-4 py-2 rounded-lg border border-mdgc-blue-light/25 hover:bg-slate-900`}>{item.title}</a>
 								)
 							))}
 						</nav>
