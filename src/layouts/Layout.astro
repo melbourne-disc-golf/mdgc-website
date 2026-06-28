@@ -118,10 +118,10 @@ const faviconSizes = [16, 32, 48, 192];
 			<div id="menu-strip" class="bg-linear-to-r from-slate-900 to-mdgc-blue-dark text-white shadow-lg">
 				<div id="menu-content" class="content-width flex items-center h-18 space-x-8">
 					<div id="menu-logo" class="flex items-center gap-3">
-						<a href="/" title="Home" class="logo-link">
-							<img src={logoImage.src} alt="Melbourne Disc Golf Club" class="h-12 w-auto" />
+						<a href="/" title="Home" class="logo-link flex items-center gap-3">
+							<img src={logoImage.src} class="h-12 w-auto" />
+							<span class="text-sm md:text-base lg:text-lg font-display">Melbourne Disc Golf Club</span>
 						</a>
-						<span class="text-sm md:text-base lg:text-lg font-display">Melbourne Disc Golf Club</span>
 					</div>
 
 					<div id="menu-links" class="mx-auto">
@@ -283,7 +283,8 @@ const faviconSizes = [16, 32, 48, 192];
 	}
 
 	.logo-link {
-		display: inline-block;
+		display: inline-flex;
+		align-items: center;
 	}
 
 	.logo-link:hover {
