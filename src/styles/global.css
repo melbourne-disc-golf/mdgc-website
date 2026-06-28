@@ -42,12 +42,12 @@ a:hover {
 }
 
 .prose h2 {
-  background: linear-gradient(to right, #f3f4f6, transparent);
-  padding: 0.5rem 1.5rem;
-  margin-left: -1.5rem;
+  border-top: 1px solid #dfe7dd;
+  padding-top: 1.1rem;
+  margin-top: 2.25rem;
 }
 
-/* Heading permalink anchors - positioned left of the heading background */
+/* Heading permalink anchors - positioned left of the heading */
 .prose h2 .heading-link {
   /* display: none; */
   margin-left: -1.2rem;
