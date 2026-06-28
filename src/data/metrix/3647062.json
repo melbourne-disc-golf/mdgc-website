@@ -186,6 +186,31 @@
         "Total": 0
       },
       {
+        "UserID": "44655",
+        "Name": "Chris Ronalds",
+        "ClassName": "Div A - Metrix Rating > 890",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "57370",
         "Name": "Chris Scott 127348",
         "ClassName": "Div A - Metrix Rating > 890",
@@ -711,6 +736,31 @@
         "Total": 0
       },
       {
+        "UserID": "49416",
+        "Name": "Patrick Utri",
+        "ClassName": "Div B - Metrix Rating 845-890",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "134540",
         "Name": "Peter Barry",
         "ClassName": "Div B - Metrix Rating 845-890",
@@ -1111,6 +1161,31 @@
         "Total": 0
       },
       {
+        "UserID": "223354",
+        "Name": "Linda Nailon",
+        "ClassName": "Div D - Metrix Rating <790",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "217150",
         "Name": "Mia Daniels",
         "ClassName": "Div D - Metrix Rating <790",
@@ -1363,6 +1438,31 @@
       {
         "UserID": "168200",
         "Name": "Ashley Breukers",
+        "ClassName": "Div Z - Non MDGC Members",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "194475",
+        "Name": "Simone McNeight",
         "ClassName": "Div Z - Non MDGC Members",
         "CountryCode": "AU",
         "Place": 0,
