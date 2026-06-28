@@ -129,20 +129,20 @@ const faviconSizes = [16, 32, 48, 192];
 							{navItems.map(item => (
 								item.subPages ? (
 									<div class="relative group">
-										<div class="flex items-center -ml-4">
-											<a href={item.href} class={`${navItemColor(item.href)} hover:text-white hover:underline transition-colors px-4 py-1 rounded-t-md group-hover:bg-slate-800 group-hover:text-mdgc-blue-light group-hover:rounded-b-none`}>{item.title}</a>
+										<div class="flex items-center">
+											<a href={item.href} class={`${navItemColor(item.href)} hover:text-white transition-colors px-4 py-2 rounded-lg border border-mdgc-blue-light/25 relative z-1001 group-hover:bg-slate-900 group-hover:text-mdgc-blue-light group-hover:rounded-b-none group-hover:border-b-transparent`}>{item.title}</a>
 										</div>
-										<div class="absolute -left-4 mt-0 pb-2 w-auto min-w-30 bg-slate-800 text-mdgc-blue-light rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:transition-all group-hover:duration-200 group-hover:delay-300 z-1000">
+										<div class="absolute left-0 top-full -mt-px w-max min-w-full rounded-b-lg rounded-tr-lg border border-mdgc-blue-light/25 bg-slate-900 p-1.5 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-1000">
 											{item.subPages.map(subItem => {
 												const isActive = navItemColor(subItem.href) === 'text-white';
 												return (
-													<a href={subItem.href} class={`block px-4 py-1 hover:text-white hover:underline transition-colors whitespace-nowrap ${navItemColor(subItem.href)} ${isActive ? 'bg-mdgc-blue-dark/30' : ''}`}>{subItem.title}</a>
+													<a href={subItem.href} class={`block rounded-md px-5 py-2 text-sm transition-colors whitespace-nowrap text-mdgc-blue-light hover:bg-mdgc-blue-dark hover:text-white ${isActive ? 'bg-white/15 text-white' : ''}`}>{subItem.title}</a>
 												);
 											})}
 										</div>
 									</div>
 								) : (
-									<a href={item.href} class={`${navItemColor(item.href)} hover:text-white hover:underline transition-colors`}>{item.title}</a>
+									<a href={item.href} class={`${navItemColor(item.href)} hover:text-white transition-colors px-4 py-2 rounded-lg border border-mdgc-blue-light/25 hover:bg-slate-900`}>{item.title}</a>
 								)
 							))}
 						</nav>
@@ -164,7 +164,7 @@ const faviconSizes = [16, 32, 48, 192];
 								<div>
 									<a href={item.href} class={`block px-3 py-2 hover:bg-mdgc-blue-dark rounded-md font-semibold ${navItemColor(item.href)} hover:text-white transition-colors`}>{item.title}</a>
 									{item.subPages.map(subItem => (
-										<a href={subItem.href} class={`block px-6 py-1 text-sm hover:bg-mdgc-blue-dark rounded-md ${navItemColor(subItem.href)} hover:text-white transition-colors`}>{subItem.title}</a>
+										<a href={subItem.href} class={`block px-6 py-1 text-sm hover:bg-mdgc-blue-dark rounded-md ${navItemColor(subItem.href)} hover:text-white transition-colors ${isActiveNavItem(subItem.href) ? 'bg-white/15' : ''}`}>{subItem.title}</a>
 									))}
 								</div>
 							) : (
@@ -289,6 +289,12 @@ const faviconSizes = [16, 32, 48, 192];
 
 	.logo-link:hover {
 		transform: scale(1.15);
+	}
+
+	/* Nav/dropdown/mobile links shouldn't use the global link zoom — it grows the tab background. */
+	#menu-links a:hover,
+	#mobile-menu a:hover {
+		transform: none;
 	}
 
 	footer nav a {
