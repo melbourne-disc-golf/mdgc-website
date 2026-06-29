@@ -1,6 +1,7 @@
 ---
 import { Temporal } from '@js-temporal/polyfill';
 import type { CalendarEvent } from '@utils/events';
+import { externalLinkAttrs } from '@utils/links';
 
 interface Props {
   events: CalendarEvent[];
@@ -90,7 +91,7 @@ function getEventSourceClass(event: CalendarEvent): string {
               </>
             );
             return event.url ? (
-              <a href={event.url} class={`event-row clickable ${getEventSourceClass(event)}`} data-date={event.startDate.toString()}>
+              <a href={event.url} class={`event-row clickable ${getEventSourceClass(event)}`} data-date={event.startDate.toString()} {...externalLinkAttrs(event.url ?? '')}>
                 {rowContent}
               </a>
             ) : (

@@ -1,6 +1,7 @@
 ---
 import { Temporal } from '@js-temporal/polyfill';
 import type { CalendarEvent } from '@utils/events';
+import { externalLinkAttrs } from '@utils/links';
 
 interface Props {
   events: CalendarEvent[];
@@ -130,7 +131,7 @@ const grid = buildGrid();
           <div class="day-events">
             {visibleEvents.map((event) =>
               event.url ? (
-                <a href={event.url} class={`event-chip ${getEventSourceClass(event)}`} title={event.summary} data-location={event.location || ''}>
+                <a href={event.url} class={`event-chip ${getEventSourceClass(event)}`} title={event.summary} data-location={event.location || ''} {...externalLinkAttrs(event.url ?? '')}>
                   <span class="event-summary">{event.summary}</span>
                 </a>
               ) : (
