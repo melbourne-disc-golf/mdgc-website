@@ -11,16 +11,24 @@ interface Props {
 }
 
 const { href, title, description, icon, image, class: className = '' } = Astro.props;
+
+const isExternal = /^https?:\/\//.test(href);
+const linkAttrs = isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {};
 ---
 
-<a href={href} class={`link-panel not-prose ${className}`}>
+<a href={href} class={`link-panel not-prose ${className}`} {...linkAttrs}>
 	<div class="link-panel-inner">
+		{isExternal && (
+			<span class="link-panel-external" aria-hidden="true">
+				<Icon name="heroicons:arrow-up-right" size={18} />
+			</span>
+		)}
 		<div class="link-panel-icon">
 			{icon && <Icon name={icon} size={58} />}
 			{image && <img src={image} alt={`${title} logo`} />}
 		</div>
 		<div class="link-panel-content">
-			<h3>{title}</h3>
+			<h3>{title}{isExternal && <span class="sr-only"> (opens in a new tab)</span>}</h3>
 			{description && <p>{description}</p>}
 		</div>
 	</div>
@@ -36,6 +44,7 @@ const { href, title, description, icon, image, class: className = '' } = Astro.p
 	}
 
 	.link-panel-inner {
+		position: relative;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
@@ -47,6 +56,19 @@ const { href, title, description, icon, image, class: className = '' } = Astro.p
 		transition: all 0.2s;
 		height: 100%;
 		box-shadow: 0 8px 20px rgba(6, 61, 99, 0.08);
+	}
+
+	.link-panel-external {
+		position: absolute;
+		top: 0.75rem;
+		right: 0.75rem;
+		color: #9ca3af;
+		transition: color 0.2s, transform 0.2s;
+	}
+
+	.link-panel:hover .link-panel-external {
+		color: var(--color-mdgc-blue-dark);
+		transform: translate(1px, -1px);
 	}
 
 	.link-panel:hover .link-panel-inner {
