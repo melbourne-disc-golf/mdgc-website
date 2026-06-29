@@ -1136,6 +1136,31 @@
         "Total": 0
       },
       {
+        "UserID": "234357",
+        "Name": "Eden Lewis-Shell",
+        "ClassName": "Div D - Metrix Rating <790",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "231284",
         "Name": "Liam Morley",
         "ClassName": "Div D - Metrix Rating <790",
@@ -1438,6 +1463,31 @@
       {
         "UserID": "168200",
         "Name": "Ashley Breukers",
+        "ClassName": "Div Z - Non MDGC Members",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "241126",
+        "Name": "Kristen Lewis-Shell",
         "ClassName": "Div Z - Non MDGC Members",
         "CountryCode": "AU",
         "Place": 0,
