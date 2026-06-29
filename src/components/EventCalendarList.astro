@@ -19,8 +19,14 @@ function getDayOfWeek(date: Temporal.PlainDate): string {
   return WEEKDAYS[date.dayOfWeek - 1];
 }
 
-function getDurationDays(start: Temporal.PlainDate, end: Temporal.PlainDate): number {
-  return start.until(end, { largestUnit: 'days' }).days + 1;
+function getDayNames(start: Temporal.PlainDate, end?: Temporal.PlainDate): string[] {
+  const names = [getDayOfWeek(start)];
+  let current = start.add({ days: 1 });
+  while (end && Temporal.PlainDate.compare(current, end) <= 0) {
+    names.push(getDayOfWeek(current));
+    current = current.add({ days: 1 });
+  }
+  return names;
 }
 
 function getMonthKey(date: Temporal.PlainDate): string {
@@ -74,10 +80,9 @@ function getEventSourceClass(event: CalendarEvent): string {
               <>
                 <div class="event-date">
                   <span class="day-number">{event.startDate.day}</span>
-                  <span class="day-name">{getDayOfWeek(event.startDate)}</span>
-                  {event.endDate && getDurationDays(event.startDate, event.endDate) > 1 && (
-                    <span class="duration">({getDurationDays(event.startDate, event.endDate)} days)</span>
-                  )}
+                  {getDayNames(event.startDate, event.endDate).map((name) => (
+                    <span class="day-name">{name}</span>
+                  ))}
                 </div>
                 <div class="event-details">
                   <div class="event-title">
@@ -196,11 +201,6 @@ function getEventSourceClass(event: CalendarEvent): string {
     text-transform: uppercase;
     color: var(--color-text-muted, #6b7280);
     letter-spacing: 0.025em;
-  }
-
-  .duration {
-    font-size: 0.8rem;
-    color: var(--color-text-muted, #6b7280);
   }
 
   .past-event {
