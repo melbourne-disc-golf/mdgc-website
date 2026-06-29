@@ -13,8 +13,8 @@ export interface Props {
 const { navItems, currentPath } = Astro.props;
 ---
 
-<header>
-	<div id="menu-strip" class="bg-linear-to-r from-slate-900 to-mdgc-blue-dark text-white shadow-lg">
+<header class="sticky top-0 z-2000">
+	<div id="menu-strip" class="bg-linear-to-r from-slate-900 to-mdgc-blue-dark text-white shadow-lg transition-transform duration-300 ease-out">
 		<div id="menu-content" class="content-width flex items-center h-18 space-x-8">
 			<div id="menu-logo" class="flex items-center gap-3">
 				<a href="/" title="Home" class="logo-link flex items-center gap-3">
@@ -31,7 +31,7 @@ const { navItems, currentPath } = Astro.props;
 								<div class="flex items-center">
 									<a href={item.href} class={`${navItemColor(currentPath, item.href)} hover:text-white transition-colors text-sm lg:text-base px-4 py-2 rounded-lg border border-mdgc-blue-light/25 relative z-1001 group-hover:bg-slate-900 group-hover:text-mdgc-blue-light group-hover:rounded-b-none group-hover:border-b-transparent`}>{item.title}</a>
 								</div>
-								<div class="absolute left-0 top-full -mt-px w-max min-w-full rounded-b-lg rounded-tr-lg border border-mdgc-blue-light/25 bg-slate-900 p-1.5 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-1000">
+								<div data-subnav class="absolute left-0 top-full -mt-px w-max min-w-full rounded-b-lg rounded-tr-lg border border-mdgc-blue-light/25 bg-slate-900 p-1.5 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-1000">
 									{item.subPages.map(subItem => {
 										const isActive = isActiveNavItem(currentPath, subItem.href);
 										return (
@@ -81,6 +81,12 @@ const { navItems, currentPath } = Astro.props;
 	#mobile-menu a:hover {
 		transform: none;
 	}
+
+	/* When the bar is hidden on scroll-down, don't let a hovered sub-nav linger on screen. */
+	#menu-strip.-translate-y-full [data-subnav] {
+		opacity: 0;
+		visibility: hidden;
+	}
 </style>
 
 <script>
@@ -90,4 +96,28 @@ const { navItems, currentPath } = Astro.props;
 	mobileMenuButton?.addEventListener('click', () => {
 		mobileMenu?.classList.toggle('hidden');
 	});
+
+	// "Headroom" behaviour: hide the menu strip when scrolling down, reveal it when scrolling up.
+	const menuStrip = document.getElementById('menu-strip');
+	let lastScrollY = window.scrollY;
+
+	const onScroll = () => {
+		const currentScrollY = window.scrollY;
+		const stripHeight = menuStrip?.offsetHeight ?? 0;
+
+		// Don't hide while still near the top, or while the mobile menu is open.
+		const mobileMenuOpen = mobileMenu && !mobileMenu.classList.contains('hidden');
+
+		if (currentScrollY <= stripHeight || mobileMenuOpen) {
+			menuStrip?.classList.remove('-translate-y-full');
+		} else if (currentScrollY > lastScrollY) {
+			menuStrip?.classList.add('-translate-y-full');
+		} else if (currentScrollY < lastScrollY) {
+			menuStrip?.classList.remove('-translate-y-full');
+		}
+
+		lastScrollY = currentScrollY;
+	};
+
+	window.addEventListener('scroll', onScroll, { passive: true });
 </script>
