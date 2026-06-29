@@ -57,6 +57,7 @@ a:hover {
 }
 
 .prose h2 {
+  clear: both;
   border-top: 1px solid #dfe7dd;
   padding-top: 1.1rem;
   margin-top: 2.25rem;
