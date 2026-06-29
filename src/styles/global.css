@@ -23,6 +23,21 @@ a:hover {
   transform: scale(1.05);
 }
 
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo-link:hover {
+  transform: scale(1.15);
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+}
+
 .text-width {
 	@apply max-w-4xl mx-auto;
 }

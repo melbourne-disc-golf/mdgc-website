@@ -1,24 +1,12 @@
 ---
 import '@styles/global.css'
-import logoImage from '@images/mdgc-logo.png';
 import defaultOgImage from '@images/ruffey-lake-hole-1.jpg';
 import { getNavItems, type NavItem } from '@data/navigation.ts';
-import { Icon } from 'astro-icon/components'
-import ReportIssue from '@components/ReportIssue.astro';
-import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import PageHero, { type HeroImage, type BackLink } from '@components/PageHero.astro';
 
-export interface HeroImage {
-  src: ImageMetadata;
-  alt: string;
-  class?: string;
-  caption?: string;
-}
-
-export interface BackLink {
-  href: string;
-  text: string;
-}
+export type { HeroImage, BackLink };
 
 export interface Props {
   title: string;
@@ -38,18 +26,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = heroImage
   ? new URL(heroImage.src.src, Astro.site)
   : new URL(defaultOgImage.src, Astro.site);
-
-// Check if current page is under a nav item
-function isActiveNavItem(itemHref: string): boolean {
-  if (itemHref === '/' && currentPath === '/') return true;
-  if (itemHref !== '/' && currentPath.startsWith(itemHref)) return true;
-  return false;
-}
-
-// Get color class for nav item based on active state
-function navItemColor(itemHref: string): string {
-  return isActiveNavItem(itemHref) ? 'text-white' : 'text-mdgc-blue-light';
-}
 
 const currentPath = Astro.url.pathname;
 
@@ -77,9 +53,6 @@ function computeBackLink(path: string): BackLink | null {
 // An explicit backLink prop overrides the automatic one.
 const backLink = backLinkProp ?? computeBackLink(currentPath);
 
-// Generate footer links
-const githubUrl = 'https://github.com/melbourne-disc-golf/mdgc-website';
-const cmsUrl = cmsPath ? `/cms/sveltia#${cmsPath}` : null;
 
 // Favicon sizes to generate links for
 const faviconSizes = [16, 32, 48, 192];
@@ -114,160 +87,16 @@ const faviconSizes = [16, 32, 48, 192];
 		))}
 	</head>
 	<body class="flex flex-col min-h-screen">
-		<header>
-			<div id="menu-strip" class="bg-linear-to-r from-slate-900 to-mdgc-blue-dark text-white shadow-lg">
-				<div id="menu-content" class="content-width flex items-center h-18 space-x-8">
-					<div id="menu-logo" class="flex items-center gap-3">
-						<a href="/" title="Home" class="logo-link flex items-center gap-3">
-							<img src={logoImage.src} class="h-12 w-auto" />
-							<span class="text-sm lg:text-base font-display">Melbourne Disc Golf Club</span>
-						</a>
-					</div>
-
-					<div id="menu-links" class="mx-auto">
-						<nav class="hidden md:flex items-center space-x-4">
-							{navItems.map(item => (
-								item.subPages ? (
-									<div class="relative group">
-										<div class="flex items-center">
-											<a href={item.href} class={`${navItemColor(item.href)} hover:text-white transition-colors text-sm lg:text-base px-4 py-2 rounded-lg border border-mdgc-blue-light/25 relative z-1001 group-hover:bg-slate-900 group-hover:text-mdgc-blue-light group-hover:rounded-b-none group-hover:border-b-transparent`}>{item.title}</a>
-										</div>
-										<div class="absolute left-0 top-full -mt-px w-max min-w-full rounded-b-lg rounded-tr-lg border border-mdgc-blue-light/25 bg-slate-900 p-1.5 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-1000">
-											{item.subPages.map(subItem => {
-												const isActive = navItemColor(subItem.href) === 'text-white';
-												return (
-													<a href={subItem.href} class={`block rounded-md px-5 py-2 text-sm transition-colors whitespace-nowrap text-mdgc-blue-light hover:bg-mdgc-blue-dark hover:text-white ${isActive ? 'bg-white/15 text-white' : ''}`}>{subItem.title}</a>
-												);
-											})}
-										</div>
-									</div>
-								) : (
-									<a href={item.href} class={`${navItemColor(item.href)} hover:text-white transition-colors text-sm lg:text-base px-4 py-2 rounded-lg border border-mdgc-blue-light/25 hover:bg-slate-900`}>{item.title}</a>
-								)
-							))}
-						</nav>
-					</div>
-
-					<!-- Mobile menu button -->
-					<div class="md:hidden ml-auto">
-						<button id="mobile-menu-button" class="text-mdgc-blue-light hover:text-white" aria-label="Toggle mobile menu">
-							<Icon name="heroicons:bars-3" class="h-6 w-6" />
-						</button>
-					</div>
-				</div>
-
-				<!-- Mobile menu -->
-				<div id="mobile-menu" class="md:hidden hidden">
-					<nav class="px-2 pt-2 pb-3 space-y-1">
-						{navItems.map(item => (
-							item.subPages ? (
-								<div>
-									<a href={item.href} class={`block px-3 py-2 hover:bg-mdgc-blue-dark rounded-md font-semibold ${navItemColor(item.href)} hover:text-white transition-colors`}>{item.title}</a>
-									{item.subPages.map(subItem => (
-										<a href={subItem.href} class={`block px-6 py-1 text-sm hover:bg-mdgc-blue-dark rounded-md ${navItemColor(subItem.href)} hover:text-white transition-colors ${isActiveNavItem(subItem.href) ? 'bg-white/15' : ''}`}>{subItem.title}</a>
-									))}
-								</div>
-							) : (
-								<a href={item.href} class={`block px-3 py-2 hover:bg-mdgc-blue-dark rounded-md ${navItemColor(item.href)} hover:text-white transition-colors`}>{item.title}</a>
-							)
-						))}
-					</nav>
-				</div>
-			</div>
-		</header>
+		<Header navItems={navItems} currentPath={currentPath} />
 
 		<main class="grow">
-			<div class="bg-linear-to-r from-slate-700 to-mdgc-blue-dark text-white">
-				<div class={`content-width px-6 pb-6 flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-10 ${backLink ? 'pt-3' : 'pt-6'}`}>
-					<div id="title-content" class="flex-1 min-w-0 lg:flex lg:flex-col lg:justify-center">
-						<div id="title-and-subtitle">
-							{backLink && (
-								<a href={backLink.href} class="no-print inline-block text-sm text-mdgc-blue-light hover:text-white hover:underline mb-3">← {backLink.text}</a>
-							)}
-							<h1 class="text-4xl font-bold">{title}</h1>
-							{subtitle && <p class="text-xl mt-2">{subtitle}</p>}
-						</div>
-					</div>
-					{heroImage && (
-						<figure class="m-0 flex flex-col lg:w-2/3">
-							<Image
-								src={heroImage.src}
-								alt={heroImage.alt}
-								fit="cover"
-								class="w-full aspect-2/1 object-cover rounded-lg"
-							/>
-							{heroImage.caption && (
-								<figcaption class="text-xs text-slate-200/70 mt-2 italic">
-									{heroImage.caption}
-								</figcaption>
-							)}
-						</figure>
-					)}
-				</div>
-			</div>
-			<div class="h-1 bg-linear-to-r from-mdgc-blue-light to-slate-900"></div>
+			<PageHero title={title} subtitle={subtitle} heroImage={heroImage} backLink={backLink} />
 			<div class="content-width">
 				<slot />
 			</div>
 		</main>
 
-		<footer class="bg-gray-900 text-white sm:px-6 lg:px-8 py-12 mt-auto">
-			<div class="no-print content-width flex flex-row gap-8">
-
-				<!-- Logo section -->
-				<div class="shrink-0">
-					<a href="/" title="Home" class="logo-link">
-						<img src={logoImage.src} alt="Melbourne Disc Golf Club" class="h-12 sm:h-16 w-auto" />
-					</a>
-				</div>
-
-				<!-- Navigation sections grid -->
-				<nav class="flex flex-wrap mx-auto gap-4 sm:gap-6 md:gap-8 lg:gap-16 items-start">
-					{navItems.map((section) => (
-						<div>
-							<h3 class="font-semibold mb-2">
-								<a href={section.href} class={`inline-flex items-center gap-1 ${navItemColor(section.href)} whitespace-nowrap`}>
-									{section.icon && <Icon name={section.icon} class="w-4 h-4" />}
-									{section.title}
-								</a>
-							</h3>
-							{section.subPages && (
-								<ul class="space-y-1 hidden md:block pl-2">
-									{section.subPages.map(link => (
-										<li>
-											<a href={link.href} class={`inline-block text-sm ${navItemColor(link.href)}`}>
-												{link.title}
-											</a>
-										</li>
-									))}
-								</ul>
-							)}
-						</div>
-					))}
-				</nav>
-
-			</div>
-
-			<!-- Bottom section -->
-			<div class="border-t border-gray-700 mt-8 pt-2 flex flex-col md:flex-row justify-between items-center gap-4">
-				<div class="text-gray-400 text-sm text-center md:text-left">
-					<p>© {new Date().getFullYear()} Melbourne Disc Golf Club. All rights reserved.</p>
-					<p class="text-xs text-gray-500 mt-1">last updated: {new Date().toLocaleString('en-AU', { timeZone: 'Australia/Melbourne', dateStyle: 'medium', timeStyle: 'short' })}</p>
-				</div>
-				<div class="no-print flex items-center gap-4">
-					{cmsUrl && (
-						<a href={cmsUrl} target="_blank" rel="noopener noreferrer" class="inline-block text-gray-400 hover:text-white transition-colors" aria-label="Edit page in CMS" title="Edit in CMS">
-							<Icon name="mdi:pencil" class="h-5 w-5" />
-						</a>
-					)}
-					<a href={githubUrl} target="_blank" rel="noopener noreferrer" class="inline-block text-gray-400 hover:text-white transition-colors" aria-label="View source on GitHub" title="View source on GitHub">
-						<Icon name="mdi:github" class="h-5 w-5" />
-					</a>
-					<ReportIssue />
-				</div>
-			</div>
-
-		</footer>
+		<Footer navItems={navItems} currentPath={currentPath} cmsPath={cmsPath} />
 
 	</body>
 </html>
@@ -282,39 +111,6 @@ const faviconSizes = [16, 32, 48, 192];
 		height: 100%;
 	}
 
-	.logo-link {
-		display: inline-flex;
-		align-items: center;
-	}
-
-	.logo-link:hover {
-		transform: scale(1.15);
-	}
-
-	/* Nav/dropdown/mobile links shouldn't use the global link zoom — it grows the tab background. */
-	#menu-links a:hover,
-	#mobile-menu a:hover {
-		transform: none;
-	}
-
-	footer nav a {
-		@apply hover:text-white hover:underline transition-colors;
-	}
-
-	@media print {
-		.no-print {
-			display: none;
-		}
-	}
 </style>
-
-<script>
-	const mobileMenuButton = document.getElementById('mobile-menu-button');
-	const mobileMenu = document.getElementById('mobile-menu');
-
-	mobileMenuButton?.addEventListener('click', () => {
-		mobileMenu?.classList.toggle('hidden');
-	});
-</script>
 
 <script src="../scripts/heading-links.ts"></script>

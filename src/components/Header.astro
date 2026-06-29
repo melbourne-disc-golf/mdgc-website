@@ -1,0 +1,91 @@
+---
+import { Icon } from 'astro-icon/components';
+import logoImage from '@images/mdgc-logo.png';
+import { isActiveNavItem, navItemColor, type NavItem } from '@data/navigation.ts';
+
+export interface Props {
+	navItems: NavItem[];
+	currentPath: string;
+}
+
+const { navItems, currentPath } = Astro.props;
+---
+
+<header>
+	<div id="menu-strip" class="bg-linear-to-r from-slate-900 to-mdgc-blue-dark text-white shadow-lg">
+		<div id="menu-content" class="content-width flex items-center h-18 space-x-8">
+			<div id="menu-logo" class="flex items-center gap-3">
+				<a href="/" title="Home" class="logo-link flex items-center gap-3">
+					<img src={logoImage.src} class="h-12 w-auto" />
+					<span class="text-sm lg:text-base font-display">Melbourne Disc Golf Club</span>
+				</a>
+			</div>
+
+			<div id="menu-links" class="mx-auto">
+				<nav class="hidden md:flex items-center space-x-4">
+					{navItems.map(item => (
+						item.subPages ? (
+							<div class="relative group">
+								<div class="flex items-center">
+									<a href={item.href} class={`${navItemColor(currentPath, item.href)} hover:text-white transition-colors text-sm lg:text-base px-4 py-2 rounded-lg border border-mdgc-blue-light/25 relative z-1001 group-hover:bg-slate-900 group-hover:text-mdgc-blue-light group-hover:rounded-b-none group-hover:border-b-transparent`}>{item.title}</a>
+								</div>
+								<div class="absolute left-0 top-full -mt-px w-max min-w-full rounded-b-lg rounded-tr-lg border border-mdgc-blue-light/25 bg-slate-900 p-1.5 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-1000">
+									{item.subPages.map(subItem => {
+										const isActive = isActiveNavItem(currentPath, subItem.href);
+										return (
+											<a href={subItem.href} class={`block rounded-md px-5 py-2 text-sm transition-colors whitespace-nowrap text-mdgc-blue-light hover:bg-mdgc-blue-dark hover:text-white ${isActive ? 'bg-white/15 text-white' : ''}`}>{subItem.title}</a>
+										);
+									})}
+								</div>
+							</div>
+						) : (
+							<a href={item.href} class={`${navItemColor(currentPath, item.href)} hover:text-white transition-colors text-sm lg:text-base px-4 py-2 rounded-lg border border-mdgc-blue-light/25 hover:bg-slate-900`}>{item.title}</a>
+						)
+					))}
+				</nav>
+			</div>
+
+			<!-- Mobile menu button -->
+			<div class="md:hidden ml-auto">
+				<button id="mobile-menu-button" class="text-mdgc-blue-light hover:text-white" aria-label="Toggle mobile menu">
+					<Icon name="heroicons:bars-3" class="h-6 w-6" />
+				</button>
+			</div>
+		</div>
+
+		<!-- Mobile menu -->
+		<div id="mobile-menu" class="md:hidden hidden">
+			<nav class="px-2 pt-2 pb-3 space-y-1">
+				{navItems.map(item => (
+					item.subPages ? (
+						<div>
+							<a href={item.href} class={`block px-3 py-2 hover:bg-mdgc-blue-dark rounded-md font-semibold ${navItemColor(currentPath, item.href)} hover:text-white transition-colors`}>{item.title}</a>
+							{item.subPages.map(subItem => (
+								<a href={subItem.href} class={`block px-6 py-1 text-sm hover:bg-mdgc-blue-dark rounded-md ${navItemColor(currentPath, subItem.href)} hover:text-white transition-colors ${isActiveNavItem(currentPath, subItem.href) ? 'bg-white/15' : ''}`}>{subItem.title}</a>
+							))}
+						</div>
+					) : (
+						<a href={item.href} class={`block px-3 py-2 hover:bg-mdgc-blue-dark rounded-md ${navItemColor(currentPath, item.href)} hover:text-white transition-colors`}>{item.title}</a>
+					)
+				))}
+			</nav>
+		</div>
+	</div>
+</header>
+
+<style>
+	/* Nav/dropdown/mobile links shouldn't use the global link zoom — it grows the tab background. */
+	#menu-links a:hover,
+	#mobile-menu a:hover {
+		transform: none;
+	}
+</style>
+
+<script>
+	const mobileMenuButton = document.getElementById('mobile-menu-button');
+	const mobileMenu = document.getElementById('mobile-menu');
+
+	mobileMenuButton?.addEventListener('click', () => {
+		mobileMenu?.classList.toggle('hidden');
+	});
+</script>
