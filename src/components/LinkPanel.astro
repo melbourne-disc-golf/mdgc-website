@@ -40,18 +40,19 @@ const { href, title, description, icon, image, class: className = '' } = Astro.p
 		flex-direction: row;
 		align-items: center;
 		gap: 1.5rem;
-		background-color: #f9fafb;
+		background-color: #ffffff;
 		border: 1px solid #d1d5db;
 		border-radius: 0.5rem;
 		padding: 1.5rem;
 		transition: all 0.2s;
 		height: 100%;
+		box-shadow: 0 8px 20px rgba(6, 61, 99, 0.08);
 	}
 
 	.link-panel:hover .link-panel-inner {
-		background-color: #ffffff;
 		border-color: var(--color-mdgc-blue-dark);
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+		box-shadow: 0 14px 30px rgba(6, 61, 99, 0.16);
+		transform: translateY(-1px);
 	}
 
 	.link-panel:hover .link-panel-icon {
