@@ -46,11 +46,13 @@ const { name, href, location, image } = Astro.props;
     height: 100%;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 8px 20px rgba(6, 61, 99, 0.08);
   }
 
   .course-card:hover .course-card-inner {
     border-color: var(--color-mdgc-blue-dark);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 14px 30px rgba(6, 61, 99, 0.16);
+    transform: translateY(-1px);
   }
 
   .course-card-image {
