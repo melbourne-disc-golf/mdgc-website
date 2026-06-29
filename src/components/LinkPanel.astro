@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { isExternal, externalLinkAttrs } from '@utils/links';
 
 interface Props {
 	href: string;
@@ -12,13 +13,12 @@ interface Props {
 
 const { href, title, description, icon, image, class: className = '' } = Astro.props;
 
-const isExternal = /^https?:\/\//.test(href);
-const linkAttrs = isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+const external = isExternal(href);
 ---
 
-<a href={href} class={`link-panel not-prose ${className}`} {...linkAttrs}>
+<a href={href} class={`link-panel not-prose ${className}`} {...externalLinkAttrs(href)}>
 	<div class="link-panel-inner">
-		{isExternal && (
+		{external && (
 			<span class="link-panel-external" aria-hidden="true">
 				<Icon name="heroicons:arrow-up-right" size={18} />
 			</span>
@@ -28,7 +28,7 @@ const linkAttrs = isExternal ? { target: '_blank', rel: 'noopener noreferrer' } 
 			{image && <img src={image} alt={`${title} logo`} />}
 		</div>
 		<div class="link-panel-content">
-			<h3>{title}{isExternal && <span class="sr-only"> (opens in a new tab)</span>}</h3>
+			<h3>{title}{external && <span class="sr-only"> (opens in a new tab)</span>}</h3>
 			{description && <p>{description}</p>}
 		</div>
 	</div>
