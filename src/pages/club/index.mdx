@@ -15,7 +15,7 @@ import Grid from '@components/Grid.astro';
 import Section from '@components/Section.astro';
 import FollowUs from './_follow-us.astro';
 import { Content as ShopTalk } from './_shoptalk.mdx';
-import { shopUrl } from '@data/site';
+import { externalUrls } from '@data/external-urls';
 
 <Text>
 
@@ -51,7 +51,7 @@ players of all ages and skill levels can enjoy the game.
 The club runs an online "Pro Shop", which (we happen to think) is the best place to get disc golf gear in Melbourne.
 
 <Grid>
-	<NavLink href={shopUrl} />
+	<NavLink href={externalUrls.shop} />
 </Grid>
 
 A portable (car-boot) version of the Shop often makes an appearance at club [social days](/events/social),

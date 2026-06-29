@@ -13,7 +13,7 @@ import NavLink from '@components/NavLink.astro';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import NextSocialDay from '@components/NextSocialDay.astro';
-import { shopUrl } from '@data/site';
+import { externalUrls } from '@data/external-urls';
 
 <Text>
 
@@ -131,7 +131,7 @@ If you have any questions, drop us a note at socialdays@melbournediscgolf.com.
 
 <Grid>
 	<NavLink href="/disc-golf" />
-	<NavLink href={shopUrl} />
+	<NavLink href={externalUrls.shop} />
 </Grid>
 
 </Text>

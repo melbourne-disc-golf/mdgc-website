@@ -14,7 +14,7 @@ import Grid from '@components/Grid.astro';
 import Text from '@components/Text.astro';
 import { Content as HomepageText } from './_homepage-text.mdx';
 import FollowUs from './club/_follow-us.astro';
-import { shopUrl } from '@data/site';
+import { externalUrls } from '@data/external-urls';
 
 <Text>
 
@@ -23,7 +23,7 @@ import { shopUrl } from '@data/site';
 	<NavLink href="/club" />
 	<NavLink href="/courses" />
 	<NavLink href="/events" />
-	<NavLink href={shopUrl} />
+	<NavLink href={externalUrls.shop} />
 </Grid>
 
 <HomepageText />

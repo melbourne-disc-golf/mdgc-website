@@ -8,6 +8,7 @@ import Panel from '@components/Panel.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import NavLink from '@components/NavLink.astro';
 import Grid from '@components/Grid.astro';
+import { externalUrls } from '@data/external-urls';
 
 <Text>
 
@@ -34,7 +35,7 @@ The [MDGC Shop](/shop) is a great place to buy discs (and other gear).
 Or, [search the web](https://www.google.com/search?q=disc+golf+discs+australia) to find other online stores.
 
 <Grid>
-	<NavLink href="/shop" />
+	<NavLink href={externalUrls.shop} />
 </Grid>
 
 ## Play regularly

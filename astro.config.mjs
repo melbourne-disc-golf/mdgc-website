@@ -9,6 +9,7 @@ import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
 
 import { rehypeSectionize } from './src/lib/rehype-sectionize.js';
+import { externalUrls } from './src/data/external-urls.ts';
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,12 +19,12 @@ export default defineConfig({
     '/about': '/club',
     '/admin': '/cms/',
     '/contact': '/club#contact-us',
-    '/ctb': 'https://docs.google.com/forms/d/1qG5hbu89CphfQhYTAXnmCRAqe84S5EgCChU908jlZTQ',
+    '/ctb': externalUrls.ctb,
     '/ctp': '/ctb',
     '/melbourne-courses': '/courses',
     '/membership': '/club/membership',
     '/news': '/club/news',
-    '/shop': 'https://mdgcshop.square.site/',
+    '/shop': externalUrls.shop,
     '/upcoming-events': '/events',
     '/what-is-disc-golf': '/disc-golf',
     '/club/shop': '/club#shop',

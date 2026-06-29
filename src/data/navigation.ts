@@ -1,5 +1,5 @@
 import { getCollection } from 'astro:content';
-import { shopUrl } from '@data/site';
+import { externalUrls } from '@data/external-urls';
 
 export interface NavSubPage {
   title: string;
@@ -74,7 +74,7 @@ export async function getNavItems(featuredCoursesOnly: boolean = false): Promise
     },
     {
       title: 'Shop',
-      href: shopUrl,
+      href: externalUrls.shop,
       description: 'buy discs, and more!',
       icon: 'heroicons:shopping-cart'
     }
