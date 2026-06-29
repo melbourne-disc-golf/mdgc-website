@@ -13,7 +13,7 @@ export interface Props {
 const { src, alt, caption, imageClass = "", figureClass = "" } = Astro.props;
 ---
 
-<figure class={`max-w-[250px] mx-auto md:mx-0 mt-4 md:mt-0 mb-4 md:float-right md:ml-6 ${figureClass}`}>
+<figure class={`max-w-65 mx-auto md:mx-0 mt-4 md:mt-0 mb-4 md:float-right md:ml-6 ${figureClass}`}>
 	<Image
 		src={src}
 		alt={alt}
