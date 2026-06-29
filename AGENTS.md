@@ -4,40 +4,23 @@
 
 This project involves building a new modern website for the Melbourne Disc Golf Club (MDGC) to replace their existing WordPress site.
 
-## Project Structure
+## Project structure
+
+High-level only — explore the tree for specifics, it changes often.
+
 ```
-website/
-├── src/
-│   ├── components/
-│   │   ├── Navigation.astro    # Main navigation with dropdowns
-│   │   ├── BoardMember.astro   # Board member profile component
-│   │   ├── Course.astro        # Course information component
-│   │   └── Welcome.astro       # Welcome section component
-│   ├── layouts/
-│   │   └── Layout.astro        # Base layout template
-│   ├── pages/
-│   │   ├── index.astro         # Homepage with hero section
-│   │   ├── disc-golf/
-│   │   │   ├── index.astro     # What is Disc Golf?
-│   │   │   └── new-players.astro # New Player Essentials
-│   │   ├── courses/
-│   │   │   ├── index.astro     # Melbourne courses
-│   │   │   ├── victoria.astro  # Other Victorian courses
-│   │   │   └── australia.astro # Australia & overseas
-│   │   ├── club/
-│   │   │   ├── index.astro     # About MDGC
-│   │   │   ├── membership.astro # Membership information
-│   │   │   ├── contact.astro   # Contact details
-│   │   │   └── board.astro     # Board member profiles
-│   │   ├── events/
-│   │   │   └── index.astro     # Social days and events
-│   │   └── shop.astro          # Equipment and merchandise
-│   └── styles/
-│       └── global.css
-└── existing-site/              # Documentation of original site (reference)
-    ├── _navbar.md              # Original navigation structure
-    ├── index.md                # Original homepage content
-    ├── about/, melbourne-courses/, events/, media/
+src/
+├── components/   # reusable Astro components (Header, cards, panels, …)
+├── layouts/      # page layouts — Layout.astro is the base (Header + page chrome + footer)
+├── pages/        # routes (.astro / .mdx): disc-golf/, club/, courses/, events/, shop, …
+├── content/      # content collections (courses, events) + content.config.ts
+├── data/         # site data & helpers (navigation.ts)
+├── utils/        # build-time helpers (e.g. metrix.ts)
+├── scripts/      # client-side scripts
+├── styles/       # global.css
+└── assets/       # images, icons
+
+existing-site/    # sketch of the original WordPress site (reference)
 ```
 
 ## Existing site
