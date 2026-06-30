@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
 import mdx from '@astrojs/mdx';
+import { unified } from '@astrojs/markdown-remark';
 import sitemap from '@astrojs/sitemap';
 import path from 'path';
 
@@ -31,7 +32,7 @@ export default defineConfig({
     // Event alias redirects are handled by aliases in event frontmatter
   },
   markdown: {
-    rehypePlugins: [rehypeSectionize],
+    processor: unified({ rehypePlugins: [rehypeSectionize] }),
   },
   integrations: [
     mdx({
