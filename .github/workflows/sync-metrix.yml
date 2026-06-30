@@ -2,9 +2,9 @@ name: Sync Metrix Data
 
 on:
   schedule:
-    # Run at 6am Melbourne time (UTC+10/+11)
-    # 8pm UTC covers both AEST and AEDT
-    - cron: '0 20 * * *'
+    # Cron is UTC; Melbourne is AEST (UTC+10) or AEDT (UTC+11)
+    - cron: '0 16 * * *' # 2am AEST / 3am AEDT
+    - cron: '0 4 * * *'  # 2pm AEST / 3pm AEDT
   workflow_dispatch: # Allow manual trigger
 
 jobs:
