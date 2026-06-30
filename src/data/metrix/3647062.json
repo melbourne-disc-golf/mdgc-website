@@ -1111,6 +1111,31 @@
         "Total": 0
       },
       {
+        "UserID": "162591",
+        "Name": "Toby Beasley",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "217207",
         "Name": "Charlotte Davies",
         "ClassName": "Div D - Metrix Rating <790",
@@ -1538,6 +1563,31 @@
       {
         "UserID": "241126",
         "Name": "Kristen Lewis-Shell",
+        "ClassName": "Div Z - Non MDGC Members",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "243131",
+        "Name": "saasha Glover",
         "ClassName": "Div Z - Non MDGC Members",
         "CountryCode": "AU",
         "Place": 0,
