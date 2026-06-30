@@ -14,13 +14,27 @@
 
 /* Subtle zoom effect on all links */
 a {
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out,
+    text-decoration-thickness 0.15s ease-in-out;
   font-weight: 400;
   text-underline-offset: 0.3em;
 }
 
 a:hover {
   transform: scale(1.05);
+}
+
+/* Inline links in prose can't grow (transform doesn't apply to inline boxes),
+   so they read as body text and darken + thicken their underline on hover.
+   Weight is left untouched so the text doesn't reflow. */
+.prose a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+}
+
+.prose a:hover {
+  color: var(--color-text-heading);
+  text-decoration-thickness: 2px;
 }
 
 .logo-link {
