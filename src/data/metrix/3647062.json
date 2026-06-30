@@ -111,6 +111,31 @@
     "ShowTourView": 1,
     "TourResults": [
       {
+        "UserID": "42838",
+        "Name": "Aidan Howard",
+        "ClassName": "Div A - Metrix Rating > 890",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "111479",
         "Name": "Alistair Don",
         "ClassName": "Div A - Metrix Rating > 890",
@@ -1363,6 +1388,31 @@
       {
         "UserID": "216079",
         "Name": "Robert Higgins",
+        "ClassName": "Div D - Metrix Rating <790",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "226755",
+        "Name": "Sharon Cook",
         "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
         "Place": 0,
