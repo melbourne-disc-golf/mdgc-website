@@ -14,7 +14,7 @@ const { navItems, currentPath } = Astro.props;
 ---
 
 <header class="sticky top-0 z-2000">
-	<div id="menu-strip" class="bg-linear-to-r from-slate-900 to-mdgc-blue-dark text-white shadow-lg transition-transform duration-300 ease-out">
+	<div id="menu-strip" class="relative bg-linear-to-r from-slate-900 to-mdgc-blue-dark text-white shadow-lg will-change-transform">
 		<div id="menu-content" class="content-width flex items-center h-18 space-x-8">
 			<div id="menu-logo" class="flex items-center gap-3">
 				<a href="/" title="Home" class="logo-link flex items-center gap-3">
@@ -55,8 +55,10 @@ const { navItems, currentPath } = Astro.props;
 			</div>
 		</div>
 
-		<!-- Mobile menu -->
-		<div id="mobile-menu" class="md:hidden hidden">
+		<!-- Mobile menu — a drop-down that expands over the content below (not in flow),
+		     collapsing via a grid-rows 0fr↔1fr transition (see .is-open). -->
+		<div id="mobile-menu" class="md:hidden absolute inset-x-0 top-full bg-linear-to-r from-slate-900 to-mdgc-blue-dark shadow-xl grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out">
+			<div class="overflow-hidden">
 			<nav class="px-2 pt-2 pb-3 space-y-1">
 				{navItems.map(item => (
 					item.subPages ? (
@@ -71,6 +73,7 @@ const { navItems, currentPath } = Astro.props;
 					)
 				))}
 			</nav>
+			</div>
 		</div>
 	</div>
 </header>
@@ -82,10 +85,14 @@ const { navItems, currentPath } = Astro.props;
 		transform: none;
 	}
 
-	/* When the bar is hidden on scroll-down, don't let a hovered sub-nav linger on screen. */
-	#menu-strip.-translate-y-full [data-subnav] {
+	/* When the bar is scrolled out of frame, don't let a hovered sub-nav linger on screen. */
+	#menu-strip.is-hidden [data-subnav] {
 		opacity: 0;
 		visibility: hidden;
+	}
+
+	#mobile-menu.is-open {
+		grid-template-rows: 1fr;
 	}
 </style>
 
@@ -93,31 +100,31 @@ const { navItems, currentPath } = Astro.props;
 	const mobileMenuButton = document.getElementById('mobile-menu-button');
 	const mobileMenu = document.getElementById('mobile-menu');
 
-	mobileMenuButton?.addEventListener('click', () => {
-		mobileMenu?.classList.toggle('hidden');
-	});
-
-	// "Headroom" behaviour: hide the menu strip when scrolling down, reveal it when scrolling up.
+	// "Headroom" behaviour: the strip is locked to a virtual position between fully
+	// in-frame and fully out-of-frame, and moves with the content as you scroll —
+	// scroll down and it slides up out of view, scroll up and it slides back in,
+	// always at the same rate as the page. An open mobile menu folds away as soon as
+	// you scroll down, so it gets out of the way rather than scrolling along.
 	const menuStrip = document.getElementById('menu-strip');
 	let lastScrollY = window.scrollY;
+	let offset = 0; // px the strip is translated up, clamped to [0, strip height]
 
 	const onScroll = () => {
 		const currentScrollY = window.scrollY;
+
+		if (currentScrollY > lastScrollY) mobileMenu?.classList.remove('is-open');
+
 		const stripHeight = menuStrip?.offsetHeight ?? 0;
-
-		// Don't hide while still near the top, or while the mobile menu is open.
-		const mobileMenuOpen = mobileMenu && !mobileMenu.classList.contains('hidden');
-
-		if (currentScrollY <= stripHeight || mobileMenuOpen) {
-			menuStrip?.classList.remove('-translate-y-full');
-		} else if (currentScrollY > lastScrollY) {
-			menuStrip?.classList.add('-translate-y-full');
-		} else if (currentScrollY < lastScrollY) {
-			menuStrip?.classList.remove('-translate-y-full');
-		}
+		offset = Math.min(Math.max(offset + currentScrollY - lastScrollY, 0), stripHeight);
+		if (menuStrip) menuStrip.style.transform = `translateY(${-offset}px)`;
+		menuStrip?.classList.toggle('is-hidden', stripHeight > 0 && offset >= stripHeight);
 
 		lastScrollY = currentScrollY;
 	};
 
 	window.addEventListener('scroll', onScroll, { passive: true });
+
+	mobileMenuButton?.addEventListener('click', () => {
+		mobileMenu?.classList.toggle('is-open');
+	});
 </script>
