@@ -106,11 +106,16 @@ const { navItems, currentPath } = Astro.props;
 	// always at the same rate as the page. An open mobile menu folds away as soon as
 	// you scroll down, so it gets out of the way rather than scrolling along.
 	const menuStrip = document.getElementById('menu-strip');
-	let lastScrollY = window.scrollY;
+	let lastScrollY = Math.max(0, window.scrollY);
 	let offset = 0; // px the strip is translated up, clamped to [0, strip height]
 
 	const onScroll = () => {
-		const currentScrollY = window.scrollY;
+		// Clamp to the scrollable range: iOS Safari reports overscroll while rubber-banding
+		// (negative past the top, beyond max at the bottom). Fed into the delta below, the
+		// bounce-back reads as a scroll and strands the bar part-way — a gap under it at the top.
+		const doc = document.documentElement;
+		const maxScrollY = Math.max(0, doc.scrollHeight - doc.clientHeight);
+		const currentScrollY = Math.min(Math.max(window.scrollY, 0), maxScrollY);
 
 		if (currentScrollY > lastScrollY) mobileMenu?.classList.remove('is-open');
 
