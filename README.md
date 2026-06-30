@@ -123,9 +123,9 @@ The workflow authenticates to the Cloudflare API using the `CLOUDFLARE_API_TOKEN
 
 ### 🏗️ Tech Stack
 - **Type**: Static (generated) site
-- **Framework**: [Astro](https://astro.build) 5.12.8
-- **Styling**: [Tailwind CSS](https://tailwindcss.com) 4.1.11
-- **CMS**: [Decap CMS](https://decapcms.org) (backed by Git)
+- **Framework**: [Astro](https://astro.build) 6
+- **Styling**: [Tailwind CSS](https://tailwindcss.com) 4
+- **CMS**: [Sveltia CMS](https://github.com/sveltia/sveltia-cms) (backed by Git)
 - **Deployment**: [Cloudflare Pages](https://pages.cloudflare.com)
 
 ### Running locally

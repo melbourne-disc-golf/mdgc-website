@@ -68,8 +68,6 @@ export default defineConfig({
           server.middlewares.use((req, res, next) => {
             if (req.url === '/cms/sveltia') {
               req.url = '/cms/sveltia.html';
-            } else if (req.url === '/cms/decap') {
-              req.url = '/cms/decap.html';
             }
             next();
           });

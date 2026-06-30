@@ -48,7 +48,7 @@ The [`existing-site/`](existing-site/) directory contains a "sketch" of that exi
 - use [Astro](https://astro.build/) as a static site generator
 - use [Tailwind CSS](https://tailwindcss.com/) for styling
 - deploy to [Cloudflare Pages](https://pages.cloudflare.com/)
-- use Decap CMS to manage content of some pages (courses, events)
+- use Sveltia CMS to manage content of some pages (courses, events)
 - use `pnpm` as the package manager (not `npm`)
 
 ## Site structure
