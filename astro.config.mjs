@@ -36,6 +36,7 @@ export default defineConfig({
   },
   integrations: [
     mdx({
+      gfm: true,
       rehypePlugins: [rehypeSectionize],
     }),
     icon(),
