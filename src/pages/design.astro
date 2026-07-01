@@ -1,0 +1,359 @@
+---
+import Layout from '@layouts/Layout.astro';
+import LinkPanel from '@components/LinkPanel.astro';
+
+// Unlinked reference page documenting the site's current visual language.
+// It reads from the real design tokens (CSS variables) and reuses real components,
+// so it stays truthful as the system evolves. Not in the nav, so it's only reachable
+// by direct URL.
+
+type Swatch = {
+  name: string;      // CSS variable or Tailwind token
+  value: string;     // colour used to paint the chip (var() or literal)
+  hex: string;       // documented hex
+  usage: string;     // where it's used
+  dark?: boolean;    // needs light text on top
+};
+
+const brand: Swatch[] = [
+  { name: '--color-mdgc-blue', value: 'var(--color-mdgc-blue)', hex: '#579EDA', usage: 'Primary brand blue — icons, links, accents', dark: true },
+  { name: '--color-mdgc-blue-light', value: 'var(--color-mdgc-blue-light)', hex: '#A3D0FF', usage: 'Light blue — nav links & accents on dark chrome' },
+  { name: '--color-mdgc-blue-dark', value: 'var(--color-mdgc-blue-dark)', hex: '#3F79B2', usage: 'Deep blue — gradients, hover states', dark: true },
+];
+
+const surfaces: Swatch[] = [
+  { name: '--color-mdgc-mist', value: 'var(--color-mdgc-mist)', hex: '#F3F8FC', usage: 'Page background — pale blue tint behind content' },
+  { name: 'white', value: '#ffffff', hex: '#FFFFFF', usage: 'Card & panel surfaces' },
+  { name: 'slate-900', value: '#0f172a', hex: '#0F172A', usage: 'Hero/header gradient origin', dark: true },
+  { name: 'gray-900', value: '#111827', hex: '#111827', usage: 'Footer background', dark: true },
+];
+
+const text: Swatch[] = [
+  { name: '--color-text-heading', value: 'var(--color-text-heading)', hex: '#111827', usage: 'Headings (gray-900)', dark: true },
+  { name: '--color-text-body', value: 'var(--color-text-body)', hex: '#4B5563', usage: 'Body copy (gray-600)', dark: true },
+];
+
+const accents: Swatch[] = [
+  { name: 'orange-500', value: '#f97316', hex: '#F97316', usage: '.metrix-button — Metrix result links', dark: true },
+  { name: 'amber-500', value: '#f59e0b', hex: '#F59E0B', usage: '.callout — left border', dark: true },
+  { name: 'amber-50', value: '#fffbeb', hex: '#FFFBEB', usage: '.callout — background' },
+  { name: 'green-600', value: '#16a34a', hex: '#16A34A', usage: '.concept-list — number', dark: true },
+  { name: 'green-100', value: '#dcfce7', hex: '#DCFCE7', usage: '.concept-list — number background' },
+];
+---
+
+<Layout title="Design language" subtitle="A living reference for the site's visual system">
+  <div class="dl">
+    <p class="dl-lead">
+      This page documents the <strong>existing</strong> visual language of the MDGC site. It is
+      unlinked from navigation — reachable only by direct URL — as a reference for anyone editing the
+      design. Every swatch and specimen below is rendered from the real design tokens and components,
+      so it reflects the site as it actually is.
+    </p>
+
+    <!-- COLOUR -->
+    <section class="dl-section">
+      <h2>Colour</h2>
+      <p>A single blue family carries the brand. Surfaces are near-white on a pale blue page tint.
+         A small set of semantic accents (orange, amber, green) are used sparingly for specific roles.</p>
+
+      <h3>Brand blues</h3>
+      <div class="swatch-grid">
+        {brand.map((s) => (
+          <div class="swatch">
+            <div class="swatch-chip" style={`background:${s.value}`} data-dark={s.dark}>{s.hex}</div>
+            <code>{s.name}</code>
+            <span>{s.usage}</span>
+          </div>
+        ))}
+      </div>
+
+      <h3>Surfaces & chrome</h3>
+      <div class="swatch-grid">
+        {surfaces.map((s) => (
+          <div class="swatch">
+            <div class="swatch-chip" style={`background:${s.value}`} data-dark={s.dark}>{s.hex}</div>
+            <code>{s.name}</code>
+            <span>{s.usage}</span>
+          </div>
+        ))}
+      </div>
+
+      <h3>Text</h3>
+      <div class="swatch-grid">
+        {text.map((s) => (
+          <div class="swatch">
+            <div class="swatch-chip" style={`background:${s.value}`} data-dark={s.dark}>{s.hex}</div>
+            <code>{s.name}</code>
+            <span>{s.usage}</span>
+          </div>
+        ))}
+      </div>
+
+      <h3>Semantic accents</h3>
+      <div class="swatch-grid">
+        {accents.map((s) => (
+          <div class="swatch">
+            <div class="swatch-chip" style={`background:${s.value}`} data-dark={s.dark}>{s.hex}</div>
+            <code>{s.name}</code>
+            <span>{s.usage}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- TYPOGRAPHY -->
+    <section class="dl-section">
+      <h2>Typography</h2>
+      <p>Two typefaces, both loaded from Google Fonts via Astro's font provider.</p>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <code>font-display</code> · Nunito · weights 300/400/600/700
+          <span>Currently used only for the header wordmark.</span>
+        </div>
+        <p class="font-display text-4xl font-bold" style="color: var(--color-text-heading)">Melbourne Disc Golf Club</p>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <code>font-sans</code> (default) · Inter · weights 400/600/700/800/900
+          <span>Used for all headings and body copy.</span>
+        </div>
+        <p class="text-4xl font-bold" style="color: var(--color-text-heading)">The quick brown disc flies far</p>
+        <p class="text-base mt-2" style="color: var(--color-text-body)">
+          The quick brown disc flies far over the fairway — 0123456789.
+        </p>
+      </div>
+
+      <h3>Heading scale (as used)</h3>
+      <div class="type-scale">
+        <div><span class="tag">PageHero h1 · text-4xl font-bold</span><p class="text-4xl font-bold" style="color:var(--color-text-heading)">Page title</p></div>
+        <div><span class="tag">Section h2 · text-2xl font-semibold</span><p class="text-2xl font-semibold" style="color:var(--color-text-heading)">Section heading</p></div>
+        <div><span class="tag">prose h2</span><p class="text-xl font-bold" style="color:var(--color-text-heading)">Prose H2 (with top rule)</p></div>
+        <div><span class="tag">prose h3</span><p class="text-lg font-bold" style="color:var(--color-text-body)">Prose H3</p></div>
+        <div><span class="tag">body · text-base</span><p class="text-base" style="color:var(--color-text-body)">Body copy sits at gray-600 for a softer read; headings darken to gray-900.</p></div>
+      </div>
+    </section>
+
+    <!-- CHROME -->
+    <section class="dl-section">
+      <h2>Chrome & gradients</h2>
+      <p>Dark, blue-tinted gradients frame the page top and bottom; the content sits on the light mist tint between them.</p>
+
+      <div class="chrome-samples">
+        <div>
+          <span class="tag">Header · from-black to-mdgc-blue-dark</span>
+          <div class="chrome-bar" style="background:linear-gradient(to right, #000, var(--color-mdgc-blue-dark))"></div>
+        </div>
+        <div>
+          <span class="tag">PageHero · from-slate-900 to-mdgc-blue-dark</span>
+          <div class="chrome-bar" style="background:linear-gradient(to right, #0f172a, var(--color-mdgc-blue-dark))"></div>
+        </div>
+        <div>
+          <span class="tag">Hero divider · from-mdgc-blue-light to-slate-900</span>
+          <div class="chrome-bar" style="height:0.5rem; background:linear-gradient(to right, var(--color-mdgc-blue-light), #0f172a)"></div>
+        </div>
+        <div>
+          <span class="tag">Footer · gray-900</span>
+          <div class="chrome-bar" style="background:#111827"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPONENTS -->
+    <section class="dl-section">
+      <h2>Components</h2>
+
+      <h3>Link panel (card)</h3>
+      <p>The dominant content motif: a white card with an icon, title and description. Lifts and
+         deepens its shadow on hover.</p>
+      <div class="grid gap-6 sm:grid-cols-2 not-prose my-6">
+        <LinkPanel href="/disc-golf" title="Disc Golf" description="about the game" icon="heroicons:academic-cap" />
+        <LinkPanel href="https://example.com" title="External link" description="opens in a new tab" icon="heroicons:shopping-bag" />
+      </div>
+
+      <h3>Callout</h3>
+      <div class="callout"><p>Amber-bordered callout for asides and notes — <code>.callout</code>.</p></div>
+
+      <h3>Metrix button</h3>
+      <p>Inline orange chip linking to Metrix results: <span class="metrix-button">Results ↗</span> (<code>.metrix-button</code>).</p>
+
+      <h3>Concept list</h3>
+      <ol class="concept-list">
+        <li>Numbered steps with green circular markers.</li>
+        <li>Used for how-to sequences.</li>
+      </ol>
+    </section>
+
+    <!-- MOTION -->
+    <section class="dl-section">
+      <h2>Motion</h2>
+      <p>Motion is restrained and interaction-driven — there is no page-load choreography.</p>
+      <ul class="dl-list">
+        <li><strong>Links</strong> scale to <code>1.05</code> on hover (block links only; inline prose links thicken their underline instead).</li>
+        <li><strong>Logo</strong> scales to <code>1.15</code> on hover.</li>
+        <li><strong>Cards</strong> lift <code>1px</code> and deepen their shadow on hover.</li>
+        <li><strong>Header</strong> hides on scroll-down and returns on scroll-up.</li>
+      </ul>
+      <p>Hover the demo links to feel the timing:
+        <a href="#" onclick="return false" class="text-mdgc-blue">a block link zoom</a>.</p>
+    </section>
+
+    <!-- LAYOUT -->
+    <section class="dl-section">
+      <h2>Layout & spacing</h2>
+      <ul class="dl-list">
+        <li><code>.content-width</code> — <code>max-w-7xl</code>, centred, responsive horizontal padding. The page container.</li>
+        <li><code>.text-width</code> / <code>.prose</code> — <code>max-w-4xl</code>, centred. Reading-width text columns.</li>
+        <li><code>&lt;Section&gt;</code> — vertical rhythm block (<code>my-12</code>) with optional heading.</li>
+        <li><code>&lt;Grid&gt;</code> — auto-fit responsive card grid (default min column <code>250px</code>).</li>
+      </ul>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .dl {
+    max-width: 72rem;
+    margin: 2rem auto 4rem;
+  }
+
+  .dl-lead {
+    color: var(--color-text-body);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 48rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .dl-section {
+    padding: 2rem 0;
+    border-top: 1px solid #dbe4ee;
+  }
+
+  .dl-section > h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text-heading);
+    margin: 0 0 0.5rem;
+  }
+
+  .dl-section > h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--color-mdgc-blue-dark);
+    margin: 2rem 0 0.75rem;
+  }
+
+  .dl-section p {
+    color: var(--color-text-body);
+    max-width: 48rem;
+    margin: 0.5rem 0;
+    line-height: 1.6;
+  }
+
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0 0.5rem;
+  }
+
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .swatch-chip {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 4.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #1f2937;
+    box-shadow: 0 4px 12px rgba(6, 61, 99, 0.08);
+  }
+
+  .swatch-chip[data-dark='true'] {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .swatch code {
+    font-size: 0.8rem;
+    color: var(--color-text-heading);
+  }
+
+  .swatch span {
+    font-size: 0.8rem;
+    color: var(--color-text-body);
+    line-height: 1.4;
+  }
+
+  .type-specimen,
+  .type-scale > div {
+    border: 1px solid #dbe4ee;
+    border-radius: 0.75rem;
+    background: #fff;
+    padding: 1.25rem 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .type-meta,
+  .tag {
+    display: block;
+    font-family: ui-monospace, monospace;
+    font-size: 0.75rem;
+    color: var(--color-mdgc-blue-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .type-meta span {
+    display: block;
+    color: var(--color-text-body);
+    font-family: var(--font-sans);
+    margin-top: 0.15rem;
+  }
+
+  .type-scale {
+    margin-top: 1rem;
+  }
+
+  .chrome-samples {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .chrome-bar {
+    height: 3rem;
+    border-radius: 0.5rem;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+  }
+
+  .dl-list {
+    color: var(--color-text-body);
+    line-height: 1.7;
+    padding-left: 1.25rem;
+    list-style: disc;
+    max-width: 48rem;
+  }
+
+  .dl-list li {
+    margin: 0.35rem 0;
+  }
+
+  .dl code {
+    background: #eef4fa;
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.25rem;
+    font-size: 0.85em;
+  }
+</style>
