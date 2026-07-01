@@ -9,33 +9,33 @@ import LinkPanel from '@components/LinkPanel.astro';
 // close-ups are built from the same utility classes the real components use — so the
 // page can't silently drift. Not in the nav; reachable only by direct URL.
 
-type Swatch = {
-  name: string;   // token / class name shown as the label
-  cls: string;    // the REAL Tailwind utility that paints the chip
-  usage: string;  // where it's used on the site
-};
+type Swatch = { cls: string; name: string; usage: string };
+
+// The Tailwind bg-* class is the single source of truth (it must appear as a literal
+// so Tailwind generates it); the label is derived by dropping the `bg-` prefix.
+const swatch = (cls: string, usage: string): Swatch => ({ cls, name: cls.replace(/^bg-/, ''), usage });
 
 const brand: Swatch[] = [
-  { name: 'mdgc-blue', cls: 'bg-mdgc-blue', usage: 'Primary brand blue — icons, links, accents' },
-  { name: 'mdgc-blue-light', cls: 'bg-mdgc-blue-light', usage: 'Light blue — nav links & accents on dark chrome' },
-  { name: 'mdgc-blue-dark', cls: 'bg-mdgc-blue-dark', usage: 'Deep blue — gradients, hover states' },
+  swatch('bg-mdgc-blue', 'Primary brand blue — icons, links, accents'),
+  swatch('bg-mdgc-blue-light', 'Light blue — nav links & accents on dark chrome'),
+  swatch('bg-mdgc-blue-dark', 'Deep blue — gradients, hover states'),
 ];
 
 const surfaces: Swatch[] = [
-  { name: 'mdgc-mist', cls: 'bg-mdgc-mist', usage: 'Page background — pale blue tint behind content' },
-  { name: 'white', cls: 'bg-white', usage: 'Card & panel surfaces' },
-  { name: 'gray-900', cls: 'bg-gray-900', usage: 'Dark chrome — header, hero & footer' },
+  swatch('bg-mdgc-mist', 'Page background — pale blue tint behind content'),
+  swatch('bg-white', 'Card & panel surfaces'),
+  swatch('bg-gray-900', 'Dark chrome — header, hero & footer'),
 ];
 
 const text: Swatch[] = [
-  { name: '--color-text-heading', cls: 'bg-[var(--color-text-heading)]', usage: 'Headings (gray-900)' },
-  { name: '--color-text-body', cls: 'bg-[var(--color-text-body)]', usage: 'Body copy (slate-600)' },
+  swatch('bg-text-heading', 'Headings (gray-900)'),
+  swatch('bg-text-body', 'Body copy (slate-600)'),
 ];
 
 const accents: Swatch[] = [
-  { name: 'orange-500', cls: 'bg-orange-500', usage: '.metrix-button — Metrix result links' },
-  { name: 'amber-500', cls: 'bg-amber-500', usage: '.social-callout — left border' },
-  { name: 'amber-50', cls: 'bg-amber-50', usage: '.social-callout — background' },
+  swatch('bg-orange-500', '.metrix-button — Metrix result links'),
+  swatch('bg-amber-500', '.social-callout — left border'),
+  swatch('bg-amber-50', '.social-callout — background'),
 ];
 ---
 
