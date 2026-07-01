@@ -33,8 +33,8 @@ const text: Swatch[] = [
 
 const accents: Swatch[] = [
   { name: 'orange-500', cls: 'bg-orange-500', usage: '.metrix-button — Metrix result links' },
-  { name: 'amber-500', cls: 'bg-amber-500', usage: '.callout — left border' },
-  { name: 'amber-50', cls: 'bg-amber-50', usage: '.callout — background' },
+  { name: 'amber-500', cls: 'bg-amber-500', usage: '.social-callout — left border' },
+  { name: 'amber-50', cls: 'bg-amber-50', usage: '.social-callout — background' },
 ];
 ---
 
@@ -127,8 +127,8 @@ const accents: Swatch[] = [
       <div class="type-scale">
         <div><span class="tag">PageHero h1 · text-4xl font-bold</span><p class="text-4xl font-bold" style="color:var(--color-text-heading)">Page title</p></div>
         <div><span class="tag">Section h2 · text-2xl font-semibold</span><p class="text-2xl font-semibold" style="color:var(--color-text-heading)">Section heading</p></div>
-        <div><span class="tag">prose h2</span><p class="text-xl font-bold" style="color:var(--color-text-heading)">Prose H2 (with top rule)</p></div>
-        <div><span class="tag">prose h3</span><p class="text-lg font-bold" style="color:var(--color-text-body)">Prose H3</p></div>
+        <div><span class="tag">prose h2 · top rule + spacing</span><div class="prose"><h2>Prose H2</h2></div></div>
+        <div><span class="tag">prose h3</span><div class="prose"><h3>Prose H3</h3></div></div>
         <div><span class="tag">body · text-base</span><p class="text-base" style="color:var(--color-text-body)">Body copy sits at slate-600 for a softer read; headings darken to gray-900.</p></div>
       </div>
     </section>
@@ -170,8 +170,8 @@ const accents: Swatch[] = [
         <LinkPanel href="https://example.com" title="External link" description="opens in a new tab" icon="heroicons:shopping-bag" />
       </div>
 
-      <h3>Callout</h3>
-      <div class="callout"><p>Amber-bordered callout for asides and notes — <code>.callout</code>.</p></div>
+      <h3>Social callout</h3>
+      <div class="social-callout"><p>Amber-bordered note box, used on social-day pages — <code>.social-callout</code>.</p></div>
 
       <h3>Metrix button</h3>
       <p>Inline orange chip linking to Metrix results: <span class="metrix-button">Results ↗</span> (<code>.metrix-button</code>).</p>
@@ -315,6 +315,17 @@ const accents: Swatch[] = [
 
   .type-scale {
     margin-top: 1rem;
+  }
+
+  /* Show the real prose heading styling (top rule, spacing, colour) without the
+     prose container's max-width centring, so specimens align left like the rest. */
+  .type-scale .prose {
+    max-width: none;
+    margin: 0;
+  }
+
+  .type-scale .prose :first-child {
+    margin-top: 0;
   }
 
   .chrome-samples {
