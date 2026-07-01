@@ -286,6 +286,31 @@
         "Total": 0
       },
       {
+        "UserID": "208038",
+        "Name": "Cooper Thompson",
+        "ClassName": "Div A - Metrix Rating > 890",
+        "CountryCode": "US",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "194910",
         "Name": "Glen Ralston",
         "ClassName": "Div A - Metrix Rating > 890",
@@ -436,6 +461,31 @@
         "Total": 0
       },
       {
+        "UserID": "133657",
+        "Name": "Mike Van der Linden",
+        "ClassName": "Div A - Metrix Rating > 890",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "168308",
         "Name": "Pen Liu",
         "ClassName": "Div A - Metrix Rating > 890",
@@ -488,6 +538,31 @@
       {
         "UserID": "133762",
         "Name": "Simon Farrar",
+        "ClassName": "Div A - Metrix Rating > 890",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "40476",
+        "Name": "Succulent Chinese Meal",
         "ClassName": "Div A - Metrix Rating > 890",
         "CountryCode": "AU",
         "Place": 0,
@@ -588,6 +663,31 @@
       {
         "UserID": "135324",
         "Name": "Curt Moulton",
+        "ClassName": "Div B - Metrix Rating 845-890",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "182295",
+        "Name": "Damian Musci",
         "ClassName": "Div B - Metrix Rating 845-890",
         "CountryCode": "AU",
         "Place": 0,
@@ -961,6 +1061,31 @@
         "Total": 0
       },
       {
+        "UserID": "113708",
+        "Name": "Aaron Ponnudurai",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "195066",
         "Name": "Alistair Morley",
         "ClassName": "Div C - Metrix Rating 790-845",
@@ -1086,6 +1211,56 @@
         "Total": 0
       },
       {
+        "UserID": "130554",
+        "Name": "PETER HOWES",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "137014",
+        "Name": "Phillip Hall",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "218202",
         "Name": "Rhys Vieusseux",
         "ClassName": "Div C - Metrix Rating 790-845",
@@ -1139,6 +1314,31 @@
         "UserID": "162591",
         "Name": "Toby Beasley",
         "ClassName": "Div C - Metrix Rating 790-845",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "79684",
+        "Name": "Aaron DeBuhr",
+        "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
         "Place": 0,
         "EventResults": [
