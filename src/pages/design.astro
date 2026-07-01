@@ -24,7 +24,7 @@ const brand: Swatch[] = [
 const surfaces: Swatch[] = [
   swatch('bg-mdgc-mist', 'Page background — pale blue tint behind content'),
   swatch('bg-white', 'Card & panel surfaces'),
-  swatch('bg-gray-900', 'Dark chrome — header, hero & footer'),
+  swatch('bg-gray-900', 'Dark chrome — hero & footer (nav strip is black)'),
 ];
 
 const text: Swatch[] = [
@@ -118,13 +118,14 @@ const accents: Swatch[] = [
     <section class="dl-section" id="header">
       <h2>Header</h2>
       <p>The header (visible at the top of this page) has two parts: a sticky <strong>navigation
-         strip</strong> and the <strong>page hero</strong> that carries the title. Both sit on the
-         <code>from-gray-900 → mdgc-blue-dark</code> gradient with white text.</p>
+         strip</strong> and the <strong>page hero</strong> that carries the title. Both fade to
+         <code>mdgc-blue-dark</code> with white text — the strip from <code>black</code>, the hero
+         from the slightly lighter <code>gray-900</code>.</p>
 
       <h3>Navigation strip</h3>
       <p>The wordmark uses <code>font-display</code> (Nunito); links are pill-shaped, resting at
          <code>mdgc-blue-light</code> and turning white when active or hovered.</p>
-      <div class="dark-stage bg-linear-to-r from-gray-900 to-mdgc-blue-dark text-white">
+      <div class="dark-stage bg-linear-to-r from-black to-mdgc-blue-dark text-white">
         <div class="stage-row">
           <span class="font-display text-base">Melbourne Disc Golf Club</span>
           <span class="text-mdgc-blue-light text-sm px-4 py-2 rounded-lg border border-mdgc-blue-light/25">Disc Golf</span>
@@ -134,7 +135,7 @@ const accents: Swatch[] = [
 
       <p>Items with sub-pages open a dropdown (hover the real nav above to see it). The panel and its
          items reuse these classes:</p>
-      <div class="dark-stage bg-linear-to-r from-gray-900 to-mdgc-blue-dark">
+      <div class="dark-stage bg-linear-to-r from-black to-mdgc-blue-dark">
         <div class="w-max rounded-b-lg rounded-tr-lg border border-mdgc-blue-light/25 bg-gray-900 p-1.5">
           <span class="block rounded-md px-5 py-1 text-sm text-mdgc-blue-light">News</span>
           <span class="block rounded-md px-5 py-1 text-sm text-white bg-white/15">Membership (active)</span>
