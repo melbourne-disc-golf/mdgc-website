@@ -6,6 +6,7 @@
   --color-mdgc-blue: #579EDA;
   --color-mdgc-blue-light: #A3D0FF;
   --color-mdgc-blue-dark: #3F79B2;
+  --color-mdgc-mist: #F3F8FC; /* pale blue-tinted page background */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
   --color-text-body: #4b5563; /* gray-600 - lighter for body text */
