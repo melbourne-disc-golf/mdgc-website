@@ -2,11 +2,12 @@
 import Layout from '@layouts/Layout.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 
-// Unlinked reference page documenting the site's current visual language.
-// Every colour chip is painted by the real utility/token (a Tailwind class or a
-// CSS variable) and its hex is read back from the rendered result at load — so a
-// label can never silently drift from the source. The component demos are real
-// instances. Not in the nav; reachable only by direct URL.
+// Unlinked reference page documenting the site's current visual language, organised
+// around the site's anatomy: shared Foundations (colour + type), then the Header,
+// Footer and Prose content. Colour chips are painted by the real utility/token and
+// their hex is read back from the rendered result on load, and the header/footer
+// close-ups are built from the same utility classes the real components use — so the
+// page can't silently drift. Not in the nav; reachable only by direct URL.
 
 type Swatch = {
   name: string;   // token / class name shown as the label
@@ -41,164 +42,204 @@ const accents: Swatch[] = [
 <Layout title="Design language" subtitle="A living reference for the site's visual system">
   <div class="dl">
     <p class="dl-lead">
-      This page documents the <strong>existing</strong> visual language of the MDGC site. It is
-      unlinked from navigation — reachable only by direct URL — as a reference for anyone editing the
-      design. Every swatch is painted by the real Tailwind utility or CSS token, and its hex is read
-      back from the rendered colour on load; the component demos are real instances. So the page
-      can't silently drift from the site.
+      This page documents the <strong>existing</strong> visual language of the MDGC site, organised
+      around its anatomy: shared <a href="#foundations">foundations</a>, then the
+      <a href="#header">header</a>, <a href="#footer">footer</a> and <a href="#prose">prose content</a>.
+      It is unlinked from navigation — reachable only by direct URL. Colour chips are painted by the
+      real token and their hex read back from the rendered result on load; the chrome close-ups use
+      the same utility classes as the real components. So the page can't silently drift from the site.
     </p>
 
-    <!-- COLOUR -->
-    <section class="dl-section">
-      <h2>Colour</h2>
-      <p>A single blue family carries the brand. Surfaces are near-white on a pale blue page tint.
-         A small set of semantic accents (orange, amber) are used sparingly for specific roles.</p>
+    <!-- FOUNDATIONS -->
+    <section class="dl-section" id="foundations">
+      <h2>Foundations</h2>
 
-      <h3>Brand blues</h3>
-      <div class="swatch-grid">
-        {brand.map((s) => (
-          <div class="swatch">
-            <div class={`swatch-chip ${s.cls}`}></div>
-            <code>{s.name}</code>
-            <span>{s.usage}</span>
-          </div>
-        ))}
+      <h3>Colour</h3>
+      <p>A single blue family carries the brand, on near-white surfaces over a pale blue page tint.
+         A few semantic accents (orange, amber) are used sparingly for specific roles.</p>
+
+      <div class="swatch-block"><span class="mini-label">Brand blues</span>
+        <div class="swatch-grid">
+          {brand.map((s) => (
+            <div class="swatch"><div class={`swatch-chip ${s.cls}`}></div><code>{s.name}</code><span>{s.usage}</span></div>
+          ))}
+        </div>
       </div>
 
-      <h3>Surfaces & chrome</h3>
-      <div class="swatch-grid">
-        {surfaces.map((s) => (
-          <div class="swatch">
-            <div class={`swatch-chip ${s.cls}`}></div>
-            <code>{s.name}</code>
-            <span>{s.usage}</span>
-          </div>
-        ))}
+      <div class="swatch-block"><span class="mini-label">Surfaces</span>
+        <div class="swatch-grid">
+          {surfaces.map((s) => (
+            <div class="swatch"><div class={`swatch-chip ${s.cls}`}></div><code>{s.name}</code><span>{s.usage}</span></div>
+          ))}
+        </div>
       </div>
 
-      <h3>Text</h3>
-      <div class="swatch-grid">
-        {text.map((s) => (
-          <div class="swatch">
-            <div class={`swatch-chip ${s.cls}`}></div>
-            <code>{s.name}</code>
-            <span>{s.usage}</span>
-          </div>
-        ))}
+      <div class="swatch-block"><span class="mini-label">Text</span>
+        <div class="swatch-grid">
+          {text.map((s) => (
+            <div class="swatch"><div class={`swatch-chip ${s.cls}`}></div><code>{s.name}</code><span>{s.usage}</span></div>
+          ))}
+        </div>
       </div>
 
-      <h3>Semantic accents</h3>
-      <div class="swatch-grid">
-        {accents.map((s) => (
-          <div class="swatch">
-            <div class={`swatch-chip ${s.cls}`}></div>
-            <code>{s.name}</code>
-            <span>{s.usage}</span>
-          </div>
-        ))}
+      <div class="swatch-block"><span class="mini-label">Semantic accents</span>
+        <div class="swatch-grid">
+          {accents.map((s) => (
+            <div class="swatch"><div class={`swatch-chip ${s.cls}`}></div><code>{s.name}</code><span>{s.usage}</span></div>
+          ))}
+        </div>
       </div>
-    </section>
 
-    <!-- TYPOGRAPHY -->
-    <section class="dl-section">
-      <h2>Typography</h2>
+      <h3>Typography</h3>
       <p>Two typefaces, both loaded from Google Fonts via Astro's font provider.</p>
 
       <div class="type-specimen">
-        <div class="type-meta">
-          <code>font-display</code> · Nunito · weights 300/400/600/700
-          <span>Currently used only for the header wordmark.</span>
-        </div>
-        <p class="font-display text-4xl font-bold" style="color: var(--color-text-heading)">Melbourne Disc Golf Club</p>
+        <div class="type-meta"><code>font-display</code> · Nunito · 300/400/600/700
+          <span>Used only for the header wordmark.</span></div>
+        <p class="font-display text-3xl font-bold" style="color: var(--color-text-heading)">Melbourne Disc Golf Club</p>
       </div>
 
       <div class="type-specimen">
-        <div class="type-meta">
-          <code>font-sans</code> (default) · Inter · weights 400/600/700/800/900
-          <span>Used for all headings and body copy.</span>
-        </div>
-        <p class="text-4xl font-bold" style="color: var(--color-text-heading)">The quick brown disc flies far</p>
-        <p class="text-base mt-2" style="color: var(--color-text-body)">
-          The quick brown disc flies far over the fairway — 0123456789.
-        </p>
-      </div>
-
-      <h3>Heading scale (as used)</h3>
-      <div class="type-scale">
-        <div><span class="tag">PageHero h1 · text-4xl font-bold</span><p class="text-4xl font-bold" style="color:var(--color-text-heading)">Page title</p></div>
-        <div><span class="tag">Section h2 · text-2xl font-semibold</span><p class="text-2xl font-semibold" style="color:var(--color-text-heading)">Section heading</p></div>
-        <div><span class="tag">prose h2 · top rule + spacing</span><div class="prose"><h2>Prose H2</h2></div></div>
-        <div><span class="tag">prose h3</span><div class="prose"><h3>Prose H3</h3></div></div>
-        <div><span class="tag">body · text-base</span><p class="text-base" style="color:var(--color-text-body)">Body copy sits at slate-600 for a softer read; headings darken to gray-900.</p></div>
+        <div class="type-meta"><code>font-sans</code> (default) · Inter · 400/600/700/800/900
+          <span>Everything else — headings and body.</span></div>
+        <p class="text-3xl font-bold" style="color: var(--color-text-heading)">The quick brown disc flies far</p>
+        <p class="text-base mt-1" style="color: var(--color-text-body)">The quick brown disc flies far over the fairway — 0123456789.</p>
       </div>
     </section>
 
-    <!-- CHROME -->
-    <section class="dl-section">
-      <h2>Chrome & gradients</h2>
-      <p>Dark, blue-tinted gradients frame the page top and bottom; the content sits on the light mist tint between them.</p>
+    <!-- HEADER -->
+    <section class="dl-section" id="header">
+      <h2>Header</h2>
+      <p>The header (visible at the top of this page) has two parts: a sticky <strong>navigation
+         strip</strong> and the <strong>page hero</strong> that carries the title. Both sit on the
+         <code>from-gray-900 → mdgc-blue-dark</code> gradient with white text.</p>
 
-      <div class="chrome-samples">
-        <div>
-          <span class="tag">Header · from-gray-900 to-mdgc-blue-dark</span>
-          <div class="chrome-bar bg-linear-to-r from-gray-900 to-mdgc-blue-dark"></div>
-        </div>
-        <div>
-          <span class="tag">PageHero · from-gray-900 to-mdgc-blue-dark</span>
-          <div class="chrome-bar bg-linear-to-r from-gray-900 to-mdgc-blue-dark"></div>
-        </div>
-        <div>
-          <span class="tag">Hero divider · from-mdgc-blue-light to-gray-900</span>
-          <div class="chrome-bar bg-linear-to-r from-mdgc-blue-light to-gray-900" style="height:0.5rem"></div>
-        </div>
-        <div>
-          <span class="tag">Footer · gray-900</span>
-          <div class="chrome-bar bg-gray-900"></div>
+      <h3>Navigation strip</h3>
+      <p>The wordmark uses <code>font-display</code> (Nunito); links are pill-shaped, resting at
+         <code>mdgc-blue-light</code> and turning white when active or hovered.</p>
+      <div class="dark-stage bg-linear-to-r from-gray-900 to-mdgc-blue-dark text-white">
+        <div class="stage-row">
+          <span class="font-display text-base">Melbourne Disc Golf Club</span>
+          <span class="text-mdgc-blue-light text-sm px-4 py-2 rounded-lg border border-mdgc-blue-light/25">Disc Golf</span>
+          <span class="text-white text-sm px-4 py-2 rounded-lg border border-mdgc-blue-light/25 bg-mdgc-blue-dark">Club (active)</span>
         </div>
       </div>
+
+      <p>Items with sub-pages open a dropdown (hover the real nav above to see it). The panel and its
+         items reuse these classes:</p>
+      <div class="dark-stage bg-linear-to-r from-gray-900 to-mdgc-blue-dark">
+        <div class="w-max rounded-b-lg rounded-tr-lg border border-mdgc-blue-light/25 bg-gray-900 p-1.5">
+          <span class="block rounded-md px-5 py-1 text-sm text-mdgc-blue-light">News</span>
+          <span class="block rounded-md px-5 py-1 text-sm text-white bg-white/15">Membership (active)</span>
+          <span class="block rounded-md px-5 py-1 text-sm text-mdgc-blue-light">Board</span>
+        </div>
+      </div>
+      <p class="anno">Behaviour: the strip is <strong>sticky</strong> with a “headroom” effect — it
+         slides up out of view on scroll-down and returns on scroll-up.</p>
+
+      <h3>Page hero</h3>
+      <p>The title is an <code>h1</code> at <code>text-4xl font-bold</code>; an optional subtitle sits
+         below at <code>text-xl</code>, and a nav-derived back-link above at
+         <code>text-sm mdgc-blue-light</code>.</p>
+      <div class="dark-stage bg-linear-to-r from-gray-900 to-mdgc-blue-dark text-white">
+        <span class="text-sm text-mdgc-blue-light">← Club</span>
+        <p class="text-4xl font-bold mt-1">Page title</p>
+        <p class="text-xl mt-2">An optional subtitle line</p>
+      </div>
+      <span class="mini-label">Hero divider · from-mdgc-blue-light to-gray-900</span>
+      <div class="chrome-bar bg-linear-to-r from-mdgc-blue-light to-gray-900" style="height:0.25rem"></div>
     </section>
 
-    <!-- COMPONENTS -->
-    <section class="dl-section">
-      <h2>Components</h2>
+    <!-- FOOTER -->
+    <section class="dl-section" id="footer">
+      <h2>Footer</h2>
+      <p>The footer (at the bottom of this page) is a solid <code>gray-900</code> block: the logo, a
+         row of navigation columns (section title + sub-links), and a bottom bar with the copyright,
+         last-updated stamp and the CMS / GitHub / report-issue icons.</p>
+      <div class="dark-stage bg-gray-900 text-white">
+        <div class="stage-cols">
+          <div>
+            <h4 class="text-mdgc-blue-light font-semibold m-0">Club</h4>
+            <ul class="space-y-0.5 list-none p-0 m-0 mt-1">
+              <li><span class="text-sm text-mdgc-blue-light">News</span></li>
+              <li><span class="text-sm text-mdgc-blue-light">Membership</span></li>
+              <li><span class="text-sm text-mdgc-blue-light">Board</span></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-mdgc-blue-light font-semibold m-0">Courses</h4>
+            <ul class="space-y-0.5 list-none p-0 m-0 mt-1">
+              <li><span class="text-sm text-mdgc-blue-light">Bald Hill</span></li>
+              <li><span class="text-sm text-mdgc-blue-light">Ruffey Lake</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 mt-4 pt-2 text-gray-400 text-sm">© Melbourne Disc Golf Club. All rights reserved.</div>
+      </div>
+      <p class="anno">Tokens: <code>bg-gray-900</code> surface, <code>mdgc-blue-light</code> links
+         (white on hover), <code>gray-700</code> divider, <code>gray-400</code> muted text.</p>
+    </section>
 
-      <h3>Link panel (card)</h3>
-      <p>The dominant content motif: a white card with an icon, title and description. Lifts and
-         deepens its shadow on hover.</p>
-      <div class="grid gap-6 sm:grid-cols-2 not-prose my-6">
+    <!-- PROSE -->
+    <section class="dl-section" id="prose">
+      <h2>Prose content</h2>
+      <p>Page bodies render as <code>.prose</code> — a centred <code>max-w-4xl</code> reading column in
+         body colour (<code>slate-600</code>). The Tailwind Typography plugin provides the base, with
+         local overrides in <code>global.css</code>. A live example:</p>
+
+      <div class="prose-demo">
+        <div class="prose">
+          <p>An intro paragraph with an <a href="#prose">inline link</a> that darkens and thickens its
+             underline on hover (block links elsewhere scale slightly instead). Headings sit at
+             <strong>gray-900</strong>, body text at slate-600.</p>
+          <h2>A prose heading</h2>
+          <p>The <code>h2</code> above carries a top rule and generous top margin to separate sections.</p>
+          <h3>A sub-heading</h3>
+          <ul>
+            <li>Unordered list item</li>
+            <li>Another item</li>
+          </ul>
+          <ol>
+            <li>Ordered list item</li>
+            <li>Another step</li>
+          </ol>
+          <table>
+            <thead><tr><th>Course</th><th>Suburb</th></tr></thead>
+            <tbody>
+              <tr><td>Bald Hill</td><td>Clarinda</td></tr>
+              <tr><td>Ruffey Lake</td><td>Templestowe</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>Heading styles</h3>
+      <ul class="dl-list">
+        <li><strong>Hero h1</strong> — <code>text-4xl font-bold</code>, white on the header gradient (see above).</li>
+        <li><strong>Section h2</strong> — <code>text-2xl font-semibold</code>, from the <code>&lt;Section&gt;</code> component.</li>
+        <li><strong>prose h2</strong> — top rule (<code>1px</code> border) + generous top margin; darkens to gray-900.</li>
+        <li><strong>prose h3 / h4</strong> — smaller, tighter spacing; h3 in body colour.</li>
+      </ul>
+
+      <h3>Content blocks</h3>
+      <p>Reusable blocks that appear within page bodies:</p>
+
+      <p class="mini-label">Link panel — the dominant card motif (lifts &amp; deepens its shadow on hover)</p>
+      <div class="grid gap-6 sm:grid-cols-2 not-prose my-4">
         <LinkPanel href="/disc-golf" title="Disc Golf" description="about the game" icon="heroicons:academic-cap" />
         <LinkPanel href="https://example.com" title="External link" description="opens in a new tab" icon="heroicons:shopping-bag" />
       </div>
 
-      <h3>Social callout</h3>
-      <div class="social-callout"><p>Amber-bordered note box, used on social-day pages — <code>.social-callout</code>.</p></div>
+      <p class="mini-label"><code>.social-callout</code> — amber note box, used on social-day pages</p>
+      <div class="social-callout"><p>Pre-registration is required for all Social Days.</p></div>
 
-      <h3>Metrix button</h3>
-      <p>Inline orange chip linking to Metrix results: <span class="metrix-button">Results ↗</span> (<code>.metrix-button</code>).</p>
-    </section>
+      <p class="mini-label"><code>.metrix-button</code> — inline chip linking to Metrix results</p>
+      <p><span class="metrix-button">Results ↗</span></p>
 
-    <!-- MOTION -->
-    <section class="dl-section">
-      <h2>Motion</h2>
-      <p>Motion is restrained and interaction-driven — there is no page-load choreography.</p>
+      <h3>Widths</h3>
       <ul class="dl-list">
-        <li><strong>Links</strong> scale to <code>1.05</code> on hover (block links only; inline prose links thicken their underline instead).</li>
-        <li><strong>Logo</strong> scales to <code>1.15</code> on hover.</li>
-        <li><strong>Cards</strong> lift <code>1px</code> and deepen their shadow on hover.</li>
-        <li><strong>Header</strong> hides on scroll-down and returns on scroll-up.</li>
-      </ul>
-      <p>Hover the demo links to feel the timing:
-        <a href="#" onclick="return false" class="text-mdgc-blue">a block link zoom</a>.</p>
-    </section>
-
-    <!-- LAYOUT -->
-    <section class="dl-section">
-      <h2>Layout & spacing</h2>
-      <ul class="dl-list">
-        <li><code>.content-width</code> — <code>max-w-7xl</code>, centred, responsive horizontal padding. The page container.</li>
-        <li><code>.text-width</code> / <code>.prose</code> — <code>max-w-4xl</code>, centred. Reading-width text columns.</li>
-        <li><code>&lt;Section&gt;</code> — vertical rhythm block (<code>my-12</code>) with optional heading.</li>
-        <li><code>&lt;Grid&gt;</code> — auto-fit responsive card grid (default min column <code>250px</code>).</li>
+        <li><code>.content-width</code> — <code>max-w-7xl</code>, centred, responsive padding. The page container.</li>
+        <li><code>.text-width</code> / <code>.prose</code> — <code>max-w-4xl</code>, centred. Reading-width columns.</li>
       </ul>
     </section>
   </div>
@@ -214,13 +255,16 @@ const accents: Swatch[] = [
     color: var(--color-text-body);
     font-size: 1.05rem;
     line-height: 1.6;
-    max-width: 48rem;
+    max-width: 52rem;
     margin-bottom: 2.5rem;
   }
+
+  .dl-lead a { color: var(--color-mdgc-blue-dark); text-decoration: underline; }
 
   .dl-section {
     padding: 2rem 0;
     border-top: 1px solid #dbe4ee;
+    scroll-margin-top: 6rem;
   }
 
   .dl-section > h2 {
@@ -239,18 +283,31 @@ const accents: Swatch[] = [
     margin: 2rem 0 0.75rem;
   }
 
-  .dl-section p {
+  .dl-section > p {
     color: var(--color-text-body);
-    max-width: 48rem;
+    max-width: 52rem;
     margin: 0.5rem 0;
     line-height: 1.6;
   }
+
+  .anno {
+    font-size: 0.9rem;
+  }
+
+  .mini-label {
+    display: block;
+    font-family: ui-monospace, monospace;
+    font-size: 0.75rem;
+    color: var(--color-mdgc-blue-dark);
+    margin: 1rem 0 0.4rem;
+  }
+
+  .swatch-block { margin-bottom: 1rem; }
 
   .swatch-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 1rem;
-    margin: 1rem 0 0.5rem;
   }
 
   .swatch {
@@ -263,7 +320,7 @@ const accents: Swatch[] = [
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    height: 4.5rem;
+    height: 4rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
     border: 1px solid rgba(0, 0, 0, 0.08);
@@ -273,23 +330,12 @@ const accents: Swatch[] = [
     box-shadow: 0 4px 12px rgba(6, 61, 99, 0.08);
   }
 
-  .swatch-chip.on-dark {
-    color: rgba(255, 255, 255, 0.9);
-  }
+  .swatch-chip.on-dark { color: rgba(255, 255, 255, 0.9); }
 
-  .swatch code {
-    font-size: 0.8rem;
-    color: var(--color-text-heading);
-  }
+  .swatch code { font-size: 0.8rem; color: var(--color-text-heading); }
+  .swatch span { font-size: 0.8rem; color: var(--color-text-body); line-height: 1.4; }
 
-  .swatch span {
-    font-size: 0.8rem;
-    color: var(--color-text-body);
-    line-height: 1.4;
-  }
-
-  .type-specimen,
-  .type-scale > div {
+  .type-specimen {
     border: 1px solid #dbe4ee;
     border-radius: 0.75rem;
     background: #fff;
@@ -297,8 +343,7 @@ const accents: Swatch[] = [
     margin: 1rem 0;
   }
 
-  .type-meta,
-  .tag {
+  .type-meta {
     display: block;
     font-family: ui-monospace, monospace;
     font-size: 0.75rem;
@@ -313,25 +358,24 @@ const accents: Swatch[] = [
     margin-top: 0.15rem;
   }
 
-  .type-scale {
-    margin-top: 1rem;
+  /* Dark backdrop for showing light-on-dark chrome elements in context. */
+  .dark-stage {
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.75rem;
+    margin: 0.5rem 0 1rem;
   }
 
-  /* Show the real prose heading styling (top rule, spacing, colour) without the
-     prose container's max-width centring, so specimens align left like the rest. */
-  .type-scale .prose {
-    max-width: none;
-    margin: 0;
-  }
-
-  .type-scale .prose :first-child {
-    margin-top: 0;
-  }
-
-  .chrome-samples {
-    display: grid;
+  .stage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 1rem;
-    margin-top: 1rem;
+  }
+
+  .stage-cols {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
   }
 
   .chrome-bar {
@@ -340,17 +384,27 @@ const accents: Swatch[] = [
     box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
   }
 
+  /* Let the real .prose styling show, but drop its max-width centring inside the demo. */
+  .prose-demo {
+    border: 1px solid #dbe4ee;
+    border-radius: 0.75rem;
+    background: #fff;
+    padding: 0.5rem 1.5rem 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .prose-demo .prose { max-width: none; margin: 0; }
+  .prose-demo .prose > :first-child { margin-top: 0; }
+
   .dl-list {
     color: var(--color-text-body);
     line-height: 1.7;
     padding-left: 1.25rem;
     list-style: disc;
-    max-width: 48rem;
+    max-width: 52rem;
   }
 
-  .dl-list li {
-    margin: 0.35rem 0;
-  }
+  .dl-list li { margin: 0.35rem 0; }
 
   .dl code {
     background: #eef4fa;
