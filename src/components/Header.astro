@@ -35,7 +35,7 @@ const { navItems, currentPath } = Astro.props;
 									{item.subPages.map(subItem => {
 										const isActive = isActiveNavItem(currentPath, subItem.href);
 										return (
-											<a href={subItem.href} class={`block rounded-md px-5 py-2 text-sm transition-colors whitespace-nowrap text-mdgc-blue-light hover:bg-mdgc-blue-dark hover:text-white ${isActive ? 'bg-white/15 text-white' : ''}`}>{subItem.title}</a>
+											<a href={subItem.href} class={`block rounded-md px-5 py-1 text-sm transition-colors whitespace-nowrap text-mdgc-blue-light hover:bg-mdgc-blue-dark hover:text-white ${isActive ? 'bg-white/15 text-white' : ''}`}>{subItem.title}</a>
 										);
 									})}
 								</div>
