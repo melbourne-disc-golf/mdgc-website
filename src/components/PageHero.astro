@@ -53,25 +53,27 @@ const { title, subtitle, heroImage, backLink } = Astro.props;
 <div class="h-1 bg-linear-to-r from-mdgc-blue-light to-gray-900"></div>
 
 <style>
-	/* Staggered fade-up as the hero loads: back-link → title → subtitle, and the image.
+	/* Staggered fade-up as the hero loads: title → subtitle → image. The back-link is
+	   left in place (no motion) — it's orientation chrome, not part of the reveal.
 	   CSS-only, runs once on first paint. Disabled for reduced-motion users. */
 	@keyframes hero-rise {
 		from { opacity: 0; transform: translateY(0.75rem); }
 		to   { opacity: 1; transform: translateY(0); }
 	}
 
-	#title-and-subtitle > *,
+	#title-and-subtitle h1,
+	#title-and-subtitle p,
 	.hero-figure {
 		animation: hero-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 	}
 
-	#title-and-subtitle > *:nth-child(1) { animation-delay: 0.05s; }
-	#title-and-subtitle > *:nth-child(2) { animation-delay: 0.15s; }
-	#title-and-subtitle > *:nth-child(3) { animation-delay: 0.25s; }
-	.hero-figure { animation-delay: 0.2s; }
+	#title-and-subtitle h1 { animation-delay: 0.05s; }
+	#title-and-subtitle p  { animation-delay: 0.18s; }
+	.hero-figure { animation-delay: 0.25s; }
 
 	@media (prefers-reduced-motion: reduce) {
-		#title-and-subtitle > *,
+		#title-and-subtitle h1,
+		#title-and-subtitle p,
 		.hero-figure {
 			animation: none;
 		}
