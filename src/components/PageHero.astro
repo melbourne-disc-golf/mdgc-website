@@ -35,7 +35,7 @@ const { title, subtitle, heroImage, backLink } = Astro.props;
 			</div>
 		</div>
 		{heroImage && (
-			<figure class="m-0 flex flex-col lg:w-2/3">
+			<figure class="hero-figure m-0 flex flex-col lg:w-2/3">
 				<Image
 					src={heroImage.src}
 					alt={heroImage.alt}
@@ -51,3 +51,29 @@ const { title, subtitle, heroImage, backLink } = Astro.props;
 	</div>
 </div>
 <div class="h-1 bg-linear-to-r from-mdgc-blue-light to-gray-900"></div>
+
+<style>
+	/* Staggered fade-up as the hero loads: back-link → title → subtitle, and the image.
+	   CSS-only, runs once on first paint. Disabled for reduced-motion users. */
+	@keyframes hero-rise {
+		from { opacity: 0; transform: translateY(0.75rem); }
+		to   { opacity: 1; transform: translateY(0); }
+	}
+
+	#title-and-subtitle > *,
+	.hero-figure {
+		animation: hero-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+	}
+
+	#title-and-subtitle > *:nth-child(1) { animation-delay: 0.05s; }
+	#title-and-subtitle > *:nth-child(2) { animation-delay: 0.15s; }
+	#title-and-subtitle > *:nth-child(3) { animation-delay: 0.25s; }
+	.hero-figure { animation-delay: 0.2s; }
+
+	@media (prefers-reduced-motion: reduce) {
+		#title-and-subtitle > *,
+		.hero-figure {
+			animation: none;
+		}
+	}
+</style>
