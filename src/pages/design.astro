@@ -3,8 +3,8 @@ import Layout from '@layouts/Layout.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 
 // Unlinked reference page documenting the site's current visual language, organised
-// around the site's anatomy: shared Foundations (colour + type), then the Header,
-// Footer and Prose content. Colour chips are painted by the real utility/token and
+// around the site's anatomy: shared Foundations (colour, type, widths), then the
+// Header, Footer and Content. Colour chips are painted by the real utility/token and
 // their hex is read back from the rendered result on load, and the header/footer
 // close-ups are built from the same utility classes the real components use — so the
 // page can't silently drift. Not in the nav; reachable only by direct URL.
@@ -39,12 +39,12 @@ const accents: Swatch[] = [
 ];
 ---
 
-<Layout title="Design language" subtitle="A living reference for the site's visual system">
+<Layout title="Design language" subtitle="the visual system for this site">
   <div class="dl">
     <p class="dl-lead">
-      This page documents the <strong>existing</strong> visual language of the MDGC site, organised
+      This page documents the visual language of the MDGC site, organised
       around its anatomy: shared <a href="#foundations">foundations</a>, then the
-      <a href="#header">header</a>, <a href="#footer">footer</a> and <a href="#prose">prose content</a>.
+      <a href="#header">header</a>, <a href="#footer">footer</a> and <a href="#content">content</a>.
       It is unlinked from navigation — reachable only by direct URL. Colour chips are painted by the
       real token and their hex read back from the rendered result on load; the chrome close-ups use
       the same utility classes as the real components. So the page can't silently drift from the site.
@@ -105,6 +105,12 @@ const accents: Swatch[] = [
         <p class="text-3xl font-bold" style="color: var(--color-text-heading)">The quick brown disc flies far</p>
         <p class="text-base mt-1" style="color: var(--color-text-body)">The quick brown disc flies far over the fairway — 0123456789.</p>
       </div>
+
+      <h3>Widths</h3>
+      <ul class="dl-list">
+        <li><code>.content-width</code> — <code>max-w-7xl</code>, centred, responsive padding. The page container.</li>
+        <li><code>.text-width</code> / <code>.prose</code> — <code>max-w-4xl</code>, centred. Reading-width columns.</li>
+      </ul>
     </section>
 
     <!-- HEADER -->
@@ -181,15 +187,15 @@ const accents: Swatch[] = [
     </section>
 
     <!-- PROSE -->
-    <section class="dl-section" id="prose">
-      <h2>Prose content</h2>
+    <section class="dl-section" id="content">
+      <h2>Content</h2>
       <p>Page bodies render as <code>.prose</code> — a centred <code>max-w-4xl</code> reading column in
          body colour (<code>slate-600</code>). The Tailwind Typography plugin provides the base, with
          local overrides in <code>global.css</code>. A live example:</p>
 
       <div class="prose-demo">
         <div class="prose">
-          <p>An intro paragraph with an <a href="#prose">inline link</a> that darkens and thickens its
+          <p>An intro paragraph with an <a href="#content">inline link</a> that darkens and thickens its
              underline on hover (block links elsewhere scale slightly instead). Headings sit at
              <strong>gray-900</strong>, body text at slate-600.</p>
           <h2>A prose heading</h2>
@@ -235,12 +241,6 @@ const accents: Swatch[] = [
 
       <p class="mini-label"><code>.metrix-button</code> — inline chip linking to Metrix results</p>
       <p><span class="metrix-button">Results ↗</span></p>
-
-      <h3>Widths</h3>
-      <ul class="dl-list">
-        <li><code>.content-width</code> — <code>max-w-7xl</code>, centred, responsive padding. The page container.</li>
-        <li><code>.text-width</code> / <code>.prose</code> — <code>max-w-4xl</code>, centred. Reading-width columns.</li>
-      </ul>
     </section>
   </div>
 </Layout>
