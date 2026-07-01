@@ -8,9 +8,10 @@ interface Props {
   maxDaysInPast?: number;
   maxDaysInFuture?: number;
   weekStartDay?: number; // 1=Mon ... 7=Sun (ISO weekday)
+  includeToday?: boolean; // always span the current week, even if no event falls in it
 }
 
-const { events, maxDaysInPast, maxDaysInFuture, weekStartDay = 4 } = Astro.props;
+const { events, maxDaysInPast, maxDaysInFuture, weekStartDay = 4, includeToday = true } = Astro.props;
 
 const SHORT_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -35,9 +36,21 @@ const filteredEvents = events.filter((e) => {
   return true;
 });
 
-const sortedEvents = [...filteredEvents].sort((a, b) => cmp(a.startDate, b.startDate));
-const minDate = sortedEvents.length > 0 ? sortedEvents[0].startDate : today;
-const maxDate = sortedEvents.length > 0 ? sortedEvents[sortedEvents.length - 1].startDate : today;
+const startDates = filteredEvents.map((e) => e.startDate);
+const endDates = filteredEvents.map((e) => e.endDate || e.startDate);
+// When includeToday is set, fold today into the range so the current week is always shown
+// for context, even if the next event is still weeks away.
+if (includeToday) {
+  startDates.push(today);
+  endDates.push(today);
+}
+
+const minDate = startDates.length > 0
+  ? startDates.reduce((a, b) => (cmp(a, b) <= 0 ? a : b))
+  : today;
+const maxDate = endDates.length > 0
+  ? endDates.reduce((a, b) => (cmp(a, b) >= 0 ? a : b))
+  : today;
 
 // Map each date (as ISO string) to its events, expanding multi-day events
 const eventsByDate = new Map<string, CalendarEvent[]>();
