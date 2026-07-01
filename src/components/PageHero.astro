@@ -23,7 +23,7 @@ export interface Props {
 const { title, subtitle, heroImage, backLink } = Astro.props;
 ---
 
-<div class="bg-linear-to-r from-slate-900 to-mdgc-blue-dark text-white">
+<div class="bg-linear-to-r from-gray-900 to-mdgc-blue-dark text-white">
 	<div class={`content-width px-6 pb-6 flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-10 ${backLink ? 'pt-3' : 'pt-6'}`}>
 		<div id="title-content" class="flex-1 min-w-0 lg:flex lg:flex-col lg:justify-center">
 			<div id="title-and-subtitle">
@@ -50,4 +50,4 @@ const { title, subtitle, heroImage, backLink } = Astro.props;
 		)}
 	</div>
 </div>
-<div class="h-1 bg-linear-to-r from-mdgc-blue-light to-slate-900"></div>
+<div class="h-1 bg-linear-to-r from-mdgc-blue-light to-gray-900"></div>

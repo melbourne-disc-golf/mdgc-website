@@ -23,12 +23,11 @@ const brand: Swatch[] = [
 const surfaces: Swatch[] = [
   { name: 'mdgc-mist', cls: 'bg-mdgc-mist', usage: 'Page background — pale blue tint behind content' },
   { name: 'white', cls: 'bg-white', usage: 'Card & panel surfaces' },
-  { name: 'slate-950', cls: 'bg-slate-950', usage: 'Header gradient origin (near-black)' },
-  { name: 'slate-900', cls: 'bg-slate-900', usage: 'Hero & footer dark chrome' },
+  { name: 'gray-900', cls: 'bg-gray-900', usage: 'Dark chrome — header, hero & footer' },
 ];
 
 const text: Swatch[] = [
-  { name: '--color-text-heading', cls: 'bg-[var(--color-text-heading)]', usage: 'Headings (slate-900)' },
+  { name: '--color-text-heading', cls: 'bg-[var(--color-text-heading)]', usage: 'Headings (gray-900)' },
   { name: '--color-text-body', cls: 'bg-[var(--color-text-body)]', usage: 'Body copy (slate-600)' },
 ];
 
@@ -130,7 +129,7 @@ const accents: Swatch[] = [
         <div><span class="tag">Section h2 · text-2xl font-semibold</span><p class="text-2xl font-semibold" style="color:var(--color-text-heading)">Section heading</p></div>
         <div><span class="tag">prose h2</span><p class="text-xl font-bold" style="color:var(--color-text-heading)">Prose H2 (with top rule)</p></div>
         <div><span class="tag">prose h3</span><p class="text-lg font-bold" style="color:var(--color-text-body)">Prose H3</p></div>
-        <div><span class="tag">body · text-base</span><p class="text-base" style="color:var(--color-text-body)">Body copy sits at slate-600 for a softer read; headings darken to slate-900.</p></div>
+        <div><span class="tag">body · text-base</span><p class="text-base" style="color:var(--color-text-body)">Body copy sits at slate-600 for a softer read; headings darken to gray-900.</p></div>
       </div>
     </section>
 
@@ -141,20 +140,20 @@ const accents: Swatch[] = [
 
       <div class="chrome-samples">
         <div>
-          <span class="tag">Header · from-slate-950 to-mdgc-blue-dark</span>
-          <div class="chrome-bar bg-linear-to-r from-slate-950 to-mdgc-blue-dark"></div>
+          <span class="tag">Header · from-gray-900 to-mdgc-blue-dark</span>
+          <div class="chrome-bar bg-linear-to-r from-gray-900 to-mdgc-blue-dark"></div>
         </div>
         <div>
-          <span class="tag">PageHero · from-slate-900 to-mdgc-blue-dark</span>
-          <div class="chrome-bar bg-linear-to-r from-slate-900 to-mdgc-blue-dark"></div>
+          <span class="tag">PageHero · from-gray-900 to-mdgc-blue-dark</span>
+          <div class="chrome-bar bg-linear-to-r from-gray-900 to-mdgc-blue-dark"></div>
         </div>
         <div>
-          <span class="tag">Hero divider · from-mdgc-blue-light to-slate-900</span>
-          <div class="chrome-bar bg-linear-to-r from-mdgc-blue-light to-slate-900" style="height:0.5rem"></div>
+          <span class="tag">Hero divider · from-mdgc-blue-light to-gray-900</span>
+          <div class="chrome-bar bg-linear-to-r from-mdgc-blue-light to-gray-900" style="height:0.5rem"></div>
         </div>
         <div>
-          <span class="tag">Footer · slate-900</span>
-          <div class="chrome-bar bg-slate-900"></div>
+          <span class="tag">Footer · gray-900</span>
+          <div class="chrome-bar bg-gray-900"></div>
         </div>
       </div>
     </section>
