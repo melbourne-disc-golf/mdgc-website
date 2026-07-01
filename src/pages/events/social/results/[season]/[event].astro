@@ -27,12 +27,12 @@ const backLink = {
 
 // Shade a hole score's background relative to its par (disc-golf scorecard colours).
 function holeClass(score: number | null, holePar: number): string {
-  if (score === null) return 'text-gray-300';
+  if (score === null) return 'text-slate-300';
   if (score === 1) return 'bg-[#ffd60a] text-[#3f2600]';       // ace
   const diff = score - holePar;
   if (diff <= -2) return 'bg-[#55d57d] text-[#06351f]';        // eagle or better
   if (diff === -1) return 'bg-[#d8f0e5] text-[#0b3f38]';       // birdie
-  if (diff === 0) return 'text-gray-700';                      // par
+  if (diff === 0) return 'text-slate-700';                      // par
   if (diff === 1) return 'bg-[#ffe1c2] text-[#7a3b00]';        // bogey
   return 'bg-[#f8e7e4] text-[#8c2c27]';                        // double bogey or worse
 }
@@ -56,7 +56,7 @@ function fmt2(n: number | null): string {
       return (
       <section>
         <h2 class="text-lg font-bold text-white px-4 py-2.5 rounded-t-lg bg-linear-to-r from-mdgc-blue-dark to-mdgc-blue">{division.name}</h2>
-        <div class="overflow-x-auto border border-t-0 border-gray-200 rounded-b-lg">
+        <div class="overflow-x-auto border border-t-0 border-slate-200 rounded-b-lg">
           <table class="min-w-full text-sm border-collapse">
             <thead>
               <tr class="bg-[#d7eaff] text-mdgc-blue-dark">
@@ -82,24 +82,24 @@ function fmt2(n: number | null): string {
                 <th></th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-gray-100">
+            <tbody class="divide-y divide-slate-100">
               {division.players.map((p) => (
-                <tr class="odd:bg-white even:bg-gray-50/70 hover:bg-mdgc-blue-light/10">
+                <tr class="odd:bg-white even:bg-slate-50/70 hover:bg-mdgc-blue-light/10">
                   <td class="px-3 py-1.5 font-medium whitespace-nowrap sticky left-0 bg-inherit">{p.name}</td>
-                  <td class={`px-2 py-1.5 text-right ${p.net !== null && p.net === bestNet ? 'font-bold text-gray-800' : 'text-gray-600'}`}>{fmt2(p.net)}</td>
+                  <td class={`px-2 py-1.5 text-right ${p.net !== null && p.net === bestNet ? 'font-bold text-slate-800' : 'text-slate-600'}`}>{fmt2(p.net)}</td>
                   <td class="px-2 py-1.5 text-center">
                     {p.pos <= 3 ? (
                       <span class={`podium-badge podium-${p.pos}`}>{p.pos}</span>
                     ) : (
-                      <span class="text-gray-500">{p.pos}</span>
+                      <span class="text-slate-500">{p.pos}</span>
                     )}
                   </td>
-                  <td class="px-2 py-1.5 text-right text-gray-600">{p.sum}</td>
-                  <td class="px-2 py-1.5 text-right text-gray-600">{formatDiff(p.diff)}</td>
+                  <td class="px-2 py-1.5 text-right text-slate-600">{p.sum}</td>
+                  <td class="px-2 py-1.5 text-right text-slate-600">{formatDiff(p.diff)}</td>
                   {p.holes.map((score, h) => (
                     <td class={`px-1.5 py-1.5 text-right tabular-nums ${holeClass(score, tracks[h]?.par ?? par)}`}>{score ?? '–'}</td>
                   ))}
-                  <td class="px-2 py-1.5 text-right text-gray-500">{p.rating ?? '–'}</td>
+                  <td class="px-2 py-1.5 text-right text-slate-500">{p.rating ?? '–'}</td>
                 </tr>
               ))}
             </tbody>

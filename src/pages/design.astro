@@ -3,42 +3,39 @@ import Layout from '@layouts/Layout.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 
 // Unlinked reference page documenting the site's current visual language.
-// It reads from the real design tokens (CSS variables) and reuses real components,
-// so it stays truthful as the system evolves. Not in the nav, so it's only reachable
-// by direct URL.
+// Every colour chip is painted by the real utility/token (a Tailwind class or a
+// CSS variable) and its hex is read back from the rendered result at load — so a
+// label can never silently drift from the source. The component demos are real
+// instances. Not in the nav; reachable only by direct URL.
 
 type Swatch = {
-  name: string;      // CSS variable or Tailwind token
-  value: string;     // colour used to paint the chip (var() or literal)
-  hex: string;       // documented hex
-  usage: string;     // where it's used
-  dark?: boolean;    // needs light text on top
+  name: string;   // token / class name shown as the label
+  cls: string;    // the REAL Tailwind utility that paints the chip
+  usage: string;  // where it's used on the site
 };
 
 const brand: Swatch[] = [
-  { name: '--color-mdgc-blue', value: 'var(--color-mdgc-blue)', hex: '#579EDA', usage: 'Primary brand blue — icons, links, accents', dark: true },
-  { name: '--color-mdgc-blue-light', value: 'var(--color-mdgc-blue-light)', hex: '#A3D0FF', usage: 'Light blue — nav links & accents on dark chrome' },
-  { name: '--color-mdgc-blue-dark', value: 'var(--color-mdgc-blue-dark)', hex: '#3F79B2', usage: 'Deep blue — gradients, hover states', dark: true },
+  { name: 'mdgc-blue', cls: 'bg-mdgc-blue', usage: 'Primary brand blue — icons, links, accents' },
+  { name: 'mdgc-blue-light', cls: 'bg-mdgc-blue-light', usage: 'Light blue — nav links & accents on dark chrome' },
+  { name: 'mdgc-blue-dark', cls: 'bg-mdgc-blue-dark', usage: 'Deep blue — gradients, hover states' },
 ];
 
 const surfaces: Swatch[] = [
-  { name: '--color-mdgc-mist', value: 'var(--color-mdgc-mist)', hex: '#F3F8FC', usage: 'Page background — pale blue tint behind content' },
-  { name: 'white', value: '#ffffff', hex: '#FFFFFF', usage: 'Card & panel surfaces' },
-  { name: 'slate-900', value: '#0f172a', hex: '#0F172A', usage: 'Hero/header gradient origin', dark: true },
-  { name: 'gray-900', value: '#111827', hex: '#111827', usage: 'Footer background', dark: true },
+  { name: 'mdgc-mist', cls: 'bg-mdgc-mist', usage: 'Page background — pale blue tint behind content' },
+  { name: 'white', cls: 'bg-white', usage: 'Card & panel surfaces' },
+  { name: 'slate-950', cls: 'bg-slate-950', usage: 'Header gradient origin (near-black)' },
+  { name: 'slate-900', cls: 'bg-slate-900', usage: 'Hero & footer dark chrome' },
 ];
 
 const text: Swatch[] = [
-  { name: '--color-text-heading', value: 'var(--color-text-heading)', hex: '#111827', usage: 'Headings (gray-900)', dark: true },
-  { name: '--color-text-body', value: 'var(--color-text-body)', hex: '#4B5563', usage: 'Body copy (gray-600)', dark: true },
+  { name: '--color-text-heading', cls: 'bg-[var(--color-text-heading)]', usage: 'Headings (slate-900)' },
+  { name: '--color-text-body', cls: 'bg-[var(--color-text-body)]', usage: 'Body copy (slate-600)' },
 ];
 
 const accents: Swatch[] = [
-  { name: 'orange-500', value: '#f97316', hex: '#F97316', usage: '.metrix-button — Metrix result links', dark: true },
-  { name: 'amber-500', value: '#f59e0b', hex: '#F59E0B', usage: '.callout — left border', dark: true },
-  { name: 'amber-50', value: '#fffbeb', hex: '#FFFBEB', usage: '.callout — background' },
-  { name: 'green-600', value: '#16a34a', hex: '#16A34A', usage: '.concept-list — number', dark: true },
-  { name: 'green-100', value: '#dcfce7', hex: '#DCFCE7', usage: '.concept-list — number background' },
+  { name: 'orange-500', cls: 'bg-orange-500', usage: '.metrix-button — Metrix result links' },
+  { name: 'amber-500', cls: 'bg-amber-500', usage: '.callout — left border' },
+  { name: 'amber-50', cls: 'bg-amber-50', usage: '.callout — background' },
 ];
 ---
 
@@ -47,21 +44,22 @@ const accents: Swatch[] = [
     <p class="dl-lead">
       This page documents the <strong>existing</strong> visual language of the MDGC site. It is
       unlinked from navigation — reachable only by direct URL — as a reference for anyone editing the
-      design. Every swatch and specimen below is rendered from the real design tokens and components,
-      so it reflects the site as it actually is.
+      design. Every swatch is painted by the real Tailwind utility or CSS token, and its hex is read
+      back from the rendered colour on load; the component demos are real instances. So the page
+      can't silently drift from the site.
     </p>
 
     <!-- COLOUR -->
     <section class="dl-section">
       <h2>Colour</h2>
       <p>A single blue family carries the brand. Surfaces are near-white on a pale blue page tint.
-         A small set of semantic accents (orange, amber, green) are used sparingly for specific roles.</p>
+         A small set of semantic accents (orange, amber) are used sparingly for specific roles.</p>
 
       <h3>Brand blues</h3>
       <div class="swatch-grid">
         {brand.map((s) => (
           <div class="swatch">
-            <div class="swatch-chip" style={`background:${s.value}`} data-dark={s.dark}>{s.hex}</div>
+            <div class={`swatch-chip ${s.cls}`}></div>
             <code>{s.name}</code>
             <span>{s.usage}</span>
           </div>
@@ -72,7 +70,7 @@ const accents: Swatch[] = [
       <div class="swatch-grid">
         {surfaces.map((s) => (
           <div class="swatch">
-            <div class="swatch-chip" style={`background:${s.value}`} data-dark={s.dark}>{s.hex}</div>
+            <div class={`swatch-chip ${s.cls}`}></div>
             <code>{s.name}</code>
             <span>{s.usage}</span>
           </div>
@@ -83,7 +81,7 @@ const accents: Swatch[] = [
       <div class="swatch-grid">
         {text.map((s) => (
           <div class="swatch">
-            <div class="swatch-chip" style={`background:${s.value}`} data-dark={s.dark}>{s.hex}</div>
+            <div class={`swatch-chip ${s.cls}`}></div>
             <code>{s.name}</code>
             <span>{s.usage}</span>
           </div>
@@ -94,7 +92,7 @@ const accents: Swatch[] = [
       <div class="swatch-grid">
         {accents.map((s) => (
           <div class="swatch">
-            <div class="swatch-chip" style={`background:${s.value}`} data-dark={s.dark}>{s.hex}</div>
+            <div class={`swatch-chip ${s.cls}`}></div>
             <code>{s.name}</code>
             <span>{s.usage}</span>
           </div>
@@ -132,7 +130,7 @@ const accents: Swatch[] = [
         <div><span class="tag">Section h2 · text-2xl font-semibold</span><p class="text-2xl font-semibold" style="color:var(--color-text-heading)">Section heading</p></div>
         <div><span class="tag">prose h2</span><p class="text-xl font-bold" style="color:var(--color-text-heading)">Prose H2 (with top rule)</p></div>
         <div><span class="tag">prose h3</span><p class="text-lg font-bold" style="color:var(--color-text-body)">Prose H3</p></div>
-        <div><span class="tag">body · text-base</span><p class="text-base" style="color:var(--color-text-body)">Body copy sits at gray-600 for a softer read; headings darken to gray-900.</p></div>
+        <div><span class="tag">body · text-base</span><p class="text-base" style="color:var(--color-text-body)">Body copy sits at slate-600 for a softer read; headings darken to slate-900.</p></div>
       </div>
     </section>
 
@@ -143,20 +141,20 @@ const accents: Swatch[] = [
 
       <div class="chrome-samples">
         <div>
-          <span class="tag">Header · from-black to-mdgc-blue-dark</span>
-          <div class="chrome-bar" style="background:linear-gradient(to right, #000, var(--color-mdgc-blue-dark))"></div>
+          <span class="tag">Header · from-slate-950 to-mdgc-blue-dark</span>
+          <div class="chrome-bar bg-linear-to-r from-slate-950 to-mdgc-blue-dark"></div>
         </div>
         <div>
           <span class="tag">PageHero · from-slate-900 to-mdgc-blue-dark</span>
-          <div class="chrome-bar" style="background:linear-gradient(to right, #0f172a, var(--color-mdgc-blue-dark))"></div>
+          <div class="chrome-bar bg-linear-to-r from-slate-900 to-mdgc-blue-dark"></div>
         </div>
         <div>
           <span class="tag">Hero divider · from-mdgc-blue-light to-slate-900</span>
-          <div class="chrome-bar" style="height:0.5rem; background:linear-gradient(to right, var(--color-mdgc-blue-light), #0f172a)"></div>
+          <div class="chrome-bar bg-linear-to-r from-mdgc-blue-light to-slate-900" style="height:0.5rem"></div>
         </div>
         <div>
-          <span class="tag">Footer · gray-900</span>
-          <div class="chrome-bar" style="background:#111827"></div>
+          <span class="tag">Footer · slate-900</span>
+          <div class="chrome-bar bg-slate-900"></div>
         </div>
       </div>
     </section>
@@ -178,12 +176,6 @@ const accents: Swatch[] = [
 
       <h3>Metrix button</h3>
       <p>Inline orange chip linking to Metrix results: <span class="metrix-button">Results ↗</span> (<code>.metrix-button</code>).</p>
-
-      <h3>Concept list</h3>
-      <ol class="concept-list">
-        <li>Numbered steps with green circular markers.</li>
-        <li>Used for how-to sequences.</li>
-      </ol>
     </section>
 
     <!-- MOTION -->
@@ -278,11 +270,11 @@ const accents: Swatch[] = [
     border: 1px solid rgba(0, 0, 0, 0.08);
     font-size: 0.75rem;
     font-weight: 600;
-    color: #1f2937;
+    color: #1e293b; /* slate-800 — overridden per-chip by the contrast script */
     box-shadow: 0 4px 12px rgba(6, 61, 99, 0.08);
   }
 
-  .swatch-chip[data-dark='true'] {
+  .swatch-chip.on-dark {
     color: rgba(255, 255, 255, 0.9);
   }
 
@@ -357,3 +349,39 @@ const accents: Swatch[] = [
     font-size: 0.85em;
   }
 </style>
+
+<script>
+  // Label each swatch with the hex it actually renders as, and pick a legible text
+  // colour from the chip's own luminance. The colour is never hard-coded here — it's
+  // read back from the compiled Tailwind utility / CSS token, so labels can't drift.
+  // Rasterising through a 1px canvas normalises any CSS colour (Tailwind v4 palette
+  // values serialise as oklch) down to real sRGB bytes.
+  const ctx = document.createElement('canvas').getContext('2d')!;
+
+  function resolveRgb(color: string): number[] {
+    ctx.fillStyle = '#000';
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, 1, 1);
+    const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+    return [r, g, b];
+  }
+
+  function toHex([r, g, b]: number[]): string {
+    return '#' + [r, g, b].map((x) => x.toString(16).padStart(2, '0')).join('').toUpperCase();
+  }
+
+  function isDark([r, g, b]: number[]): boolean {
+    const lin = [r, g, b].map((v) => {
+      const c = v / 255;
+      return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+    });
+    const L = 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2];
+    return L < 0.5;
+  }
+
+  document.querySelectorAll<HTMLElement>('.swatch-chip').forEach((chip) => {
+    const rgb = resolveRgb(getComputedStyle(chip).backgroundColor);
+    chip.textContent = toHex(rgb);
+    chip.classList.toggle('on-dark', isDark(rgb));
+  });
+</script>

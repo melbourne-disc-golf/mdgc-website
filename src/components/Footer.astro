@@ -18,7 +18,7 @@ const githubUrl = 'https://github.com/melbourne-disc-golf/mdgc-website';
 const cmsUrl = cmsPath ? `/cms/sveltia#${cmsPath}` : null;
 ---
 
-<footer class="bg-gray-900 text-white sm:px-6 lg:px-8 py-12 mt-auto">
+<footer class="bg-slate-900 text-white sm:px-6 lg:px-8 py-12 mt-auto">
 	<div class="no-print content-width flex flex-row gap-8">
 
 		<!-- Logo section -->
@@ -56,18 +56,18 @@ const cmsUrl = cmsPath ? `/cms/sveltia#${cmsPath}` : null;
 	</div>
 
 	<!-- Bottom section -->
-	<div class="border-t border-gray-700 mt-8 pt-2 flex flex-col md:flex-row justify-between items-center gap-4">
-		<div class="text-gray-400 text-sm text-center md:text-left">
+	<div class="border-t border-slate-700 mt-8 pt-2 flex flex-col md:flex-row justify-between items-center gap-4">
+		<div class="text-slate-400 text-sm text-center md:text-left">
 			<p>© {new Date().getFullYear()} Melbourne Disc Golf Club. All rights reserved.</p>
-			<p class="text-xs text-gray-500 mt-1">last updated: {new Date().toLocaleString('en-AU', { timeZone: 'Australia/Melbourne', dateStyle: 'medium', timeStyle: 'short' })}</p>
+			<p class="text-xs text-slate-500 mt-1">last updated: {new Date().toLocaleString('en-AU', { timeZone: 'Australia/Melbourne', dateStyle: 'medium', timeStyle: 'short' })}</p>
 		</div>
 		<div class="no-print flex items-center gap-4">
 			{cmsUrl && (
-				<a href={cmsUrl} target="_blank" rel="noopener noreferrer" class="inline-block text-gray-400 hover:text-white transition-colors" aria-label="Edit page in CMS" title="Edit in CMS">
+				<a href={cmsUrl} target="_blank" rel="noopener noreferrer" class="inline-block text-slate-400 hover:text-white transition-colors" aria-label="Edit page in CMS" title="Edit in CMS">
 					<Icon name="mdi:pencil" class="h-5 w-5" />
 				</a>
 			)}
-			<a href={githubUrl} target="_blank" rel="noopener noreferrer" class="inline-block text-gray-400 hover:text-white transition-colors" aria-label="View source on GitHub" title="View source on GitHub">
+			<a href={githubUrl} target="_blank" rel="noopener noreferrer" class="inline-block text-slate-400 hover:text-white transition-colors" aria-label="View source on GitHub" title="View source on GitHub">
 				<Icon name="mdi:github" class="h-5 w-5" />
 			</a>
 			<ReportIssue />

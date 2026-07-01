@@ -9,8 +9,8 @@
   --color-mdgc-mist: #F3F8FC; /* pale blue-tinted page background */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
-  --color-text-body: #4b5563; /* gray-600 - lighter for body text */
-  --color-text-heading: #111827; /* gray-900 - darker for headings */
+  --color-text-body: #475569; /* slate-600 - lighter for body text */
+  --color-text-heading: #0f172a; /* slate-900 - darker for headings */
 }
 
 /* Subtle zoom effect on all links */
@@ -165,21 +165,6 @@ a:hover {
   padding-right: 0;
 }
 
-.concept-list {
-	list-style: none;
-	counter-reset: list-counter;
-}
-
-.concept-list li {
-	@apply relative pl-10;
-	counter-increment: list-counter;
-}
-
-.concept-list li::before {
-	content: counter(list-counter);
-	@apply absolute left-0 top-0.5 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-bold;
-}
-
 .redbox {
 	@apply border border-red-300;
 }
@@ -201,6 +186,6 @@ a:hover {
 }
 
 time {
-  @apply text-sm text-gray-500;
+  @apply text-sm text-slate-500;
 }
 
