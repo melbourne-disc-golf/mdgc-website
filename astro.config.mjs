@@ -45,15 +45,15 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.google(),
-      name: 'Inter',
-      weights: [400, 600, 700, 800, 900],
-      cssVariable: '--font-inter',
+      name: 'Hanken Grotesk',
+      weights: [400, 500, 600, 700],
+      cssVariable: '--font-hanken',
     },
     {
       provider: fontProviders.google(),
-      name: 'Nunito',
-      weights: [300, 400, 600, 700],
-      cssVariable: '--font-nunito',
+      name: 'Outfit',
+      weights: [400, 500, 600, 700],
+      cssVariable: '--font-outfit',
     },
   ],
   image: {

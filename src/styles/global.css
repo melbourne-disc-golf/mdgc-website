@@ -7,10 +7,15 @@
   --color-mdgc-blue-light: #A3D0FF;
   --color-mdgc-blue-dark: #3F79B2;
   --color-mdgc-mist: #F3F8FC; /* pale blue-tinted page background */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
   --color-text-body: var(--color-slate-600); /* lighter, for body text */
   --color-text-heading: var(--color-gray-900); /* darker, for headings */
+}
+
+/* Headings use the display face (Outfit); body copy uses the sans face (Hanken Grotesk). */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
 }
 
 /* Subtle zoom effect on all links */
