@@ -126,6 +126,43 @@ export function externalEventToCalendarEvent(
   };
 }
 
+const MONTH_PREFIX =
+  /^\s*(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\b\.?\s*/i;
+
+/** Tidy up whitespace and stray leading/trailing separators. */
+function tidySeparators(name: string): string {
+  return name
+    .replace(/\s+/g, ' ')
+    .replace(/^[\s\-–]+|[\s\-–]+$/g, '')
+    .trim();
+}
+
+/**
+ * Rework a Metrix social-day round name into "MDGC Social Day - {region} - {course}"
+ * for calendar display, e.g. "Jul Northeast Social Day - Llewellyn (Rd 2)"
+ * → "MDGC Social Day - Northeast - Llewellyn".
+ *
+ * Each step is independent and skips gracefully if its pattern is absent,
+ * so it stays robust across naming variations.
+ */
+function formatSocialDayName(name: string): string {
+  let result = name;
+
+  // Drop the trailing round number, e.g. "(Rd 2)".
+  result = result.replace(/\(\s*(?:rd|round)\s*\d+\s*\)/i, '');
+
+  // Drop a leading club prefix, e.g. "MDGC " (re-added below).
+  result = result.replace(/^\s*MDGC\b\s*/i, '');
+
+  // Drop the leading month, e.g. "Jul ".
+  result = result.replace(MONTH_PREFIX, '');
+
+  // Drop the redundant "Social Day(s)".
+  result = result.replace(/\bsocial days?\b/i, '');
+
+  return `MDGC Social Day - ${tidySeparators(result)}`;
+}
+
 /**
  * Convert a Metrix social day event to a CalendarEvent.
  *
@@ -151,7 +188,7 @@ export function socialDayToCalendarEvent(
   const geo = course ? parseGeoJson(course.data.location) : undefined;
 
   return {
-    summary: shortName,
+    summary: formatSocialDayName(shortName),
     startDate: Temporal.PlainDate.from(event.date),
     url: `https://discgolfmetrix.com/${event.id}`,
     location,
