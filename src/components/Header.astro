@@ -35,7 +35,7 @@ const { navItems, currentPath } = Astro.props;
 									{item.subPages.map(subItem => {
 										const isActive = isActiveNavItem(currentPath, subItem.href);
 										return (
-											<a href={subItem.href} class={`block rounded-md px-5 py-1 text-sm transition-colors whitespace-nowrap text-mdgc-blue-light hover:bg-mdgc-blue-dark hover:text-white ${isActive ? 'bg-white/15 text-white' : ''}`}>{subItem.title}</a>
+											<a href={subItem.href} class={`block rounded-md px-5 py-1 text-sm transition-colors whitespace-nowrap text-mdgc-blue-light ${isActive ? 'bg-white/15 text-white' : 'hover:bg-mdgc-blue-dark hover:text-white'}`}>{subItem.title}</a>
 										);
 									})}
 								</div>
@@ -65,7 +65,7 @@ const { navItems, currentPath } = Astro.props;
 						<div>
 							<a href={item.href} class={`block px-3 py-2 hover:bg-mdgc-blue-dark rounded-md font-semibold ${navItemColor(currentPath, item.href)} hover:text-white transition-colors`}>{item.title}</a>
 							{item.subPages.map(subItem => (
-								<a href={subItem.href} class={`block px-6 py-1 text-sm hover:bg-mdgc-blue-dark rounded-md ${navItemColor(currentPath, subItem.href)} hover:text-white transition-colors ${isActiveNavItem(currentPath, subItem.href) ? 'bg-white/15' : ''}`}>{subItem.title}</a>
+								<a href={subItem.href} class={`block px-6 py-1 text-sm rounded-md ${navItemColor(currentPath, subItem.href)} transition-colors ${isActiveNavItem(currentPath, subItem.href) ? 'bg-white/15' : 'hover:bg-mdgc-blue-dark hover:text-white'}`}>{subItem.title}</a>
 							))}
 						</div>
 					) : (
