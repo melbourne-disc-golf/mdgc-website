@@ -636,31 +636,6 @@
         "Total": 0
       },
       {
-        "UserID": "185515",
-        "Name": "Carlton Klerck",
-        "ClassName": "Div B - Metrix Rating 845-890",
-        "CountryCode": "AU",
-        "Place": 0,
-        "EventResults": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        "Total": 0
-      },
-      {
         "UserID": "135324",
         "Name": "Curt Moulton",
         "ClassName": "Div B - Metrix Rating 845-890",
@@ -1161,6 +1136,31 @@
         "Total": 0
       },
       {
+        "UserID": "132835",
+        "Name": "Illia Kravchenko",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "136103",
         "Name": "Kim Michell",
         "ClassName": "Div C - Metrix Rating 790-845",
@@ -1313,6 +1313,31 @@
       {
         "UserID": "99466",
         "Name": "Robert Lambert",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "218039",
+        "Name": "Simon Mackay",
         "ClassName": "Div C - Metrix Rating 790-845",
         "CountryCode": "AU",
         "Place": 0,
@@ -1788,6 +1813,31 @@
       {
         "UserID": "237006",
         "Name": "Michael Ranga",
+        "ClassName": "Div X - No Metrix Rating",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "236213",
+        "Name": "Michael Strasser",
         "ClassName": "Div X - No Metrix Rating",
         "CountryCode": "AU",
         "Place": 0,
