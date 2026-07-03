@@ -611,6 +611,31 @@
         "Total": 0
       },
       {
+        "UserID": "130546",
+        "Name": "Alex Ritchie",
+        "ClassName": "Div B - Metrix Rating 845-890",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "136798",
         "Name": "Ashley Weidner",
         "ClassName": "Div B - Metrix Rating 845-890",
@@ -1313,31 +1338,6 @@
       {
         "UserID": "99466",
         "Name": "Robert Lambert",
-        "ClassName": "Div C - Metrix Rating 790-845",
-        "CountryCode": "AU",
-        "Place": 0,
-        "EventResults": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        "Total": 0
-      },
-      {
-        "UserID": "218039",
-        "Name": "Simon Mackay",
         "ClassName": "Div C - Metrix Rating 790-845",
         "CountryCode": "AU",
         "Place": 0,
