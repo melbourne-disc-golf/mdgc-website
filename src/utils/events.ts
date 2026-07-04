@@ -1,6 +1,7 @@
 import { Temporal } from '@js-temporal/polyfill';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { getSocialDays } from '@utils/metrix';
 
 export type EventSource = 'club' | 'social' | 'external';
 
@@ -16,6 +17,8 @@ export type CalendarEvent = {
   description?: string;
   external?: boolean;
   source?: EventSource;
+  /** Slugs of the courses this event is held at, for per-course filtering. */
+  courseSlugs?: string[];
 };
 
 /** Get all published (non-draft) club events. */
@@ -104,6 +107,7 @@ export function clubEventToCalendarEvent(
     geo,
     description: event.body ? extractFirstParagraph(event.body) : undefined,
     source: 'club',
+    courseSlugs: courses.map((c) => c.id),
   };
 }
 
@@ -195,8 +199,31 @@ export function socialDayToCalendarEvent(
     geo,
     external: true,
     source: 'social',
+    courseSlugs: course ? [course.id] : undefined,
     // Social days run 8am–1pm Melbourne time
     startTime: Temporal.PlainTime.from({ hour: 8, minute: 0 }),
     endTime: Temporal.PlainTime.from({ hour: 13, minute: 0 }),
   };
+}
+
+/**
+ * Gather events from all sources — club events, external events, and Metrix
+ * social days — as a single list of CalendarEvents. Callers filter/sort as
+ * needed (e.g. by course via `courseSlugs`, or by date).
+ */
+export async function getAllCalendarEvents(): Promise<CalendarEvent[]> {
+  const clubEvents = await getPublishedEvents();
+  const externalEvents = await getCollection('externalEvents');
+  const courses = await getCollection('courses');
+
+  const coursesBySlug = new Map(courses.map((c) => [c.id, c]));
+  const metrixToCourse = new Map(
+    courses.flatMap((c) => (c.data.metrixCourseIds || []).map((id) => [id, c] as const))
+  );
+
+  return [
+    ...clubEvents.map((e) => clubEventToCalendarEvent(e, coursesBySlug)),
+    ...externalEvents.map((e) => externalEventToCalendarEvent(e)),
+    ...getSocialDays().map((e) => socialDayToCalendarEvent(e, metrixToCourse)),
+  ];
 }

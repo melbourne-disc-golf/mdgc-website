@@ -1,36 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
 import EventCalendar from '@components/EventCalendar.astro';
-import { getPublishedEvents, clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent } from '@utils/events';
-import { getSocialDays } from '@utils/metrix';
+import { getAllCalendarEvents } from '@utils/events';
 
-// Get data from collections
-const clubEvents = await getPublishedEvents();
-const externalEvents = await getCollection('externalEvents');
-const courses = await getCollection('courses');
-
-// Build course lookup maps
-const coursesBySlug = new Map(courses.map((c) => [c.id, c]));
-const metrixToCourse = new Map(
-  courses.flatMap((c) =>
-    (c.data.metrixCourseIds || []).map((id) => [id, c] as const)
-  )
-);
-
-// Convert club events to CalendarEvents
-const clubCalendarEvents = clubEvents
-  .map(e => clubEventToCalendarEvent(e, coursesBySlug));
-
-// Convert external events to CalendarEvents
-const externalCalendarEvents = externalEvents
-  .map(e => externalEventToCalendarEvent(e));
-
-// Convert metrix social days to CalendarEvents
-const socialDays = getSocialDays()
-  .map(e => socialDayToCalendarEvent(e, metrixToCourse));
-
-// Combine all events
-const allEvents = [...clubCalendarEvents, ...externalCalendarEvents, ...socialDays];
+const allEvents = await getAllCalendarEvents();
 ---
 
 <EventCalendar events={allEvents} maxDaysInPast={3} maxDaysInFuture={90} />
