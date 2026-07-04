@@ -106,6 +106,11 @@ export interface RegisteredPlayer {
   divisionName: string;
 }
 
+export interface RoundGroup {
+  name: string;
+  players: RegisteredPlayer[];
+}
+
 export interface UpcomingRound {
   id: number;
   seasonId: number;
@@ -114,7 +119,8 @@ export interface UpcomingRound {
   date: string;
   courseName: string;
   courseId: string;
-  players: RegisteredPlayer[];
+  registeredCount: number;
+  groups: RoundGroup[];
 }
 
 export interface Season {
@@ -311,35 +317,51 @@ export function getEvent(eventId: string | number): EventDetail | null {
   };
 }
 
-// Order by group (numeric where possible; ungrouped last), then by name.
-function compareRegistrations(a: RegisteredPlayer, b: RegisteredPlayer): number {
-  if (a.group !== b.group) {
-    if (a.group === null) return 1;
-    if (b.group === null) return -1;
-    const na = Number(a.group);
-    const nb = Number(b.group);
-    if (!Number.isNaN(na) && !Number.isNaN(nb)) return na - nb;
-    return a.group.localeCompare(b.group);
-  }
-  return a.name.localeCompare(b.name);
+// Sort helper: numeric group labels ("1", "12") in order, others alphabetically.
+function compareGroupNames(a: string, b: string): number {
+  const na = Number(a);
+  const nb = Number(b);
+  if (!Number.isNaN(na) && !Number.isNaN(nb)) return na - nb;
+  return a.localeCompare(b);
 }
 
-/** Registered players for an upcoming (not-yet-played) round, or null if unknown. */
+/** Registration/groups for an upcoming (not-yet-played) round, or null if unknown. */
 export function getUpcomingRound(eventId: string | number): UpcomingRound | null {
   const comp = byId.get(String(eventId));
   if (!comp) return null;
 
-  const players: RegisteredPlayer[] = (comp.Results ?? [])
-    .map((r) => {
-      const className = r.ClassName ?? '';
-      return {
-        name: r.Name,
-        group: r.Group || null,
-        division: className ? divisionLetter(className) : '?',
-        divisionName: className || 'Unranked',
-      };
-    })
-    .sort(compareRegistrations);
+  const players: RegisteredPlayer[] = (comp.Results ?? []).map((r) => {
+    const className = r.ClassName ?? '';
+    return {
+      name: r.Name,
+      group: r.Group || null,
+      division: className ? divisionLetter(className) : '?',
+      divisionName: className || 'Unranked',
+    };
+  });
+
+  // Bucket registered players by their assigned group (ungrouped are dropped).
+  const byGroup = new Map<string, RegisteredPlayer[]>();
+  for (const p of players) {
+    if (p.group === null) continue;
+    const list = byGroup.get(p.group) ?? [];
+    list.push(p);
+    byGroup.set(p.group, list);
+  }
+
+  // Groups are numbered sequentially, but empty ones don't appear in the results
+  // data; fill the numeric gaps so they still show. Pad to at least 18 groups
+  // (a full social day) once any group exists.
+  const numericGroups = [...byGroup.keys()].filter((n) => /^\d+$/.test(n)).map(Number);
+  if (numericGroups.length) {
+    for (let i = 1; i <= Math.max(18, ...numericGroups); i++) {
+      if (!byGroup.has(String(i))) byGroup.set(String(i), []);
+    }
+  }
+
+  const groups: RoundGroup[] = [...byGroup.entries()]
+    .map(([name, groupPlayers]) => ({ name, players: groupPlayers }))
+    .sort((a, b) => compareGroupNames(a.name, b.name));
 
   const context = seasonOf(String(eventId));
 
@@ -351,6 +373,7 @@ export function getUpcomingRound(eventId: string | number): UpcomingRound | null
     date: comp.Date,
     courseName: comp.CourseName,
     courseId: comp.CourseID,
-    players,
+    registeredCount: players.length,
+    groups,
   };
 }

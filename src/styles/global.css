@@ -72,11 +72,13 @@ a:hover {
   margin-bottom: 0.75em;
 }
 
-.prose h1, .prose h2 {
+.prose h1, .prose h2, .section-heading {
   color: var(--color-text-heading);
 }
 
-.prose h2 {
+/* Standard section heading — the same divider look as content-page h2s, for
+   use on Layout (non-prose) pages. */
+.prose h2, .section-heading {
   clear: both;
   border-top: 1px solid #dfe7dd;
   padding-top: 1.1rem;

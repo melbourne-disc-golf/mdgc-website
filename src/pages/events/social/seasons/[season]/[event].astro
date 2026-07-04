@@ -15,9 +15,11 @@ export async function getStaticPaths() {
 
 const { eventId } = Astro.props;
 
-// Played rounds show results; upcoming ones show registration & groups.
+// A round shows its groups (the draw) while it's still upcoming, and its
+// results once played — the two are independent, so a round on the day can
+// show both.
 const results = getEvent(eventId);
-const upcoming = results ? null : getUpcomingRound(eventId);
+const upcoming = getUpcomingRound(eventId);
 const detail = results ?? upcoming;
 if (!detail) {
   throw new Error(`No Metrix data for round ${eventId}`);
@@ -25,6 +27,9 @@ if (!detail) {
 
 const { name, date, seasonId } = detail;
 const subtitle = formatDateRange(Temporal.PlainDate.from(date));
+
+const today = Temporal.Now.plainDateISO().toString();
+const showGroups = date >= today;
 
 // Back-link up to this round's season.
 const season = getSeasons().find((s) => s.id === seasonId);
@@ -59,7 +64,38 @@ function fmt2(n: number | null): string {
 <Layout title={name} subtitle={subtitle} backLink={backLink}>
   <div class="my-8 space-y-10">
 
-    {results ? divisions.map((division) => {
+    {showGroups && upcoming && (
+      <section class="space-y-4">
+        <h2 class="section-heading">Registered players</h2>
+        <p class="text-slate-600">
+          {upcoming.registeredCount === 0
+            ? 'No players have registered yet.'
+            : `${upcoming.registeredCount} player${upcoming.registeredCount === 1 ? '' : 's'} registered.`}
+        </p>
+
+        {upcoming.groups.length > 0 && (
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {upcoming.groups.map((g) => (
+              <div class="overflow-hidden rounded-lg border border-slate-200">
+                <h3 class="px-3 py-2 text-sm font-bold text-white bg-linear-to-r from-mdgc-blue-dark to-mdgc-blue">Group {g.name}</h3>
+                <ul class="divide-y divide-slate-100">
+                  {g.players.length === 0 ? (
+                    <li class="px-3 py-1.5 text-sm text-slate-400 italic">empty</li>
+                  ) : g.players.map((p) => (
+                    <li class="flex items-baseline justify-between gap-3 px-3 py-1.5 text-sm">
+                      <span>{p.name}</span>
+                      <span class="text-xs text-slate-500 whitespace-nowrap">Div {p.division}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+    )}
+
+    {results && divisions.map((division) => {
       const nets = division.players.map((p) => p.net).filter((n): n is number => n !== null);
       const bestNet = nets.length ? Math.min(...nets) : null;
       return (
@@ -116,38 +152,7 @@ function fmt2(n: number | null): string {
         </div>
       </section>
       );
-    }) : (
-      <section class="space-y-4">
-        <p class="text-slate-600">
-          {upcoming!.players.length === 0
-            ? 'No players have registered yet.'
-            : `${upcoming!.players.length} player${upcoming!.players.length === 1 ? '' : 's'} registered.`}
-        </p>
-
-        {upcoming!.players.length > 0 && (
-          <div class="w-fit overflow-hidden rounded-lg border border-slate-200">
-            <table class="sortable border-collapse text-sm">
-              <thead>
-                <tr class="bg-[#d7eaff] text-mdgc-blue-dark">
-                  <th class="px-3 py-2 text-center font-semibold" data-sort="number">Group</th>
-                  <th class="px-3 py-2 text-center font-semibold" data-sort="string">Division</th>
-                  <th class="px-3 py-2 text-left font-semibold" data-sort="string">Player</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100">
-                {upcoming!.players.map((p) => (
-                  <tr class="odd:bg-white even:bg-slate-50/70 hover:bg-mdgc-blue-light/10">
-                    <td class="px-3 py-1.5 text-center text-slate-600" data-value={p.group ?? '9999'}>{p.group ?? '–'}</td>
-                    <td class="px-3 py-1.5 text-center text-slate-600">{p.division}</td>
-                    <td class="px-3 py-1.5 font-medium whitespace-nowrap">{p.name}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </section>
-    )}
+    })}
 
     <Grid>
       <LinkPanel
@@ -179,7 +184,3 @@ function fmt2(n: number | null): string {
   .podium-2 { background: linear-gradient(145deg, #ffffff, #aeb9c2); }
   .podium-3 { background: linear-gradient(145deg, #ffd9aa, #b36b27); color: #271606; }
 </style>
-
-<script>
-  import '@src/scripts/sortable-table.ts';
-</script>
