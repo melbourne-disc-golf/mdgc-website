@@ -125,19 +125,19 @@ function fmt2(n: number | null): string {
         </p>
 
         {upcoming!.players.length > 0 && (
-          <div class="overflow-hidden rounded-lg border border-slate-200">
-            <table class="min-w-full border-collapse text-sm">
+          <div class="w-fit overflow-hidden rounded-lg border border-slate-200">
+            <table class="sortable border-collapse text-sm">
               <thead>
                 <tr class="bg-[#d7eaff] text-mdgc-blue-dark">
-                  <th class="px-3 py-2 text-center font-semibold">Group</th>
-                  <th class="px-3 py-2 text-center font-semibold">Division</th>
-                  <th class="px-3 py-2 text-left font-semibold">Player</th>
+                  <th class="px-3 py-2 text-center font-semibold" data-sort="number">Group</th>
+                  <th class="px-3 py-2 text-center font-semibold" data-sort="string">Division</th>
+                  <th class="px-3 py-2 text-left font-semibold" data-sort="string">Player</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100">
                 {upcoming!.players.map((p) => (
                   <tr class="odd:bg-white even:bg-slate-50/70 hover:bg-mdgc-blue-light/10">
-                    <td class="px-3 py-1.5 text-center text-slate-600">{p.group ?? '–'}</td>
+                    <td class="px-3 py-1.5 text-center text-slate-600" data-value={p.group ?? '9999'}>{p.group ?? '–'}</td>
                     <td class="px-3 py-1.5 text-center text-slate-600">{p.division}</td>
                     <td class="px-3 py-1.5 font-medium whitespace-nowrap">{p.name}</td>
                   </tr>
@@ -162,6 +162,30 @@ function fmt2(n: number | null): string {
 </Layout>
 
 <style>
+  th[data-sort] {
+    cursor: pointer;
+  }
+
+  /* Subtle up-triangle at the cell's right edge, à la tablesort. */
+  th[data-sort]::after {
+    content: "";
+    float: right;
+    margin-top: 0.2em;
+    margin-left: 0.6em;
+    border: 5px solid transparent;
+    border-bottom-color: currentColor;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  th[data-sort]:hover::after {
+    opacity: 0.4;
+  }
+
+  th.sort-asc::after {
+    opacity: 0.85;
+  }
+
   /* Gold / silver / bronze position badges. */
   .podium-badge {
     display: inline-grid;
@@ -179,3 +203,29 @@ function fmt2(n: number | null): string {
   .podium-2 { background: linear-gradient(145deg, #ffffff, #aeb9c2); }
   .podium-3 { background: linear-gradient(145deg, #ffd9aa, #b36b27); color: #271606; }
 </style>
+
+<script>
+  // Click a header to sort ascending by that column (based on shopkeeper's sorter).
+  for (const table of document.querySelectorAll<HTMLTableElement>("table.sortable")) {
+    const headers = table.querySelectorAll<HTMLTableCellElement>("th[data-sort]");
+    const tbody = table.querySelector("tbody")!;
+
+    headers.forEach((th, index) => {
+      th.addEventListener("click", () => {
+        headers.forEach((h) => h.classList.remove("sort-asc"));
+        th.classList.add("sort-asc");
+
+        const numeric = th.dataset.sort === "number";
+        const rows = Array.from(tbody.querySelectorAll("tr"));
+
+        rows.sort((a, b) => {
+          const aVal = a.cells[index].dataset.value ?? a.cells[index].textContent?.trim() ?? "";
+          const bVal = b.cells[index].dataset.value ?? b.cells[index].textContent?.trim() ?? "";
+          return numeric ? Number(aVal) - Number(bVal) : aVal.localeCompare(bVal);
+        });
+
+        for (const row of rows) tbody.appendChild(row);
+      });
+    });
+  }
+</script>
