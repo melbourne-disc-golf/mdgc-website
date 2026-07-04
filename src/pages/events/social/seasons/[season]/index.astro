@@ -62,7 +62,7 @@ function shortDate(d: string): string {
                   title={day.played ? undefined : 'Not yet played'}
                 >
                   <td class="px-3 py-1.5 text-center font-bold">
-                    <a href={`/events/social/seasons/${season.id}/${day.id}`} class="text-mdgc-blue-dark after:absolute after:inset-0">{day.number}</a>
+                    <a href={`/events/social/seasons/${season.id}/events/${day.id}`} class="text-mdgc-blue-dark after:absolute after:inset-0">{day.number}</a>
                   </td>
                   <td class="px-3 py-1.5 text-right whitespace-nowrap">{shortDate(day.date)}</td>
                   <td class="px-3 py-1.5 text-left">{course}</td>

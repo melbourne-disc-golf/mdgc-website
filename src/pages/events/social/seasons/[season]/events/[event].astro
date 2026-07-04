@@ -100,8 +100,8 @@ function fmt2(n: number | null): string {
       const bestNet = nets.length ? Math.min(...nets) : null;
       return (
       <section>
-        <h2 class="text-lg font-bold text-white px-4 py-2.5 rounded-t-lg bg-linear-to-r from-mdgc-blue-dark to-mdgc-blue">{division.name}</h2>
-        <div class="overflow-x-auto border border-t-0 border-slate-200 rounded-b-lg">
+        <h2 class="section-heading mb-4">{division.name}</h2>
+        <div class="overflow-x-auto rounded-lg border border-slate-200">
           <table class="min-w-full text-sm border-collapse">
             <thead>
               <tr class="bg-[#d7eaff] text-mdgc-blue-dark">
@@ -129,7 +129,7 @@ function fmt2(n: number | null): string {
             </thead>
             <tbody class="divide-y divide-slate-100">
               {division.players.map((p) => (
-                <tr class="odd:bg-white even:bg-slate-50/70 hover:bg-mdgc-blue-light/10">
+                <tr class="odd:bg-white even:bg-slate-50 hover:bg-[#eaf4ff]">
                   <td class="px-3 py-1.5 font-medium whitespace-nowrap sticky left-0 bg-inherit">{p.name}</td>
                   <td class={`px-2 py-1.5 text-right ${p.net !== null && p.net === bestNet ? 'font-bold text-slate-800' : 'text-slate-600'}`}>{fmt2(p.net)}</td>
                   <td class="px-2 py-1.5 text-center">
