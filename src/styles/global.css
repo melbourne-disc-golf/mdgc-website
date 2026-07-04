@@ -194,3 +194,28 @@ time {
   @apply text-sm text-slate-500;
 }
 
+/* Sortable tables (see src/scripts/sortable-table.ts). Subtle up-triangle,
+   tablesort-style, on the sorted column. */
+th[data-sort] {
+  cursor: pointer;
+}
+
+th[data-sort]::after {
+  content: "";
+  float: right;
+  margin-top: 0.2em;
+  margin-left: 0.6em;
+  border: 5px solid transparent;
+  border-bottom-color: currentColor;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+th[data-sort]:hover::after {
+  opacity: 0.4;
+}
+
+th.sort-asc::after {
+  opacity: 0.85;
+}
+

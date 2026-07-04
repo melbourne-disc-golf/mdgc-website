@@ -162,30 +162,6 @@ function fmt2(n: number | null): string {
 </Layout>
 
 <style>
-  th[data-sort] {
-    cursor: pointer;
-  }
-
-  /* Subtle up-triangle at the cell's right edge, à la tablesort. */
-  th[data-sort]::after {
-    content: "";
-    float: right;
-    margin-top: 0.2em;
-    margin-left: 0.6em;
-    border: 5px solid transparent;
-    border-bottom-color: currentColor;
-    opacity: 0;
-    transition: opacity 0.15s;
-  }
-
-  th[data-sort]:hover::after {
-    opacity: 0.4;
-  }
-
-  th.sort-asc::after {
-    opacity: 0.85;
-  }
-
   /* Gold / silver / bronze position badges. */
   .podium-badge {
     display: inline-grid;
@@ -205,27 +181,5 @@ function fmt2(n: number | null): string {
 </style>
 
 <script>
-  // Click a header to sort ascending by that column (based on shopkeeper's sorter).
-  for (const table of document.querySelectorAll<HTMLTableElement>("table.sortable")) {
-    const headers = table.querySelectorAll<HTMLTableCellElement>("th[data-sort]");
-    const tbody = table.querySelector("tbody")!;
-
-    headers.forEach((th, index) => {
-      th.addEventListener("click", () => {
-        headers.forEach((h) => h.classList.remove("sort-asc"));
-        th.classList.add("sort-asc");
-
-        const numeric = th.dataset.sort === "number";
-        const rows = Array.from(tbody.querySelectorAll("tr"));
-
-        rows.sort((a, b) => {
-          const aVal = a.cells[index].dataset.value ?? a.cells[index].textContent?.trim() ?? "";
-          const bVal = b.cells[index].dataset.value ?? b.cells[index].textContent?.trim() ?? "";
-          return numeric ? Number(aVal) - Number(bVal) : aVal.localeCompare(bVal);
-        });
-
-        for (const row of rows) tbody.appendChild(row);
-      });
-    });
-  }
+  import '@src/scripts/sortable-table.ts';
 </script>
