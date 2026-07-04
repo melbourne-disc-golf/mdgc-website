@@ -1411,6 +1411,31 @@
         "Total": 0
       },
       {
+        "UserID": "179972",
+        "Name": "Andrew Traczynski",
+        "ClassName": "Div D - Metrix Rating <790",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "217207",
         "Name": "Charlotte Davies",
         "ClassName": "Div D - Metrix Rating <790",
@@ -1588,6 +1613,31 @@
       {
         "UserID": "218492",
         "Name": "Mike Vieusseux",
+        "ClassName": "Div D - Metrix Rating <790",
+        "CountryCode": "AU",
+        "Place": 0,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "179974",
+        "Name": "Montague Traczynski",
         "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
         "Place": 0,
