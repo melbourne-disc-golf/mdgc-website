@@ -17,11 +17,14 @@ interface MetrixChild {
 }
 
 interface MetrixResponse {
-  Competition: {
-    ID: number | string;
-    Events?: MetrixChild[];
-    SubCompetitions?: MetrixChild[];
-  } & Record<string, unknown>;
+  Competition:
+    | ({
+        ID: number | string;
+        Events?: MetrixChild[];
+        SubCompetitions?: MetrixChild[];
+      } & Record<string, unknown>)
+    | null;
+  Errors?: string[];
 }
 
 // Raw Metrix responses are stored here verbatim; src/utils/metrix.ts does all
@@ -39,7 +42,7 @@ async function fetchFromMetrix(id: string): Promise<MetrixResponse> {
 }
 
 function childIds(data: MetrixResponse): string[] {
-  const children = data.Competition.Events || data.Competition.SubCompetitions || [];
+  const children = data.Competition?.Events || data.Competition?.SubCompetitions || [];
   return children.map((c) => c.ID);
 }
 
@@ -49,6 +52,14 @@ async function fetchRawRecursive(id: string, seen: Set<string>) {
   seen.add(id);
 
   const data = await fetchFromMetrix(id);
+
+  // The public API only serves data less than ~1 year old; older ids come back
+  // with a null Competition and an Errors message. Don't persist those.
+  if (!data.Competition) {
+    console.warn(`Skipping ${id}: ${data.Errors?.join('; ') ?? 'no Competition in response'}`);
+    return;
+  }
+
   fs.writeFileSync(path.join(RAW_DIR, `${id}.json`), JSON.stringify(data, null, 2) + '\n');
 
   for (const childId of childIds(data)) {
