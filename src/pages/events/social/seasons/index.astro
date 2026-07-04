@@ -41,7 +41,7 @@ function seasonRange(season: Season): string | undefined {
 
     {sections.map((section) => (
       <section class="space-y-3">
-        <h2 class="text-2xl font-bold text-mdgc-blue-dark border-b border-slate-200 pb-2">{section.title}</h2>
+        <h2 class="section-heading">{section.title}</h2>
         <ul class="space-y-2">
           {section.seasons.map((season) => {
             const playedRounds = season.rounds.filter((r) => r.played).length;
