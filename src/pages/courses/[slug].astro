@@ -85,11 +85,11 @@ const mapLinks = {
           </p>
         )}
         {course.data.courseMap && (
-          <a href={course.data.courseMap.src}>
+          <a href={course.data.courseMap.src} class="block">
             <Image
               src={course.data.courseMap}
               alt={`${course.data.title} course layout`}
-              class="w-full rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
+              class="max-h-128 max-w-full w-auto mx-auto rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
               inferSize={true}
             />
           </a>
