@@ -3,7 +3,6 @@ import Layout from '@layouts/Layout.astro';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
 import { getSeasons, type Season } from '@utils/metrix';
-import SeasonRoundLinks from '@components/SeasonRoundLinks.astro';
 
 const today = Temporal.Now.plainDateISO().toString();
 const seasons = getSeasons(); // newest first
@@ -41,19 +40,27 @@ function seasonRange(season: Season): string | undefined {
     </p>
 
     {sections.map((section) => (
-      <section class="space-y-6">
+      <section class="space-y-3">
         <h2 class="text-2xl font-bold text-mdgc-blue-dark border-b border-slate-200 pb-2">{section.title}</h2>
-        {section.seasons.map((season) => (
-          <div>
-            <div class="flex items-baseline justify-between gap-4 mb-3">
-              <h3 class="text-lg font-semibold">
-                <a href={`/events/social/seasons/${season.id}`} class="text-mdgc-blue-dark hover:text-mdgc-blue hover:underline">{season.name}</a>
-              </h3>
-              <span class="text-sm text-slate-500 whitespace-nowrap">{seasonRange(season)}</span>
-            </div>
-            <SeasonRoundLinks season={season} />
-          </div>
-        ))}
+        <ul class="space-y-2">
+          {section.seasons.map((season) => {
+            const playedRounds = season.rounds.filter((r) => r.played).length;
+            return (
+              <li>
+                <a
+                  href={`/events/social/seasons/${season.id}`}
+                  class="block rounded-lg border border-slate-200 px-4 py-3 hover:border-mdgc-blue hover:bg-mdgc-blue/5 transition"
+                >
+                  <div class="flex items-baseline justify-between gap-4">
+                    <span class="font-semibold text-mdgc-blue-dark">{season.name}</span>
+                    <span class="text-sm text-slate-500 whitespace-nowrap">{seasonRange(season)}</span>
+                  </div>
+                  <p class="mt-0.5 text-sm text-slate-600">{playedRounds} of {season.rounds.length} rounds played</p>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
       </section>
     ))}
   </div>

@@ -18,6 +18,7 @@ interface RawResult {
   UserID: string;
   Name: string;
   Group?: string;
+  ClassName?: string;
   PlayerResults: (RawPlayerHole | unknown[])[];
   Sum: number;
   Diff: number;
@@ -95,6 +96,25 @@ export interface Round {
   courseName: string;
   courseId: string;
   played: boolean;
+  players: number; // players who played, or (for upcoming rounds) registered so far
+}
+
+export interface RegisteredPlayer {
+  name: string;
+  group: string | null;
+  division: string;
+  divisionName: string;
+}
+
+export interface UpcomingRound {
+  id: number;
+  seasonId: number;
+  round: number;
+  name: string;
+  date: string;
+  courseName: string;
+  courseId: string;
+  players: RegisteredPlayer[];
 }
 
 export interface Season {
@@ -218,6 +238,7 @@ function buildRound(eventId: string, round: number): Round | null {
     courseName: comp.CourseName,
     courseId: comp.CourseID,
     played: isPlayed(comp),
+    players: (comp.Results ?? []).length,
   };
 }
 
@@ -256,12 +277,12 @@ export function getSocialDays(): Round[] {
   return getSeasons().flatMap((season) => season.rounds);
 }
 
-/** {seasonId, eventId} for every round that has been played (has results). */
-export function getPlayedEventRefs(): { seasonId: number; eventId: number }[] {
+/** {seasonId, eventId} for every round across all seasons. */
+export function getRoundRefs(): { seasonId: number; eventId: number }[] {
   const refs: { seasonId: number; eventId: number }[] = [];
   for (const season of getSeasons()) {
     for (const round of season.rounds) {
-      if (round.played) refs.push({ seasonId: season.id, eventId: round.id });
+      refs.push({ seasonId: season.id, eventId: round.id });
     }
   }
   return refs;
@@ -287,5 +308,49 @@ export function getEvent(eventId: string | number): EventDetail | null {
     par: tracks.reduce((sum, t) => sum + t.par, 0),
     tracks,
     divisions: buildDivisions(comp),
+  };
+}
+
+// Order by group (numeric where possible; ungrouped last), then by name.
+function compareRegistrations(a: RegisteredPlayer, b: RegisteredPlayer): number {
+  if (a.group !== b.group) {
+    if (a.group === null) return 1;
+    if (b.group === null) return -1;
+    const na = Number(a.group);
+    const nb = Number(b.group);
+    if (!Number.isNaN(na) && !Number.isNaN(nb)) return na - nb;
+    return a.group.localeCompare(b.group);
+  }
+  return a.name.localeCompare(b.name);
+}
+
+/** Registered players for an upcoming (not-yet-played) round, or null if unknown. */
+export function getUpcomingRound(eventId: string | number): UpcomingRound | null {
+  const comp = byId.get(String(eventId));
+  if (!comp) return null;
+
+  const players: RegisteredPlayer[] = (comp.Results ?? [])
+    .map((r) => {
+      const className = r.ClassName ?? '';
+      return {
+        name: r.Name,
+        group: r.Group || null,
+        division: className ? divisionLetter(className) : '?',
+        divisionName: className || 'Unranked',
+      };
+    })
+    .sort(compareRegistrations);
+
+  const context = seasonOf(String(eventId));
+
+  return {
+    id: Number(comp.ID),
+    seasonId: context ? Number(context.season.ID) : Number(comp.ID),
+    round: context?.round ?? 0,
+    name: cleanEventName(comp.Name),
+    date: comp.Date,
+    courseName: comp.CourseName,
+    courseId: comp.CourseID,
+    players,
   };
 }

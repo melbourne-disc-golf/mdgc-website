@@ -31,6 +31,7 @@ function roundDate(d: string): string {
         <th class="px-3 py-2 text-center font-semibold">Round</th>
         <th class="px-3 py-2 text-right font-semibold">Date</th>
         <th class="px-3 py-2 text-left font-semibold">Course</th>
+        <th class="px-3 py-2 text-right font-semibold" title="Players who played, or registered so far">Players</th>
       </tr>
     </thead>
     <tbody class="divide-y divide-slate-100">
@@ -38,16 +39,15 @@ function roundDate(d: string): string {
         const course = courseByMetrixId.get(r.courseId) ?? r.courseName.split('&rarr;')[0].trim();
         return (
           <tr
-            class={`relative odd:bg-white even:bg-slate-50/70 ${r.played ? 'hover:bg-mdgc-blue-light/10' : 'text-slate-400'}`}
+            class={`relative odd:bg-white even:bg-slate-50/70 hover:bg-mdgc-blue-light/10 ${r.played ? '' : 'text-slate-400'}`}
             title={r.played ? undefined : 'Not yet played'}
           >
             <td class="px-3 py-1.5 text-center font-bold">
-              {r.played ? (
-                <a href={`/events/social/seasons/${season.id}/${r.id}`} class="text-mdgc-blue-dark after:absolute after:inset-0">{r.round}</a>
-              ) : r.round}
+              <a href={`/events/social/seasons/${season.id}/${r.id}`} class="text-mdgc-blue-dark after:absolute after:inset-0">{r.round}</a>
             </td>
             <td class="px-3 py-1.5 text-right whitespace-nowrap">{roundDate(r.date)}</td>
             <td class="px-3 py-1.5 text-left">{course}</td>
+            <td class="px-3 py-1.5 text-right tabular-nums">{r.players || '–'}</td>
           </tr>
         );
       })}

@@ -4,26 +4,36 @@ import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
-import { getEvent, getPlayedEventRefs, getSeasons } from '@utils/metrix';
+import { getEvent, getUpcomingRound, getRoundRefs, getSeasons } from '@utils/metrix';
 
 export async function getStaticPaths() {
-  return getPlayedEventRefs().map(({ seasonId, eventId }) => ({
+  return getRoundRefs().map(({ seasonId, eventId }) => ({
     params: { season: String(seasonId), event: String(eventId) },
-    props: { event: getEvent(eventId)! },
+    props: { eventId },
   }));
 }
 
-const { event } = Astro.props;
-const { name, date, par, tracks, divisions } = event;
+const { eventId } = Astro.props;
 
+// Played rounds show results; upcoming ones show registration & groups.
+const results = getEvent(eventId);
+const upcoming = results ? null : getUpcomingRound(eventId);
+const detail = results ?? upcoming;
+if (!detail) {
+  throw new Error(`No Metrix data for round ${eventId}`);
+}
+
+const { name, date, seasonId } = detail;
 const subtitle = formatDateRange(Temporal.PlainDate.from(date));
 
 // Back-link up to this round's season.
-const season = getSeasons().find((s) => s.id === event.seasonId);
+const season = getSeasons().find((s) => s.id === seasonId);
 const backLink = {
-  href: `/events/social/seasons/${event.seasonId}`,
+  href: `/events/social/seasons/${seasonId}`,
   text: season?.name ?? 'Season',
 };
+
+const { par, tracks, divisions } = results ?? { par: 0, tracks: [], divisions: [] };
 
 // Shade a hole score's background relative to its par (disc-golf scorecard colours).
 function holeClass(score: number | null, holePar: number): string {
@@ -44,13 +54,12 @@ function formatDiff(diff: number): string {
 function fmt2(n: number | null): string {
   return n === null ? '–' : n.toFixed(2);
 }
-
 ---
 
 <Layout title={name} subtitle={subtitle} backLink={backLink}>
   <div class="my-8 space-y-10">
 
-    {divisions.map((division) => {
+    {results ? divisions.map((division) => {
       const nets = division.players.map((p) => p.net).filter((n): n is number => n !== null);
       const bestNet = nets.length ? Math.min(...nets) : null;
       return (
@@ -107,14 +116,45 @@ function fmt2(n: number | null): string {
         </div>
       </section>
       );
-    })}
+    }) : (
+      <section class="space-y-4">
+        <p class="text-slate-600">
+          {upcoming!.players.length === 0
+            ? 'No players have registered yet.'
+            : `${upcoming!.players.length} player${upcoming!.players.length === 1 ? '' : 's'} registered.`}
+        </p>
+
+        {upcoming!.players.length > 0 && (
+          <div class="overflow-hidden rounded-lg border border-slate-200">
+            <table class="min-w-full border-collapse text-sm">
+              <thead>
+                <tr class="bg-[#d7eaff] text-mdgc-blue-dark">
+                  <th class="px-3 py-2 text-center font-semibold">Group</th>
+                  <th class="px-3 py-2 text-center font-semibold">Division</th>
+                  <th class="px-3 py-2 text-left font-semibold">Player</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                {upcoming!.players.map((p) => (
+                  <tr class="odd:bg-white even:bg-slate-50/70 hover:bg-mdgc-blue-light/10">
+                    <td class="px-3 py-1.5 text-center text-slate-600">{p.group ?? '–'}</td>
+                    <td class="px-3 py-1.5 text-center text-slate-600">{p.division}</td>
+                    <td class="px-3 py-1.5 font-medium whitespace-nowrap">{p.name}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
+    )}
 
     <Grid>
       <LinkPanel
         image="https://discgolfmetrix.com/assets/img/favicon.png"
-        href={`https://discgolfmetrix.com/${event.id}`}
+        href={`https://discgolfmetrix.com/${detail.id}`}
         title="View on Metrix"
-        description="this round on Disc Golf Metrix"
+        description={results ? 'this round on Disc Golf Metrix' : 'register for this round on Disc Golf Metrix'}
       />
     </Grid>
 
