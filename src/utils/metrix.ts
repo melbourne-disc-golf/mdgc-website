@@ -77,7 +77,7 @@ export interface Division {
 export interface EventDetail {
   id: number;
   seasonId: number;
-  round: number;
+  number: number;
   name: string;
   date: string;
   courseName: string;
@@ -88,15 +88,15 @@ export interface EventDetail {
   divisions: Division[];
 }
 
-export interface Round {
+export interface SocialDay {
   id: number;
-  round: number;
+  number: number;
   name: string;
   date: string;
   courseName: string;
   courseId: string;
   played: boolean;
-  players: number; // players who played, or (for upcoming rounds) registered so far
+  players: number; // players who played, or (for upcoming social days) registered so far
 }
 
 export interface RegisteredPlayer {
@@ -106,21 +106,21 @@ export interface RegisteredPlayer {
   divisionName: string;
 }
 
-export interface RoundGroup {
+export interface PlayerGroup {
   name: string;
   players: RegisteredPlayer[];
 }
 
-export interface UpcomingRound {
+export interface UpcomingSocialDay {
   id: number;
   seasonId: number;
-  round: number;
+  number: number;
   name: string;
   date: string;
   courseName: string;
   courseId: string;
   registeredCount: number;
-  groups: RoundGroup[];
+  groups: PlayerGroup[];
 }
 
 export interface Season {
@@ -128,7 +128,7 @@ export interface Season {
   name: string;
   dateStart?: string;
   dateEnd?: string;
-  rounds: Round[];
+  socialDays: SocialDay[];
 }
 
 // Load every raw Metrix response and index it by Metrix ID.
@@ -233,12 +233,12 @@ function eventChildren(comp: RawCompetition): { ID: string; Name: string }[] {
   return comp.Events || comp.SubCompetitions || [];
 }
 
-function buildRound(eventId: string, round: number): Round | null {
+function buildSocialDay(eventId: string, number: number): SocialDay | null {
   const comp = byId.get(eventId);
   if (!comp) return null;
   return {
     id: Number(comp.ID),
-    round,
+    number,
     name: cleanEventName(comp.Name),
     date: comp.Date,
     courseName: comp.CourseName,
@@ -248,12 +248,12 @@ function buildRound(eventId: string, round: number): Round | null {
   };
 }
 
-// Locate the season a round belongs to, and its 1-based round number.
-function seasonOf(eventId: string): { season: RawCompetition; round: number } | null {
+// Locate the season a social day belongs to, and its 1-based number.
+function seasonOf(eventId: string): { season: RawCompetition; number: number } | null {
   for (const comp of byId.values()) {
     if (!eventChildren(comp).length) continue;
     const idx = eventChildren(comp).findIndex((c) => String(c.ID) === String(eventId));
-    if (idx !== -1) return { season: comp, round: idx + 1 };
+    if (idx !== -1) return { season: comp, number: idx + 1 };
   }
   return null;
 }
@@ -264,37 +264,37 @@ export function getSeasons(): Season[] {
   for (const comp of byId.values()) {
     const children = eventChildren(comp);
     if (!children.length) continue;
-    const rounds = children
-      .map((c, i) => buildRound(c.ID, i + 1))
-      .filter((r): r is Round => r !== null);
+    const socialDays = children
+      .map((c, i) => buildSocialDay(c.ID, i + 1))
+      .filter((sd): sd is SocialDay => sd !== null);
     seasons.push({
       id: Number(comp.ID),
       name: comp.Name,
       dateStart: comp.TourDateStart,
       dateEnd: comp.TourDateEnd,
-      rounds,
+      socialDays,
     });
   }
   return seasons.sort((a, b) => (b.dateStart ?? '').localeCompare(a.dateStart ?? ''));
 }
 
-/** Every round across all seasons, flattened — for the events calendar. */
-export function getSocialDays(): Round[] {
-  return getSeasons().flatMap((season) => season.rounds);
+/** Every social day across all seasons, flattened — for the events calendar. */
+export function getSocialDays(): SocialDay[] {
+  return getSeasons().flatMap((season) => season.socialDays);
 }
 
-/** {seasonId, eventId} for every round across all seasons. */
-export function getRoundRefs(): { seasonId: number; eventId: number }[] {
+/** {seasonId, eventId} for every social day across all seasons. */
+export function getSocialDayRefs(): { seasonId: number; eventId: number }[] {
   const refs: { seasonId: number; eventId: number }[] = [];
   for (const season of getSeasons()) {
-    for (const round of season.rounds) {
-      refs.push({ seasonId: season.id, eventId: round.id });
+    for (const socialDay of season.socialDays) {
+      refs.push({ seasonId: season.id, eventId: socialDay.id });
     }
   }
   return refs;
 }
 
-/** Full per-round detail (division tables), or null if unknown/unplayed. */
+/** Full results detail (division tables) for a played social day, or null. */
 export function getEvent(eventId: string | number): EventDetail | null {
   const comp = byId.get(String(eventId));
   if (!comp || !isPlayed(comp)) return null;
@@ -305,7 +305,7 @@ export function getEvent(eventId: string | number): EventDetail | null {
   return {
     id: Number(comp.ID),
     seasonId: context ? Number(context.season.ID) : Number(comp.ID),
-    round: context?.round ?? 0,
+    number: context?.number ?? 0,
     name: cleanEventName(comp.Name),
     date: comp.Date,
     courseName: comp.CourseName,
@@ -325,8 +325,8 @@ function compareGroupNames(a: string, b: string): number {
   return a.localeCompare(b);
 }
 
-/** Registration/groups for an upcoming (not-yet-played) round, or null if unknown. */
-export function getUpcomingRound(eventId: string | number): UpcomingRound | null {
+/** Registration/groups for an upcoming (not-yet-played) social day, or null if unknown. */
+export function getUpcomingSocialDay(eventId: string | number): UpcomingSocialDay | null {
   const comp = byId.get(String(eventId));
   if (!comp) return null;
 
@@ -359,7 +359,7 @@ export function getUpcomingRound(eventId: string | number): UpcomingRound | null
     }
   }
 
-  const groups: RoundGroup[] = [...byGroup.entries()]
+  const groups: PlayerGroup[] = [...byGroup.entries()]
     .map(([name, groupPlayers]) => ({ name, players: groupPlayers }))
     .sort((a, b) => compareGroupNames(a.name, b.name));
 
@@ -368,7 +368,7 @@ export function getUpcomingRound(eventId: string | number): UpcomingRound | null
   return {
     id: Number(comp.ID),
     seasonId: context ? Number(context.season.ID) : Number(comp.ID),
-    round: context?.round ?? 0,
+    number: context?.number ?? 0,
     name: cleanEventName(comp.Name),
     date: comp.Date,
     courseName: comp.CourseName,

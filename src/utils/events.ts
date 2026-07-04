@@ -35,7 +35,7 @@ type ClubEventEntry = CollectionEntry<'events'>;
 type ExternalEventEntry = CollectionEntry<'externalEvents'>;
 type CourseEntry = CollectionEntry<'courses'>;
 
-// Metrix social day shape (a Round from @utils/metrix; only these fields are used here)
+// Metrix social day shape (a SocialDay from @utils/metrix; only these fields are used here)
 type MetrixEvent = {
   id: number;
   name: string;

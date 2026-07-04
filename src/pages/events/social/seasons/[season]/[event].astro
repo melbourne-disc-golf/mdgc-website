@@ -4,10 +4,10 @@ import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
-import { getEvent, getUpcomingRound, getRoundRefs, getSeasons } from '@utils/metrix';
+import { getEvent, getUpcomingSocialDay, getSocialDayRefs, getSeasons } from '@utils/metrix';
 
 export async function getStaticPaths() {
-  return getRoundRefs().map(({ seasonId, eventId }) => ({
+  return getSocialDayRefs().map(({ seasonId, eventId }) => ({
     params: { season: String(seasonId), event: String(eventId) },
     props: { eventId },
   }));
@@ -15,14 +15,14 @@ export async function getStaticPaths() {
 
 const { eventId } = Astro.props;
 
-// A round shows its groups (the draw) while it's still upcoming, and its
-// results once played — the two are independent, so a round on the day can
-// show both.
+// A social day shows its groups (the draw) while it's still upcoming, and its
+// results once played — the two are independent, so a social day on the day
+// can show both.
 const results = getEvent(eventId);
-const upcoming = getUpcomingRound(eventId);
+const upcoming = getUpcomingSocialDay(eventId);
 const detail = results ?? upcoming;
 if (!detail) {
-  throw new Error(`No Metrix data for round ${eventId}`);
+  throw new Error(`No Metrix data for social day ${eventId}`);
 }
 
 const { name, date, seasonId } = detail;
@@ -31,7 +31,7 @@ const subtitle = formatDateRange(Temporal.PlainDate.from(date));
 const today = Temporal.Now.plainDateISO().toString();
 const showGroups = date >= today;
 
-// Back-link up to this round's season.
+// Back-link up to this social day's season.
 const season = getSeasons().find((s) => s.id === seasonId);
 const backLink = {
   href: `/events/social/seasons/${seasonId}`,
@@ -159,7 +159,7 @@ function fmt2(n: number | null): string {
         image="https://discgolfmetrix.com/assets/img/favicon.png"
         href={`https://discgolfmetrix.com/${detail.id}`}
         title="View on Metrix"
-        description={results ? 'this round on Disc Golf Metrix' : 'register for this round on Disc Golf Metrix'}
+        description={results ? 'this social day on Disc Golf Metrix' : 'register for this social day on Disc Golf Metrix'}
       />
     </Grid>
 

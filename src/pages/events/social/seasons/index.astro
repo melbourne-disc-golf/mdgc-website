@@ -44,7 +44,7 @@ function seasonRange(season: Season): string | undefined {
         <h2 class="section-heading">{section.title}</h2>
         <ul class="space-y-2">
           {section.seasons.map((season) => {
-            const playedRounds = season.rounds.filter((r) => r.played).length;
+            const playedDays = season.socialDays.filter((d) => d.played).length;
             return (
               <li>
                 <a
@@ -55,7 +55,7 @@ function seasonRange(season: Season): string | undefined {
                     <span class="font-semibold text-mdgc-blue-dark">{season.name}</span>
                     <span class="text-sm text-slate-500 whitespace-nowrap">{seasonRange(season)}</span>
                   </div>
-                  <p class="mt-0.5 text-sm text-slate-600">{playedRounds} of {season.rounds.length} rounds played</p>
+                  <p class="mt-0.5 text-sm text-slate-600">{playedDays} of {season.socialDays.length} social days played</p>
                 </a>
               </li>
             );

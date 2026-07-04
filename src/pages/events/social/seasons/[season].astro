@@ -1,9 +1,9 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import { Temporal } from '@js-temporal/polyfill';
-import { formatDateRange } from '@utils/dates';
+import { formatDate, formatDateRange } from '@utils/dates';
 import { getSeasons } from '@utils/metrix';
-import SeasonRoundLinks from '@components/SeasonRoundLinks.astro';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 
@@ -23,14 +23,56 @@ const subtitle = dateStart
       dateEnd ? Temporal.PlainDate.from(dateEnd) : undefined
     )
   : undefined;
+
+// Map Metrix course ids to our course titles.
+const courses = await getCollection('courses');
+const courseByMetrixId = new Map<string, string>();
+for (const course of courses) {
+  for (const metrixId of course.data.metrixCourseIds ?? []) {
+    courseByMetrixId.set(metrixId, course.data.title);
+  }
+}
+
+function shortDate(d: string): string {
+  return formatDate(Temporal.PlainDate.from(d), 'short');
+}
 ---
 
 <Layout title={name} subtitle={subtitle} backLink={{ href: '/events/social/seasons', text: 'Social days by season' }}>
   <div class="my-8 space-y-12">
 
     <section>
-      <h2 class="section-heading mb-4">Rounds</h2>
-      <SeasonRoundLinks season={season} />
+      <h2 class="section-heading mb-4">Events</h2>
+      <div class="mx-auto w-full max-w-lg overflow-hidden rounded-lg border border-slate-200">
+        <table class="min-w-full border-collapse text-sm">
+          <thead>
+            <tr class="bg-[#d7eaff] text-mdgc-blue-dark">
+              <th class="px-3 py-2 text-center font-semibold">Event</th>
+              <th class="px-3 py-2 text-right font-semibold">Date</th>
+              <th class="px-3 py-2 text-left font-semibold">Course</th>
+              <th class="px-3 py-2 text-right font-semibold" title="Players who played, or registered so far">Players</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            {season.socialDays.map((day) => {
+              const course = courseByMetrixId.get(day.courseId) ?? day.courseName.split('&rarr;')[0].trim();
+              return (
+                <tr
+                  class={`relative odd:bg-white even:bg-slate-50/70 hover:bg-mdgc-blue-light/10 ${day.played ? '' : 'text-slate-400'}`}
+                  title={day.played ? undefined : 'Not yet played'}
+                >
+                  <td class="px-3 py-1.5 text-center font-bold">
+                    <a href={`/events/social/seasons/${season.id}/${day.id}`} class="text-mdgc-blue-dark after:absolute after:inset-0">{day.number}</a>
+                  </td>
+                  <td class="px-3 py-1.5 text-right whitespace-nowrap">{shortDate(day.date)}</td>
+                  <td class="px-3 py-1.5 text-left">{course}</td>
+                  <td class="px-3 py-1.5 text-right tabular-nums">{day.players || '–'}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <Grid>
