@@ -52,14 +52,13 @@ function cleanCourseName(str: string): string {
   {events.map(event => (
     <div class="social-callout social-day-item hidden" data-date={event.date}>
       <p>
-        Our next social day is at
+        Our <strong><a href={`https://discgolfmetrix.com/${event.id}`}>next social day</a></strong> is at
         {event.courseSlug ? (
-          <strong><a href={`/courses/${event.courseSlug}/`}>{event.courseTitle}</a></strong>
+          <a href={`/courses/${event.courseSlug}/`}>{event.courseTitle}</a>
         ) : (
-          <strong>{cleanCourseName(event.courseName)}</strong>
-        )} 
+          cleanCourseName(event.courseName)
+        )}
         on <strong>{formatDate(event.date)}</strong>.
-        <strong><a href={`https://discgolfmetrix.com/${event.id}`}>Register here</a></strong>.
       </p>
     </div>
   ))}

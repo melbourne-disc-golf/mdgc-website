@@ -8,7 +8,6 @@ heroImage:
 ---
 
 import Text from '@components/Text.astro';
-import NavLink from '@components/NavLink.astro';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import NextSocialDay from '@components/NextSocialDay.astro';
@@ -32,25 +31,18 @@ If you have a friend you'd like to play with, mention it when you sign up, and w
 
 ## When and where
 
+<NextSocialDay />
+
 We split the year into two seasons (Feb-Jun and Jul-Nov), with 15 Social Days in each season.
 We alternate between Saturdays and Sundays, and rotate around three "zones":
 
 - **West Melbourne** - 1st weekend of month
-- **South East Melbourne** - 2nd weekend of month
-- **North East Melbourne** - 3rd weekend of month
-
-<NextSocialDay />
+- **South-East Melbourne** - 2nd weekend of month
+- **North-East Melbourne** - 3rd weekend of month
 
 We usually have an early round starting at 8:00am, and a later one at 10:30am -- you can choose which time suits you best when you register.
 
-<Grid>
-	<LinkPanel
-		image="https://discgolfmetrix.com/assets/img/favicon.png"
-		href="https://discgolfmetrix.com/?u=club_events&id=235"
-		title="MDGC Social Days"
-		description="on Disc Golf Metrix"
-	/>
-</Grid>
+A full list of upcoming Social Days is available both on our [Events](/events) page, and on <a href={externalUrls.metrixSocialDays}>Disc Golf Metrix</a> (aka "Metrix").
 
 ## Registering
 
@@ -58,22 +50,21 @@ Social Days are free for club [members](/club/membership). Casual players are we
 
 <div class="social-callout">
 **Pre-registration is required** for all Social Days.
+Registration closes on the evening before the event.
 </div>
 
-We use [Disc Golf Metrix](https://discgolfmetrix.com/?u=club_events&id=235) (aka "Metrix") to manage registration.
-Registration closes on the evening before the event.
-Once you've found an upcoming event you're interested in, click on the <span class="metrix-button">Register here</span> button on the top right to sign up.
+To register for an event, click on the <span class="metrix-button">Register here</span> button in Metrix, and follow the prompts.
 
-You'll need an [Australian Disc Golf](https://www.australiandiscgolf.com/) number, for insurance purposes (but it's free and easy to [join](https://www.australiandiscgolf.com/join/)).
+You'll need an [Australian Disc Golf](https://www.australiandiscgolf.com/) number, for insurance purposes, but it's free and easy to [join](https://www.australiandiscgolf.com/join/).
 
 ## Scoring
 
 We also use Metrix to keep scores on the day.
 Each group will have at least one experienced player who can help with scoring and using the app.
-We prefer to have 2 people scoring on each card for accuracy.
+We prefer to have at least 2 people scoring on each card, for accuracy.
 
 Start scoring for your group by pressing <span class="metrix-button">Enter</span>, then <span class="metrix-button">Start...</span>.
-More details on scoring are available [here](https://discgolfmetrix.com/?u=rule&ID=6).
+More details on scoring are available <a href={externalUrls.metrixScoringRules}>here</a>.
 
 ## Divisions and ratings
 
@@ -116,13 +107,12 @@ To complete in the Champs, Players must qualify by playing at Social Days, and p
 If you have any questions, drop us a note at socialdays@melbournediscgolf.com.
 
 <Grid>
-	<NavLink href="/disc-golf" />
-	<NavLink href={externalUrls.shop} />
-</Grid>
-
-## (work in progress)
-
-<Grid>
+	<LinkPanel
+		image={externalUrls.metrixFavicon}
+		href={externalUrls.metrixSocialDays}
+		title="MDGC Social Days"
+		description="on Disc Golf Metrix"
+	/>
 	<LinkPanel
 		href="https://mdgc-sd.vercel.app/"
 		title="Social Day logistics"
