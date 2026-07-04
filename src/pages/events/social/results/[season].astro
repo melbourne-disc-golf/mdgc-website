@@ -1,9 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
 import { getSeasons } from '@utils/metrix';
+import SeasonRoundLinks from '@components/SeasonRoundLinks.astro';
 
 export async function getStaticPaths() {
   return getSeasons().map((season) => ({
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 }
 
 const { season } = Astro.props;
-const { id: seasonId, name, dateStart, dateEnd, rounds } = season;
+const { name, dateStart, dateEnd } = season;
 
 const subtitle = dateStart
   ? formatDateRange(
@@ -21,47 +21,14 @@ const subtitle = dateStart
       dateEnd ? Temporal.PlainDate.from(dateEnd) : undefined
     )
   : undefined;
-
-// Map Metrix course ids to our course pages.
-const courses = await getCollection('courses');
-const courseByMetrixId = new Map<string, { slug: string; title: string }>();
-for (const course of courses) {
-  for (const metrixId of course.data.metrixCourseIds ?? []) {
-    courseByMetrixId.set(metrixId, { slug: course.id, title: course.data.title });
-  }
-}
-
-function formatDate(d: string): string {
-  return new Date(d).toLocaleDateString('en-AU', { day: 'numeric', month: 'short' }).replace(' ', '-');
-}
 ---
 
-<Layout title={name} subtitle={subtitle}>
+<Layout title={name} subtitle={subtitle} backLink={{ href: '/events/social/results', text: 'Social day results' }}>
   <div class="my-8 space-y-12">
 
     <section>
       <h2 class="text-2xl font-bold text-mdgc-blue-dark mb-4">Rounds</h2>
-      <ul class="columns-1 sm:columns-2 lg:columns-3 gap-2">
-        {rounds.map((r) => {
-          const course = courseByMetrixId.get(r.courseId)?.title ?? r.courseName.split('&rarr;')[0].trim();
-          const label = (<><span class="font-bold">Round {r.round}</span>: {formatDate(r.date)} @ {course}</>);
-          return (
-            <li class="mb-2 break-inside-avoid">
-              {r.played ? (
-                <a
-                  href={`/events/social/results/${seasonId}/${r.id}`}
-                  class="block rounded-lg border border-mdgc-blue bg-mdgc-blue/5 px-3 py-2 text-sm font-medium text-mdgc-blue-dark hover:bg-mdgc-blue hover:text-white transition"
-                >{label}</a>
-              ) : (
-                <span
-                  class="block rounded-lg border border-dashed border-slate-200 px-3 py-2 text-sm text-slate-400"
-                  title="Not yet played"
-                >{label}</span>
-              )}
-            </li>
-          );
-        })}
-      </ul>
+      <SeasonRoundLinks season={season} />
     </section>
 
   </div>

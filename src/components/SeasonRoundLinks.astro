@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import { Temporal } from '@js-temporal/polyfill';
+import { formatDate } from '@utils/dates';
+import type { Season } from '@utils/metrix';
+
+interface Props {
+  season: Season;
+}
+
+const { season } = Astro.props;
+
+// Map Metrix course ids to our course titles.
+const courses = await getCollection('courses');
+const courseByMetrixId = new Map<string, string>();
+for (const course of courses) {
+  for (const metrixId of course.data.metrixCourseIds ?? []) {
+    courseByMetrixId.set(metrixId, course.data.title);
+  }
+}
+
+function roundDate(d: string): string {
+  return formatDate(Temporal.PlainDate.from(d), 'short');
+}
+---
+
+<div class="mx-auto w-full max-w-lg overflow-hidden rounded-lg border border-slate-200">
+  <table class="min-w-full border-collapse text-sm">
+    <thead>
+      <tr class="bg-[#d7eaff] text-mdgc-blue-dark">
+        <th class="px-3 py-2 text-center font-semibold">Round</th>
+        <th class="px-3 py-2 text-right font-semibold">Date</th>
+        <th class="px-3 py-2 text-left font-semibold">Course</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-slate-100">
+      {season.rounds.map((r) => {
+        const course = courseByMetrixId.get(r.courseId) ?? r.courseName.split('&rarr;')[0].trim();
+        return (
+          <tr
+            class={`relative odd:bg-white even:bg-slate-50/70 ${r.played ? 'hover:bg-mdgc-blue-light/10' : 'text-slate-400'}`}
+            title={r.played ? undefined : 'Not yet played'}
+          >
+            <td class="px-3 py-1.5 text-center font-bold">
+              {r.played ? (
+                <a href={`/events/social/results/${season.id}/${r.id}`} class="text-mdgc-blue-dark after:absolute after:inset-0">{r.round}</a>
+              ) : r.round}
+            </td>
+            <td class="px-3 py-1.5 text-right whitespace-nowrap">{roundDate(r.date)}</td>
+            <td class="px-3 py-1.5 text-left">{course}</td>
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>

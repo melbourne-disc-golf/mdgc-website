@@ -4,6 +4,18 @@ const MONTHS_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'Ju
 const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 /**
+ * Format a single date for display, e.g. "14 December, 2025" (long) or
+ * "14 Dec, 2025" (short).
+ */
+export function formatDate(
+  date: Temporal.PlainDate,
+  format: 'long' | 'short' = 'long',
+): string {
+  const months = format === 'long' ? MONTHS_LONG : MONTHS_SHORT;
+  return `${date.day} ${months[date.month - 1]}, ${date.year}`;
+}
+
+/**
  * Format a date range for display.
  *
  * Examples (long format, default):
@@ -25,22 +37,18 @@ export function formatDateRange(
 ): string {
   const months = format === 'long' ? MONTHS_LONG : MONTHS_SHORT;
 
-  function fmt(date: Temporal.PlainDate): string {
-    return `${date.day} ${months[date.month - 1]}, ${date.year}`;
-  }
-
   if (!endDate || Temporal.PlainDate.compare(startDate, endDate) === 0) {
-    return fmt(startDate);
+    return formatDate(startDate, format);
   }
 
   const sameMonth = startDate.month === endDate.month && startDate.year === endDate.year;
   const sameYear = startDate.year === endDate.year;
 
   if (sameMonth) {
-    return `${startDate.day}-${fmt(endDate)}`;
+    return `${startDate.day}-${formatDate(endDate, format)}`;
   } else if (sameYear) {
-    return `${startDate.day} ${months[startDate.month - 1]} - ${fmt(endDate)}`;
+    return `${startDate.day} ${months[startDate.month - 1]} - ${formatDate(endDate, format)}`;
   } else {
-    return `${fmt(startDate)} - ${fmt(endDate)}`;
+    return `${formatDate(startDate, format)} - ${formatDate(endDate, format)}`;
   }
 }
