@@ -21,7 +21,7 @@ const subtitle = formatDateRange(Temporal.PlainDate.from(date));
 // Back-link up to this round's season.
 const season = getSeasons().find((s) => s.id === event.seasonId);
 const backLink = {
-  href: `/events/social/results/${event.seasonId}`,
+  href: `/events/social/seasons/${event.seasonId}`,
   text: season?.name ?? 'Season',
 };
 

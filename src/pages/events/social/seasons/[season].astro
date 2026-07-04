@@ -4,6 +4,8 @@ import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
 import { getSeasons } from '@utils/metrix';
 import SeasonRoundLinks from '@components/SeasonRoundLinks.astro';
+import Grid from '@components/Grid.astro';
+import LinkPanel from '@components/LinkPanel.astro';
 
 export async function getStaticPaths() {
   return getSeasons().map((season) => ({
@@ -23,13 +25,22 @@ const subtitle = dateStart
   : undefined;
 ---
 
-<Layout title={name} subtitle={subtitle} backLink={{ href: '/events/social/results', text: 'Social day results' }}>
+<Layout title={name} subtitle={subtitle} backLink={{ href: '/events/social/seasons', text: 'Social days by season' }}>
   <div class="my-8 space-y-12">
 
     <section>
       <h2 class="text-2xl font-bold text-mdgc-blue-dark mb-4">Rounds</h2>
       <SeasonRoundLinks season={season} />
     </section>
+
+    <Grid>
+      <LinkPanel
+        image="https://discgolfmetrix.com/assets/img/favicon.png"
+        href={`https://discgolfmetrix.com/${season.id}`}
+        title="View on Metrix"
+        description="this season on Disc Golf Metrix"
+      />
+    </Grid>
 
   </div>
 </Layout>

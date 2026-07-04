@@ -34,10 +34,10 @@ function seasonRange(season: Season): string | undefined {
 }
 ---
 
-<Layout title="Social day results" subtitle="Results, standings and handicaps from MDGC social days">
+<Layout title="Social days by season" subtitle="upcoming rounds and past results, season by season">
   <div class="my-8 space-y-12">
     <p class="text-slate-600">
-      Results are sourced from <a class="text-mdgc-blue underline" href="https://discgolfmetrix.com/" target="_blank" rel="noopener noreferrer">Disc Golf Metrix</a> and updated automatically.
+      Information is sourced from <a class="text-mdgc-blue underline" href="https://discgolfmetrix.com/" target="_blank" rel="noopener noreferrer">Disc Golf Metrix</a> and updated automatically.
     </p>
 
     {sections.map((section) => (
@@ -47,7 +47,7 @@ function seasonRange(season: Season): string | undefined {
           <div>
             <div class="flex items-baseline justify-between gap-4 mb-3">
               <h3 class="text-lg font-semibold">
-                <a href={`/events/social/results/${season.id}`} class="text-mdgc-blue-dark hover:text-mdgc-blue hover:underline">{season.name}</a>
+                <a href={`/events/social/seasons/${season.id}`} class="text-mdgc-blue-dark hover:text-mdgc-blue hover:underline">{season.name}</a>
               </h3>
               <span class="text-sm text-slate-500 whitespace-nowrap">{seasonRange(season)}</span>
             </div>

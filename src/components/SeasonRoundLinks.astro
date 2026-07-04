@@ -43,7 +43,7 @@ function roundDate(d: string): string {
           >
             <td class="px-3 py-1.5 text-center font-bold">
               {r.played ? (
-                <a href={`/events/social/results/${season.id}/${r.id}`} class="text-mdgc-blue-dark after:absolute after:inset-0">{r.round}</a>
+                <a href={`/events/social/seasons/${season.id}/${r.id}`} class="text-mdgc-blue-dark after:absolute after:inset-0">{r.round}</a>
               ) : r.round}
             </td>
             <td class="px-3 py-1.5 text-right whitespace-nowrap">{roundDate(r.date)}</td>
