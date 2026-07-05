@@ -1,0 +1,195 @@
+---
+import Layout from '@layouts/Layout.astro';
+import LinkPanel from '@components/LinkPanel.astro';
+import { Temporal } from '@js-temporal/polyfill';
+import { formatDateRange } from '@utils/dates';
+import { getEvent, getSocialDayRefs, getSeasons } from '@utils/metrix';
+
+export async function getStaticPaths() {
+  return getSocialDayRefs()
+    .map(({ seasonId, eventId }) => ({
+      params: { season: String(seasonId), event: String(eventId) },
+      props: { event: getEvent(eventId) },
+    }))
+    .filter((path) => path.props.event !== null);
+}
+
+const { event } = Astro.props;
+const { name, date, par, tracks, divisions } = event;
+
+const subtitle = formatDateRange(Temporal.PlainDate.from(date));
+const season = getSeasons().find((s) => s.id === event.seasonId);
+const backLink = {
+  href: `/events/social/results/${event.seasonId}`,
+  text: season?.name ?? 'Season',
+};
+
+const totalPlayers = divisions.reduce((sum, division) => sum + division.players.length, 0);
+const bestRaw = Math.min(...divisions.flatMap((division) => division.players.map((player) => player.sum)));
+const bestNetValues = divisions.flatMap((division) => division.players.map((player) => player.net).filter((net): net is number => net !== null));
+const bestNet = bestNetValues.length ? Math.min(...bestNetValues) : null;
+
+function holeClass(score: number | null, holePar: number): string {
+  if (score === null) return 'text-slate-300';
+  if (score === 1) return 'bg-mdgc-amber text-slate-950';
+  const diff = score - holePar;
+  if (diff <= -2) return 'bg-mdgc-accent text-white';
+  if (diff === -1) return 'bg-green-100 text-green-800';
+  if (diff === 0) return 'text-slate-700';
+  if (diff === 1) return 'bg-amber-100 text-amber-950';
+  return 'bg-rose-100 text-rose-950';
+}
+
+function formatDiff(diff: number): string {
+  return diff > 0 ? `+${diff}` : String(diff);
+}
+
+function fmt2(n: number | null): string {
+  return n === null ? '-' : n.toFixed(2);
+}
+
+function divisionSlug(value: string): string {
+  return `division-${value.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+}
+---
+
+<Layout title={name} subtitle={subtitle} backLink={backLink}>
+  <div class="space-y-8">
+    <section class="grid gap-4 lg:grid-cols-[minmax(0,1.4fr)_minmax(18rem,0.8fr)]">
+      <div class="surface p-6 sm:p-7">
+        <p class="eyebrow">Round scorecard</p>
+        <h2 class="mt-3 font-display text-3xl font-black text-mdgc-ink sm:text-4xl">{totalPlayers} players across {divisions.length} divisions</h2>
+        <p class="mt-4 max-w-3xl text-slate-600">
+          Division tables combine raw scores, handicap positions, hole-by-hole scoring and Metrix ratings.
+          Scores are coloured against par so birdies, bogeys and standout holes are easier to scan.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          {divisions.map((division) => (
+            <a href={`#${divisionSlug(division.letter)}`} class="rounded-md border border-sky-100 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:border-mdgc-accent hover:text-mdgc-accent-deep">
+              Div {division.letter}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+        <div class="metric-pill">
+          <span class="block text-xs uppercase text-slate-500">Course par</span>
+          <strong class="mt-1 block text-3xl text-mdgc-ink">{par}</strong>
+        </div>
+        <div class="metric-pill">
+          <span class="block text-xs uppercase text-slate-500">Best raw</span>
+          <strong class="mt-1 block text-3xl text-mdgc-ink">{bestRaw}</strong>
+        </div>
+        <div class="metric-pill">
+          <span class="block text-xs uppercase text-slate-500">Best handicap</span>
+          <strong class="mt-1 block text-3xl text-mdgc-ink">{fmt2(bestNet)}</strong>
+        </div>
+      </div>
+    </section>
+
+    <div class="space-y-8">
+      {divisions.map((division) => {
+        const nets = division.players.map((player) => player.net).filter((net): net is number => net !== null);
+        const divisionBestNet = nets.length ? Math.min(...nets) : null;
+        const divisionBestRaw = Math.min(...division.players.map((player) => player.sum));
+
+        return (
+          <section id={divisionSlug(division.letter)} class="scroll-mt-28">
+            <div class="rounded-t-md bg-slate-950 px-4 py-4 text-white sm:px-5">
+              <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-[0.16em] text-mdgc-accent-soft">Division {division.letter}</p>
+                  <h2 class="mt-1 text-2xl font-black">{division.name}</h2>
+                </div>
+                <div class="flex flex-wrap gap-2 text-sm">
+                  <span class="rounded-md bg-white/10 px-2.5 py-1 font-semibold">{division.players.length} players</span>
+                  <span class="rounded-md bg-white/10 px-2.5 py-1 font-semibold">Raw {divisionBestRaw}</span>
+                  <span class="rounded-md bg-white/10 px-2.5 py-1 font-semibold">HC {fmt2(divisionBestNet)}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto rounded-b-md border border-t-0 border-slate-200 bg-white shadow-sm">
+              <table class="min-w-full border-collapse text-sm">
+                <thead>
+                  <tr class="bg-slate-100 text-slate-800">
+                    <th class="sticky left-0 z-10 bg-inherit px-3 py-2 text-left">Player</th>
+                    <th class="px-2 py-2 text-right" title="Handicap score">HC</th>
+                    <th class="px-2 py-2 text-center">Pos</th>
+                    <th class="px-2 py-2 text-right" title="Raw score">Raw</th>
+                    <th class="px-2 py-2 text-right">+/-</th>
+                    {tracks.map((track) => (
+                      <th class="px-1.5 py-2 text-right font-medium" title={`Par ${track.par}`}>{track.number}</th>
+                    ))}
+                    <th class="px-2 py-2 text-right" title="Metrix rating">Rating</th>
+                  </tr>
+                  <tr class="bg-slate-50 text-xs text-slate-500">
+                    <th class="sticky left-0 z-10 bg-inherit px-3 py-1"></th>
+                    <th></th>
+                    <th></th>
+                    <th class="px-2 py-1 text-right">{par}</th>
+                    <th class="px-2 py-1 text-right">Par</th>
+                    {tracks.map((track) => (
+                      <th class="px-1.5 py-1 text-right font-normal">{track.par}</th>
+                    ))}
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  {division.players.map((player) => (
+                    <tr class="odd:bg-white even:bg-slate-50/70 hover:bg-mdgc-accent-soft">
+                      <td class="sticky left-0 z-10 bg-inherit px-3 py-1.5 font-semibold whitespace-nowrap text-slate-900">{player.name}</td>
+                      <td class={`px-2 py-1.5 text-right tabular-nums ${player.net !== null && player.net === divisionBestNet ? 'font-black text-mdgc-accent-deep' : 'text-slate-600'}`}>{fmt2(player.net)}</td>
+                      <td class="px-2 py-1.5 text-center">
+                        {player.pos <= 3 ? (
+                          <span class={`podium-badge podium-${player.pos}`}>{player.pos}</span>
+                        ) : (
+                          <span class="text-slate-500">{player.pos}</span>
+                        )}
+                      </td>
+                      <td class={`px-2 py-1.5 text-right tabular-nums ${player.sum === divisionBestRaw ? 'font-black text-slate-900' : 'text-slate-600'}`}>{player.sum}</td>
+                      <td class="px-2 py-1.5 text-right tabular-nums text-slate-600">{formatDiff(player.diff)}</td>
+                      {player.holes.map((score, holeIndex) => (
+                        <td class={`px-1.5 py-1.5 text-right tabular-nums ${holeClass(score, tracks[holeIndex]?.par ?? 3)}`}>{score ?? '-'}</td>
+                      ))}
+                      <td class="px-2 py-1.5 text-right tabular-nums text-slate-500">{player.rating ?? '-'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        );
+      })}
+    </div>
+
+    <div class="max-w-xl">
+      <LinkPanel
+        image="https://discgolfmetrix.com/assets/img/favicon.png"
+        href={`https://discgolfmetrix.com/${event.id}`}
+        title="View on Metrix"
+        description="Open this round on Disc Golf Metrix"
+      />
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .podium-badge {
+    display: inline-grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    color: #152018;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1;
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.75), 0 2px 5px rgba(31, 54, 44, 0.18);
+  }
+
+  .podium-1 { background: linear-gradient(145deg, #fff4ba, #e2a51d); }
+  .podium-2 { background: linear-gradient(145deg, #ffffff, #aeb9c2); }
+  .podium-3 { background: linear-gradient(145deg, #ffd9aa, #b36b27); color: #271606; }
+</style>

@@ -7,6 +7,13 @@
   --color-mdgc-blue-light: #A3D0FF;
   --color-mdgc-blue-dark: #3F79B2;
   --color-mdgc-mist: #F3F8FC; /* pale blue-tinted page background */
+  --color-mdgc-paper: #f3f8fc;
+  --color-mdgc-ink: #101820;
+  --color-mdgc-accent: #39a0df;
+  --color-mdgc-accent-deep: #063d63;
+  --color-mdgc-accent-soft: #e7f6fe;
+  --color-mdgc-amber: #fccc00;
+  --color-mdgc-amber-soft: #fff6cf;
   --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
   --color-text-body: var(--color-slate-600); /* lighter, for body text */
@@ -93,6 +100,26 @@ a:hover {
   line-height: 1.3;
   border-top: 1px solid var(--color-gray-200);
   padding-top: 1rem;
+}
+
+.eyebrow {
+  @apply text-sm font-bold uppercase tracking-[0.16em] text-mdgc-accent-deep;
+}
+
+.surface {
+  @apply rounded-md border border-sky-100 bg-white shadow-sm;
+}
+
+.metric-pill {
+  @apply rounded-md border border-sky-100 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm;
+}
+
+.primary-action {
+  @apply inline-flex items-center justify-center rounded-md bg-mdgc-accent px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-mdgc-accent-deep hover:text-white;
+}
+
+.secondary-action {
+  @apply inline-flex items-center justify-center rounded-md border border-sky-200 bg-white px-4 py-2 text-sm font-bold text-slate-800 hover:border-mdgc-accent hover:text-mdgc-accent-deep;
 }
 
 /* Heading permalink anchors - positioned left of the heading */
