@@ -32,7 +32,7 @@ function holeClass(score: number | null, holePar: number): string {
   if (score === 1) return 'bg-mdgc-amber text-slate-950';
   const diff = score - holePar;
   if (diff <= -2) return 'bg-mdgc-accent text-white';
-  if (diff === -1) return 'bg-mdgc-accent-soft text-mdgc-accent-deep';
+  if (diff === -1) return 'bg-green-100 text-green-800';
   if (diff === 0) return 'text-slate-700';
   if (diff === 1) return 'bg-amber-100 text-amber-950';
   return 'bg-rose-100 text-rose-950';

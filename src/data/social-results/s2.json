@@ -6,7 +6,7 @@
     "metrixUrl": "https://discgolfmetrix.com/3647062",
     "sourceName": "MDGC 2026 Social Days S2",
     "description": "Public results archive rebuilt from Disc Golf Metrix. Prize winners are added after each closeout.",
-    "importedAt": ""
+    "importedAt": "2026-07-05T06:07:17.733Z"
   },
   "events": [
     {
@@ -16,10 +16,6468 @@
       "date": "2026-07-05",
       "venue": "Werribee",
       "metrixId": "3647171",
-      "status": "needs-import",
-      "prizeWinners": [],
-      "handicapLeaders": [],
-      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+      "status": "imported",
+      "prizeWinners": [
+        {
+          "prize": "Div A Handicap",
+          "name": "Markus Villota",
+          "detail": "Net 50.29, Raw 55 (-9)"
+        },
+        {
+          "prize": "Div B Handicap",
+          "name": "Jason Vincent",
+          "detail": "Net 47.82, Raw 61 (-3)"
+        },
+        {
+          "prize": "Div C Handicap",
+          "name": "Robert Lambert",
+          "detail": "Net 52.03, Raw 67 (+3)"
+        },
+        {
+          "prize": "Div D Handicap",
+          "name": "Sharon Cook",
+          "detail": "Net 43.52, Raw 81 (+17)"
+        },
+        {
+          "prize": "Div A/B/X/Z CTB",
+          "name": "Aidan Howard",
+          "detail": "Hole 1"
+        },
+        {
+          "prize": "Div C/D CTB",
+          "name": "Illia Kravchenko",
+          "detail": "Hole 7"
+        }
+      ],
+      "handicapLeaders": [
+        {
+          "prize": "Div A Handicap leader",
+          "name": "Markus Villota",
+          "detail": "Net 50.29, raw 55"
+        },
+        {
+          "prize": "Div B Handicap leader",
+          "name": "Jason Vincent",
+          "detail": "Net 47.82, raw 61"
+        },
+        {
+          "prize": "Div C Handicap leader",
+          "name": "Illia Kravchenko",
+          "detail": "Net 46.77, raw 64"
+        },
+        {
+          "prize": "Div D Handicap leader",
+          "name": "Sharon Cook",
+          "detail": "Net 43.52, raw 81"
+        }
+      ],
+      "divisions": {
+        "A": [
+          {
+            "name": "Markus Villota",
+            "rating": 950,
+            "division": "A",
+            "rawScore": 55,
+            "toPar": "-9",
+            "handicap": 4.71,
+            "handicapScore": 50.29,
+            "overallRank": 1,
+            "handicapRank": 12,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 5,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 6,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 10,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 11,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 15,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 1
+          },
+          {
+            "name": "Aidan Howard",
+            "rating": 961,
+            "division": "A",
+            "rawScore": 57,
+            "toPar": "-7",
+            "handicap": 3.67,
+            "handicapScore": 53.33,
+            "overallRank": 2,
+            "handicapRank": 23,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 8,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 16,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 2
+          },
+          {
+            "name": "Allen Brunsting",
+            "rating": 926,
+            "division": "A",
+            "rawScore": 58,
+            "toPar": "-6",
+            "handicap": 6.97,
+            "handicapScore": 51.03,
+            "overallRank": 3,
+            "handicapRank": 15,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 3,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 4,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 5,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 8,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "name": "Chris Ronalds",
+            "rating": 946,
+            "division": "A",
+            "rawScore": 60,
+            "toPar": "-4",
+            "handicap": 5.08,
+            "handicapScore": 54.92,
+            "overallRank": 4,
+            "handicapRank": 35,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 6,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 12,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 13,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 4
+          },
+          {
+            "name": "Succulent Chinese Meal",
+            "rating": 895,
+            "division": "A",
+            "rawScore": 62,
+            "toPar": "-2",
+            "handicap": 9.89,
+            "handicapScore": 52.11,
+            "overallRank": 5,
+            "handicapRank": 19,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 3,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 8,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 5
+          },
+          {
+            "name": "Hamish Clarkson",
+            "rating": 914,
+            "division": "A",
+            "rawScore": 63,
+            "toPar": "-1",
+            "handicap": 8.1,
+            "handicapScore": 54.9,
+            "overallRank": 6,
+            "handicapRank": 34,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 19,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 6
+          },
+          {
+            "name": "Marcus Davies",
+            "rating": 912,
+            "division": "A",
+            "rawScore": 63,
+            "toPar": "-1",
+            "handicap": 8.29,
+            "handicapScore": 54.71,
+            "overallRank": 6,
+            "handicapRank": 30,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 4,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 5,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 6,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 7,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 8,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 9,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 10,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 11,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 4,
+                "scoreClass": "bogey"
+              }
+            ],
+            "rank": 6
+          },
+          {
+            "name": "Simon Farrar",
+            "rating": 898,
+            "division": "A",
+            "rawScore": 64,
+            "toPar": "0",
+            "handicap": 9.6,
+            "handicapScore": 54.4,
+            "overallRank": 8,
+            "handicapRank": 28,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 4,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 5,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 8
+          },
+          {
+            "name": "Chris Scott 127348",
+            "rating": 956,
+            "division": "A",
+            "rawScore": 65,
+            "toPar": "+1",
+            "handicap": 4.14,
+            "handicapScore": 60.86,
+            "overallRank": 9,
+            "handicapRank": 49,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 3,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 7,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 9
+          },
+          {
+            "name": "Samuel Stoia",
+            "rating": 892,
+            "division": "A",
+            "rawScore": 65,
+            "toPar": "+1",
+            "handicap": 10.17,
+            "handicapScore": 54.83,
+            "overallRank": 9,
+            "handicapRank": 33,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 9
+          },
+          {
+            "name": "Zach Schloeffel",
+            "rating": 895,
+            "division": "A",
+            "rawScore": 65,
+            "toPar": "+1",
+            "handicap": 9.89,
+            "handicapScore": 55.11,
+            "overallRank": 9,
+            "handicapRank": 36,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 7,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 9
+          },
+          {
+            "name": "Choo Tran",
+            "rating": 891,
+            "division": "A",
+            "rawScore": 66,
+            "toPar": "+2",
+            "handicap": 10.26,
+            "handicapScore": 55.74,
+            "overallRank": 12,
+            "handicapRank": 37,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 12,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 12
+          },
+          {
+            "name": "Pen Liu",
+            "rating": 957,
+            "division": "A",
+            "rawScore": 66,
+            "toPar": "+2",
+            "handicap": 4.05,
+            "handicapScore": 61.95,
+            "overallRank": 12,
+            "handicapRank": 50,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 18,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 12
+          },
+          {
+            "name": "Glen Ralston",
+            "rating": 893,
+            "division": "A",
+            "rawScore": 68,
+            "toPar": "+4",
+            "handicap": 10.08,
+            "handicapScore": 57.92,
+            "overallRank": 14,
+            "handicapRank": 46,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 9,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 7,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 14
+          },
+          {
+            "name": "Alistair Don",
+            "rating": 899,
+            "division": "A",
+            "rawScore": 72,
+            "toPar": "+8",
+            "handicap": 9.51,
+            "handicapScore": 62.49,
+            "overallRank": 15,
+            "handicapRank": 51,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 18,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 15
+          }
+        ],
+        "B": [
+          {
+            "name": "Richard Lewis-Shell",
+            "rating": 875,
+            "division": "B",
+            "rawScore": 60,
+            "toPar": "-4",
+            "handicap": 11.77,
+            "handicapScore": 48.23,
+            "overallRank": 1,
+            "handicapRank": 8,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 7,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 17,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 1
+          },
+          {
+            "name": "Jason Vincent",
+            "rating": 860,
+            "division": "B",
+            "rawScore": 61,
+            "toPar": "-3",
+            "handicap": 13.18,
+            "handicapScore": 47.82,
+            "overallRank": 2,
+            "handicapRank": 6,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 13,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 2
+          },
+          {
+            "name": "Ashley Weidner",
+            "rating": 881,
+            "division": "B",
+            "rawScore": 62,
+            "toPar": "-2",
+            "handicap": 11.21,
+            "handicapScore": 50.79,
+            "overallRank": 3,
+            "handicapRank": 14,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 6,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 20,
+                "score": 4,
+                "scoreClass": "bogey"
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "name": "Daniel Santamaria",
+            "rating": 850,
+            "division": "B",
+            "rawScore": 62,
+            "toPar": "-2",
+            "handicap": 14.12,
+            "handicapScore": 47.88,
+            "overallRank": 3,
+            "handicapRank": 7,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 17,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 4,
+                "scoreClass": "bogey"
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "name": "Mat Daniels",
+            "rating": 869,
+            "division": "B",
+            "rawScore": 62,
+            "toPar": "-2",
+            "handicap": 12.34,
+            "handicapScore": 49.66,
+            "overallRank": 3,
+            "handicapRank": 10,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 6,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 7,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 12,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "name": "Peter Barry",
+            "rating": 851,
+            "division": "B",
+            "rawScore": 64,
+            "toPar": "0",
+            "handicap": 14.03,
+            "handicapScore": 49.97,
+            "overallRank": 6,
+            "handicapRank": 11,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 11,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 6
+          },
+          {
+            "name": "Matt Gosney",
+            "rating": 860,
+            "division": "B",
+            "rawScore": 65,
+            "toPar": "+1",
+            "handicap": 13.18,
+            "handicapScore": 51.82,
+            "overallRank": 7,
+            "handicapRank": 17,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 3,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 4,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 5,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 12,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 17,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 2,
+                "scoreClass": "birdie"
+              }
+            ],
+            "rank": 7
+          },
+          {
+            "name": "Damian Musci",
+            "rating": 859,
+            "division": "B",
+            "rawScore": 66,
+            "toPar": "+2",
+            "handicap": 13.28,
+            "handicapScore": 52.72,
+            "overallRank": 8,
+            "handicapRank": 21,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 3,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 8
+          },
+          {
+            "name": "Patrick Utri",
+            "rating": 881,
+            "division": "B",
+            "rawScore": 66,
+            "toPar": "+2",
+            "handicap": 11.21,
+            "handicapScore": 54.79,
+            "overallRank": 8,
+            "handicapRank": 32,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 4,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 18,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 8
+          },
+          {
+            "name": "Jeff Brunsting",
+            "rating": 853,
+            "division": "B",
+            "rawScore": 68,
+            "toPar": "+4",
+            "handicap": 13.84,
+            "handicapScore": 54.16,
+            "overallRank": 10,
+            "handicapRank": 26,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 8,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 10
+          },
+          {
+            "name": "Ross Davies",
+            "rating": 856,
+            "division": "B",
+            "rawScore": 68,
+            "toPar": "+4",
+            "handicap": 13.56,
+            "handicapScore": 54.44,
+            "overallRank": 10,
+            "handicapRank": 29,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 4,
+                "scoreClass": "bogey"
+              }
+            ],
+            "rank": 10
+          },
+          {
+            "name": "Zsolt Csatlos",
+            "rating": 880,
+            "division": "B",
+            "rawScore": 68,
+            "toPar": "+4",
+            "handicap": 11.3,
+            "handicapScore": 56.7,
+            "overallRank": 10,
+            "handicapRank": 41,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 10
+          },
+          {
+            "name": "Max Tats",
+            "rating": 849,
+            "division": "B",
+            "rawScore": 69,
+            "toPar": "+5",
+            "handicap": 14.22,
+            "handicapScore": 54.78,
+            "overallRank": 13,
+            "handicapRank": 31,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 2,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 8,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 13
+          },
+          {
+            "name": "Alex Ritchie",
+            "rating": 850,
+            "division": "B",
+            "rawScore": 71,
+            "toPar": "+7",
+            "handicap": 14.12,
+            "handicapScore": 56.88,
+            "overallRank": 14,
+            "handicapRank": 42,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 2,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 4,
+                "scoreClass": "bogey"
+              }
+            ],
+            "rank": 14
+          },
+          {
+            "name": "Dan Bradshaw",
+            "rating": 859,
+            "division": "B",
+            "rawScore": 71,
+            "toPar": "+7",
+            "handicap": 13.28,
+            "handicapScore": 57.72,
+            "overallRank": 14,
+            "handicapRank": 45,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 4,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 17,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 18,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 14
+          }
+        ],
+        "C": [
+          {
+            "name": "Illia Kravchenko",
+            "rating": 817,
+            "division": "C",
+            "rawScore": 64,
+            "toPar": "0",
+            "handicap": 17.23,
+            "handicapScore": 46.77,
+            "overallRank": 1,
+            "handicapRank": 3,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 5,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 6,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 13,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 1
+          },
+          {
+            "name": "Robert Lambert",
+            "rating": 841,
+            "division": "C",
+            "rawScore": 67,
+            "toPar": "+3",
+            "handicap": 14.97,
+            "handicapScore": 52.03,
+            "overallRank": 2,
+            "handicapRank": 18,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 3,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 6,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 11,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 20,
+                "score": 2,
+                "scoreClass": "birdie"
+              }
+            ],
+            "rank": 2
+          },
+          {
+            "name": "Aaron Ponnudurai",
+            "rating": 819,
+            "division": "C",
+            "rawScore": 70,
+            "toPar": "+6",
+            "handicap": 17.04,
+            "handicapScore": 52.96,
+            "overallRank": 3,
+            "handicapRank": 22,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 4,
+                "scoreClass": "bogey"
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "name": "Mike Williams",
+            "rating": 826,
+            "division": "C",
+            "rawScore": 70,
+            "toPar": "+6",
+            "handicap": 16.38,
+            "handicapScore": 53.62,
+            "overallRank": 3,
+            "handicapRank": 24,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 18,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "name": "Kim Michell",
+            "rating": 800,
+            "division": "C",
+            "rawScore": 71,
+            "toPar": "+7",
+            "handicap": 18.83,
+            "handicapScore": 52.17,
+            "overallRank": 5,
+            "handicapRank": 20,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 5
+          },
+          {
+            "name": "Toby Beasley",
+            "rating": 821,
+            "division": "C",
+            "rawScore": 71,
+            "toPar": "+7",
+            "handicap": 16.85,
+            "handicapScore": 54.15,
+            "overallRank": 5,
+            "handicapRank": 25,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 9,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 10,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 17,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 5
+          },
+          {
+            "name": "Mathew Redmond",
+            "rating": 816,
+            "division": "C",
+            "rawScore": 74,
+            "toPar": "+10",
+            "handicap": 17.33,
+            "handicapScore": 56.67,
+            "overallRank": 7,
+            "handicapRank": 40,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 4,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 7,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 12,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 13,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 7
+          },
+          {
+            "name": "Lennyanggriani Che Hosni",
+            "rating": 798,
+            "division": "C",
+            "rawScore": 75,
+            "toPar": "+11",
+            "handicap": 19.02,
+            "handicapScore": 55.98,
+            "overallRank": 8,
+            "handicapRank": 39,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 15,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 8
+          },
+          {
+            "name": "Rhys Vieusseux",
+            "rating": 796,
+            "division": "C",
+            "rawScore": 75,
+            "toPar": "+11",
+            "handicap": 19.21,
+            "handicapScore": 55.79,
+            "overallRank": 8,
+            "handicapRank": 38,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 13,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 14,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 20,
+                "score": 4,
+                "scoreClass": "bogey"
+              }
+            ],
+            "rank": 8
+          },
+          {
+            "name": "PETER HOWES",
+            "rating": 802,
+            "division": "C",
+            "rawScore": 79,
+            "toPar": "+15",
+            "handicap": 18.64,
+            "handicapScore": 60.36,
+            "overallRank": 10,
+            "handicapRank": 48,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 7,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 16,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 17,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 20,
+                "score": 4,
+                "scoreClass": "bogey"
+              }
+            ],
+            "rank": 10
+          }
+        ],
+        "D": [
+          {
+            "name": "John Baker",
+            "rating": 771,
+            "division": "D",
+            "rawScore": 71,
+            "toPar": "+7",
+            "handicap": 21.56,
+            "handicapScore": 49.44,
+            "overallRank": 1,
+            "handicapRank": 9,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 1
+          },
+          {
+            "name": "William Wong",
+            "rating": 784,
+            "division": "D",
+            "rawScore": 72,
+            "toPar": "+8",
+            "handicap": 20.34,
+            "handicapScore": 51.66,
+            "overallRank": 2,
+            "handicapRank": 16,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 10,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 11,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 12,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 13,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 19,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 20,
+                "score": 4,
+                "scoreClass": "bogey"
+              }
+            ],
+            "rank": 2
+          },
+          {
+            "name": "Rafal Wadowski",
+            "rating": 665,
+            "division": "D",
+            "rawScore": 76,
+            "toPar": "+12",
+            "handicap": 31.54,
+            "handicapScore": 44.46,
+            "overallRank": 3,
+            "handicapRank": 2,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 16,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 19,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "name": "Charlotte Davies",
+            "rating": 758,
+            "division": "D",
+            "rawScore": 77,
+            "toPar": "+13",
+            "handicap": 22.79,
+            "handicapScore": 54.21,
+            "overallRank": 4,
+            "handicapRank": 27,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 4,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 5,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 8,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 4,
+                "scoreClass": "bogey"
+              }
+            ],
+            "rank": 4
+          },
+          {
+            "name": "Sharon Cook",
+            "rating": 602,
+            "division": "D",
+            "rawScore": 81,
+            "toPar": "+17",
+            "handicap": 37.48,
+            "handicapScore": 43.52,
+            "overallRank": 5,
+            "handicapRank": 1,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 6,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 10,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 11,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 12,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 18,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 4,
+                "scoreClass": "bogey"
+              }
+            ],
+            "rank": 5
+          },
+          {
+            "name": "Linda Nailon",
+            "rating": 628,
+            "division": "D",
+            "rawScore": 82,
+            "toPar": "+18",
+            "handicap": 35.03,
+            "handicapScore": 46.97,
+            "overallRank": 6,
+            "handicapRank": 4,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 5,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 6,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 7,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 11,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 17,
+                "score": 6,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 18,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 19,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 20,
+                "score": 4,
+                "scoreClass": "bogey"
+              }
+            ],
+            "rank": 6
+          },
+          {
+            "name": "Mike Vieusseux",
+            "rating": 741,
+            "division": "D",
+            "rawScore": 82,
+            "toPar": "+18",
+            "handicap": 24.39,
+            "handicapScore": 57.61,
+            "overallRank": 6,
+            "handicapRank": 44,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 4,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 12,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 15,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 16,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 17,
+                "score": 6,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 18,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 19,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 20,
+                "score": 5,
+                "scoreClass": "dbogey"
+              }
+            ],
+            "rank": 6
+          },
+          {
+            "name": "Eden Lewis-Shell",
+            "rating": 671,
+            "division": "D",
+            "rawScore": 88,
+            "toPar": "+24",
+            "handicap": 30.98,
+            "handicapScore": 57.02,
+            "overallRank": 8,
+            "handicapRank": 43,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 3,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 4,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 7,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 7,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 12,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 13,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 17,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 18,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 19,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 20,
+                "score": 4,
+                "scoreClass": "bogey"
+              }
+            ],
+            "rank": 8
+          },
+          {
+            "name": "Mia Daniels",
+            "rating": 461,
+            "division": "D",
+            "rawScore": 109,
+            "toPar": "+45",
+            "handicap": 50.75,
+            "handicapScore": 58.25,
+            "overallRank": 9,
+            "handicapRank": 47,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 2,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 3,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 4,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 5,
+                "score": 7,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 6,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 7,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 8,
+                "score": 6,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 9,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 10,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 11,
+                "score": 7,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 12,
+                "score": 7,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 13,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 14,
+                "score": 7,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 15,
+                "score": 6,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 16,
+                "score": 7,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 17,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 18,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 19,
+                "score": 6,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 20,
+                "score": 5,
+                "scoreClass": "dbogey"
+              }
+            ],
+            "rank": 9
+          }
+        ],
+        "X/Z": [
+          {
+            "name": "Ashley Breukers",
+            "rating": 827,
+            "division": "X/Z",
+            "rawScore": 67,
+            "toPar": "+3",
+            "handicap": 16.29,
+            "handicapScore": 50.71,
+            "overallRank": 1,
+            "handicapRank": 13,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 2,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 3,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 18,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 1
+          },
+          {
+            "name": "Simone McNeight",
+            "rating": 770,
+            "division": "X/Z",
+            "rawScore": 69,
+            "toPar": "+5",
+            "handicap": 21.66,
+            "handicapScore": 47.34,
+            "overallRank": 2,
+            "handicapRank": 5,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 19,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 2
+          },
+          {
+            "name": "Ben Quinney",
+            "rating": "",
+            "division": "X/Z",
+            "rawScore": 77,
+            "toPar": "+13",
+            "handicap": 94.16,
+            "handicapScore": -17.16,
+            "overallRank": 1,
+            "handicapRank": 52,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 8,
+                "score": 2,
+                "scoreClass": "birdie"
+              },
+              {
+                "hole": 9,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 14,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 7,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 17,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 18,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 19,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "name": "Jaime valach",
+            "rating": "",
+            "division": "X/Z",
+            "rawScore": 77,
+            "toPar": "+13",
+            "handicap": 94.16,
+            "handicapScore": -17.16,
+            "overallRank": 3,
+            "handicapRank": 52,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 10,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 11,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 12,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 13,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 14,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 15,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 16,
+                "score": 7,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 17,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 18,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "name": "Michael Strasser",
+            "rating": "",
+            "division": "X/Z",
+            "rawScore": 84,
+            "toPar": "+20",
+            "handicap": 94.16,
+            "handicapScore": -10.16,
+            "overallRank": 2,
+            "handicapRank": 54,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 3,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 4,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 5,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 6,
+                "score": 7,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 7,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 8,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 9,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 10,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 11,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 12,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 15,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 16,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 17,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 18,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 19,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 20,
+                "score": 3,
+                "scoreClass": ""
+              }
+            ],
+            "rank": 5
+          },
+          {
+            "name": "Michael Ranga",
+            "rating": "",
+            "division": "X/Z",
+            "rawScore": 86,
+            "toPar": "+22",
+            "handicap": 94.16,
+            "handicapScore": -8.16,
+            "overallRank": 3,
+            "handicapRank": 55,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 2,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 3,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 4,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 5,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 6,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 7,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 10,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 11,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 12,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 13,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 14,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 18,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 19,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 20,
+                "score": 6,
+                "scoreClass": "fail"
+              }
+            ],
+            "rank": 6
+          },
+          {
+            "name": "saasha Glover",
+            "rating": "",
+            "division": "X/Z",
+            "rawScore": 91,
+            "toPar": "+27",
+            "handicap": 94.16,
+            "handicapScore": -3.16,
+            "overallRank": 4,
+            "handicapRank": 56,
+            "holes": [
+              {
+                "hole": 1,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 2,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 3,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 4,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 5,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 6,
+                "score": 6,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 7,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 8,
+                "score": 3,
+                "scoreClass": ""
+              },
+              {
+                "hole": 9,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 10,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 11,
+                "score": 7,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 12,
+                "score": 5,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 13,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 14,
+                "score": 6,
+                "scoreClass": "fail"
+              },
+              {
+                "hole": 15,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 16,
+                "score": 4,
+                "scoreClass": ""
+              },
+              {
+                "hole": 17,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 18,
+                "score": 4,
+                "scoreClass": "bogey"
+              },
+              {
+                "hole": 19,
+                "score": 5,
+                "scoreClass": "dbogey"
+              },
+              {
+                "hole": 20,
+                "score": 4,
+                "scoreClass": "bogey"
+              }
+            ],
+            "rank": 7
+          }
+        ]
+      },
+      "importSummary": {
+        "importedAt": "2026-07-05T06:07:17.733Z",
+        "handicapRows": 56,
+        "rawRows": 56,
+        "resultRows": 56,
+        "noShowFlags": [],
+        "divisionMismatchFlags": []
+      },
+      "prizeNotes": [
+        "Illia Kravchenko also led Div C Handicap but won Div C/D CTB, so Div C Handicap passed to Robert Lambert."
+      ]
     },
     {
       "round": 2,
@@ -31,7 +6489,13 @@
       "status": "needs-import",
       "prizeWinners": [],
       "handicapLeaders": [],
-      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+      "divisions": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [],
+        "X/Z": []
+      }
     },
     {
       "round": 3,
@@ -43,7 +6507,13 @@
       "status": "needs-import",
       "prizeWinners": [],
       "handicapLeaders": [],
-      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+      "divisions": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [],
+        "X/Z": []
+      }
     },
     {
       "round": 4,
@@ -55,7 +6525,13 @@
       "status": "needs-import",
       "prizeWinners": [],
       "handicapLeaders": [],
-      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+      "divisions": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [],
+        "X/Z": []
+      }
     },
     {
       "round": 5,
@@ -67,7 +6543,13 @@
       "status": "needs-import",
       "prizeWinners": [],
       "handicapLeaders": [],
-      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+      "divisions": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [],
+        "X/Z": []
+      }
     },
     {
       "round": 6,
@@ -79,7 +6561,13 @@
       "status": "needs-import",
       "prizeWinners": [],
       "handicapLeaders": [],
-      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+      "divisions": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [],
+        "X/Z": []
+      }
     },
     {
       "round": 7,
@@ -91,7 +6579,13 @@
       "status": "needs-import",
       "prizeWinners": [],
       "handicapLeaders": [],
-      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+      "divisions": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [],
+        "X/Z": []
+      }
     },
     {
       "round": 8,
@@ -103,7 +6597,13 @@
       "status": "needs-import",
       "prizeWinners": [],
       "handicapLeaders": [],
-      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+      "divisions": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [],
+        "X/Z": []
+      }
     },
     {
       "round": 9,
@@ -115,7 +6615,13 @@
       "status": "needs-import",
       "prizeWinners": [],
       "handicapLeaders": [],
-      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+      "divisions": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [],
+        "X/Z": []
+      }
     },
     {
       "round": 10,
@@ -127,7 +6633,13 @@
       "status": "needs-import",
       "prizeWinners": [],
       "handicapLeaders": [],
-      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+      "divisions": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [],
+        "X/Z": []
+      }
     },
     {
       "round": 11,
@@ -139,7 +6651,13 @@
       "status": "needs-import",
       "prizeWinners": [],
       "handicapLeaders": [],
-      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+      "divisions": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [],
+        "X/Z": []
+      }
     },
     {
       "round": 12,
@@ -151,7 +6669,13 @@
       "status": "needs-import",
       "prizeWinners": [],
       "handicapLeaders": [],
-      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+      "divisions": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [],
+        "X/Z": []
+      }
     },
     {
       "round": 13,
@@ -163,7 +6687,13 @@
       "status": "needs-import",
       "prizeWinners": [],
       "handicapLeaders": [],
-      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+      "divisions": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [],
+        "X/Z": []
+      }
     },
     {
       "round": 14,
@@ -175,7 +6705,13 @@
       "status": "needs-import",
       "prizeWinners": [],
       "handicapLeaders": [],
-      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+      "divisions": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [],
+        "X/Z": []
+      }
     },
     {
       "round": 15,
@@ -187,7 +6723,13 @@
       "status": "needs-import",
       "prizeWinners": [],
       "handicapLeaders": [],
-      "divisions": { "A": [], "B": [], "C": [], "D": [], "X/Z": [] }
+      "divisions": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [],
+        "X/Z": []
+      }
     }
   ]
 }
