@@ -8,7 +8,7 @@ import LinkPanel from '@components/LinkPanel.astro';
 import Section from '@components/Section.astro';
 import Text from '@components/Text.astro';
 
-const allCourses = await getCollection('courses');
+const allCourses = (await getCollection('courses')).filter(course => !course.data.temporary);
 const featuredCourses = allCourses.filter(course => course.data.featured);
 const otherCourses = allCourses.filter(course => !course.data.featured);
 featuredCourses.sort((a, b) => a.data.title.localeCompare(b.data.title));

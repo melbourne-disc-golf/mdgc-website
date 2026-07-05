@@ -20,6 +20,8 @@ const courses = defineCollection({
     courseMap: image().optional(),
     udiscUrl: z.string().optional(),
     featured: z.boolean().optional().default(false),
+    temporary: z.boolean().optional().default(false), // temporary/event course — has a page, but hidden from the courses list
+
     discLibrary: reference('discLibraries').optional(),
     metrixCourseIds: z.array(z.string()).optional(), // Disc Golf Metrix course IDs (for linking social days)
   }),
