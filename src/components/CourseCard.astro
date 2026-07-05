@@ -39,20 +39,20 @@ const { name, href, location, image } = Astro.props;
 
   .course-card-inner {
     background-color: white;
-    border: 1px solid #d1d5db;
+    /* faint blue border at rest, ramping to full mdgc-blue-dark on hover */
+    border: 1px solid color-mix(in srgb, var(--color-mdgc-blue-dark), transparent 70%);
     border-radius: 0.5rem;
     overflow: hidden;
     transition: all 0.2s;
     height: 100%;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 8px 20px rgba(6, 61, 99, 0.08);
+    box-shadow: var(--panel-shadow);
   }
 
   .course-card:hover .course-card-inner {
     border-color: var(--color-mdgc-blue-dark);
-    box-shadow: 0 14px 30px rgba(6, 61, 99, 0.16);
-    transform: translateY(-1px);
+    box-shadow: var(--panel-shadow-hover);
   }
 
   .course-card-image {

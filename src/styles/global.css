@@ -18,6 +18,13 @@
   --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
   --color-text-body: var(--color-slate-600); /* lighter, for body text */
   --color-text-heading: var(--color-gray-900); /* darker, for headings */
+
+  /* Shared hover treatment for links, panels and cards — see the "Link & card
+     hover" note on /design. Used by the global a:hover, LinkPanel, CourseCard,
+     and the event calendar tiles. */
+  --hover-zoom-scale: 1.02;
+  --panel-shadow: 0 8px 20px rgba(6, 61, 99, 0.08);
+  --panel-shadow-hover: 0 14px 30px rgba(6, 61, 99, 0.16);
 }
 
 /* Headings use the display face (Outfit); body copy uses the sans face (Hanken Grotesk). */
@@ -34,7 +41,7 @@ a {
 }
 
 a:hover {
-  transform: scale(1.05);
+  transform: scale(var(--hover-zoom-scale));
 }
 
 /* Inline links in prose can't grow (transform doesn't apply to inline boxes),

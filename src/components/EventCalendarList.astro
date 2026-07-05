@@ -140,6 +140,10 @@ function getEventSourceClass(event: CalendarEvent): string {
   .month-inner {
     min-height: 0;
     overflow: hidden;
+    /* Horizontal breathing room so a hovered tile's zoom and drop-shadow aren't
+       clipped sideways. The clip still bounds vertical overflow for the collapse. */
+    padding-inline: 1.5rem;
+    margin-inline: -1.5rem;
   }
 
   .month-header {
@@ -158,27 +162,52 @@ function getEventSourceClass(event: CalendarEvent): string {
   .event-collapse {
     display: grid;
     grid-template-rows: 1fr;
-    transition: grid-template-rows 0.28s ease, opacity 0.28s ease;
+    position: relative;
+    margin-bottom: 0.5rem; /* row spacing; collapses with the row (events-list has no gap) */
+    border-radius: 0.5rem;
+    box-shadow: var(--panel-shadow);
+    transition: grid-template-rows 0.28s ease, opacity 0.28s ease, transform 0.2s ease,
+      box-shadow 0.2s ease, margin-bottom 0.28s ease;
   }
 
   .event-collapse.collapsed {
     grid-template-rows: 0fr;
     opacity: 0;
+    margin-bottom: 0;
+    box-shadow: none;
   }
 
   .event-clip {
     min-height: 0;
     overflow: hidden;
+    border-radius: inherit;
+  }
+
+  /* Hover treatment shared with link panels: subtle zoom, deeper drop-shadow,
+     and border/text darkening — no background change. Scaling the wrapper (not
+     the clipped row) keeps the tile from being cut off. */
+  .event-collapse:hover {
+    transform: scale(var(--hover-zoom-scale));
+    box-shadow: var(--panel-shadow-hover);
+    z-index: 1;
+  }
+
+  /* The thin (top/right/bottom) borders are a faint tint of the accent at rest,
+     and ramp to full opacity on hover. The thick left bar stays fully opaque. */
+  .event-collapse:hover .event-row {
+    border-color: var(--accent);
   }
 
   .event-row {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 0.5rem; /* row spacing (events-list has no gap so it collapses) */
     padding: 0.5rem;
     border-radius: 0.5rem;
-    border-left: 4px solid transparent;
+    border: 1px solid color-mix(in srgb, var(--accent, #d1d5db), transparent 70%);
+    border-left-width: 4px;
+    border-left-color: var(--accent, #d1d5db); /* left accent bar stays fully opaque */
+    --title-color: #1f2937;
     transition: all 0.2s ease;
   }
 
@@ -187,46 +216,38 @@ function getEventSourceClass(event: CalendarEvent): string {
     .event-collapse {
       transition: none;
     }
+    .event-collapse:hover {
+      transform: none;
+    }
   }
 
   a.event-row {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
-    transform: none;
-  }
-
-  a.event-row.event-club:hover {
-    background: #dbeafe;
-  }
-
-  a.event-row.event-social:hover {
-    background: #fef9c3;
-  }
-
-  a.event-row.event-external:hover,
-  a.event-row.event-other:hover {
-    background: #f3f4f6;
+    transform: none; /* the wrapper (.event-collapse) does the hover zoom */
   }
 
   .event-club {
-    background: #eff6ff;
-    border-left-color: #3b82f6;
+    background: #dcfce7;
+    --accent: #16a34a;
   }
 
   .event-social {
     background: #fefce8;
-    border-left-color: #eab308;
+    --accent: #eab308;
   }
 
+  /* Non-MDGC events are less prominent: white tile, lightened event name. */
   .event-external {
-    background: #f9fafb;
-    border-left-color: #9ca3af;
+    background: #ffffff;
+    --accent: #9ca3af;
+    --title-color: #6b7280;
   }
 
   .event-other {
     background: #f9fafb;
-    border-left-color: #d1d5db;
+    --accent: #d1d5db;
   }
 
   .event-date {
@@ -242,6 +263,7 @@ function getEventSourceClass(event: CalendarEvent): string {
     font-weight: 700;
     line-height: 1;
     color: var(--color-text, #111827);
+    transition: color 0.2s ease;
   }
 
   .day-name {
@@ -264,12 +286,8 @@ function getEventSourceClass(event: CalendarEvent): string {
     font-weight: 500;
     font-size: 1rem;
     flex: 1;
+    color: var(--title-color);
     transition: all 0.2s ease;
-  }
-
-  a.event-row:hover .event-title {
-    text-decoration: underline;
-    display: inline-block;
   }
 
   .external-icon {

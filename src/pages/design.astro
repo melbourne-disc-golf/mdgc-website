@@ -228,10 +228,20 @@ const accents: Swatch[] = [
         <li><strong>prose h3 / h4</strong> — smaller, tighter spacing; h3 in body colour.</li>
       </ul>
 
+      <h3>Link &amp; card hover</h3>
+      <p>Links, panels and cards share one hover treatment: a subtle zoom
+         (<code>scale(1.02)</code>, via the <code>--hover-zoom-scale</code> token), a deeper
+         drop-shadow (<code>--panel-shadow</code> → <code>--panel-shadow-hover</code>), and the
+         border and title text darkening to <code>mdgc-blue-dark</code>. The background does not
+         change. Hover the link panels just below — or the event tiles on the
+         <a href="/events/tournaments">tournaments</a> page — to see it.</p>
+      <p class="anno">Inline links in prose are the exception: transforms don't apply to inline
+         boxes, so they darken and thicken their underline instead of scaling.</p>
+
       <h3>Content blocks</h3>
       <p>Reusable blocks that appear within page bodies:</p>
 
-      <p class="mini-label">Link panel — the dominant card motif (lifts &amp; deepens its shadow on hover)</p>
+      <p class="mini-label">Link panel — the dominant card motif (zooms &amp; deepens its shadow on hover)</p>
       <div class="grid gap-6 sm:grid-cols-2 not-prose my-4">
         <LinkPanel href="/disc-golf" title="Disc Golf" description="about the game" icon="heroicons:academic-cap" />
         <LinkPanel href="https://example.com" title="External link" description="opens in a new tab" icon="heroicons:shopping-bag" />

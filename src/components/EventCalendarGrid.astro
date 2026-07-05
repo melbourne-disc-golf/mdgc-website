@@ -199,7 +199,7 @@ const grid = buildGrid();
   }
 
   .day-cell.weekend {
-    background: #f0fdf4;
+    background: #eff6ff;
   }
 
   .day-header {
@@ -251,47 +251,56 @@ const grid = buildGrid();
     overflow: hidden;
     text-overflow: ellipsis;
     text-decoration: none;
-    color: inherit;
+    --title-color: #1f2937;
+    color: var(--title-color);
     display: block;
     position: relative;
-    border-style: solid;
-    border-width: 0px;
+    border: 1px solid color-mix(in srgb, var(--accent, #d1d5db), transparent 70%);
     border-left-width: 2px;
+    border-left-color: var(--accent, #d1d5db); /* left accent bar stays fully opaque */
+    box-shadow: var(--panel-shadow);
+    transition: opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease,
+      color 0.2s ease, transform 0.2s ease, display 0.2s allow-discrete;
   }
 
+  /* Backgrounds and accent colours mirror the list view (EventCalendarList.astro)
+     so an event looks the same in both. */
   .event-chip.event-club {
-    background: #dbeafe;
-    border-color: #3b82f6;
+    background: #dcfce7;
+    --accent: #16a34a;
   }
 
   .event-chip.event-social {
-    background: #fef9c3;
-    border-color: #eab308;
+    background: #fefce8;
+    --accent: #eab308;
   }
 
   .event-chip.event-external {
-    background: #f3f4f6;
-    border-color: #9ca3af;
+    background: #ffffff;
+    --accent: #9ca3af;
+    --title-color: #6b7280; /* lightened event name, matching the list */
   }
 
   .event-chip.event-other {
-    background: #f3f4f6;
-    border-color: #d1d5db;
+    background: #f9fafb;
+    --accent: #d1d5db;
+  }
+
+  /* Hover: ramp the faint borders to full opacity and deepen the shadow. */
+  .event-chip:hover {
+    border-color: var(--accent);
+    box-shadow: var(--panel-shadow-hover);
   }
 
   /* Non-MDGC chips fade out (then leave the layout) when the "Include non-MDGC
      events" toggle adds .faded — see the script in EventCalendar.astro. */
-  .event-chip.event-external {
-    transition: opacity 0.2s ease, display 0.2s allow-discrete;
-  }
-
   .event-chip.event-external.faded {
     opacity: 0;
     display: none;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .event-chip.event-external {
+    .event-chip {
       transition: none;
     }
   }

@@ -50,12 +50,13 @@ const external = isExternal(href);
 		align-items: center;
 		gap: 1.5rem;
 		background-color: #ffffff;
-		border: 1px solid #d1d5db;
+		/* faint blue border at rest, ramping to full mdgc-blue-dark on hover */
+		border: 1px solid color-mix(in srgb, var(--color-mdgc-blue-dark), transparent 70%);
 		border-radius: 0.5rem;
 		padding: 1.5rem;
 		transition: all 0.2s;
 		height: 100%;
-		box-shadow: 0 8px 20px rgba(6, 61, 99, 0.08);
+		box-shadow: var(--panel-shadow);
 	}
 
 	.link-panel-external {
@@ -73,8 +74,11 @@ const external = isExternal(href);
 
 	.link-panel:hover .link-panel-inner {
 		border-color: var(--color-mdgc-blue-dark);
-		box-shadow: 0 14px 30px rgba(6, 61, 99, 0.16);
-		transform: translateY(-1px);
+		box-shadow: var(--panel-shadow-hover);
+	}
+
+	.link-panel:hover h3 {
+		color: var(--color-mdgc-blue-dark);
 	}
 
 	.link-panel:hover .link-panel-icon {
@@ -103,6 +107,7 @@ const external = isExternal(href);
 		font-weight: 700;
 		margin: 0 0 0.25rem 0;
 		color: #1f2937;
+		transition: color 0.2s;
 	}
 
 	.link-panel p {
