@@ -33,7 +33,7 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
 
     <div class="external-toggle">
       <label class="toggle-option">
-        <input type="checkbox" class="external-toggle-input" checked aria-describedby="external-hint" />
+        <input type="checkbox" class="external-toggle-input" aria-describedby="external-hint" />
         <span>Include non-MDGC events</span>
       </label>
       <span class="hint-tip">
@@ -217,11 +217,9 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
     });
   }
 
-  initCalendarToggles();
-  window.addEventListener('pageshow', initCalendarToggles);
-
-  // "Include external events" checkbox: hide/show PDGA (external) events in both
-  // views, and collapse any list month-group left with no visible events.
+  // "Include non-MDGC events" checkbox (default off): hide/show PDGA (external)
+  // events in both views, and collapse any list month-group left with no
+  // visible events.
   function initExternalToggles() {
     document.querySelectorAll('.event-calendar-toggle').forEach((container) => {
       const checkbox = container.querySelector('.external-toggle-input') as HTMLInputElement | null;
@@ -253,6 +251,13 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
     });
   }
 
-  initExternalToggles();
-  window.addEventListener('pageshow', initExternalToggles);
+  // Apply the non-MDGC filter BEFORE revealing a view, so the default-off
+  // collapse is set while the calendar is still hidden — no animation on load.
+  function initCalendar() {
+    initExternalToggles();
+    initCalendarToggles();
+  }
+
+  initCalendar();
+  window.addEventListener('pageshow', initCalendar);
 </script>
