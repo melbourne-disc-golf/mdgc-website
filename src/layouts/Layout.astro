@@ -14,16 +14,17 @@ export interface Props {
   subtitle?: string;
   description?: string;  // for og:description, falls back to subtitle
   heroImage?: HeroImage;
+  canonicalPath?: string;  // override when a default route mirrors a canonical child page
   cmsPath?: string;  // e.g., '/collections/courses/entries/bald-hill-park'
   backLink?: BackLink;  // override the automatic (nav-derived) back-link
 }
 
-const { title, subtitle, description, heroImage, cmsPath, backLink: backLinkProp } = Astro.props;
+const { title, subtitle, description, heroImage, canonicalPath, cmsPath, backLink: backLinkProp } = Astro.props;
 
 // Build page metadata
 const pageTitle = `${title} | Melbourne Disc Golf Club`;
 const pageDescription = description || subtitle || 'Melbourne Disc Golf Club - promoting disc golf in Melbourne since 2007';
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const canonicalUrl = new URL(canonicalPath ?? Astro.url.pathname, Astro.site);
 const ogImageUrl = heroImage
   ? new URL(heroImage.src.src, Astro.site)
   : new URL(defaultOgImage.src, Astro.site);

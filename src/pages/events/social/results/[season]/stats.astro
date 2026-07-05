@@ -2,12 +2,19 @@
 import Layout from '@layouts/Layout.astro';
 import SocialResultsStats from '@components/SocialResultsStats.astro';
 import { getSeasons } from '@utils/metrix';
+import { socialSeasonResultsHref, socialSeasonSlug } from '@utils/social-results';
 
 export async function getStaticPaths() {
-  return getSeasons().map((season) => ({
-    params: { season: String(season.id) },
-    props: { season },
-  }));
+  return getSeasons().flatMap((season) => [
+    {
+      params: { season: socialSeasonSlug(season) },
+      props: { season },
+    },
+    {
+      params: { season: String(season.id) },
+      props: { season },
+    },
+  ]);
 }
 
 const seasons = getSeasons();
@@ -15,6 +22,6 @@ const defaultSeason = seasons.find((season) => season.socialDays.some((day) => d
 const { season } = Astro.props;
 ---
 
-<Layout title={`${season.name} stats`} subtitle="Season scoring, attendance and prize summaries from Disc Golf Metrix." backLink={{ href: `/events/social/results/${season.id}`, text: season.name }}>
+<Layout title={`${season.name} stats`} subtitle="Season scoring, attendance and prize summaries from Disc Golf Metrix." backLink={{ href: socialSeasonResultsHref(season), text: season.name }}>
   <SocialResultsStats season={season} seasons={seasons} defaultSeasonId={defaultSeason?.id ?? season.id} />
 </Layout>

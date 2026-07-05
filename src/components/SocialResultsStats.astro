@@ -2,6 +2,7 @@
 import s1ResultsData from '@data/social-results/s1.json';
 import s2ResultsData from '@data/social-results/s2.json';
 import type { Season } from '@utils/metrix';
+import { socialSeasonResultsHref, socialSeasonSlug, socialSeasonStatsHref } from '@utils/social-results';
 
 interface Props {
   season: Season;
@@ -806,19 +807,16 @@ function statsViewMarkup(stats: SeasonStats, variant: StatsVariant): string {
 }
 
 function seasonShortLabel(value: Season): string {
-  if (value.name.includes('S2')) return 'S2';
-  if (value.name.includes('S1')) return 'S1';
-  if (/MDGC\s+2026\s+Social\s+Days$/i.test(value.name.trim())) return 'S1';
-  const match = value.name.match(/Season\s+(\d+)/i);
-  return match ? `S${match[1]}` : String(value.id);
+  const slug = socialSeasonSlug(value);
+  return /^s\d+$/i.test(slug) ? slug.toUpperCase() : String(value.id);
 }
 
 function resultHref(value: Season): string {
-  return value.id === defaultSeasonId ? baseHref : `${baseHref}/${value.id}`;
+  return socialSeasonResultsHref(value, baseHref);
 }
 
 function statsHref(value: Season): string {
-  return value.id === defaultSeasonId ? `${baseHref}/stats` : `${baseHref}/${value.id}/stats`;
+  return socialSeasonStatsHref(value, baseHref);
 }
 ---
 

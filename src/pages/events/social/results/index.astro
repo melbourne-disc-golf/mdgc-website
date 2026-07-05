@@ -2,12 +2,13 @@
 import Layout from '@layouts/Layout.astro';
 import SocialResultsBrowser from '@components/SocialResultsBrowser.astro';
 import { getSeasons } from '@utils/metrix';
+import { socialSeasonResultsHref } from '@utils/social-results';
 
 const seasons = getSeasons();
 const defaultSeason = seasons.find((season) => season.socialDays.some((day) => day.played)) ?? seasons[0];
 ---
 
-<Layout title="Social Day results" subtitle="Round tabs, handicap leaders and division scorecards from Disc Golf Metrix.">
+<Layout title="Social Day results" subtitle="Round tabs, handicap leaders and division scorecards from Disc Golf Metrix." canonicalPath={defaultSeason ? socialSeasonResultsHref(defaultSeason) : '/events/social/results'}>
   {defaultSeason ? (
     <SocialResultsBrowser season={defaultSeason} seasons={seasons} defaultSeasonId={defaultSeason.id} />
   ) : (

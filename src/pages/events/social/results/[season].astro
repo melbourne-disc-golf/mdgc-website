@@ -2,12 +2,19 @@
 import Layout from '@layouts/Layout.astro';
 import SocialResultsBrowser from '@components/SocialResultsBrowser.astro';
 import { getSeasons } from '@utils/metrix';
+import { socialSeasonSlug } from '@utils/social-results';
 
 export async function getStaticPaths() {
-  return getSeasons().map((season) => ({
-    params: { season: String(season.id) },
-    props: { season },
-  }));
+  return getSeasons().flatMap((season) => [
+    {
+      params: { season: socialSeasonSlug(season) },
+      props: { season },
+    },
+    {
+      params: { season: String(season.id) },
+      props: { season },
+    },
+  ]);
 }
 
 const seasons = getSeasons();

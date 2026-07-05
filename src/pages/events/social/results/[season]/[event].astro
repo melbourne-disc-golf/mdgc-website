@@ -4,14 +4,28 @@ import LinkPanel from '@components/LinkPanel.astro';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
 import { getEvent, getSocialDayRefs, getSeasons } from '@utils/metrix';
+import { socialRoundSlug, socialSeasonResultsHref, socialSeasonSlug } from '@utils/social-results';
 
 export async function getStaticPaths() {
+  const seasons = getSeasons();
   return getSocialDayRefs()
-    .map(({ seasonId, eventId }) => ({
-      params: { season: String(seasonId), event: String(eventId) },
-      props: { event: getEvent(eventId) },
-    }))
-    .filter((path) => path.props.event !== null);
+    .flatMap(({ seasonId, eventId }) => {
+      const event = getEvent(eventId);
+      const season = seasons.find((item) => item.id === seasonId);
+      const socialDay = season?.socialDays.find((day) => day.id === eventId);
+      if (!event || !season || !socialDay) return [];
+
+      return [
+        {
+          params: { season: socialSeasonSlug(season), event: socialRoundSlug(socialDay.number) },
+          props: { event },
+        },
+        {
+          params: { season: String(seasonId), event: String(eventId) },
+          props: { event },
+        },
+      ];
+    });
 }
 
 const { event } = Astro.props;
@@ -20,7 +34,7 @@ const { name, date, par, tracks, divisions } = event;
 const subtitle = formatDateRange(Temporal.PlainDate.from(date));
 const season = getSeasons().find((s) => s.id === event.seasonId);
 const backLink = {
-  href: `/events/social/results/${event.seasonId}`,
+  href: season ? socialSeasonResultsHref(season) : '/events/social/results',
   text: season?.name ?? 'Season',
 };
 
