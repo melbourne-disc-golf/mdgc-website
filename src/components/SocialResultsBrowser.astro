@@ -284,7 +284,7 @@ function publicDisplayRow(row: PublicResultRow): DisplayRow {
   };
 }
 
-function displayDivisions(round: { resultEvent?: PublicResultEvent | null }, event: EventDetail): DisplayDivision[] {
+function displayDivisions(round: { resultEvent?: PublicResultEvent | null }, event: EventDetail | null): DisplayDivision[] {
   const resultEvent = round.resultEvent ?? null;
   const publicKeys = publicDivisionKeys(resultEvent);
   if (resultEvent && publicKeys.length) {
@@ -298,6 +298,8 @@ function displayDivisions(round: { resultEvent?: PublicResultEvent | null }, eve
       };
     });
   }
+
+  if (!event) return [];
 
   return event.divisions.map((division) => ({
     label: division.letter,
@@ -385,11 +387,12 @@ function totalDisplayPlayers(divisions: DisplayDivision[]): number {
         const prizes = displayedPrizeRowsForResultEvent(resultEvent);
         const prizeNotes = prizeNotesForResultEvent(resultEvent);
 
-        if (!event) {
+        if (!resultEventImported(round)) {
           return (
             <section id={id} class="results-panel" role="tabpanel" aria-labelledby={`${id}-tab`} data-results-panel hidden={!active}>
               <div class="notice-card">
-                <strong>Not played yet, check back later</strong>
+                <strong>Round {round.round} results will appear after the event</strong>
+                <span>{panelTitle(round)} | {formatLongDate(panelDate(round))}</span>
                 <a href={`https://discgolfmetrix.com/${round.id}`} target="_blank" rel="noopener noreferrer">Open on Metrix</a>
               </div>
             </section>
