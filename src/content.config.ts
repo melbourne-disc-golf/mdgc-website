@@ -1,6 +1,7 @@
 import { defineCollection, reference } from 'astro:content';
 import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
+import { zoneSlugs } from './data/zones';
 
 // Helper for optional fields from Sveltia/Decap CMS.
 // The CMS outputs '' or null for empty optional fields instead of omitting them,
@@ -19,7 +20,7 @@ const courses = defineCollection({
     googleMapsUrl: z.string().optional(), // Google Maps place link (e.g. https://maps.app.goo.gl/...)
     courseMap: image().optional(),
     udiscUrl: z.string().optional(),
-    featured: z.boolean().optional().default(false),
+    zone: cmsOptional(z.enum(zoneSlugs as [string, ...string[]])), // social-day zone — marks a "main" course; see src/data/zones.ts
     temporary: z.boolean().optional().default(false), // temporary/event course — has a page, but hidden from the courses list
 
     discLibrary: reference('discLibraries').optional(),

@@ -61,6 +61,8 @@ collections:
       - { label: "Google Maps URL", name: "googleMapsUrl", widget: "string", required: false, hint: "Explicit Google Maps place link (e.g. https://maps.app.goo.gl/...). If not provided, a link will be generated from coordinates." }
       - { label: "Course Map", name: "courseMap", widget: "image", required: false }
       - { label: "uDisc URL", name: "udiscUrl", widget: "string", required: false, hint: "Link to course page on uDisc (e.g. https://udisc.com/courses/...)" }
+      - { label: "Social-day zone", name: "zone", widget: "select", required: false, options: [{ label: "West", value: "west" }, { label: "South-East", value: "south-east" }, { label: "North-East", value: "north-east" }], hint: "Set for social-day venues. Courses with a zone are listed as \"main\" courses, grouped by zone." }
+      - { label: "Temporary course", name: "temporary", widget: "boolean", required: false, default: false, hint: "A pop-up/event course. It gets its own page, but is hidden from the courses list." }
       - { label: "Metrix Course IDs", name: "metrixCourseIds", widget: "list", required: false, hint: "Disc Golf Metrix course IDs (for linking social days)" }
 
   - name: "board"

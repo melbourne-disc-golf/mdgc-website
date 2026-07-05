@@ -7,14 +7,24 @@ import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import Section from '@components/Section.astro';
 import Text from '@components/Text.astro';
+import { zones } from '@data/zones';
 
 const allCourses = (await getCollection('courses')).filter(course => !course.data.temporary);
-const featuredCourses = allCourses.filter(course => course.data.featured);
-const otherCourses = allCourses.filter(course => !course.data.featured);
-featuredCourses.sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+// "Main" courses are social-day venues, identified by their zone; group them by zone (alphabetically).
+const coursesByZone = zones
+	.map(zone => ({
+		zone,
+		courses: allCourses
+			.filter(course => course.data.zone === zone.slug)
+			.sort((a, b) => a.data.title.localeCompare(b.data.title)),
+	}))
+	.sort((a, b) => a.zone.label.localeCompare(b.zone.label));
+
+const otherCourses = allCourses.filter(course => !course.data.zone);
 otherCourses.sort((a, b) => a.data.title.localeCompare(b.data.title));
 
-// Prepare locations for the map (all courses, not just featured)
+// Prepare locations for the map (all listed courses)
 const courseLocations = allCourses.flatMap(course => {
 	if (!course.data.location) return [];
 	try {
@@ -26,7 +36,7 @@ const courseLocations = allCourses.flatMap(course => {
 				title: course.data.title,
 				subtitle: course.data.suburb,
 				href: `/courses/${course.id}`,
-				secondary: !course.data.featured
+				secondary: !course.data.zone
 			}];
 		}
 	} catch (e) {
@@ -44,19 +54,25 @@ const courseLocations = allCourses.flatMap(course => {
 		<Section title="Main courses">
 
 			<p>
-				These are courses that we regularly play at, and recommend to new players.
+				These are the courses we run <a href="/events/social">social days</a> at, and recommend to new players.
+				We rotate around three zones, one per weekend of the month.
 			</p>
 
-			<Grid>
-				{featuredCourses.map((course) => (
-					<CourseCard
-						name={course.data.title}
-						href={`/courses/${course.id}`}
-						location={course.data.suburb}
-						image={course.data.thumbnail || course.data.mainImage}
-					/>
-				))}
-			</Grid>
+			{coursesByZone.map(({ zone, courses }) => courses.length > 0 && (
+				<div class="mb-8">
+					<h3 class="text-xl font-semibold mb-4">{zone.label} Melbourne</h3>
+					<Grid>
+						{courses.map((course) => (
+							<CourseCard
+								name={course.data.title}
+								href={`/courses/${course.id}`}
+								location={course.data.suburb}
+								image={course.data.thumbnail || course.data.mainImage}
+							/>
+						))}
+					</Grid>
+				</div>
+			))}
 		</Section>
 
 		{otherCourses.length > 0 && (
