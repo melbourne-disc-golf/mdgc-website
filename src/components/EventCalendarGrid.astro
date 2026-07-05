@@ -279,6 +279,23 @@ const grid = buildGrid();
     border-color: #d1d5db;
   }
 
+  /* Non-MDGC chips fade out (then leave the layout) when the "Include non-MDGC
+     events" toggle adds .faded — see the script in EventCalendar.astro. */
+  .event-chip.event-external {
+    transition: opacity 0.2s ease, display 0.2s allow-discrete;
+  }
+
+  .event-chip.event-external.faded {
+    opacity: 0;
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .event-chip.event-external {
+      transition: none;
+    }
+  }
+
   .event-chip.expanded {
     position: fixed;
     z-index: 100;

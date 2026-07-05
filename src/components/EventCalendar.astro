@@ -1,5 +1,7 @@
 ---
 import type { CalendarEvent } from '@utils/events';
+import { externalLinkAttrs } from '@utils/links';
+import { Icon } from 'astro-icon/components';
 import EventCalendarList from './EventCalendarList.astro';
 import EventCalendarGrid from './EventCalendarGrid.astro';
 
@@ -14,19 +16,36 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
 ---
 
 <div class="event-calendar-toggle" data-default-view={defaultView}>
-  <fieldset class="view-toggle">
-    <legend class="sr-only">Calendar view</legend>
-    <div class="toggle-options">
+  <div class="calendar-controls">
+    <fieldset class="view-toggle">
+      <legend class="sr-only">Calendar view</legend>
+      <div class="toggle-options">
+        <label class="toggle-option">
+          <input type="radio" name="calendar-view" value="list" checked={defaultView === 'list'} />
+          <span>List</span>
+        </label>
+        <label class="toggle-option">
+          <input type="radio" name="calendar-view" value="grid" checked={defaultView === 'grid'} />
+          <span>Grid</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <div class="external-toggle">
       <label class="toggle-option">
-        <input type="radio" name="calendar-view" value="list" checked={defaultView === 'list'} />
-        <span>List</span>
+        <input type="checkbox" class="external-toggle-input" checked aria-describedby="external-hint" />
+        <span>Include non-MDGC events</span>
       </label>
-      <label class="toggle-option">
-        <input type="radio" name="calendar-view" value="grid" checked={defaultView === 'grid'} />
-        <span>Grid</span>
-      </label>
+      <span class="hint-tip">
+        <button type="button" class="hint-icon" aria-label="About non-MDGC events">
+          <Icon name="heroicons:information-circle" />
+        </button>
+        <span id="external-hint" class="hint-bubble" role="tooltip">
+          Non-MDGC events are drawn from the <a href="https://www.pdga.com/tour" {...externalLinkAttrs('https://www.pdga.com/tour')}>PDGA tour calendar</a>: C-tier and above in Victoria, B-tier and above elsewhere in Australia, and A-tier and above in New Zealand.
+        </span>
+      </span>
     </div>
-  </fieldset>
+  </div>
 
   <div class="calendar-view slide-left" data-view="list">
     <EventCalendarList events={events} maxDaysInPast={maxDaysInPast} maxDaysInFuture={maxDaysInFuture} />
@@ -50,11 +69,85 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
     border-width: 0;
   }
 
+  .calendar-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    margin: 0 0 1rem 0;
+  }
+
   .view-toggle {
     border: none;
     padding: 0;
-    margin: 0 0 1rem 0;
+    margin: 0;
   }
+
+  .external-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  /* Info tooltip: hidden until the icon is hovered or focused. Hover/focus is on
+     the wrapper (not just the icon) so the pointer can move into the bubble to
+     click the link without it closing. */
+  .hint-tip {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .hint-icon {
+    display: inline-flex;
+    padding: 0.125rem;
+    border: none;
+    border-radius: 0.25rem;
+    background: none;
+    color: var(--color-text-muted, #6b7280);
+    cursor: help;
+    font-size: 1.125rem;
+    line-height: 1;
+  }
+
+  /* When clicked/focused the tooltip stays open (via :focus-within); darken the
+     icon so it reads as selected in that state. Doubles as the focus indicator. */
+  .hint-icon:focus {
+    background: var(--color-bg-muted, #e5e7eb);
+    color: var(--color-text, #111827);
+    outline: none;
+  }
+
+  .hint-bubble {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    z-index: 20;
+    width: max-content;
+    max-width: min(22rem, 80vw);
+    padding: 0.5rem 0.75rem;
+    background: var(--color-bg, #ffffff);
+    color: var(--color-text, #111827);
+    border: 1px solid var(--color-border, #e5e5e5);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    font-weight: 400;
+    text-align: left;
+  }
+
+  .hint-tip:hover .hint-bubble,
+  .hint-tip:focus-within .hint-bubble {
+    display: block;
+  }
+
+  .hint-bubble a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
 
   .toggle-options {
     display: flex;
@@ -126,4 +219,40 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
 
   initCalendarToggles();
   window.addEventListener('pageshow', initCalendarToggles);
+
+  // "Include external events" checkbox: hide/show PDGA (external) events in both
+  // views, and collapse any list month-group left with no visible events.
+  function initExternalToggles() {
+    document.querySelectorAll('.event-calendar-toggle').forEach((container) => {
+      const checkbox = container.querySelector('.external-toggle-input') as HTMLInputElement | null;
+      if (!checkbox) return;
+
+      function applyFilter() {
+        const hide = !checkbox!.checked;
+        // List: collapse each non-MDGC row's wrapper (animated via grid-rows).
+        container.querySelectorAll('.event-row.event-external').forEach((row) => {
+          row.closest('.event-collapse')?.classList.toggle('collapsed', hide);
+        });
+        // Grid: fade each non-MDGC chip out.
+        container.querySelectorAll('.event-chip.event-external').forEach((chip) => {
+          chip.classList.toggle('faded', hide);
+        });
+        // List: collapse month groups left with no visible events.
+        container.querySelectorAll('.month-group').forEach((group) => {
+          const hasVisible = Array.from(group.querySelectorAll('.event-row')).some(
+            (row) =>
+              !row.classList.contains('hidden') &&
+              !row.closest('.event-collapse')?.classList.contains('collapsed')
+          );
+          group.classList.toggle('collapsed', !hasVisible);
+        });
+      }
+
+      applyFilter();
+      checkbox.addEventListener('change', applyFilter);
+    });
+  }
+
+  initExternalToggles();
+  window.addEventListener('pageshow', initExternalToggles);
 </script>

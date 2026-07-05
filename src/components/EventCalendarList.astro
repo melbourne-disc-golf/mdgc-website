@@ -73,38 +73,45 @@ function getEventSourceClass(event: CalendarEvent): string {
   >
     {groupedByMonth.map((group) => (
       <div class="month-group">
-        <h3 class="month-header">{group.label}</h3>
-        <div class="events-list">
-          {group.events.map((event) => {
-            const rowContent = (
-              <>
-                <div class="event-date">
-                  <span class="day-number">{event.startDate.day}</span>
-                  {getDayNames(event.startDate, event.endDate).map((name) => (
-                    <span class="day-name">{name}</span>
-                  ))}
-                </div>
-                <div class="event-details">
-                  <div class="event-title">
-                    {event.summary}
-                    {event.external && <span class="external-icon"> ↗</span>}
+        <div class="month-inner">
+          <h3 class="month-header">{group.label}</h3>
+          <div class="events-list">
+            {group.events.map((event) => {
+              const rowContent = (
+                <>
+                  <div class="event-date">
+                    <span class="day-number">{event.startDate.day}</span>
+                    {getDayNames(event.startDate, event.endDate).map((name) => (
+                      <span class="day-name">{name}</span>
+                    ))}
                   </div>
-                  {event.location && (
-                    <div class="event-location">{event.location}</div>
-                  )}
+                  <div class="event-details">
+                    <div class="event-title">
+                      {event.summary}
+                      {event.external && <span class="external-icon"> ↗</span>}
+                    </div>
+                    {event.location && (
+                      <div class="event-location">{event.location}</div>
+                    )}
+                  </div>
+                </>
+              );
+              const row = event.url ? (
+                <a href={event.url} class={`event-row clickable ${getEventSourceClass(event)}`} data-date={event.startDate.toString()} {...externalLinkAttrs(event.url ?? '')}>
+                  {rowContent}
+                </a>
+              ) : (
+                <div class={`event-row ${getEventSourceClass(event)}`} data-date={event.startDate.toString()}>
+                  {rowContent}
                 </div>
-              </>
-            );
-            return event.url ? (
-              <a href={event.url} class={`event-row clickable ${getEventSourceClass(event)}`} data-date={event.startDate.toString()} {...externalLinkAttrs(event.url ?? '')}>
-                {rowContent}
-              </a>
-            ) : (
-              <div class={`event-row ${getEventSourceClass(event)}`} data-date={event.startDate.toString()}>
-                {rowContent}
-              </div>
-            );
-          })}
+              );
+              return (
+                <div class="event-collapse">
+                  <div class="event-clip">{row}</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     ))}
@@ -116,8 +123,23 @@ function getEventSourceClass(event: CalendarEvent): string {
     margin: 1rem 0;
   }
 
+  /* month-group and event-collapse use the grid-template-rows 1fr→0fr trick to
+     animate height when the "Include non-MDGC events" toggle collapses them.
+     The .collapsed class is added by the script in EventCalendar.astro. */
   .month-group {
-    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.28s ease, opacity 0.28s ease;
+  }
+
+  .month-group.collapsed {
+    grid-template-rows: 0fr;
+    opacity: 0;
+  }
+
+  .month-inner {
+    min-height: 0;
+    overflow: hidden;
   }
 
   .month-header {
@@ -125,20 +147,46 @@ function getEventSourceClass(event: CalendarEvent): string {
     border-bottom: 1px solid var(--color-border, #e5e5e5);
   }
 
+  /* Spacing lives on inner content (not padding on .month-inner) so it's clipped
+     away when the group collapses — padding on the clip would leave a residual. */
   .events-list {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .event-collapse {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.28s ease, opacity 0.28s ease;
+  }
+
+  .event-collapse.collapsed {
+    grid-template-rows: 0fr;
+    opacity: 0;
+  }
+
+  .event-clip {
+    min-height: 0;
+    overflow: hidden;
   }
 
   .event-row {
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 0.5rem; /* row spacing (events-list has no gap so it collapses) */
     padding: 0.5rem;
     border-radius: 0.5rem;
     border-left: 4px solid transparent;
     transition: all 0.2s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .month-group,
+    .event-collapse {
+      transition: none;
+    }
   }
 
   a.event-row {
