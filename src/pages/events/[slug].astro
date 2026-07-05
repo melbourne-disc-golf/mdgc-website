@@ -4,7 +4,7 @@ import Layout from '@layouts/Layout.astro';
 import Text from '@components/Text.astro';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
-import LocationsMap from '@components/LocationsMap.astro';
+import CourseCard from '@components/CourseCard.astro';
 import { formatDateRange } from '@utils/dates';
 import { getPublishedEvents, dateToPlainDate } from '@utils/events';
 
@@ -32,26 +32,12 @@ const eventEndDate = event.data.endDate ? dateToPlainDate(event.data.endDate) : 
 const eventDateStr = eventStartDate.toString();
 const liveScoringUntilStr = eventEndDate.add({ days: 1 }).toString();
 
-// Get course locations for the map
-const courseLocations = [];
+// Resolve the referenced courses, so we can show a card for each
+const courses = [];
 if (event.data.courses) {
   for (const courseRef of event.data.courses) {
     const course = await getEntry(courseRef);
-    if (course?.data.location) {
-      try {
-        const parsed = JSON.parse(course.data.location);
-        if (parsed.type === 'Point' && parsed.coordinates) {
-          courseLocations.push({
-            lat: parsed.coordinates[1],
-            lng: parsed.coordinates[0],
-            title: course.data.title,
-            href: `/courses/${course.id}`
-          });
-        }
-      } catch (e) {
-        // Ignore parse errors
-      }
-    }
+    if (course) courses.push(course);
   }
 }
 ---
@@ -82,10 +68,19 @@ if (event.data.courses) {
       </section>
     )}
 
-    {courseLocations.length > 0 && (
+    {courses.length > 0 && (
       <section>
-        <h2>Location</h2>
-        <LocationsMap locations={courseLocations} permanentTooltips />
+        <h2>{courses.length > 1 ? 'Courses' : 'Course'}</h2>
+        <Grid>
+          {courses.map((course) => (
+            <CourseCard
+              name={course.data.title}
+              href={`/courses/${course.id}`}
+              location={course.data.suburb}
+              image={course.data.thumbnail || course.data.mainImage}
+            />
+          ))}
+        </Grid>
       </section>
     )}
 
