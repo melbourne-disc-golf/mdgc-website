@@ -1,0 +1,194 @@
+[
+  {
+    "name": "VMS Werribee Presented by Melbourne Disc Golf",
+    "eventId": 105160,
+    "tier": "C",
+    "location": "Werribee, Victoria, Australia",
+    "startDate": "2026-07-05",
+    "endDate": "2026-07-05"
+  },
+  {
+    "name": "Disc Connection Queensland Open 2026",
+    "eventId": 101868,
+    "tier": "B",
+    "location": "Warner, Queensland, Australia",
+    "startDate": "2026-07-10",
+    "endDate": "2026-07-12"
+  },
+  {
+    "name": "Big Wet 2026 Presented by Three Horn",
+    "eventId": 104528,
+    "tier": "C",
+    "location": "Ballarat, Victoria, Australia",
+    "startDate": "2026-07-11",
+    "endDate": "2026-07-11"
+  },
+  {
+    "name": "VMS Llewellyn Presented by Bespoke Disc Golf",
+    "eventId": 105085,
+    "tier": "C",
+    "location": "Wantirna South, Victoria, Australia",
+    "startDate": "2026-07-12",
+    "endDate": "2026-07-12"
+  },
+  {
+    "name": "VMS Little Blind Creek Presented by Melbourne Disc Golf",
+    "eventId": 105763,
+    "tier": "C",
+    "location": "Melton, Victoria, Australia",
+    "startDate": "2026-07-19",
+    "endDate": "2026-07-19"
+  },
+  {
+    "name": "VMS Stony Creek Presented by Portal Disc Sports",
+    "eventId": 105762,
+    "tier": "C",
+    "location": "Yarraville, Victoria, Australia",
+    "startDate": "2026-07-19",
+    "endDate": "2026-07-19"
+  },
+  {
+    "name": "Melbourne Celebrates 2026 - MP40,FP40,MA50,FA50,MA1,FA1,MA3,FA3",
+    "eventId": 104141,
+    "tier": "C",
+    "location": "Bundoora, Victoria, Australia",
+    "startDate": "2026-07-25",
+    "endDate": "2026-07-25"
+  },
+  {
+    "name": "Melbourne Celebrates 2026 - MPO,FPO,MA40,FA40,MA2,FA2,MA4,FA4,MJ15,FJ15",
+    "eventId": 104188,
+    "tier": "C",
+    "location": "Bundoora, Victoria, Australia",
+    "startDate": "2026-07-26",
+    "endDate": "2026-07-26"
+  },
+  {
+    "name": "2026 Rumble",
+    "eventId": 105189,
+    "tier": "B",
+    "location": "Mount Gambier, South Australia, Australia",
+    "startDate": "2026-07-31",
+    "endDate": "2026-08-02"
+  },
+  {
+    "name": "VMS Mount Xavier Presented by Guf Ballarat",
+    "eventId": 105494,
+    "tier": "C",
+    "location": "Ballarat, Victoria, Australia",
+    "startDate": "2026-08-09",
+    "endDate": "2026-08-09"
+  },
+  {
+    "name": "VMS Bicentennial Presented by Portal Disc Sports",
+    "eventId": 105050,
+    "tier": "C",
+    "location": "Chelsea, Victoria, Australia",
+    "startDate": "2026-08-16",
+    "endDate": "2026-08-16"
+  },
+  {
+    "name": "VMS Bald Hill Presented by Melbourne Disc Golf.",
+    "eventId": 105569,
+    "tier": "C",
+    "location": "Clarinda, Victoria, Australia",
+    "startDate": "2026-08-23",
+    "endDate": "2026-08-23"
+  },
+  {
+    "name": "VMS TBD Presented by Bespoke Disc Golf.",
+    "eventId": 105566,
+    "tier": "C",
+    "location": "Clarinda, Victoria, Australia",
+    "startDate": "2026-08-23",
+    "endDate": "2026-08-23"
+  },
+  {
+    "name": "2026 NSW Open Presented by Tyrepower Rouse Hill",
+    "eventId": 105218,
+    "tier": "B",
+    "location": "Sefton, New South Wales, Australia",
+    "startDate": "2026-08-29",
+    "endDate": "2026-08-31"
+  },
+  {
+    "name": "VMS Bendigo Presented by Portal Disc Sports",
+    "eventId": 105403,
+    "tier": "C",
+    "location": "Bendigo, Victoria, Australia",
+    "startDate": "2026-08-30",
+    "endDate": "2026-08-30"
+  },
+  {
+    "name": "VMS Churchill Presented by Bespoke Disc Golf",
+    "eventId": 105662,
+    "tier": "C",
+    "location": "Churchill, Victoria, Australia",
+    "startDate": "2026-09-05",
+    "endDate": "2026-09-05"
+  },
+  {
+    "name": "Cobden Carnage",
+    "eventId": 104824,
+    "tier": "C",
+    "location": "Cobden, Victoria, Australia",
+    "startDate": "2026-09-13",
+    "endDate": "2026-09-13"
+  },
+  {
+    "name": "Perth Open 2026",
+    "eventId": 105821,
+    "tier": "B",
+    "location": "Wannaroo, Western Australia, Australia",
+    "startDate": "2026-09-26",
+    "endDate": "2026-09-28"
+  },
+  {
+    "name": "Aussie Masters 2026",
+    "eventId": 103772,
+    "tier": "B",
+    "location": "Vittoria, New South Wales, Australia",
+    "startDate": "2026-10-03",
+    "endDate": "2026-10-05"
+  },
+  {
+    "name": "2026 Inverleigh Disc Golf Open",
+    "eventId": 105613,
+    "tier": "C",
+    "location": "Inverleigh, Victoria, Australia",
+    "startDate": "2026-10-17",
+    "endDate": "2026-10-18"
+  },
+  {
+    "name": "The Ballarat Open",
+    "eventId": 105468,
+    "tier": "C",
+    "location": "Ballarat, Victoria, Australia",
+    "startDate": "2026-10-24",
+    "endDate": "2026-10-25"
+  },
+  {
+    "name": "St Annes Chain Smash",
+    "eventId": 105386,
+    "tier": "C",
+    "location": "Myrniong, Victoria, Australia",
+    "startDate": "2026-11-08",
+    "endDate": "2026-11-08"
+  },
+  {
+    "name": "Australian Disc Golf Championships 2026 - Weekend 1",
+    "eventId": 105864,
+    "tier": "B",
+    "location": "Yarralumla, Australian Capital Territory, Australia",
+    "startDate": "2026-11-27",
+    "endDate": "2026-11-29"
+  },
+  {
+    "name": "Australian Disc Golf Championship 2026 - Weekend 2",
+    "eventId": 105863,
+    "tier": "A",
+    "location": "Yarralumla, Australian Capital Territory, Australia",
+    "startDate": "2026-12-04",
+    "endDate": "2026-12-07"
+  }
+]

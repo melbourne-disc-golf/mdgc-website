@@ -13,16 +13,15 @@ import Text from '@components/Text.astro';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import EventCalendar from '@components/EventCalendar.astro';
-import { getPublishedEvents, clubEventToCalendarEvent, externalEventToCalendarEvent } from '@utils/events';
+import { getPublishedEvents, clubEventToCalendarEvent, getExternalCalendarEvents } from '@utils/events';
 
 export const clubEvents = await getPublishedEvents();
-export const externalEvents = await getCollection('externalEvents');
 export const allCourses = await getCollection('courses');
 export const coursesBySlug = new Map(allCourses.map((c) => [c.id, c]));
 
 export const calendarEvents = [
   ...clubEvents.map((e) => clubEventToCalendarEvent(e, coursesBySlug)),
-  ...externalEvents.map((e) => externalEventToCalendarEvent(e)),
+  ...getExternalCalendarEvents(clubEvents),
 ];
 
 <Text>

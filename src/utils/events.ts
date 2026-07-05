@@ -2,6 +2,7 @@ import { Temporal } from '@js-temporal/polyfill';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { getSocialDays } from '@utils/metrix';
+import { getExternalEvents, excludeClubDuplicates, abbreviateLocation, type PdgaEvent } from '@utils/pdga';
 
 export type EventSource = 'club' | 'social' | 'external';
 
@@ -32,7 +33,6 @@ export function dateToPlainDate(date: Date): Temporal.PlainDate {
 }
 
 type ClubEventEntry = CollectionEntry<'events'>;
-type ExternalEventEntry = CollectionEntry<'externalEvents'>;
 type CourseEntry = CollectionEntry<'courses'>;
 
 // Metrix social day shape (a SocialDay from @utils/metrix; only these fields are used here)
@@ -112,22 +112,33 @@ export function clubEventToCalendarEvent(
 }
 
 /**
- * Convert an external event data entry to a CalendarEvent.
+ * Convert a scraped PDGA event to a CalendarEvent.
  *
- * @param event - The external event data entry
+ * @param event - The PDGA event (from src/data/pdga/events.json)
  */
-export function externalEventToCalendarEvent(
-  event: ExternalEventEntry
-): CalendarEvent {
+export function pdgaEventToCalendarEvent(event: PdgaEvent): CalendarEvent {
   return {
-    summary: event.data.title,
-    startDate: dateToPlainDate(event.data.date),
-    endDate: event.data.endDate ? dateToPlainDate(event.data.endDate) : undefined,
-    url: event.data.url,
-    location: event.data.location,
+    summary: event.name,
+    startDate: Temporal.PlainDate.from(event.startDate),
+    endDate: event.endDate !== event.startDate ? Temporal.PlainDate.from(event.endDate) : undefined,
+    url: `https://www.pdga.com/tour/event/${event.eventId}`,
+    location: abbreviateLocation(event.location),
     external: true,
     source: 'external',
   };
+}
+
+/**
+ * Scraped PDGA events as CalendarEvents, minus any that duplicate one of the
+ * given club events (matched by PDGA event id). All three event surfaces
+ * (calendar, tournaments page, iCal feed) combine sources through this, so a
+ * club event and its PDGA listing never both appear.
+ */
+export function getExternalCalendarEvents(clubEvents: ClubEventEntry[]): CalendarEvent[] {
+  const clubPdgaIds = new Set(
+    clubEvents.map((e) => e.data.pdgaEventId).filter((id): id is string => Boolean(id))
+  );
+  return excludeClubDuplicates(getExternalEvents(), clubPdgaIds).map(pdgaEventToCalendarEvent);
 }
 
 const MONTH_PREFIX =
@@ -213,7 +224,6 @@ export function socialDayToCalendarEvent(
  */
 export async function getAllCalendarEvents(): Promise<CalendarEvent[]> {
   const clubEvents = await getPublishedEvents();
-  const externalEvents = await getCollection('externalEvents');
   const courses = await getCollection('courses');
 
   const coursesBySlug = new Map(courses.map((c) => [c.id, c]));
@@ -223,7 +233,7 @@ export async function getAllCalendarEvents(): Promise<CalendarEvent[]> {
 
   return [
     ...clubEvents.map((e) => clubEventToCalendarEvent(e, coursesBySlug)),
-    ...externalEvents.map((e) => externalEventToCalendarEvent(e)),
+    ...getExternalCalendarEvents(clubEvents),
     ...getSocialDays().map((e) => socialDayToCalendarEvent(e, metrixToCourse)),
   ];
 }

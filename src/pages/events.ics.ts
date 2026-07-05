@@ -1,7 +1,7 @@
 import { Temporal } from '@js-temporal/polyfill';
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { getPublishedEvents, clubEventToCalendarEvent, externalEventToCalendarEvent, socialDayToCalendarEvent, type CalendarEvent } from '@utils/events';
+import { getPublishedEvents, clubEventToCalendarEvent, getExternalCalendarEvents, socialDayToCalendarEvent, type CalendarEvent } from '@utils/events';
 import { getSocialDays } from '@utils/metrix';
 
 function pad2(n: number): string {
@@ -128,7 +128,6 @@ export const GET: APIRoute = async ({ site }) => {
   const siteUrl = site?.toString();
   // Get data from collections
   const clubEvents = await getPublishedEvents();
-  const externalEvents = await getCollection('externalEvents');
   const courses = await getCollection('courses');
 
   // Build course lookup maps
@@ -144,9 +143,7 @@ export const GET: APIRoute = async ({ site }) => {
     clubEventToCalendarEvent(e, coursesBySlug)
   );
 
-  const externalCalendarEvents = externalEvents.map((e) =>
-    externalEventToCalendarEvent(e)
-  );
+  const externalCalendarEvents = getExternalCalendarEvents(clubEvents);
 
   const socialDays = getSocialDays()
     .map((e) => socialDayToCalendarEvent(e, metrixToCourse));

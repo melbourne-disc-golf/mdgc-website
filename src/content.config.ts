@@ -59,26 +59,15 @@ const events = defineCollection({
   }),
 });
 
-// External events (not organised by MDGC)
-const externalEvents = defineCollection({
-  loader: glob({ pattern: '**/*.yaml', base: './src/content/externalEvents' }),
-  schema: z.object({
-    title: z.string(),
-    date: z.date(),
-    endDate: cmsOptional(z.date()),
-    location: z.string(), // e.g. "Geelong, VIC"
-    url: z.string().url(), // link to external event page
-  }),
-});
-
-// Note: Metrix data (social days, per-round scorecards, season standings) is NOT a
-// content collection. It's stored raw in src/data/metrix/ and shaped at build time
-// by src/utils/metrix.ts — see that module and scripts/fetch-metrix-data.ts.
+// Note: neither Metrix data (social days, scorecards, standings) nor external
+// PDGA events are content collections. Both are stored as data under src/data/
+// and shaped at build time — Metrix by src/utils/metrix.ts (fetched by
+// scripts/fetch-metrix-data.ts), external events by src/utils/pdga.ts (scraped
+// by scripts/fetch-pdga-events.ts).
 
 export const collections = {
   courses,
   board,
   discLibraries,
   events,
-  externalEvents,
 };

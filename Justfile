@@ -16,3 +16,7 @@ run TARGET:
 # Fetch Metrix data for specified season(s), or current season if none specified
 fetch-metrix-season *SEASONS:
     pnpm tsx scripts/fetch-metrix-data.ts {{SEASONS}}
+
+# Fetch external (PDGA) events for the tournaments calendar
+fetch-pdga-events:
+    pnpm tsx scripts/fetch-pdga-events.ts
