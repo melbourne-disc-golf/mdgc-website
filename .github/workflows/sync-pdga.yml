@@ -1,0 +1,45 @@
+name: Sync PDGA Events
+
+on:
+  schedule:
+    # Cron is UTC; Melbourne is AEST (UTC+10) or AEDT (UTC+11). Once daily,
+    # offset from the Metrix sync so the two jobs don't push at the same time.
+    - cron: '0 17 * * *' # 3am AEST / 4am AEDT
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Fetch PDGA events
+        # Countries, date window and tier/region filter are configured in the script.
+        run: pnpm tsx scripts/fetch-pdga-events.ts
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/pdga/events.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Sync PDGA events [automated]"
+            git push
+          fi
