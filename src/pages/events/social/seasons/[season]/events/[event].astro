@@ -2,6 +2,7 @@
 import Layout from '@layouts/Layout.astro';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
+import { getSocialPrizeNotes, getSocialPrizeWinners } from '@data/social-prize-winners';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
 import { getEvent, getUpcomingSocialDay, getSocialDayRefs, getSeasons } from '@utils/metrix';
@@ -39,6 +40,8 @@ const backLink = {
 };
 
 const { par, tracks, divisions } = results ?? { par: 0, tracks: [], divisions: [] };
+const prizeWinners = results ? getSocialPrizeWinners(results.id) : [];
+const prizeNotes = results ? getSocialPrizeNotes(results.id) : [];
 
 // Shade a hole score's background relative to its par (disc-golf scorecard colours).
 function holeClass(score: number | null, holePar: number): string {
@@ -92,6 +95,24 @@ function fmt2(n: number | null): string {
             ))}
           </div>
         )}
+      </section>
+    )}
+
+    {prizeWinners.length > 0 && (
+      <section>
+        <h2 class="section-heading mb-4">Prize winners</h2>
+        <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {prizeWinners.map((winner) => (
+            <li class="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3">
+              <p class="text-sm font-semibold text-emerald-900">{winner.prize}</p>
+              <p class="mt-1 text-lg font-bold text-slate-900">{winner.name}</p>
+              <p class="mt-0.5 text-sm text-slate-600">{winner.detail}</p>
+            </li>
+          ))}
+        </ul>
+        {prizeNotes.map((note) => (
+          <p class="mt-3 text-sm text-slate-600">{note}</p>
+        ))}
       </section>
     )}
 
