@@ -105,6 +105,22 @@ pnpm tsx scripts/fetch-metrix-data.ts 3525298
 
 (Replace `3525298` with the current season ID if it changes.)
 
+### External events (via PDGA)
+
+The events calendar can also show tournaments run by other clubs, scraped from the [PDGA tour calendar](https://www.pdga.com/tour). These are hidden by default on the [tournaments page](https://www.melbournediscgolf.com/events/tournaments) and revealed with the **"Include non-MDGC events"** toggle.
+
+Events are filtered by tier and region: C-tier and above in Victoria, B-tier and above elsewhere in Australia, and A-tier and above in New Zealand. Any that duplicate one of our own events (matched by PDGA event ID) are dropped. The result is stored in [`src/data/pdga/events.json`](src/data/pdga/events.json).
+
+A [GitHub Actions workflow](.github/workflows/sync-pdga.yml) runs daily, re-scraping the calendar and committing any changes back to the repository. This triggers a site rebuild, keeping the events page up to date.
+
+To sync manually, [run the workflow via GitHub Actions](https://github.com/melbourne-disc-golf/mdgc-website/actions/workflows/sync-pdga.yml), or locally:
+
+```sh
+just fetch-pdga-events   # or: pnpm tsx scripts/fetch-pdga-events.ts
+```
+
+The countries, date window and tier/region rules are configured near the top of [`scripts/fetch-pdga-events.ts`](scripts/fetch-pdga-events.ts).
+
 ## Maintenance
 
 ### Cleaning up old deployments
