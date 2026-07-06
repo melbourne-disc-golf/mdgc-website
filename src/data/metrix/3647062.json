@@ -113,7 +113,7 @@
       {
         "UserID": "19290",
         "Name": "Markus Villota",
-        "ClassName": "Div A - Metrix Rating > 890",
+        "ClassName": "",
         "CountryCode": "EE",
         "Place": 1,
         "EventResults": [
@@ -138,7 +138,7 @@
       {
         "UserID": "42838",
         "Name": "Aidan Howard",
-        "ClassName": "Div A - Metrix Rating > 890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 2,
         "EventResults": [
@@ -163,7 +163,7 @@
       {
         "UserID": "40506",
         "Name": "Allen Brunsting",
-        "ClassName": "Div A - Metrix Rating > 890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 3,
         "EventResults": [
@@ -188,7 +188,7 @@
       {
         "UserID": "44655",
         "Name": "Chris Ronalds",
-        "ClassName": "Div A - Metrix Rating > 890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 4,
         "EventResults": [
@@ -213,7 +213,7 @@
       {
         "UserID": "40476",
         "Name": "Succulent Chinese Meal",
-        "ClassName": "Div A - Metrix Rating > 890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 5,
         "EventResults": [
@@ -238,7 +238,7 @@
       {
         "UserID": "232102",
         "Name": "Hamish Clarkson",
-        "ClassName": "Div A - Metrix Rating > 890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 6,
         "EventResults": [
@@ -263,7 +263,7 @@
       {
         "UserID": "211228",
         "Name": "Marcus Davies",
-        "ClassName": "Div A - Metrix Rating > 890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 6,
         "EventResults": [
@@ -288,7 +288,7 @@
       {
         "UserID": "133762",
         "Name": "Simon Farrar",
-        "ClassName": "Div A - Metrix Rating > 890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 8,
         "EventResults": [
@@ -313,7 +313,7 @@
       {
         "UserID": "57370",
         "Name": "Chris Scott 127348",
-        "ClassName": "Div A - Metrix Rating > 890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 9,
         "EventResults": [
@@ -338,7 +338,7 @@
       {
         "UserID": "117156",
         "Name": "Samuel Stoia",
-        "ClassName": "Div A - Metrix Rating > 890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 9,
         "EventResults": [
@@ -363,7 +363,7 @@
       {
         "UserID": "216521",
         "Name": "Zach Schloeffel",
-        "ClassName": "Div A - Metrix Rating > 890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 9,
         "EventResults": [
@@ -388,7 +388,7 @@
       {
         "UserID": "182547",
         "Name": "Choo Tran",
-        "ClassName": "Div A - Metrix Rating > 890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 12,
         "EventResults": [
@@ -413,7 +413,7 @@
       {
         "UserID": "168308",
         "Name": "Pen Liu",
-        "ClassName": "Div A - Metrix Rating > 890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 12,
         "EventResults": [
@@ -438,7 +438,7 @@
       {
         "UserID": "194910",
         "Name": "Glen Ralston",
-        "ClassName": "Div A - Metrix Rating > 890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 14,
         "EventResults": [
@@ -463,7 +463,7 @@
       {
         "UserID": "111479",
         "Name": "Alistair Don",
-        "ClassName": "Div A - Metrix Rating > 890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 15,
         "EventResults": [
@@ -490,7 +490,7 @@
         "Name": "Caelan Haramis",
         "ClassName": "Div A - Metrix Rating > 890",
         "CountryCode": "AU",
-        "Place": 16,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -515,7 +515,7 @@
         "Name": "Cooper Thompson",
         "ClassName": "Div A - Metrix Rating > 890",
         "CountryCode": "US",
-        "Place": 16,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -540,7 +540,7 @@
         "Name": "Juan rueda",
         "ClassName": "Div A - Metrix Rating > 890",
         "CountryCode": "AU",
-        "Place": 16,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -565,7 +565,7 @@
         "Name": "Martin Goh",
         "ClassName": "Div A - Metrix Rating > 890",
         "CountryCode": "AU",
-        "Place": 16,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -590,7 +590,7 @@
         "Name": "Mike Van der Linden",
         "ClassName": "Div A - Metrix Rating > 890",
         "CountryCode": "AU",
-        "Place": 16,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -615,7 +615,7 @@
         "Name": "TSUNG-CHI CHOU (Peter)",
         "ClassName": "Div A - Metrix Rating > 890",
         "CountryCode": "AU",
-        "Place": 16,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -638,7 +638,7 @@
       {
         "UserID": "216927",
         "Name": "Richard Lewis-Shell",
-        "ClassName": "Div B - Metrix Rating 845-890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 1,
         "EventResults": [
@@ -663,7 +663,7 @@
       {
         "UserID": "216122",
         "Name": "Jason Vincent",
-        "ClassName": "Div B - Metrix Rating 845-890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 2,
         "EventResults": [
@@ -688,7 +688,7 @@
       {
         "UserID": "136798",
         "Name": "Ashley Weidner",
-        "ClassName": "Div B - Metrix Rating 845-890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 3,
         "EventResults": [
@@ -713,7 +713,7 @@
       {
         "UserID": "224659",
         "Name": "Daniel Santamaria",
-        "ClassName": "Div B - Metrix Rating 845-890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 3,
         "EventResults": [
@@ -738,7 +738,7 @@
       {
         "UserID": "136105",
         "Name": "Mat Daniels",
-        "ClassName": "Div B - Metrix Rating 845-890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 3,
         "EventResults": [
@@ -763,7 +763,7 @@
       {
         "UserID": "134540",
         "Name": "Peter Barry",
-        "ClassName": "Div B - Metrix Rating 845-890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 6,
         "EventResults": [
@@ -788,7 +788,7 @@
       {
         "UserID": "200189",
         "Name": "Matt Gosney",
-        "ClassName": "Div B - Metrix Rating 845-890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 7,
         "EventResults": [
@@ -813,7 +813,7 @@
       {
         "UserID": "182295",
         "Name": "Damian Musci",
-        "ClassName": "Div B - Metrix Rating 845-890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 8,
         "EventResults": [
@@ -838,7 +838,7 @@
       {
         "UserID": "49416",
         "Name": "Patrick Utri",
-        "ClassName": "Div B - Metrix Rating 845-890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 8,
         "EventResults": [
@@ -863,7 +863,7 @@
       {
         "UserID": "40479",
         "Name": "Jeff Brunsting",
-        "ClassName": "Div B - Metrix Rating 845-890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 10,
         "EventResults": [
@@ -888,7 +888,7 @@
       {
         "UserID": "211227",
         "Name": "Ross Davies",
-        "ClassName": "Div B - Metrix Rating 845-890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 10,
         "EventResults": [
@@ -913,7 +913,7 @@
       {
         "UserID": "180459",
         "Name": "Zsolt Csatlos",
-        "ClassName": "Div B - Metrix Rating 845-890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 10,
         "EventResults": [
@@ -938,7 +938,7 @@
       {
         "UserID": "170805",
         "Name": "Max Tats",
-        "ClassName": "Div B - Metrix Rating 845-890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 13,
         "EventResults": [
@@ -963,7 +963,7 @@
       {
         "UserID": "130546",
         "Name": "Alex Ritchie",
-        "ClassName": "Div B - Metrix Rating 845-890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 14,
         "EventResults": [
@@ -988,7 +988,7 @@
       {
         "UserID": "83401",
         "Name": "Dan Bradshaw",
-        "ClassName": "Div B - Metrix Rating 845-890",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 14,
         "EventResults": [
@@ -1015,7 +1015,7 @@
         "Name": "Curt Moulton",
         "ClassName": "Div B - Metrix Rating 845-890",
         "CountryCode": "AU",
-        "Place": 16,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -1040,7 +1040,7 @@
         "Name": "Mark Green",
         "ClassName": "Div B - Metrix Rating 845-890",
         "CountryCode": "AU",
-        "Place": 16,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -1065,7 +1065,7 @@
         "Name": "Rob Hall",
         "ClassName": "Div B - Metrix Rating 845-890",
         "CountryCode": "AU",
-        "Place": 16,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -1090,7 +1090,7 @@
         "Name": "Wayne Hood",
         "ClassName": "Div B - Metrix Rating 845-890",
         "CountryCode": "AU",
-        "Place": 16,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -1113,7 +1113,7 @@
       {
         "UserID": "132835",
         "Name": "Illia Kravchenko",
-        "ClassName": "Div C - Metrix Rating 790-845",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 1,
         "EventResults": [
@@ -1138,7 +1138,7 @@
       {
         "UserID": "99466",
         "Name": "Robert Lambert",
-        "ClassName": "Div C - Metrix Rating 790-845",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 2,
         "EventResults": [
@@ -1163,7 +1163,7 @@
       {
         "UserID": "113708",
         "Name": "Aaron Ponnudurai",
-        "ClassName": "Div C - Metrix Rating 790-845",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 3,
         "EventResults": [
@@ -1188,7 +1188,7 @@
       {
         "UserID": "63403",
         "Name": "Mike Williams",
-        "ClassName": "Div C - Metrix Rating 790-845",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 3,
         "EventResults": [
@@ -1213,7 +1213,7 @@
       {
         "UserID": "136103",
         "Name": "Kim Michell",
-        "ClassName": "Div C - Metrix Rating 790-845",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 5,
         "EventResults": [
@@ -1238,7 +1238,7 @@
       {
         "UserID": "162591",
         "Name": "Toby Beasley",
-        "ClassName": "Div C - Metrix Rating 790-845",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 5,
         "EventResults": [
@@ -1263,7 +1263,7 @@
       {
         "UserID": "217035",
         "Name": "Mathew Redmond",
-        "ClassName": "Div C - Metrix Rating 790-845",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 7,
         "EventResults": [
@@ -1288,7 +1288,7 @@
       {
         "UserID": "219287",
         "Name": "Lennyanggriani Che Hosni",
-        "ClassName": "Div C - Metrix Rating 790-845",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 8,
         "EventResults": [
@@ -1313,7 +1313,7 @@
       {
         "UserID": "218202",
         "Name": "Rhys Vieusseux",
-        "ClassName": "Div C - Metrix Rating 790-845",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 8,
         "EventResults": [
@@ -1338,7 +1338,7 @@
       {
         "UserID": "130554",
         "Name": "PETER HOWES",
-        "ClassName": "Div C - Metrix Rating 790-845",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 10,
         "EventResults": [
@@ -1365,7 +1365,7 @@
         "Name": "Alistair Morley",
         "ClassName": "Div C - Metrix Rating 790-845",
         "CountryCode": "AU",
-        "Place": 11,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -1390,7 +1390,7 @@
         "Name": "Bridget Albiston",
         "ClassName": "Div C - Metrix Rating 790-845",
         "CountryCode": "AU",
-        "Place": 11,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -1415,7 +1415,7 @@
         "Name": "Phillip Hall",
         "ClassName": "Div C - Metrix Rating 790-845",
         "CountryCode": "AU",
-        "Place": 11,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -1438,7 +1438,7 @@
       {
         "UserID": "188623",
         "Name": "John Baker",
-        "ClassName": "Div D - Metrix Rating <790",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 1,
         "EventResults": [
@@ -1463,7 +1463,7 @@
       {
         "UserID": "227859",
         "Name": "William Wong",
-        "ClassName": "Div D - Metrix Rating <790",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 2,
         "EventResults": [
@@ -1488,7 +1488,7 @@
       {
         "UserID": "235235",
         "Name": "Rafal Wadowski",
-        "ClassName": "Div D - Metrix Rating <790",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 3,
         "EventResults": [
@@ -1513,7 +1513,7 @@
       {
         "UserID": "217207",
         "Name": "Charlotte Davies",
-        "ClassName": "Div D - Metrix Rating <790",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 4,
         "EventResults": [
@@ -1538,7 +1538,7 @@
       {
         "UserID": "226755",
         "Name": "Sharon Cook",
-        "ClassName": "Div D - Metrix Rating <790",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 5,
         "EventResults": [
@@ -1563,7 +1563,7 @@
       {
         "UserID": "223354",
         "Name": "Linda Nailon",
-        "ClassName": "Div D - Metrix Rating <790",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 6,
         "EventResults": [
@@ -1588,7 +1588,7 @@
       {
         "UserID": "218492",
         "Name": "Mike Vieusseux",
-        "ClassName": "Div D - Metrix Rating <790",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 6,
         "EventResults": [
@@ -1613,7 +1613,7 @@
       {
         "UserID": "234357",
         "Name": "Eden Lewis-Shell",
-        "ClassName": "Div D - Metrix Rating <790",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 8,
         "EventResults": [
@@ -1638,7 +1638,7 @@
       {
         "UserID": "217150",
         "Name": "Mia Daniels",
-        "ClassName": "Div D - Metrix Rating <790",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 9,
         "EventResults": [
@@ -1665,7 +1665,7 @@
         "Name": "Andrew Traczynski",
         "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
-        "Place": 10,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -1690,7 +1690,7 @@
         "Name": "David Heath",
         "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
-        "Place": 10,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -1715,7 +1715,7 @@
         "Name": "Liam Morley",
         "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
-        "Place": 10,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -1740,7 +1740,7 @@
         "Name": "Montague Traczynski",
         "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
-        "Place": 10,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -1765,7 +1765,7 @@
         "Name": "Oliver Morley",
         "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
-        "Place": 10,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -1790,7 +1790,7 @@
         "Name": "Parker Clarkson",
         "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
-        "Place": 10,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -1815,7 +1815,7 @@
         "Name": "Paul Tindall",
         "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
-        "Place": 10,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -1840,7 +1840,7 @@
         "Name": "Robert Higgins",
         "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
-        "Place": 10,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -1863,7 +1863,7 @@
       {
         "UserID": "236835",
         "Name": "Ben Quinney",
-        "ClassName": "Div X - No Metrix Rating",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 1,
         "EventResults": [
@@ -1888,7 +1888,7 @@
       {
         "UserID": "236213",
         "Name": "Michael Strasser",
-        "ClassName": "Div X - No Metrix Rating",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 2,
         "EventResults": [
@@ -1913,7 +1913,7 @@
       {
         "UserID": "237006",
         "Name": "Michael Ranga",
-        "ClassName": "Div X - No Metrix Rating",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 3,
         "EventResults": [
@@ -1940,7 +1940,7 @@
         "Name": "Isaac John",
         "ClassName": "Div X - No Metrix Rating",
         "CountryCode": "AU",
-        "Place": 4,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -1963,7 +1963,7 @@
       {
         "UserID": "168200",
         "Name": "Ashley Breukers",
-        "ClassName": "Div Z - Non MDGC Members",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 1,
         "EventResults": [
@@ -1988,7 +1988,7 @@
       {
         "UserID": "194475",
         "Name": "Simone McNeight",
-        "ClassName": "Div Z - Non MDGC Members",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 2,
         "EventResults": [
@@ -2013,7 +2013,7 @@
       {
         "UserID": "234779",
         "Name": "Jaime valach",
-        "ClassName": "Div Z - Non MDGC Members",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 3,
         "EventResults": [
@@ -2038,7 +2038,7 @@
       {
         "UserID": "243131",
         "Name": "saasha Glover",
-        "ClassName": "Div Z - Non MDGC Members",
+        "ClassName": "",
         "CountryCode": "AU",
         "Place": 4,
         "EventResults": [
