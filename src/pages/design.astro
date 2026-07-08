@@ -232,8 +232,9 @@ const accents: Swatch[] = [
       <p>Links, panels and cards share one hover treatment: a subtle zoom
          (<code>scale(1.02)</code>, via the <code>--hover-zoom-scale</code> token), a deeper
          drop-shadow (<code>--panel-shadow</code> → <code>--panel-shadow-hover</code>), and the
-         border and title text darkening to <code>mdgc-blue-dark</code>. The background does not
-         change. Hover the link panels just below — or the event tiles on the
+         border ramping from a faint tint to full <code>mdgc-blue-dark</code> — the same colour
+         throughout, just opacity. The background and title do not change. Hover the link panels
+         just below — or the event tiles on the
          <a href="/events/tournaments">tournaments</a> page — to see it.</p>
       <p class="anno">Inline links in prose are the exception: transforms don't apply to inline
          boxes, so they darken and thicken their underline instead of scaling.</p>
