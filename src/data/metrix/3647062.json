@@ -1761,6 +1761,31 @@
         "Total": 0
       },
       {
+        "UserID": "224215",
+        "Name": "Memphis Vergos-Schepisi",
+        "ClassName": "Div D - Metrix Rating <790",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "179974",
         "Name": "Montague Traczynski",
         "ClassName": "Div D - Metrix Rating <790",
@@ -1863,6 +1888,31 @@
       {
         "UserID": "216079",
         "Name": "Robert Higgins",
+        "ClassName": "Div D - Metrix Rating <790",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "222635",
+        "Name": "Roselyn Chrisp",
         "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
         "Place": 1,
@@ -2084,6 +2134,31 @@
           null
         ],
         "Total": 91
+      },
+      {
+        "UserID": "241799",
+        "Name": "Brylee Schembri",
+        "ClassName": "Div Z - Non MDGC Members",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
       }
     ],
     "Events": [
