@@ -225,15 +225,21 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
       const checkbox = container.querySelector('.external-toggle-input') as HTMLInputElement | null;
       if (!checkbox) return;
 
+      // Collapsed/faded events are only hidden visually, so also mark them `inert`
+      // to drop their links out of the tab order and the accessibility tree.
       function applyFilter() {
         const hide = !checkbox!.checked;
         // List: collapse each non-MDGC row's wrapper (animated via grid-rows).
         container.querySelectorAll('.event-row.event-external').forEach((row) => {
-          row.closest('.event-collapse')?.classList.toggle('collapsed', hide);
+          const wrapper = row.closest('.event-collapse');
+          if (!wrapper) return;
+          wrapper.classList.toggle('collapsed', hide);
+          (wrapper as HTMLElement).inert = hide;
         });
         // Grid: fade each non-MDGC chip out.
         container.querySelectorAll('.event-chip.event-external').forEach((chip) => {
           chip.classList.toggle('faded', hide);
+          (chip as HTMLElement).inert = hide;
         });
         // List: collapse month groups left with no visible events.
         container.querySelectorAll('.month-group').forEach((group) => {
@@ -243,6 +249,7 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
               !row.closest('.event-collapse')?.classList.contains('collapsed')
           );
           group.classList.toggle('collapsed', !hasVisible);
+          (group as HTMLElement).inert = !hasVisible;
         });
       }
 
