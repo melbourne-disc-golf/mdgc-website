@@ -1111,6 +1111,31 @@
         "Total": 0
       },
       {
+        "UserID": "54770",
+        "Name": "Michael Spangenberg",
+        "ClassName": "Div B - Metrix Rating 845-890",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "217742",
         "Name": "Rob Hall",
         "ClassName": "Div B - Metrix Rating 845-890",
@@ -2188,6 +2213,31 @@
       {
         "UserID": "241799",
         "Name": "Brylee Schembri",
+        "ClassName": "Div Z - Non MDGC Members",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "234213",
+        "Name": "Liam Bantock",
         "ClassName": "Div Z - Non MDGC Members",
         "CountryCode": "AU",
         "Place": 1,
