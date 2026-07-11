@@ -514,7 +514,7 @@
         "UserID": "208038",
         "Name": "Cooper Thompson",
         "ClassName": "Div A - Metrix Rating > 890",
-        "CountryCode": "US",
+        "CountryCode": "AU",
         "Place": 1,
         "EventResults": [
           null,
@@ -1763,6 +1763,31 @@
       {
         "UserID": "179972",
         "Name": "Andrew Traczynski",
+        "ClassName": "Div D - Metrix Rating <790",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "219669",
+        "Name": "David Morkunas",
         "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
         "Place": 1,
