@@ -1586,11 +1586,36 @@
         "Total": 79
       },
       {
+        "UserID": "218039",
+        "Name": "Simon Mackay",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "217207",
         "Name": "Charlotte Davies",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 4,
+        "Place": 1,
         "EventResults": [
           77,
           70,
@@ -1615,7 +1640,7 @@
         "Name": "Rafal Wadowski",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 5,
+        "Place": 2,
         "EventResults": [
           76,
           81,
