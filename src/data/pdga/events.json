@@ -1,21 +1,5 @@
 [
   {
-    "name": "Disc Connection Queensland Open 2026",
-    "eventId": 101868,
-    "tier": "B",
-    "location": "Warner, Queensland, Australia",
-    "startDate": "2026-07-10",
-    "endDate": "2026-07-12"
-  },
-  {
-    "name": "VMS Llewellyn Presented by Bespoke Disc Golf",
-    "eventId": 105085,
-    "tier": "C",
-    "location": "Wantirna South, Victoria, Australia",
-    "startDate": "2026-07-12",
-    "endDate": "2026-07-12"
-  },
-  {
     "name": "VMS Little Blind Creek Presented by Melbourne Disc Golf",
     "eventId": 105763,
     "tier": "C",
