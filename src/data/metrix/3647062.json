@@ -611,6 +611,31 @@
         "Total": 72
       },
       {
+        "UserID": "164802",
+        "Name": "Brett Ziebell",
+        "ClassName": "Div A - Metrix Rating > 890",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "130878",
         "Name": "Caelan Haramis",
         "ClassName": "Div A - Metrix Rating > 890",
@@ -1688,6 +1713,56 @@
       {
         "UserID": "133746",
         "Name": "Brett Bobridge",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "187303",
+        "Name": "John Koehler",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "134508",
+        "Name": "Matthew Farina",
         "ClassName": "Div C - Metrix Rating 790-845",
         "CountryCode": "AU",
         "Place": 1,
