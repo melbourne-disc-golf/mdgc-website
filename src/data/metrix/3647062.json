@@ -711,6 +711,31 @@
         "Total": 0
       },
       {
+        "UserID": "99106",
+        "Name": "Glenn Maisey",
+        "ClassName": "Div A - Metrix Rating > 890",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "195489",
         "Name": "Juan rueda",
         "ClassName": "Div A - Metrix Rating > 890",
@@ -1261,6 +1286,31 @@
         "Total": 0
       },
       {
+        "UserID": "136835",
+        "Name": "Jason Weidner",
+        "ClassName": "Div B - Metrix Rating 845-890",
+        "CountryCode": "AU",
+        "Place": 2,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "217615",
         "Name": "Joshua Quinn",
         "ClassName": "Div B - Metrix Rating 845-890",
@@ -1340,7 +1390,7 @@
         "Name": "Michael Spangenberg",
         "ClassName": "Div B - Metrix Rating 845-890",
         "CountryCode": "AU",
-        "Place": 6,
+        "Place": 7,
         "EventResults": [
           null,
           124,
@@ -2311,6 +2361,31 @@
         "Total": 0
       },
       {
+        "UserID": "99108",
+        "Name": "Owen Maisey",
+        "ClassName": "Div D - Metrix Rating <790",
+        "CountryCode": "AU",
+        "Place": 2,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "236835",
         "Name": "Ben Quinney",
         "ClassName": "",
@@ -2386,11 +2461,36 @@
         "Total": 86
       },
       {
+        "UserID": "241799",
+        "Name": "Brylee Schembri",
+        "ClassName": "Div X - No Metrix Rating",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          134,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 134
+      },
+      {
         "UserID": "235074",
         "Name": "Isaac John",
         "ClassName": "Div X - No Metrix Rating",
         "CountryCode": "AU",
-        "Place": 1,
+        "Place": 2,
         "EventResults": [
           null,
           null,
@@ -2534,31 +2634,6 @@
           null
         ],
         "Total": 101
-      },
-      {
-        "UserID": "241799",
-        "Name": "Brylee Schembri",
-        "ClassName": "Div Z - Non MDGC Members",
-        "CountryCode": "AU",
-        "Place": 2,
-        "EventResults": [
-          null,
-          134,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        "Total": 134
       }
     ],
     "Events": [

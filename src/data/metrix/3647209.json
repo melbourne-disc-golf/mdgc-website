@@ -377,7 +377,7 @@
       },
       {
         "Name": "Brylee Schembri",
-        "ClassName": "Div Z - Non MDGC Members",
+        "ClassName": "Div X - No Metrix Rating",
         "UserID": 241799,
         "Rating": 0,
         "Result": 134,
@@ -7732,6 +7732,210 @@
         "OrderNumber": 9
       },
       {
+        "UserID": "241799",
+        "ScorecardID": "14776468",
+        "Name": "Brylee Schembri",
+        "ClassName": "Div X - No Metrix Rating",
+        "CountryCode": "AU",
+        "Group": "14",
+        "PlayerResults": [
+          {
+            "Result": "8",
+            "Diff": 5,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "8",
+            "Diff": 4,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "8",
+            "Diff": 5,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "8",
+            "Diff": 5,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "8",
+            "Diff": 5,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "8",
+            "Diff": 5,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "8",
+            "Diff": 5,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "8",
+            "Diff": 5,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "8",
+            "Diff": 4,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "8",
+            "Diff": 4,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "8",
+            "Diff": 5,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "8",
+            "Diff": 5,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "7",
+            "Diff": 4,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "8",
+            "Diff": 5,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "7",
+            "Diff": 3,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "8",
+            "Diff": 4,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
+        ],
+        "Penalty": null,
+        "Sum": 134,
+        "Diff": 75,
+        "DNF": null,
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
+        "PreviousRoundsSum": null,
+        "PreviousRoundsDiff": null,
+        "Place": 1,
+        "OrderNumber": 1
+      },
+      {
         "UserID": "234213",
         "ScorecardID": "14788231",
         "Name": "Liam Bantock",
@@ -7934,210 +8138,6 @@
         "PreviousRoundsDiff": null,
         "Place": 1,
         "OrderNumber": 1
-      },
-      {
-        "UserID": "241799",
-        "ScorecardID": "14776468",
-        "Name": "Brylee Schembri",
-        "ClassName": "Div Z - Non MDGC Members",
-        "CountryCode": "AU",
-        "Group": "14",
-        "PlayerResults": [
-          {
-            "Result": "8",
-            "Diff": 5,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "4",
-            "Diff": 1,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "8",
-            "Diff": 4,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "8",
-            "Diff": 5,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "8",
-            "Diff": 5,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "4",
-            "Diff": 1,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "8",
-            "Diff": 5,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "8",
-            "Diff": 5,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "8",
-            "Diff": 5,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "8",
-            "Diff": 5,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "8",
-            "Diff": 4,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "8",
-            "Diff": 4,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "8",
-            "Diff": 5,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "8",
-            "Diff": 5,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "7",
-            "Diff": 4,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "8",
-            "Diff": 5,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "7",
-            "Diff": 3,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "8",
-            "Diff": 4,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          }
-        ],
-        "Penalty": null,
-        "Sum": 134,
-        "Diff": 75,
-        "DNF": null,
-        "BUETotal": "",
-        "GRHTotal": "",
-        "OCPTotal": "",
-        "ICPTotal": "",
-        "IBPTotal": "",
-        "PenaltiesTotal": "",
-        "PreviousRoundsSum": null,
-        "PreviousRoundsDiff": null,
-        "Place": 2,
-        "OrderNumber": 2
       }
     ],
     "Tracks": [
