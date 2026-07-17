@@ -1386,6 +1386,31 @@
         "Total": 0
       },
       {
+        "UserID": "40504",
+        "Name": "Paul Arden",
+        "ClassName": "Div B - Metrix Rating 845-890",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "217742",
         "Name": "Rob Hall",
         "ClassName": "Div B - Metrix Rating 845-890",
@@ -1813,6 +1838,31 @@
       {
         "UserID": "134508",
         "Name": "Matthew Farina",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "168026",
+        "Name": "Matthew Rushton",
         "ClassName": "Div C - Metrix Rating 790-845",
         "CountryCode": "AU",
         "Place": 1,
@@ -2311,31 +2361,6 @@
         "Total": 0
       },
       {
-        "UserID": "219669",
-        "Name": "David Morkunas",
-        "ClassName": "Div D - Metrix Rating <790",
-        "CountryCode": "AU",
-        "Place": 1,
-        "EventResults": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        "Total": 0
-      },
-      {
         "UserID": "231284",
         "Name": "Liam Morley",
         "ClassName": "Div D - Metrix Rating <790",
@@ -2659,6 +2684,31 @@
           null
         ],
         "Total": 101
+      },
+      {
+        "UserID": "111475",
+        "Name": "Phil Morgan",
+        "ClassName": "Div Z - Non MDGC Members",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
       }
     ],
     "Events": [
