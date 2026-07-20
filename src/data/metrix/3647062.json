@@ -661,11 +661,36 @@
         "Total": 121
       },
       {
+        "UserID": "211228",
+        "Name": "Marcus Davies",
+        "ClassName": "",
+        "CountryCode": "AU",
+        "Place": 22,
+        "EventResults": [
+          63,
+          58,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 121
+      },
+      {
         "UserID": "135396",
         "Name": "Martin Goh",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 23,
+        "Place": 24,
         "EventResults": [
           null,
           62,
@@ -690,7 +715,7 @@
         "Name": "Mat Daniels",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 24,
+        "Place": 25,
         "EventResults": [
           62,
           null,
@@ -715,7 +740,7 @@
         "Name": "Succulent Chinese Meal",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 25,
+        "Place": 26,
         "EventResults": [
           62,
           59,
@@ -740,7 +765,7 @@
         "Name": "Levi Naunton",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 26,
+        "Place": 27,
         "EventResults": [
           null,
           61,
@@ -765,7 +790,7 @@
         "Name": "Cooper Thompson",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 27,
+        "Place": 28,
         "EventResults": [
           null,
           62,
@@ -790,7 +815,7 @@
         "Name": "Wayne Hood",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 27,
+        "Place": 28,
         "EventResults": [
           null,
           59,
@@ -815,7 +840,7 @@
         "Name": "Toby Beasley",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 29,
+        "Place": 30,
         "EventResults": [
           71,
           null,
@@ -840,7 +865,32 @@
         "Name": "Jeff Brunsting",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 30,
+        "Place": 31,
+        "EventResults": [
+          68,
+          null,
+          57,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 125
+      },
+      {
+        "UserID": "40479",
+        "Name": "Jeff Brunsting",
+        "ClassName": "",
+        "CountryCode": "AU",
+        "Place": 31,
         "EventResults": [
           68,
           null,
@@ -865,7 +915,7 @@
         "Name": "Dan Bradshaw",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 31,
+        "Place": 33,
         "EventResults": [
           71,
           null,
@@ -890,7 +940,7 @@
         "Name": "Phillip Hall",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 32,
+        "Place": 34,
         "EventResults": [
           null,
           65,
@@ -915,7 +965,7 @@
         "Name": "Glen Ralston",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 33,
+        "Place": 35,
         "EventResults": [
           68,
           null,
@@ -940,7 +990,7 @@
         "Name": "Glen Ralston",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 33,
+        "Place": 35,
         "EventResults": [
           68,
           null,
@@ -965,7 +1015,7 @@
         "Name": "James Melenhorst",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 35,
+        "Place": 37,
         "EventResults": [
           null,
           62,
@@ -990,7 +1040,7 @@
         "Name": "Kim Michell",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 36,
+        "Place": 38,
         "EventResults": [
           71,
           null,
@@ -1015,7 +1065,7 @@
         "Name": "Paul Baker",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 37,
+        "Place": 39,
         "EventResults": [
           null,
           67,
@@ -1040,7 +1090,7 @@
         "Name": "Aaron Ponnudurai",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 38,
+        "Place": 40,
         "EventResults": [
           70,
           null,
@@ -1065,7 +1115,7 @@
         "Name": "Mathew Redmond",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 38,
+        "Place": 40,
         "EventResults": [
           74,
           null,
@@ -1090,7 +1140,7 @@
         "Name": "Mathew Redmond",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 38,
+        "Place": 40,
         "EventResults": [
           74,
           null,
@@ -1115,7 +1165,7 @@
         "Name": "Mike Williams",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 41,
+        "Place": 43,
         "EventResults": [
           70,
           64,
@@ -1140,7 +1190,7 @@
         "Name": "Alistair Morley",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 42,
+        "Place": 44,
         "EventResults": [
           null,
           68,
@@ -1165,7 +1215,7 @@
         "Name": "Bridget Albiston",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 43,
+        "Place": 45,
         "EventResults": [
           null,
           67,
@@ -1190,7 +1240,7 @@
         "Name": "Rhys Vieusseux",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 44,
+        "Place": 46,
         "EventResults": [
           75,
           null,
@@ -1215,7 +1265,7 @@
         "Name": "Rhys Vieusseux",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 44,
+        "Place": 46,
         "EventResults": [
           75,
           null,
@@ -1240,7 +1290,7 @@
         "Name": "William Wong",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 46,
+        "Place": 48,
         "EventResults": [
           72,
           null,
@@ -1265,7 +1315,7 @@
         "Name": "William Wong",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 46,
+        "Place": 48,
         "EventResults": [
           72,
           null,
@@ -1290,7 +1340,32 @@
         "Name": "Ross Davies",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 48,
+        "Place": 50,
+        "EventResults": [
+          68,
+          73,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 141
+      },
+      {
+        "UserID": "211227",
+        "Name": "Ross Davies",
+        "ClassName": "",
+        "CountryCode": "AU",
+        "Place": 50,
         "EventResults": [
           68,
           73,
@@ -1315,7 +1390,7 @@
         "Name": "Ben Quinney",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 49,
+        "Place": 52,
         "EventResults": [
           77,
           null,
@@ -1340,7 +1415,7 @@
         "Name": "Ben Quinney",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 49,
+        "Place": 52,
         "EventResults": [
           77,
           null,
@@ -1365,7 +1440,7 @@
         "Name": "James Elliott",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 51,
+        "Place": 54,
         "EventResults": [
           null,
           74,
@@ -1390,7 +1465,32 @@
         "Name": "Charlotte Davies",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 52,
+        "Place": 55,
+        "EventResults": [
+          77,
+          70,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 147
+      },
+      {
+        "UserID": "217207",
+        "Name": "Charlotte Davies",
+        "ClassName": "",
+        "CountryCode": "AU",
+        "Place": 55,
         "EventResults": [
           77,
           70,
@@ -1415,7 +1515,7 @@
         "Name": "Michael Strasser",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 53,
+        "Place": 57,
         "EventResults": [
           84,
           null,
@@ -1440,7 +1540,7 @@
         "Name": "Michael Ranga",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 54,
+        "Place": 58,
         "EventResults": [
           86,
           null,
@@ -1465,7 +1565,7 @@
         "Name": "Michael Ranga",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 54,
+        "Place": 58,
         "EventResults": [
           86,
           null,
@@ -1490,7 +1590,7 @@
         "Name": "Mike Vieusseux",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 56,
+        "Place": 60,
         "EventResults": [
           82,
           null,
@@ -1515,7 +1615,7 @@
         "Name": "Mike Vieusseux",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 56,
+        "Place": 60,
         "EventResults": [
           82,
           null,
@@ -1540,7 +1640,7 @@
         "Name": "Robert Higgins",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 56,
+        "Place": 60,
         "EventResults": [
           null,
           84,
@@ -1565,7 +1665,7 @@
         "Name": "Mia Daniels",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 59,
+        "Place": 63,
         "EventResults": [
           109,
           null,
@@ -1590,7 +1690,7 @@
         "Name": "David Perry",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 60,
+        "Place": 64,
         "EventResults": [
           null,
           null,
@@ -1615,7 +1715,7 @@
         "Name": "Darren Stace-Smith",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 61,
+        "Place": 65,
         "EventResults": [
           null,
           null,
@@ -1640,7 +1740,7 @@
         "Name": "Isaac John",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 62,
+        "Place": 66,
         "EventResults": [
           null,
           null,
@@ -1665,7 +1765,7 @@
         "Name": "Mikey Hare",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 63,
+        "Place": 67,
         "EventResults": [
           null,
           null,
@@ -1690,7 +1790,7 @@
         "Name": "Glenn Maisey",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 64,
+        "Place": 68,
         "EventResults": [
           null,
           null,
@@ -1715,7 +1815,7 @@
         "Name": "Narada Guzman",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 64,
+        "Place": 68,
         "EventResults": [
           null,
           null,
@@ -1740,7 +1840,7 @@
         "Name": "Phil Morgan",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 64,
+        "Place": 68,
         "EventResults": [
           null,
           null,
@@ -1765,7 +1865,7 @@
         "Name": "Chris Ronalds",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 67,
+        "Place": 71,
         "EventResults": [
           60,
           null,
@@ -1790,7 +1890,7 @@
         "Name": "Joshua Quinn",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 68,
+        "Place": 72,
         "EventResults": [
           null,
           null,
@@ -1815,7 +1915,7 @@
         "Name": "Joshua Quinn",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 68,
+        "Place": 72,
         "EventResults": [
           null,
           null,
@@ -1840,7 +1940,7 @@
         "Name": "Juan rueda",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 68,
+        "Place": 72,
         "EventResults": [
           null,
           null,
@@ -1865,7 +1965,7 @@
         "Name": "Richard Lewis-Shell",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 71,
+        "Place": 75,
         "EventResults": [
           60,
           null,
@@ -1890,7 +1990,7 @@
         "Name": "Brett Ziebell",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 72,
+        "Place": 76,
         "EventResults": [
           null,
           null,
@@ -1915,7 +2015,7 @@
         "Name": "Jason Vincent",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 73,
+        "Place": 77,
         "EventResults": [
           61,
           null,
@@ -1940,7 +2040,7 @@
         "Name": "Lachlan McKenzie",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 74,
+        "Place": 78,
         "EventResults": [
           null,
           56,
@@ -1965,7 +2065,7 @@
         "Name": "Paul Arden",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 75,
+        "Place": 79,
         "EventResults": [
           null,
           null,
@@ -1990,7 +2090,7 @@
         "Name": "Rob Hall",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 75,
+        "Place": 79,
         "EventResults": [
           null,
           null,
@@ -2015,7 +2115,7 @@
         "Name": "Daniel Santamaria",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 77,
+        "Place": 81,
         "EventResults": [
           62,
           null,
@@ -2040,7 +2140,7 @@
         "Name": "Curt Moulton",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 78,
+        "Place": 82,
         "EventResults": [
           null,
           null,
@@ -2065,7 +2165,7 @@
         "Name": "Racim Radjef",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 78,
+        "Place": 82,
         "EventResults": [
           null,
           null,
@@ -2090,7 +2190,7 @@
         "Name": "Choo Tran",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 80,
+        "Place": 84,
         "EventResults": [
           66,
           null,
@@ -2115,7 +2215,7 @@
         "Name": "Jason Weidner",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 81,
+        "Place": 85,
         "EventResults": [
           null,
           null,
@@ -2140,7 +2240,7 @@
         "Name": "Mark Green",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 81,
+        "Place": 85,
         "EventResults": [
           null,
           null,
@@ -2165,7 +2265,7 @@
         "Name": "Mark Green",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 81,
+        "Place": 85,
         "EventResults": [
           null,
           null,
@@ -2190,7 +2290,7 @@
         "Name": "Matthew Farina",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 81,
+        "Place": 85,
         "EventResults": [
           null,
           null,
@@ -2215,7 +2315,7 @@
         "Name": "Patrick Utri",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 85,
+        "Place": 89,
         "EventResults": [
           66,
           null,
@@ -2240,7 +2340,7 @@
         "Name": "Ashley Breukers",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 86,
+        "Place": 90,
         "EventResults": [
           67,
           null,
@@ -2265,7 +2365,7 @@
         "Name": "Robert Lambert",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 86,
+        "Place": 90,
         "EventResults": [
           67,
           null,
@@ -2290,7 +2390,7 @@
         "Name": "Matthew Rushton",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 88,
+        "Place": 92,
         "EventResults": [
           null,
           null,
@@ -2315,7 +2415,7 @@
         "Name": "Simone McNeight",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 89,
+        "Place": 93,
         "EventResults": [
           69,
           null,
@@ -2340,7 +2440,7 @@
         "Name": "Alex Ritchie",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 90,
+        "Place": 94,
         "EventResults": [
           71,
           null,
@@ -2365,7 +2465,7 @@
         "Name": "John Baker",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 90,
+        "Place": 94,
         "EventResults": [
           71,
           null,
@@ -2390,7 +2490,7 @@
         "Name": "Simon Mackay",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 92,
+        "Place": 96,
         "EventResults": [
           null,
           null,
@@ -2415,7 +2515,7 @@
         "Name": "Alistair Don",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 93,
+        "Place": 97,
         "EventResults": [
           72,
           null,
@@ -2440,7 +2540,7 @@
         "Name": "Parker Clarkson",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 94,
+        "Place": 98,
         "EventResults": [
           null,
           67,
@@ -2465,7 +2565,7 @@
         "Name": "Owen Maisey",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 95,
+        "Place": 99,
         "EventResults": [
           null,
           null,
@@ -2490,7 +2590,7 @@
         "Name": "Jaime valach",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 96,
+        "Place": 100,
         "EventResults": [
           77,
           null,
@@ -2515,7 +2615,7 @@
         "Name": "PETER HOWES",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 97,
+        "Place": 101,
         "EventResults": [
           79,
           null,
@@ -2540,7 +2640,7 @@
         "Name": "Liam Morley",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 98,
+        "Place": 102,
         "EventResults": [
           null,
           null,
@@ -2565,7 +2665,7 @@
         "Name": "Paul Tindall",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 99,
+        "Place": 103,
         "EventResults": [
           null,
           76,
@@ -2590,7 +2690,7 @@
         "Name": "Sharon Cook",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 100,
+        "Place": 104,
         "EventResults": [
           81,
           null,
@@ -2615,7 +2715,7 @@
         "Name": "Linda Nailon",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 101,
+        "Place": 105,
         "EventResults": [
           82,
           null,
@@ -2640,7 +2740,7 @@
         "Name": "Isabel Schiavon",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 102,
+        "Place": 106,
         "EventResults": [
           null,
           null,
@@ -2665,7 +2765,7 @@
         "Name": "Eden Lewis-Shell",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 103,
+        "Place": 107,
         "EventResults": [
           88,
           null,
@@ -2690,7 +2790,7 @@
         "Name": "saasha Glover",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 104,
+        "Place": 108,
         "EventResults": [
           91,
           null,
@@ -2715,7 +2815,7 @@
         "Name": "Liam Bantock",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 105,
+        "Place": 109,
         "EventResults": [
           null,
           101,
@@ -2740,7 +2840,7 @@
         "Name": "Roselyn Chrisp",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 106,
+        "Place": 110,
         "EventResults": [
           null,
           103,
@@ -2765,7 +2865,7 @@
         "Name": "Memphis Vergos-Schepisi",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 107,
+        "Place": 111,
         "EventResults": [
           null,
           113,
@@ -2790,7 +2890,7 @@
         "Name": "Brylee Schembri",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 108,
+        "Place": 112,
         "EventResults": [
           null,
           134,
@@ -2815,7 +2915,7 @@
         "Name": "Andrew Traczynski",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 109,
+        "Place": 113,
         "EventResults": [
           null,
           null,
@@ -2840,7 +2940,7 @@
         "Name": "Caelan Haramis",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 109,
+        "Place": 113,
         "EventResults": [
           null,
           null,
@@ -2865,7 +2965,7 @@
         "Name": "Michael Smith",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 109,
+        "Place": 113,
         "EventResults": [
           null,
           null,
@@ -2890,7 +2990,7 @@
         "Name": "Montague Traczynski",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 109,
+        "Place": 113,
         "EventResults": [
           null,
           null,
