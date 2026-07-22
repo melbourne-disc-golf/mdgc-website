@@ -29,8 +29,6 @@ const event = eventProp!;
 const { Content } = await render(event);
 const eventStartDate = dateToPlainDate(event.data.date);
 const eventEndDate = event.data.endDate ? dateToPlainDate(event.data.endDate) : eventStartDate;
-const eventDateStr = eventStartDate.toString();
-const liveScoringUntilStr = eventEndDate.add({ days: 1 }).toString();
 
 // Resolve the referenced courses, so we can show a card for each
 const courses = [];
@@ -56,7 +54,7 @@ if (event.data.courses) {
     <Content />
 
     {event.data.registrationUrl && (
-      <section class="hide-after-date" data-hide-after={eventDateStr}>
+      <section class="hide-after-date" data-hide-after={eventStartDate}>
         <h2>Registration</h2>
         <Grid>
           <LinkPanel
@@ -95,8 +93,8 @@ if (event.data.courses) {
           />
           <div
             class="show-during-event"
-            data-show-from={eventDateStr}
-            data-show-until={liveScoringUntilStr}
+            data-show-from={eventStartDate.add({ days: -3 })}
+            data-show-until={eventEndDate.add({ days: 1 })}
             hidden
           >
             <LinkPanel
