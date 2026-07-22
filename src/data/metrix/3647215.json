@@ -3,9 +3,9 @@
     "ID": 3647215,
     "Name": "MDGC 2026 Social Days S2 &rarr; Aug Northeast Social Day - Llewellyn (Rd 6)",
     "Type": "2",
-    "TourDateStart": null,
-    "TourDateEnd": null,
-    "Date": "2026-08-29",
+    "TourDateStart": "2026-08-22",
+    "TourDateEnd": "2026-08-22",
+    "Date": "2026-08-22",
     "Time": "08:00:00",
     "Comment": "",
     "CourseName": "Llewellyn Park - 9 basket/ 18 hole",
@@ -20,7 +20,7 @@
         "UserID": "218202",
         "ScorecardID": "14840628",
         "Name": "Rhys Vieusseux",
-        "ClassName": "",
+        "ClassName": "Div C - Metrix Rating 790-845",
         "CountryCode": "AU",
         "Group": "1",
         "PlayerResults": [
@@ -55,14 +55,14 @@
         "PenaltiesTotal": "0",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 0,
-        "OrderNumber": 0
+        "Place": 1,
+        "OrderNumber": 1
       },
       {
         "UserID": "218492",
         "ScorecardID": "14840625",
         "Name": "Mike Vieusseux",
-        "ClassName": "",
+        "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
         "Group": "1",
         "PlayerResults": [
@@ -97,8 +97,8 @@
         "PenaltiesTotal": "0",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 0,
-        "OrderNumber": 0
+        "Place": 1,
+        "OrderNumber": 1
       }
     ],
     "Tracks": [
