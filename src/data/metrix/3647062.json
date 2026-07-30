@@ -2311,61 +2311,11 @@
         "Total": 60
       },
       {
-        "UserID": "227859",
-        "Name": "William Wong",
-        "ClassName": "Div C - Metrix Rating 790-845",
-        "CountryCode": "AU",
-        "Place": 1,
-        "EventResults": [
-          72,
-          null,
-          65,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        "Total": 137
-      },
-      {
-        "UserID": "244444",
-        "Name": "Isabel Schiavon",
-        "ClassName": "",
-        "CountryCode": "AU",
-        "Place": 1,
-        "EventResults": [
-          null,
-          null,
-          80,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        "Total": 80
-      },
-      {
         "UserID": "236835",
         "Name": "Ben Quinney",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 2,
+        "Place": 3,
         "EventResults": [
           77,
           null,
@@ -2386,11 +2336,61 @@
         "Total": 142
       },
       {
+        "UserID": "244444",
+        "Name": "Isabel Schiavon",
+        "ClassName": "",
+        "CountryCode": "AU",
+        "Place": 4,
+        "EventResults": [
+          null,
+          null,
+          80,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 80
+      },
+      {
+        "UserID": "134508",
+        "Name": "Matthew Farina",
+        "ClassName": "",
+        "CountryCode": "AU",
+        "Place": 5,
+        "EventResults": [
+          null,
+          null,
+          60,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 60
+      },
+      {
         "UserID": "164802",
         "Name": "Brett Ziebell",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 3,
+        "Place": 6,
         "EventResults": [
           null,
           null,
@@ -2436,15 +2436,15 @@
         "Total": 0
       },
       {
-        "UserID": "134508",
-        "Name": "Matthew Farina",
+        "UserID": "99466",
+        "Name": "Robert Lambert",
         "ClassName": "",
         "CountryCode": "AU",
         "Place": 1,
         "EventResults": [
+          67,
           null,
           null,
-          60,
           null,
           null,
           null,
@@ -2458,14 +2458,14 @@
           null,
           null
         ],
-        "Total": 60
+        "Total": 67
       },
       {
         "UserID": "116375",
         "Name": "Mark Green",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 1,
+        "Place": 2,
         "EventResults": [
           null,
           null,
@@ -2536,15 +2536,15 @@
         "Total": 0
       },
       {
-        "UserID": "99466",
-        "Name": "Robert Lambert",
+        "UserID": "168026",
+        "Name": "Matthew Rushton",
         "ClassName": "",
         "CountryCode": "AU",
         "Place": 1,
         "EventResults": [
-          67,
           null,
           null,
+          63,
           null,
           null,
           null,
@@ -2558,7 +2558,7 @@
           null,
           null
         ],
-        "Total": 67
+        "Total": 63
       },
       {
         "UserID": "113704",
@@ -2637,10 +2637,35 @@
       },
       {
         "UserID": "243131",
+        "Name": "Saasha Glover",
+        "ClassName": "Div X - No Metrix Rating",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
+        "UserID": "243131",
         "Name": "saasha Glover",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 3,
+        "Place": 1,
         "EventResults": [
           91,
           null,
@@ -2665,7 +2690,7 @@
         "Name": "Racim Radjef",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 4,
+        "Place": 2,
         "EventResults": [
           null,
           null,
@@ -2736,15 +2761,15 @@
         "Total": 66
       },
       {
-        "UserID": "168026",
-        "Name": "Matthew Rushton",
+        "UserID": "218039",
+        "Name": "Simon Mackay",
         "ClassName": "",
         "CountryCode": "AU",
         "Place": 2,
         "EventResults": [
           null,
           null,
-          63,
+          65,
           null,
           null,
           null,
@@ -2758,7 +2783,7 @@
           null,
           null
         ],
-        "Total": 63
+        "Total": 65
       },
       {
         "UserID": "234213",
@@ -2811,15 +2836,15 @@
         "Total": 72
       },
       {
-        "UserID": "218039",
-        "Name": "Simon Mackay",
+        "UserID": "130554",
+        "Name": "PETER HOWES",
         "ClassName": "",
         "CountryCode": "AU",
         "Place": 5,
         "EventResults": [
+          79,
           null,
           null,
-          65,
           null,
           null,
           null,
@@ -2833,7 +2858,7 @@
           null,
           null
         ],
-        "Total": 65
+        "Total": 79
       },
       {
         "UserID": "130878",
@@ -2884,31 +2909,6 @@
           null
         ],
         "Total": 0
-      },
-      {
-        "UserID": "130554",
-        "Name": "PETER HOWES",
-        "ClassName": "",
-        "CountryCode": "AU",
-        "Place": 1,
-        "EventResults": [
-          79,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        "Total": 79
       },
       {
         "UserID": "199653",
