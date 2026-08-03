@@ -33,7 +33,7 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
 
     <div class="external-toggle">
       <label class="toggle-option">
-        <input type="checkbox" class="external-toggle-input" aria-describedby="external-hint" />
+        <input type="checkbox" class="external-toggle-input" aria-describedby="external-hint" checked />
         <span>Include non-MDGC events</span>
       </label>
       <span class="hint-tip">
@@ -217,7 +217,7 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
     });
   }
 
-  // "Include non-MDGC events" checkbox (default off): hide/show PDGA (external)
+  // "Include non-MDGC events" checkbox (default on): hide/show PDGA (external)
   // events in both views, and collapse any list month-group left with no
   // visible events.
   function initExternalToggles() {
@@ -258,8 +258,9 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
     });
   }
 
-  // Apply the non-MDGC filter BEFORE revealing a view, so the default-off
-  // collapse is set while the calendar is still hidden — no animation on load.
+  // Apply the non-MDGC filter BEFORE revealing a view, so if the checkbox is
+  // off (e.g. restored from bfcache) the collapse is set while the calendar is
+  // still hidden — no animation on load.
   function initCalendar() {
     initExternalToggles();
     initCalendarToggles();
