@@ -1,13 +1,5 @@
 [
   {
-    "name": "RPM Discs presents the 2026 Rumble powered by Mister Minit & Launch Disc Golf",
-    "eventId": 105189,
-    "tier": "B",
-    "location": "Mount Gambier, South Australia, Australia",
-    "startDate": "2026-07-31",
-    "endDate": "2026-08-02"
-  },
-  {
     "name": "VMS Mount Xavier Presented by Guf Ballarat",
     "eventId": 105494,
     "tier": "C",
@@ -80,10 +72,26 @@
     "endDate": "2026-09-19"
   },
   {
+    "name": "ADGD26 Throllers Nonvitational 3 - MPO, FPO, MP40, FP40, MA1, FA1, MA2, FA2, MA40, FA",
+    "eventId": 106790,
+    "tier": "C",
+    "location": "Clarinda, Victoria, Australia",
+    "startDate": "2026-09-19",
+    "endDate": "2026-09-19"
+  },
+  {
     "name": "ADGC26 Werribee Wander",
     "eventId": 106659,
     "tier": "C",
     "location": "Werribee, Victoria, Australia",
+    "startDate": "2026-09-20",
+    "endDate": "2026-09-20"
+  },
+  {
+    "name": "ADGD26 Throllers Nonvitational 3 - MA3, FA3, MA4, FA4, MA50, FA50",
+    "eventId": 106807,
+    "tier": "C",
+    "location": "Clarinda, Victoria, Australia",
     "startDate": "2026-09-20",
     "endDate": "2026-09-20"
   },
