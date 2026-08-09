@@ -1,4 +1,4 @@
-# Melbourne Disc Golf Club website (WIP)
+# Melbourne Disc Golf Club website
 
 [![Deployment Status](https://img.shields.io/github/check-runs/melbourne-disc-golf/mdgc-website/HEAD?label="deployment")](https://github.com/melbourne-disc-golf/mdgc-website/commits/main)
 
@@ -6,11 +6,11 @@ The website of the Melbourne Disc Golf Club.
 
 ## 📋 Project Status
 
-We recently (Dec 6, 2025) went live, migrating traffic from the old WordPress site to this one.
+We went live on 6 December 2025, migrating traffic from the old WordPress site, which has since been decommissioned.
 
 To get an idea of what's left to do, see
 
-- [**open issues** on GitHub](https://github.com/mdgc/mdgc-website/issues)
+- [**open issues** on GitHub](https://github.com/melbourne-disc-golf/mdgc-website/issues)
 
 ## 🌐 Live Site
 
@@ -175,8 +175,7 @@ All commands are run from the root of the project, from a terminal:
 │   ├── layouts/
 │   └── pages/
 ├── package.json
-├── existing-site/
-└── existing-site/    # Original site files (reference only)
+└── old-wordpress-site/  # archived sketch of the former WordPress site (reference only)
 ```
 
 To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).

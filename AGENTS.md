@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project involves building a new modern website for the Melbourne Disc Golf Club (MDGC) to replace their existing WordPress site.
+This is the website for the Melbourne Disc Golf Club (MDGC). It replaced the club's former WordPress site, which was decommissioned in December 2025.
 
 ## Project structure
 
@@ -20,14 +20,14 @@ src/
 ├── styles/       # global.css
 └── assets/       # images, icons
 
-existing-site/    # sketch of the original WordPress site (reference)
+old-wordpress-site/  # archived sketch of the former WordPress site (reference)
 ```
 
-## Existing site
+## Former WordPress site
 
-The existing (Wordpress-based) website is hosted at https://www.melbournediscgolf.com/.
+The club's previous website was WordPress-based. It was decommissioned in December 2025, when this site took over https://www.melbournediscgolf.com/.
 
-The [`existing-site/`](existing-site/) directory contains a "sketch" of that existing site, including key content.
+The [`old-wordpress-site/`](old-wordpress-site/) directory contains a "sketch" of that old site, retained as a content reference.
 
 ## Approach
 
