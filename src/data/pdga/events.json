@@ -1,13 +1,5 @@
 [
   {
-    "name": "VMS Mount Xavier Presented by Guf Ballarat",
-    "eventId": 105494,
-    "tier": "C",
-    "location": "Ballarat, Victoria, Australia",
-    "startDate": "2026-08-09",
-    "endDate": "2026-08-09"
-  },
-  {
     "name": "VMS Bicentennial Presented by Portal Disc Sports",
     "eventId": 105050,
     "tier": "C",
@@ -24,7 +16,7 @@
     "endDate": "2026-08-23"
   },
   {
-    "name": "VMS TBD Presented by Bespoke Disc Golf.",
+    "name": "VMS Ruffey Lake Finale Presented by Bespoke Disc Golf.",
     "eventId": 105566,
     "tier": "C",
     "location": "Clarinda, Victoria, Australia",
