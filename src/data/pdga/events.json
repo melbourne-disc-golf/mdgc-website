@@ -16,14 +16,6 @@
     "endDate": "2026-08-23"
   },
   {
-    "name": "VMS Ruffey Lake Finale Presented by Bespoke Disc Golf.",
-    "eventId": 105566,
-    "tier": "C",
-    "location": "Clarinda, Victoria, Australia",
-    "startDate": "2026-08-23",
-    "endDate": "2026-08-23"
-  },
-  {
     "name": "2026 NSW Open Presented by Tyrepower Rouse Hill",
     "eventId": 105218,
     "tier": "B",
@@ -102,6 +94,14 @@
     "location": "Wannaroo, Western Australia, Australia",
     "startDate": "2026-09-26",
     "endDate": "2026-09-28"
+  },
+  {
+    "name": "VMS Ruffey Lake Finale Presented by Bespoke Disc Golf.",
+    "eventId": 105566,
+    "tier": "C",
+    "location": "Doncaster, Victoria, Australia",
+    "startDate": "2026-09-27",
+    "endDate": "2026-09-27"
   },
   {
     "name": "Aussie Masters 2026",
