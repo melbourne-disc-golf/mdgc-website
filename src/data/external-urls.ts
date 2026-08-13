@@ -6,5 +6,5 @@ export const externalUrls = {
   ctb: 'https://docs.google.com/forms/d/1qG5hbu89CphfQhYTAXnmCRAqe84S5EgCChU908jlZTQ',
   metrixSocialDays: 'https://discgolfmetrix.com/?u=club_events&id=235',
   metrixScoringRules: 'https://discgolfmetrix.com/?u=rule&ID=6',
-  metrixFavicon: 'https://discgolfmetrix.com/assets/img/favicon.png',
+  metrixFavicon: '/images/logos/metrix-favicon.png',
 } as const;
