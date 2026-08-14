@@ -8,7 +8,6 @@ import NavLink from '@components/NavLink.astro';
 import Grid from '@components/Grid.astro';
 import IllustrationImage from '@components/IllustrationImage.astro';
 import Figure from '@components/Figure.astro';
-import Panel from '@components/Panel.astro';
 import howToPlayImage from '@images/how-to-play-disc-golf.svg';
 import starterSetImage from '@images/rpm-starter-set.webp';
 import basketImage from '@images/disc-golf-basket.jpg';
@@ -21,7 +20,8 @@ But instead of hitting balls with clubs, you throw flying discs with your hands.
 
 <Figure src={howToPlayImage} alt="stick figure demonstrates how to play" caption="It's easy - just throw the disc in the basket." />
 
-<Panel class="bg-slate-100 mx-auto max-w-2xl">
+<div class="mx-auto max-w-2xl">
+
 |  | traditional "ball" golf | disc golf |
 |---|---|---|
 | **thing** | small white **ball** | plastic flying **disc** |
@@ -30,7 +30,8 @@ But instead of hitting balls with clubs, you throw flying discs with your hands.
 | **venue** | manicured **golf course** | public **park** |
 | **cost** | $$$ (clubs + green fees) | $ (discs are cheap) |
 | **duration** | 4-5 hours | 2-3 hours |
-</Panel>
+
+</div>
 
 The game dates back to the advent of the "[frisbee](https://en.wikipedia.org/wiki/Frisbee)" in the early 1960s.
 The first formal disc golf course was installed in California in 1975, and

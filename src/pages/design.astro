@@ -37,6 +37,17 @@ const accents: Swatch[] = [
   swatch('bg-amber-500', '.social-callout — left border'),
   swatch('bg-amber-50', '.social-callout — background'),
 ];
+
+// Demo data for the "Tables" section (the champs "projected field caps").
+const capsRows = [
+  { div: 'Div A', morning: 21, finals: 10 },
+  { div: 'Div B', morning: 19, finals: 8 },
+  { div: 'Div C', morning: 10, finals: 6 },
+  { div: 'Div D', morning: 16, finals: 8 },
+  { div: '50+', morning: 8, finals: 4 },
+  { div: 'Female', morning: 6, finals: 4 },
+];
+const capsTotal = { morning: 80, finals: 40 };
 ---
 
 <Layout title="Design language" subtitle="the visual system for this site">
@@ -210,11 +221,24 @@ const accents: Swatch[] = [
             <li>Ordered list item</li>
             <li>Another step</li>
           </ol>
+        </div>
+      </div>
+
+      <h3>Tables</h3>
+      <p>Any table in a page body (a Markdown pipe-table, or plain <code>&lt;table&gt;</code> HTML) is
+         styled as a bordered, striped, rounded box with a filled header row. Numeric columns (Markdown
+         <code>|--:|</code>, which emits <code>text-align:right</code>) get <code>tabular-nums</code>.
+         The styling lives in <code>global.css</code>; authors just write a normal table.</p>
+
+      <div class="max-w-md">
+        <div class="prose">
           <table>
-            <thead><tr><th>Course</th><th>Suburb</th></tr></thead>
+            <thead><tr><th>Division</th><th style="text-align:right">Morning</th><th style="text-align:right">Finals</th></tr></thead>
             <tbody>
-              <tr><td>Bald Hill</td><td>Clarinda</td></tr>
-              <tr><td>Ruffey Lake</td><td>Templestowe</td></tr>
+              {capsRows.map((r) => (
+                <tr><td>{r.div}</td><td style="text-align:right">{r.morning}</td><td style="text-align:right">{r.finals}</td></tr>
+              ))}
+              <tr><td><strong>Total</strong></td><td style="text-align:right"><strong>{capsTotal.morning}</strong></td><td style="text-align:right"><strong>{capsTotal.finals}</strong></td></tr>
             </tbody>
           </table>
         </div>
@@ -398,10 +422,6 @@ const accents: Swatch[] = [
 
   /* Let the real .prose styling show, but drop its max-width centring inside the demo. */
   .prose-demo {
-    border: 1px solid #dbe4ee;
-    border-radius: 0.75rem;
-    background: #fff;
-    padding: 0.5rem 1.5rem 1.5rem;
     margin: 1rem 0;
   }
 
