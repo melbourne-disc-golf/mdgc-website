@@ -229,9 +229,13 @@ a:hover {
   font-variant-numeric: tabular-nums;
 }
 
-/* Panel — a generic card container (see Panel.astro). A leading heading loses
-   its top margin, and the last child its bottom margin, so slotted content sits
-   flush against the panel padding. */
+/* Panel — a generic card container. A leading heading loses its top margin, and
+   the last child its bottom margin, so content sits flush against the padding. */
+.panel {
+  @apply rounded-lg bg-white p-4 my-4;
+  box-shadow: var(--panel-shadow);
+}
+
 .panel > :is(h2, h3):first-child {
   margin-top: 0;
 }
