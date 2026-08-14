@@ -183,11 +183,14 @@ a:hover {
 .prose table {
   width: 100%;
   margin: 1.5rem 0;
-  border: 1px solid #e2e8f0; /* slate-200 */
-  border-radius: 0.75rem;
+  border: 1px solid #cbd5e1; /* slate-300 */
+  border-radius: 0.5rem;
   overflow: hidden;
-  box-shadow: var(--panel-shadow);
-  border-collapse: collapse;
+  /* `separate` (not `collapse`) so the table's own border + rounded corners
+     actually paint — with `collapse`, `overflow: hidden` clips the outer border
+     away. Row separators live on the cells (see `.prose tbody td`). */
+  border-collapse: separate;
+  border-spacing: 0;
   font-size: 0.875rem;
   text-align: left;
 }
@@ -210,12 +213,31 @@ a:hover {
   background: #f8fafc; /* slate-50 */
 }
 
+/* Internal grid lines, a touch lighter than the slate-300 outer border.
+   Horizontal lines between rows (border-top), vertical lines between columns
+   (border-left via the adjacent-sibling selector, so the first column has no
+   left border and the outer border handles the perimeter). */
 .prose tbody td {
-  border-top: 1px solid #f1f5f9; /* slate-100 */
+  border-top: 1px solid #e2e8f0; /* slate-200 */
+}
+
+.prose :is(th, td) + :is(th, td) {
+  border-left: 1px solid #e2e8f0; /* slate-200 */
 }
 
 .prose :is(td, th)[style*="right"] {
   font-variant-numeric: tabular-nums;
+}
+
+/* Panel — a generic card container (see Panel.astro). A leading heading loses
+   its top margin, and the last child its bottom margin, so slotted content sits
+   flush against the panel padding. */
+.panel > :is(h2, h3):first-child {
+  margin-top: 0;
+}
+
+.panel > :last-child {
+  margin-bottom: 0;
 }
 
 .redbox {
