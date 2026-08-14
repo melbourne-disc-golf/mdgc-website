@@ -6,6 +6,6 @@ export interface Props {
 const { class: className = "" } = Astro.props;
 ---
 
-<div class={`panel rounded-lg bg-white p-4 my-4 ${className}`}>
+<div class={`panel rounded-lg bg-white p-4 my-4 shadow-[var(--panel-shadow)] ${className}`}>
 	<slot />
 </div>
