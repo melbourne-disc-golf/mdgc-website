@@ -45,13 +45,24 @@ type MetrixEvent = {
 };
 
 /**
- * Extract the first paragraph from markdown body and strip formatting.
+ * Extract the first prose paragraph from a (possibly MDX) markdown body and
+ * strip formatting. Skips leading non-prose blocks — MDX import/export
+ * statements, JSX/HTML tags, and headings — so calendar descriptions never
+ * leak source markup.
  */
 function extractFirstParagraph(body: string): string | undefined {
   const paragraphs = body.split(/\n\n+/).filter((p) => p.trim());
-  if (!paragraphs.length) return undefined;
 
-  return paragraphs[0]
+  const prose = paragraphs.find((p) => {
+    const trimmed = p.trim();
+    if (/^(?:import|export)\b/.test(trimmed)) return false; // MDX import/export
+    if (trimmed.startsWith('<')) return false; // JSX/HTML block
+    if (trimmed.startsWith('#')) return false; // heading
+    return true;
+  });
+  if (!prose) return undefined;
+
+  return prose
     .replace(/\*\*(.+?)\*\*/g, '$1') // **bold** → bold
     .replace(/\*(.+?)\*/g, '$1') // *italic* → italic
     .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // [text](url) → text
