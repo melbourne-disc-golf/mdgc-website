@@ -3361,11 +3361,36 @@
         "Total": 59
       },
       {
+        "UserID": "246255",
+        "Name": "Sofia Ocana",
+        "ClassName": "",
+        "CountryCode": "AU",
+        "Place": 5,
+        "EventResults": [
+          null,
+          null,
+          null,
+          102,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 102
+      },
+      {
         "UserID": "168026",
         "Name": "Matthew Rushton",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 5,
+        "Place": 6,
         "EventResults": [
           null,
           null,
@@ -3390,7 +3415,7 @@
         "Name": "Alistair Don",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 6,
+        "Place": 7,
         "EventResults": [
           72,
           null,
@@ -3415,7 +3440,7 @@
         "Name": "Adam Speirs",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 7,
+        "Place": 8,
         "EventResults": [
           null,
           null,
@@ -3486,16 +3511,16 @@
         "Total": 79
       },
       {
-        "UserID": "246255",
-        "Name": "Sofia Ocana",
-        "ClassName": "",
+        "UserID": "164355",
+        "Name": "Thomas Jancar",
+        "ClassName": "Div Z - Non MDGC Members",
         "CountryCode": "AU",
-        "Place": 2,
+        "Place": 1,
         "EventResults": [
           null,
           null,
           null,
-          102,
+          null,
           null,
           null,
           null,
@@ -3508,7 +3533,7 @@
           null,
           null
         ],
-        "Total": 102
+        "Total": 0
       },
       {
         "UserID": "69585",
