@@ -21,8 +21,8 @@
         "UserID": 227796,
         "Rating": 777,
         "Result": 62,
-        "HC": 18.85,
-        "Change": 43.15,
+        "HC": 18.91,
+        "Change": 43.09,
         "Order": 1
       },
       {
@@ -31,8 +31,8 @@
         "UserID": 232102,
         "Rating": 922,
         "Result": 54,
-        "HC": 6.59,
-        "Change": 47.41,
+        "HC": 6.62,
+        "Change": 47.38,
         "Order": 2
       },
       {
@@ -41,8 +41,8 @@
         "UserID": 42838,
         "Rating": 963,
         "Result": 51,
-        "HC": 3.13,
-        "Change": 47.87,
+        "HC": 3.14,
+        "Change": 47.86,
         "Order": 3
       },
       {
@@ -51,8 +51,8 @@
         "UserID": 141776,
         "Rating": 910,
         "Result": 56,
-        "HC": 7.61,
-        "Change": 48.39,
+        "HC": 7.63,
+        "Change": 48.37,
         "Order": 4
       },
       {
@@ -61,8 +61,8 @@
         "UserID": 234876,
         "Rating": 784,
         "Result": 67,
-        "HC": 18.26,
-        "Change": 48.739999999999995,
+        "HC": 18.32,
+        "Change": 48.68,
         "Order": 5
       },
       {
@@ -71,8 +71,8 @@
         "UserID": 132835,
         "Rating": 833,
         "Result": 63,
-        "HC": 14.12,
-        "Change": 48.88,
+        "HC": 14.16,
+        "Change": 48.84,
         "Order": 6
       },
       {
@@ -81,8 +81,8 @@
         "UserID": 168559,
         "Rating": 916,
         "Result": 56,
-        "HC": 7.1,
-        "Change": 48.9,
+        "HC": 7.12,
+        "Change": 48.88,
         "Order": 7
       },
       {
@@ -91,8 +91,8 @@
         "UserID": 195141,
         "Rating": 882,
         "Result": 59,
-        "HC": 9.97,
-        "Change": 49.03,
+        "HC": 10.01,
+        "Change": 48.99,
         "Order": 8
       },
       {
@@ -101,8 +101,8 @@
         "UserID": 63403,
         "Rating": 824,
         "Result": 64,
-        "HC": 14.88,
-        "Change": 49.12,
+        "HC": 14.93,
+        "Change": 49.07,
         "Order": 9
       },
       {
@@ -111,8 +111,8 @@
         "UserID": 200189,
         "Rating": 861,
         "Result": 61,
-        "HC": 11.75,
-        "Change": 49.25,
+        "HC": 11.79,
+        "Change": 49.21,
         "Order": 10
       },
       {
@@ -121,8 +121,8 @@
         "UserID": 196025,
         "Rating": 862,
         "Result": 61,
-        "HC": 11.67,
-        "Change": 49.33,
+        "HC": 11.7,
+        "Change": 49.3,
         "Order": 11
       },
       {
@@ -131,8 +131,8 @@
         "UserID": 133657,
         "Rating": 899,
         "Result": 58,
-        "HC": 8.54,
-        "Change": 49.46,
+        "HC": 8.57,
+        "Change": 49.43,
         "Order": 12
       },
       {
@@ -141,19 +141,9 @@
         "UserID": 211228,
         "Rating": 906,
         "Result": 58,
-        "HC": 7.95,
-        "Change": 50.05,
+        "HC": 7.97,
+        "Change": 50.03,
         "Order": 13
-      },
-      {
-        "Name": "Succulent Chinese Meal",
-        "ClassName": "Div A - Metrix Rating > 890",
-        "UserID": 40476,
-        "Rating": 895,
-        "Result": 59,
-        "HC": 8.88,
-        "Change": 50.12,
-        "Order": 14
       },
       {
         "Name": "Charlotte Davies",
@@ -161,8 +151,18 @@
         "UserID": 217207,
         "Rating": 765,
         "Result": 70,
-        "HC": 19.86,
-        "Change": 50.14,
+        "HC": 19.93,
+        "Change": 50.07,
+        "Order": 14
+      },
+      {
+        "Name": "Succulent Chinese Meal",
+        "ClassName": "Div A - Metrix Rating > 890",
+        "UserID": 40476,
+        "Rating": 895,
+        "Result": 59,
+        "HC": 8.91,
+        "Change": 50.09,
         "Order": 15
       },
       {
@@ -171,8 +171,8 @@
         "UserID": 180459,
         "Rating": 878,
         "Result": 61,
-        "HC": 10.31,
-        "Change": 50.69,
+        "HC": 10.35,
+        "Change": 50.65,
         "Order": 16
       },
       {
@@ -181,8 +181,8 @@
         "UserID": 234783,
         "Rating": 730,
         "Result": 74,
-        "HC": 22.82,
-        "Change": 51.18,
+        "HC": 22.9,
+        "Change": 51.1,
         "Order": 17
       },
       {
@@ -191,8 +191,8 @@
         "UserID": 137014,
         "Rating": 837,
         "Result": 65,
-        "HC": 13.78,
-        "Change": 51.22,
+        "HC": 13.83,
+        "Change": 51.17,
         "Order": 18
       },
       {
@@ -201,8 +201,8 @@
         "UserID": 134540,
         "Rating": 852,
         "Result": 64,
-        "HC": 12.51,
-        "Change": 51.49,
+        "HC": 12.55,
+        "Change": 51.45,
         "Order": 19
       },
       {
@@ -211,8 +211,8 @@
         "UserID": 195146,
         "Rating": 827,
         "Result": 67,
-        "HC": 14.62,
-        "Change": 52.38,
+        "HC": 14.67,
+        "Change": 52.33,
         "Order": 20
       },
       {
@@ -221,8 +221,8 @@
         "UserID": 195066,
         "Rating": 823,
         "Result": 68,
-        "HC": 14.96,
-        "Change": 53.04,
+        "HC": 15.01,
+        "Change": 52.99,
         "Order": 21
       },
       {
@@ -231,8 +231,8 @@
         "UserID": 216521,
         "Rating": 896,
         "Result": 62,
-        "HC": 8.79,
-        "Change": 53.21,
+        "HC": 8.82,
+        "Change": 53.18,
         "Order": 22
       },
       {
@@ -241,8 +241,8 @@
         "UserID": 170805,
         "Rating": 839,
         "Result": 67,
-        "HC": 13.61,
-        "Change": 53.39,
+        "HC": 13.66,
+        "Change": 53.34,
         "Order": 23
       },
       {
@@ -251,8 +251,8 @@
         "UserID": 19290,
         "Rating": 949,
         "Result": 58,
-        "HC": 4.31,
-        "Change": 53.69,
+        "HC": 4.33,
+        "Change": 53.67,
         "Order": 24
       },
       {
@@ -261,8 +261,8 @@
         "UserID": 208038,
         "Rating": 904,
         "Result": 62,
-        "HC": 8.11,
-        "Change": 53.89,
+        "HC": 8.14,
+        "Change": 53.86,
         "Order": 25
       },
       {
@@ -271,8 +271,8 @@
         "UserID": 216079,
         "Rating": 646,
         "Result": 84,
-        "HC": 29.92,
-        "Change": 54.08,
+        "HC": 30.03,
+        "Change": 53.97,
         "Order": 26
       },
       {
@@ -281,8 +281,8 @@
         "UserID": 135396,
         "Rating": 911,
         "Result": 62,
-        "HC": 7.52,
-        "Change": 54.480000000000004,
+        "HC": 7.55,
+        "Change": 54.45,
         "Order": 27
       },
       {
@@ -291,8 +291,8 @@
         "UserID": 133762,
         "Rating": 900,
         "Result": 63,
-        "HC": 8.45,
-        "Change": 54.55,
+        "HC": 8.48,
+        "Change": 54.519999999999996,
         "Order": 28
       },
       {
@@ -301,8 +301,8 @@
         "UserID": 195850,
         "Rating": 863,
         "Result": 67,
-        "HC": 11.58,
-        "Change": 55.42,
+        "HC": 11.62,
+        "Change": 55.38,
         "Order": 29
       },
       {
@@ -311,8 +311,8 @@
         "UserID": 234143,
         "Rating": 760,
         "Result": 76,
-        "HC": 20.29,
-        "Change": 55.71,
+        "HC": 20.36,
+        "Change": 55.64,
         "Order": 30
       },
       {
@@ -321,8 +321,8 @@
         "UserID": 235235,
         "Rating": 726,
         "Result": 81,
-        "HC": 23.16,
-        "Change": 57.84,
+        "HC": 23.24,
+        "Change": 57.760000000000005,
         "Order": 31
       },
       {
@@ -331,8 +331,8 @@
         "UserID": 219287,
         "Rating": 801,
         "Result": 76,
-        "HC": 16.82,
-        "Change": 59.18,
+        "HC": 16.88,
+        "Change": 59.120000000000005,
         "Order": 32
       },
       {
@@ -341,8 +341,8 @@
         "UserID": 224215,
         "Rating": 369,
         "Result": 113,
-        "HC": 53.34,
-        "Change": 59.66,
+        "HC": 53.52,
+        "Change": 59.48,
         "Order": 33
       },
       {
@@ -351,8 +351,8 @@
         "UserID": 211227,
         "Rating": 864,
         "Result": 73,
-        "HC": 11.5,
-        "Change": 61.5,
+        "HC": 11.54,
+        "Change": 61.46,
         "Order": 34
       },
       {
@@ -361,8 +361,8 @@
         "UserID": 222635,
         "Rating": 524,
         "Result": 103,
-        "HC": 40.24,
-        "Change": 62.76,
+        "HC": 40.37,
+        "Change": 62.63,
         "Order": 35
       },
       {
@@ -371,8 +371,8 @@
         "UserID": 234213,
         "Rating": 0,
         "Result": 101,
-        "HC": 84.53,
-        "Change": 16.47,
+        "HC": 84.82,
+        "Change": 16.180000000000007,
         "Order": 36
       },
       {
@@ -381,8 +381,8 @@
         "UserID": 241799,
         "Rating": 0,
         "Result": 134,
-        "HC": 84.53,
-        "Change": 49.47,
+        "HC": 84.82,
+        "Change": 49.18000000000001,
         "Order": 37
       }
     ],
