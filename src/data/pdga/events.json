@@ -112,6 +112,14 @@
     "endDate": "2026-10-25"
   },
   {
+    "name": "2026 Eruption",
+    "eventId": 107620,
+    "tier": "A",
+    "location": "Mount Gambier, South Australia, Australia",
+    "startDate": "2026-10-29",
+    "endDate": "2026-11-01"
+  },
+  {
     "name": "St Annes Chain Smash",
     "eventId": 105386,
     "tier": "C",
