@@ -71,7 +71,12 @@ const { locations, permanentTooltips = false, class: className } = Astro.props;
 
     const map = L.map(container, { scrollWheelZoom: false });
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    // CARTO requires a key on its raster basemaps — without one, tiles come back
+    // watermarked "API KEY REQUIRED". Public by necessity (browsers fetch the tiles
+    // directly), and free up to 5M tiles/month. Rotate at carto.com/basemaps/apikey.
+    const tileUrl = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=cb1_2u3n_1_8bd216812a7b6cdd08efcb53';
+
+    L.tileLayer(tileUrl, {
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/attributions">CARTO</a>',
       maxZoom: 20,
       subdomains: 'abcd'
