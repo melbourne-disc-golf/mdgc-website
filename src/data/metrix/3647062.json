@@ -2886,11 +2886,36 @@
         "Total": 64
       },
       {
+        "UserID": "217418",
+        "Name": "Emmanuel Zafiris",
+        "ClassName": "",
+        "CountryCode": "AU",
+        "Place": 112,
+        "EventResults": [
+          null,
+          null,
+          null,
+          66,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 66
+      },
+      {
         "UserID": "164802",
         "Name": "Brett Ziebell",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 112,
+        "Place": 113,
         "EventResults": [
           null,
           null,
@@ -2915,7 +2940,7 @@
         "Name": "Paul Arden",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 112,
+        "Place": 113,
         "EventResults": [
           null,
           null,
@@ -2940,7 +2965,7 @@
         "Name": "Matthew Farina",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 114,
+        "Place": 115,
         "EventResults": [
           null,
           null,
@@ -2965,7 +2990,7 @@
         "Name": "Steve Davis",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 115,
+        "Place": 116,
         "EventResults": [
           null,
           null,
@@ -2990,7 +3015,7 @@
         "Name": "Alex Evans",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 116,
+        "Place": 117,
         "EventResults": [
           null,
           null,
@@ -3015,7 +3040,7 @@
         "Name": "Caelan Haramis",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 117,
+        "Place": 118,
         "EventResults": [
           null,
           null,
@@ -3036,17 +3061,17 @@
         "Total": 53
       },
       {
-        "UserID": "217418",
-        "Name": "Emmanuel Zafiris",
+        "UserID": "199653",
+        "Name": "Oliver Morley",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 118,
+        "Place": 119,
         "EventResults": [
           null,
           null,
           null,
-          66,
           null,
+          68,
           null,
           null,
           null,
@@ -3058,14 +3083,14 @@
           null,
           null
         ],
-        "Total": 66
+        "Total": 68
       },
       {
         "UserID": "218039",
         "Name": "Simon Mackay",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 119,
+        "Place": 120,
         "EventResults": [
           null,
           null,
@@ -3090,7 +3115,7 @@
         "Name": "Saasha Glover",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 120,
+        "Place": 121,
         "EventResults": [
           null,
           null,
@@ -3115,7 +3140,7 @@
         "Name": "Rob Hall",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 121,
+        "Place": 122,
         "EventResults": [
           null,
           null,
@@ -3140,7 +3165,7 @@
         "Name": "Jacob Cruden",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 121,
+        "Place": 122,
         "EventResults": [
           null,
           null,
@@ -3161,61 +3186,11 @@
         "Total": 55
       },
       {
-        "UserID": "199653",
-        "Name": "Oliver Morley",
-        "ClassName": "",
-        "CountryCode": "AU",
-        "Place": 123,
-        "EventResults": [
-          null,
-          null,
-          null,
-          null,
-          68,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        "Total": 68
-      },
-      {
-        "UserID": "168204",
-        "Name": "David Wood",
-        "ClassName": "",
-        "CountryCode": "AU",
-        "Place": 124,
-        "EventResults": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          53,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        "Total": 53
-      },
-      {
         "UserID": "229115",
         "Name": "Lachlan Cooke",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 125,
+        "Place": 124,
         "EventResults": [
           null,
           null,
@@ -3236,11 +3211,61 @@
         "Total": 71
       },
       {
+        "UserID": "168204",
+        "Name": "David Wood",
+        "ClassName": "",
+        "CountryCode": "AU",
+        "Place": 125,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          53,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 53
+      },
+      {
+        "UserID": "234143",
+        "Name": "Paul Tindall",
+        "ClassName": "",
+        "CountryCode": "AU",
+        "Place": 126,
+        "EventResults": [
+          null,
+          76,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 76
+      },
+      {
         "UserID": "193252",
         "Name": "Adam Speirs",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 126,
+        "Place": 127,
         "EventResults": [
           null,
           null,
@@ -3265,7 +3290,7 @@
         "Name": "Lachlan McKenzie",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 127,
+        "Place": 128,
         "EventResults": [
           null,
           56,
@@ -3290,7 +3315,7 @@
         "Name": "Richard Hopkins",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 128,
+        "Place": 129,
         "EventResults": [
           null,
           null,
@@ -3315,7 +3340,7 @@
         "Name": "Isabel Schiavon",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 129,
+        "Place": 130,
         "EventResults": [
           null,
           null,
@@ -3340,7 +3365,7 @@
         "Name": "Oscar Fehlberg",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 130,
+        "Place": 131,
         "EventResults": [
           null,
           null,
@@ -3361,14 +3386,14 @@
         "Total": 59
       },
       {
-        "UserID": "234143",
-        "Name": "Paul Tindall",
-        "ClassName": "",
+        "UserID": "137097",
+        "Name": "Elisha Bukka",
+        "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
-        "Place": 131,
+        "Place": 1,
         "EventResults": [
           null,
-          76,
+          null,
           null,
           null,
           null,
@@ -3383,14 +3408,14 @@
           null,
           null
         ],
-        "Total": 76
+        "Total": 0
       },
       {
         "UserID": "32212",
         "Name": "Racim Radjef",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 132,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -3415,7 +3440,7 @@
         "Name": "Matthew Rushton",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 133,
+        "Place": 2,
         "EventResults": [
           null,
           null,
@@ -3440,7 +3465,7 @@
         "Name": "saasha Glover",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 134,
+        "Place": 3,
         "EventResults": [
           91,
           null,
@@ -3465,7 +3490,7 @@
         "Name": "Carrie Grima",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 135,
+        "Place": 4,
         "EventResults": [
           null,
           null,
@@ -3490,7 +3515,7 @@
         "Name": "Liam Bantock",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 136,
+        "Place": 5,
         "EventResults": [
           null,
           101,
@@ -3515,7 +3540,7 @@
         "Name": "Choo Tran",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 137,
+        "Place": 6,
         "EventResults": [
           66,
           null,
@@ -3540,7 +3565,7 @@
         "Name": "Sofia Ocana",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 138,
+        "Place": 7,
         "EventResults": [
           null,
           null,
@@ -3565,7 +3590,7 @@
         "Name": "PETER HOWES",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 139,
+        "Place": 8,
         "EventResults": [
           79,
           null,
@@ -3590,7 +3615,7 @@
         "Name": "Daniel Frawley",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 140,
+        "Place": 9,
         "EventResults": [
           null,
           null,
@@ -3615,7 +3640,7 @@
         "Name": "Eamon Dawson",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 141,
+        "Place": 10,
         "EventResults": [
           null,
           null,
@@ -3636,8 +3661,8 @@
         "Total": 60
       },
       {
-        "UserID": "137097",
-        "Name": "Elisha Bukka",
+        "UserID": "200786",
+        "Name": "Paul Rogers",
         "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
         "Place": 1,
