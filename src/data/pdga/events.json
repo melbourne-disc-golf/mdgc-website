@@ -104,6 +104,22 @@
     "endDate": "2026-11-08"
   },
   {
+    "name": "Rudolph Riot 2026 - MP40, FPO, MA1, FA40, MA50, FA2, MA3, FA4",
+    "eventId": 107910,
+    "tier": "C",
+    "location": "Waurn Ponds, Victoria, Australia",
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-14"
+  },
+  {
+    "name": "Rudolph Riot 2026 - MPO, FP40, FA1, MA40, MA2, FA50, FA3, MA4",
+    "eventId": 107912,
+    "tier": "C",
+    "location": "Waurn Ponds, Victoria, Australia",
+    "startDate": "2026-11-15",
+    "endDate": "2026-11-15"
+  },
+  {
     "name": "Australian Disc Golf Championships 2026 - Weekend 1",
     "eventId": 105864,
     "tier": "B",
