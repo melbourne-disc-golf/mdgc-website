@@ -1,13 +1,5 @@
 [
   {
-    "name": "Cobden Carnage",
-    "eventId": 104824,
-    "tier": "C",
-    "location": "Cobden, Victoria, Australia",
-    "startDate": "2026-09-13",
-    "endDate": "2026-09-13"
-  },
-  {
     "name": "ADGD26 - Vic Park Ballarat",
     "eventId": 106673,
     "tier": "C",
@@ -40,7 +32,7 @@
     "endDate": "2026-09-20"
   },
   {
-    "name": "ADGD26 Werribee Wander",
+    "name": "ADGD26 Werribee Wander presented by Flying Disc Store",
     "eventId": 106659,
     "tier": "C",
     "location": "Werribee, Victoria, Australia",
