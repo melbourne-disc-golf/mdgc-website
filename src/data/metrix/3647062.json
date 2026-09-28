@@ -3713,9 +3713,9 @@
       {
         "UserID": "100556",
         "Name": "David Gannon",
-        "ClassName": "Div B - Metrix Rating 845-890",
+        "ClassName": "",
         "CountryCode": "AU",
-        "Place": 1,
+        "Place": 145,
         "EventResults": [
           null,
           null,
@@ -3740,7 +3740,7 @@
         "Name": "Lachlan Cooke",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 1,
+        "Place": 146,
         "EventResults": [
           null,
           null,
@@ -3765,7 +3765,7 @@
         "Name": "Matt Mutter",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 2,
+        "Place": 147,
         "EventResults": [
           null,
           null,
@@ -3790,7 +3790,7 @@
         "Name": "Sofia Ocana",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 3,
+        "Place": 148,
         "EventResults": [
           null,
           null,
@@ -3815,7 +3815,7 @@
         "Name": "Alistair Don",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 4,
+        "Place": 149,
         "EventResults": [
           72,
           null,
@@ -3840,7 +3840,7 @@
         "Name": "Adam Speirs",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 5,
+        "Place": 150,
         "EventResults": [
           null,
           null,
@@ -3865,7 +3865,7 @@
         "Name": "Anthony Pearsall",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 6,
+        "Place": 151,
         "EventResults": [
           null,
           null,
