@@ -4,7 +4,7 @@
 
 The website of the Melbourne Disc Golf Club.
 
-## 📋 Project Status
+## 📋 Project status
 
 We went live on 6 December 2025, migrating traffic from the old WordPress site, which has since been decommissioned.
 
@@ -12,7 +12,7 @@ To get an idea of what's left to do, see
 
 - [**open issues** on GitHub](https://github.com/melbourne-disc-golf/mdgc-website/issues)
 
-## 🌐 Live Site
+## 🌐 Live site
 
 The site is available at:
 
@@ -40,6 +40,7 @@ We have integrated a Content Management System (CMS) into the site, for manageme
 - **Events**
 - **Courses**
 - **Board Members**
+- **Fragments**: editable blocks of text on a few pages (homepage text, Shop Talk, Summer Cup details)
 
 To use the CMS:
   - Visit https://mdgc.pages.dev/cms
@@ -52,6 +53,8 @@ Hint: pages which can be edited in the CMS _usually_ have a pencil icon in the f
 <p align="center">
   <img width="300" src="./docs/edit-in-cms.png" alt="Edit in CMS link">
 </p>
+
+For how the CMS is set up, see [`docs/sveltia-cms.md`](docs/sveltia-cms.md).
 
 #### Using GitHub's web interface
 
@@ -75,7 +78,7 @@ If you're comfortable with Git and development tools:
 When you make changes to the site source-code on GitHub - using either the CMS, or the GitHub
 web interface - it triggers an automatic "build" and "deployment" process, which updates the live site.
 
-**Redployment of the site after a change takes about one minute**.
+**Redeployment of the site after a change takes about one minute**.
 
 You can observe the process on the [Cloudflare dashboard](https://dash.cloudflare.com/1dbfd2793b506e08151b86bd944859b5/pages/view/mdgc).
 Tip: if you're wondering whether your changes are live yet, check the "last updated" timestamp in bottom-left of the page footer.
@@ -84,7 +87,7 @@ Tip: if you're wondering whether your changes are live yet, check the "last upda
 
 ### News (via Mailchimp)
 
-The [News page](/club/news) displays recent newsletters from our Mailchimp mailing list. To add news:
+The [News page](https://www.melbournediscgolf.com/club/news) displays recent newsletters from our Mailchimp mailing list. To add news:
 
 1. Send a newsletter campaign via [Mailchimp](https://mailchimp.com/)
 2. File the campaign in the "Club News" folder
@@ -95,21 +98,21 @@ The News page embeds a feed from Mailchimp, so it updates automatically - no cha
 
 Event data for Social Days is synced from [Disc Golf Metrix](https://discgolfmetrix.com/).
 
-A [GitHub Actions workflow](.github/workflows/sync-metrix.yml) runs nightly, fetching the latest event data and committing any changes back to the repository. This triggers a site rebuild, keeping the events page up to date.
+A [GitHub Actions workflow](.github/workflows/sync-metrix.yml) runs twice a day (around 2am and 2pm Melbourne time), fetching the latest event data and committing any changes back to the repository. This triggers a site rebuild, keeping the events page up to date.
 
 To sync manually, [run the workflow via GitHub Actions](https://github.com/melbourne-disc-golf/mdgc-website/actions/workflows/sync-metrix.yml), or locally:
 
 ```sh
-pnpm tsx scripts/fetch-metrix-data.ts 3525298
+just fetch-metrix-season   # or: pnpm tsx scripts/fetch-metrix-data.ts
 ```
 
-(Replace `3525298` with the current season ID if it changes.)
+The seasons to sync are listed in `SEASON_IDS` near the top of [`scripts/fetch-metrix-data.ts`](scripts/fetch-metrix-data.ts); add the Metrix ID of each new season there. To fetch a one-off season, pass its ID as an argument (e.g. `just fetch-metrix-season 3647062`).
 
 ### External events (via PDGA)
 
 The events calendar can also show tournaments run by other clubs, scraped from the [PDGA tour calendar](https://www.pdga.com/tour). These are hidden by default on the [tournaments page](https://www.melbournediscgolf.com/events/tournaments) and revealed with the **"Include non-MDGC events"** toggle.
 
-Events are filtered by tier and region: C-tier and above in Victoria, B-tier and above elsewhere in Australia, and A-tier and above in New Zealand. Any that duplicate one of our own events (matched by PDGA event ID) are dropped. The result is stored in [`src/data/pdga/events.json`](src/data/pdga/events.json).
+Events are filtered by tier and region: C-tier and above in Victoria, B-tier and above elsewhere in Australia, and A-tier and above in New Zealand. The result is stored in [`src/data/pdga/events.json`](src/data/pdga/events.json). When the site is built, any that duplicate one of our own events (matched by PDGA event ID) are dropped.
 
 A [GitHub Actions workflow](.github/workflows/sync-pdga.yml) runs daily, re-scraping the calendar and committing any changes back to the repository. This triggers a site rebuild, keeping the events page up to date.
 
@@ -137,7 +140,7 @@ The workflow authenticates to the Cloudflare API using the `CLOUDFLARE_API_TOKEN
 
 ## ⚙️ Development
 
-### 🏗️ Tech Stack
+### 🏗️ Tech stack
 - **Type**: Static (generated) site
 - **Framework**: [Astro](https://astro.build) 6
 - **Styling**: [Tailwind CSS](https://tailwindcss.com) 4
@@ -162,23 +165,31 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm run preview`         | Preview your build locally, before deploying     |
 | `pnpm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `pnpm run astro -- --help` | Get help using the Astro CLI                     |
+| `pnpm test`                | Run the unit tests (Vitest)                      |
 
-### Project Structure
+There's also a [`Justfile`](Justfile) with shortcuts for these (run `just` to list them).
+
+### Project structure
 
 ```text
 /
-├── public/
-│   └── images/
+├── public/              # static files, including the CMS (public/cms/)
+├── functions/           # Cloudflare Pages Functions (GitHub login for the CMS)
+├── scripts/             # data-sync and maintenance scripts
+├── docs/                # extra documentation
 ├── src
-│   ├── assets/
-│   ├── components/
-│   ├── layouts/
-│   └── pages/
+│   ├── assets/
+│   ├── components/
+│   ├── content/         # content collections (courses, events, board, …)
+│   ├── data/            # site data, including synced Metrix and PDGA data
+│   ├── layouts/
+│   ├── pages/
+│   └── utils/           # build-time helpers (and their tests)
 ├── package.json
 └── old-wordpress-site/  # archived sketch of the former WordPress site (reference only)
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+To learn more about the folder structure of an Astro project, refer to [Astro's guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
 ## Comparison to original MDGC website
 
@@ -186,7 +197,7 @@ To learn more about the folder structure of an Astro project, refer to [our guid
 
 MDGC's previous website was based on WordPress. WordPress is a "dynamic" platform, which generates web-pages on-the-fly, as users browse.
 
-In constrast, this rebuild is a "static website", meaning that the web-pages are pre-built, meaning much less work needs to be done on the "server" when people use the site.  Because of this, it should be:
+In contrast, this site is a "static website": the web-pages are pre-built, so much less work needs to be done on the "server" when people use the site. Because of this, it is:
 
   - **Faster**. A static site loads almost instantly, even on mobile or low-bandwidth connections.
   - **Cheaper**. Static sites can be hosted very cheaply - often for free. No ongoing fees for WordPress hosting, security plugins, or maintenance work.
@@ -197,7 +208,7 @@ In constrast, this rebuild is a "static website", meaning that the web-pages are
 
 #### Code hosting = GitHub (free)
 
-The website code needs to be hosted somewhere. [GitHub](https://github.com) is a great option, and their Free plan support hosting of Git repositories with multiple collaborators.
+The website code needs to be hosted somewhere. [GitHub](https://github.com) is a great option, and their Free plan supports hosting of Git repositories with multiple collaborators.
 
 #### Site build and hosting = Cloudflare Pages (free)
 
@@ -208,4 +219,4 @@ On their Free [plan](https://developers.cloudflare.com/pages/platform/limits/), 
 #### Editing experience
 
 The experience of people _editing_ the website is quite different, for those used to WordPress. In particular, the new solution
-does not provide a WYSIWYG ("what you see is what you get") editing experience, and it will be harder to change site _styling_, without some technical knowledge. However - though a combination of Sveltia CMS and the GitHub UI - we've made it pretty easy for non-technical folks to edit and add _content_.
+does not provide a WYSIWYG ("what you see is what you get") editing experience, and it will be harder to change site _styling_, without some technical knowledge. However - through a combination of Sveltia CMS and the GitHub UI - we've made it pretty easy for non-technical folks to edit and add _content_.
