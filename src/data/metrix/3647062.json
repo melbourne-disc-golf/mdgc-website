@@ -3786,6 +3786,31 @@
         "Total": 0
       },
       {
+        "UserID": "250473",
+        "Name": "Alex Fakraufon",
+        "ClassName": "Div Z - Non MDGC Members",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "182547",
         "Name": "Choo Tran",
         "ClassName": "",
@@ -3961,8 +3986,8 @@
         "Total": 56
       },
       {
-        "UserID": "250473",
-        "Name": "Alex Fakraufon",
+        "UserID": "40508",
+        "Name": "Terry Bohan",
         "ClassName": "Div Z - Non MDGC Members",
         "CountryCode": "AU",
         "Place": 1,
