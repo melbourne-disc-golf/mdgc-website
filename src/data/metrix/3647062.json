@@ -3286,21 +3286,21 @@
         "Total": 58
       },
       {
-        "UserID": "79867",
-        "Name": "Ben Hare",
-        "ClassName": "",
+        "UserID": "227859",
+        "Name": "William Wong",
+        "ClassName": "Div C - Metrix Rating 790-845",
         "CountryCode": "AU",
-        "Place": 34,
+        "Place": 1,
         "EventResults": [
+          72,
+          null,
+          65,
+          null,
+          59,
           null,
           null,
           null,
           null,
-          null,
-          null,
-          null,
-          51,
-          57,
           null,
           null,
           null,
@@ -3308,14 +3308,14 @@
           null,
           null
         ],
-        "Total": 108
+        "Total": 196
       },
       {
         "UserID": "243131",
         "Name": "Saasha Glover",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 35,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -3340,7 +3340,7 @@
         "Name": "Paul Arden",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 36,
+        "Place": 2,
         "EventResults": [
           null,
           null,
@@ -3365,7 +3365,7 @@
         "Name": "Jacob Cruden",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 36,
+        "Place": 2,
         "EventResults": [
           null,
           null,
@@ -3390,7 +3390,7 @@
         "Name": "Elisha Bukka",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 38,
+        "Place": 4,
         "EventResults": [
           null,
           null,
@@ -3411,21 +3411,21 @@
         "Total": 62
       },
       {
-        "UserID": "99473",
-        "Name": "Xavier Lambert",
+        "UserID": "79867",
+        "Name": "Ben Hare",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 39,
+        "Place": 5,
         "EventResults": [
           null,
           null,
           null,
-          58,
           null,
           null,
-          58,
           null,
           null,
+          51,
+          57,
           null,
           null,
           null,
@@ -3433,14 +3433,14 @@
           null,
           null
         ],
-        "Total": 116
+        "Total": 108
       },
       {
         "UserID": "217418",
         "Name": "Emmanuel Zafiris",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 40,
+        "Place": 6,
         "EventResults": [
           null,
           null,
@@ -3465,7 +3465,7 @@
         "Name": "David Gannon",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 41,
+        "Place": 7,
         "EventResults": [
           null,
           null,
@@ -3490,7 +3490,7 @@
         "Name": "Tim Ware",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 42,
+        "Place": 8,
         "EventResults": [
           null,
           null,
@@ -3515,7 +3515,7 @@
         "Name": "Richard Hopkins",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 43,
+        "Place": 9,
         "EventResults": [
           null,
           null,
@@ -3540,7 +3540,7 @@
         "Name": "saasha Glover",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 44,
+        "Place": 10,
         "EventResults": [
           91,
           null,
@@ -3565,7 +3565,7 @@
         "Name": "Lachlan McKenzie",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 45,
+        "Place": 11,
         "EventResults": [
           null,
           56,
@@ -3590,7 +3590,7 @@
         "Name": "Lachlan Cooke",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 46,
+        "Place": 12,
         "EventResults": [
           null,
           null,
@@ -3615,7 +3615,7 @@
         "Name": "Oscar Fehlberg",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 47,
+        "Place": 13,
         "EventResults": [
           null,
           null,
@@ -3636,21 +3636,21 @@
         "Total": 59
       },
       {
-        "UserID": "130554",
-        "Name": "PETER HOWES",
+        "UserID": "99473",
+        "Name": "Xavier Lambert",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 48,
+        "Place": 14,
         "EventResults": [
-          79,
           null,
           null,
           null,
+          58,
           null,
           null,
+          58,
           null,
           null,
-          63,
           null,
           null,
           null,
@@ -3658,14 +3658,14 @@
           null,
           null
         ],
-        "Total": 142
+        "Total": 116
       },
       {
         "UserID": "168205",
         "Name": "Carrie Grima",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 49,
+        "Place": 15,
         "EventResults": [
           null,
           null,
@@ -3690,7 +3690,7 @@
         "Name": "Liam Bantock",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 50,
+        "Place": 16,
         "EventResults": [
           null,
           101,
@@ -3715,7 +3715,7 @@
         "Name": "Sofia Ocana",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 51,
+        "Place": 17,
         "EventResults": [
           null,
           null,
@@ -3740,7 +3740,7 @@
         "Name": "Racim Radjef",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 52,
+        "Place": 18,
         "EventResults": [
           null,
           null,
@@ -3811,21 +3811,21 @@
         "Total": 66
       },
       {
-        "UserID": "168204",
-        "Name": "David Wood",
+        "UserID": "130554",
+        "Name": "PETER HOWES",
         "ClassName": "",
         "CountryCode": "AU",
         "Place": 2,
         "EventResults": [
+          79,
           null,
           null,
           null,
           null,
           null,
           null,
-          53,
           null,
-          null,
+          63,
           null,
           null,
           null,
@@ -3833,7 +3833,7 @@
           null,
           null
         ],
-        "Total": 53
+        "Total": 142
       },
       {
         "UserID": "202991",
@@ -3884,6 +3884,31 @@
           null
         ],
         "Total": 58
+      },
+      {
+        "UserID": "168204",
+        "Name": "David Wood",
+        "ClassName": "",
+        "CountryCode": "AU",
+        "Place": 5,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          53,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 53
       },
       {
         "UserID": "114231",
