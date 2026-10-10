@@ -3611,9 +3611,34 @@
         "Total": 47
       },
       {
-        "UserID": "168229",
-        "Name": "Aaron Pi-can't-y",
-        "ClassName": "Div Z - Non MDGC Members",
+        "UserID": "245938",
+        "Name": "Richard Hopkins",
+        "ClassName": "",
+        "CountryCode": "AU",
+        "Place": 9,
+        "EventResults": [
+          null,
+          null,
+          null,
+          72,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 72
+      },
+      {
+        "UserID": "136104",
+        "Name": "Ryan Rintala",
+        "ClassName": "Div X - No Metrix Rating",
         "CountryCode": "AU",
         "Place": 1,
         "EventResults": [
@@ -3636,33 +3661,8 @@
         "Total": 0
       },
       {
-        "UserID": "245938",
-        "Name": "Richard Hopkins",
-        "ClassName": "",
-        "CountryCode": "AU",
-        "Place": 1,
-        "EventResults": [
-          null,
-          null,
-          null,
-          72,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        "Total": 72
-      },
-      {
-        "UserID": "250473",
-        "Name": "Alex Fakraufon",
+        "UserID": "168229",
+        "Name": "Aaron Pi-can't-y",
         "ClassName": "Div Z - Non MDGC Members",
         "CountryCode": "AU",
         "Place": 1,
@@ -3786,6 +3786,31 @@
         "Total": 116
       },
       {
+        "UserID": "250473",
+        "Name": "Alex Fakraufon",
+        "ClassName": "Div Z - Non MDGC Members",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "242270",
         "Name": "Dan Cliffe",
         "ClassName": "Div Z - Non MDGC Members",
@@ -3836,31 +3861,6 @@
         "Total": 0
       },
       {
-        "UserID": "198605",
-        "Name": "Mikayla Cooper",
-        "ClassName": "Div Z - Non MDGC Members",
-        "CountryCode": "AU",
-        "Place": 1,
-        "EventResults": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        "Total": 0
-      },
-      {
         "UserID": "32212",
         "Name": "Racim Radjef",
         "ClassName": "",
@@ -3886,8 +3886,8 @@
         "Total": 58
       },
       {
-        "UserID": "101732",
-        "Name": "Mitch Evers",
+        "UserID": "198605",
+        "Name": "Mikayla Cooper",
         "ClassName": "Div Z - Non MDGC Members",
         "CountryCode": "AU",
         "Place": 1,
@@ -3911,8 +3911,8 @@
         "Total": 0
       },
       {
-        "UserID": "136104",
-        "Name": "Ryan Rintala",
+        "UserID": "101732",
+        "Name": "Mitch Evers",
         "ClassName": "Div Z - Non MDGC Members",
         "CountryCode": "AU",
         "Place": 1,
