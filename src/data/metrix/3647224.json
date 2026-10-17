@@ -395,12 +395,12 @@
         "OrderNumber": 1
       },
       {
-        "UserID": "218492",
-        "ScorecardID": "15257770",
-        "Name": "Mike Vieusseux",
+        "UserID": "248974",
+        "ScorecardID": "15276910",
+        "Name": "Leong Khoo",
         "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
-        "Group": "2",
+        "Group": "10",
         "PlayerResults": [
           [],
           [],
@@ -437,12 +437,12 @@
         "OrderNumber": 1
       },
       {
-        "UserID": "248974",
-        "ScorecardID": "15276910",
-        "Name": "Leong Khoo",
-        "ClassName": "Div X - No Metrix Rating",
+        "UserID": "218492",
+        "ScorecardID": "15257770",
+        "Name": "Mike Vieusseux",
+        "ClassName": "Div D - Metrix Rating <790",
         "CountryCode": "AU",
-        "Group": "10",
+        "Group": "2",
         "PlayerResults": [
           [],
           [],
