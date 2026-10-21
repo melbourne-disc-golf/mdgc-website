@@ -7,6 +7,7 @@ The JSON files that [mdgc-sd](https://mdgc-sd.vercel.app/) publishes, so this si
 ## How it's used
 
 - This site's scheduled sync (twice a day) fetches the files and commits them alongside the raw Metrix data. Pages are built from the committed copies.
+- The sync fetches one season file for each season it already syncs from Metrix (`SEASON_IDS` in [`scripts/fetch-metrix-data.ts`](../../scripts/fetch-metrix-data.ts)), so mdgc-sd doesn't need to publish a list of seasons. A 404 means mdgc-sd has no data for that season.
 - Nothing fetches them from a browser, so no CORS headers are needed.
 - When the operational side moves to club-owned Cloudflare services, the same files move with it; only the base URL changes.
 
@@ -19,21 +20,6 @@ The JSON files that [mdgc-sd](https://mdgc-sd.vercel.app/) publishes, so this si
 - Readers ignore fields they don't recognise.
 
 ## Files
-
-### Season index
-
-`GET https://mdgc-sd.vercel.app/data/v1/seasons.json`
-
-```json
-{
-  "version": 1,
-  "generatedAt": "2026-10-22T05:00:00Z",
-  "seasons": [
-    { "metrixId": "3525269", "name": "MDGC 2026 Social Days", "url": "/data/v1/seasons/3525269.json" },
-    { "metrixId": "3647062", "name": "MDGC 2026 Social Days S2", "url": "/data/v1/seasons/3647062.json" }
-  ]
-}
-```
 
 ### Season
 
