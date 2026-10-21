@@ -110,7 +110,7 @@ Once ops publishes from Cloudflare, only the URLs in the data contract change.
 
 - **Club Champs for 2026.** Build the ladder here before 22 November, or show mdgc-sd's ladder until after the event?
 - **Female players list.** The Club Champs rules include a list of players, which is personal data. Is it OK to publish, or should the ladder stay on mdgc-sd?
-- **URL pattern.** For example `/events/social/seasons/2026-1/rounds/3`, or `/events/social/seasons/2026-s1/rd-03` in mdgc-sd's style. Also: should Social Days move from `/events/social` to a top-level `/social`? Easier to decide before launch, so existing URLs only need redirecting once.
+- **URL pattern.** For example `/events/social/seasons/2026-1/rounds/3`, or `/events/social/seasons/2026-s1/rd-03` in mdgc-sd's style. Everything stays under `/events/social/`. Easier to decide before launch, so existing URLs only need redirecting once.
 - **Freshness.** Should publishing prizes trigger an immediate rebuild (a Cloudflare deploy hook), or is the twice-daily sync enough?
 - **Style regression tests.** Worth the maintenance, or are render and browser tests enough?
 - **Ownership.** Which accounts own the CTB form, response sheets, roster sheet and mailer today, and can they move to club accounts before the ops work starts?
