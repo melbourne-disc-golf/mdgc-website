@@ -4,6 +4,8 @@
 // position, grouping by division) happens here so we can re-derive freely
 // without re-fetching.
 
+import { socialSeasons } from '../data/social-seasons';
+
 interface RawTrack {
   Number: string;
   Par: string;
@@ -125,6 +127,7 @@ export interface UpcomingSocialDay {
 
 export interface Season {
   id: number;
+  slug: string;
   name: string;
   dateStart?: string;
   dateEnd?: string;
@@ -258,10 +261,12 @@ function seasonOf(eventId: string): { season: RawCompetition; number: number } |
   return null;
 }
 
-/** All seasons (tour competitions), newest first. */
+/** All configured seasons that have Metrix data, newest first. */
 export function getSeasons(): Season[] {
   const seasons: Season[] = [];
-  for (const comp of byId.values()) {
+  for (const { metrixId, slug } of socialSeasons) {
+    const comp = byId.get(metrixId);
+    if (!comp) continue;
     const children = eventChildren(comp);
     if (!children.length) continue;
     const socialDays = children
@@ -269,6 +274,7 @@ export function getSeasons(): Season[] {
       .filter((sd): sd is SocialDay => sd !== null);
     seasons.push({
       id: Number(comp.ID),
+      slug,
       name: comp.Name,
       dateStart: comp.TourDateStart,
       dateEnd: comp.TourDateEnd,
