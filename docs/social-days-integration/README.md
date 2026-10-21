@@ -22,6 +22,7 @@ We plan to bring the public Social Days pages from [mdgc-sd.vercel.app](https://
 
 ## Decisions
 
+- **Functionality first, then restyle.** An earlier attempt, [#28](https://github.com/melbourne-disc-golf/mdgc-website/pull/28), ported mdgc-sd's pages and restyled the whole site in one change. Its review proposed bringing the functionality across first, using the existing components and styles, and then revisiting styling across the whole site as a separate step.
 - **Rebuild, don't port.** The pages under `/events/social/seasons/` (built from raw Metrix data) are the foundation. The July port of mdgc-sd's results pages under `/events/social/results/` will be removed once the seasons pages have the same features.
 - **Prize winners come from mdgc-sd.** Official prizes depend on CTB (closest-to-basket) entries and a human approval step, so we display what mdgc-sd publishes rather than recomputing them. Two sources of truth would drift.
 - **mdgc-sd publishes JSON on its public site.** Its repository is private, so this site fetches JSON files from `mdgc-sd.vercel.app` rather than reading the repository. See [data-contract.md](data-contract.md).
@@ -84,6 +85,10 @@ Tracked in [#29](https://github.com/melbourne-disc-golf/mdgc-website/issues/29).
 14. **Link the pages** from `/events/social`, and possibly the main navigation.
 15. **Remove the old port** (`/events/social/results/`, `SocialResultsBrowser`, `SocialResultsStats`, `src/data/social-results/`) and add redirects from its URLs.
 16. **Point mdgc-sd's public results, stats and Club Champs pages** at this site.
+
+## Later: restyle
+
+Once the social pages are in, revisit the look of the whole site. The [review of #28](https://github.com/melbourne-disc-golf/mdgc-website/pull/28) liked some of its ideas: a dark top navigation bar, the page title over the hero image, and a rule above headings instead of a gradient background. It also listed things a restyle shouldn't lose: undimmed hero images, drop-down menus that visibly connect to their top-level item, and a clear difference between clickable link panels and information panels.
 
 ## Later: operations
 
