@@ -84,7 +84,7 @@ Tracked in [#29](https://github.com/melbourne-disc-golf/mdgc-website/issues/29).
 ### Launch
 
 14. **Link the pages** from `/events/social`, and possibly the main navigation.
-15. **Move to slug URLs** (`/events/social/seasons/2026-1/rounds/3`), with redirects from the current Metrix-ID URLs (`/events/social/seasons/3525269/events/3525299`).
+15. **Move to slug URLs** (`/events/social/seasons/2026-1/rounds/3`). The current Metrix-ID URLs aren't linked from anywhere, so they don't need redirects.
 16. **Remove the old port** (`/events/social/results/`, `SocialResultsBrowser`, `SocialResultsStats`, `src/data/social-results/`) and add redirects from its URLs.
 17. **Point mdgc-sd's public results, stats and Club Champs pages** at this site.
 
