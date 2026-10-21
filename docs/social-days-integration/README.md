@@ -23,7 +23,7 @@ We plan to bring the public Social Days pages from [mdgc-sd.vercel.app](https://
 ## Decisions
 
 - **Functionality first, then restyle.** An earlier attempt, [#28](https://github.com/melbourne-disc-golf/mdgc-website/pull/28), ported mdgc-sd's pages and restyled the whole site in one change. Its review proposed bringing the functionality across first, using the existing components and styles, and then revisiting styling across the whole site as a separate step.
-- **Rebuild, don't port.** The pages under `/events/social/seasons/` (built from raw Metrix data) are the foundation. The July port of mdgc-sd's results pages under `/events/social/results/` will be removed once the seasons pages have the same features.
+- **Rebuild, don't port.** The pages under `/events/social/seasons/` (built from raw Metrix data) are the foundation. The July port of mdgc-sd's results pages under `/events/social/results/` was never linked, and will be removed.
 - **Prize winners come from mdgc-sd.** Official prizes depend on CTB (closest-to-basket) entries and a human approval step, so we display what mdgc-sd publishes rather than recomputing them. Two sources of truth would drift.
 - **mdgc-sd publishes JSON on its public site.** Its repository is private, so this site fetches JSON files from `mdgc-sd.vercel.app` rather than reading the repository. See [data-contract.md](data-contract.md).
 - **Data is keyed by Metrix ID** (season, social day, player), not by labels like `s2` or `rd-01`, so data survives season rollover. Matching between Metrix data, mdgc-sd data and this site always uses Metrix IDs.
@@ -85,7 +85,7 @@ Tracked in [#29](https://github.com/melbourne-disc-golf/mdgc-website/issues/29).
 
 14. **Link the pages** from `/events/social`, and possibly the main navigation.
 15. **Move to slug URLs** (`/events/social/seasons/2026-1/rounds/3`). The current Metrix-ID URLs aren't linked from anywhere, so they don't need redirects.
-16. **Remove the old port** (`/events/social/results/`, `SocialResultsBrowser`, `SocialResultsStats`, `src/data/social-results/`) and add redirects from its URLs.
+16. **Remove the old port** (`/events/social/results/`, `SocialResultsBrowser`, `SocialResultsStats`, `src/data/social-results/`). It was never linked, so it needs no redirects, and its removal doesn't have to wait for launch.
 17. **Point mdgc-sd's public results, stats and Club Champs pages** at this site.
 
 ## Later: restyle
