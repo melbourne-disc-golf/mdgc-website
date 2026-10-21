@@ -26,7 +26,8 @@ We plan to bring the public Social Days pages from [mdgc-sd.vercel.app](https://
 - **Rebuild, don't port.** The pages under `/events/social/seasons/` (built from raw Metrix data) are the foundation. The July port of mdgc-sd's results pages under `/events/social/results/` will be removed once the seasons pages have the same features.
 - **Prize winners come from mdgc-sd.** Official prizes depend on CTB (closest-to-basket) entries and a human approval step, so we display what mdgc-sd publishes rather than recomputing them. Two sources of truth would drift.
 - **mdgc-sd publishes JSON on its public site.** Its repository is private, so this site fetches JSON files from `mdgc-sd.vercel.app` rather than reading the repository. See [data-contract.md](data-contract.md).
-- **Everything is keyed by Metrix ID** (season, social day, player), not by labels like `s2` or `rd-01`, so data survives season rollover.
+- **Data is keyed by Metrix ID** (season, social day, player), not by labels like `s2` or `rd-01`, so data survives season rollover. Matching between Metrix data, mdgc-sd data and this site always uses Metrix IDs.
+- **URLs are presentation.** They use readable slugs (a season slug and a round number, say), not Metrix IDs. Renumbering rounds or moving dates is unlikely, and if a URL does change, the only cost is old links, which a redirect fixes.
 
 ## Where the data comes from
 
@@ -61,7 +62,7 @@ Tracked in [#29](https://github.com/melbourne-disc-golf/mdgc-website/issues/29).
 
 ### Data
 
-8. **Extend the Metrix layer** with handicap leaders, per-player division history and the season ladder.
+8. **Extend the Metrix layer** with handicap leaders, per-player division history and the season ladder. Turn `SEASON_IDS` in [`scripts/fetch-metrix-data.ts`](../../scripts/fetch-metrix-data.ts) into a table of seasons (Metrix ID and URL slug), in a place both the sync and the build can read.
 9. **Sync from mdgc-sd.** Agree the [data contract](data-contract.md) with Zach. Extend the scheduled sync to fetch the mdgc-sd JSON and commit it alongside the Metrix data.
 
 ### Results
@@ -109,7 +110,7 @@ Once ops publishes from Cloudflare, only the URLs in the data contract change.
 
 - **Club Champs for 2026.** Build the ladder here before 22 November, or show mdgc-sd's ladder until after the event?
 - **Female players list.** The Club Champs rules include a list of players, which is personal data. Is it OK to publish, or should the ladder stay on mdgc-sd?
-- **URLs.** Keep Metrix IDs in URLs (`/events/social/seasons/3647062/events/3647171`), or move to readable slugs (`/events/social/seasons/2026-s2/rd-01`)? Easier to decide before launch.
+- **URL pattern.** For example `/events/social/seasons/2026-1/rounds/3`, or `/events/social/seasons/2026-s1/rd-03` in mdgc-sd's style. Also: should Social Days move from `/events/social` to a top-level `/social`? Easier to decide before launch, so existing URLs only need redirecting once.
 - **Freshness.** Should publishing prizes trigger an immediate rebuild (a Cloudflare deploy hook), or is the twice-daily sync enough?
 - **Style regression tests.** Worth the maintenance, or are render and browser tests enough?
 - **Ownership.** Which accounts own the CTB form, response sheets, roster sheet and mailer today, and can they move to club accounts before the ops work starts?
