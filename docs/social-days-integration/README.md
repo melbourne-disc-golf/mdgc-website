@@ -27,7 +27,7 @@ We plan to bring the public Social Days pages from [mdgc-sd.vercel.app](https://
 - **Prize winners come from mdgc-sd.** Official prizes depend on CTB (closest-to-basket) entries and a human approval step, so we display what mdgc-sd publishes rather than recomputing them. Two sources of truth would drift.
 - **mdgc-sd publishes JSON on its public site.** Its repository is private, so this site fetches JSON files from `mdgc-sd.vercel.app` rather than reading the repository. See [data-contract.md](data-contract.md).
 - **Data is keyed by Metrix ID** (season, social day, player), not by labels like `s2` or `rd-01`, so data survives season rollover. Matching between Metrix data, mdgc-sd data and this site always uses Metrix IDs.
-- **URLs are presentation.** They use readable slugs (a season slug and a round number, say), not Metrix IDs. Renumbering rounds or moving dates is unlikely, and if a URL does change, the only cost is old links, which a redirect fixes.
+- **URLs are presentation.** They use readable slugs, not Metrix IDs, and stay under `/events/social/`. Proposed pattern: `/events/social/seasons/2026-1` for a season, and `/events/social/seasons/2026-1/rounds/3` for a round. Renumbering rounds or moving dates is unlikely, and if a URL does change, the only cost is old links, which a redirect fixes.
 
 ## Where the data comes from
 
@@ -71,7 +71,7 @@ Tracked in [#29](https://github.com/melbourne-disc-golf/mdgc-website/issues/29).
 
 ### Stats
 
-11. **Season stats page** at `/events/social/seasons/<season>/stats`: season snapshot, scoring mix, attendance, best rounds, prize counts, round difficulty, player scoring profiles. Plain tables first; division and days-played filters as progressive enhancement.
+11. **Season stats page** at `/events/social/seasons/2026-1/stats`: season snapshot, scoring mix, attendance, best rounds, prize counts, round difficulty, player scoring profiles. Plain tables first; division and days-played filters as progressive enhancement.
 
 ### Club Champs
 
@@ -84,8 +84,9 @@ Tracked in [#29](https://github.com/melbourne-disc-golf/mdgc-website/issues/29).
 ### Launch
 
 14. **Link the pages** from `/events/social`, and possibly the main navigation.
-15. **Remove the old port** (`/events/social/results/`, `SocialResultsBrowser`, `SocialResultsStats`, `src/data/social-results/`) and add redirects from its URLs.
-16. **Point mdgc-sd's public results, stats and Club Champs pages** at this site.
+15. **Move to slug URLs** (`/events/social/seasons/2026-1/rounds/3`), with redirects from the current Metrix-ID URLs (`/events/social/seasons/3525269/events/3525299`).
+16. **Remove the old port** (`/events/social/results/`, `SocialResultsBrowser`, `SocialResultsStats`, `src/data/social-results/`) and add redirects from its URLs.
+17. **Point mdgc-sd's public results, stats and Club Champs pages** at this site.
 
 ## Later: restyle
 
@@ -110,7 +111,6 @@ Once ops publishes from Cloudflare, only the URLs in the data contract change.
 
 - **Club Champs for 2026.** Build the ladder here before 22 November, or show mdgc-sd's ladder until after the event?
 - **Female players list.** The Club Champs rules include a list of players, which is personal data. Is it OK to publish, or should the ladder stay on mdgc-sd?
-- **URL pattern.** For example `/events/social/seasons/2026-1/rounds/3`, or `/events/social/seasons/2026-s1/rd-03` in mdgc-sd's style. Everything stays under `/events/social/`. Easier to decide before launch, so existing URLs only need redirecting once.
 - **Freshness.** Should publishing prizes trigger an immediate rebuild (a Cloudflare deploy hook), or is the twice-daily sync enough?
 - **Style regression tests.** Worth the maintenance, or are render and browser tests enough?
 - **Ownership.** Which accounts own the CTB form, response sheets, roster sheet and mailer today, and can they move to club accounts before the ops work starts?
