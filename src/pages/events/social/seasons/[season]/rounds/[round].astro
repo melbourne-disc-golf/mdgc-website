@@ -5,16 +5,19 @@ import LinkPanel from '@components/LinkPanel.astro';
 import { getSocialPrizeNotes, getSocialPrizeWinners } from '@data/social-prize-winners';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
-import { getEvent, getUpcomingSocialDay, getSocialDayRefs, getSeasons } from '@utils/metrix';
+import { getEvent, getUpcomingSocialDay, getSeasons } from '@utils/metrix';
+import { seasonPath } from '@utils/social-paths';
 
 export async function getStaticPaths() {
-  return getSocialDayRefs().map(({ seasonId, eventId }) => ({
-    params: { season: String(seasonId), event: String(eventId) },
-    props: { eventId },
-  }));
+  return getSeasons().flatMap((season) =>
+    season.socialDays.map((day) => ({
+      params: { season: season.slug, round: String(day.number) },
+      props: { season, eventId: day.id },
+    }))
+  );
 }
 
-const { eventId } = Astro.props;
+const { season, eventId } = Astro.props;
 
 // A social day shows its groups (the draw) while it's still upcoming, and its
 // results once played — the two are independent, so a social day on the day
@@ -26,17 +29,16 @@ if (!detail) {
   throw new Error(`No Metrix data for social day ${eventId}`);
 }
 
-const { name, date, seasonId } = detail;
+const { name, date } = detail;
 const subtitle = formatDateRange(Temporal.PlainDate.from(date));
 
 const today = Temporal.Now.plainDateISO().toString();
 const showGroups = date >= today;
 
 // Back-link up to this social day's season.
-const season = getSeasons().find((s) => s.id === seasonId);
 const backLink = {
-  href: `/events/social/seasons/${seasonId}`,
-  text: season?.name ?? 'Season',
+  href: seasonPath(season),
+  text: season.name,
 };
 
 const { par, tracks, divisions } = results ?? { par: 0, tracks: [], divisions: [] };

@@ -3,6 +3,7 @@ import Layout from '@layouts/Layout.astro';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
 import { getSeasons, type Season } from '@utils/metrix';
+import { seasonPath } from '@utils/social-paths';
 
 const today = Temporal.Now.plainDateISO().toString();
 const seasons = getSeasons(); // newest first
@@ -48,7 +49,7 @@ function seasonRange(season: Season): string | undefined {
             return (
               <li>
                 <a
-                  href={`/events/social/seasons/${season.id}`}
+                  href={seasonPath(season)}
                   class="block rounded-lg border border-slate-200 px-4 py-3 hover:border-mdgc-blue hover:bg-mdgc-blue/5 transition"
                 >
                   <div class="flex items-baseline justify-between gap-4">

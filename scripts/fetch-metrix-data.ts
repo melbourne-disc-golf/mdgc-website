@@ -2,14 +2,12 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { socialSeasons } from '../src/data/social-seasons';
 
-// Metrix tour IDs to sync, in chronological order. Add new seasons here.
+// Metrix tour IDs to sync; add new seasons in src/data/social-seasons.ts.
 // Each is fetched recursively (season → its rounds). Override on the command
 // line for one-off fetches: `tsx scripts/fetch-metrix-data.ts <id> [id...]`.
-const SEASON_IDS = [
-  '3525269', // 2026 Social Days S1
-  '3647062', // 2026 Social Days S2
-];
+const SEASON_IDS = socialSeasons.map((s) => s.metrixId);
 
 interface MetrixChild {
   ID: string;
