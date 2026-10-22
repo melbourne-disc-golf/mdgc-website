@@ -185,9 +185,10 @@ function fmt2(n: number | null): string {
                 <th class="text-center">Pos</th>
                 <th>Player</th>
                 <th class="num" title="Metrix rating">Rating</th>
-                <th class="num" title="Handicap score">HC</th>
-                <th class="num">+/-</th>
+                <th class="num" title="Score relative to par">+/-</th>
                 <th class="num" title="Raw score">Raw</th>
+                <th class="num" title="Handicap">HC</th>
+                <th class="num" title="Raw - HC">Net</th>
                 {tracks.map((t) => (
                   <th class="num" title={`Par ${t.par}`}>{t.number}</th>
                 ))}
@@ -196,9 +197,10 @@ function fmt2(n: number | null): string {
                 <th></th>
                 <th></th>
                 <th></th>
-                <th></th>
                 <th class="num">Par</th>
                 <th class="num">{par}</th>
+                <th></th>
+                <th></th>
                 {tracks.map((t) => (
                   <th class="num">{t.par}</th>
                 ))}
@@ -216,13 +218,14 @@ function fmt2(n: number | null): string {
                   </td>
                   <td class="font-medium whitespace-nowrap">{p.name}</td>
                   <td class="num text-slate-500">{p.rating ?? '–'}</td>
-                  <td class="num text-slate-600">
-                    {p.net !== null && p.net === bestNet ? (
-                      <span class="gold-pill" title="Best handicap score in this division">{fmt2(p.net)}</span>
-                    ) : fmt2(p.net)}
-                  </td>
                   <td class="num font-bold text-slate-800">{formatDiff(p.diff)}</td>
                   <td class="num text-slate-600">{p.sum}</td>
+                  <td class="num text-slate-500">{fmt2(p.hc)}</td>
+                  <td class="num text-slate-600">
+                    {p.net !== null && p.net === bestNet ? (
+                      <span class="gold-pill" title="Best net score in this division">{fmt2(p.net)}</span>
+                    ) : fmt2(p.net)}
+                  </td>
                   {p.holes.map((score, h) => (
                     <td class={`num ${holeClass(score, tracks[h]?.par ?? par)}`}>{score ?? '–'}</td>
                   ))}
@@ -265,7 +268,7 @@ function fmt2(n: number | null): string {
   .podium-2 { background: linear-gradient(145deg, #ffffff, #aeb9c2); }
   .podium-3 { background: linear-gradient(145deg, #ffd9aa, #b36b27); color: #271606; }
 
-  /* The best handicap score in a division. */
+  /* The best net score in a division. */
   .gold-pill {
     display: inline-block;
     /* The negative margin keeps the digits in line with the rest of the column. */
