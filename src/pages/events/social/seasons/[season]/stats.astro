@@ -119,8 +119,8 @@ const bestRoundPositions = stats.bestRounds.map((r, _, all) => {
             {scoreCategories.map((c) => (
               <li class={`score-pill score-${c}`}>
                 <strong>{c === 'double-plus' ? scoreCategoryLabels[c] : `${scoreCategoryLabels[c]}s`}</strong>
-                <span>{percent(stats.scoreCounts[c], stats.holesScored)}</span>
-                <span class="opacity-75">{stats.scoreCounts[c].toLocaleString('en-AU')}</span>
+                <span>{stats.scoreCounts[c].toLocaleString('en-AU')}</span>
+                <span class="opacity-75">{percent(stats.scoreCounts[c], stats.holesScored)}</span>
               </li>
             ))}
           </ul>
