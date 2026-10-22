@@ -10,8 +10,6 @@ backend:
 media_folder: src/assets/images
 public_folder: "@images"
 
-site_url: /
-
 logo:
   src: /images/favicon-192x192.png
 
