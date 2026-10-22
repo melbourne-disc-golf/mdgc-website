@@ -329,17 +329,6 @@ export function getSocialDays(): SocialDay[] {
   return getSeasons().flatMap((season) => season.socialDays);
 }
 
-/** {seasonId, eventId} for every social day across all seasons. */
-export function getSocialDayRefs(): { seasonId: number; eventId: number }[] {
-  const refs: { seasonId: number; eventId: number }[] = [];
-  for (const season of getSeasons()) {
-    for (const socialDay of season.socialDays) {
-      refs.push({ seasonId: season.id, eventId: socialDay.id });
-    }
-  }
-  return refs;
-}
-
 /** Full results detail (division tables) for a played social day, or null. */
 export function getEvent(eventId: string | number): EventDetail | null {
   const comp = byId.get(String(eventId));
