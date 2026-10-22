@@ -122,16 +122,8 @@ a:hover {
   font-weight: 400;
 }
 
-.eyebrow {
-  @apply text-sm font-bold uppercase tracking-[0.16em] text-mdgc-accent-deep;
-}
-
 .surface {
   @apply rounded-md border border-sky-100 bg-white shadow-sm;
-}
-
-.metric-pill {
-  @apply rounded-md border border-sky-100 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm;
 }
 
 .primary-action {
