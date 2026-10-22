@@ -451,16 +451,17 @@ h2.section-heading .heading-link {
 	@apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-/* Call-to-action button, e.g. "Register". Add .compact for use inside a table row. */
-.cta-button {
+/* Call-to-action button, e.g. "Register". Add .compact for use inside a table row.
+   Qualified with "a" so it outranks the .prose a link style. */
+a.cta-button {
   @apply inline-block rounded-full bg-mdgc-blue-dark px-4 py-1.5 font-semibold text-white no-underline whitespace-nowrap;
 }
 
-.cta-button:hover {
+a.cta-button:hover {
   @apply bg-mdgc-blue;
 }
 
-.cta-button.compact {
+a.cta-button.compact {
   @apply px-3 py-0.5 text-sm;
 }
 

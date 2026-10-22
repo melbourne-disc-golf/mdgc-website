@@ -3,6 +3,7 @@ import Layout from '@layouts/Layout.astro';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange, formatDayOfSeason } from '@utils/dates';
 import { getSeasons, metrixUrl } from '@utils/metrix';
+import { externalLinkAttrs } from '@utils/links';
 import { roundPath } from '@utils/social-paths';
 import Grid from '@components/Grid.astro';
 import SeasonTabs from '@components/SeasonTabs.astro';
@@ -79,7 +80,9 @@ function dayOfSeason(d: string, format: 'long' | 'short' = 'long'): string {
                     {day.played ? (
                       <span class="text-sm text-mdgc-blue-dark">Results</span>
                     ) : (
-                      <a class="cta-button compact" href={metrixUrl(day.id)}>Register</a>
+                      <a class="cta-button compact" href={metrixUrl(day.id)} {...externalLinkAttrs(metrixUrl(day.id))}>
+                        Register<span class="hidden sm:inline" aria-hidden="true"> ↗</span><span class="sr-only"> (opens in a new tab)</span>
+                      </a>
                     )}
                   </td>
                 </tr>

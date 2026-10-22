@@ -9,6 +9,7 @@ import { Temporal } from '@js-temporal/polyfill';
 import { formatDayOfSeason } from '@utils/dates';
 import { getEvent, getUpcomingSocialDay, getSeasons, metrixUrl } from '@utils/metrix';
 import { scoreCategory } from '@utils/scores';
+import { externalLinkAttrs } from '@utils/links';
 import { divisionAnchor, seasonPath } from '@utils/social-paths';
 
 export async function getStaticPaths() {
@@ -80,12 +81,14 @@ function fmt2(n: number | null): string {
     {!results && (
       <div class="social-callout flex flex-wrap items-center justify-between gap-4">
         <p>
+          Pre-registration is required.{' '}
           {upcoming?.registeredCount
             ? <><strong>{upcoming.registeredCount} player{upcoming.registeredCount === 1 ? '' : 's'} registered</strong> so far.</>
             : 'No one has registered yet.'}
-          {' '}Pre-registration is required.
         </p>
-        <a class="cta-button" href={metrixUrl(detail.id)}>Register on Metrix ↗</a>
+        <a class="cta-button" href={metrixUrl(detail.id)} {...externalLinkAttrs(metrixUrl(detail.id))}>
+          Register on Metrix<span aria-hidden="true"> ↗</span><span class="sr-only"> (opens in a new tab)</span>
+        </a>
       </div>
     )}
 
@@ -198,7 +201,7 @@ function fmt2(n: number | null): string {
         image="/images/logos/metrix-favicon.png"
         href={metrixUrl(detail.id)}
         title="View on Metrix"
-        description={results ? 'this social day on Disc Golf Metrix' : 'register for this social day on Disc Golf Metrix'}
+        description="this social day on Disc Golf Metrix"
       />
     </Grid>
 

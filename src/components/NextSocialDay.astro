@@ -2,6 +2,7 @@
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDayOfSeason } from '@utils/dates';
 import { getSeasons, metrixUrl } from '@utils/metrix';
+import { externalLinkAttrs } from '@utils/links';
 import { roundPath } from '@utils/social-paths';
 
 // Get future events, sorted by date
@@ -14,7 +15,7 @@ const events = getSeasons()
 
 <div class="next-social-day">
   {events.map(event => (
-    <div class="social-callout social-day-item hidden" data-date={event.date}>
+    <div class="social-callout social-day-item hidden flex flex-wrap items-center justify-between gap-4" data-date={event.date}>
       <p>
         Our <strong><a href={event.href}>next social day</a></strong> is at
         {event.courseSlug ? (
@@ -23,8 +24,10 @@ const events = getSeasons()
           event.courseTitle
         )}
         on <strong>{formatDayOfSeason(Temporal.PlainDate.from(event.date))}</strong>.
-        <a href={metrixUrl(event.id)}>Register on Metrix</a>.
       </p>
+      <a class="cta-button" href={metrixUrl(event.id)} {...externalLinkAttrs(metrixUrl(event.id))}>
+        Register on Metrix<span aria-hidden="true"> ↗</span><span class="sr-only"> (opens in a new tab)</span>
+      </a>
     </div>
   ))}
 </div>
