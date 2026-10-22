@@ -3,10 +3,11 @@ import Layout from '@layouts/Layout.astro';
 import Grid from '@components/Grid.astro';
 import Link from '@components/Link.astro';
 import LinkPanel from '@components/LinkPanel.astro';
+import ScoringMix from '@components/ScoringMix.astro';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange, formatDayOfSeason } from '@utils/dates';
 import { getEvent, getSeasons, getUpcomingSocialDay, metrixUrl, type EventDetail } from '@utils/metrix';
-import { birdiesOrBetter, roundsInDivision, seasonStats, statsDivisions, totalScores, type ScoreCounts } from '@utils/season-stats';
+import { birdiesOrBetter, formatShare, roundsInDivision, seasonStats, statsDivisions, totalScores, type ScoreCounts } from '@utils/season-stats';
 import { scoreCategories, scoreCategoryLabels } from '@utils/scores';
 import { divisionAnchor, divisionLinks, divisionParam, roundPath, seasonPath } from '@utils/social-paths';
 
@@ -70,15 +71,8 @@ function formatToPar(value: number | null, digits = 0): string {
   return value > 0 ? `+${text}` : text;
 }
 
-function percent(count: number, total: number): string {
-  if (!total) return '–';
-  const value = (100 * count) / total;
-  if (count === 0) return '0%';
-  return value < 0.05 ? '<0.1%' : `${value.toFixed(1)}%`;
-}
-
 function birdieRate(counts: ScoreCounts): string {
-  return percent(birdiesOrBetter(counts), totalScores(counts));
+  return formatShare(birdiesOrBetter(counts), totalScores(counts));
 }
 
 // Positions in the best-rounds list, with ties sharing a position.
@@ -223,24 +217,7 @@ function fractionHeat(value: number, max: number): string {
           <p class="mb-4 text-slate-600">
             Every hole scored{division && ` in Div ${division}`} this season, by score relative to par.
           </p>
-          <div class="score-bar mb-3" aria-hidden="true">
-            {scoreCategories.filter((c) => stats.scoreCounts[c] > 0).map((c) => (
-              <div
-                class={`score-${c}`}
-                style={`width: ${(100 * stats.scoreCounts[c]) / stats.holesScored}%`}
-                title={`${scoreCategoryLabels[c]}: ${percent(stats.scoreCounts[c], stats.holesScored)}`}
-              />
-            ))}
-          </div>
-          <ul class="flex flex-wrap gap-2">
-            {scoreCategories.map((c) => (
-              <li class={`score-pill score-${c}`}>
-                <strong>{c === 'double-plus' ? scoreCategoryLabels[c] : `${scoreCategoryLabels[c]}s`}</strong>
-                <span>{stats.scoreCounts[c].toLocaleString('en-AU')}</span>
-                <span class="opacity-75">{percent(stats.scoreCounts[c], stats.holesScored)}</span>
-              </li>
-            ))}
-          </ul>
+          <ScoringMix counts={stats.scoreCounts} />
         </section>
 
         <section>
@@ -325,15 +302,15 @@ function fractionHeat(value: number, max: number): string {
                       <td class="font-medium whitespace-nowrap">{p.name}</td>
                       {!division && <td class="text-center">{p.division}</td>}
                       <td class={`num ${fractionHeat(p.rounds, stats.roundsPlayed)}`}>{p.rounds}</td>
-                      <td class={`num ${birdieHeat(p.scoreCounts)}`} data-value={share(birdies)}>{percent(birdies, total)}</td>
+                      <td class={`num ${birdieHeat(p.scoreCounts)}`} data-value={share(birdies)}>{formatShare(birdies, total)}</td>
                       <td class={`num ${percentHeat('neutral', p.scoreCounts.par, total, [25, 35, 45, 55])}`} data-value={share(p.scoreCounts.par)}>
-                        {percent(p.scoreCounts.par, total)}
+                        {formatShare(p.scoreCounts.par, total)}
                       </td>
                       <td class={`num ${percentHeat('warn', p.scoreCounts.bogey, total, [15, 25, 35, 45])}`} data-value={share(p.scoreCounts.bogey)}>
-                        {percent(p.scoreCounts.bogey, total)}
+                        {formatShare(p.scoreCounts.bogey, total)}
                       </td>
                       <td class={`num ${percentHeat('bad', p.scoreCounts['double-plus'], total, [3, 7, 11, 15])}`} data-value={share(p.scoreCounts['double-plus'])}>
-                        {percent(p.scoreCounts['double-plus'], total)}
+                        {formatShare(p.scoreCounts['double-plus'], total)}
                       </td>
                       <td class={`num ${toParHeat(p.averageToPar)}`} data-value={p.averageToPar ?? ''}>{formatToPar(p.averageToPar, 1)}</td>
                       <td class={`num ${toParHeat(p.bestToPar)}`} data-value={p.bestToPar ?? ''}>{formatToPar(p.bestToPar)}</td>
@@ -372,32 +349,6 @@ function fractionHeat(value: number, max: number): string {
     color: white;
     font-size: 0.75rem;
     font-weight: 700;
-  }
-
-  .score-bar {
-    display: flex;
-    height: 1.5rem;
-    overflow: hidden;
-    border: 1px solid var(--color-gray-200);
-    border-radius: 9999px;
-    background: white;
-  }
-
-  .score-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.375rem;
-    padding: 0.25rem 0.625rem;
-    border: 1px solid rgb(0 0 0 / 0.08);
-    border-radius: 9999px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .score-pill.score-par {
-    background: white;
   }
 
   .heat-neutral-1 { background: #eff8fc; color: #17465f; }

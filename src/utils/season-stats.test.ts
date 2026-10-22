@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import type { EventDetail, Player } from './metrix';
-import { roundsInDivision, seasonStats } from './season-stats';
+import { formatShare, roundsInDivision, seasonStats } from './season-stats';
 
 // A three-hole course: par 3, 3, 4 (par 10).
 const tracks = [
@@ -145,5 +145,20 @@ describe('roundsInDivision', () => {
     const stats = seasonStats(roundsInDivision(rounds, 'C'));
     expect(stats.roundsPlayed).toBe(1);
     expect(stats.players.map((p) => [p.userId, p.rounds])).toEqual([['3', 1]]);
+  });
+});
+
+describe('formatShare', () => {
+  it('shows a share to one decimal place', () => {
+    expect(formatShare(1, 8)).toBe('12.5%');
+  });
+
+  it('marks tiny shares, rather than rounding them to zero', () => {
+    expect(formatShare(1, 10_000)).toBe('<0.1%');
+  });
+
+  it('shows none as 0%, and no total as a dash', () => {
+    expect(formatShare(0, 10)).toBe('0%');
+    expect(formatShare(0, 0)).toBe('–');
   });
 });

@@ -70,6 +70,14 @@ export function totalScores(counts: ScoreCounts): number {
   return scoreCategories.reduce((sum, c) => sum + counts[c], 0);
 }
 
+/** A count as a share of a total, e.g. "12.5%", "<0.1%", or "–" for no total. */
+export function formatShare(count: number, total: number): string {
+  if (!total) return '–';
+  if (count === 0) return '0%';
+  const value = (100 * count) / total;
+  return value < 0.05 ? '<0.1%' : `${value.toFixed(1)}%`;
+}
+
 /** Aces, eagles and birdies. */
 export function birdiesOrBetter(counts: ScoreCounts): number {
   return counts.ace + counts.eagle + counts.birdie;
