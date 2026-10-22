@@ -13,6 +13,7 @@ interface Props {
 }
 
 const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.props;
+const hasExternalEvents = events.some((e) => e.source === 'external');
 ---
 
 <div class="event-calendar-toggle" data-default-view={defaultView}>
@@ -31,20 +32,22 @@ const { events, maxDaysInPast, maxDaysInFuture, defaultView = 'list' } = Astro.p
       </div>
     </fieldset>
 
-    <div class="external-toggle">
-      <label class="toggle-option">
-        <input type="checkbox" class="external-toggle-input" aria-describedby="external-hint" checked />
-        <span>Include non-MDGC events</span>
-      </label>
-      <span class="hint-tip">
-        <button type="button" class="hint-icon" aria-label="About non-MDGC events">
-          <Icon name="heroicons:information-circle" />
-        </button>
-        <span id="external-hint" class="hint-bubble" role="tooltip">
-          Non-MDGC events are drawn from the <a href="https://www.pdga.com/tour" {...externalLinkAttrs('https://www.pdga.com/tour')}>PDGA tour calendar</a>: C-tier and above in Victoria, B-tier and above elsewhere in Australia, and A-tier and above in New Zealand.
+    {hasExternalEvents && (
+      <div class="external-toggle">
+        <label class="toggle-option">
+          <input type="checkbox" class="external-toggle-input" aria-describedby="external-hint" checked />
+          <span>Include non-MDGC events</span>
+        </label>
+        <span class="hint-tip">
+          <button type="button" class="hint-icon" aria-label="About non-MDGC events">
+            <Icon name="heroicons:information-circle" />
+          </button>
+          <span id="external-hint" class="hint-bubble" role="tooltip">
+            Non-MDGC events are drawn from the <a href="https://www.pdga.com/tour" {...externalLinkAttrs('https://www.pdga.com/tour')}>PDGA tour calendar</a>: C-tier and above in Victoria, B-tier and above elsewhere in Australia, and A-tier and above in New Zealand.
+          </span>
         </span>
-      </span>
-    </div>
+      </div>
+    )}
   </div>
 
   <div class="calendar-view slide-left" data-view="list">
