@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { socialSeasons } from './social-seasons';
+import { seasonTitle, socialSeasons } from './social-seasons';
 
 describe('socialSeasons', () => {
   it('has unique Metrix ids', () => {
@@ -16,5 +16,11 @@ describe('socialSeasons', () => {
     for (const { slug } of socialSeasons) {
       expect(slug).toMatch(/^\d{4}-\d+$/);
     }
+  });
+});
+
+describe('seasonTitle', () => {
+  it('names the season by year and number', () => {
+    expect(seasonTitle('2026-2')).toBe('2026 Season 2');
   });
 });

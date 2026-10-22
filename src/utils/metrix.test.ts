@@ -36,3 +36,20 @@ describe('getSeasons', () => {
     }
   });
 });
+
+describe('labels', () => {
+  const season = getSeasons().find((s) => s.slug === '2026-1');
+
+  it('titles seasons from their slug, not their Metrix name', () => {
+    expect(season?.title).toBe('2026 Season 1');
+  });
+
+  it('titles rounds by number and our course title, not their Metrix name', () => {
+    const round12 = season?.socialDays.find((d) => d.number === 12);
+    expect(round12).toMatchObject({
+      title: 'Round 12 - Llewellyn Park',
+      courseTitle: 'Llewellyn Park',
+      courseSlug: 'llewellyn',
+    });
+  });
+});

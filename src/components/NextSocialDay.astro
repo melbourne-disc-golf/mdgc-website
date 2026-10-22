@@ -1,34 +1,11 @@
 ---
 import { Temporal } from '@js-temporal/polyfill';
-import { getCollection } from 'astro:content';
 import { getSocialDays } from '@utils/metrix';
 
-const courses = await getCollection('courses');
-
-// Build a map of metrix course ID -> course info
-const metrixToCourse = new Map<string, { slug: string; title: string }>();
-for (const course of courses) {
-  const ids = course.data.metrixCourseIds || [];
-  for (const id of ids) {
-    metrixToCourse.set(id, {
-      slug: course.id,
-      title: course.data.title,
-    });
-  }
-}
-
-// Get future events, sorted by date, and enrich with course info
+// Get future events, sorted by date
 const today = Temporal.Now.plainDateISO().toString();
 const events = getSocialDays()
   .filter(e => e.date > today)
-  .map(e => {
-    const course = metrixToCourse.get(e.courseId);
-    return {
-      ...e,
-      courseSlug: course?.slug,
-      courseTitle: course?.title,
-    };
-  })
   .sort((a, b) => a.date.localeCompare(b.date));
 
 const WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -38,13 +15,6 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 function formatDate(dateStr: string): string {
   const date = Temporal.PlainDate.from(dateStr);
   return `${WEEKDAYS[date.dayOfWeek - 1]}, ${date.day} ${MONTHS[date.month - 1]}`;
-}
-
-// Metrix course names are a "Course → Layout" breadcrumb (e.g. "Heathdale Glen
-// Orden Trial Course &rarr; 2026 Redesign Social Day 20"). Keep just the course
-// and strip any HTML entities.
-function cleanCourseName(str: string): string {
-  return str.split(/&rarr;|→/)[0].replace(/&[a-z]+;/gi, '').trim();
 }
 ---
 
@@ -56,7 +26,7 @@ function cleanCourseName(str: string): string {
         {event.courseSlug ? (
           <a href={`/courses/${event.courseSlug}/`}>{event.courseTitle}</a>
         ) : (
-          cleanCourseName(event.courseName)
+          event.courseTitle
         )}
         on <strong>{formatDate(event.date)}</strong>.
       </p>

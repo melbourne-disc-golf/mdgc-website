@@ -4,7 +4,8 @@
 // position, grouping by division) happens here so we can re-derive freely
 // without re-fetching.
 
-import { socialSeasons } from '../data/social-seasons';
+import { seasonTitle, socialSeasons } from '../data/social-seasons';
+import { courseForMetrixId } from './metrix-courses';
 
 interface RawTrack {
   Number: string;
@@ -82,10 +83,13 @@ export interface EventDetail {
   id: number;
   seasonId: number;
   number: number;
-  name: string;
+  name: string; // as Metrix has it; prefer title
+  title: string; // e.g. "Round 8 - Ruffey Lake"
   date: string;
-  courseName: string;
+  courseName: string; // as Metrix has it; prefer courseTitle
   courseId: string;
+  courseTitle: string; // our course's title, if we know the course
+  courseSlug?: string; // our course page, if we know the course
   holeCount: number;
   par: number;
   tracks: { number: string; par: number }[];
@@ -95,10 +99,13 @@ export interface EventDetail {
 export interface SocialDay {
   id: number;
   number: number;
-  name: string;
+  name: string; // as Metrix has it; prefer title
+  title: string; // e.g. "Round 8 - Ruffey Lake"
   date: string;
-  courseName: string;
+  courseName: string; // as Metrix has it; prefer courseTitle
   courseId: string;
+  courseTitle: string; // our course's title, if we know the course
+  courseSlug?: string; // our course page, if we know the course
   played: boolean;
   players: number; // players who played, or (for upcoming social days) registered so far
 }
@@ -119,10 +126,13 @@ export interface UpcomingSocialDay {
   id: number;
   seasonId: number;
   number: number;
-  name: string;
+  name: string; // as Metrix has it; prefer title
+  title: string; // e.g. "Round 8 - Ruffey Lake"
   date: string;
-  courseName: string;
+  courseName: string; // as Metrix has it; prefer courseTitle
   courseId: string;
+  courseTitle: string; // our course's title, if we know the course
+  courseSlug?: string; // our course page, if we know the course
   registeredCount: number;
   groups: PlayerGroup[];
 }
@@ -130,7 +140,8 @@ export interface UpcomingSocialDay {
 export interface Season {
   id: number;
   slug: string;
-  name: string;
+  name: string; // as Metrix has it; prefer title
+  title: string; // e.g. "2026 Season 2"
   dateStart?: string;
   dateEnd?: string;
   socialDays: SocialDay[];
@@ -174,6 +185,18 @@ function round2(n: number): number {
 function cleanEventName(name: string): string {
   const segments = name.split('&rarr;');
   return segments[segments.length - 1].replace(/&rarr;/g, '→').trim();
+}
+
+// Our own labels for a round, from its number and course, rather than its
+// Metrix name (whose format varies from season to season).
+function roundLabels(comp: RawCompetition, number: number) {
+  const course = courseForMetrixId(comp.CourseID);
+  const courseTitle = course?.title ?? comp.CourseName.split('&rarr;')[0].trim();
+  return {
+    title: number ? `Round ${number} - ${courseTitle}` : courseTitle,
+    courseTitle,
+    courseSlug: course?.slug,
+  };
 }
 
 // A round counts as played once someone has a recorded score; players may
@@ -256,6 +279,7 @@ function buildSocialDay(eventId: string, number: number): SocialDay | null {
     date: comp.Date,
     courseName: comp.CourseName,
     courseId: comp.CourseID,
+    ...roundLabels(comp, number),
     played: isPlayed(comp),
     players: (comp.Results ?? []).length,
   };
@@ -286,6 +310,7 @@ export function getSeasons(): Season[] {
       id: Number(comp.ID),
       slug,
       name: comp.Name,
+      title: seasonTitle(slug),
       dateStart: comp.TourDateStart,
       dateEnd: comp.TourDateEnd,
       socialDays,
@@ -326,6 +351,7 @@ export function getEvent(eventId: string | number): EventDetail | null {
     date: comp.Date,
     courseName: comp.CourseName,
     courseId: comp.CourseID,
+    ...roundLabels(comp, context?.number ?? 0),
     holeCount: tracks.length,
     par: tracks.reduce((sum, t) => sum + t.par, 0),
     tracks,
@@ -389,6 +415,7 @@ export function getUpcomingSocialDay(eventId: string | number): UpcomingSocialDa
     date: comp.Date,
     courseName: comp.CourseName,
     courseId: comp.CourseID,
+    ...roundLabels(comp, context?.number ?? 0),
     registeredCount: players.length,
     groups,
   };

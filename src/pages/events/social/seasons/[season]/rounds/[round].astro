@@ -30,7 +30,7 @@ if (!detail) {
   throw new Error(`No Metrix data for social day ${eventId}`);
 }
 
-const { name, date } = detail;
+const { title, date } = detail;
 const subtitle = formatDateRange(Temporal.PlainDate.from(date));
 
 const today = Temporal.Now.plainDateISO().toString();
@@ -39,7 +39,7 @@ const showGroups = date >= today;
 // Back-link up to this social day's season.
 const backLink = {
   href: seasonPath(season),
-  text: season.name,
+  text: season.title,
 };
 
 const { par, tracks, divisions } = results ?? { par: 0, tracks: [], divisions: [] };
@@ -59,7 +59,7 @@ function fmt2(n: number | null): string {
 }
 ---
 
-<Layout title={name} subtitle={subtitle} backLink={backLink}>
+<Layout title={title} subtitle={subtitle} backLink={backLink}>
   <div class="my-8 space-y-10">
 
     {showGroups && upcoming && (
