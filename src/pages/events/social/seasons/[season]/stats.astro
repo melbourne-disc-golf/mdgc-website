@@ -92,9 +92,9 @@ function birdieHeat(counts: ScoreCounts): string {
 
 const largestField = Math.max(1, ...stats.rounds.map((r) => r.players));
 
-// Shade attendance by its fraction of the season's largest field, in quarters.
-function attendanceHeat(players: number): string {
-  const level = Math.min(4, Math.max(1, Math.floor((4 * players) / largestField)));
+// Shade a count by its fraction of a maximum, in quarters.
+function fractionHeat(value: number, max: number): string {
+  const level = Math.min(4, Math.max(1, Math.floor((4 * value) / max)));
   return `heat-neutral-${level}`;
 }
 ---
@@ -177,7 +177,7 @@ function attendanceHeat(players: number): string {
                       <a href={roundPath(season, r.number)} class="row-link text-mdgc-blue-dark">{r.number}</a>
                     </td>
                     <td>{courseTitle(r.courseId, r.courseName)}</td>
-                    <td class={`num ${attendanceHeat(r.players)}`}>{r.players}</td>
+                    <td class={`num ${fractionHeat(r.players, largestField)}`}>{r.players}</td>
                     <td class={`num ${toParHeat(r.averageToPar)}`} data-value={r.averageToPar ?? ''}>{formatToPar(r.averageToPar, 1)}</td>
                     <td class={`num ${birdieHeat(r.scoreCounts)}`} data-value={birdiesOrBetter(r.scoreCounts) / (totalScores(r.scoreCounts) || 1)}>
                       {birdieRate(r.scoreCounts)}
@@ -268,7 +268,7 @@ function attendanceHeat(players: number): string {
                     <tr data-rounds={p.rounds}>
                       <td class="font-medium whitespace-nowrap">{p.name}</td>
                       <td class="text-center">{p.division}</td>
-                      <td class="num">{p.rounds}</td>
+                      <td class={`num ${fractionHeat(p.rounds, stats.roundsPlayed)}`}>{p.rounds}</td>
                       <td class={`num ${birdieHeat(p.scoreCounts)}`} data-value={share(birdies)}>{percent(birdies, total)}</td>
                       <td class={`num ${percentHeat('neutral', p.scoreCounts.par, total, [25, 35, 45, 55])}`} data-value={share(p.scoreCounts.par)}>
                         {percent(p.scoreCounts.par, total)}
