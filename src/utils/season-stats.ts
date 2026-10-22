@@ -16,7 +16,7 @@ export interface RoundStats {
   number: number;
   date: string;
   courseId: string;
-  courseName: string;
+  courseTitle: string;
   players: number;
   averageToPar: number | null;
   scoreCounts: ScoreCounts;
@@ -29,7 +29,7 @@ export interface BestRound {
   roundId: number;
   roundNumber: number;
   courseId: string;
-  courseName: string;
+  courseTitle: string;
   toPar: number;
   raw: number;
 }
@@ -159,7 +159,7 @@ export function seasonStats(playedRounds: EventDetail[]): SeasonStats {
           roundId: round.id,
           roundNumber: round.number,
           courseId: round.courseId,
-          courseName: round.courseName,
+          courseTitle: round.courseTitle,
           toPar: p.diff,
           raw: p.sum,
         });
@@ -171,7 +171,7 @@ export function seasonStats(playedRounds: EventDetail[]): SeasonStats {
       number: round.number,
       date: round.date,
       courseId: round.courseId,
-      courseName: round.courseName,
+      courseTitle: round.courseTitle,
       players: scorecards.length,
       averageToPar: average(roundToPars),
       scoreCounts: roundCounts,

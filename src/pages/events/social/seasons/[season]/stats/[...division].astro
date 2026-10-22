@@ -1,5 +1,4 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import SeasonTabs from '@components/SeasonTabs.astro';
 import { Temporal } from '@js-temporal/polyfill';
@@ -19,7 +18,7 @@ export async function getStaticPaths() {
 }
 
 const { season, division } = Astro.props;
-const { name, dateStart, dateEnd } = season;
+const { title, dateStart, dateEnd } = season;
 
 const subtitle = dateStart
   ? formatDateRange(
@@ -41,17 +40,6 @@ const divisionLinks = [
 ];
 const regulars = stats.players.filter((p) => p.rounds >= 5).length;
 
-// Map Metrix course ids to our course titles.
-const courses = await getCollection('courses');
-const courseByMetrixId = new Map<string, string>();
-for (const course of courses) {
-  for (const metrixId of course.data.metrixCourseIds ?? []) {
-    courseByMetrixId.set(metrixId, course.data.title);
-  }
-}
-function courseTitle(courseId: string, courseName: string): string {
-  return courseByMetrixId.get(courseId) ?? courseName.split('&rarr;')[0].trim();
-}
 
 function formatToPar(value: number | null, digits = 0): string {
   if (value === null) return '–';
@@ -108,7 +96,7 @@ function fractionHeat(value: number, max: number): string {
 }
 ---
 
-<Layout title={division ? `${name} stats: Div ${division}` : `${name} stats`} subtitle={subtitle} backLink={{ href: '/events/social/seasons', text: 'Social days by season' }}>
+<Layout title={division ? `${title} stats: Div ${division}` : `${title} stats`} subtitle={subtitle} backLink={{ href: '/events/social/seasons', text: 'Social days by season' }}>
   <SeasonTabs season={season} current="stats" />
   <nav class="pill-nav mt-4" aria-label="Division">
     <span class="pill-nav-label">Division</span>
@@ -193,7 +181,7 @@ function fractionHeat(value: number, max: number): string {
                     <td class="text-center font-bold">
                       <a href={roundPath(season, r.number)} class="row-link text-mdgc-blue-dark">{r.number}</a>
                     </td>
-                    <td>{courseTitle(r.courseId, r.courseName)}</td>
+                    <td>{r.courseTitle}</td>
                     <td class={`num ${fractionHeat(r.players, largestField)}`}>{r.players}</td>
                     <td class={`num ${toParHeat(r.averageToPar)}`} data-value={r.averageToPar ?? ''}>{formatToPar(r.averageToPar, 1)}</td>
                     <td class={`num ${birdieHeat(r.scoreCounts)}`} data-value={birdiesOrBetter(r.scoreCounts) / (totalScores(r.scoreCounts) || 1)}>
@@ -233,7 +221,7 @@ function fractionHeat(value: number, max: number): string {
                     <td class="text-center">
                       <a href={roundPath(season, r.roundNumber)} class="text-mdgc-blue-dark">{r.roundNumber}</a>
                     </td>
-                    <td>{courseTitle(r.courseId, r.courseName)}</td>
+                    <td>{r.courseTitle}</td>
                   </tr>
                 ))}
               </tbody>

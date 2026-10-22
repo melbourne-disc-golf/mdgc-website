@@ -38,10 +38,9 @@ type CourseEntry = CollectionEntry<'courses'>;
 // Metrix social day shape (a SocialDay from @utils/metrix; only these fields are used here)
 type MetrixEvent = {
   id: number;
-  name: string;
   date: string;
-  courseName: string;
   courseId: string;
+  courseTitle: string;
 };
 
 /**
@@ -152,43 +151,6 @@ export function getExternalCalendarEvents(clubEvents: ClubEventEntry[]): Calenda
   return excludeClubDuplicates(getExternalEvents(), clubPdgaIds).map(pdgaEventToCalendarEvent);
 }
 
-const MONTH_PREFIX =
-  /^\s*(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\b\.?\s*/i;
-
-/** Tidy up whitespace and stray leading/trailing separators. */
-function tidySeparators(name: string): string {
-  return name
-    .replace(/\s+/g, ' ')
-    .replace(/^[\s\-–]+|[\s\-–]+$/g, '')
-    .trim();
-}
-
-/**
- * Rework a Metrix social-day round name into "MDGC Social Day - {region} - {course}"
- * for calendar display, e.g. "Jul Northeast Social Day - Llewellyn (Rd 2)"
- * → "MDGC Social Day - Northeast - Llewellyn".
- *
- * Each step is independent and skips gracefully if its pattern is absent,
- * so it stays robust across naming variations.
- */
-function formatSocialDayName(name: string): string {
-  let result = name;
-
-  // Drop the trailing round number, e.g. "(Rd 2)".
-  result = result.replace(/\(\s*(?:rd|round)\s*\d+\s*\)/i, '');
-
-  // Drop a leading club prefix, e.g. "MDGC " (re-added below).
-  result = result.replace(/^\s*MDGC\b\s*/i, '');
-
-  // Drop the leading month, e.g. "Jul ".
-  result = result.replace(MONTH_PREFIX, '');
-
-  // Drop the redundant "Social Day(s)".
-  result = result.replace(/\bsocial days?\b/i, '');
-
-  return `MDGC Social Day - ${tidySeparators(result)}`;
-}
-
 /**
  * Convert a Metrix social day event to a CalendarEvent.
  *
@@ -199,22 +161,12 @@ export function socialDayToCalendarEvent(
   event: MetrixEvent,
   metrixToCourse?: Map<string, CourseEntry>
 ): CalendarEvent {
-  // Extract short name from full metrix name
-  // e.g. "MDGC 2025 Social Days: Season 2 → July West Social Day - Melton"
-  // Handle both actual → character and &rarr; HTML entity
-  let shortName = event.name;
-  if (event.name.includes('→')) {
-    shortName = event.name.split('→').pop()?.trim() || event.name;
-  } else if (event.name.includes('&rarr;')) {
-    shortName = event.name.split('&rarr;').pop()?.trim() || event.name;
-  }
-
   const course = metrixToCourse?.get(event.courseId);
   const location = course ? `${course.data.title}, ${course.data.suburb}` : undefined;
   const geo = course ? parseGeoJson(course.data.location) : undefined;
 
   return {
-    summary: formatSocialDayName(shortName),
+    summary: `MDGC Social Day - ${event.courseTitle}`,
     startDate: Temporal.PlainDate.from(event.date),
     url: `https://discgolfmetrix.com/${event.id}`,
     location,

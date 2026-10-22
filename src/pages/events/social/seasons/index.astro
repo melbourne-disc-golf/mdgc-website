@@ -53,7 +53,7 @@ function seasonRange(season: Season): string | undefined {
                   class="block rounded-lg border border-slate-200 px-4 py-3 hover:border-mdgc-blue hover:bg-mdgc-blue/5 transition"
                 >
                   <div class="flex items-baseline justify-between gap-4">
-                    <span class="font-semibold text-mdgc-blue-dark">{season.name}</span>
+                    <span class="font-semibold text-mdgc-blue-dark">{season.title}</span>
                     <span class="text-sm text-slate-500 whitespace-nowrap">{seasonRange(season)}</span>
                   </div>
                   <p class="mt-0.5 text-sm text-slate-600">{playedDays} of {season.socialDays.length} social days played</p>
