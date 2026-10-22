@@ -68,7 +68,7 @@ const bestRoundPositions = stats.bestRounds.map((r, _, all) => {
   return first + 1;
 });
 
-// Heat colours for the rounds table, using mdgc-sd's thresholds.
+// Heat colours for the stats tables, using mdgc-sd's thresholds.
 function toParHeat(value: number | null): string {
   if (value === null) return '';
   if (value <= 0) return 'heat-good-4';
@@ -78,12 +78,16 @@ function toParHeat(value: number | null): string {
   return 'heat-bad-4';
 }
 
-function birdieHeat(counts: ScoreCounts): string {
-  const total = totalScores(counts);
+// Shade a percentage: one level per threshold reached, from 1 to 4.
+function percentHeat(kind: string, count: number, total: number, thresholds: number[]): string {
   if (!total) return '';
-  const pct = (100 * birdiesOrBetter(counts)) / total;
-  const level = [16, 24, 32].filter((threshold) => pct >= threshold).length + 1;
-  return `heat-good-${level}`;
+  const pct = (100 * count) / total;
+  const level = Math.min(4, Math.max(1, thresholds.filter((t) => pct >= t).length));
+  return `heat-${kind}-${level}`;
+}
+
+function birdieHeat(counts: ScoreCounts): string {
+  return percentHeat('good', birdiesOrBetter(counts), totalScores(counts), [8, 16, 24, 32]);
 }
 
 const largestField = Math.max(1, ...stats.rounds.map((r) => r.players));
@@ -221,7 +225,7 @@ function attendanceHeat(players: number): string {
         </section>
 
         <section>
-          <h2 id="players" class="section-heading mb-4">Players</h2>
+          <h2 id="players" class="section-heading mb-4">Player score summaries</h2>
           <p class="mb-4 text-slate-600">
             Each player's scoring this season. Division is the one they played most often.
           </p>
@@ -265,14 +269,18 @@ function attendanceHeat(players: number): string {
                       <td class="font-medium whitespace-nowrap">{p.name}</td>
                       <td class="text-center">{p.division}</td>
                       <td class="num">{p.rounds}</td>
-                      <td class="num" data-value={share(birdies)}>{percent(birdies, total)}</td>
-                      <td class="num" data-value={share(p.scoreCounts.par)}>{percent(p.scoreCounts.par, total)}</td>
-                      <td class="num" data-value={share(p.scoreCounts.bogey)}>{percent(p.scoreCounts.bogey, total)}</td>
-                      <td class="num" data-value={share(p.scoreCounts['double-plus'])}>
+                      <td class={`num ${birdieHeat(p.scoreCounts)}`} data-value={share(birdies)}>{percent(birdies, total)}</td>
+                      <td class={`num ${percentHeat('neutral', p.scoreCounts.par, total, [25, 35, 45, 55])}`} data-value={share(p.scoreCounts.par)}>
+                        {percent(p.scoreCounts.par, total)}
+                      </td>
+                      <td class={`num ${percentHeat('warn', p.scoreCounts.bogey, total, [15, 25, 35, 45])}`} data-value={share(p.scoreCounts.bogey)}>
+                        {percent(p.scoreCounts.bogey, total)}
+                      </td>
+                      <td class={`num ${percentHeat('bad', p.scoreCounts['double-plus'], total, [3, 7, 11, 15])}`} data-value={share(p.scoreCounts['double-plus'])}>
                         {percent(p.scoreCounts['double-plus'], total)}
                       </td>
-                      <td class="num" data-value={p.averageToPar ?? ''}>{formatToPar(p.averageToPar, 1)}</td>
-                      <td class="num" data-value={p.bestToPar ?? ''}>{formatToPar(p.bestToPar)}</td>
+                      <td class={`num ${toParHeat(p.averageToPar)}`} data-value={p.averageToPar ?? ''}>{formatToPar(p.averageToPar, 1)}</td>
+                      <td class={`num ${toParHeat(p.bestToPar)}`} data-value={p.bestToPar ?? ''}>{formatToPar(p.bestToPar)}</td>
                     </tr>
                   );
                 })}
@@ -320,8 +328,13 @@ function attendanceHeat(players: number): string {
   .heat-good-2 { background: #d8f0e5; color: #0b3f38; }
   .heat-good-3 { background: #b7e8cd; color: #07351f; }
   .heat-good-4 { background: #8addae; color: #062f1c; }
+  .heat-warn-1 { background: #fff4e5; color: #6e3f00; }
   .heat-warn-2 { background: #ffe1c2; color: #7a3b00; }
+  .heat-warn-3 { background: #ffc58e; color: #612900; }
+  .heat-warn-4 { background: #ffad66; color: #552100; }
+  .heat-bad-1 { background: #fdecea; color: #7a2722; }
   .heat-bad-2 { background: #f8d1cc; color: #8c2c27; }
+  .heat-bad-3 { background: #efaaa4; color: #711d1a; }
   .heat-bad-4 { background: #e68079; color: #5f1714; }
 </style>
 
