@@ -6,6 +6,7 @@ import { formatDate, formatDateRange } from '@utils/dates';
 import { getSeasons } from '@utils/metrix';
 import { roundPath } from '@utils/social-paths';
 import Grid from '@components/Grid.astro';
+import SeasonTabs from '@components/SeasonTabs.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 
 export async function getStaticPaths() {
@@ -40,8 +41,8 @@ function shortDate(d: string): string {
 ---
 
 <Layout title={name} subtitle={subtitle} backLink={{ href: '/events/social/seasons', text: 'Social days by season' }}>
-  <div class="my-8 space-y-12">
-
+  <SeasonTabs season={season} current="events" />
+  <div class="mb-8 mt-6 space-y-12">
     <section>
       <h2 class="section-heading mb-4">Events</h2>
       <table class="data-table compact mx-auto max-w-lg">

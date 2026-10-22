@@ -357,6 +357,14 @@ h2.section-heading .heading-link {
   inset: 0;
 }
 
+/* Hole-score colours, as on a disc golf scorecard (see src/utils/scores.ts). */
+.score-ace { background: #ffd60a; color: #3f2600; }
+.score-eagle { background: #55d57d; color: #06351f; }
+.score-birdie { background: #d8f0e5; color: #0b3f38; }
+.score-par { color: var(--color-slate-700); }
+.score-bogey { background: #ffe1c2; color: #7a3b00; }
+.score-double-plus { background: #f8e7e4; color: #8c2c27; }
+
 /* Panel — a generic card container. A leading heading loses its top margin, and
    the last child its bottom margin, so content sits flush against the padding. */
 .panel {
@@ -370,6 +378,63 @@ h2.section-heading .heading-link {
 
 .panel > :last-child {
   margin-bottom: 0;
+}
+
+/* Stat card — a headline figure, with a label above and optional detail below. */
+.stat-card {
+  @apply rounded-lg bg-white p-4;
+  box-shadow: var(--panel-shadow);
+}
+
+.stat-card .stat-label {
+  @apply text-sm font-semibold text-slate-500;
+}
+
+.stat-card .stat-value {
+  @apply text-3xl font-bold text-gray-800 tabular-nums;
+}
+
+.stat-card .stat-detail {
+  @apply text-sm text-slate-500;
+}
+
+/* Page tabs — links between sibling pages; mark the current one with aria-current="page". */
+.page-tabs {
+  @apply flex gap-1 border-b border-gray-200;
+}
+
+.page-tabs a {
+  @apply -mb-px border-b-2 border-transparent px-4 py-2 font-semibold text-slate-500 no-underline;
+}
+
+.page-tabs a:hover {
+  @apply text-mdgc-blue-dark;
+}
+
+.page-tabs a[aria-current="page"] {
+  @apply border-mdgc-blue-dark text-mdgc-blue-dark;
+}
+
+/* Pill nav — a row of links choosing one of several views, e.g. a division;
+   mark the current one with aria-current="page". An optional .pill-nav-label leads. */
+.pill-nav {
+  @apply flex flex-wrap items-center gap-2;
+}
+
+.pill-nav-label {
+  @apply mr-1 text-sm font-semibold text-slate-500;
+}
+
+.pill-nav a {
+  @apply min-w-10 rounded-full border border-gray-300 bg-white px-3 py-1 text-center text-sm font-semibold text-slate-600 no-underline;
+}
+
+.pill-nav a:hover {
+  @apply border-mdgc-blue-dark text-mdgc-blue-dark;
+}
+
+.pill-nav a[aria-current="page"] {
+  @apply border-mdgc-blue-dark bg-mdgc-blue-dark text-white;
 }
 
 .redbox {
@@ -396,8 +461,8 @@ time {
   @apply text-sm text-slate-500;
 }
 
-/* Sortable tables (see src/scripts/sortable-table.ts). Subtle up-triangle,
-   tablesort-style, on the sorted column. */
+/* Sortable tables (see src/scripts/sortable-table.ts). Subtle triangle,
+   tablesort-style, on the sorted column: up for ascending, down for descending. */
 th[data-sort] {
   cursor: pointer;
 }
@@ -417,7 +482,13 @@ th[data-sort]:hover::after {
   opacity: 0.4;
 }
 
-th.sort-asc::after {
+th[data-sort-dir="desc"]::after {
+  margin-top: 0.5em;
+  border-bottom-color: transparent;
+  border-top-color: currentColor;
+}
+
+th:is(.sort-asc, .sort-desc)::after {
   opacity: 0.85;
 }
 

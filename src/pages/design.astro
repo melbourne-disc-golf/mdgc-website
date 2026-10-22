@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import LinkPanel from '@components/LinkPanel.astro';
+import { scoreCategory } from '@utils/scores';
 
 // Unlinked reference page documenting the site's current visual language, organised
 // around the site's anatomy: shared Foundations (colour, type, widths), then the
@@ -267,7 +268,8 @@ const demoScores = [
         <li><code>.num</code> on numeric cells, for right-aligned tabular figures</li>
         <li>a second header row, which is styled as a lighter sub-header</li>
         <li><code>&lt;a class="row-link"&gt;</code>, which makes the whole row clickable</li>
-        <li><code>.sortable</code> and <code>data-sort="string"</code> or <code>"number"</code> on headers, to sort by clicking a column (<code>src/scripts/sortable-table.ts</code>)</li>
+        <li><code>.sortable</code> and <code>data-sort="string"</code> or <code>"number"</code> on headers, to sort by clicking a column (<code>src/scripts/sortable-table.ts</code>). Columns sort ascending; add <code>data-sort-dir="desc"</code> where higher is better</li>
+        <li><code>.score-ace</code>, <code>.score-eagle</code>, <code>.score-birdie</code>, <code>.score-par</code>, <code>.score-bogey</code> and <code>.score-double-plus</code>, to colour hole scores (pick one with <code>scoreCategory()</code> in <code>src/utils/scores.ts</code>)</li>
       </ul>
       <p>Rows highlight on hover. Narrow the window to see the first column stay put:</p>
 
@@ -290,7 +292,7 @@ const demoScores = [
               <tr>
                 <td class="whitespace-nowrap"><a class="row-link" href="#content">{r.name}</a></td>
                 <td class="num">{r.holes.reduce((a, b) => a + b, 0)}</td>
-                {r.holes.map((s) => <td class="num">{s}</td>)}
+                {r.holes.map((s, i) => <td class={`num score-${scoreCategory(s, demoPars[i])}`}>{s}</td>)}
               </tr>
             ))}
           </tbody>
@@ -322,6 +324,34 @@ const demoScores = [
 
       <p class="mini-label"><code>.metrix-button</code> — inline chip linking to Metrix results</p>
       <p><span class="metrix-button">Results ↗</span></p>
+
+      <p class="mini-label"><code>.stat-card</code> — a headline figure, with <code>.stat-label</code>, <code>.stat-value</code> and <code>.stat-detail</code></p>
+      <div class="not-prose my-4 grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div class="stat-card">
+          <div class="stat-label">Player rounds</div>
+          <div class="stat-value">557</div>
+          <div class="stat-detail">50.6 average field</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Players</div>
+          <div class="stat-value">144</div>
+          <div class="stat-detail">51 with 5+ rounds</div>
+        </div>
+      </div>
+
+      <p class="mini-label"><code>.page-tabs</code> — links between sibling pages, the current one marked <code>aria-current="page"</code></p>
+      <nav class="page-tabs not-prose my-4" aria-label="Example">
+        <a href="#content" aria-current="page">Events</a>
+        <a href="#content">Stats</a>
+      </nav>
+
+      <p class="mini-label"><code>.pill-nav</code> — links choosing one of several views, with an optional <code>.pill-nav-label</code></p>
+      <nav class="pill-nav not-prose my-4" aria-label="Example">
+        <span class="pill-nav-label">Division</span>
+        <a href="#content" aria-current="page">All</a>
+        <a href="#content">A</a>
+        <a href="#content">B</a>
+      </nav>
     </section>
   </div>
 </Layout>
