@@ -1,8 +1,7 @@
 import { Temporal } from '@js-temporal/polyfill';
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { getPublishedEvents, clubEventToCalendarEvent, getExternalCalendarEvents, socialDayToCalendarEvent, type CalendarEvent } from '@utils/events';
-import { getSocialDays } from '@utils/metrix';
+import { getPublishedEvents, clubEventToCalendarEvent, getExternalCalendarEvents, getSocialDayCalendarEvents, type CalendarEvent } from '@utils/events';
 
 function pad2(n: number): string {
   return String(n).padStart(2, '0');
@@ -145,8 +144,7 @@ export const GET: APIRoute = async ({ site }) => {
 
   const externalCalendarEvents = getExternalCalendarEvents(clubEvents);
 
-  const socialDays = getSocialDays()
-    .map((e) => socialDayToCalendarEvent(e, metrixToCourse));
+  const socialDays = getSocialDayCalendarEvents(metrixToCourse);
 
   // Filter out events more than 30 days in the past
   const cutoff = Temporal.Now.plainDateISO().subtract({ days: 30 });

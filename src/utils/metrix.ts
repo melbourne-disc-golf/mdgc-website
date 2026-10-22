@@ -325,11 +325,6 @@ export function getSeasons(): Season[] {
   return seasons.sort((a, b) => (b.dateStart ?? '').localeCompare(a.dateStart ?? ''));
 }
 
-/** Every social day across all seasons, flattened — for the events calendar. */
-export function getSocialDays(): SocialDay[] {
-  return getSeasons().flatMap((season) => season.socialDays);
-}
-
 /** Full results detail (division tables) for a played social day, or null. */
 export function getEvent(eventId: string | number): EventDetail | null {
   const comp = byId.get(String(eventId));

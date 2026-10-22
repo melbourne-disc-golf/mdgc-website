@@ -1,7 +1,8 @@
 import { Temporal } from '@js-temporal/polyfill';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { getSocialDays } from '@utils/metrix';
+import { getSeasons } from '@utils/metrix';
+import { roundPath } from '@utils/social-paths';
 import { getExternalEvents, excludeClubDuplicates, abbreviateLocation, type PdgaEvent } from '@utils/pdga';
 
 export type EventSource = 'club' | 'social' | 'external';
@@ -155,10 +156,12 @@ export function getExternalCalendarEvents(clubEvents: ClubEventEntry[]): Calenda
  * Convert a Metrix social day event to a CalendarEvent.
  *
  * @param event - The metrix event object
+ * @param url - The social day's page on this site
  * @param metrixToCourse - Map of metrix course ID to course entry (for location and geo)
  */
-export function socialDayToCalendarEvent(
+function socialDayToCalendarEvent(
   event: MetrixEvent,
+  url: string,
   metrixToCourse?: Map<string, CourseEntry>
 ): CalendarEvent {
   const course = metrixToCourse?.get(event.courseId);
@@ -168,16 +171,24 @@ export function socialDayToCalendarEvent(
   return {
     summary: `MDGC Social Day - ${event.courseTitle}`,
     startDate: Temporal.PlainDate.from(event.date),
-    url: `https://discgolfmetrix.com/${event.id}`,
+    url,
     location,
     geo,
-    external: true,
     source: 'social',
     courseSlugs: course ? [course.id] : undefined,
     // Social days run 8am–1pm Melbourne time
     startTime: Temporal.PlainTime.from({ hour: 8, minute: 0 }),
     endTime: Temporal.PlainTime.from({ hour: 13, minute: 0 }),
   };
+}
+
+/** Every social day, across all seasons, as a CalendarEvent linking to its round page. */
+export function getSocialDayCalendarEvents(metrixToCourse?: Map<string, CourseEntry>): CalendarEvent[] {
+  return getSeasons().flatMap((season) =>
+    season.socialDays.map((day) =>
+      socialDayToCalendarEvent(day, roundPath(season, day.number), metrixToCourse)
+    )
+  );
 }
 
 /**
@@ -197,6 +208,6 @@ export async function getAllCalendarEvents(): Promise<CalendarEvent[]> {
   return [
     ...clubEvents.map((e) => clubEventToCalendarEvent(e, coursesBySlug)),
     ...getExternalCalendarEvents(clubEvents),
-    ...getSocialDays().map((e) => socialDayToCalendarEvent(e, metrixToCourse)),
+    ...getSocialDayCalendarEvents(metrixToCourse),
   ];
 }
