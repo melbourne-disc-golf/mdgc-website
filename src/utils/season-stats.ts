@@ -58,6 +58,9 @@ export interface SeasonStats {
 
 const BEST_ROUNDS = 10;
 
+/** Divisions that get their own stats view; X and Z count only towards the whole season. */
+export const statsDivisions = ['A', 'B', 'C', 'D'];
+
 export function emptyScoreCounts(): ScoreCounts {
   return Object.fromEntries(scoreCategories.map((c) => [c, 0])) as ScoreCounts;
 }
@@ -87,6 +90,21 @@ interface PlayerAccumulator {
   scoreCounts: ScoreCounts;
   toPars: number[];
   divisionCounts: Map<string, { count: number; lastRound: number }>;
+}
+
+/**
+ * The rounds as played in one division: only scorecards in that division,
+ * and only rounds where someone played in it.
+ */
+export function roundsInDivision(rounds: EventDetail[], letter: string): EventDetail[] {
+  return rounds
+    .map((round) => ({
+      ...round,
+      divisions: round.divisions
+        .map((d) => ({ ...d, players: d.players.filter((p) => p.division === letter) }))
+        .filter((d) => d.players.length > 0),
+    }))
+    .filter((round) => round.divisions.length > 0);
 }
 
 export function seasonStats(playedRounds: EventDetail[]): SeasonStats {

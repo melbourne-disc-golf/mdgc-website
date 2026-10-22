@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import type { EventDetail, Player } from './metrix';
-import { seasonStats } from './season-stats';
+import { roundsInDivision, seasonStats } from './season-stats';
 
 // A three-hole course: par 3, 3, 4 (par 10).
 const tracks = [
@@ -119,5 +119,22 @@ describe('seasonStats', () => {
     expect(empty.roundsPlayed).toBe(0);
     expect(empty.averageField).toBeNull();
     expect(empty.players).toEqual([]);
+  });
+});
+
+describe('roundsInDivision', () => {
+  it('keeps only scorecards played in that division', () => {
+    const filtered = roundsInDivision(rounds, 'A');
+    expect(filtered.map((r) => r.divisions.flatMap((d) => d.players.map((p) => p.userId)))).toEqual([['1'], ['1']]);
+  });
+
+  it('drops rounds with no one in that division', () => {
+    expect(roundsInDivision(rounds, 'B').map((r) => r.number)).toEqual([1]);
+  });
+
+  it('feeds seasonStats, so a player is profiled from their rounds in that division only', () => {
+    const stats = seasonStats(roundsInDivision(rounds, 'C'));
+    expect(stats.roundsPlayed).toBe(1);
+    expect(stats.players.map((p) => [p.userId, p.rounds])).toEqual([['3', 1]]);
   });
 });

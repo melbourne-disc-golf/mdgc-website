@@ -17,6 +17,10 @@ describe('statsPath', () => {
   it('nests the stats page under the season', () => {
     expect(statsPath({ slug: '2026-1' })).toBe('/events/social/seasons/2026-1/stats');
   });
+
+  it('can narrow to one division', () => {
+    expect(statsPath({ slug: '2026-1' }, 'A')).toBe('/events/social/seasons/2026-1/stats/div-a');
+  });
 });
 
 describe('divisionAnchor', () => {

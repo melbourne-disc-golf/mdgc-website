@@ -415,6 +415,28 @@ h2.section-heading .heading-link {
   @apply border-mdgc-blue-dark text-mdgc-blue-dark;
 }
 
+/* Pill nav — a row of links choosing one of several views, e.g. a division;
+   mark the current one with aria-current="page". An optional .pill-nav-label leads. */
+.pill-nav {
+  @apply flex flex-wrap items-center gap-2;
+}
+
+.pill-nav-label {
+  @apply mr-1 text-sm font-semibold text-slate-500;
+}
+
+.pill-nav a {
+  @apply min-w-10 rounded-full border border-gray-300 bg-white px-3 py-1 text-center text-sm font-semibold text-slate-600 no-underline;
+}
+
+.pill-nav a:hover {
+  @apply border-mdgc-blue-dark text-mdgc-blue-dark;
+}
+
+.pill-nav a[aria-current="page"] {
+  @apply border-mdgc-blue-dark bg-mdgc-blue-dark text-white;
+}
+
 .redbox {
 	@apply border border-red-300;
 }

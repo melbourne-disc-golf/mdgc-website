@@ -5,18 +5,20 @@ import SeasonTabs from '@components/SeasonTabs.astro';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
 import { getEvent, getSeasons, type EventDetail } from '@utils/metrix';
-import { birdiesOrBetter, seasonStats, totalScores, type ScoreCounts } from '@utils/season-stats';
+import { birdiesOrBetter, roundsInDivision, seasonStats, statsDivisions, totalScores, type ScoreCounts } from '@utils/season-stats';
 import { scoreCategories, scoreCategoryLabels } from '@utils/scores';
-import { roundPath } from '@utils/social-paths';
+import { roundPath, statsPath } from '@utils/social-paths';
 
 export async function getStaticPaths() {
-  return getSeasons().map((season) => ({
-    params: { season: season.slug },
-    props: { season },
-  }));
+  return getSeasons().flatMap((season) =>
+    [undefined, ...statsDivisions].map((division) => ({
+      params: { season: season.slug, division: division && `div-${division.toLowerCase()}` },
+      props: { season, division },
+    }))
+  );
 }
 
-const { season } = Astro.props;
+const { season, division } = Astro.props;
 const { name, dateStart, dateEnd } = season;
 
 const subtitle = dateStart
@@ -26,11 +28,17 @@ const subtitle = dateStart
     )
   : undefined;
 
-const rounds = season.socialDays
+const allRounds = season.socialDays
   .filter((day) => day.played)
   .map((day) => getEvent(day.id))
   .filter((round): round is EventDetail => round !== null);
+const rounds = division ? roundsInDivision(allRounds, division) : allRounds;
 const stats = seasonStats(rounds);
+
+const divisionLinks = [
+  { text: 'All', href: statsPath(season), current: !division },
+  ...statsDivisions.map((d) => ({ text: d, href: statsPath(season, d), current: d === division })),
+];
 const regulars = stats.players.filter((p) => p.rounds >= 5).length;
 
 // Map Metrix course ids to our course titles.
@@ -55,7 +63,8 @@ function formatToPar(value: number | null, digits = 0): string {
 function percent(count: number, total: number): string {
   if (!total) return '–';
   const value = (100 * count) / total;
-  return count > 0 && value < 0.05 ? '<0.1%' : `${value.toFixed(1)}%`;
+  if (count === 0) return '0%';
+  return value < 0.05 ? '<0.1%' : `${value.toFixed(1)}%`;
 }
 
 function birdieRate(counts: ScoreCounts): string {
@@ -99,12 +108,18 @@ function fractionHeat(value: number, max: number): string {
 }
 ---
 
-<Layout title={`${name} stats`} subtitle={subtitle} backLink={{ href: '/events/social/seasons', text: 'Social days by season' }}>
+<Layout title={division ? `${name} stats: Div ${division}` : `${name} stats`} subtitle={subtitle} backLink={{ href: '/events/social/seasons', text: 'Social days by season' }}>
   <SeasonTabs season={season} current="stats" />
+  <nav class="pill-nav mt-4" aria-label="Division">
+    <span class="pill-nav-label">Division</span>
+    {divisionLinks.map((link) => (
+      <a href={link.href} aria-current={link.current ? 'page' : undefined}>{link.text}</a>
+    ))}
+  </nav>
   <div class="mb-8 mt-6 space-y-12">
 
     {stats.roundsPlayed === 0 ? (
-      <p class="text-slate-600">No rounds played yet.</p>
+      <p class="text-slate-600">No rounds played{division && ` in Div ${division}`} yet.</p>
     ) : (
       <>
         <section>
@@ -135,7 +150,9 @@ function fractionHeat(value: number, max: number): string {
 
         <section>
           <h2 id="scoring" class="section-heading mb-4">Scoring mix</h2>
-          <p class="mb-4 text-slate-600">Every hole scored this season, by score relative to par.</p>
+          <p class="mb-4 text-slate-600">
+            Every hole scored{division && ` in Div ${division}`} this season, by score relative to par.
+          </p>
           <div class="score-bar mb-3" aria-hidden="true">
             {scoreCategories.filter((c) => stats.scoreCounts[c] > 0).map((c) => (
               <div
@@ -227,7 +244,9 @@ function fractionHeat(value: number, max: number): string {
         <section>
           <h2 id="players" class="section-heading mb-4">Player score summaries</h2>
           <p class="mb-4 text-slate-600">
-            Each player's scoring this season. Division is the one they played most often.
+            {division
+              ? `Each player's scoring in Div ${division} this season, from the rounds they played in it.`
+              : "Each player's scoring this season. Division is the one they played most often."}
           </p>
           <label class="mb-4 flex items-center gap-2" data-players-filter hidden>
             <span class="font-semibold text-slate-600">Show</span>
@@ -243,7 +262,7 @@ function fractionHeat(value: number, max: number): string {
               <thead>
                 <tr>
                   <th data-sort="string">Player</th>
-                  <th class="text-center" data-sort="string">Div</th>
+                  {!division && <th class="text-center" data-sort="string">Div</th>}
                   <th class="num" data-sort="number" data-sort-dir="desc">Rounds</th>
                   {scoreCategories.filter((c) => c !== 'ace' && c !== 'eagle').map((c) => (
                     <th
@@ -267,7 +286,7 @@ function fractionHeat(value: number, max: number): string {
                   return (
                     <tr data-rounds={p.rounds}>
                       <td class="font-medium whitespace-nowrap">{p.name}</td>
-                      <td class="text-center">{p.division}</td>
+                      {!division && <td class="text-center">{p.division}</td>}
                       <td class={`num ${fractionHeat(p.rounds, stats.roundsPlayed)}`}>{p.rounds}</td>
                       <td class={`num ${birdieHeat(p.scoreCounts)}`} data-value={share(birdies)}>{percent(birdies, total)}</td>
                       <td class={`num ${percentHeat('neutral', p.scoreCounts.par, total, [25, 35, 45, 55])}`} data-value={share(p.scoreCounts.par)}>
@@ -339,7 +358,7 @@ function fractionHeat(value: number, max: number): string {
 </style>
 
 <script>
-  import '../../../../../scripts/sortable-table';
+  import '@src/scripts/sortable-table';
 
   // Filter the players table by rounds played. Without this script, the
   // control stays hidden and every player is listed.
