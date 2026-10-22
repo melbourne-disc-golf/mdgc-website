@@ -1,0 +1,10 @@
+season: 2026 Season 2
+title: Round 5 - Bicentennial Park
+date: "2026-08-16"
+coordinators:
+  - Mark Green
+ctb:
+  - hole: 9
+    divisions: [A, B, X, Z]
+  - hole: 3
+    divisions: [C, D]

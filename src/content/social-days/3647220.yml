@@ -1,0 +1,10 @@
+season: 2026 Season 2
+title: Round 10 - Heathdale Glen Orden
+date: "2026-10-11"
+coordinators:
+  - Richard Lewis-Shell
+ctb:
+  - hole: 1
+    divisions: [A, B, X, Z]
+  - hole: 7
+    divisions: [C, D]

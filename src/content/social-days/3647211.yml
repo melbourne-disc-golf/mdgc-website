@@ -1,0 +1,10 @@
+season: 2026 Season 2
+title: Round 3 - Bald Hill
+date: "2026-07-18"
+coordinators:
+  - Aidan Howard
+ctb:
+  - hole: 9
+    divisions: [A, B, X, Z]
+  - hole: 4
+    divisions: [C, D]

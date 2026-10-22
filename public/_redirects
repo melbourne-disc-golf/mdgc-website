@@ -32,11 +32,13 @@
 /product-category/* /shop 301
 /product-tag/* /shop 301
 
+# Temporary redirects (302)
+/ctb /events/social/ctb 302
+/ctb/ /events/social/ctb 302
+
 # External redirects (302 temporary)
 /shop https://mdgcshop.square.site/ 302
 /shop/ https://mdgcshop.square.site/ 302
-/ctb https://docs.google.com/forms/d/1qG5hbu89CphfQhYTAXnmCRAqe84S5EgCChU908jlZTQ 302
-/ctb/ https://docs.google.com/forms/d/1qG5hbu89CphfQhYTAXnmCRAqe84S5EgCChU908jlZTQ 302
 
 # CMS redirect (308 permanent, preserves method)
 /admin /cms/ 308

@@ -8,8 +8,10 @@ import { getSocialPrizeNotes, getSocialPrizeWinners } from '@data/social-prize-w
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDayOfSeason } from '@utils/dates';
 import { getEvent, getUpcomingSocialDay, getSeasons, metrixUrl } from '@utils/metrix';
+import { ctbAnchor, ctbLabel, ctbToday } from '@utils/ctb';
 import { scoreCategory } from '@utils/scores';
 import Link from '@components/Link.astro';
+import { externalUrls } from '@data/external-urls';
 import { divisionAnchor, roundPath, seasonPath } from '@utils/social-paths';
 
 export async function getStaticPaths() {
@@ -37,6 +39,14 @@ const { title, date } = detail;
 const plainDate = Temporal.PlainDate.from(date);
 const subtitle = `${formatDayOfSeason(plainDate)}, ${plainDate.year}`;
 const course = detail.courseSlug ? await getEntry('courses', detail.courseSlug) : undefined;
+
+// Details Metrix doesn't hold, if this social day has an entry.
+const extras = await getEntry('socialDays', String(eventId));
+const coordinators = extras?.data.coordinators ?? [];
+const ctbPrizes = (extras?.data.ctb ?? []).filter((prize) => prize.hole !== undefined);
+// CTB claims count only on the day; the section stays up all that day, even once results are in.
+const ctbDay = date === ctbToday();
+const cmsPath = extras ? `/collections/social-days/entries/${extras.id}` : undefined;
 
 const today = Temporal.Now.plainDateISO().toString();
 const showGroups = date >= today;
@@ -69,7 +79,7 @@ function fmt2(n: number | null): string {
 }
 ---
 
-<Layout title={title} subtitle={subtitle} backLink={backLink}>
+<Layout title={title} subtitle={subtitle} backLink={backLink} cmsPath={cmsPath}>
   <nav class="prev-next-nav not-prose mt-4" aria-label="Rounds in this season">
     {prevRound ? (
       <a href={roundPath(season, prevRound.number)} rel="prev">
@@ -108,6 +118,12 @@ function fmt2(n: number | null): string {
       </div>
     )}
 
+    {coordinators.length > 0 && (
+      <p>
+        <strong>{coordinators.length === 1 ? 'Coordinator' : 'Coordinators'}:</strong> {coordinators.join(', ')}
+      </p>
+    )}
+
     {showGroups && upcoming && upcoming.registeredCount > 0 && (
       <section class="space-y-4">
         <h2 class="section-heading">Registered players</h2>
@@ -136,6 +152,48 @@ function fmt2(n: number | null): string {
               </div>
             ))}
           </div>
+        )}
+      </section>
+    )}
+
+    {(!results || ctbDay) && (
+      <section class="space-y-4">
+        <h2 id="ctb" class="section-heading">CTB holes</h2>
+        <p class="text-slate-600">There's a closest-to-the-basket (CTB) prize for each group of divisions.</p>
+        <p class="text-slate-600">
+          {ctbPrizes.length === 0
+            ? "This round's CTB holes haven't been set yet; the coordinator usually chooses them the day before."
+            : 'If your throw beats the current CTB, move the flag to where it landed (the front of the disc), then record it below.'}
+        </p>
+
+        {ctbPrizes.length > 0 && (
+          <>
+            <p class="social-callout">
+              <strong>Prototype.</strong> These forms aren't live yet; submitting them doesn't record anything.
+              For now, record your CTB on the <Link class="text-mdgc-blue underline" href={externalUrls.ctb}>CTB Google Form</Link>.
+            </p>
+            <div class="grid gap-4 sm:grid-cols-2">
+              {ctbPrizes.map((prize) => (
+                <form id={ctbAnchor(prize)} class="scroll-mt-24 space-y-4 rounded-lg border border-slate-200 bg-white p-4" method="get" action={`#${ctbAnchor(prize)}`}>
+                  <div>
+                    <h3 class="text-xl font-bold">Hole {prize.hole}</h3>
+                    <p class="text-sm text-slate-600">{ctbLabel(prize)}</p>
+                  </div>
+                  <input type="hidden" name="metrixId" value={eventId} />
+                  <input type="hidden" name="prize" value={prize.divisions.join('')} />
+                  <label class="block space-y-1">
+                    <span class="block text-sm font-semibold">Name</span>
+                    <input type="text" name="name" required autocomplete="name"
+                      class="w-full rounded-lg border border-slate-300 px-3 py-2" />
+                  </label>
+                  <div class="flex flex-wrap items-center gap-3">
+                    <button type="submit" class="cta-button" disabled={!ctbDay}>Record my CTB</button>
+                    {!ctbDay && <span class="text-sm text-slate-500">Opens on the day</span>}
+                  </div>
+                </form>
+              ))}
+            </div>
+          </>
         )}
       </section>
     )}

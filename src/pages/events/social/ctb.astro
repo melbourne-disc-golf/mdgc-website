@@ -1,0 +1,38 @@
+---
+// Where /ctb leads: the CTB section of today's social day, or else the next
+// one's, which shows its CTB holes once they're set. Which day that is gets
+// decided at build time, so the site needs a daily rebuild to keep it current. Set CTB_TODAY=YYYY-MM-DD to simulate another day.
+import Layout from '@layouts/Layout.astro';
+import { ctbRoundFor, ctbToday } from '@utils/ctb';
+import { getSeasons } from '@utils/metrix';
+import { roundPath } from '@utils/social-paths';
+
+const today = ctbToday();
+const days = getSeasons().flatMap((season) =>
+  season.socialDays.map((day) => ({ ...day, season }))
+);
+const round = ctbRoundFor(days, today);
+const target = round ? `${roundPath(round.season, round.number)}#ctb` : undefined;
+const roundTitle = round?.title ?? '';
+---
+
+{target ? (
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>CTB: {roundTitle}</title>
+      <meta http-equiv="refresh" content={`0;url=${target}`} />
+      <meta name="robots" content="noindex" />
+      <link rel="canonical" href={target} />
+    </head>
+    <body>
+      <a href={target}>CTB for {roundTitle}</a>
+    </body>
+  </html>
+) : (
+  <Layout title="CTB" subtitle="closest to the basket" description="Record a closest-to-the-basket (CTB) throw at a social day.">
+    <div class="my-8 max-w-xl">
+      <p>There's no social day coming up, so there's no CTB to record.</p>
+    </div>
+  </Layout>
+)}
