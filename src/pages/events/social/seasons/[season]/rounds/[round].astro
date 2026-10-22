@@ -6,6 +6,7 @@ import { getSocialPrizeNotes, getSocialPrizeWinners } from '@data/social-prize-w
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
 import { getEvent, getUpcomingSocialDay, getSeasons } from '@utils/metrix';
+import { scoreCategory } from '@utils/scores';
 import { divisionAnchor, seasonPath } from '@utils/social-paths';
 
 export async function getStaticPaths() {
@@ -45,16 +46,8 @@ const { par, tracks, divisions } = results ?? { par: 0, tracks: [], divisions: [
 const prizeWinners = results ? getSocialPrizeWinners(results.id) : [];
 const prizeNotes = results ? getSocialPrizeNotes(results.id) : [];
 
-// Shade a hole score's background relative to its par (disc-golf scorecard colours).
 function holeClass(score: number | null, holePar: number): string {
-  if (score === null) return 'text-slate-300';
-  if (score === 1) return 'bg-[#ffd60a] text-[#3f2600]';       // ace
-  const diff = score - holePar;
-  if (diff <= -2) return 'bg-[#55d57d] text-[#06351f]';        // eagle or better
-  if (diff === -1) return 'bg-[#d8f0e5] text-[#0b3f38]';       // birdie
-  if (diff === 0) return 'text-slate-700';                      // par
-  if (diff === 1) return 'bg-[#ffe1c2] text-[#7a3b00]';        // bogey
-  return 'bg-[#f8e7e4] text-[#8c2c27]';                        // double bogey or worse
+  return score === null ? 'text-slate-300' : `score-${scoreCategory(score, holePar)}`;
 }
 
 function formatDiff(diff: number): string {

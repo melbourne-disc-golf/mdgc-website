@@ -357,6 +357,14 @@ h2.section-heading .heading-link {
   inset: 0;
 }
 
+/* Hole-score colours, as on a disc golf scorecard (see src/utils/scores.ts). */
+.score-ace { background: #ffd60a; color: #3f2600; }
+.score-eagle { background: #55d57d; color: #06351f; }
+.score-birdie { background: #d8f0e5; color: #0b3f38; }
+.score-par { color: var(--color-slate-700); }
+.score-bogey { background: #ffe1c2; color: #7a3b00; }
+.score-double-plus { background: #f8e7e4; color: #8c2c27; }
+
 /* Panel — a generic card container. A leading heading loses its top margin, and
    the last child its bottom margin, so content sits flush against the padding. */
 .panel {
