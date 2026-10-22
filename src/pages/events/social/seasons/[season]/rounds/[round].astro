@@ -119,42 +119,38 @@ function fmt2(n: number | null): string {
     )}
 
     {results && divisions.map((division) => {
-      const nets = division.players.map((p) => p.net).filter((n): n is number => n !== null);
-      const bestNet = nets.length ? Math.min(...nets) : null;
       return (
       <section>
         <h2 class="section-heading mb-4">{division.name}</h2>
         <div class="table-scroll">
-          <table class="data-table compact sticky-first-column">
+          <table class="data-table compact sticky-first-two-columns">
             <thead>
               <tr>
-                <th>Player</th>
-                <th class="num" title="Handicap score">HC</th>
                 <th class="text-center">Pos</th>
-                <th class="num" title="Raw score">Raw</th>
+                <th>Player</th>
+                <th class="num" title="Metrix rating">Rating</th>
+                <th class="num" title="Handicap score">HC</th>
                 <th class="num">+/-</th>
+                <th class="num" title="Raw score">Raw</th>
                 {tracks.map((t) => (
                   <th class="num" title={`Par ${t.par}`}>{t.number}</th>
                 ))}
-                <th class="num" title="Metrix rating">Rating</th>
               </tr>
               <tr>
                 <th></th>
                 <th></th>
                 <th></th>
-                <th class="num">{par}</th>
+                <th></th>
                 <th class="num">Par</th>
+                <th class="num">{par}</th>
                 {tracks.map((t) => (
                   <th class="num">{t.par}</th>
                 ))}
-                <th></th>
               </tr>
             </thead>
             <tbody>
               {division.players.map((p) => (
                 <tr>
-                  <td class="font-medium whitespace-nowrap">{p.name}</td>
-                  <td class={`num ${p.net !== null && p.net === bestNet ? 'font-bold text-slate-800' : 'text-slate-600'}`}>{fmt2(p.net)}</td>
                   <td class="text-center">
                     {p.pos <= 3 ? (
                       <span class={`podium-badge podium-${p.pos}`}>{p.pos}</span>
@@ -162,12 +158,14 @@ function fmt2(n: number | null): string {
                       <span class="text-slate-500">{p.pos}</span>
                     )}
                   </td>
+                  <td class="font-medium whitespace-nowrap">{p.name}</td>
+                  <td class="num text-slate-500">{p.rating ?? '–'}</td>
+                  <td class="num text-slate-600">{fmt2(p.net)}</td>
+                  <td class="num font-bold text-slate-800">{formatDiff(p.diff)}</td>
                   <td class="num text-slate-600">{p.sum}</td>
-                  <td class="num text-slate-600">{formatDiff(p.diff)}</td>
                   {p.holes.map((score, h) => (
                     <td class={`num ${holeClass(score, tracks[h]?.par ?? par)}`}>{score ?? '–'}</td>
                   ))}
-                  <td class="num text-slate-500">{p.rating ?? '–'}</td>
                 </tr>
               ))}
             </tbody>

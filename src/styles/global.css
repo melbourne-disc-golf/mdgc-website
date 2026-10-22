@@ -186,7 +186,7 @@ a:hover {
    Modifiers for data-heavy tables (see /design):
    - wrap the table in <div class="table-scroll"> to scroll it sideways on small screens
    - .compact: tighter cell padding
-   - .sticky-first-column: keeps the first column in view while scrolling sideways
+   - .sticky-first-column (or .sticky-first-two-columns): keeps the first column(s) in view while scrolling sideways
    - a second header row (e.g. par per hole) is styled as a lighter sub-header
    - an <a class="row-link"> makes its whole row clickable */
 :is(.prose table, table.data-table) {
@@ -293,12 +293,32 @@ a:hover {
 }
 
 /* `background: inherit` picks up the row's stripe or hover colour, so scrolled
-   cells don't show through. */
-.data-table.sticky-first-column :is(th, td):first-child {
+   cells don't show through. With two sticky columns, the first has a fixed
+   width (--sticky-first-width) so the second knows where to stick. */
+.data-table:is(.sticky-first-column, .sticky-first-two-columns) :is(th, td):first-child,
+.data-table.sticky-first-two-columns :is(th, td):nth-child(2) {
   position: sticky;
   left: 0;
   z-index: 1;
   background: inherit;
+}
+
+.data-table.sticky-first-two-columns {
+  --sticky-first-width: 3rem;
+}
+
+.data-table.sticky-first-two-columns :is(th, td):first-child {
+  width: var(--sticky-first-width);
+  min-width: var(--sticky-first-width);
+  max-width: var(--sticky-first-width);
+}
+
+.data-table.sticky-first-two-columns :is(th, td):nth-child(2) {
+  left: var(--sticky-first-width);
+}
+
+.data-table.sticky-first-column :is(th, td):first-child,
+.data-table.sticky-first-two-columns :is(th, td):nth-child(2) {
   box-shadow: inset -1px 0 #e2e8f0; /* slate-200 */
 }
 
