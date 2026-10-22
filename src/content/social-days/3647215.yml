@@ -1,0 +1,10 @@
+season: 2026 Season 2
+title: Round 6 - Llewellyn Park
+date: "2026-08-22"
+coordinators:
+  - Ross Davies
+ctb:
+  - hole: 4
+    divisions: [A, B, X, Z]
+  - hole: 2
+    divisions: [C, D]

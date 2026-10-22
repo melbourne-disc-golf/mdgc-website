@@ -1,0 +1,10 @@
+season: 2026 Season 2
+title: Round 7 - Little Blind Creek
+date: "2026-09-06"
+coordinators:
+  - Damian Musci
+ctb:
+  - hole: 15
+    divisions: [A, B, X, Z]
+  - hole: 2
+    divisions: [C, D]

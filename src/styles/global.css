@@ -466,16 +466,20 @@ h2.section-heading .heading-link {
 }
 
 /* Call-to-action button, e.g. "Register". Add .compact for use inside a table row.
-   Qualified with "a" so it outranks the .prose a link style. */
-a.cta-button {
+   Qualified with the element so it outranks the .prose a link style. */
+:is(a, button).cta-button {
   @apply inline-block rounded-full bg-mdgc-blue-dark px-4 py-1.5 font-semibold text-white no-underline whitespace-nowrap;
 }
 
-a.cta-button:hover {
+:is(a, button).cta-button:hover {
   @apply bg-mdgc-blue;
 }
 
-a.cta-button.compact {
+:is(a, button).cta-button:disabled {
+  @apply cursor-not-allowed opacity-60;
+}
+
+:is(a, button).cta-button.compact {
   @apply px-3 py-0.5 text-sm;
 }
 

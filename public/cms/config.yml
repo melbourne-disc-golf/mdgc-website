@@ -109,3 +109,66 @@ collections:
       - { label: "Registration URL", name: "registrationUrl", widget: "string", required: false, hint: "Link to registration page (leave blank if not applicable)", pattern: ['^https?://.+', "Must be a URL starting with http:// or https://"] }
       - { label: "PDGA Event ID", name: "pdgaEventId", widget: "string", required: false, hint: "Numeric ID from pdga.com (e.g. 123456)" }
       - { label: "Aliases", name: "aliases", widget: "string", required: false, hint: "Old 'slugs' for this event that should redirect. Usually blank." }
+
+  - name: "social-days"
+    label: "Social days"
+    label_singular: "Social day"
+    description: >-
+      Details of each social day that Disc Golf Metrix doesn't hold.
+      Entries are created automatically from Metrix.
+    folder: "src/content/social-days"
+    extension: "yml"
+    format: "yaml"
+    create: false
+    delete: false
+    editor:
+      preview: false
+    identifier_field: "title"
+    summary: "{{season}}, {{title}}"
+    sortable_fields:
+      default:
+        field: date
+        direction: descending
+      fields: ["date"]
+    fields:
+      - label: "Season"
+        name: "season"
+        widget: "string"
+        readonly: true
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        readonly: true
+      - label: "Date"
+        name: "date"
+        widget: "string"
+        readonly: true
+      - label: "Coordinators"
+        name: "coordinators"
+        widget: "list"
+        required: false
+        field:
+          label: "Name"
+          name: "name"
+          widget: "string"
+      - label: "CTB prizes"
+        name: "ctb"
+        widget: "list"
+        required: false
+        hint: >-
+          Closest-to-the-basket prizes.
+          Each division can be in only one.
+        summary: "Hole {{hole}}: Div {{divisions}}"
+        fields:
+          - label: "Hole"
+            name: "hole"
+            widget: "number"
+            value_type: "int"
+            min: 1
+            max: 36
+            required: false
+          - label: "Divisions"
+            name: "divisions"
+            widget: "select"
+            multiple: true
+            options: ["A", "B", "C", "D", "X", "Z"]

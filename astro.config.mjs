@@ -20,7 +20,7 @@ export default defineConfig({
     '/about': '/club',
     '/admin': '/cms/',
     '/contact': '/club#contact-us',
-    '/ctb': externalUrls.ctb,
+    '/ctb': '/events/social/ctb',
     '/ctp': '/ctb',
     '/melbourne-courses': '/courses',
     '/membership': '/club/membership',

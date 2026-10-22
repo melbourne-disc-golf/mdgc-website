@@ -1,0 +1,10 @@
+season: 2026 Season 2
+title: Round 4 - Stony Creek
+date: "2026-08-08"
+coordinators:
+  - Aaron Ponnudurai
+ctb:
+  - hole: 7
+    divisions: [A, B, X, Z]
+  - hole: 6
+    divisions: [C, D]

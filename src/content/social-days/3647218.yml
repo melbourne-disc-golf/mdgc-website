@@ -1,0 +1,10 @@
+season: 2026 Season 2
+title: Round 8 - Ruffey Lake
+date: "2026-09-12"
+coordinators:
+  - Hamish Clarkson
+ctb:
+  - hole: 15
+    divisions: [A, B, X, Z]
+  - hole: 18
+    divisions: [C, D]

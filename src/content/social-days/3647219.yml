@@ -1,0 +1,10 @@
+season: 2026 Season 2
+title: Round 9 - Bald Hill
+date: "2026-09-25"
+coordinators:
+  - Zach Schloeffel
+ctb:
+  - hole: 16
+    divisions: [A, B, X, Z]
+  - hole: 10
+    divisions: [C, D]

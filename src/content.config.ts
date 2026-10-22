@@ -2,6 +2,7 @@ import { defineCollection, reference } from 'astro:content';
 import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 import { zoneSlugs } from './data/zones';
+import { ctbOverlaps } from './utils/ctb';
 
 // Helper for optional fields from Sveltia/Decap CMS.
 // The CMS outputs '' or null for empty optional fields instead of omitting them,
@@ -68,9 +69,42 @@ const events = defineCollection({
 // scripts/fetch-metrix-data.ts), external events by src/utils/pdga.ts (scraped
 // by scripts/fetch-pdga-events.ts).
 
+// Social day info that Metrix doesn't hold: one file per round, named by its
+// Metrix ID. Entries are minted from Metrix data, then filled in via the CMS.
+// Season, title and date are copies, for the CMS's benefit; pages use Metrix's.
+const yamlDate = z.preprocess(
+  (val) => (val instanceof Date ? val.toISOString().slice(0, 10) : val),
+  z.string(),
+);
+
+const ctbPrize = z.object({
+  hole: cmsOptional(z.number().int().min(1)),
+  divisions: z.array(z.string()).min(1),
+});
+
+const socialDays = defineCollection({
+  loader: glob({ pattern: '**/*.yml', base: './src/content/social-days' }),
+  schema: z.object({
+    season: z.string(),
+    title: z.string(),
+    date: yamlDate,
+    coordinators: cmsOptional(z.array(z.string())),
+    ctb: cmsOptional(z.array(ctbPrize).superRefine((prizes, ctx) => {
+      const overlaps = ctbOverlaps(prizes);
+      if (overlaps.length) {
+        ctx.addIssue({
+          code: 'custom',
+          message: `CTB prizes overlap: Div ${overlaps.join(', ')} ${overlaps.length === 1 ? 'is' : 'are'} in more than one prize`,
+        });
+      }
+    })),
+  }),
+});
+
 export const collections = {
   courses,
   board,
   discLibraries,
   events,
+  socialDays,
 };
