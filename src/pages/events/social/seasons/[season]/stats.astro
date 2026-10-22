@@ -208,13 +208,22 @@ const bestRoundPositions = stats.bestRounds.map((r, _, all) => {
           <p class="mb-4 text-slate-600">
             Each player's scoring this season. Division is the one they played most often.
           </p>
+          <label class="mb-4 flex items-center gap-2" data-players-filter hidden>
+            <span class="font-semibold text-slate-600">Show</span>
+            <select class="rounded border border-gray-300 bg-white px-2 py-1">
+              <option value="5" selected>5+ rounds</option>
+              <option value="3">3+ rounds</option>
+              <option value="1">All players</option>
+            </select>
+            <span class="text-sm text-slate-500" data-players-count></span>
+          </label>
           <div class="table-scroll max-w-4xl">
-            <table class="data-table compact sticky-first-column sortable">
+            <table class="data-table compact sticky-first-column sortable" data-players-table>
               <thead>
                 <tr>
                   <th data-sort="string">Player</th>
                   <th class="text-center" data-sort="string">Div</th>
-                  <th class="num" data-sort="number" data-sort-dir="desc">Events</th>
+                  <th class="num" data-sort="number" data-sort-dir="desc">Rounds</th>
                   {scoreCategories.filter((c) => c !== 'ace' && c !== 'eagle').map((c) => (
                     <th class="num" data-sort="number" data-sort-dir={c === 'birdie' || c === 'par' ? 'desc' : undefined}>
                       {c === 'birdie' ? 'Birdie+' : scoreCategoryLabels[c]}
@@ -230,7 +239,7 @@ const bestRoundPositions = stats.bestRounds.map((r, _, all) => {
                   const share = (count: number) => (total ? count / total : '');
                   const birdies = birdiesOrBetter(p.scoreCounts);
                   return (
-                    <tr>
+                    <tr data-rounds={p.rounds}>
                       <td class="font-medium whitespace-nowrap">{p.name}</td>
                       <td class="text-center">{p.division}</td>
                       <td class="num">{p.rounds}</td>
@@ -264,4 +273,28 @@ const bestRoundPositions = stats.bestRounds.map((r, _, all) => {
 
 <script>
   import '../../../../../scripts/sortable-table';
+
+  // Filter the players table by rounds played. Without this script, the
+  // control stays hidden and every player is listed.
+  const control = document.querySelector<HTMLElement>('[data-players-filter]');
+  const select = control?.querySelector('select');
+  const count = control?.querySelector('[data-players-count]');
+  const rows = document.querySelectorAll<HTMLTableRowElement>('[data-players-table] tbody tr');
+
+  function applyFilter() {
+    const min = Number(select?.value ?? 1);
+    let shown = 0;
+    for (const row of rows) {
+      const visible = Number(row.dataset.rounds) >= min;
+      row.hidden = !visible;
+      if (visible) shown++;
+    }
+    if (count) count.textContent = `${shown} of ${rows.length} players`;
+  }
+
+  if (control && select) {
+    control.hidden = false;
+    select.addEventListener('change', applyFilter);
+    applyFilter();
+  }
 </script>
