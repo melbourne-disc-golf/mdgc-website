@@ -11,7 +11,7 @@ export const scoreCategoryLabels: Record<ScoreCategory, string> = {
   birdie: 'Birdie',
   par: 'Par',
   bogey: 'Bogey',
-  'double-plus': 'Double+',
+  'double-plus': '≥ Double',
 };
 
 export function scoreCategory(score: number, par: number): ScoreCategory {

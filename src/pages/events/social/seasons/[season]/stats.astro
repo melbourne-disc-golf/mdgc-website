@@ -163,7 +163,7 @@ function attendanceHeat(players: number): string {
                   <th data-sort="string">Course</th>
                   <th class="num" data-sort="number" data-sort-dir="desc">Attendance</th>
                   <th class="num" data-sort="number" title="Average score to par across the field">Field avg +/-</th>
-                  <th class="num" data-sort="number" data-sort-dir="desc" title="Share of holes scored birdie or better">Birdie+</th>
+                  <th class="num" data-sort="number" data-sort-dir="desc" title="Share of holes scored birdie or better">≤ Birdie</th>
                 </tr>
               </thead>
               <tbody>
@@ -242,8 +242,13 @@ function attendanceHeat(players: number): string {
                   <th class="text-center" data-sort="string">Div</th>
                   <th class="num" data-sort="number" data-sort-dir="desc">Rounds</th>
                   {scoreCategories.filter((c) => c !== 'ace' && c !== 'eagle').map((c) => (
-                    <th class="num" data-sort="number" data-sort-dir={c === 'birdie' || c === 'par' ? 'desc' : undefined}>
-                      {c === 'birdie' ? 'Birdie+' : scoreCategoryLabels[c]}
+                    <th
+                      class="num"
+                      data-sort="number"
+                      data-sort-dir={c === 'birdie' || c === 'par' ? 'desc' : undefined}
+                      title={c === 'birdie' ? 'Birdie or better' : c === 'double-plus' ? 'Double bogey or worse' : undefined}
+                    >
+                      {c === 'birdie' ? '≤ Birdie' : scoreCategoryLabels[c]}
                     </th>
                   ))}
                   <th class="num" data-sort="number" title="Average score to par">Avg +/-</th>
