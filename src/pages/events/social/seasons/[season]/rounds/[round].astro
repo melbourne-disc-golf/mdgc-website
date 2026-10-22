@@ -6,7 +6,7 @@ import { getSocialPrizeNotes, getSocialPrizeWinners } from '@data/social-prize-w
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
 import { getEvent, getUpcomingSocialDay, getSeasons } from '@utils/metrix';
-import { seasonPath } from '@utils/social-paths';
+import { divisionAnchor, seasonPath } from '@utils/social-paths';
 
 export async function getStaticPaths() {
   return getSeasons().flatMap((season) =>
@@ -121,7 +121,10 @@ function fmt2(n: number | null): string {
     {results && divisions.map((division) => {
       return (
       <section>
-        <h2 class="section-heading mb-4">{division.name}</h2>
+        <h2 id={divisionAnchor(division.letter)} class="section-heading mb-4">
+          {division.label}
+          {division.description && <span class="section-subtitle">{division.description}</span>}
+        </h2>
         <div class="table-scroll">
           <table class="data-table compact sticky-first-two-columns">
             <thead>

@@ -27,6 +27,11 @@
   --panel-shadow-hover: 0 14px 30px rgba(6, 61, 99, 0.16);
 }
 
+/* Keep anchor targets clear of the sticky header. */
+html {
+  scroll-padding-top: 5rem;
+}
+
 /* Headings use the display face (Outfit); body copy uses the sans face (Hanken Grotesk). */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
@@ -109,6 +114,14 @@ a:hover {
   padding-top: 1rem;
 }
 
+/* Secondary text after a .section-heading's title, e.g. a division's rating range. */
+.section-subtitle {
+  margin-left: 0.5rem;
+  color: var(--color-slate-500);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
 .eyebrow {
   @apply text-sm font-bold uppercase tracking-[0.16em] text-mdgc-accent-deep;
 }
@@ -130,7 +143,7 @@ a:hover {
 }
 
 /* Heading permalink anchors - positioned left of the heading */
-.prose h2 .heading-link {
+:is(.prose h2, h2.section-heading) .heading-link {
   /* display: none; */
   margin-left: -1.2rem;
   margin-right: 0.3rem;
@@ -140,11 +153,23 @@ a:hover {
   font-weight: normal;
 }
 
-.prose h2:hover .heading-link {
+/* In section headings, keep the link out of the flow, so the heading text lines
+   up with anything below it (e.g. a .section-subtitle). */
+h2.section-heading:has(.heading-link) {
+  position: relative;
+}
+
+h2.section-heading .heading-link {
+  position: absolute;
+  left: -1.2rem;
+  margin: 0;
+}
+
+:is(.prose h2, h2.section-heading):hover .heading-link {
   opacity: 1;
 }
 
-.prose h2 .heading-link:hover {
+:is(.prose h2, h2.section-heading) .heading-link:hover {
   color: var(--color-mdgc-blue-dark);
   transform: none;
 }

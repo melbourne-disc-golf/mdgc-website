@@ -73,6 +73,8 @@ export interface Player {
 export interface Division {
   letter: string;
   name: string;
+  label: string; // e.g. "Div A"
+  description: string | null; // e.g. "Metrix Rating > 890"
   players: Player[];
 }
 
@@ -148,6 +150,13 @@ const DIVISION_ORDER = ['A', 'B', 'C', 'D', 'X', 'Z'];
 function divisionLetter(className: string): string {
   const match = className.match(/Div\s+([A-Za-z0-9]+)/);
   return match ? match[1].toUpperCase() : '?';
+}
+
+/** Split a Metrix class name like "Div A - Metrix Rating > 890" at its first " - ". */
+export function splitDivisionName(name: string): { label: string; description: string | null } {
+  const i = name.indexOf(' - ');
+  if (i === -1) return { label: name, description: null };
+  return { label: name.slice(0, i), description: name.slice(i + 3) };
 }
 
 function divisionRank(letter: string): number {
@@ -227,7 +236,8 @@ function buildDivisions(comp: RawCompetition): Division[] {
       list.forEach((p, i) => {
         p.pos = i > 0 && p.sum === list[i - 1].sum ? list[i - 1].pos : i + 1;
       });
-      return { letter, name: list[0]?.divisionName ?? letter, players: list };
+      const name = list[0]?.divisionName ?? letter;
+      return { letter, name, ...splitDivisionName(name), players: list };
     })
     .sort((a, b) => divisionRank(a.letter) - divisionRank(b.letter));
 }

@@ -1,4 +1,5 @@
-// Add permalink anchors to h2 headings in .prose sections
+// Add permalink anchors to h2 headings in .prose sections, and to section
+// headings that already have an id.
 
 function slugify(text: string): string {
   return text
@@ -11,7 +12,7 @@ function slugify(text: string): string {
 
 const slugCounts = new Map<string, number>();
 
-document.querySelectorAll('.prose h2').forEach((h2) => {
+document.querySelectorAll('.prose h2, h2.section-heading[id]').forEach((h2) => {
   const text = h2.textContent || '';
   let slug = slugify(text);
 
