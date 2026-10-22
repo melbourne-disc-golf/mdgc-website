@@ -1,9 +1,9 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import { Temporal } from '@js-temporal/polyfill';
-import { formatDate, formatDateRange } from '@utils/dates';
-import { getSeasons } from '@utils/metrix';
-import { roundPath } from '@utils/social-paths';
+import { formatDateRange, formatDayOfSeason } from '@utils/dates';
+import { getSeasons, metrixUrl } from '@utils/metrix';
+import { roundPath, statsPath } from '@utils/social-paths';
 import Grid from '@components/Grid.astro';
 import SeasonTabs from '@components/SeasonTabs.astro';
 import LinkPanel from '@components/LinkPanel.astro';
@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 }
 
 const { season } = Astro.props;
-const { title, dateStart, dateEnd } = season;
+const { title, dateStart, dateEnd, socialDays } = season;
 
 const subtitle = dateStart
   ? formatDateRange(
@@ -25,49 +25,94 @@ const subtitle = dateStart
     )
   : undefined;
 
-function shortDate(d: string): string {
-  return formatDate(Temporal.PlainDate.from(d), 'short');
+// Where the season is up to: rounds count as played once Metrix has scores.
+const playedCount = socialDays.filter((day) => day.played).length;
+const nextDay = socialDays.find((day) => !day.played);
+
+function dayOfSeason(d: string, format: 'long' | 'short' = 'long'): string {
+  return formatDayOfSeason(Temporal.PlainDate.from(d), format);
 }
 ---
 
 <Layout title={title} subtitle={subtitle} backLink={{ href: '/events/social/seasons', text: 'Social days by season' }}>
-  <SeasonTabs season={season} current="events" />
+  <SeasonTabs season={season} current="rounds" />
   <div class="mb-8 mt-6 space-y-12">
+    <div class="social-callout flex flex-wrap items-center justify-between gap-4">
+      {nextDay ? (
+        <>
+          <p>
+            <strong>{playedCount} of {socialDays.length} rounds played.</strong>
+            Next up: <a href={roundPath(season, nextDay.number)}>{nextDay.title}</a>,
+            on {dayOfSeason(nextDay.date)}{nextDay.players > 0 && <>, with {nextDay.players} registered so far</>}.
+          </p>
+          <a class="cta-button" href={metrixUrl(nextDay.id)}>Register on Metrix ↗</a>
+        </>
+      ) : (
+        <p>
+          <strong>All {socialDays.length} rounds played.</strong>
+          See the <a href={statsPath(season)}>season stats</a>.
+        </p>
+      )}
+    </div>
+
     <section>
-      <h2 class="section-heading mb-4">Events</h2>
-      <table class="data-table compact mx-auto max-w-lg">
-        <thead>
-          <tr>
-            <th class="text-center">Event</th>
-            <th class="num">Date</th>
-            <th>Course</th>
-            <th class="num" title="Players who played, or registered so far">Players</th>
-          </tr>
-        </thead>
-        <tbody>
-          {season.socialDays.map((day) => {
-            return (
-              <tr
-                class={day.played ? undefined : 'text-slate-400'}
-                title={day.played ? undefined : 'Not yet played'}
-              >
-                <td class="text-center font-bold">
-                  <a href={roundPath(season, day.number)} class="row-link text-mdgc-blue-dark">{day.number}</a>
-                </td>
-                <td class="num whitespace-nowrap">{shortDate(day.date)}</td>
-                <td>{day.courseTitle}</td>
-                <td class="num">{day.players || '–'}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <h2 class="section-heading mb-4">Rounds</h2>
+      <div class="table-scroll max-w-2xl">
+        <table class="data-table compact">
+          <thead>
+            <tr>
+              <th class="text-center"><abbr class="no-underline sm:hidden" title="Round">Rd</abbr><span class="hidden sm:inline">Round</span></th>
+              <th class="num">Date</th>
+              <th>Course</th>
+              <th class="num" title="Players who played, or registered so far">Players</th>
+              <th><span class="sr-only">Results or registration</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            {socialDays.map((day) => {
+              const isNext = day.id === nextDay?.id;
+              return (
+                <tr class={isNext ? 'next-round' : undefined}>
+                  <td class="text-center font-bold">
+                    <a href={roundPath(season, day.number)} class="row-link text-mdgc-blue-dark">{day.number}</a>
+                  </td>
+                  <td class="num whitespace-nowrap">
+                    {(() => {
+                      const [weekday, ...rest] = dayOfSeason(day.date, 'short').split(' ');
+                      return <><span class="block sm:inline">{weekday}</span> {rest.join(' ')}</>;
+                    })()}
+                  </td>
+                  <td>
+                    {day.courseTitle}
+                    {isNext && <span class="next-pill">Next</span>}
+                  </td>
+                  <td class="num">
+                    {day.played ? day.players : (
+                      <>
+                        {day.players}
+                        <span class="block text-xs text-slate-500">registered</span>
+                      </>
+                    )}
+                  </td>
+                  <td class="text-center">
+                    {day.played ? (
+                      <span class="text-sm text-mdgc-blue-dark">Results</span>
+                    ) : (
+                      <a class="cta-button compact" href={metrixUrl(day.id)}>Register</a>
+                    )}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <Grid>
       <LinkPanel
         image="/images/logos/metrix-favicon.png"
-        href={`https://discgolfmetrix.com/${season.id}`}
+        href={metrixUrl(season.id)}
         title="View on Metrix"
         description="this season on Disc Golf Metrix"
       />
@@ -75,3 +120,19 @@ function shortDate(d: string): string {
 
   </div>
 </Layout>
+
+<style>
+  .next-round td {
+    background: var(--color-amber-50);
+  }
+
+  .next-pill {
+    margin-left: 0.5rem;
+    padding: 0 0.5rem;
+    border-radius: 9999px;
+    background: var(--color-amber-500);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+</style>

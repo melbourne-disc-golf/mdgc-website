@@ -2,10 +2,12 @@
 import Layout from '@layouts/Layout.astro';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
+import CourseCard from '@components/CourseCard.astro';
+import { getEntry } from 'astro:content';
 import { getSocialPrizeNotes, getSocialPrizeWinners } from '@data/social-prize-winners';
 import { Temporal } from '@js-temporal/polyfill';
-import { formatDateRange } from '@utils/dates';
-import { getEvent, getUpcomingSocialDay, getSeasons } from '@utils/metrix';
+import { formatDayOfSeason } from '@utils/dates';
+import { getEvent, getUpcomingSocialDay, getSeasons, metrixUrl } from '@utils/metrix';
 import { scoreCategory } from '@utils/scores';
 import { divisionAnchor, seasonPath } from '@utils/social-paths';
 
@@ -31,7 +33,9 @@ if (!detail) {
 }
 
 const { title, date } = detail;
-const subtitle = formatDateRange(Temporal.PlainDate.from(date));
+const plainDate = Temporal.PlainDate.from(date);
+const subtitle = `${formatDayOfSeason(plainDate)}, ${plainDate.year}`;
+const course = detail.courseSlug ? await getEntry('courses', detail.courseSlug) : undefined;
 
 const today = Temporal.Now.plainDateISO().toString();
 const showGroups = date >= today;
@@ -62,14 +66,21 @@ function fmt2(n: number | null): string {
 <Layout title={title} subtitle={subtitle} backLink={backLink}>
   <div class="my-8 space-y-10">
 
-    {showGroups && upcoming && (
+    {!results && (
+      <div class="social-callout flex flex-wrap items-center justify-between gap-4">
+        <p>
+          {upcoming?.registeredCount
+            ? <><strong>{upcoming.registeredCount} player{upcoming.registeredCount === 1 ? '' : 's'} registered</strong> so far.</>
+            : 'No one has registered yet.'}
+          {' '}Pre-registration is required.
+        </p>
+        <a class="cta-button" href={metrixUrl(detail.id)}>Register on Metrix ↗</a>
+      </div>
+    )}
+
+    {showGroups && upcoming && upcoming.registeredCount > 0 && (
       <section class="space-y-4">
         <h2 class="section-heading">Registered players</h2>
-        <p class="text-slate-600">
-          {upcoming.registeredCount === 0
-            ? 'No players have registered yet.'
-            : `${upcoming.registeredCount} player${upcoming.registeredCount === 1 ? '' : 's'} registered.`}
-        </p>
 
         {upcoming.groups.length > 0 && (
           <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -172,9 +183,17 @@ function fmt2(n: number | null): string {
     })}
 
     <Grid>
+      {course && (
+        <CourseCard
+          name={course.data.title}
+          href={`/courses/${course.id}`}
+          location={course.data.suburb}
+          image={course.data.thumbnail || course.data.mainImage}
+        />
+      )}
       <LinkPanel
         image="/images/logos/metrix-favicon.png"
-        href={`https://discgolfmetrix.com/${detail.id}`}
+        href={metrixUrl(detail.id)}
         title="View on Metrix"
         description={results ? 'this social day on Disc Golf Metrix' : 'register for this social day on Disc Golf Metrix'}
       />
