@@ -113,6 +113,12 @@ function fmt2(n: number | null): string {
         <h2 class="section-heading">Registered players</h2>
 
         {upcoming.groups.length > 0 && (
+          <p class="text-slate-600">
+            Groups are split between 8:00am and 10:30am starts. Check your tee time on <Link class="text-mdgc-blue underline" href={metrixUrl(upcoming.id)}>Disc Golf Metrix</Link>.
+          </p>
+        )}
+
+        {upcoming.groups.length > 0 && (
           <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {upcoming.groups.map((g) => (
               <div class="overflow-hidden rounded-lg border border-slate-200">
