@@ -1,35 +1,33 @@
 ---
 import { Temporal } from '@js-temporal/polyfill';
-import { getSocialDays } from '@utils/metrix';
+import { formatDayOfSeason } from '@utils/dates';
+import { getSeasons, metrixUrl } from '@utils/metrix';
+import { externalLinkAttrs } from '@utils/links';
+import { roundPath } from '@utils/social-paths';
 
 // Get future events, sorted by date
 const today = Temporal.Now.plainDateISO().toString();
-const events = getSocialDays()
+const events = getSeasons()
+  .flatMap((season) => season.socialDays.map((day) => ({ ...day, href: roundPath(season, day.number) })))
   .filter(e => e.date > today)
   .sort((a, b) => a.date.localeCompare(b.date));
-
-const WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-// Format date for display
-function formatDate(dateStr: string): string {
-  const date = Temporal.PlainDate.from(dateStr);
-  return `${WEEKDAYS[date.dayOfWeek - 1]}, ${date.day} ${MONTHS[date.month - 1]}`;
-}
 ---
 
 <div class="next-social-day">
   {events.map(event => (
-    <div class="social-callout social-day-item hidden" data-date={event.date}>
+    <div class="social-callout social-day-item hidden flex flex-wrap items-center justify-between gap-4" data-date={event.date}>
       <p>
-        Our <strong><a href={`https://discgolfmetrix.com/${event.id}`}>next social day</a></strong> is at
+        Our <strong><a href={event.href}>next social day</a></strong> is at
         {event.courseSlug ? (
           <a href={`/courses/${event.courseSlug}/`}>{event.courseTitle}</a>
         ) : (
           event.courseTitle
         )}
-        on <strong>{formatDate(event.date)}</strong>.
+        on <strong>{formatDayOfSeason(Temporal.PlainDate.from(event.date))}</strong>.
       </p>
+      <a class="cta-button" href={metrixUrl(event.id)} {...externalLinkAttrs(metrixUrl(event.id))}>
+        Register on Metrix<span aria-hidden="true"> ↗</span><span class="sr-only"> (opens in a new tab)</span>
+      </a>
     </div>
   ))}
 </div>

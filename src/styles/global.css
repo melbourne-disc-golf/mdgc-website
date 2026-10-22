@@ -357,6 +357,12 @@ h2.section-heading .heading-link {
   inset: 0;
 }
 
+/* Other links in a linked row stay clickable, above the row link. */
+.data-table tr:has(.row-link) a:not(.row-link) {
+  position: relative;
+  z-index: 1;
+}
+
 /* Hole-score colours, as on a disc golf scorecard (see src/utils/scores.ts). */
 .score-ace { background: #ffd60a; color: #3f2600; }
 .score-eagle { background: #55d57d; color: #06351f; }
@@ -445,6 +451,20 @@ h2.section-heading .heading-link {
 	@apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
+/* Call-to-action button, e.g. "Register". Add .compact for use inside a table row.
+   Qualified with "a" so it outranks the .prose a link style. */
+a.cta-button {
+  @apply inline-block rounded-full bg-mdgc-blue-dark px-4 py-1.5 font-semibold text-white no-underline whitespace-nowrap;
+}
+
+a.cta-button:hover {
+  @apply bg-mdgc-blue;
+}
+
+a.cta-button.compact {
+  @apply px-3 py-0.5 text-sm;
+}
+
 .metrix-button {
 	@apply bg-orange-500 text-white px-1.5 py-0.5 font-semibold;
 }
@@ -455,6 +475,10 @@ h2.section-heading .heading-link {
 
 .social-callout p {
 	@apply m-0;
+}
+
+.social-callout a:not(.cta-button) {
+	@apply underline;
 }
 
 time {

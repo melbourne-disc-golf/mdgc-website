@@ -3,12 +3,12 @@ import { seasonPath, statsPath } from '@utils/social-paths';
 
 interface Props {
   season: { slug: string };
-  current: 'events' | 'stats';
+  current: 'rounds' | 'stats';
 }
 
 const { season, current } = Astro.props;
 const tabs = [
-  { key: 'events', href: seasonPath(season), text: 'Events' },
+  { key: 'rounds', href: seasonPath(season), text: 'Rounds' },
   { key: 'stats', href: statsPath(season), text: 'Stats' },
 ];
 ---

@@ -295,6 +295,11 @@ function seasonOf(eventId: string): { season: RawCompetition; number: number } |
   return null;
 }
 
+/** A Metrix competition's page, where players register and results are posted. */
+export function metrixUrl(id: number | string): string {
+  return `https://discgolfmetrix.com/${id}`;
+}
+
 /** All configured seasons that have Metrix data, newest first. */
 export function getSeasons(): Season[] {
   const seasons: Season[] = [];

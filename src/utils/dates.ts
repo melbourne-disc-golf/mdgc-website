@@ -2,6 +2,18 @@ import { Temporal } from '@js-temporal/polyfill';
 
 const MONTHS_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const WEEKDAYS_LONG = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const WEEKDAYS_SHORT = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+/**
+ * Format a date with its weekday and no year, e.g. "Saturday 24 October"
+ * (long) or "Sat 24 Oct" (short) — for dates within a season.
+ */
+export function formatDayOfSeason(date: Temporal.PlainDate, format: 'long' | 'short' = 'long'): string {
+  const weekdays = format === 'long' ? WEEKDAYS_LONG : WEEKDAYS_SHORT;
+  const months = format === 'long' ? MONTHS_LONG : MONTHS_SHORT;
+  return `${weekdays[date.dayOfWeek - 1]} ${date.day} ${months[date.month - 1]}`;
+}
 
 /**
  * Format a single date for display, e.g. "14 December, 2025" (long) or

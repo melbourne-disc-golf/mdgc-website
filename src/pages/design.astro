@@ -341,9 +341,15 @@ const demoScores = [
 
       <p class="mini-label"><code>.page-tabs</code> — links between sibling pages, the current one marked <code>aria-current="page"</code></p>
       <nav class="page-tabs not-prose my-4" aria-label="Example">
-        <a href="#content" aria-current="page">Events</a>
+        <a href="#content" aria-current="page">Rounds</a>
         <a href="#content">Stats</a>
       </nav>
+
+      <p class="mini-label"><code>.cta-button</code> — a call to action; add <code>.compact</code> inside a table row. Mark off-site targets with <code>externalLinkAttrs()</code> and a ↗</p>
+      <p class="not-prose my-4 flex items-center gap-4">
+        <a class="cta-button" href="#content">Register on Metrix<span aria-hidden="true"> ↗</span></a>
+        <a class="cta-button compact" href="#content">Register<span aria-hidden="true"> ↗</span></a>
+      </p>
 
       <p class="mini-label"><code>.pill-nav</code> — links choosing one of several views, with an optional <code>.pill-nav-label</code></p>
       <nav class="pill-nav not-prose my-4" aria-label="Example">
