@@ -110,7 +110,7 @@ const bestRoundPositions = stats.bestRounds.map((r, _, all) => {
             {scoreCategories.filter((c) => stats.scoreCounts[c] > 0).map((c) => (
               <div
                 class={`score-${c}`}
-                style={`width: ${Math.max(1.5, (100 * stats.scoreCounts[c]) / stats.holesScored)}%`}
+                style={`width: ${(100 * stats.scoreCounts[c]) / stats.holesScored}%`}
                 title={`${scoreCategoryLabels[c]}: ${percent(stats.scoreCounts[c], stats.holesScored)}`}
               />
             ))}
