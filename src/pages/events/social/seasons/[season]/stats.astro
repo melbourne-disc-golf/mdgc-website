@@ -87,6 +87,12 @@ function birdieHeat(counts: ScoreCounts): string {
 }
 
 const largestField = Math.max(1, ...stats.rounds.map((r) => r.players));
+
+// Shade attendance by its fraction of the season's largest field, in quarters.
+function attendanceHeat(players: number): string {
+  const level = Math.min(4, Math.max(1, Math.floor((4 * players) / largestField)));
+  return `heat-neutral-${level}`;
+}
 ---
 
 <Layout title={`${name} stats`} subtitle={subtitle} backLink={{ href: '/events/social/seasons', text: 'Social days by season' }}>
@@ -167,7 +173,7 @@ const largestField = Math.max(1, ...stats.rounds.map((r) => r.players));
                       <a href={roundPath(season, r.number)} class="row-link text-mdgc-blue-dark">{r.number}</a>
                     </td>
                     <td>{courseTitle(r.courseId, r.courseName)}</td>
-                    <td class="num attendance" style={`--attendance: ${(100 * r.players) / largestField}%`}>{r.players}</td>
+                    <td class={`num ${attendanceHeat(r.players)}`}>{r.players}</td>
                     <td class={`num ${toParHeat(r.averageToPar)}`} data-value={r.averageToPar ?? ''}>{formatToPar(r.averageToPar, 1)}</td>
                     <td class={`num ${birdieHeat(r.scoreCounts)}`} data-value={birdiesOrBetter(r.scoreCounts) / (totalScores(r.scoreCounts) || 1)}>
                       {birdieRate(r.scoreCounts)}
@@ -301,11 +307,10 @@ const largestField = Math.max(1, ...stats.rounds.map((r) => r.players));
     background: white;
   }
 
-  /* A bar behind the attendance figure, scaled to the season's largest field. */
-  .attendance {
-    background: linear-gradient(to left, #cae8f7 var(--attendance), transparent var(--attendance));
-  }
-
+  .heat-neutral-1 { background: #eff8fc; color: #17465f; }
+  .heat-neutral-2 { background: #dff1fb; color: #15425c; }
+  .heat-neutral-3 { background: #cae8f7; color: #11374c; }
+  .heat-neutral-4 { background: #b5dff3; color: #0e2f42; }
   .heat-good-1 { background: #ebf8ef; color: #0f5132; }
   .heat-good-2 { background: #d8f0e5; color: #0b3f38; }
   .heat-good-3 { background: #b7e8cd; color: #07351f; }
