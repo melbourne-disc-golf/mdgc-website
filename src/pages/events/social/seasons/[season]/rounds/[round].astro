@@ -66,6 +66,17 @@ function fmt2(n: number | null): string {
 <Layout title={title} subtitle={subtitle} backLink={backLink}>
   <div class="my-8 space-y-10">
 
+    {course && (
+      <Grid>
+        <CourseCard
+          name={course.data.title}
+          href={`/courses/${course.id}`}
+          location={course.data.suburb}
+          image={course.data.thumbnail || course.data.mainImage}
+        />
+      </Grid>
+    )}
+
     {!results && (
       <div class="social-callout flex flex-wrap items-center justify-between gap-4">
         <p>
@@ -183,14 +194,6 @@ function fmt2(n: number | null): string {
     })}
 
     <Grid>
-      {course && (
-        <CourseCard
-          name={course.data.title}
-          href={`/courses/${course.id}`}
-          location={course.data.suburb}
-          image={course.data.thumbnail || course.data.mainImage}
-        />
-      )}
       <LinkPanel
         image="/images/logos/metrix-favicon.png"
         href={metrixUrl(detail.id)}
