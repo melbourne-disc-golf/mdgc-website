@@ -134,6 +134,7 @@ export interface UpcomingSocialDay {
   courseTitle: string; // our course's title, if we know the course
   courseSlug?: string; // our course page, if we know the course
   registeredCount: number;
+  registeredByDivision: Record<string, number>; // by division letter, grouped or not
   groups: PlayerGroup[];
 }
 
@@ -361,6 +362,12 @@ function compareGroupNames(a: string, b: string): number {
   return a.localeCompare(b);
 }
 
+function countBy<T>(items: T[], key: (item: T) => string): Record<string, number> {
+  const counts: Record<string, number> = {};
+  for (const item of items) counts[key(item)] = (counts[key(item)] ?? 0) + 1;
+  return counts;
+}
+
 /** Registration/groups for an upcoming (not-yet-played) social day, or null if unknown. */
 export function getUpcomingSocialDay(eventId: string | number): UpcomingSocialDay | null {
   const comp = byId.get(String(eventId));
@@ -411,6 +418,7 @@ export function getUpcomingSocialDay(eventId: string | number): UpcomingSocialDa
     courseId: comp.CourseID,
     ...roundLabels(comp, context?.number ?? 0),
     registeredCount: players.length,
+    registeredByDivision: countBy(players, (p) => p.division),
     groups,
   };
 }

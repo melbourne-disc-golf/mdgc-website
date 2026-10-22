@@ -1,24 +1,27 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import SeasonTabs from '@components/SeasonTabs.astro';
+import Grid from '@components/Grid.astro';
+import Link from '@components/Link.astro';
+import LinkPanel from '@components/LinkPanel.astro';
 import { Temporal } from '@js-temporal/polyfill';
-import { formatDateRange } from '@utils/dates';
-import { getEvent, getSeasons, type EventDetail } from '@utils/metrix';
+import { formatDateRange, formatDayOfSeason } from '@utils/dates';
+import { getEvent, getSeasons, getUpcomingSocialDay, metrixUrl, type EventDetail } from '@utils/metrix';
 import { birdiesOrBetter, roundsInDivision, seasonStats, statsDivisions, totalScores, type ScoreCounts } from '@utils/season-stats';
 import { scoreCategories, scoreCategoryLabels } from '@utils/scores';
-import { roundPath, statsPath } from '@utils/social-paths';
+import { divisionAnchor, divisionLinks, divisionParam, roundPath, seasonPath } from '@utils/social-paths';
 
+// A season's rounds and stats: for all divisions, or (as /div/a etc.) just one.
 export async function getStaticPaths() {
   return getSeasons().flatMap((season) =>
     [undefined, ...statsDivisions].map((division) => ({
-      params: { season: season.slug, division: division && `div-${division.toLowerCase()}` },
+      params: { season: season.slug, division: divisionParam(division) },
       props: { season, division },
     }))
   );
 }
 
 const { season, division } = Astro.props;
-const { title, dateStart, dateEnd } = season;
+const { title, dateStart, dateEnd, socialDays } = season;
 
 const subtitle = dateStart
   ? formatDateRange(
@@ -27,19 +30,38 @@ const subtitle = dateStart
     )
   : undefined;
 
-const allRounds = season.socialDays
+const allRounds = socialDays
   .filter((day) => day.played)
   .map((day) => getEvent(day.id))
   .filter((round): round is EventDetail => round !== null);
 const rounds = division ? roundsInDivision(allRounds, division) : allRounds;
 const stats = seasonStats(rounds);
+const roundStats = new Map(stats.rounds.map((r) => [r.number, r]));
 
-const divisionLinks = [
-  { text: 'All', href: statsPath(season), current: !division },
-  ...statsDivisions.map((d) => ({ text: d, href: statsPath(season, d), current: d === division })),
-];
+const divisionNav = divisionLinks(statsDivisions, division, (d) => seasonPath(season, d));
+
+// A round's page, at the division's results when narrowed to one.
+function roundHref(roundNumber: number): string {
+  const path = roundPath(season, roundNumber);
+  return division ? `${path}#${divisionAnchor(division)}` : path;
+}
+
 const regulars = stats.players.filter((p) => p.rounds >= 5).length;
 
+// The next round is the first without scores.
+const nextDay = socialDays.find((day) => !day.played);
+
+// Players at a round (in this division, if narrowed): who played, or for an
+// unplayed round, who's registered so far.
+function playersAt(day: (typeof socialDays)[number]): number {
+  if (day.played) return division ? (roundStats.get(day.number)?.players ?? 0) : day.players;
+  if (!division) return day.players;
+  return getUpcomingSocialDay(day.id)?.registeredByDivision[division] ?? 0;
+}
+
+function dayOfSeason(d: string, format: 'long' | 'short' = 'long'): string {
+  return formatDayOfSeason(Temporal.PlainDate.from(d), format);
+}
 
 function formatToPar(value: number | null, digits = 0): string {
   if (value === null) return '–';
@@ -96,46 +118,106 @@ function fractionHeat(value: number, max: number): string {
 }
 ---
 
-<Layout title={division ? `${title} stats: Div ${division}` : `${title} stats`} subtitle={subtitle} backLink={{ href: '/events/social/seasons', text: 'Social days by season' }}>
-  <SeasonTabs season={season} current="stats" />
+<Layout title={division ? `${title} - Div ${division}` : title} subtitle={subtitle} backLink={{ href: '/events/social/seasons', text: 'Social days by season' }}>
   <nav class="pill-nav mt-4" aria-label="Division">
     <span class="pill-nav-label">Division</span>
-    {divisionLinks.map((link) => (
+    {divisionNav.map((link) => (
       <a href={link.href} aria-current={link.current ? 'page' : undefined}>{link.text}</a>
     ))}
   </nav>
   <div class="mb-8 mt-6 space-y-12">
 
-    {stats.roundsPlayed === 0 ? (
-      <p class="text-slate-600">No rounds played{division && ` in Div ${division}`} yet.</p>
-    ) : (
-      <>
-        <section>
-          <h2 id="snapshot" class="section-heading mb-4">Snapshot</h2>
-          <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
-            <div class="stat-card">
-              <div class="stat-label">Rounds played</div>
-              <div class="stat-value">{stats.roundsPlayed}</div>
-              <div class="stat-detail">of {season.socialDays.length} scheduled</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">Player rounds</div>
-              <div class="stat-value">{stats.playerRounds.toLocaleString('en-AU')}</div>
-              <div class="stat-detail">{stats.averageField?.toFixed(1)} average field</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">Players</div>
-              <div class="stat-value">{stats.uniquePlayers}</div>
-              <div class="stat-detail">{regulars} with 5+ rounds</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-label">Holes scored</div>
-              <div class="stat-value">{stats.holesScored.toLocaleString('en-AU')}</div>
-              <div class="stat-detail">{birdieRate(stats.scoreCounts)} birdie or better</div>
-            </div>
+    {stats.roundsPlayed > 0 && (
+      <section>
+        <h2 id="snapshot" class="section-heading mb-4">Snapshot</h2>
+        <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <div class="stat-card">
+            <div class="stat-label">Rounds played</div>
+            <div class="stat-value">{stats.roundsPlayed}</div>
+            <div class="stat-detail">of {season.socialDays.length} scheduled</div>
           </div>
-        </section>
+          <div class="stat-card">
+            <div class="stat-label">Player rounds</div>
+            <div class="stat-value">{stats.playerRounds.toLocaleString('en-AU')}</div>
+            <div class="stat-detail">{stats.averageField?.toFixed(1)} average field</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Players</div>
+            <div class="stat-value">{stats.uniquePlayers}</div>
+            <div class="stat-detail">{regulars} with 5+ rounds</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Holes scored</div>
+            <div class="stat-value">{stats.holesScored.toLocaleString('en-AU')}</div>
+            <div class="stat-detail">{birdieRate(stats.scoreCounts)} birdie or better</div>
+          </div>
+        </div>
+      </section>
+    )}
 
+    <section>
+      <h2 id="rounds" class="section-heading mb-4">Rounds</h2>
+      {stats.roundsPlayed > 0 && <p class="mb-4 text-slate-600">Average score to par counts complete scorecards only.</p>}
+      <div class="table-scroll max-w-3xl">
+        <table class="data-table compact">
+          <thead>
+            <tr>
+              <th class="text-center"><abbr class="no-underline sm:hidden" title="Round">Rd</abbr><span class="hidden sm:inline">Round</span></th>
+              <th class="num">Date</th>
+              <th>Course</th>
+              <th class="num" title="Players who played, or registered so far">Players</th>
+              <th class="num" title="Average score to par across the field">Avg +/-</th>
+              <th class="num" title="Best score to par">Best +/-</th>
+            </tr>
+          </thead>
+          <tbody>
+            {socialDays.map((day) => {
+              const isNext = day.id === nextDay?.id;
+              const r = roundStats.get(day.number);
+              const players = playersAt(day);
+              return (
+                <tr class={isNext ? 'next-round' : undefined}>
+                  <td class="text-center font-bold">
+                    <a href={roundHref(day.number)} class="row-link text-mdgc-blue-dark">{day.number}</a>
+                  </td>
+                  <td class="num whitespace-nowrap">
+                    {(() => {
+                      const [weekday, ...rest] = dayOfSeason(day.date, 'short').split(' ');
+                      return <><span class="block sm:inline">{weekday}</span> {rest.join(' ')}</>;
+                    })()}
+                  </td>
+                  <td>
+                    {day.courseTitle}
+                    {isNext && <span class="next-pill">Next</span>}
+                  </td>
+                  <td class={`num ${day.played && players ? fractionHeat(players, largestField) : ''}`}>
+                    {day.played ? players : (
+                      <>
+                        {players}
+                        <span class="block text-xs text-slate-500">registered</span>
+                      </>
+                    )}
+                  </td>
+                  {day.played ? (
+                    <>
+                      <td class={`num ${r ? toParHeat(r.averageToPar) : ''}`}>{r ? formatToPar(r.averageToPar, 1) : ''}</td>
+                      <td class="num">{r ? formatToPar(r.bestToPar) : ''}</td>
+                    </>
+                  ) : (
+                    <td colspan="2" class="text-center">
+                      <Link class="cta-button compact" href={metrixUrl(day.id)} markerClass="hidden sm:inline">Register</Link>
+                    </td>
+                  )}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    {stats.roundsPlayed > 0 && (
+      <>
         <section>
           <h2 id="scoring" class="section-heading mb-4">Scoring mix</h2>
           <p class="mb-4 text-slate-600">
@@ -159,39 +241,6 @@ function fractionHeat(value: number, max: number): string {
               </li>
             ))}
           </ul>
-        </section>
-
-        <section>
-          <h2 id="rounds" class="section-heading mb-4">Rounds</h2>
-          <p class="mb-4 text-slate-600">Average score to par counts complete scorecards only.</p>
-          <div class="table-scroll max-w-2xl">
-            <table class="data-table compact sortable">
-              <thead>
-                <tr>
-                  <th class="text-center" data-sort="number">Round</th>
-                  <th data-sort="string">Course</th>
-                  <th class="num" data-sort="number" data-sort-dir="desc">Attendance</th>
-                  <th class="num" data-sort="number" title="Average score to par across the field">Field avg +/-</th>
-                  <th class="num" data-sort="number" data-sort-dir="desc" title="Share of holes scored birdie or better">≤ Birdie</th>
-                </tr>
-              </thead>
-              <tbody>
-                {stats.rounds.map((r) => (
-                  <tr>
-                    <td class="text-center font-bold">
-                      <a href={roundPath(season, r.number)} class="row-link text-mdgc-blue-dark">{r.number}</a>
-                    </td>
-                    <td>{r.courseTitle}</td>
-                    <td class={`num ${fractionHeat(r.players, largestField)}`}>{r.players}</td>
-                    <td class={`num ${toParHeat(r.averageToPar)}`} data-value={r.averageToPar ?? ''}>{formatToPar(r.averageToPar, 1)}</td>
-                    <td class={`num ${birdieHeat(r.scoreCounts)}`} data-value={birdiesOrBetter(r.scoreCounts) / (totalScores(r.scoreCounts) || 1)}>
-                      {birdieRate(r.scoreCounts)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
         </section>
 
         <section>
@@ -219,7 +268,7 @@ function fractionHeat(value: number, max: number): string {
                     <td class="num font-bold text-slate-800">{formatToPar(r.toPar)}</td>
                     <td class="num text-slate-600">{r.raw}</td>
                     <td class="text-center">
-                      <a href={roundPath(season, r.roundNumber)} class="text-mdgc-blue-dark">{r.roundNumber}</a>
+                      <a href={roundHref(r.roundNumber)} class="text-mdgc-blue-dark">{r.roundNumber}</a>
                     </td>
                     <td>{r.courseTitle}</td>
                   </tr>
@@ -297,10 +346,34 @@ function fractionHeat(value: number, max: number): string {
         </section>
       </>
     )}
+
+    <Grid>
+      <LinkPanel
+        image="/images/logos/metrix-favicon.png"
+        href={metrixUrl(season.id)}
+        title="View on Metrix"
+        description="this season on Disc Golf Metrix"
+      />
+    </Grid>
+
   </div>
 </Layout>
 
 <style>
+  .next-round td {
+    background: var(--color-amber-50);
+  }
+
+  .next-pill {
+    margin-left: 0.5rem;
+    padding: 0 0.5rem;
+    border-radius: 9999px;
+    background: var(--color-amber-500);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
   .score-bar {
     display: flex;
     height: 1.5rem;
@@ -372,3 +445,4 @@ function fractionHeat(value: number, max: number): string {
     applyFilter();
   }
 </script>
+

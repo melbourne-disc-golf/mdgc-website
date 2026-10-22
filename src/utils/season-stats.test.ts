@@ -85,6 +85,13 @@ describe('seasonStats', () => {
     ]);
   });
 
+  it("finds each round's best complete scorecard", () => {
+    expect(stats.rounds.map((r) => [r.number, r.bestToPar])).toEqual([
+      [1, -1],
+      [2, -4],
+    ]);
+  });
+
   it('ranks the best rounds by score to par, then raw score, leaving out incomplete ones', () => {
     expect(stats.bestRounds.map((r) => [r.userId, r.roundNumber, r.toPar])).toEqual([
       ['1', 2, -4],

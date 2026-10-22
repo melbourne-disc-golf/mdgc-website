@@ -19,6 +19,7 @@ export interface RoundStats {
   courseTitle: string;
   players: number;
   averageToPar: number | null;
+  bestToPar: number | null;
   scoreCounts: ScoreCounts;
 }
 
@@ -174,6 +175,7 @@ export function seasonStats(playedRounds: EventDetail[]): SeasonStats {
       courseTitle: round.courseTitle,
       players: scorecards.length,
       averageToPar: average(roundToPars),
+      bestToPar: roundToPars.length ? Math.min(...roundToPars) : null,
       scoreCounts: roundCounts,
     });
   }

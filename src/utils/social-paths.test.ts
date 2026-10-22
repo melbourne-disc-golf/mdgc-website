@@ -1,9 +1,13 @@
 import { describe, it, expect } from 'vitest';
-import { divisionAnchor, roundPath, seasonPath, statsPath } from './social-paths';
+import { divisionAnchor, divisionLinks, divisionParam, roundPath, seasonPath } from './social-paths';
 
 describe('seasonPath', () => {
   it('uses the season slug', () => {
     expect(seasonPath({ slug: '2026-1' })).toBe('/events/social/seasons/2026-1');
+  });
+
+  it('can narrow to one division', () => {
+    expect(seasonPath({ slug: '2026-1' }, 'A')).toBe('/events/social/seasons/2026-1/div/a');
   });
 });
 
@@ -13,13 +17,24 @@ describe('roundPath', () => {
   });
 });
 
-describe('statsPath', () => {
-  it('nests the stats page under the season', () => {
-    expect(statsPath({ slug: '2026-1' })).toBe('/events/social/seasons/2026-1/stats');
+describe('divisionParam', () => {
+  it('is undefined for all divisions', () => {
+    expect(divisionParam()).toBeUndefined();
   });
 
-  it('can narrow to one division', () => {
-    expect(statsPath({ slug: '2026-1' }, 'A')).toBe('/events/social/seasons/2026-1/stats/div-a');
+  it('names one division', () => {
+    expect(divisionParam('B')).toBe('div/b');
+  });
+});
+
+describe('divisionLinks', () => {
+  it('leads with All, and marks the current division', () => {
+    const links = divisionLinks(['A', 'B'], 'B', (d) => (d ? `/x/${d}` : '/x'));
+    expect(links).toEqual([
+      { text: 'All', href: '/x', current: false },
+      { text: 'A', href: '/x/A', current: false },
+      { text: 'B', href: '/x/B', current: true },
+    ]);
   });
 });
 
