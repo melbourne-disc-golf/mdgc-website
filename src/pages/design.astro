@@ -48,6 +48,14 @@ const capsRows = [
   { div: 'Female', morning: 6, finals: 4 },
 ];
 const capsTotal = { morning: 80, finals: 40 };
+
+// Demo data for the "Data tables" section: a made-up 12-hole scorecard.
+const demoPars = [3, 3, 4, 3, 3, 3, 4, 3, 3, 3, 3, 4];
+const demoScores = [
+  { name: 'Player One', holes: [3, 2, 4, 3, 3, 2, 4, 3, 3, 3, 2, 4] },
+  { name: 'Player Two', holes: [3, 3, 5, 3, 4, 3, 4, 3, 2, 3, 3, 5] },
+  { name: 'Player Three', holes: [4, 3, 4, 3, 3, 3, 5, 4, 3, 3, 3, 4] },
+];
 ---
 
 <Layout title="Design language" subtitle="the visual system for this site">
@@ -247,6 +255,46 @@ const capsTotal = { morning: 80, finals: 40 };
             </tbody>
           </table>
         </div>
+      </div>
+
+      <h3>Data tables</h3>
+      <p>Outside prose, add <code>class="data-table"</code> to a <code>&lt;table&gt;</code> for the same
+         style. Data-heavy pages (like social day results) combine it with:</p>
+      <ul class="dl-list">
+        <li><code>&lt;div class="table-scroll"&gt;</code> around the table, so wide tables scroll sideways on small screens</li>
+        <li><code>.compact</code>, for tighter cell padding</li>
+        <li><code>.sticky-first-column</code>, to keep the first column in view while scrolling</li>
+        <li><code>.num</code> on numeric cells, for right-aligned tabular figures</li>
+        <li>a second header row, which is styled as a lighter sub-header</li>
+        <li><code>&lt;a class="row-link"&gt;</code>, which makes the whole row clickable</li>
+        <li><code>.sortable</code> and <code>data-sort="string"</code> or <code>"number"</code> on headers, to sort by clicking a column (<code>src/scripts/sortable-table.ts</code>)</li>
+      </ul>
+      <p>Rows highlight on hover. Narrow the window to see the first column stay put:</p>
+
+      <div class="table-scroll my-4">
+        <table class="data-table compact sticky-first-column sortable">
+          <thead>
+            <tr>
+              <th data-sort="string">Player</th>
+              <th class="num" data-sort="number">Raw</th>
+              {demoPars.map((_, i) => <th class="num">{i + 1}</th>)}
+            </tr>
+            <tr>
+              <th></th>
+              <th class="num">{demoPars.reduce((a, b) => a + b, 0)}</th>
+              {demoPars.map((p) => <th class="num">{p}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {demoScores.map((r) => (
+              <tr>
+                <td class="whitespace-nowrap"><a class="row-link" href="#content">{r.name}</a></td>
+                <td class="num">{r.holes.reduce((a, b) => a + b, 0)}</td>
+                {r.holes.map((s) => <td class="num">{s}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       <h3>Link &amp; card hover</h3>
@@ -449,6 +497,8 @@ const capsTotal = { morning: 80, finals: 40 };
 </style>
 
 <script>
+  import '../scripts/sortable-table';
+
   // Label each swatch with the hex it actually renders as, and pick a legible text
   // colour from the chip's own luminance. The colour is never hard-coded here — it's
   // read back from the compiled Tailwind utility / CSS token, so labels can't drift.

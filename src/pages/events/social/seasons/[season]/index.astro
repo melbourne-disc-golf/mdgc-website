@@ -44,36 +44,34 @@ function shortDate(d: string): string {
 
     <section>
       <h2 class="section-heading mb-4">Events</h2>
-      <div class="mx-auto w-full max-w-lg overflow-hidden rounded-lg border border-slate-200">
-        <table class="min-w-full border-collapse text-sm">
-          <thead>
-            <tr class="bg-[#d7eaff] text-mdgc-blue-dark">
-              <th class="px-3 py-2 text-center font-semibold">Event</th>
-              <th class="px-3 py-2 text-right font-semibold">Date</th>
-              <th class="px-3 py-2 text-left font-semibold">Course</th>
-              <th class="px-3 py-2 text-right font-semibold" title="Players who played, or registered so far">Players</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-100">
-            {season.socialDays.map((day) => {
-              const course = courseByMetrixId.get(day.courseId) ?? day.courseName.split('&rarr;')[0].trim();
-              return (
-                <tr
-                  class={`relative odd:bg-white even:bg-slate-50/70 hover:bg-mdgc-blue-light/10 ${day.played ? '' : 'text-slate-400'}`}
-                  title={day.played ? undefined : 'Not yet played'}
-                >
-                  <td class="px-3 py-1.5 text-center font-bold">
-                    <a href={roundPath(season, day.number)} class="text-mdgc-blue-dark after:absolute after:inset-0">{day.number}</a>
-                  </td>
-                  <td class="px-3 py-1.5 text-right whitespace-nowrap">{shortDate(day.date)}</td>
-                  <td class="px-3 py-1.5 text-left">{course}</td>
-                  <td class="px-3 py-1.5 text-right tabular-nums">{day.players || '–'}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+      <table class="data-table compact mx-auto max-w-lg">
+        <thead>
+          <tr>
+            <th class="text-center">Event</th>
+            <th class="num">Date</th>
+            <th>Course</th>
+            <th class="num" title="Players who played, or registered so far">Players</th>
+          </tr>
+        </thead>
+        <tbody>
+          {season.socialDays.map((day) => {
+            const course = courseByMetrixId.get(day.courseId) ?? day.courseName.split('&rarr;')[0].trim();
+            return (
+              <tr
+                class={day.played ? undefined : 'text-slate-400'}
+                title={day.played ? undefined : 'Not yet played'}
+              >
+                <td class="text-center font-bold">
+                  <a href={roundPath(season, day.number)} class="row-link text-mdgc-blue-dark">{day.number}</a>
+                </td>
+                <td class="num whitespace-nowrap">{shortDate(day.date)}</td>
+                <td>{course}</td>
+                <td class="num">{day.players || '–'}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </section>
 
     <Grid>

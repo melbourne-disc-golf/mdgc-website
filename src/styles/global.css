@@ -178,55 +178,138 @@ a:hover {
   margin-bottom: 0.25em;
 }
 
-/* Tables — bordered, striped, rounded, with a filled header row. Numeric columns
-   (Markdown `|--:|`, which emits text-align:right) get tabular figures automatically. */
-.prose table {
+/* Tables — bordered, striped, rounded, with a filled header row. Every table in
+   page prose gets this style; elsewhere, opt in with class="data-table". Numeric
+   columns (class="num", or Markdown `|--:|`, which emits text-align:right) get
+   tabular figures.
+
+   Modifiers for data-heavy tables (see /design):
+   - wrap the table in <div class="table-scroll"> to scroll it sideways on small screens
+   - .compact: tighter cell padding
+   - .sticky-first-column: keeps the first column in view while scrolling sideways
+   - a second header row (e.g. par per hole) is styled as a lighter sub-header
+   - an <a class="row-link"> makes its whole row clickable */
+:is(.prose table, table.data-table) {
   width: 100%;
-  margin: 1.5rem 0;
   border: 1px solid #cbd5e1; /* slate-300 */
   border-radius: 0.5rem;
   overflow: hidden;
   /* `separate` (not `collapse`) so the table's own border + rounded corners
      actually paint — with `collapse`, `overflow: hidden` clips the outer border
-     away. Row separators live on the cells (see `.prose tbody td`). */
+     away. Row separators live on the cells (see `tbody td` below). */
   border-collapse: separate;
   border-spacing: 0;
   font-size: 0.875rem;
   text-align: left;
 }
 
-.prose thead tr {
+.prose table {
+  margin: 1.5rem 0;
+}
+
+:is(.prose, .data-table) thead tr {
   background: #d7eaff;
   color: var(--color-mdgc-blue-dark);
 }
 
-.prose th {
+:is(.prose, .data-table) th {
   padding: 0.5rem 1rem;
   font-weight: 600;
 }
 
-.prose td {
+:is(.prose, .data-table) td {
   padding: 0.375rem 1rem;
 }
 
-.prose tbody tr:nth-child(even) {
+:is(.prose, .data-table) thead tr + tr {
+  background: #eaf4ff;
+  font-size: 0.75rem;
+}
+
+:is(.prose, .data-table) thead tr + tr th {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-weight: 400;
+}
+
+:is(.prose, .data-table) tbody tr {
+  background: white;
+}
+
+:is(.prose, .data-table) tbody tr:nth-child(even) {
   background: #f8fafc; /* slate-50 */
+}
+
+.data-table tbody tr:hover {
+  background: #eaf4ff;
 }
 
 /* Internal grid lines, a touch lighter than the slate-300 outer border.
    Horizontal lines between rows (border-top), vertical lines between columns
    (border-left via the adjacent-sibling selector, so the first column has no
    left border and the outer border handles the perimeter). */
-.prose tbody td {
+:is(.prose, .data-table) tbody td {
   border-top: 1px solid #e2e8f0; /* slate-200 */
 }
 
-.prose :is(th, td) + :is(th, td) {
+:is(.prose, .data-table) :is(th, td) + :is(th, td) {
   border-left: 1px solid #e2e8f0; /* slate-200 */
 }
 
-.prose :is(td, th)[style*="right"] {
+:is(.prose, .data-table) .num {
+  text-align: right;
+}
+
+:is(.prose, .data-table) :is(td, th):is(.num, [style*="right"]) {
   font-variant-numeric: tabular-nums;
+}
+
+.data-table.compact th {
+  padding: 0.375rem 0.5rem;
+}
+
+.data-table.compact td {
+  padding: 0.25rem 0.5rem;
+}
+
+/* The scroll container takes over the table's border and rounded corners. */
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid #cbd5e1; /* slate-300 */
+  border-radius: 0.5rem;
+}
+
+.prose .table-scroll {
+  margin: 1.5rem 0;
+}
+
+/* overflow: visible, because sticky cells stick within their nearest clipping
+   ancestor; that must be this scroll container, not the table. */
+.table-scroll > table {
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+/* `background: inherit` picks up the row's stripe or hover colour, so scrolled
+   cells don't show through. */
+.data-table.sticky-first-column :is(th, td):first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: inherit;
+  box-shadow: inset -1px 0 #e2e8f0; /* slate-200 */
+}
+
+.data-table tr:has(.row-link) {
+  position: relative;
+}
+
+.data-table .row-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 
 /* Panel — a generic card container. A leading heading loses its top margin, and
