@@ -421,6 +421,20 @@ h2.section-heading .heading-link {
   @apply border-mdgc-blue-dark text-mdgc-blue-dark;
 }
 
+/* Previous/next links between sequential pages, e.g. the rounds of a season.
+   Put an empty <span> in place of a missing link, to keep the other on its side. */
+.prev-next-nav {
+  @apply flex justify-between gap-4 text-sm font-semibold;
+}
+
+.prev-next-nav a {
+  @apply text-mdgc-blue no-underline;
+}
+
+.prev-next-nav a:hover {
+  @apply text-mdgc-blue-dark underline;
+}
+
 /* Pill nav — a row of links choosing one of several views, e.g. a division;
    mark the current one with aria-current="page". An optional .pill-nav-label leads. */
 .pill-nav {

@@ -10,7 +10,7 @@ import { formatDayOfSeason } from '@utils/dates';
 import { getEvent, getUpcomingSocialDay, getSeasons, metrixUrl } from '@utils/metrix';
 import { scoreCategory } from '@utils/scores';
 import Link from '@components/Link.astro';
-import { divisionAnchor, seasonPath } from '@utils/social-paths';
+import { divisionAnchor, roundPath, seasonPath } from '@utils/social-paths';
 
 export async function getStaticPaths() {
   return getSeasons().flatMap((season) =>
@@ -47,6 +47,11 @@ const backLink = {
   text: season.title,
 };
 
+const rounds = [...season.socialDays].sort((a, b) => a.number - b.number);
+const roundIndex = rounds.findIndex((day) => day.id === eventId);
+const prevRound = rounds[roundIndex - 1];
+const nextRound = rounds[roundIndex + 1];
+
 const { par, tracks, divisions } = results ?? { par: 0, tracks: [], divisions: [] };
 const prizeWinners = results ? getSocialPrizeWinners(results.id) : [];
 const prizeNotes = results ? getSocialPrizeNotes(results.id) : [];
@@ -65,6 +70,19 @@ function fmt2(n: number | null): string {
 ---
 
 <Layout title={title} subtitle={subtitle} backLink={backLink}>
+  <nav class="prev-next-nav not-prose mt-4" aria-label="Rounds in this season">
+    {prevRound ? (
+      <a href={roundPath(season, prevRound.number)} rel="prev">
+        ← Round {prevRound.number}
+      </a>
+    ) : <span />}
+    {nextRound ? (
+      <a href={roundPath(season, nextRound.number)} rel="next" class="text-right">
+        Round {nextRound.number} →
+      </a>
+    ) : <span />}
+  </nav>
+
   <div class="my-8 space-y-10">
 
     {!results && course && (
