@@ -67,6 +67,26 @@ const bestRoundPositions = stats.bestRounds.map((r, _, all) => {
   const first = all.findIndex((o) => o.toPar === r.toPar && o.raw === r.raw);
   return first + 1;
 });
+
+// Heat colours for the rounds table, using mdgc-sd's thresholds.
+function toParHeat(value: number | null): string {
+  if (value === null) return '';
+  if (value <= 0) return 'heat-good-4';
+  if (value <= 3) return 'heat-good-2';
+  if (value <= 6) return 'heat-warn-2';
+  if (value <= 9) return 'heat-bad-2';
+  return 'heat-bad-4';
+}
+
+function birdieHeat(counts: ScoreCounts): string {
+  const total = totalScores(counts);
+  if (!total) return '';
+  const pct = (100 * birdiesOrBetter(counts)) / total;
+  const level = [16, 24, 32].filter((threshold) => pct >= threshold).length + 1;
+  return `heat-good-${level}`;
+}
+
+const largestField = Math.max(1, ...stats.rounds.map((r) => r.players));
 ---
 
 <Layout title={`${name} stats`} subtitle={subtitle} backLink={{ href: '/events/social/seasons', text: 'Social days by season' }}>
@@ -147,9 +167,9 @@ const bestRoundPositions = stats.bestRounds.map((r, _, all) => {
                       <a href={roundPath(season, r.number)} class="row-link text-mdgc-blue-dark">{r.number}</a>
                     </td>
                     <td>{courseTitle(r.courseId, r.courseName)}</td>
-                    <td class="num">{r.players}</td>
-                    <td class="num" data-value={r.averageToPar ?? ''}>{formatToPar(r.averageToPar, 1)}</td>
-                    <td class="num" data-value={birdiesOrBetter(r.scoreCounts) / (totalScores(r.scoreCounts) || 1)}>
+                    <td class="num attendance" style={`--attendance: ${(100 * r.players) / largestField}%`}>{r.players}</td>
+                    <td class={`num ${toParHeat(r.averageToPar)}`} data-value={r.averageToPar ?? ''}>{formatToPar(r.averageToPar, 1)}</td>
+                    <td class={`num ${birdieHeat(r.scoreCounts)}`} data-value={birdiesOrBetter(r.scoreCounts) / (totalScores(r.scoreCounts) || 1)}>
                       {birdieRate(r.scoreCounts)}
                     </td>
                   </tr>
@@ -280,6 +300,19 @@ const bestRoundPositions = stats.bestRounds.map((r, _, all) => {
   .score-pill.score-par {
     background: white;
   }
+
+  /* A bar behind the attendance figure, scaled to the season's largest field. */
+  .attendance {
+    background: linear-gradient(to left, #cae8f7 var(--attendance), transparent var(--attendance));
+  }
+
+  .heat-good-1 { background: #ebf8ef; color: #0f5132; }
+  .heat-good-2 { background: #d8f0e5; color: #0b3f38; }
+  .heat-good-3 { background: #b7e8cd; color: #07351f; }
+  .heat-good-4 { background: #8addae; color: #062f1c; }
+  .heat-warn-2 { background: #ffe1c2; color: #7a3b00; }
+  .heat-bad-2 { background: #f8d1cc; color: #8c2c27; }
+  .heat-bad-4 { background: #e68079; color: #5f1714; }
 </style>
 
 <script>
