@@ -119,6 +119,8 @@ function fmt2(n: number | null): string {
     )}
 
     {results && divisions.map((division) => {
+      const nets = division.players.map((p) => p.net).filter((n): n is number => n !== null);
+      const bestNet = nets.length ? Math.min(...nets) : null;
       return (
       <section>
         <h2 id={divisionAnchor(division.letter)} class="section-heading mb-4">
@@ -154,16 +156,14 @@ function fmt2(n: number | null): string {
             <tbody>
               {division.players.map((p) => (
                 <tr>
-                  <td class="text-center">
-                    {p.pos <= 3 ? (
-                      <span class={`podium-badge podium-${p.pos}`}>{p.pos}</span>
-                    ) : (
-                      <span class="text-slate-500">{p.pos}</span>
-                    )}
-                  </td>
+                  <td class="text-center text-slate-500">{p.pos}</td>
                   <td class="font-medium whitespace-nowrap">{p.name}</td>
                   <td class="num text-slate-500">{p.rating ?? '–'}</td>
-                  <td class="num text-slate-600">{fmt2(p.net)}</td>
+                  <td class="num text-slate-600">
+                    {p.net !== null && p.net === bestNet ? (
+                      <span class="gold-pill" title="Best handicap score in this division">{fmt2(p.net)}</span>
+                    ) : fmt2(p.net)}
+                  </td>
                   <td class="num font-bold text-slate-800">{formatDiff(p.diff)}</td>
                   <td class="num text-slate-600">{p.sum}</td>
                   {p.holes.map((score, h) => (
@@ -191,20 +191,16 @@ function fmt2(n: number | null): string {
 </Layout>
 
 <style>
-  /* Gold / silver / bronze position badges. */
-  .podium-badge {
-    display: inline-grid;
-    place-items: center;
-    width: 24px;
-    height: 24px;
+  /* The best handicap score in a division. */
+  .gold-pill {
+    display: inline-block;
+    /* The negative margin keeps the digits in line with the rest of the column. */
+    padding: 0 0.375rem;
+    margin: 0 -0.375rem;
     border-radius: 999px;
+    background: linear-gradient(145deg, #fff4ba, #e2a51d);
     color: #152018;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 1;
+    font-weight: 700;
     box-shadow: inset 0 1px rgba(255, 255, 255, 0.75), 0 2px 5px rgba(31, 54, 44, 0.18);
   }
-  .podium-1 { background: linear-gradient(145deg, #fff4ba, #e2a51d); }
-  .podium-2 { background: linear-gradient(145deg, #ffffff, #aeb9c2); }
-  .podium-3 { background: linear-gradient(145deg, #ffd9aa, #b36b27); color: #271606; }
 </style>
