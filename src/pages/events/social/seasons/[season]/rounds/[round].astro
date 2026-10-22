@@ -207,7 +207,13 @@ function fmt2(n: number | null): string {
             <tbody>
               {division.players.map((p) => (
                 <tr>
-                  <td class="text-center text-slate-500">{p.pos}</td>
+                  <td class="text-center">
+                    {p.pos <= 3 ? (
+                      <span class={`podium-badge podium-${p.pos}`}>{p.pos}</span>
+                    ) : (
+                      <span class="text-slate-500">{p.pos}</span>
+                    )}
+                  </td>
                   <td class="font-medium whitespace-nowrap">{p.name}</td>
                   <td class="num text-slate-500">{p.rating ?? '–'}</td>
                   <td class="num text-slate-600">
@@ -242,6 +248,23 @@ function fmt2(n: number | null): string {
 </Layout>
 
 <style>
+  /* Gold / silver / bronze position badges. */
+  .podium-badge {
+    display: inline-grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    color: #152018;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1;
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.75), 0 2px 5px rgba(31, 54, 44, 0.18);
+  }
+  .podium-1 { background: linear-gradient(145deg, #fff4ba, #e2a51d); }
+  .podium-2 { background: linear-gradient(145deg, #ffffff, #aeb9c2); }
+  .podium-3 { background: linear-gradient(145deg, #ffd9aa, #b36b27); color: #271606; }
+
   /* The best handicap score in a division. */
   .gold-pill {
     display: inline-block;
