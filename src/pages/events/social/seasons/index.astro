@@ -21,9 +21,9 @@ for (const season of seasons) {
 }
 
 const sections = [
-  { title: 'Current season', seasons: current },
-  { title: 'Next season', seasons: upcoming },
-  { title: 'Previous seasons', seasons: previous },
+  { title: 'Current season', seasons: current, showProgress: true },
+  { title: 'Next season', seasons: upcoming, showProgress: true },
+  { title: 'Previous seasons', seasons: previous, showProgress: false },
 ].filter((s) => s.seasons.length > 0);
 
 function seasonRange(season: Season): string | undefined {
@@ -57,7 +57,9 @@ function seasonRange(season: Season): string | undefined {
                     <span class="font-semibold text-mdgc-blue-dark">{season.title}</span>
                     <span class="text-sm text-slate-500 whitespace-nowrap">{seasonRange(season)}</span>
                   </div>
-                  <p class="mt-0.5 text-sm text-slate-600">{playedDays} of {season.socialDays.length} social days played</p>
+                  {section.showProgress && (
+                    <p class="mt-0.5 text-sm text-slate-600">{playedDays} of {season.socialDays.length} social days played</p>
+                  )}
                 </a>
               </li>
             );
