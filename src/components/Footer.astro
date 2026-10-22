@@ -4,7 +4,7 @@ import logoImage from '@images/mdgc-logo.png';
 import ReportIssue from '@components/ReportIssue.astro';
 import { type NavItem } from '@data/navigation.ts';
 import { navItemColor } from '@utils/nav';
-import { isExternal, externalLinkAttrs } from '@utils/links';
+import Link from '@components/Link.astro';
 
 export interface Props {
 	navItems: NavItem[];
@@ -33,18 +33,18 @@ const cmsUrl = cmsPath ? `/cms/sveltia#${cmsPath}` : null;
 			{navItems.map((section) => (
 				<div>
 					<h3 class="font-semibold mb-2">
-						<a href={section.href} class={`inline-flex items-center gap-1 ${navItemColor(currentPath, section.href)} whitespace-nowrap hover:text-white hover:underline transition-colors`} {...externalLinkAttrs(section.href)}>
+						<Link href={section.href} class={`inline-flex items-center gap-1 ${navItemColor(currentPath, section.href)} whitespace-nowrap hover:text-white hover:underline transition-colors`}>
 							{section.icon && <Icon name={section.icon} class="w-4 h-4" />}
-							{section.title}{isExternal(section.href) && ' ↗'}
-						</a>
+							{section.title}
+						</Link>
 					</h3>
 					{section.subPages && (
 						<ul class="space-y-0.5 hidden md:block pl-2">
 							{section.subPages.map(link => (
 								<li>
-									<a href={link.href} class={`inline-block text-sm ${navItemColor(currentPath, link.href)} hover:text-white hover:underline transition-colors`} {...externalLinkAttrs(link.href)}>
-										{link.title}{isExternal(link.href) && ' ↗'}
-									</a>
+									<Link href={link.href} class={`inline-block text-sm ${navItemColor(currentPath, link.href)} hover:text-white hover:underline transition-colors`}>
+										{link.title}
+									</Link>
 								</li>
 							))}
 						</ul>
@@ -67,9 +67,9 @@ const cmsUrl = cmsPath ? `/cms/sveltia#${cmsPath}` : null;
 					<Icon name="mdi:pencil" class="h-5 w-5" />
 				</a>
 			)}
-			<a href={githubUrl} target="_blank" rel="noopener noreferrer" class="inline-block text-slate-400 hover:text-white transition-colors" aria-label="View source on GitHub" title="View source on GitHub">
+			<Link href={githubUrl} marker={false} class="inline-block text-slate-400 hover:text-white transition-colors" aria-label="View source on GitHub (opens in a new tab)" title="View source on GitHub">
 				<Icon name="mdi:github" class="h-5 w-5" />
-			</a>
+			</Link>
 			<ReportIssue />
 		</div>
 	</div>

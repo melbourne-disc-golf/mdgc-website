@@ -1,0 +1,23 @@
+---
+// A link that marks itself as external when it leaves the site: it opens in a
+// new tab, shows a ↗ (hidden from screen readers), and tells screen readers
+// it opens in a new tab. Internal links render as a plain <a>.
+//
+// For links that wrap a block of content, or carry their own external icon
+// (e.g. LinkPanel), use externalLinkAttrs() from @utils/links instead.
+import type { HTMLAttributes } from 'astro/types';
+import { externalLinkAttrs, isExternal } from '@utils/links';
+
+interface Props extends HTMLAttributes<'a'> {
+  href: string;
+  /** Show the ↗ marker on external links (default true). */
+  marker?: boolean;
+  /** Extra classes for the ↗, e.g. to hide it on small screens. */
+  markerClass?: string;
+}
+
+const { href, marker = true, markerClass, ...attrs } = Astro.props;
+const external = isExternal(href);
+---
+
+<a href={href} {...externalLinkAttrs(href)} {...attrs}><slot />{external && marker && <span class={markerClass} aria-hidden="true"> ↗</span>}{external && <span class="sr-only"> (opens in a new tab)</span>}</a>

@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import LinkPanel from '@components/LinkPanel.astro';
+import Link from '@components/Link.astro';
 import { scoreCategory } from '@utils/scores';
 
 // Unlinked reference page documenting the site's current visual language, organised
@@ -308,6 +309,9 @@ const demoScores = [
          below — or the event tiles on the
          <a href="/events/tournaments">tournaments</a> page — to see it.</p>
 
+      <p class="mini-label"><code>&lt;Link&gt;</code> — a link that marks itself when it leaves the site</p>
+      <p>An off-site link like <Link href="https://discgolfmetrix.com/">Disc Golf Metrix</Link> opens in a new tab, with a ↗ (and screen-reader text saying so); an internal one like <Link href="/courses">our courses</Link> is a plain link. Use <code>marker=&#123;false&#125;</code> for icon-only links. For links wrapping a block of content, use <code>externalLinkAttrs()</code> from <code>src/utils/links.ts</code> instead.</p>
+
       <p class="mini-label"><code>&lt;LinkPanel&gt;</code> — the dominant card motif</p>
       <div class="grid gap-6 sm:grid-cols-2 not-prose my-4">
         <LinkPanel href="/disc-golf" title="Disc Golf" description="about the game" icon="heroicons:academic-cap" />
@@ -345,10 +349,10 @@ const demoScores = [
         <a href="#content">Stats</a>
       </nav>
 
-      <p class="mini-label"><code>.cta-button</code> — a call to action; add <code>.compact</code> inside a table row. Mark off-site targets with <code>externalLinkAttrs()</code> and a ↗</p>
+      <p class="mini-label"><code>.cta-button</code> — a call to action; add <code>.compact</code> inside a table row. Use it on a <code>&lt;Link&gt;</code>, so off-site targets are marked</p>
       <p class="not-prose my-4 flex items-center gap-4">
-        <a class="cta-button" href="#content">Register on Metrix<span aria-hidden="true"> ↗</span></a>
-        <a class="cta-button compact" href="#content">Register<span aria-hidden="true"> ↗</span></a>
+        <Link class="cta-button" href="https://discgolfmetrix.com/">Register on Metrix</Link>
+        <Link class="cta-button compact" href="https://discgolfmetrix.com/">Register</Link>
       </p>
 
       <p class="mini-label"><code>.pill-nav</code> — links choosing one of several views, with an optional <code>.pill-nav-label</code></p>

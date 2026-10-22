@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import Text from '@components/Text.astro';
 import LocationsMap from '@components/LocationsMap.astro';
+import Link from '@components/Link.astro';
 import EventCalendarList from '@components/EventCalendarList.astro';
 import { Temporal } from '@js-temporal/polyfill';
 import { getAllCalendarEvents } from '@utils/events';
@@ -63,16 +64,16 @@ const mapLinks = {
       <LocationsMap locations={[{ lat, lng, title: course.data.title }]} permanentTooltips />
       <p>
         View in:
-        <a href={mapLinks.google} target="_blank" rel="noopener noreferrer">Google Maps</a>
+        <Link href={mapLinks.google}>Google Maps</Link>
         {' · '}
-        <a href={mapLinks.apple} target="_blank" rel="noopener noreferrer">Apple Maps</a>
+        <Link href={mapLinks.apple}>Apple Maps</Link>
       </p>
     </section>
 
     {discLibrary && (
       <section>
         <h2>Nearest disc library</h2>
-        <p>If you don't have your own discs, you can borrow some from <a href={discLibrary.data.url}>{discLibrary.data.location}</a>.</p>
+        <p>If you don't have your own discs, you can borrow some from <Link href={discLibrary.data.url}>{discLibrary.data.location}</Link>.</p>
       </section>
     )}
 
@@ -81,7 +82,7 @@ const mapLinks = {
         <h2>Course layout</h2>
         {course.data.udiscUrl && (
           <p>
-            View on: <a href={course.data.udiscUrl} target="_blank" rel="noopener noreferrer">uDisc</a>
+            View on: <Link href={course.data.udiscUrl}>uDisc</Link>
           </p>
         )}
         {course.data.courseMap && (

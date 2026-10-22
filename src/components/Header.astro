@@ -3,7 +3,7 @@ import { Icon } from 'astro-icon/components';
 import logoImage from '@images/mdgc-logo.png';
 import { type NavItem } from '@data/navigation.ts';
 import { isActiveNavItem, navItemColor } from '@utils/nav';
-import { isExternal, externalLinkAttrs } from '@utils/links';
+import Link from '@components/Link.astro';
 
 export interface Props {
 	navItems: NavItem[];
@@ -41,7 +41,7 @@ const { navItems, currentPath } = Astro.props;
 								</div>
 							</div>
 						) : (
-							<a href={item.href} class={`${navItemColor(currentPath, item.href)} hover:text-white transition-colors text-sm lg:text-base px-4 py-2 rounded-lg border border-mdgc-blue-light/25 hover:bg-gray-900`} {...externalLinkAttrs(item.href)}>{item.title}{isExternal(item.href) && ' ↗'}</a>
+							<Link href={item.href} class={`${navItemColor(currentPath, item.href)} hover:text-white transition-colors text-sm lg:text-base px-4 py-2 rounded-lg border border-mdgc-blue-light/25 hover:bg-gray-900`}>{item.title}</Link>
 						)
 					))}
 				</nav>
@@ -69,7 +69,7 @@ const { navItems, currentPath } = Astro.props;
 							))}
 						</div>
 					) : (
-						<a href={item.href} class={`block px-3 py-2 hover:bg-mdgc-blue-dark rounded-md ${navItemColor(currentPath, item.href)} hover:text-white transition-colors`} {...externalLinkAttrs(item.href)}>{item.title}{isExternal(item.href) && ' ↗'}</a>
+						<Link href={item.href} class={`block px-3 py-2 hover:bg-mdgc-blue-dark rounded-md ${navItemColor(currentPath, item.href)} hover:text-white transition-colors`}>{item.title}</Link>
 					)
 				))}
 			</nav>
@@ -80,8 +80,8 @@ const { navItems, currentPath } = Astro.props;
 
 <style>
 	/* Nav/dropdown/mobile links shouldn't use the global link zoom — it grows the tab background. */
-	#menu-links a:hover,
-	#mobile-menu a:hover {
+	#menu-links :global(a:hover),
+	#mobile-menu :global(a:hover) {
 		transform: none;
 	}
 

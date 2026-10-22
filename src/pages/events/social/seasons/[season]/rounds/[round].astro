@@ -9,7 +9,7 @@ import { Temporal } from '@js-temporal/polyfill';
 import { formatDayOfSeason } from '@utils/dates';
 import { getEvent, getUpcomingSocialDay, getSeasons, metrixUrl } from '@utils/metrix';
 import { scoreCategory } from '@utils/scores';
-import { externalLinkAttrs } from '@utils/links';
+import Link from '@components/Link.astro';
 import { divisionAnchor, seasonPath } from '@utils/social-paths';
 
 export async function getStaticPaths() {
@@ -86,9 +86,7 @@ function fmt2(n: number | null): string {
             ? <><strong>{upcoming.registeredCount} player{upcoming.registeredCount === 1 ? '' : 's'} registered</strong> so far.</>
             : 'No one has registered yet.'}
         </p>
-        <a class="cta-button" href={metrixUrl(detail.id)} {...externalLinkAttrs(metrixUrl(detail.id))}>
-          Register on Metrix<span aria-hidden="true"> ↗</span><span class="sr-only"> (opens in a new tab)</span>
-        </a>
+        <Link class="cta-button" href={metrixUrl(detail.id)}>Register on Metrix</Link>
       </div>
     )}
 

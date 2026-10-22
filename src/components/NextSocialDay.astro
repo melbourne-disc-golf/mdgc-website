@@ -2,7 +2,7 @@
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDayOfSeason } from '@utils/dates';
 import { getSeasons, metrixUrl } from '@utils/metrix';
-import { externalLinkAttrs } from '@utils/links';
+import Link from '@components/Link.astro';
 import { roundPath } from '@utils/social-paths';
 
 // Get future events, sorted by date
@@ -25,9 +25,7 @@ const events = getSeasons()
         )}
         on <strong>{formatDayOfSeason(Temporal.PlainDate.from(event.date))}</strong>.
       </p>
-      <a class="cta-button" href={metrixUrl(event.id)} {...externalLinkAttrs(metrixUrl(event.id))}>
-        Register on Metrix<span aria-hidden="true"> ↗</span><span class="sr-only"> (opens in a new tab)</span>
-      </a>
+      <Link class="cta-button" href={metrixUrl(event.id)}>Register on Metrix</Link>
     </div>
   ))}
 </div>

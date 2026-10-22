@@ -4,6 +4,7 @@ import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
 import { getSeasons, type Season } from '@utils/metrix';
 import { seasonPath } from '@utils/social-paths';
+import Link from '@components/Link.astro';
 
 const today = Temporal.Now.plainDateISO().toString();
 const seasons = getSeasons(); // newest first
@@ -37,7 +38,7 @@ function seasonRange(season: Season): string | undefined {
 <Layout title="Social days by season" subtitle="upcoming rounds and past results, season by season">
   <div class="my-8 space-y-12">
     <p class="text-slate-600">
-      Information is sourced from <a class="text-mdgc-blue underline" href="https://discgolfmetrix.com/" target="_blank" rel="noopener noreferrer">Disc Golf Metrix</a> and updated automatically.
+      Information is sourced from <Link class="text-mdgc-blue underline" href="https://discgolfmetrix.com/">Disc Golf Metrix</Link> and updated automatically.
     </p>
 
     {sections.map((section) => (
