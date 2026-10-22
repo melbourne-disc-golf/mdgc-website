@@ -1,0 +1,267 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@layouts/Layout.astro';
+import SeasonTabs from '@components/SeasonTabs.astro';
+import { Temporal } from '@js-temporal/polyfill';
+import { formatDateRange } from '@utils/dates';
+import { getEvent, getSeasons, type EventDetail } from '@utils/metrix';
+import { birdiesOrBetter, seasonStats, totalScores, type ScoreCounts } from '@utils/season-stats';
+import { scoreCategories, scoreCategoryLabels } from '@utils/scores';
+import { roundPath } from '@utils/social-paths';
+
+export async function getStaticPaths() {
+  return getSeasons().map((season) => ({
+    params: { season: season.slug },
+    props: { season },
+  }));
+}
+
+const { season } = Astro.props;
+const { name, dateStart, dateEnd } = season;
+
+const subtitle = dateStart
+  ? formatDateRange(
+      Temporal.PlainDate.from(dateStart),
+      dateEnd ? Temporal.PlainDate.from(dateEnd) : undefined
+    )
+  : undefined;
+
+const rounds = season.socialDays
+  .filter((day) => day.played)
+  .map((day) => getEvent(day.id))
+  .filter((round): round is EventDetail => round !== null);
+const stats = seasonStats(rounds);
+const regulars = stats.players.filter((p) => p.rounds >= 5).length;
+
+// Map Metrix course ids to our course titles.
+const courses = await getCollection('courses');
+const courseByMetrixId = new Map<string, string>();
+for (const course of courses) {
+  for (const metrixId of course.data.metrixCourseIds ?? []) {
+    courseByMetrixId.set(metrixId, course.data.title);
+  }
+}
+function courseTitle(courseId: string, courseName: string): string {
+  return courseByMetrixId.get(courseId) ?? courseName.split('&rarr;')[0].trim();
+}
+
+function formatToPar(value: number | null, digits = 0): string {
+  if (value === null) return '–';
+  const text = value.toFixed(digits);
+  if (Number(text) === 0) return 'E';
+  return value > 0 ? `+${text}` : text;
+}
+
+function percent(count: number, total: number): string {
+  if (!total) return '–';
+  const value = (100 * count) / total;
+  return count > 0 && value < 0.05 ? '<0.1%' : `${value.toFixed(1)}%`;
+}
+
+function birdieRate(counts: ScoreCounts): string {
+  return percent(birdiesOrBetter(counts), totalScores(counts));
+}
+
+// Positions in the best-rounds list, with ties sharing a position.
+const bestRoundPositions = stats.bestRounds.map((r, _, all) => {
+  const first = all.findIndex((o) => o.toPar === r.toPar && o.raw === r.raw);
+  return first + 1;
+});
+---
+
+<Layout title={`${name} stats`} subtitle={subtitle} backLink={{ href: '/events/social/seasons', text: 'Social days by season' }}>
+  <SeasonTabs season={season} current="stats" />
+  <div class="mb-8 mt-6 space-y-12">
+
+    {stats.roundsPlayed === 0 ? (
+      <p class="text-slate-600">No rounds played yet.</p>
+    ) : (
+      <>
+        <section>
+          <h2 id="snapshot" class="section-heading mb-4">Snapshot</h2>
+          <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            <div class="stat-card">
+              <div class="stat-label">Rounds played</div>
+              <div class="stat-value">{stats.roundsPlayed}</div>
+              <div class="stat-detail">of {season.socialDays.length} scheduled</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Player rounds</div>
+              <div class="stat-value">{stats.playerRounds.toLocaleString('en-AU')}</div>
+              <div class="stat-detail">{stats.averageField?.toFixed(1)} average field</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Players</div>
+              <div class="stat-value">{stats.uniquePlayers}</div>
+              <div class="stat-detail">{regulars} with 5+ rounds</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Holes scored</div>
+              <div class="stat-value">{stats.holesScored.toLocaleString('en-AU')}</div>
+              <div class="stat-detail">{birdieRate(stats.scoreCounts)} birdie or better</div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 id="scoring" class="section-heading mb-4">Scoring mix</h2>
+          <p class="mb-4 text-slate-600">Every hole scored this season, by score relative to par.</p>
+          <div class="score-bar mb-4 flex h-8 overflow-hidden rounded" aria-hidden="true">
+            {scoreCategories.map((c) => (
+              <div
+                class={`score-${c}`}
+                style={`width: ${(100 * stats.scoreCounts[c]) / stats.holesScored}%`}
+                title={`${scoreCategoryLabels[c]}: ${percent(stats.scoreCounts[c], stats.holesScored)}`}
+              />
+            ))}
+          </div>
+          <table class="data-table compact max-w-sm">
+            <thead>
+              <tr>
+                <th>Score</th>
+                <th class="num">Holes</th>
+                <th class="num">Share</th>
+              </tr>
+            </thead>
+            <tbody>
+              {scoreCategories.map((c) => (
+                <tr>
+                  <td><span class={`score-swatch score-${c} rounded px-2`}>{scoreCategoryLabels[c]}</span></td>
+                  <td class="num">{stats.scoreCounts[c].toLocaleString('en-AU')}</td>
+                  <td class="num">{percent(stats.scoreCounts[c], stats.holesScored)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2 id="rounds" class="section-heading mb-4">Rounds</h2>
+          <p class="mb-4 text-slate-600">Average score to par counts complete scorecards only.</p>
+          <div class="table-scroll max-w-2xl">
+            <table class="data-table compact sortable">
+              <thead>
+                <tr>
+                  <th class="text-center" data-sort="number">Round</th>
+                  <th data-sort="string">Course</th>
+                  <th class="num" data-sort="number" data-sort-dir="desc">Attendance</th>
+                  <th class="num" data-sort="number" title="Average score to par across the field">Field avg +/-</th>
+                  <th class="num" data-sort="number" data-sort-dir="desc" title="Share of holes scored birdie or better">Birdie+</th>
+                </tr>
+              </thead>
+              <tbody>
+                {stats.rounds.map((r) => (
+                  <tr>
+                    <td class="text-center font-bold">
+                      <a href={roundPath(season, r.number)} class="row-link text-mdgc-blue-dark">{r.number}</a>
+                    </td>
+                    <td>{courseTitle(r.courseId, r.courseName)}</td>
+                    <td class="num">{r.players}</td>
+                    <td class="num" data-value={r.averageToPar ?? ''}>{formatToPar(r.averageToPar, 1)}</td>
+                    <td class="num" data-value={birdiesOrBetter(r.scoreCounts) / (totalScores(r.scoreCounts) || 1)}>
+                      {birdieRate(r.scoreCounts)}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section>
+          <h2 id="best-rounds" class="section-heading mb-4">Best rounds</h2>
+          <p class="mb-4 text-slate-600">
+            Lowest scores to par, with raw score as the tiebreaker. Courses differ, so compare with care.
+          </p>
+          <div class="table-scroll max-w-2xl">
+            <table class="data-table compact">
+              <thead>
+                <tr>
+                  <th class="text-center">Pos</th>
+                  <th>Player</th>
+                  <th class="num">+/-</th>
+                  <th class="num">Raw</th>
+                  <th class="text-center">Round</th>
+                  <th>Course</th>
+                </tr>
+              </thead>
+              <tbody>
+                {stats.bestRounds.map((r, i) => (
+                  <tr>
+                    <td class="text-center text-slate-500">{bestRoundPositions[i]}</td>
+                    <td class="font-medium whitespace-nowrap">{r.name}</td>
+                    <td class="num font-bold text-slate-800">{formatToPar(r.toPar)}</td>
+                    <td class="num text-slate-600">{r.raw}</td>
+                    <td class="text-center">
+                      <a href={roundPath(season, r.roundNumber)} class="text-mdgc-blue-dark">{r.roundNumber}</a>
+                    </td>
+                    <td>{courseTitle(r.courseId, r.courseName)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section>
+          <h2 id="players" class="section-heading mb-4">Players</h2>
+          <p class="mb-4 text-slate-600">
+            Each player's scoring this season. Division is the one they played most often.
+          </p>
+          <div class="table-scroll max-w-4xl">
+            <table class="data-table compact sticky-first-column sortable">
+              <thead>
+                <tr>
+                  <th data-sort="string">Player</th>
+                  <th class="text-center" data-sort="string">Div</th>
+                  <th class="num" data-sort="number" data-sort-dir="desc">Events</th>
+                  {scoreCategories.filter((c) => c !== 'ace' && c !== 'eagle').map((c) => (
+                    <th class="num" data-sort="number" data-sort-dir={c === 'birdie' || c === 'par' ? 'desc' : undefined}>
+                      {c === 'birdie' ? 'Birdie+' : scoreCategoryLabels[c]}
+                    </th>
+                  ))}
+                  <th class="num" data-sort="number" title="Average score to par">Avg +/-</th>
+                  <th class="num" data-sort="number" title="Best score to par">Best</th>
+                </tr>
+              </thead>
+              <tbody>
+                {stats.players.map((p) => {
+                  const total = totalScores(p.scoreCounts);
+                  const share = (count: number) => (total ? count / total : '');
+                  const birdies = birdiesOrBetter(p.scoreCounts);
+                  return (
+                    <tr>
+                      <td class="font-medium whitespace-nowrap">{p.name}</td>
+                      <td class="text-center">{p.division}</td>
+                      <td class="num">{p.rounds}</td>
+                      <td class="num" data-value={share(birdies)}>{percent(birdies, total)}</td>
+                      <td class="num" data-value={share(p.scoreCounts.par)}>{percent(p.scoreCounts.par, total)}</td>
+                      <td class="num" data-value={share(p.scoreCounts.bogey)}>{percent(p.scoreCounts.bogey, total)}</td>
+                      <td class="num" data-value={share(p.scoreCounts['double-plus'])}>
+                        {percent(p.scoreCounts['double-plus'], total)}
+                      </td>
+                      <td class="num" data-value={p.averageToPar ?? ''}>{formatToPar(p.averageToPar, 1)}</td>
+                      <td class="num" data-value={p.bestToPar ?? ''}>{formatToPar(p.bestToPar)}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </>
+    )}
+  </div>
+</Layout>
+
+<style>
+  /* Par holes are unshaded on scorecards; give them a tint here so they show. */
+  .score-bar .score-par,
+  .score-swatch.score-par {
+    background: var(--color-slate-200);
+  }
+</style>
+
+<script>
+  import '../../../../../scripts/sortable-table';
+</script>

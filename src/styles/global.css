@@ -380,6 +380,41 @@ h2.section-heading .heading-link {
   margin-bottom: 0;
 }
 
+/* Stat card — a headline figure, with a label above and optional detail below. */
+.stat-card {
+  @apply rounded-lg bg-white p-4;
+  box-shadow: var(--panel-shadow);
+}
+
+.stat-card .stat-label {
+  @apply text-sm font-semibold text-slate-500;
+}
+
+.stat-card .stat-value {
+  @apply text-3xl font-bold text-gray-800 tabular-nums;
+}
+
+.stat-card .stat-detail {
+  @apply text-sm text-slate-500;
+}
+
+/* Page tabs — links between sibling pages; mark the current one with aria-current="page". */
+.page-tabs {
+  @apply flex gap-1 border-b border-gray-200;
+}
+
+.page-tabs a {
+  @apply -mb-px border-b-2 border-transparent px-4 py-2 font-semibold text-slate-500 no-underline;
+}
+
+.page-tabs a:hover {
+  @apply text-mdgc-blue-dark;
+}
+
+.page-tabs a[aria-current="page"] {
+  @apply border-mdgc-blue-dark text-mdgc-blue-dark;
+}
+
 .redbox {
 	@apply border border-red-300;
 }
@@ -404,8 +439,8 @@ time {
   @apply text-sm text-slate-500;
 }
 
-/* Sortable tables (see src/scripts/sortable-table.ts). Subtle up-triangle,
-   tablesort-style, on the sorted column. */
+/* Sortable tables (see src/scripts/sortable-table.ts). Subtle triangle,
+   tablesort-style, on the sorted column: up for ascending, down for descending. */
 th[data-sort] {
   cursor: pointer;
 }
@@ -425,7 +460,13 @@ th[data-sort]:hover::after {
   opacity: 0.4;
 }
 
-th.sort-asc::after {
+th[data-sort-dir="desc"]::after {
+  margin-top: 0.5em;
+  border-bottom-color: transparent;
+  border-top-color: currentColor;
+}
+
+th:is(.sort-asc, .sort-desc)::after {
   opacity: 0.85;
 }
 
