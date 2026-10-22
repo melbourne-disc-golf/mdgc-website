@@ -66,7 +66,7 @@ function fmt2(n: number | null): string {
 <Layout title={title} subtitle={subtitle} backLink={backLink}>
   <div class="my-8 space-y-10">
 
-    {course && (
+    {!results && course && (
       <Grid>
         <CourseCard
           name={course.data.title}
