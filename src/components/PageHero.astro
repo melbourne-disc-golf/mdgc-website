@@ -28,7 +28,7 @@ const { title, subtitle, heroImage, backLink } = Astro.props;
 		<div id="title-content" class="flex-1 min-w-0 lg:flex lg:flex-col lg:justify-center">
 			<div id="title-and-subtitle">
 				{backLink && (
-					<a href={backLink.href} class="no-print inline-block text-sm text-mdgc-blue-light hover:text-white hover:underline mb-3">← {backLink.text}</a>
+					<a href={backLink.href} class="no-print inline-block text-sm text-mdgc-blue-light hover:text-white hover:underline mb-3">{backLink.text}</a>
 				)}
 				<h1 class="text-4xl font-bold">{title}</h1>
 				{subtitle && <p class="text-xl mt-2">{subtitle}</p>}
