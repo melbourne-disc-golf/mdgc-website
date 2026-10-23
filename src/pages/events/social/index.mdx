@@ -11,6 +11,7 @@ import Text from '@components/Text.astro';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import NextSocialDay from '@components/NextSocialDay.astro';
+import CurrentSeason from '@components/CurrentSeason.astro';
 import EventCalendar from '@components/EventCalendar.astro';
 import { externalUrls } from '@data/external-urls';
 import { getAllCalendarEvents } from '@utils/events';
@@ -37,7 +38,6 @@ If you have a friend you'd like to play with, mention it when you sign up, and w
 
 ## When and where
 
-We split the year into two [seasons](/events/social/seasons) (Feb-Jun and Jul-Nov), with 15 Social Days in each season.
 We alternate between Saturdays and Sundays, and rotate around three "zones":
 
 - **West** - 1st weekend of month
@@ -45,6 +45,10 @@ We alternate between Saturdays and Sundays, and rotate around three "zones":
 - **North-East** - 3rd weekend of month
 
 We usually have an early round starting at 8:00am, and a later one at 10:30am -- you can choose which time suits you best when you register.
+
+We split the year into two seasons (Feb-Jun and Jul-Nov), with 15 Social Days in each season.
+
+<CurrentSeason />
 
 ## Registering
 

@@ -1,0 +1,34 @@
+---
+// A tile linking to the season in progress, or else the next one.
+import { Temporal } from '@js-temporal/polyfill';
+import Grid from '@components/Grid.astro';
+import LinkPanel from '@components/LinkPanel.astro';
+import { formatDateRange, formatDayOfSeason } from '@utils/dates';
+import { getSeasons } from '@utils/metrix';
+import { currentOrNextSeason } from '@utils/seasons';
+import { seasonPath } from '@utils/social-paths';
+
+const found = currentOrNextSeason(getSeasons(), Temporal.Now.plainDateISO().toString());
+
+function description(): string {
+  const dateStart = found?.season.dateStart;
+  if (!found || !dateStart) return '';
+  const { season, status } = found;
+  const start = Temporal.PlainDate.from(dateStart);
+  if (status === 'next') return `Starts ${formatDayOfSeason(start)}`;
+  const range = formatDateRange(start, season.dateEnd ? Temporal.PlainDate.from(season.dateEnd) : undefined);
+  const played = season.socialDays.filter((d) => d.played).length;
+  return `${range} · ${played} of ${season.socialDays.length} social days played`;
+}
+---
+
+{found && (
+  <Grid>
+    <LinkPanel
+      href={seasonPath(found.season)}
+      title={found.season.title}
+      description={description()}
+      icon="heroicons:calendar"
+    />
+  </Grid>
+)}

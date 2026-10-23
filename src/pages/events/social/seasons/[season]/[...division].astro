@@ -24,6 +24,12 @@ export async function getStaticPaths() {
 const { season, division } = Astro.props;
 const { title, dateStart, dateEnd, socialDays } = season;
 
+// Seasons come newest first.
+const seasons = getSeasons();
+const seasonIndex = seasons.findIndex((s) => s.slug === season.slug);
+const prevSeason = seasons[seasonIndex + 1];
+const nextSeason = seasonIndex > 0 ? seasons[seasonIndex - 1] : undefined;
+
 const subtitle = dateStart
   ? formatDateRange(
       Temporal.PlainDate.from(dateStart),
@@ -112,7 +118,15 @@ function fractionHeat(value: number, max: number): string {
 }
 ---
 
-<Layout title={division ? `${title} - Div ${division}` : title} subtitle={subtitle} backLink={{ href: '/events/social/seasons', text: 'Social days by season' }}>
+<Layout title={division ? `${title} - Div ${division}` : title} subtitle={subtitle} backLink={{ href: '/events/social', text: 'Social Days' }}>
+  <nav class="prev-next-nav not-prose mt-4" aria-label="Seasons">
+    {prevSeason ? (
+      <a href={seasonPath(prevSeason, division)} rel="prev">← {prevSeason.title}</a>
+    ) : <span />}
+    {nextSeason ? (
+      <a href={seasonPath(nextSeason, division)} rel="next" class="text-right">{nextSeason.title} →</a>
+    ) : <span />}
+  </nav>
   <nav class="pill-nav mt-4" aria-label="Division">
     <span class="pill-nav-label">Division</span>
     {divisionNav.map((link) => (
