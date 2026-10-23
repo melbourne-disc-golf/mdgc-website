@@ -191,7 +191,7 @@ function fractionHeat(value: number, max: number): string {
                   <td class="num whitespace-nowrap">
                     {(() => {
                       const [weekday, ...rest] = dayOfSeason(day.date, 'short').split(' ');
-                      return <><span class="block sm:inline">{weekday}</span> {rest.join(' ')}</>;
+                      return <><span class="hidden sm:inline">{weekday} </span>{rest.join(' ')}</>;
                     })()}
                   </td>
                   <td>
