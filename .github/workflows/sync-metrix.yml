@@ -3,8 +3,9 @@ name: Sync Metrix Data
 on:
   schedule:
     # Cron is UTC; Melbourne is AEST (UTC+10) or AEDT (UTC+11)
-    - cron: '0 16 * * *' # 2am AEST / 3am AEDT
-    - cron: '0 4 * * *'  # 2pm AEST / 3pm AEDT
+    # Off the hour, because GitHub delays scheduled runs most at the top of the hour.
+    - cron: '23 16 * * *' # 2:23am AEST / 3:23am AEDT
+    - cron: '23 4 * * *'  # 2:23pm AEST / 3:23pm AEDT
   workflow_dispatch: # Allow manual trigger
 
 jobs:

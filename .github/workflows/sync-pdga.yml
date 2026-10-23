@@ -4,7 +4,8 @@ on:
   schedule:
     # Cron is UTC; Melbourne is AEST (UTC+10) or AEDT (UTC+11). Once daily,
     # offset from the Metrix sync so the two jobs don't push at the same time.
-    - cron: '0 17 * * *' # 3am AEST / 4am AEDT
+    # Off the hour, because GitHub delays scheduled runs most at the top of the hour.
+    - cron: '47 17 * * *' # 3:47am AEST / 4:47am AEDT
   workflow_dispatch: # Allow manual trigger
 
 jobs:
