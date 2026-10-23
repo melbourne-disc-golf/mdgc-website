@@ -45,6 +45,11 @@ a {
   text-underline-offset: 0.3em;
 }
 
+/* Bold text stays bold when it's a link. */
+:is(strong, b) a {
+  font-weight: inherit;
+}
+
 a:hover {
   transform: scale(var(--hover-zoom-scale));
 }
