@@ -6,7 +6,7 @@
 // recognise throws, so the sync fails loudly and the last good data stays.
 
 import { parse, type HTMLElement } from 'node-html-parser';
-import type { SocialPrizesByEvent, SocialPrizeWinner } from './social-prizes';
+import type { SocialPrizeKind, SocialPrizesByEvent, SocialPrizeWinner } from './social-prizes';
 
 /** Absolute URLs of the season results pages linked from the home page. */
 export function parseSeasonLinks(html: string, baseUrl: string): string[] {
@@ -31,11 +31,23 @@ function metrixId(panel: HTMLElement): string | undefined {
   return undefined;
 }
 
+const KINDS: Record<string, SocialPrizeKind> = {
+  'prize-row-handicap': 'handicap',
+  'prize-row-ctb': 'ctb',
+};
+
+function parseKind(row: HTMLElement, panelId: string): SocialPrizeKind {
+  for (const cls of row.classList.values()) {
+    if (KINDS[cls]) return KINDS[cls];
+  }
+  throw new Error(`${panelId}: prize winner row of unknown kind (class "${row.getAttribute('class')}")`);
+}
+
 function parseWinner(row: HTMLElement, panelId: string): SocialPrizeWinner {
   const winner = {
+    kind: parseKind(row, panelId),
     prize: text(row.querySelector('.prize-winner-type')),
     name: text(row.querySelector('.prize-winner-copy strong')),
-    detail: text(row.querySelector('.prize-winner-copy em')),
   };
   if (!winner.prize || !winner.name) {
     throw new Error(`${panelId}: prize winner row without a prize or name`);

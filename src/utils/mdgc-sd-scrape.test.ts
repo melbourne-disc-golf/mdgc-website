@@ -40,12 +40,8 @@ describe('parseSeasonPrizes', () => {
   it('reads each winner, in page order', () => {
     const { winners } = prizes['3647171'];
     expect(winners).toHaveLength(6);
-    expect(winners[0]).toEqual({
-      prize: 'Div A Handicap',
-      name: 'Markus Villota',
-      detail: 'Net 50.29, Raw 55 (-9)',
-    });
-    expect(winners[5]).toEqual({ prize: 'Div C/D CTB', name: 'Illia Kravchenko', detail: 'Hole 7' });
+    expect(winners[0]).toEqual({ kind: 'handicap', prize: 'Div A Handicap', name: 'Markus Villota' });
+    expect(winners[5]).toEqual({ kind: 'ctb', prize: 'Div C/D CTB', name: 'Illia Kravchenko' });
   });
 
   it('reads the prize notes', () => {
@@ -59,7 +55,7 @@ describe('parseSeasonPrizes', () => {
       'rd-1',
       `${metrixActions('111')}
       <section class="results-prize-section">
-        <article class="prize-winner-row"><span class="prize-winner-copy">
+        <article class="prize-winner-row prize-row-handicap"><span class="prize-winner-copy">
           <span class="prize-winner-type">Div A Handicap</span><strong>Someone</strong><em>Net 50</em>
         </span></article>
       </section>`,
@@ -90,7 +86,7 @@ describe('parseSeasonPrizes', () => {
     const html = panel(
       'rd-1',
       `<section class="results-prize-section">
-        <article class="prize-winner-row"><span class="prize-winner-copy">
+        <article class="prize-winner-row prize-row-handicap"><span class="prize-winner-copy">
           <span class="prize-winner-type">Div A Handicap</span><strong>Someone</strong><em>Net 50</em>
         </span></article>
       </section>`,
@@ -103,9 +99,22 @@ describe('parseSeasonPrizes', () => {
       'rd-1',
       `${metrixActions('111')}
       <section class="results-prize-section">
-        <article class="prize-winner-row"><span class="prize-winner-type">Div A Handicap</span></article>
+        <article class="prize-winner-row prize-row-handicap"><span class="prize-winner-type">Div A Handicap</span></article>
       </section>`,
     );
     expect(() => parseSeasonPrizes(html)).toThrow(/without a prize or name/);
+  });
+
+  it('fails when a winner row is neither a handicap nor a CTB prize', () => {
+    const html = panel(
+      'rd-1',
+      `${metrixActions('111')}
+      <section class="results-prize-section">
+        <article class="prize-winner-row prize-row-ace"><span class="prize-winner-copy">
+          <span class="prize-winner-type">Ace</span><strong>Someone</strong>
+        </span></article>
+      </section>`,
+    );
+    expect(() => parseSeasonPrizes(html)).toThrow(/unknown kind/);
   });
 });

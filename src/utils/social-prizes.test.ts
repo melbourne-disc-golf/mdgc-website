@@ -3,7 +3,7 @@ import { getSocialRoundPrizes, type SocialPrizesByEvent } from './social-prizes'
 
 const prizes: SocialPrizesByEvent = {
   '111': {
-    winners: [{ prize: 'Div A Handicap', name: 'Someone', detail: 'Net 50' }],
+    winners: [{ kind: 'handicap', prize: 'Div A Handicap', name: 'Someone' }],
     notes: ['A note.'],
   },
 };

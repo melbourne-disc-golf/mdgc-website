@@ -2,10 +2,13 @@
 // src/data/mdgc-sd/prize-winners.json by scripts/fetch-mdgc-sd-prizes.ts.
 // The scraping lives in mdgc-sd-scrape.ts, which only the script imports.
 
+/** Handicap prizes go to the best net score; CTB is "closest to basket". */
+export type SocialPrizeKind = 'handicap' | 'ctb';
+
 export interface SocialPrizeWinner {
+  kind: SocialPrizeKind;
   prize: string;
   name: string;
-  detail: string;
 }
 
 export interface SocialRoundPrizes {

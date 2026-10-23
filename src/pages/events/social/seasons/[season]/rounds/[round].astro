@@ -11,6 +11,7 @@ import { getEvent, getUpcomingSocialDay, getSeasons, metrixUrl } from '@utils/me
 import { seasonStats } from '@utils/season-stats';
 import { getSocialRoundPrizes } from '@utils/social-prizes';
 import { scoreCategory } from '@utils/scores';
+import { Icon } from 'astro-icon/components';
 import Link from '@components/Link.astro';
 import { divisionAnchor, roundPath, seasonPath } from '@utils/social-paths';
 
@@ -147,10 +148,14 @@ function fmt2(n: number | null): string {
         <h2 class="section-heading mb-4">Prize winners</h2>
         <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {prizeWinners.map((winner) => (
-            <li class="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3">
-              <p class="text-sm font-semibold text-emerald-900">{winner.prize}</p>
-              <p class="mt-1 text-lg font-bold text-slate-900">{winner.name}</p>
-              <p class="mt-0.5 text-sm text-slate-600">{winner.detail}</p>
+            <li class="prize-tile">
+              <span class={`prize-icon prize-icon-${winner.kind}`} aria-hidden="true">
+                <Icon name={winner.kind === 'ctb' ? 'mdi:target' : 'mdi:trophy-outline'} size={24} />
+              </span>
+              <div>
+                <p class="text-sm font-semibold text-slate-500">{winner.prize}</p>
+                <p class="text-lg font-bold text-slate-900">{winner.name}</p>
+              </div>
             </li>
           ))}
         </ul>
@@ -278,5 +283,32 @@ function fmt2(n: number | null): string {
     color: #152018;
     font-weight: 700;
     box-shadow: inset 0 1px rgba(255, 255, 255, 0.75), 0 2px 5px rgba(31, 54, 44, 0.18);
+  }
+
+  /* Prize winners: a trophy for handicap prizes, a target for CTB. */
+  .prize-tile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: #ffffff;
+    box-shadow: var(--panel-shadow);
+  }
+  .prize-icon {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+  }
+  .prize-icon-handicap {
+    background: #fff4ba;
+    color: #9a6a0c;
+  }
+  .prize-icon-ctb {
+    background: color-mix(in srgb, var(--color-mdgc-blue-light), transparent 70%);
+    color: var(--color-mdgc-blue-dark);
   }
 </style>

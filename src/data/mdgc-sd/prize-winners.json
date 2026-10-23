@@ -2,34 +2,34 @@
   "3525299": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Jesper Berg Axelsen",
-        "detail": "Net 40.17, Raw 47 (-9)"
+        "name": "Jesper Berg Axelsen"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Simon Farrar",
-        "detail": "Net 35.58, Raw 46 (-10)"
+        "name": "Simon Farrar"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Daniel Santamaria",
-        "detail": "Net 37.25, Raw 51 (-5)"
+        "name": "Daniel Santamaria"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Memphis Vergos-Schepisi",
-        "detail": "Net 29.17, Raw 88 (+32)"
+        "name": "Memphis Vergos-Schepisi"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B CTB",
-        "name": "Cooper Thompson",
-        "detail": "Hole 15"
+        "name": "Cooper Thompson"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Ross Davies",
-        "detail": "Hole 5"
+        "name": "Ross Davies"
       }
     ],
     "notes": []
@@ -37,34 +37,34 @@
   "3525305": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Aidan Howard",
-        "detail": "Net 39.83, Raw 44 (-11)"
+        "name": "Aidan Howard"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Peter Barry",
-        "detail": "Net 38.92, Raw 51 (-4)"
+        "name": "Peter Barry"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Ben Matthews",
-        "detail": "Net 36.17, Raw 51 (-4)"
+        "name": "Ben Matthews"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Owen Maisey",
-        "detail": "Net 36.17, Raw 64 (+9)"
+        "name": "Owen Maisey"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B CTB",
-        "name": "Chris Scott 127348",
-        "detail": "Hole 5"
+        "name": "Chris Scott 127348"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Bridget Albiston",
-        "detail": "Hole 8"
+        "name": "Bridget Albiston"
       }
     ],
     "notes": []
@@ -72,34 +72,34 @@
   "3525309": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Narada Guzman",
-        "detail": "Net 42.08, Raw 50 (-9)"
+        "name": "Narada Guzman"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Joshua Quinn",
-        "detail": "Net 40.58, Raw 52 (-7)"
+        "name": "Joshua Quinn"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Damian Musci",
-        "detail": "Net 39, Raw 52 (-7)"
+        "name": "Damian Musci"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Charlotte Davies",
-        "detail": "Net 34.58, Raw 58 (-1)"
+        "name": "Charlotte Davies"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B CTB",
-        "name": "David Perry",
-        "detail": "Hole 10"
+        "name": "David Perry"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Alistair Morley",
-        "detail": "Hole 4"
+        "name": "Alistair Morley"
       }
     ],
     "notes": [
@@ -109,34 +109,34 @@
   "3532789": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Caelan Haramis",
-        "detail": "Net 40.17, Raw 46 (-9)"
+        "name": "Caelan Haramis"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Ashley Weidner",
-        "detail": "Net 37.75, Raw 48 (-7)"
+        "name": "Ashley Weidner"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Alex Evans",
-        "detail": "Net 36.58, Raw 51 (-4)"
+        "name": "Alex Evans"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Rhys Vieusseux",
-        "detail": "Net 32.17, Raw 55 (E)"
+        "name": "Rhys Vieusseux"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B CTB",
-        "name": "Chris Scott 127348",
-        "detail": "Hole 15"
+        "name": "Chris Scott 127348"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Simon Mackay",
-        "detail": "Hole 5"
+        "name": "Simon Mackay"
       }
     ],
     "notes": [
@@ -146,34 +146,34 @@
   "3532792": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Zach Schloeffel",
-        "detail": "Net 41.17, Raw 50 (-8)"
+        "name": "Zach Schloeffel"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Joshua Quinn",
-        "detail": "Net 40.25, Raw 51 (-7)"
+        "name": "Joshua Quinn"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Jason Vincent",
-        "detail": "Net 38.58, Raw 53 (-5)"
+        "name": "Jason Vincent"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "James Melenhorst",
-        "detail": "Net 40.67, Raw 64 (+6)"
+        "name": "James Melenhorst"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B CTB",
-        "name": "Jonny Martin",
-        "detail": "Hole 2"
+        "name": "Jonny Martin"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Daniel Santamaria",
-        "detail": "Hole 7"
+        "name": "Daniel Santamaria"
       }
     ],
     "notes": []
@@ -181,34 +181,34 @@
   "3532794": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Mike van der Linden",
-        "detail": "Net 39.42, Raw 48 (-8)"
+        "name": "Mike van der Linden"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Mark Green",
-        "detail": "Net 36.68, Raw 48 (-8)"
+        "name": "Mark Green"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Tom Mason",
-        "detail": "Net 35.68, Raw 50 (-6)"
+        "name": "Tom Mason"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Rhys Vieusseux",
-        "detail": "Net 33.27, Raw 55 (-1)"
+        "name": "Rhys Vieusseux"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B CTB",
-        "name": "Oscar Fehlberg",
-        "detail": "Hole 13"
+        "name": "Oscar Fehlberg"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Alistair Morley",
-        "detail": "Hole 7"
+        "name": "Alistair Morley"
       }
     ],
     "notes": []
@@ -216,34 +216,34 @@
   "3539724": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Mark Hardy",
-        "detail": "Net 51.18, Raw 59 (-5)"
+        "name": "Mark Hardy"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Richard Lewis-Shell",
-        "detail": "Net 48.76, Raw 61 (-3)"
+        "name": "Richard Lewis-Shell"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Robert Lambert",
-        "detail": "Net 50.56, Raw 66 (+2)"
+        "name": "Robert Lambert"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "John Baker",
-        "detail": "Net 50.46, Raw 74 (+10)"
+        "name": "John Baker"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B CTB",
-        "name": "Juan Rueda",
-        "detail": "Hole 15"
+        "name": "Juan Rueda"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Matt Mutter",
-        "detail": "Hole 3"
+        "name": "Matt Mutter"
       }
     ],
     "notes": []
@@ -251,34 +251,34 @@
   "3539729": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Sam Barnett",
-        "detail": "Net 40.75, Raw 48 (-7)"
+        "name": "Sam Barnett"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Patrick Utri",
-        "detail": "Net 39.25, Raw 50 (-5)"
+        "name": "Patrick Utri"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Jason Vincent",
-        "detail": "Net 43.92, Raw 57 (+2)"
+        "name": "Jason Vincent"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Melanie Ellis",
-        "detail": "Net 36.67, Raw 77 (+22)"
+        "name": "Melanie Ellis"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B CTB",
-        "name": "Mike Van der Linden",
-        "detail": "Hole 12"
+        "name": "Mike Van der Linden"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "James Melenhorst",
-        "detail": "Hole 2"
+        "name": "James Melenhorst"
       }
     ],
     "notes": []
@@ -286,34 +286,34 @@
   "3539734": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Mike Van der Linden",
-        "detail": "Net 38.34, Raw 47 (-9)"
+        "name": "Mike Van der Linden"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Simon Mackay",
-        "detail": "Net 39.26, Raw 52 (-4)"
+        "name": "Simon Mackay"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Brett Bobridge",
-        "detail": "Net 36.85, Raw 51 (-5)"
+        "name": "Brett Bobridge"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Millie Harzem",
-        "detail": "Net 33.94, Raw 61 (+5)"
+        "name": "Millie Harzem"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B CTB",
-        "name": "Chris Scott 127348",
-        "detail": "Hole 12"
+        "name": "Chris Scott 127348"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Emma Winkworth",
-        "detail": "Hole 18"
+        "name": "Emma Winkworth"
       }
     ],
     "notes": [
@@ -323,34 +323,34 @@
   "3539736": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Tim Ware",
-        "detail": "Net 41.08, Raw 48 (-10)"
+        "name": "Tim Ware"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Pat Utri",
-        "detail": ""
+        "name": "Pat Utri"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Bridget Albiston",
-        "detail": "Net 38, Raw 55 (-3)"
+        "name": "Bridget Albiston"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Rhys Vieusseux",
-        "detail": "Net 42.58, Raw 62 (+4)"
+        "name": "Rhys Vieusseux"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B CTB",
-        "name": "David Perry",
-        "detail": "Hole 13"
+        "name": "David Perry"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Matthew Rusthton",
-        "detail": "Hole 6"
+        "name": "Matthew Rusthton"
       }
     ],
     "notes": []
@@ -358,34 +358,34 @@
   "3539737": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Daniel Frawley",
-        "detail": "Net 44.5, Raw 53 (-6)"
+        "name": "Daniel Frawley"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Simon Farrar",
-        "detail": ""
+        "name": "Simon Farrar"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Bridget Albiston",
-        "detail": "Net 43.42, Raw 60 (+1)"
+        "name": "Bridget Albiston"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Sharon Cook",
-        "detail": "Net 45, Raw 81 (+22)"
+        "name": "Sharon Cook"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B CTB",
-        "name": "Richard Pasquier",
-        "detail": "Hole 16"
+        "name": "Richard Pasquier"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Paul Baker",
-        "detail": "Hole 6"
+        "name": "Paul Baker"
       }
     ],
     "notes": []
@@ -393,34 +393,34 @@
   "3539738": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Mikey Hare",
-        "detail": "Net 38, Raw 41 (-14)"
+        "name": "Mikey Hare"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Paul Baker",
-        "detail": ""
+        "name": "Paul Baker"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Eamon Dawson",
-        "detail": ""
+        "name": "Eamon Dawson"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Rafal Wadowski",
-        "detail": "Net 30.08, Raw 58 (+3)"
+        "name": "Rafal Wadowski"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B CTB",
-        "name": "Nathan Parish",
-        "detail": "Hole 15"
+        "name": "Nathan Parish"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Daniel Santamaria",
-        "detail": "Hole 5"
+        "name": "Daniel Santamaria"
       }
     ],
     "notes": []
@@ -428,34 +428,34 @@
   "3539739": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Chris Scott 127348",
-        "detail": "Net 37, Raw 41 (-14)"
+        "name": "Chris Scott 127348"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Paul Baker",
-        "detail": "Net 38.42, Raw 50 (-5)"
+        "name": "Paul Baker"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Alistair Morley",
-        "detail": "Net 43.33, Raw 58 (+3)"
+        "name": "Alistair Morley"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Memphis Vergos-Schepisi",
-        "detail": "Net 37.42, Raw 90 (+35)"
+        "name": "Memphis Vergos-Schepisi"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B CTB",
-        "name": "Marcus Davies",
-        "detail": "Hole 5"
+        "name": "Marcus Davies"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "James Melenhorst",
-        "detail": "Hole 8"
+        "name": "James Melenhorst"
       }
     ],
     "notes": []
@@ -463,34 +463,34 @@
   "3539740": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Alistair Don",
-        "detail": "Net 36.17, Raw 45 (-11)"
+        "name": "Alistair Don"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Ross Davies",
-        "detail": "Net 38.18, Raw 50 (-6)"
+        "name": "Ross Davies"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Rhys Vieusseux",
-        "detail": "Net 36.6, Raw 54 (-2)"
+        "name": "Rhys Vieusseux"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Lachlan Cooke",
-        "detail": "Net 36.69, Raw 61 (+5)"
+        "name": "Lachlan Cooke"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B/X/Z CTB",
-        "name": "Markus Villota",
-        "detail": "Hole 11"
+        "name": "Markus Villota"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Aaron Ponnudurai",
-        "detail": "Hole 7"
+        "name": "Aaron Ponnudurai"
       }
     ],
     "notes": []
@@ -498,34 +498,34 @@
   "3647171": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Markus Villota",
-        "detail": "Net 50.29, Raw 55 (-9)"
+        "name": "Markus Villota"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Jason Vincent",
-        "detail": "Net 47.82, Raw 61 (-3)"
+        "name": "Jason Vincent"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Robert Lambert",
-        "detail": "Net 52.03, Raw 67 (+3)"
+        "name": "Robert Lambert"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Sharon Cook",
-        "detail": "Net 43.52, Raw 81 (+17)"
+        "name": "Sharon Cook"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B/X/Z CTB",
-        "name": "Aidan Howard",
-        "detail": "Hole 1"
+        "name": "Aidan Howard"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Illia Kravchenko",
-        "detail": "Hole 7"
+        "name": "Illia Kravchenko"
       }
     ],
     "notes": [
@@ -535,34 +535,34 @@
   "3647209": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Hamish Clarkson",
-        "detail": "Net 47.41, Raw 54 (-5)"
+        "name": "Hamish Clarkson"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Matt Gosney",
-        "detail": "Net 49.25, Raw 61 (+2)"
+        "name": "Matt Gosney"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Illia Kravchenko",
-        "detail": "Net 48.88, Raw 63 (+4)"
+        "name": "Illia Kravchenko"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "James Melenhorst",
-        "detail": "Net 43.15, Raw 62 (+3)"
+        "name": "James Melenhorst"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B/X/Z CTB",
-        "name": "Wayne hood",
-        "detail": "Hole 7"
+        "name": "Wayne hood"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Rafal Wadowski",
-        "detail": "Hole 1"
+        "name": "Rafal Wadowski"
       }
     ],
     "notes": [
@@ -572,34 +572,34 @@
   "3647211": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Darren Stace-Smith",
-        "detail": "Net 41.17, Raw 45 (-13)"
+        "name": "Darren Stace-Smith"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Zsolt Csatlos",
-        "detail": "Net 40.83, Raw 51 (-7)"
+        "name": "Zsolt Csatlos"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Toby Beasley",
-        "detail": "Net 38.08, Raw 53 (-5)"
+        "name": "Toby Beasley"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Michael Ranga",
-        "detail": "Net 36.67, Raw 66 (+8)"
+        "name": "Michael Ranga"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B/X/Z CTB",
-        "name": "Martin Goh",
-        "detail": "Hole 9"
+        "name": "Martin Goh"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Max Tats",
-        "detail": "Hole 4"
+        "name": "Max Tats"
       }
     ],
     "notes": []
@@ -607,34 +607,34 @@
   "3647212": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Cooper Thompson",
-        "detail": "Net 41, Raw 49 (-7)"
+        "name": "Cooper Thompson"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Daniel Santamaria",
-        "detail": "Net 40.25, Raw 52 (-4)"
+        "name": "Daniel Santamaria"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Max Tats",
-        "detail": "Net 40.58, Raw 54 (-2)"
+        "name": "Max Tats"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Michael Strasser",
-        "detail": "Net 36.92, Raw 59 (+3)"
+        "name": "Michael Strasser"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B/X/Z CTB",
-        "name": "Jacob Cruden",
-        "detail": "Hole 7"
+        "name": "Jacob Cruden"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Robert Lambert",
-        "detail": "Hole 6"
+        "name": "Robert Lambert"
       }
     ],
     "notes": []
@@ -642,34 +642,34 @@
   "3647213": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Allen Brunsting",
-        "detail": "Net 40.75, Raw 47 (-8)"
+        "name": "Allen Brunsting"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Zach Schloeffel",
-        "detail": "Net 40.75, Raw 50 (-5)"
+        "name": "Zach Schloeffel"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Mike Williams",
-        "detail": "Net 39.25, Raw 54 (-1)"
+        "name": "Mike Williams"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Owen Maisey",
-        "detail": "Net 36.33, Raw 61 (+6)"
+        "name": "Owen Maisey"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B/X/Z CTB",
-        "name": "Nick Tay",
-        "detail": "Hole 9"
+        "name": "Nick Tay"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Alex Evans",
-        "detail": "Hole 3"
+        "name": "Alex Evans"
       }
     ],
     "notes": []
@@ -677,34 +677,34 @@
   "3647215": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Markus Villota",
-        "detail": "Net 43.67, Raw 48 (-11)"
+        "name": "Markus Villota"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Zach Schloeffel",
-        "detail": "Net 44.59, Raw 54 (-5)"
+        "name": "Zach Schloeffel"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Toby Beasley",
-        "detail": "Net 47.75, Raw 62 (+3)"
+        "name": "Toby Beasley"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Joshua Bradshaw",
-        "detail": "Net 36.55, Raw 72 (+13)"
+        "name": "Joshua Bradshaw"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B/X/Z CTB",
-        "name": "Jason Vincent",
-        "detail": "Hole 4"
+        "name": "Jason Vincent"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Charlotte Davies",
-        "detail": "Hole 2"
+        "name": "Charlotte Davies"
       }
     ],
     "notes": []
@@ -712,34 +712,34 @@
   "3647217": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Marcus Davies",
-        "detail": "Net 38.01, Raw 46 (-9)"
+        "name": "Marcus Davies"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Carlton Klerck",
-        "detail": "Net 38.59, Raw 48 (-7)"
+        "name": "Carlton Klerck"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Illia Kravchenko",
-        "detail": "Net 38.43, Raw 52 (-3)"
+        "name": "Illia Kravchenko"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Montague Traczynski",
-        "detail": "Net 31.19, Raw 64 (+9)"
+        "name": "Montague Traczynski"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B/X/Z CTB",
-        "name": "Chris Ronalds",
-        "detail": "Hole 15"
+        "name": "Chris Ronalds"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Xavier Lambert",
-        "detail": "Hole 2"
+        "name": "Xavier Lambert"
       }
     ],
     "notes": []
@@ -747,34 +747,34 @@
   "3647218": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Joshua Quinn",
-        "detail": "Net 36.17, Raw 45 (-11)"
+        "name": "Joshua Quinn"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Zsolt Csatlos",
-        "detail": "Net 38.33, Raw 48 (-8)"
+        "name": "Zsolt Csatlos"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Ben Hare",
-        "detail": "Net 36.75, Raw 51 (-5)"
+        "name": "Ben Hare"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "John Baker",
-        "detail": "Net 35.83, Raw 54 (-2)"
+        "name": "John Baker"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B/X/Z CTB",
-        "name": "Levi Naunton",
-        "detail": "Hole 15"
+        "name": "Levi Naunton"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Simon Mackay",
-        "detail": "Hole 18"
+        "name": "Simon Mackay"
       }
     ],
     "notes": []
@@ -782,34 +782,34 @@
   "3647219": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Hamish Clarkson",
-        "detail": "Net 41.83, Raw 48 (-10)"
+        "name": "Hamish Clarkson"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Matt Gosney",
-        "detail": "Net 43.83, Raw 56 (-2)"
+        "name": "Matt Gosney"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Kim Michell",
-        "detail": "Net 40.67, Raw 57 (-1)"
+        "name": "Kim Michell"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Mike Vieusseux",
-        "detail": "Net 34.67, Raw 57 (-1)"
+        "name": "Mike Vieusseux"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B/X/Z CTB",
-        "name": "Zsolt Csatlos",
-        "detail": "Hole 16"
+        "name": "Zsolt Csatlos"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Alistair Morley",
-        "detail": "Hole 10"
+        "name": "Alistair Morley"
       }
     ],
     "notes": [
@@ -819,34 +819,34 @@
   "3647220": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div A Handicap",
-        "name": "Clayton Beck",
-        "detail": "Net 48.13, Raw 55 (-10)"
+        "name": "Clayton Beck"
       },
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Richard Lewis-Shell",
-        "detail": "Net 48.39, Raw 60 (-5)"
+        "name": "Richard Lewis-Shell"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Kim Michell",
-        "detail": "Net 49.91, Raw 68 (+3)"
+        "name": "Kim Michell"
       },
       {
+        "kind": "handicap",
         "prize": "Div D Handicap",
-        "name": "Michael Ranga-Heka",
-        "detail": "Net 48.96, Raw 80 (+15)"
+        "name": "Michael Ranga-Heka"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B/X/Z CTB",
-        "name": "Jason Vincent",
-        "detail": "Hole 1"
+        "name": "Jason Vincent"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "Xavier Lambert",
-        "detail": "Hole 7"
+        "name": "Xavier Lambert"
       }
     ],
     "notes": []
@@ -854,34 +854,34 @@
   "3647221": {
     "winners": [
       {
+        "kind": "handicap",
         "prize": "Div B Handicap",
-        "name": "Adam Speirs",
-        "detail": "Net 42.31, Raw 53 (-6)"
+        "name": "Adam Speirs"
       },
       {
+        "kind": "handicap",
         "prize": "Div A/B Handicap",
-        "name": "TSUNG-CHI CHOU (Peter)",
-        "detail": "Net 43.2, Raw 51 (-8)"
+        "name": "TSUNG-CHI CHOU (Peter)"
       },
       {
+        "kind": "handicap",
         "prize": "Div C Handicap",
-        "name": "Phillip Hall",
-        "detail": "Net 45.17, Raw 59 (E)"
+        "name": "Phillip Hall"
       },
       {
+        "kind": "handicap",
         "prize": "Div C/D Handicap",
-        "name": "David Heath",
-        "detail": "Net 45.4, Raw 75 (+16)"
+        "name": "David Heath"
       },
       {
+        "kind": "ctb",
         "prize": "Div A/B/X/Z CTB",
-        "name": "Juan rueda",
-        "detail": "Hole 7"
+        "name": "Juan rueda"
       },
       {
+        "kind": "ctb",
         "prize": "Div C/D CTB",
-        "name": "David Morkunas",
-        "detail": "Hole 2"
+        "name": "David Morkunas"
       }
     ],
     "notes": []
