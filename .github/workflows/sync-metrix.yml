@@ -30,17 +30,25 @@ jobs:
         run: pnpm install
 
       - name: Fetch Metrix data
+        id: metrix
         # Season IDs are configured in the script (SEASON_IDS).
         run: pnpm tsx scripts/fetch-metrix-data.ts
 
+      - name: Fetch prize winners from mdgc-sd
+        # Writes nothing if the scrape fails, so the last good data stays.
+        run: pnpm tsx scripts/fetch-mdgc-sd-prizes.ts
+
       - name: Commit changes
+        # Still commit fresh Metrix data if only the prize scrape failed; the
+        # job is marked failed either way.
+        if: ${{ !cancelled() && steps.metrix.outcome == 'success' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/metrix/
+          git add src/data/metrix/ src/data/mdgc-sd/
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Sync Metrix data [automated]"
+            git commit -m "Sync Metrix data and prize winners [automated]"
             git push
           fi

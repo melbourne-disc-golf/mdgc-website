@@ -5,11 +5,11 @@ import LinkPanel from '@components/LinkPanel.astro';
 import CourseCard from '@components/CourseCard.astro';
 import ScoringMix from '@components/ScoringMix.astro';
 import { getEntry } from 'astro:content';
-import { getSocialPrizeNotes, getSocialPrizeWinners } from '@data/social-prize-winners';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDayOfSeason } from '@utils/dates';
 import { getEvent, getUpcomingSocialDay, getSeasons, metrixUrl } from '@utils/metrix';
 import { seasonStats } from '@utils/season-stats';
+import { getSocialRoundPrizes } from '@utils/social-prizes';
 import { scoreCategory } from '@utils/scores';
 import Link from '@components/Link.astro';
 import { divisionAnchor, roundPath, seasonPath } from '@utils/social-paths';
@@ -55,8 +55,7 @@ const prevRound = rounds[roundIndex - 1];
 const nextRound = rounds[roundIndex + 1];
 
 const { par, tracks, divisions } = results ?? { par: 0, tracks: [], divisions: [] };
-const prizeWinners = results ? getSocialPrizeWinners(results.id) : [];
-const prizeNotes = results ? getSocialPrizeNotes(results.id) : [];
+const { winners: prizeWinners, notes: prizeNotes } = getSocialRoundPrizes(eventId);
 const scoreCounts = results ? seasonStats([results]).scoreCounts : undefined;
 
 function holeClass(score: number | null, holePar: number): string {

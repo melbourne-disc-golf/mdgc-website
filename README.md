@@ -108,6 +108,8 @@ just fetch-metrix-season   # or: pnpm tsx scripts/fetch-metrix-data.ts
 
 The seasons to sync are listed in `SEASON_IDS` near the top of [`scripts/fetch-metrix-data.ts`](scripts/fetch-metrix-data.ts); add the Metrix ID of each new season there. To fetch a one-off season, pass its ID as an argument (e.g. `just fetch-metrix-season 3647062`).
 
+Metrix doesn't hold prize winners, so the same workflow scrapes them from the [mdgc-sd results pages](https://mdgc-sd.vercel.app/), matching each round on its Metrix ID, into [`src/data/mdgc-sd/prize-winners.json`](src/data/mdgc-sd/prize-winners.json). This is a stopgap, until prize data moves off mdgc-sd. If the scrape fails (e.g. because the page markup changed), the workflow fails, and the last good data stays in place. To scrape manually: `just fetch-mdgc-sd-prizes`.
+
 ### External events (via PDGA)
 
 The events calendar can also show tournaments run by other clubs, scraped from the [PDGA tour calendar](https://www.pdga.com/tour). These are hidden by default on the [tournaments page](https://www.melbournediscgolf.com/events/tournaments) and revealed with the **"Include non-MDGC events"** toggle.

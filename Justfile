@@ -20,3 +20,7 @@ fetch-metrix-season *SEASONS:
 # Fetch external (PDGA) events for the tournaments calendar
 fetch-pdga-events:
     pnpm tsx scripts/fetch-pdga-events.ts
+
+# Fetch social day prize winners from mdgc-sd
+fetch-mdgc-sd-prizes:
+    pnpm tsx scripts/fetch-mdgc-sd-prizes.ts
