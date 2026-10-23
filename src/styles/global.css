@@ -508,9 +508,20 @@ th[data-sort] {
   position: relative; /* anchors the triangle; sticky cells keep position: sticky, which also does */
 }
 
-/* Room for the triangle, which is positioned so it never wraps onto a line of its own. */
-:is(.prose, .data-table) th[data-sort] {
+/* Room for the triangle, which is positioned so it never wraps onto a line of its own.
+   It sits on the side away from the label's alignment, so the label still lines up
+   with its column: right of a left-aligned label, left of a right-aligned one, and
+   left of a centred one, with matching room on the right to keep it centred. */
+:is(.prose, .data-table) th[data-sort]:not(.num, .text-right, .text-center) {
   padding-right: 1.375rem;
+}
+
+:is(.prose, .data-table) th[data-sort]:is(.num, .text-right) {
+  padding-left: 1.375rem;
+}
+
+:is(.prose, .data-table) th[data-sort].text-center {
+  padding-inline: 1.375rem;
 }
 
 /* Centred on the heading's last line of text (headings are bottom-aligned). */
@@ -523,6 +534,11 @@ th[data-sort]::after {
   border-bottom-color: currentColor;
   opacity: 0;
   transition: opacity 0.15s;
+}
+
+th[data-sort]:is(.num, .text-right, .text-center)::after {
+  right: auto;
+  left: 0.375rem;
 }
 
 th[data-sort]:hover::after {
