@@ -1,0 +1,889 @@
+{
+  "3525299": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Jesper Berg Axelsen"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Simon Farrar"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Daniel Santamaria"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Memphis Vergos-Schepisi"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B CTB",
+        "name": "Cooper Thompson"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Ross Davies"
+      }
+    ],
+    "notes": []
+  },
+  "3525305": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Aidan Howard"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Peter Barry"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Ben Matthews"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Owen Maisey"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B CTB",
+        "name": "Chris Scott 127348"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Bridget Albiston"
+      }
+    ],
+    "notes": []
+  },
+  "3525309": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Narada Guzman"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Joshua Quinn"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Damian Musci"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Charlotte Davies"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B CTB",
+        "name": "David Perry"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Alistair Morley"
+      }
+    ],
+    "notes": [
+      "Alistair Morley also led Div C Handicap but won Div C/D CTB, so Div C Handicap passed to Damian Musci."
+    ]
+  },
+  "3532789": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Caelan Haramis"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Ashley Weidner"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Alex Evans"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Rhys Vieusseux"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B CTB",
+        "name": "Chris Scott 127348"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Simon Mackay"
+      }
+    ],
+    "notes": [
+      "Chris Scott 127348 also led Div A Handicap but won Div A/B CTB, so Div A Handicap passed to Caelan Haramis."
+    ]
+  },
+  "3532792": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Zach Schloeffel"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Joshua Quinn"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Jason Vincent"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "James Melenhorst"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B CTB",
+        "name": "Jonny Martin"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Daniel Santamaria"
+      }
+    ],
+    "notes": []
+  },
+  "3532794": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Mike van der Linden"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Mark Green"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Tom Mason"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Rhys Vieusseux"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B CTB",
+        "name": "Oscar Fehlberg"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Alistair Morley"
+      }
+    ],
+    "notes": []
+  },
+  "3539724": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Mark Hardy"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Richard Lewis-Shell"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Robert Lambert"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "John Baker"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B CTB",
+        "name": "Juan Rueda"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Matt Mutter"
+      }
+    ],
+    "notes": []
+  },
+  "3539729": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Sam Barnett"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Patrick Utri"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Jason Vincent"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Melanie Ellis"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B CTB",
+        "name": "Mike Van der Linden"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "James Melenhorst"
+      }
+    ],
+    "notes": []
+  },
+  "3539734": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Mike Van der Linden"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Simon Mackay"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Brett Bobridge"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Millie Harzem"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B CTB",
+        "name": "Chris Scott 127348"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Emma Winkworth"
+      }
+    ],
+    "notes": [
+      "Chris Scott 127348 also led Div A Handicap but won Div A/B CTB, so Div A Handicap passed to Mike Van der Linden."
+    ]
+  },
+  "3539736": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Tim Ware"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Pat Utri"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Bridget Albiston"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Rhys Vieusseux"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B CTB",
+        "name": "David Perry"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Matthew Rusthton"
+      }
+    ],
+    "notes": []
+  },
+  "3539737": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Daniel Frawley"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Simon Farrar"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Bridget Albiston"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Sharon Cook"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B CTB",
+        "name": "Richard Pasquier"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Paul Baker"
+      }
+    ],
+    "notes": []
+  },
+  "3539738": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Mikey Hare"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Paul Baker"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Eamon Dawson"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Rafal Wadowski"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B CTB",
+        "name": "Nathan Parish"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Daniel Santamaria"
+      }
+    ],
+    "notes": []
+  },
+  "3539739": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Chris Scott 127348"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Paul Baker"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Alistair Morley"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Memphis Vergos-Schepisi"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B CTB",
+        "name": "Marcus Davies"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "James Melenhorst"
+      }
+    ],
+    "notes": []
+  },
+  "3539740": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Alistair Don"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Ross Davies"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Rhys Vieusseux"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Lachlan Cooke"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B/X/Z CTB",
+        "name": "Markus Villota"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Aaron Ponnudurai"
+      }
+    ],
+    "notes": []
+  },
+  "3647171": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Markus Villota"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Jason Vincent"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Robert Lambert"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Sharon Cook"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B/X/Z CTB",
+        "name": "Aidan Howard"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Illia Kravchenko"
+      }
+    ],
+    "notes": [
+      "Illia Kravchenko also led Div C Handicap but won Div C/D CTB, so Div C Handicap passed to Robert Lambert."
+    ]
+  },
+  "3647209": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Hamish Clarkson"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Matt Gosney"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Illia Kravchenko"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "James Melenhorst"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B/X/Z CTB",
+        "name": "Wayne hood"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Rafal Wadowski"
+      }
+    ],
+    "notes": [
+      "Wayne Hood also led Div B Handicap but won Div A/B/X/Z CTB, so Div B Handicap passed to Matt Gosney."
+    ]
+  },
+  "3647211": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Darren Stace-Smith"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Zsolt Csatlos"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Toby Beasley"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Michael Ranga"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B/X/Z CTB",
+        "name": "Martin Goh"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Max Tats"
+      }
+    ],
+    "notes": []
+  },
+  "3647212": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Cooper Thompson"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Daniel Santamaria"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Max Tats"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Michael Strasser"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B/X/Z CTB",
+        "name": "Jacob Cruden"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Robert Lambert"
+      }
+    ],
+    "notes": []
+  },
+  "3647213": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Allen Brunsting"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Zach Schloeffel"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Mike Williams"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Owen Maisey"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B/X/Z CTB",
+        "name": "Nick Tay"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Alex Evans"
+      }
+    ],
+    "notes": []
+  },
+  "3647215": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Markus Villota"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Zach Schloeffel"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Toby Beasley"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Joshua Bradshaw"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B/X/Z CTB",
+        "name": "Jason Vincent"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Charlotte Davies"
+      }
+    ],
+    "notes": []
+  },
+  "3647217": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Marcus Davies"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Carlton Klerck"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Illia Kravchenko"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Montague Traczynski"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B/X/Z CTB",
+        "name": "Chris Ronalds"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Xavier Lambert"
+      }
+    ],
+    "notes": []
+  },
+  "3647218": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Joshua Quinn"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Zsolt Csatlos"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Ben Hare"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "John Baker"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B/X/Z CTB",
+        "name": "Levi Naunton"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Simon Mackay"
+      }
+    ],
+    "notes": []
+  },
+  "3647219": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Hamish Clarkson"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Matt Gosney"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Kim Michell"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Mike Vieusseux"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B/X/Z CTB",
+        "name": "Zsolt Csatlos"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Alistair Morley"
+      }
+    ],
+    "notes": [
+      "Zsolt Csatlos also led Div B Handicap but won Div A/B/X/Z CTB, so Div B Handicap passed to Matt Gosney."
+    ]
+  },
+  "3647220": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Clayton Beck"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Richard Lewis-Shell"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Kim Michell"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Michael Ranga-Heka"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B/X/Z CTB",
+        "name": "Jason Vincent"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Xavier Lambert"
+      }
+    ],
+    "notes": []
+  },
+  "3647221": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Adam Speirs"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div A/B Handicap",
+        "name": "TSUNG-CHI CHOU (Peter)"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Phillip Hall"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C/D Handicap",
+        "name": "David Heath"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B/X/Z CTB",
+        "name": "Juan rueda"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "David Morkunas"
+      }
+    ],
+    "notes": []
+  }
+}
