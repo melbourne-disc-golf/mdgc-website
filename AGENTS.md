@@ -37,6 +37,18 @@ The [`old-wordpress-site/`](old-wordpress-site/) directory contains a "sketch" o
 - Make it as easy as possible for non-technical club members to manage content.
   - use Astro components and/or "content collections" for consistency
 
+## UI design language
+
+The site should look and behave like one site, with a common design language, not a collection of individually styled pages.
+
+- Before styling anything new, check [`/design`](src/pages/design.astro), the catalogue of shared components, CSS classes and conventions. Prefer what's there.
+- One-off styles are fine if they're used by only one page (or page template).
+- A pattern used across pages (or templates) should be factored out into a shared component or class, and documented on `/design`.
+- Also:
+  - use " - " as the separator in titles, e.g. "Round 5 - Bicentennial Park - Div A";
+  - draw charts and bars to scale;
+  - prefer simple and plain over clever.
+
 ## Writing style
 
 - In headings, use sentence case, not title case.
@@ -50,6 +62,15 @@ The [`old-wordpress-site/`](old-wordpress-site/) directory contains a "sketch" o
 - deploy to [Cloudflare Pages](https://pages.cloudflare.com/)
 - use Sveltia CMS to manage content of some pages (courses, events)
 - use `pnpm` as the package manager (not `npm`)
+
+## Key technical design choices
+
+- **Data is synced, not fetched live.** Scheduled GitHub Actions workflows (`.github/workflows/sync-*.yml`) fetch data that changes (Metrix results, PDGA events) and commit it to the repo, which triggers a rebuild.
+- **A website, not an app.** Anything worth linking to gets its own URL (e.g. a page per season, division filter and round). Client-side JavaScript is progressive enhancement: the content must be there without it.
+- **Metrix first.** Social day data comes from Disc Golf Metrix wherever possible. Take only what Metrix doesn't have from elsewhere (for now, mdgc-sd, scraped as a stopgap).
+- **Match data on IDs, not names.** Match events and players on Metrix IDs. URLs use readable slugs (e.g. `/events/social/seasons/2026-2/rounds/3`), but slugs are only presentation.
+- **Don't guess rules the data doesn't hold.** For example, don't hard-code a mapping from groups to tee times, or an event capacity. If the data isn't available, link to where it is.
+- **Logic lives in tested modules.** Keep data fetching and computation in plain TypeScript under `src/utils/` (or `src/data/`), and keep `.astro` pages for presentation.
 
 ## Site structure
 
@@ -67,7 +88,12 @@ Dear agent: when working with humans on this project, please:
 
 - Explain the changes you make: why you decided to do them, and how they work.
 - Don't commit changes to Git without checking first.
-- For complex (but testable) code, write tests first.
+- Write tests, and run them:
+  - Anything that computes, parses or transforms data gets unit tests (Vitest, in a `*.test.ts` file alongside the module). For complex code, write the tests first.
+  - Tests should check rules, using small fixtures, not live data that changes every round.
+  - Before calling a change done, run `pnpm test`, `pnpm astro check` and `pnpm build`, and fix what they report in code you touched.
+  - Check UI changes in a browser, at both desktop and phone widths.
+  - Don't delete or weaken a test to make it pass. If a test looks wrong, say so.
 
 ## Status
 
