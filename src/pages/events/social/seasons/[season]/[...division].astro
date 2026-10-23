@@ -257,11 +257,11 @@ function fractionHeat(value: number, max: number): string {
 
         <section>
           <h2 id="players" class="section-heading mb-4">Player score summaries</h2>
-          <p class="mb-4 text-slate-600">
-            {division
-              ? `Each player's scoring in Div ${division} this season, from the rounds they played in it.`
-              : "Each player's scoring this season. Division is the one they played most often."}
-          </p>
+          {division && (
+            <p class="mb-4 text-slate-600">
+              Each player's scoring in Div {division} this season, from the rounds they played in it.
+            </p>
+          )}
           <label class="mb-4 flex items-center gap-2" data-players-filter hidden>
             <span class="font-semibold text-slate-600">Show</span>
             <select class="rounded border border-gray-300 bg-white px-2 py-1">
@@ -276,8 +276,11 @@ function fractionHeat(value: number, max: number): string {
               <thead>
                 <tr>
                   <th data-sort="string">Player</th>
-                  {!division && <th class="text-center" data-sort="string">Div</th>}
+                  {!division && <th class="text-center" data-sort="string" title="Division in their latest round">Div</th>}
+                  <th class="num" data-sort="number" data-sort-dir="desc" title={division ? `Metrix rating in their latest Div ${division} round` : 'Metrix rating in their latest round'}>Rating</th>
                   <th class="num" data-sort="number" data-sort-dir="desc">Rounds</th>
+                  <th class="num sort-asc" data-sort="number" title="Average score to par">Avg</th>
+                  <th class="num" data-sort="number" title="Best score to par">Best</th>
                   {scoreCategories.filter((c) => c !== 'ace' && c !== 'eagle').map((c) => (
                     <th
                       class="num"
@@ -288,8 +291,6 @@ function fractionHeat(value: number, max: number): string {
                       {c === 'birdie' ? '≤ Birdie' : scoreCategoryLabels[c]}
                     </th>
                   ))}
-                  <th class="num" data-sort="number" title="Average score to par">Avg +/-</th>
-                  <th class="num" data-sort="number" title="Best score to par">Best</th>
                 </tr>
               </thead>
               <tbody>
@@ -301,7 +302,10 @@ function fractionHeat(value: number, max: number): string {
                     <tr data-rounds={p.rounds}>
                       <td class="font-medium whitespace-nowrap">{p.name}</td>
                       {!division && <td class="text-center">{p.division}</td>}
+                      <td class="num text-slate-500" data-value={p.rating ?? ''}>{p.rating ?? '–'}</td>
                       <td class={`num ${fractionHeat(p.rounds, stats.roundsPlayed)}`}>{p.rounds}</td>
+                      <td class={`num ${toParHeat(p.averageToPar)}`} data-value={p.averageToPar ?? ''}>{formatToPar(p.averageToPar, 1)}</td>
+                      <td class={`num ${toParHeat(p.bestToPar)}`} data-value={p.bestToPar ?? ''}>{formatToPar(p.bestToPar)}</td>
                       <td class={`num ${birdieHeat(p.scoreCounts)}`} data-value={share(birdies)}>{formatShare(birdies, total)}</td>
                       <td class={`num ${percentHeat('neutral', p.scoreCounts.par, total, [25, 35, 45, 55])}`} data-value={share(p.scoreCounts.par)}>
                         {formatShare(p.scoreCounts.par, total)}
@@ -312,8 +316,6 @@ function fractionHeat(value: number, max: number): string {
                       <td class={`num ${percentHeat('bad', p.scoreCounts['double-plus'], total, [3, 7, 11, 15])}`} data-value={share(p.scoreCounts['double-plus'])}>
                         {formatShare(p.scoreCounts['double-plus'], total)}
                       </td>
-                      <td class={`num ${toParHeat(p.averageToPar)}`} data-value={p.averageToPar ?? ''}>{formatToPar(p.averageToPar, 1)}</td>
-                      <td class={`num ${toParHeat(p.bestToPar)}`} data-value={p.bestToPar ?? ''}>{formatToPar(p.bestToPar)}</td>
                     </tr>
                   );
                 })}

@@ -38,7 +38,8 @@ export interface BestRound {
 export interface PlayerProfile {
   userId: string;
   name: string;
-  division: string; // most-played division
+  division: string; // from their latest round
+  rating: number | null; // from their latest round
   rounds: number;
   scoreCounts: ScoreCounts;
   averageToPar: number | null;
@@ -98,7 +99,9 @@ interface PlayerAccumulator {
   rounds: number;
   scoreCounts: ScoreCounts;
   toPars: number[];
-  divisionCounts: Map<string, { count: number; lastRound: number }>;
+  division: string;
+  rating: number | null;
+  latestRound: number;
 }
 
 /**
@@ -149,13 +152,18 @@ export function seasonStats(playedRounds: EventDetail[]): SeasonStats {
         rounds: 0,
         scoreCounts: emptyScoreCounts(),
         toPars: [],
-        divisionCounts: new Map(),
+        division: p.division,
+        rating: null,
+        latestRound: 0,
       };
       acc.name = p.name;
       acc.rounds++;
       for (const c of scoreCategories) acc.scoreCounts[c] += counts[c];
-      const div = acc.divisionCounts.get(p.division) ?? { count: 0, lastRound: 0 };
-      acc.divisionCounts.set(p.division, { count: div.count + 1, lastRound: round.number });
+      if (round.number >= acc.latestRound) {
+        acc.division = p.division;
+        acc.rating = p.rating;
+        acc.latestRound = round.number;
+      }
       players.set(p.userId, acc);
 
       if (complete) {
@@ -193,13 +201,14 @@ export function seasonStats(playedRounds: EventDetail[]): SeasonStats {
   const profiles: PlayerProfile[] = [...players.values()].map((acc) => ({
     userId: acc.userId,
     name: cleanPlayerName(acc.name),
-    division: mostPlayedDivision(acc.divisionCounts),
+    division: acc.division,
+    rating: acc.rating,
     rounds: acc.rounds,
     scoreCounts: acc.scoreCounts,
     averageToPar: average(acc.toPars),
     bestToPar: acc.toPars.length ? Math.min(...acc.toPars) : null,
   }));
-  profiles.sort((a, b) => b.rounds - a.rounds || birdieRate(b) - birdieRate(a));
+  profiles.sort((a, b) => (a.averageToPar ?? Infinity) - (b.averageToPar ?? Infinity) || b.rounds - a.rounds);
 
   return {
     roundsPlayed: rounds.length,
@@ -212,24 +221,4 @@ export function seasonStats(playedRounds: EventDetail[]): SeasonStats {
     bestRounds: bestRounds.slice(0, BEST_ROUNDS),
     players: profiles,
   };
-}
-
-function birdieRate(p: PlayerProfile): number {
-  const total = totalScores(p.scoreCounts);
-  return total ? birdiesOrBetter(p.scoreCounts) / total : 0;
-}
-
-// The division played most often; ties go to the one played most recently.
-function mostPlayedDivision(counts: Map<string, { count: number; lastRound: number }>): string {
-  let best = '';
-  let bestCount = -1;
-  let bestRound = -1;
-  for (const [division, { count, lastRound }] of counts) {
-    if (count > bestCount || (count === bestCount && lastRound > bestRound)) {
-      best = division;
-      bestCount = count;
-      bestRound = lastRound;
-    }
-  }
-  return best;
 }

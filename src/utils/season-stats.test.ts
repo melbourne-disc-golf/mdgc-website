@@ -9,7 +9,7 @@ const tracks = [
   { number: '3', par: 4 },
 ];
 
-function player(userId: string, name: string, division: string, holes: (number | null)[]): Player {
+function player(userId: string, name: string, division: string, holes: (number | null)[], rating: number | null = null): Player {
   const sum = holes.reduce<number>((total, h) => total + (h ?? 0), 0);
   return {
     userId,
@@ -17,7 +17,7 @@ function player(userId: string, name: string, division: string, holes: (number |
     group: null,
     division,
     divisionName: `Div ${division}`,
-    rating: null,
+    rating,
     holes,
     sum,
     diff: sum - 10,
@@ -47,11 +47,11 @@ function round(id: number, number: number, players: Player[]): EventDetail {
 
 const rounds = [
   round(101, 1, [
-    player('1', 'Alice', 'A', [2, 3, 4]), // -1: birdie, par, par
-    player('2', 'Bob', 'B', [3, 4, 6]), // +3: par, bogey, double+
+    player('1', 'Alice', 'A', [2, 3, 4], 900), // -1: birdie, par, par
+    player('2', 'Bob', 'B', [3, 4, 6], 850), // +3: par, bogey, double+
   ]),
   round(102, 2, [
-    player('1', 'Alice 123456', 'A', [1, 3, 2]), // -4: ace, par, eagle
+    player('1', 'Alice 123456', 'A', [1, 3, 2], 910), // -4: ace, par, eagle
     player('3', 'Carol', 'C', [3, null, 4]), // incomplete
   ]),
 ];
@@ -111,16 +111,39 @@ describe('seasonStats', () => {
     expect(carol).toMatchObject({ rounds: 1, averageToPar: null, bestToPar: null });
   });
 
-  it('lists the most regular players first', () => {
-    expect(stats.players[0].userId).toBe('1');
+  it('lists players by average score to par, best first, then those without an average', () => {
+    expect(stats.players.map((p) => p.userId)).toEqual(['1', '2', '3']);
   });
 
-  it("uses a player's most-played division, breaking ties by the latest round", () => {
+  it('breaks ties in average by rounds played', () => {
+    const tied = seasonStats([
+      round(401, 1, [player('8', 'Eve', 'B', [3, 3, 4]), player('9', 'Dee', 'A', [2, 3, 4])]),
+      round(402, 2, [player('7', 'Fay', 'B', [3, 3, 4]), player('8', 'Eve', 'B', [3, 3, 4])]),
+    ]);
+    expect(tied.players.map((p) => p.name)).toEqual(['Dee', 'Eve', 'Fay']);
+  });
+
+  it("uses the division from a player's latest round, even if they played more rounds in another", () => {
     const moves = seasonStats([
       round(201, 1, [player('9', 'Dee', 'C', [3, 3, 4])]),
-      round(202, 2, [player('9', 'Dee', 'B', [3, 3, 4])]),
+      round(202, 2, [player('9', 'Dee', 'C', [3, 3, 4])]),
+      round(203, 3, [player('9', 'Dee', 'B', [3, 3, 4])]),
     ]);
     expect(moves.players[0].division).toBe('B');
+  });
+
+  it("gives each player the rating from their latest round, or none if Metrix had none", () => {
+    expect(stats.players.find((p) => p.userId === '1')?.rating).toBe(910);
+    expect(stats.players.find((p) => p.userId === '2')?.rating).toBe(850);
+    expect(stats.players.find((p) => p.userId === '3')?.rating).toBeNull();
+  });
+
+  it('takes the latest division and rating by round number, whatever order the rounds come in', () => {
+    const reversed = seasonStats([
+      round(302, 2, [player('9', 'Dee', 'B', [3, 3, 4], 850)]),
+      round(301, 1, [player('9', 'Dee', 'C', [3, 3, 4], 830)]),
+    ]);
+    expect(reversed.players[0]).toMatchObject({ division: 'B', rating: 850 });
   });
 
   it('copes with a season with no rounds played', () => {
