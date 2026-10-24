@@ -27,8 +27,7 @@ export async function getStaticPaths() {
 const { season, eventId } = Astro.props;
 
 // A social day shows its groups (the draw) while it's still upcoming, and its
-// results once played — the two are independent, so a social day on the day
-// can show both.
+// results once played.
 const results = getEvent(eventId);
 const upcoming = getUpcomingSocialDay(eventId);
 const detail = results ?? upcoming;
@@ -42,7 +41,7 @@ const subtitle = `${formatDayOfSeason(plainDate)}, ${plainDate.year}`;
 const course = detail.courseSlug ? await getEntry('courses', detail.courseSlug) : undefined;
 
 const today = Temporal.Now.plainDateISO().toString();
-const showGroups = date >= today;
+const showGroups = !results && date >= today;
 
 // Back-link up to this social day's season.
 const backLink = {
