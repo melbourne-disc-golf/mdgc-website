@@ -182,16 +182,16 @@ function fmt2(n: number | null): string {
           {division.description && <span class="section-subtitle">{division.description}</span>}
         </h2>
         <div class="table-scroll">
-          <table class="data-table compact sticky-first-two-columns">
+          <table class="data-table compact sticky-first-two-columns sortable">
             <thead>
               <tr>
-                <th class="text-center">Pos</th>
-                <th>Player</th>
-                <th class="num" title="Metrix rating">Rating</th>
+                <th class="text-center sort-asc" data-sort="number">Pos</th>
+                <th data-sort="string">Player</th>
+                <th class="num" data-sort="number" data-sort-dir="desc" title="Metrix rating">Rating</th>
                 <th class="num" title="Score relative to par">+/-</th>
                 <th class="num" title="Raw score">Raw</th>
-                <th class="num" title="Handicap">HC</th>
-                <th class="num" title="Raw - HC">Net</th>
+                <th class="num" data-sort="number" title="Handicap">HC</th>
+                <th class="num" data-sort="number" title="Raw - HC">Net</th>
                 {tracks.map((t) => (
                   <th class="num" title={`Par ${t.par}`}>{t.number}</th>
                 ))}
@@ -212,7 +212,7 @@ function fmt2(n: number | null): string {
             <tbody>
               {division.players.map((p) => (
                 <tr>
-                  <td class="text-center">
+                  <td class="text-center" data-value={p.pos}>
                     {p.pos <= 3 ? (
                       <span class={`podium-badge podium-${p.pos}`}>{p.pos}</span>
                     ) : (
@@ -220,11 +220,11 @@ function fmt2(n: number | null): string {
                     )}
                   </td>
                   <td class="font-medium whitespace-nowrap">{p.name}</td>
-                  <td class="num text-slate-500">{p.rating ?? '–'}</td>
+                  <td class="num text-slate-500" data-value={p.rating ?? ''}>{p.rating ?? '–'}</td>
                   <td class="num font-bold text-slate-800">{formatDiff(p.diff)}</td>
                   <td class="num text-slate-600">{p.sum}</td>
-                  <td class="num text-slate-500">{fmt2(p.hc)}</td>
-                  <td class="num text-slate-600">
+                  <td class="num text-slate-500" data-value={p.hc ?? ''}>{fmt2(p.hc)}</td>
+                  <td class="num text-slate-600" data-value={p.net ?? ''}>
                     {p.net !== null && p.net === bestNet ? (
                       <span class="gold-pill" title="Best net score in this division">{fmt2(p.net)}</span>
                     ) : fmt2(p.net)}
@@ -252,6 +252,10 @@ function fmt2(n: number | null): string {
 
   </div>
 </Layout>
+
+<script>
+  import '@src/scripts/sortable-table';
+</script>
 
 <style>
   /* Gold / silver / bronze position badges. */
