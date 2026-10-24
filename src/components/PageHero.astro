@@ -17,7 +17,7 @@ export interface Props {
 	title: string;
 	subtitle?: string;
 	heroImage?: HeroImage;
-	backLink?: BackLink;
+	backLink?: BackLink | null;
 }
 
 const { title, subtitle, heroImage, backLink } = Astro.props;
