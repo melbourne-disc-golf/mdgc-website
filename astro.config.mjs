@@ -16,6 +16,9 @@ import { externalUrls } from './src/data/external-urls.ts';
 export default defineConfig({
   site: 'https://www.melbournediscgolf.com',
   output: 'static',
+  // Astro's 'jsx' default drops the space a newline makes between text and an
+  // inline element (e.g. "is at\n<a>Ruffey Lake</a>"), which our templates rely on.
+  compressHTML: true,
   redirects: {
     '/about': '/club',
     '/admin': '/cms/',
@@ -37,7 +40,6 @@ export default defineConfig({
   integrations: [
     mdx({
       gfm: true,
-      rehypePlugins: [rehypeSectionize],
     }),
     icon(),
     sitemap(),
