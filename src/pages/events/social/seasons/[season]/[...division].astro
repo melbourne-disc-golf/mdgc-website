@@ -6,7 +6,7 @@ import LinkPanel from '@components/LinkPanel.astro';
 import ScoringMix from '@components/ScoringMix.astro';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange, formatDayOfSeason } from '@utils/dates';
-import { getEvent, getSeasons, getUpcomingSocialDay, metrixUrl, type EventDetail } from '@utils/metrix';
+import { getEvent, getSeasons, metrixUrl, type EventDetail } from '@utils/metrix';
 import { birdiesOrBetter, formatShare, roundsInDivision, seasonStats, statsDivisions, totalScores, type ScoreCounts } from '@utils/season-stats';
 import { scoreCategories, scoreCategoryLabels } from '@utils/scores';
 import { divisionAnchor, divisionLinks, divisionParam, roundPath, seasonPath } from '@utils/social-paths';
@@ -43,9 +43,12 @@ const allRounds = socialDays
   .filter((round): round is EventDetail => round !== null);
 const rounds = division ? roundsInDivision(allRounds, division) : allRounds;
 const stats = seasonStats(rounds);
-const roundStats = new Map(stats.rounds.map((r) => [r.number, r]));
 
-const divisionNav = divisionLinks(statsDivisions, division, (d) => seasonPath(season, d));
+// The rounds table covers every division, whichever one the stats are for.
+const allStats = division ? seasonStats(allRounds) : stats;
+const roundStats = new Map(allStats.rounds.map((r) => [r.number, r]));
+
+const divisionNav = divisionLinks(statsDivisions, division, (d) => `${seasonPath(season, d)}#stats`);
 
 // A round's page, at the division's results when narrowed to one.
 function roundHref(roundNumber: number): string {
@@ -57,14 +60,6 @@ const regulars = stats.players.filter((p) => p.rounds >= 5).length;
 
 // The next round is the first without scores.
 const nextDay = socialDays.find((day) => !day.played);
-
-// Players at a round (in this division, if narrowed): who played, or for an
-// unplayed round, who's registered so far.
-function playersAt(day: (typeof socialDays)[number]): number {
-  if (day.played) return division ? (roundStats.get(day.number)?.players ?? 0) : day.players;
-  if (!division) return day.players;
-  return getUpcomingSocialDay(day.id)?.registeredByDivision[division] ?? 0;
-}
 
 function dayOfSeason(d: string, format: 'long' | 'short' = 'long'): string {
   return formatDayOfSeason(Temporal.PlainDate.from(d), format);
@@ -109,7 +104,7 @@ function birdieHeat(counts: ScoreCounts): string {
   return percentHeat('good', birdiesOrBetter(counts), totalScores(counts), [8, 16, 24, 32]);
 }
 
-const largestField = Math.max(1, ...stats.rounds.map((r) => r.players));
+const largestField = Math.max(1, ...allStats.rounds.map((r) => r.players));
 
 // Shade a count by its fraction of a maximum, in quarters.
 function fractionHeat(value: number, max: number): string {
@@ -127,45 +122,10 @@ function fractionHeat(value: number, max: number): string {
       <a href={seasonPath(nextSeason, division)} rel="next" class="text-right">{nextSeason.title} →</a>
     ) : <span />}
   </nav>
-  <nav class="pill-nav mt-4" aria-label="Division">
-    <span class="pill-nav-label">Division</span>
-    {divisionNav.map((link) => (
-      <a href={link.href} aria-current={link.current ? 'page' : undefined}>{link.text}</a>
-    ))}
-  </nav>
   <div class="mb-8 mt-6 space-y-12">
-
-    {stats.roundsPlayed > 0 && (
-      <section>
-        <h2 id="snapshot" class="section-heading mb-4">Snapshot</h2>
-        <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          <div class="stat-card">
-            <div class="stat-label">Rounds played</div>
-            <div class="stat-value">{stats.roundsPlayed}</div>
-            <div class="stat-detail">of {season.socialDays.length} scheduled</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Player rounds</div>
-            <div class="stat-value">{stats.playerRounds.toLocaleString('en-AU')}</div>
-            <div class="stat-detail">{stats.averageField?.toFixed(1)} average field</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Players</div>
-            <div class="stat-value">{stats.uniquePlayers}</div>
-            <div class="stat-detail">{regulars} with 5+ rounds</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Holes scored</div>
-            <div class="stat-value">{stats.holesScored.toLocaleString('en-AU')}</div>
-            <div class="stat-detail">{birdieRate(stats.scoreCounts)} birdie or better</div>
-          </div>
-        </div>
-      </section>
-    )}
 
     <section>
       <h2 id="rounds" class="section-heading mb-4">Rounds</h2>
-      {stats.roundsPlayed > 0 && <p class="mb-4 text-slate-600">Average score to par counts complete scorecards only.</p>}
       <div class="table-scroll max-w-3xl">
         <table class="data-table compact">
           <thead>
@@ -174,7 +134,7 @@ function fractionHeat(value: number, max: number): string {
               <th class="num">Date</th>
               <th>Course</th>
               <th class="num" title="Players who played, or registered so far">Players</th>
-              <th class="num" title="Average score to par across the field">Avg +/-</th>
+              <th class="num" title="Average score to par across the field, from complete scorecards">Avg +/-</th>
               <th class="num" title="Best score to par">Best +/-</th>
             </tr>
           </thead>
@@ -182,12 +142,10 @@ function fractionHeat(value: number, max: number): string {
             {socialDays.map((day) => {
               const isNext = day.id === nextDay?.id;
               const r = roundStats.get(day.number);
-              const players = playersAt(day);
+              const players = day.players;
               return (
                 <tr class={isNext ? 'next-round' : undefined}>
-                  <td class="text-center font-bold">
-                    <a href={roundHref(day.number)} class="row-link text-mdgc-blue-dark">{day.number}</a>
-                  </td>
+                  <td class="text-center font-bold">{day.number}</td>
                   <td class="num whitespace-nowrap">
                     {(() => {
                       const [weekday, ...rest] = dayOfSeason(day.date, 'short').split(' ');
@@ -195,7 +153,7 @@ function fractionHeat(value: number, max: number): string {
                     })()}
                   </td>
                   <td>
-                    {day.courseTitle}
+                    <a href={roundHref(day.number)} class="row-link text-mdgc-blue-dark underline">{day.courseTitle}</a>
                     {isNext && <span class="next-pill">Next</span>}
                   </td>
                   <td class={`num ${day.played && players ? fractionHeat(players, largestField) : ''}`}>
@@ -223,6 +181,44 @@ function fractionHeat(value: number, max: number): string {
         </table>
       </div>
     </section>
+
+    {allStats.roundsPlayed > 0 && (
+      <section>
+        <h2 id="stats" class="section-heading mb-4">Stats</h2>
+        <nav class="pill-nav mb-6" aria-label="Division">
+          <span class="pill-nav-label">Division</span>
+          {divisionNav.map((link) => (
+            <a href={link.href} aria-current={link.current ? 'page' : undefined}>{link.text}</a>
+          ))}
+        </nav>
+        {stats.roundsPlayed > 0 ? (
+        <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <div class="stat-card">
+            <div class="stat-label">Rounds played</div>
+            <div class="stat-value">{stats.roundsPlayed}</div>
+            <div class="stat-detail">of {season.socialDays.length} scheduled</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Player rounds</div>
+            <div class="stat-value">{stats.playerRounds.toLocaleString('en-AU')}</div>
+            <div class="stat-detail">{stats.averageField?.toFixed(1)} average field</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Players</div>
+            <div class="stat-value">{stats.uniquePlayers}</div>
+            <div class="stat-detail">{regulars} with 5+ rounds</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Holes scored</div>
+            <div class="stat-value">{stats.holesScored.toLocaleString('en-AU')}</div>
+            <div class="stat-detail">{birdieRate(stats.scoreCounts)} birdie or better</div>
+          </div>
+        </div>
+        ) : (
+          <p class="text-slate-600">No Div {division} rounds yet this season.</p>
+        )}
+      </section>
+    )}
 
     {stats.roundsPlayed > 0 && (
       <>
