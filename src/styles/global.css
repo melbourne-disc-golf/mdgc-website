@@ -272,8 +272,21 @@ h2.section-heading .heading-link {
   background: #f8fafc; /* slate-50 */
 }
 
+/* A hovered row lifts, with a drop-shadow. Safari won't paint a shadow on a
+   <tr>, so it's on a pseudo-element covering the row. The row is raised
+   (position + z-index) so the shadow paints over the rows around it, sticky
+   cells included. */
 .data-table tbody tr:hover {
-  background: #eaf4ff;
+  position: relative;
+  z-index: 2;
+}
+
+.data-table tbody tr:hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 3px 12px rgba(6, 61, 99, 0.4);
+  pointer-events: none;
 }
 
 /* Internal grid lines, a touch lighter than the slate-300 outer border.
@@ -324,7 +337,7 @@ h2.section-heading .heading-link {
   overflow: visible;
 }
 
-/* `background: inherit` picks up the row's stripe or hover colour, so scrolled
+/* `background: inherit` picks up the row's stripe colour, so scrolled
    cells don't show through. With two sticky columns, the first has a fixed
    width (--sticky-first-width) so the second knows where to stick. */
 .data-table:is(.sticky-first-column, .sticky-first-two-columns) :is(th, td):first-child,
@@ -362,6 +375,13 @@ h2.section-heading .heading-link {
   content: "";
   position: absolute;
   inset: 0;
+}
+
+/* The row's link can't zoom (it's inline), so like a prose link it thickens its
+   underline, wherever the row is hovered. */
+.data-table tr:hover .row-link {
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
 }
 
 /* Other links in a linked row stay clickable, above the row link. */
