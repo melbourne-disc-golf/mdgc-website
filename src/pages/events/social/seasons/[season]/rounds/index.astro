@@ -33,6 +33,7 @@ const playedRounds = socialDays
 const stats = seasonStats(playedRounds);
 const roundStats = new Map(stats.rounds.map((r) => [r.number, r]));
 const largestField = Math.max(1, ...stats.rounds.map((r) => r.players));
+const regulars = stats.players.filter((p) => p.rounds >= 5).length;
 
 // The next round is the first without scores.
 const nextDay = socialDays.find((day) => !day.played);
@@ -48,6 +49,25 @@ function shortDate(d: string): { weekday: string; rest: string } {
   <div class="mb-8 mt-6 space-y-12">
 
     <section>
+      {stats.roundsPlayed > 0 && (
+        <div class="mb-6 grid grid-cols-3 gap-2 sm:gap-4">
+          <div class="stat-card">
+            <div class="stat-label">Rounds played</div>
+            <div class="stat-value">{stats.roundsPlayed}</div>
+            <div class="stat-detail">of {socialDays.length} scheduled</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Players</div>
+            <div class="stat-value">{stats.uniquePlayers}</div>
+            <div class="stat-detail">{regulars} with 5+ rounds</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Player rounds</div>
+            <div class="stat-value">{stats.playerRounds.toLocaleString('en-AU')}</div>
+            <div class="stat-detail">{stats.averageField?.toFixed(1)} average field</div>
+          </div>
+        </div>
+      )}
       <div class="table-scroll">
         <table class="data-table compact">
           <thead>

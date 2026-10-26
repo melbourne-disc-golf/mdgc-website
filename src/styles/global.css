@@ -432,22 +432,23 @@ h2.section-heading .heading-link {
   margin-bottom: 0;
 }
 
-/* Stat card — a headline figure, with a label above and optional detail below. */
+/* Stat card — a headline figure, with a label above and optional detail below.
+   Smaller on phones, so three fit across, and without the detail. */
 .stat-card {
-  @apply rounded-lg bg-white p-4;
+  @apply rounded-lg bg-white p-3 sm:p-4;
   box-shadow: var(--panel-shadow);
 }
 
 .stat-card .stat-label {
-  @apply text-sm font-semibold text-slate-500;
+  @apply text-xs font-semibold text-slate-500 sm:text-sm;
 }
 
 .stat-card .stat-value {
-  @apply text-3xl font-bold text-gray-800 tabular-nums;
+  @apply text-2xl font-bold text-gray-800 tabular-nums sm:text-3xl;
 }
 
 .stat-card .stat-detail {
-  @apply text-sm text-slate-500;
+  @apply hidden text-sm text-slate-500 sm:block;
 }
 
 /* Page tabs — links between sibling pages; mark the current one with aria-current="page". */

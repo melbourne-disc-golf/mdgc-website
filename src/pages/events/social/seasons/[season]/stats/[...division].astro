@@ -7,7 +7,7 @@ import SeasonNav from '@components/SeasonNav.astro';
 import { Temporal } from '@js-temporal/polyfill';
 import { formatDateRange } from '@utils/dates';
 import { getEvent, getSeasons, metrixUrl, type EventDetail } from '@utils/metrix';
-import { birdiesOrBetter, formatShare, roundsInDivision, seasonStats, statsDivisions, totalScores, type ScoreCounts } from '@utils/season-stats';
+import { birdiesOrBetter, formatShare, roundsInDivision, seasonStats, statsDivisions, totalScores } from '@utils/season-stats';
 import { birdieHeat, formatToPar, fractionHeat, percentHeat, toParHeat } from '@utils/season-format';
 import { scoreCategories, scoreCategoryLabels } from '@utils/scores';
 import { divisionAnchor, divisionLinks, divisionParam, roundPath, seasonStatsPath } from '@utils/social-paths';
@@ -47,12 +47,6 @@ function roundHref(roundNumber: number): string {
   return division ? `${path}#${divisionAnchor(division)}` : path;
 }
 
-const regulars = stats.players.filter((p) => p.rounds >= 5).length;
-
-function birdieRate(counts: ScoreCounts): string {
-  return formatShare(birdiesOrBetter(counts), totalScores(counts));
-}
-
 // Positions in the best-rounds list, with ties sharing a position.
 const bestRoundPositions = stats.bestRounds.map((r, _, all) => {
   const first = all.findIndex((o) => o.toPar === r.toPar && o.raw === r.raw);
@@ -70,33 +64,7 @@ const bestRoundPositions = stats.bestRounds.map((r, _, all) => {
   </nav>
   <div class="mb-8 mt-6 space-y-12">
 
-    {stats.roundsPlayed > 0 ? (
-      <section>
-        <h2 id="snapshot" class="section-heading mb-4">Snapshot</h2>
-        <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          <div class="stat-card">
-            <div class="stat-label">Rounds played</div>
-            <div class="stat-value">{stats.roundsPlayed}</div>
-            <div class="stat-detail">of {season.socialDays.length} scheduled</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Player rounds</div>
-            <div class="stat-value">{stats.playerRounds.toLocaleString('en-AU')}</div>
-            <div class="stat-detail">{stats.averageField?.toFixed(1)} average field</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Players</div>
-            <div class="stat-value">{stats.uniquePlayers}</div>
-            <div class="stat-detail">{regulars} with 5+ rounds</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Holes scored</div>
-            <div class="stat-value">{stats.holesScored.toLocaleString('en-AU')}</div>
-            <div class="stat-detail">{birdieRate(stats.scoreCounts)} birdie or better</div>
-          </div>
-        </div>
-      </section>
-    ) : (
+    {stats.roundsPlayed === 0 && (
       <p class="text-slate-600">No {division ? `Div ${division} ` : ''}rounds played yet this season.</p>
     )}
 
