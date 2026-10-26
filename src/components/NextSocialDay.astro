@@ -21,8 +21,9 @@ const events = getSeasons()
   {events.map(event => (
     <div class="social-callout social-day-item hidden flex flex-wrap items-center justify-between gap-4" data-date={event.date}>
       <p>
-        Our <strong><a href={event.href}>next social day</a></strong>
-        (part of <a href={event.season.href}>{event.season.title}</a>) is at {event.courseTitle}
+        Our <strong><a href={event.href}>next social day</a></strong> 
+        (<a href={event.season.href}>{event.season.title}</a> round&nbsp;{event.number})
+        is at <strong>{event.courseTitle}</strong>
         on <strong>{formatDayOfSeason(Temporal.PlainDate.from(event.date))}</strong>.
       </p>
       <Link class="cta-button" href={metrixUrl(event.id)}>Register on Metrix</Link>
