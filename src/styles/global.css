@@ -310,11 +310,21 @@ h2.section-heading .heading-link {
 }
 
 .data-table.compact th {
-  padding: 0.375rem 0.5rem;
+  padding: 0.375rem 0.375rem;
 }
 
 .data-table.compact td {
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.375rem;
+}
+
+@media (min-width: 40rem) {
+  .data-table.compact th {
+    padding: 0.375rem 0.5rem;
+  }
+
+  .data-table.compact td {
+    padding: 0.25rem 0.5rem;
+  }
 }
 
 /* The scroll container takes over the table's border and rounded corners. */
