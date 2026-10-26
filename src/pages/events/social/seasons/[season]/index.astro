@@ -1,0 +1,12 @@
+---
+import { getSeasons } from '@utils/metrix';
+import { seasonRoundsPath } from '@utils/social-paths';
+
+// A season's root has no page of its own: it redirects to the season's rounds.
+export async function getStaticPaths() {
+  return getSeasons().map((season) => ({ params: { season: season.slug }, props: { season } }));
+}
+
+const { season } = Astro.props;
+return Astro.redirect(seasonRoundsPath(season), 301);
+---

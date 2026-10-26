@@ -272,6 +272,7 @@ const demoScores = [
         <li><code>&lt;a class="row-link"&gt;</code>, which makes the whole row clickable</li>
         <li><code>.sortable</code> and <code>data-sort="string"</code> or <code>"number"</code> on headers, to sort by clicking a column (<code>src/scripts/sortable-table.ts</code>). Columns sort ascending; add <code>data-sort-dir="desc"</code> where higher is better</li>
         <li><code>.score-ace</code>, <code>.score-eagle</code>, <code>.score-birdie</code>, <code>.score-par</code>, <code>.score-bogey</code> and <code>.score-double-plus</code>, to colour hole scores (pick one with <code>scoreCategory()</code> in <code>src/utils/scores.ts</code>)</li>
+        <li><code>.heat-neutral-1</code> to <code>-4</code>, and likewise <code>.heat-good-*</code>, <code>.heat-warn-*</code> and <code>.heat-bad-*</code>, to shade stats from light to strong (pick one with the helpers in <code>src/utils/season-format.ts</code>)</li>
       </ul>
       <p>Rows highlight on hover. Narrow the window to see the first column stay put:</p>
 

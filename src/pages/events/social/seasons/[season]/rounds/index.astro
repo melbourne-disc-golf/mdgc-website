@@ -1,0 +1,131 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Grid from '@components/Grid.astro';
+import Link from '@components/Link.astro';
+import LinkPanel from '@components/LinkPanel.astro';
+import SeasonNav from '@components/SeasonNav.astro';
+import { Temporal } from '@js-temporal/polyfill';
+import { formatDateRange, formatDayOfSeason } from '@utils/dates';
+import { getEvent, getSeasons, metrixUrl, type EventDetail } from '@utils/metrix';
+import { seasonStats } from '@utils/season-stats';
+import { formatToPar, fractionHeat, toParHeat } from '@utils/season-format';
+import { roundPath } from '@utils/social-paths';
+
+// A season's rounds: played, and still to come.
+export async function getStaticPaths() {
+  return getSeasons().map((season) => ({ params: { season: season.slug }, props: { season } }));
+}
+
+const { season } = Astro.props;
+const { title, dateStart, dateEnd, socialDays } = season;
+
+const subtitle = dateStart
+  ? formatDateRange(
+      Temporal.PlainDate.from(dateStart),
+      dateEnd ? Temporal.PlainDate.from(dateEnd) : undefined
+    )
+  : undefined;
+
+const playedRounds = socialDays
+  .filter((day) => day.played)
+  .map((day) => getEvent(day.id))
+  .filter((round): round is EventDetail => round !== null);
+const stats = seasonStats(playedRounds);
+const roundStats = new Map(stats.rounds.map((r) => [r.number, r]));
+const largestField = Math.max(1, ...stats.rounds.map((r) => r.players));
+
+// The next round is the first without scores.
+const nextDay = socialDays.find((day) => !day.played);
+
+function shortDate(d: string): { weekday: string; rest: string } {
+  const [weekday, ...rest] = formatDayOfSeason(Temporal.PlainDate.from(d), 'short').split(' ');
+  return { weekday, rest: rest.join(' ') };
+}
+---
+
+<Layout title={title} subtitle={subtitle} backLink={{ href: '/events/social', text: 'Social Days' }}>
+  <SeasonNav season={season} page="rounds" />
+  <div class="mb-8 mt-6 space-y-12">
+
+    <section>
+      <div class="table-scroll">
+        <table class="data-table compact">
+          <thead>
+            <tr>
+              <th class="text-center"><abbr class="no-underline sm:hidden" title="Round">Rd</abbr><span class="hidden sm:inline">Round</span></th>
+              <th class="num">Date</th>
+              <th>Course</th>
+              <th class="num" title="Players who played, or registered so far">Players</th>
+              <th class="num" title="Average score to par across the field, from complete scorecards">Avg +/-</th>
+              <th class="num" title="Best score to par">Best +/-</th>
+            </tr>
+          </thead>
+          <tbody>
+            {socialDays.map((day) => {
+              const isNext = day.id === nextDay?.id;
+              const r = roundStats.get(day.number);
+              const players = day.players;
+              const { weekday, rest } = shortDate(day.date);
+              return (
+                <tr class={isNext ? 'next-round' : undefined}>
+                  <td class="text-center font-bold">{day.number}</td>
+                  <td class="num whitespace-nowrap">
+                    <span class="hidden sm:inline">{weekday} </span>{rest}
+                  </td>
+                  <td>
+                    <a href={roundPath(season, day.number)} class="row-link text-mdgc-blue-dark underline">{day.courseTitle}</a>
+                    {isNext && <span class="next-pill">Next</span>}
+                  </td>
+                  <td class={`num ${day.played && players ? fractionHeat(players, largestField) : ''}`}>
+                    {day.played ? players : (
+                      <>
+                        {players}
+                        <span class="block text-xs text-slate-500">registered</span>
+                      </>
+                    )}
+                  </td>
+                  {day.played ? (
+                    <>
+                      <td class={`num ${r ? toParHeat(r.averageToPar) : ''}`}>{r ? formatToPar(r.averageToPar, 1) : ''}</td>
+                      <td class="num">{r ? formatToPar(r.bestToPar) : ''}</td>
+                    </>
+                  ) : (
+                    <td colspan="2" class="text-center">
+                      <Link class="cta-button compact" href={metrixUrl(day.id)} markerClass="hidden sm:inline">Register</Link>
+                    </td>
+                  )}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <Grid>
+      <LinkPanel
+        image="/images/logos/metrix-favicon.png"
+        href={metrixUrl(season.id)}
+        title="View on Metrix"
+        description="this season on Disc Golf Metrix"
+      />
+    </Grid>
+
+  </div>
+</Layout>
+
+<style>
+  .next-round td {
+    background: var(--color-amber-50);
+  }
+
+  .next-pill {
+    margin-left: 0.5rem;
+    padding: 0 0.5rem;
+    border-radius: 9999px;
+    background: var(--color-amber-500);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+</style>

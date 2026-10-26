@@ -1,6 +1,16 @@
-/** A season's page, for all divisions or just one (by letter). */
-export function seasonPath(season: { slug: string }, division?: string): string {
-  const base = `/events/social/seasons/${season.slug}`;
+/** A season's root, which redirects to its rounds. */
+export function seasonPath(season: { slug: string }): string {
+  return `/events/social/seasons/${season.slug}`;
+}
+
+/** A season's list of rounds. */
+export function seasonRoundsPath(season: { slug: string }): string {
+  return `${seasonPath(season)}/rounds`;
+}
+
+/** A season's stats, for all divisions or just one (by letter). */
+export function seasonStatsPath(season: { slug: string }, division?: string): string {
+  const base = `${seasonPath(season)}/stats`;
   return division ? `${base}/${divisionParam(division)}` : base;
 }
 

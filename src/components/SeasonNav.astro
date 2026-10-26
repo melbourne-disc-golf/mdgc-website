@@ -1,0 +1,37 @@
+---
+// Navigation shared by a season's pages: to the previous and next seasons (on
+// the same page), and between the season's Rounds and Stats.
+import { getSeasons, type Season } from '@utils/metrix';
+import { seasonRoundsPath, seasonStatsPath } from '@utils/social-paths';
+
+export interface Props {
+  season: Season;
+  page: 'rounds' | 'stats';
+  division?: string;
+}
+
+const { season, page, division } = Astro.props;
+
+function pathFor(s: Season): string {
+  return page === 'rounds' ? seasonRoundsPath(s) : seasonStatsPath(s, division);
+}
+
+// Seasons come newest first.
+const seasons = getSeasons();
+const seasonIndex = seasons.findIndex((s) => s.slug === season.slug);
+const prevSeason = seasons[seasonIndex + 1];
+const nextSeason = seasonIndex > 0 ? seasons[seasonIndex - 1] : undefined;
+---
+
+<nav class="prev-next-nav not-prose mt-4" aria-label="Seasons">
+  {prevSeason ? (
+    <a href={pathFor(prevSeason)} rel="prev">← {prevSeason.title}</a>
+  ) : <span />}
+  {nextSeason ? (
+    <a href={pathFor(nextSeason)} rel="next" class="text-right">{nextSeason.title} →</a>
+  ) : <span />}
+</nav>
+<nav class="page-tabs not-prose mt-4" aria-label="Season">
+  <a href={seasonRoundsPath(season)} aria-current={page === 'rounds' ? 'page' : undefined}>Rounds</a>
+  <a href={seasonStatsPath(season)} aria-current={page === 'stats' ? 'page' : undefined}>Stats</a>
+</nav>

@@ -378,6 +378,25 @@ h2.section-heading .heading-link {
 .score-bogey { background: #ffe1c2; color: #7a3b00; }
 .score-double-plus { background: #f8e7e4; color: #8c2c27; }
 
+/* Heat colours for stats tables, from light (1) to strong (4); pick one with
+   the helpers in src/utils/season-format.ts. */
+.heat-neutral-1 { background: #eff8fc; color: #17465f; }
+.heat-neutral-2 { background: #dff1fb; color: #15425c; }
+.heat-neutral-3 { background: #cae8f7; color: #11374c; }
+.heat-neutral-4 { background: #b5dff3; color: #0e2f42; }
+.heat-good-1 { background: #ebf8ef; color: #0f5132; }
+.heat-good-2 { background: #d8f0e5; color: #0b3f38; }
+.heat-good-3 { background: #b7e8cd; color: #07351f; }
+.heat-good-4 { background: #8addae; color: #062f1c; }
+.heat-warn-1 { background: #fff4e5; color: #6e3f00; }
+.heat-warn-2 { background: #ffe1c2; color: #7a3b00; }
+.heat-warn-3 { background: #ffc58e; color: #612900; }
+.heat-warn-4 { background: #ffad66; color: #552100; }
+.heat-bad-1 { background: #fdecea; color: #7a2722; }
+.heat-bad-2 { background: #f8d1cc; color: #8c2c27; }
+.heat-bad-3 { background: #efaaa4; color: #711d1a; }
+.heat-bad-4 { background: #e68079; color: #5f1714; }
+
 /* Panel — a generic card container. A leading heading loses its top margin, and
    the last child its bottom margin, so content sits flush against the padding. */
 .panel {

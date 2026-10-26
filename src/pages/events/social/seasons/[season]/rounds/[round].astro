@@ -13,7 +13,7 @@ import { getSocialRoundPrizes } from '@utils/social-prizes';
 import { scoreCategory } from '@utils/scores';
 import { Icon } from 'astro-icon/components';
 import Link from '@components/Link.astro';
-import { divisionAnchor, roundPath, seasonPath } from '@utils/social-paths';
+import { divisionAnchor, roundPath, seasonRoundsPath } from '@utils/social-paths';
 
 export async function getStaticPaths() {
   return getSeasons().flatMap((season) =>
@@ -45,7 +45,7 @@ const showGroups = !results && date >= today;
 
 // Back-link up to this social day's season.
 const backLink = {
-  href: seasonPath(season),
+  href: seasonRoundsPath(season),
   text: season.title,
 };
 

@@ -1,13 +1,33 @@
 import { describe, it, expect } from 'vitest';
-import { divisionAnchor, divisionLinks, divisionParam, roundPath, seasonPath } from './social-paths';
+import {
+  divisionAnchor,
+  divisionLinks,
+  divisionParam,
+  roundPath,
+  seasonPath,
+  seasonRoundsPath,
+  seasonStatsPath,
+} from './social-paths';
 
 describe('seasonPath', () => {
   it('uses the season slug', () => {
     expect(seasonPath({ slug: '2026-1' })).toBe('/events/social/seasons/2026-1');
   });
+});
+
+describe('seasonRoundsPath', () => {
+  it('nests rounds under the season', () => {
+    expect(seasonRoundsPath({ slug: '2026-1' })).toBe('/events/social/seasons/2026-1/rounds');
+  });
+});
+
+describe('seasonStatsPath', () => {
+  it('nests stats under the season', () => {
+    expect(seasonStatsPath({ slug: '2026-1' })).toBe('/events/social/seasons/2026-1/stats');
+  });
 
   it('can narrow to one division', () => {
-    expect(seasonPath({ slug: '2026-1' }, 'A')).toBe('/events/social/seasons/2026-1/div/a');
+    expect(seasonStatsPath({ slug: '2026-1' }, 'A')).toBe('/events/social/seasons/2026-1/stats/div/a');
   });
 });
 

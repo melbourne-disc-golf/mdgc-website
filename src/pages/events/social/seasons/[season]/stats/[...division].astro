@@ -1,17 +1,18 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Grid from '@components/Grid.astro';
-import Link from '@components/Link.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import ScoringMix from '@components/ScoringMix.astro';
+import SeasonNav from '@components/SeasonNav.astro';
 import { Temporal } from '@js-temporal/polyfill';
-import { formatDateRange, formatDayOfSeason } from '@utils/dates';
+import { formatDateRange } from '@utils/dates';
 import { getEvent, getSeasons, metrixUrl, type EventDetail } from '@utils/metrix';
 import { birdiesOrBetter, formatShare, roundsInDivision, seasonStats, statsDivisions, totalScores, type ScoreCounts } from '@utils/season-stats';
+import { birdieHeat, formatToPar, fractionHeat, percentHeat, toParHeat } from '@utils/season-format';
 import { scoreCategories, scoreCategoryLabels } from '@utils/scores';
-import { divisionAnchor, divisionLinks, divisionParam, roundPath, seasonPath } from '@utils/social-paths';
+import { divisionAnchor, divisionLinks, divisionParam, roundPath, seasonStatsPath } from '@utils/social-paths';
 
-// A season's rounds and stats: for all divisions, or (as /div/a etc.) just one.
+// A season's stats: for all divisions, or (as /div/a etc.) just one.
 export async function getStaticPaths() {
   return getSeasons().flatMap((season) =>
     [undefined, ...statsDivisions].map((division) => ({
@@ -23,12 +24,6 @@ export async function getStaticPaths() {
 
 const { season, division } = Astro.props;
 const { title, dateStart, dateEnd, socialDays } = season;
-
-// Seasons come newest first.
-const seasons = getSeasons();
-const seasonIndex = seasons.findIndex((s) => s.slug === season.slug);
-const prevSeason = seasons[seasonIndex + 1];
-const nextSeason = seasonIndex > 0 ? seasons[seasonIndex - 1] : undefined;
 
 const subtitle = dateStart
   ? formatDateRange(
@@ -44,11 +39,7 @@ const allRounds = socialDays
 const rounds = division ? roundsInDivision(allRounds, division) : allRounds;
 const stats = seasonStats(rounds);
 
-// The rounds table covers every division, whichever one the stats are for.
-const allStats = division ? seasonStats(allRounds) : stats;
-const roundStats = new Map(allStats.rounds.map((r) => [r.number, r]));
-
-const divisionNav = divisionLinks(statsDivisions, division, (d) => `${seasonPath(season, d)}#stats`);
+const divisionNav = divisionLinks(statsDivisions, division, (d) => seasonStatsPath(season, d));
 
 // A round's page, at the division's results when narrowed to one.
 function roundHref(roundNumber: number): string {
@@ -57,20 +48,6 @@ function roundHref(roundNumber: number): string {
 }
 
 const regulars = stats.players.filter((p) => p.rounds >= 5).length;
-
-// The next round is the first without scores.
-const nextDay = socialDays.find((day) => !day.played);
-
-function dayOfSeason(d: string, format: 'long' | 'short' = 'long'): string {
-  return formatDayOfSeason(Temporal.PlainDate.from(d), format);
-}
-
-function formatToPar(value: number | null, digits = 0): string {
-  if (value === null) return '–';
-  const text = value.toFixed(digits);
-  if (Number(text) === 0) return 'E';
-  return value > 0 ? `+${text}` : text;
-}
 
 function birdieRate(counts: ScoreCounts): string {
   return formatShare(birdiesOrBetter(counts), totalScores(counts));
@@ -81,117 +58,21 @@ const bestRoundPositions = stats.bestRounds.map((r, _, all) => {
   const first = all.findIndex((o) => o.toPar === r.toPar && o.raw === r.raw);
   return first + 1;
 });
-
-// Heat colours for the stats tables, using mdgc-sd's thresholds.
-function toParHeat(value: number | null): string {
-  if (value === null) return '';
-  if (value <= 0) return 'heat-good-4';
-  if (value <= 3) return 'heat-good-2';
-  if (value <= 6) return 'heat-warn-2';
-  if (value <= 9) return 'heat-bad-2';
-  return 'heat-bad-4';
-}
-
-// Shade a percentage: one level per threshold reached, from 1 to 4.
-function percentHeat(kind: string, count: number, total: number, thresholds: number[]): string {
-  if (!total) return '';
-  const pct = (100 * count) / total;
-  const level = Math.min(4, Math.max(1, thresholds.filter((t) => pct >= t).length));
-  return `heat-${kind}-${level}`;
-}
-
-function birdieHeat(counts: ScoreCounts): string {
-  return percentHeat('good', birdiesOrBetter(counts), totalScores(counts), [8, 16, 24, 32]);
-}
-
-const largestField = Math.max(1, ...allStats.rounds.map((r) => r.players));
-
-// Shade a count by its fraction of a maximum, in quarters.
-function fractionHeat(value: number, max: number): string {
-  const level = Math.min(4, Math.max(1, Math.floor((4 * value) / max)));
-  return `heat-neutral-${level}`;
-}
 ---
 
 <Layout title={division ? `${title} - Div ${division}` : title} subtitle={subtitle} backLink={{ href: '/events/social', text: 'Social Days' }}>
-  <nav class="prev-next-nav not-prose mt-4" aria-label="Seasons">
-    {prevSeason ? (
-      <a href={seasonPath(prevSeason, division)} rel="prev">← {prevSeason.title}</a>
-    ) : <span />}
-    {nextSeason ? (
-      <a href={seasonPath(nextSeason, division)} rel="next" class="text-right">{nextSeason.title} →</a>
-    ) : <span />}
+  <SeasonNav season={season} page="stats" division={division} />
+  <nav class="pill-nav mt-6" aria-label="Division">
+    <span class="pill-nav-label">Division</span>
+    {divisionNav.map((link) => (
+      <a href={link.href} aria-current={link.current ? 'page' : undefined}>{link.text}</a>
+    ))}
   </nav>
   <div class="mb-8 mt-6 space-y-12">
 
-    <section>
-      <h2 id="rounds" class="section-heading mb-4">Rounds</h2>
-      <div class="table-scroll max-w-3xl">
-        <table class="data-table compact">
-          <thead>
-            <tr>
-              <th class="text-center"><abbr class="no-underline sm:hidden" title="Round">Rd</abbr><span class="hidden sm:inline">Round</span></th>
-              <th class="num">Date</th>
-              <th>Course</th>
-              <th class="num" title="Players who played, or registered so far">Players</th>
-              <th class="num" title="Average score to par across the field, from complete scorecards">Avg +/-</th>
-              <th class="num" title="Best score to par">Best +/-</th>
-            </tr>
-          </thead>
-          <tbody>
-            {socialDays.map((day) => {
-              const isNext = day.id === nextDay?.id;
-              const r = roundStats.get(day.number);
-              const players = day.players;
-              return (
-                <tr class={isNext ? 'next-round' : undefined}>
-                  <td class="text-center font-bold">{day.number}</td>
-                  <td class="num whitespace-nowrap">
-                    {(() => {
-                      const [weekday, ...rest] = dayOfSeason(day.date, 'short').split(' ');
-                      return <><span class="hidden sm:inline">{weekday} </span>{rest.join(' ')}</>;
-                    })()}
-                  </td>
-                  <td>
-                    <a href={roundHref(day.number)} class="row-link text-mdgc-blue-dark underline">{day.courseTitle}</a>
-                    {isNext && <span class="next-pill">Next</span>}
-                  </td>
-                  <td class={`num ${day.played && players ? fractionHeat(players, largestField) : ''}`}>
-                    {day.played ? players : (
-                      <>
-                        {players}
-                        <span class="block text-xs text-slate-500">registered</span>
-                      </>
-                    )}
-                  </td>
-                  {day.played ? (
-                    <>
-                      <td class={`num ${r ? toParHeat(r.averageToPar) : ''}`}>{r ? formatToPar(r.averageToPar, 1) : ''}</td>
-                      <td class="num">{r ? formatToPar(r.bestToPar) : ''}</td>
-                    </>
-                  ) : (
-                    <td colspan="2" class="text-center">
-                      <Link class="cta-button compact" href={metrixUrl(day.id)} markerClass="hidden sm:inline">Register</Link>
-                    </td>
-                  )}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    {allStats.roundsPlayed > 0 && (
+    {stats.roundsPlayed > 0 ? (
       <section>
-        <h2 id="stats" class="section-heading mb-4">Stats</h2>
-        <nav class="pill-nav mb-6" aria-label="Division">
-          <span class="pill-nav-label">Division</span>
-          {divisionNav.map((link) => (
-            <a href={link.href} aria-current={link.current ? 'page' : undefined}>{link.text}</a>
-          ))}
-        </nav>
-        {stats.roundsPlayed > 0 ? (
+        <h2 id="snapshot" class="section-heading mb-4">Snapshot</h2>
         <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
           <div class="stat-card">
             <div class="stat-label">Rounds played</div>
@@ -214,10 +95,9 @@ function fractionHeat(value: number, max: number): string {
             <div class="stat-detail">{birdieRate(stats.scoreCounts)} birdie or better</div>
           </div>
         </div>
-        ) : (
-          <p class="text-slate-600">No Div {division} rounds yet this season.</p>
-        )}
       </section>
+    ) : (
+      <p class="text-slate-600">No {division ? `Div ${division} ` : ''}rounds played yet this season.</p>
     )}
 
     {stats.roundsPlayed > 0 && (
@@ -348,38 +228,6 @@ function fractionHeat(value: number, max: number): string {
   </div>
 </Layout>
 
-<style>
-  .next-round td {
-    background: var(--color-amber-50);
-  }
-
-  .next-pill {
-    margin-left: 0.5rem;
-    padding: 0 0.5rem;
-    border-radius: 9999px;
-    background: var(--color-amber-500);
-    color: white;
-    font-size: 0.75rem;
-    font-weight: 700;
-  }
-
-  .heat-neutral-1 { background: #eff8fc; color: #17465f; }
-  .heat-neutral-2 { background: #dff1fb; color: #15425c; }
-  .heat-neutral-3 { background: #cae8f7; color: #11374c; }
-  .heat-neutral-4 { background: #b5dff3; color: #0e2f42; }
-  .heat-good-1 { background: #ebf8ef; color: #0f5132; }
-  .heat-good-2 { background: #d8f0e5; color: #0b3f38; }
-  .heat-good-3 { background: #b7e8cd; color: #07351f; }
-  .heat-good-4 { background: #8addae; color: #062f1c; }
-  .heat-warn-1 { background: #fff4e5; color: #6e3f00; }
-  .heat-warn-2 { background: #ffe1c2; color: #7a3b00; }
-  .heat-warn-3 { background: #ffc58e; color: #612900; }
-  .heat-warn-4 { background: #ffad66; color: #552100; }
-  .heat-bad-1 { background: #fdecea; color: #7a2722; }
-  .heat-bad-2 { background: #f8d1cc; color: #8c2c27; }
-  .heat-bad-3 { background: #efaaa4; color: #711d1a; }
-  .heat-bad-4 { background: #e68079; color: #5f1714; }
-</style>
 
 <script>
   import '@src/scripts/sortable-table';

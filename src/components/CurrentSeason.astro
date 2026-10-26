@@ -6,7 +6,7 @@ import LinkPanel from '@components/LinkPanel.astro';
 import { formatDateRange, formatDayOfSeason } from '@utils/dates';
 import { getSeasons } from '@utils/metrix';
 import { currentOrNextSeason } from '@utils/seasons';
-import { seasonPath } from '@utils/social-paths';
+import { seasonRoundsPath } from '@utils/social-paths';
 
 const found = currentOrNextSeason(getSeasons(), Temporal.Now.plainDateISO().toString());
 
@@ -25,7 +25,7 @@ function description(): string {
 {found && (
   <Grid>
     <LinkPanel
-      href={seasonPath(found.season)}
+      href={seasonRoundsPath(found.season)}
       title={found.season.title}
       description={description()}
       icon="heroicons:calendar"
