@@ -3,12 +3,16 @@ import { Temporal } from '@js-temporal/polyfill';
 import { formatDayOfSeason } from '@utils/dates';
 import { getSeasons, metrixUrl } from '@utils/metrix';
 import Link from '@components/Link.astro';
-import { roundPath } from '@utils/social-paths';
+import { roundPath, seasonPath } from '@utils/social-paths';
 
 // Get future events, sorted by date
 const today = Temporal.Now.plainDateISO().toString();
 const events = getSeasons()
-  .flatMap((season) => season.socialDays.map((day) => ({ ...day, href: roundPath(season, day.number) })))
+  .flatMap((season) => season.socialDays.map((day) => ({
+    ...day,
+    href: roundPath(season, day.number),
+    season: { title: season.title, href: seasonPath(season) },
+  })))
   .filter(e => e.date > today)
   .sort((a, b) => a.date.localeCompare(b.date));
 ---
@@ -17,12 +21,8 @@ const events = getSeasons()
   {events.map(event => (
     <div class="social-callout social-day-item hidden flex flex-wrap items-center justify-between gap-4" data-date={event.date}>
       <p>
-        Our <strong><a href={event.href}>next social day</a></strong> is at
-        {event.courseSlug ? (
-          <a href={`/courses/${event.courseSlug}/`}>{event.courseTitle}</a>
-        ) : (
-          event.courseTitle
-        )}
+        Our <strong><a href={event.href}>next social day</a></strong>
+        (part of <a href={event.season.href}>{event.season.title}</a>) is at {event.courseTitle}
         on <strong>{formatDayOfSeason(Temporal.PlainDate.from(event.date))}</strong>.
       </p>
       <Link class="cta-button" href={metrixUrl(event.id)}>Register on Metrix</Link>
