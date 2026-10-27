@@ -11,6 +11,8 @@
 // - Only members who have played the minimum rounds are eligible, and the line
 //   sits after the division's allocated places, counting only them. (mdgc-sd
 //   also counts members short of the minimum, when placing the line.)
+// - Players tied on points are ranked by rounds played. Those tied on both
+//   share a position.
 //
 // Unlike mdgc-sd, which also has the club's membership list, this works only
 // from Metrix: a player is a non-member if they were in Div Z in their latest
@@ -104,19 +106,26 @@ export function seasonLadder(rounds: EventDetail[]): LadderEntry[] {
  * A division's qualification ladder: its members, with the line after
  * `places`. Only those who have played the minimum rounds are eligible, and
  * only they get a position. Those in the places come first, then everyone
- * else, by points.
+ * else, by points, then rounds played.
  */
 export function divisionLadder(
   ladder: LadderEntry[],
   division: string,
   { places, minimumRounds }: { places: number; minimumRounds: number },
 ): DivisionLadderRow[] {
-  const entries = ladder.filter((e) => e.member && e.division === division);
+  const entries = ladder
+    .filter((e) => e.member && e.division === division)
+    .sort((a, b) => (samePoints(a.points, b.points) ? b.rounds - a.rounds : b.points - a.points));
   const eligible = entries.filter((e) => e.rounds >= minimumRounds);
   const rows = entries.map((entry): DivisionLadderRow => {
     if (entry.rounds < minimumRounds) return { entry, eligible: false, position: null, inPlaces: false };
-    const position = 1 + eligible.filter((o) => o.points > entry.points && !samePoints(o.points, entry.points)).length;
+    const position = 1 + eligible.filter((o) => ranksAbove(o, entry)).length;
     return { entry, eligible: true, position, inPlaces: position <= places };
   });
   return [...rows.filter((r) => r.inPlaces), ...rows.filter((r) => !r.inPlaces)];
+}
+
+// More points, or the same points from more rounds played.
+function ranksAbove(a: LadderEntry, b: LadderEntry): boolean {
+  return samePoints(a.points, b.points) ? a.rounds > b.rounds : a.points > b.points;
 }
