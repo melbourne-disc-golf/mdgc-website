@@ -43,6 +43,9 @@ const course = detail.courseSlug ? await getEntry('courses', detail.courseSlug) 
 const today = Temporal.Now.plainDateISO().toString();
 const showGroups = !results && date >= today;
 
+// Each group shows at least this many rows, padded with empty slots; bigger groups show everyone.
+const MIN_GROUP_SLOTS = 4;
+
 // Back-link up to this social day's season.
 const backLink = {
   href: seasonRoundsPath(season),
@@ -121,18 +124,19 @@ function fmt2(n: number | null): string {
         )}
 
         {upcoming.groups.length > 0 && (
-          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="grid grid-cols-2 gap-2 sm:gap-4 md:grid-cols-3">
             {upcoming.groups.map((g) => (
-              <div class="overflow-hidden rounded-lg border border-slate-200">
-                <h3 class="px-3 py-2 text-sm font-bold text-white bg-linear-to-r from-mdgc-blue-dark to-mdgc-blue">Group {g.name}</h3>
+              <div class="overflow-hidden rounded-lg bg-white shadow-(--panel-shadow)">
+                <h3 class="px-2 sm:px-3 py-2 text-sm font-bold text-white bg-linear-to-r from-mdgc-blue-dark to-mdgc-blue">Group {g.name}</h3>
                 <ul class="divide-y divide-slate-100">
-                  {g.players.length === 0 ? (
-                    <li class="px-3 py-1.5 text-sm text-slate-400 italic">empty</li>
-                  ) : g.players.map((p) => (
-                    <li class="flex items-baseline justify-between gap-3 px-3 py-1.5 text-sm">
-                      <span>{p.name}</span>
-                      <span class="text-xs text-slate-500 whitespace-nowrap">Div {p.division}</span>
+                  {g.players.map((p) => (
+                    <li class="flex items-baseline justify-between gap-2 px-2 sm:gap-3 sm:px-3 py-1.5 text-sm">
+                      <span class="min-w-0 truncate font-medium text-slate-900" title={p.name}>{p.name}</span>
+                      <span class="shrink-0 text-xs text-slate-500 whitespace-nowrap"><span class="max-sm:sr-only">Div </span>{p.division}</span>
                     </li>
+                  ))}
+                  {Array.from({ length: Math.max(0, MIN_GROUP_SLOTS - g.players.length) }, () => (
+                    <li class="px-2 sm:px-3 py-1.5 text-sm text-slate-300 italic">empty</li>
                   ))}
                 </ul>
               </div>
