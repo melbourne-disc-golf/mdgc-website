@@ -1,0 +1,174 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+import Grid from '@components/Grid.astro';
+import LinkPanel from '@components/LinkPanel.astro';
+import SeasonNav from '@components/SeasonNav.astro';
+import { Temporal } from '@js-temporal/polyfill';
+import { formatDateRange, formatDayOfSeason } from '@utils/dates';
+import { getEvent, getSeasons, metrixUrl, type EventDetail } from '@utils/metrix';
+import { divisionLadder, seasonLadder } from '@utils/season-ladder';
+import { cleanPlayerName } from '@utils/season-stats';
+import { divisionAnchor } from '@utils/social-paths';
+
+// A club champs qualifying season's ladder, by division.
+export async function getStaticPaths() {
+  return getSeasons()
+    .filter((season) => season.clubChamps)
+    .map((season) => ({ params: { season: season.slug }, props: { season } }));
+}
+
+const { season } = Astro.props;
+const { title, dateStart, dateEnd, socialDays } = season;
+const clubChamps = season.clubChamps!;
+
+const subtitle = dateStart
+  ? formatDateRange(
+      Temporal.PlainDate.from(dateStart),
+      dateEnd ? Temporal.PlainDate.from(dateEnd) : undefined
+    )
+  : undefined;
+
+const rounds = socialDays
+  .filter((day) => day.played)
+  .map((day) => getEvent(day.id))
+  .filter((round): round is EventDetail => round !== null);
+const roundsLeft = socialDays.filter((day) => !day.played).length;
+
+const ladder = seasonLadder(rounds);
+const divisions = Object.entries(clubChamps.places).map(([letter, places]) => {
+  const rows = divisionLadder(ladder, letter, { places, minimumRounds: clubChamps.minimumRounds });
+  return { letter, places, rows, lastInPlaces: rows.findLastIndex((r) => r.inPlaces) };
+});
+const nonMembers = ladder.filter((e) => !e.member).length;
+const unassigned = ladder.filter((e) => e.member && !e.division).length;
+
+const champsDate = Temporal.PlainDate.from(clubChamps.date);
+const champsDay = `${formatDayOfSeason(champsDate)} ${champsDate.year}`;
+
+function plural(n: number, word: string): string {
+  return `${n} ${word}${n === 1 ? '' : 's'}`;
+}
+---
+
+<Layout title={`${title} - Ladder`} subtitle={subtitle} backLink={{ href: '/events/social', text: 'Social Days' }}>
+  <SeasonNav season={season} page="ladder" />
+  <div class="mb-8 mt-6 space-y-12">
+
+    <section class="max-w-2xl space-y-4 text-slate-600">
+      <h2 class="section-heading">Club champs qualification</h2>
+      <p>
+        Club champs is on <strong>{champsDay}</strong>. To qualify, be an MDGC member and play
+        at least {clubChamps.minimumRounds} social days this season. Places go to the top of each
+        division's ladder. Players who haven't played {clubChamps.minimumRounds} rounds yet
+        (<Icon name="heroicons:exclamation-triangle-16-solid" class="inline-block align-text-bottom text-amber-500" aria-label={`fewer than ${clubChamps.minimumRounds} rounds`} />)
+        are listed below the line, by points.
+      </p>
+      <ul class="list-disc space-y-1 pl-6">
+        <li>
+          Each round, the best raw score across the whole field gets 100 points, and each place
+          after gets a little less (100 divided by the number of players). Ties share points.
+        </li>
+        <li>Your best eight rounds count.</li>
+        <li>You're on the ladder for the division you've played most this season. A tie goes down a division.</li>
+      </ul>
+      <p>
+        {rounds.length > 0 && (roundsLeft > 0
+          ? `This is the ladder after ${plural(rounds.length, 'round')}, with ${roundsLeft} still to play.`
+          : `This is the final ladder, after all ${rounds.length} rounds.`)}
+        {' '}It's worked out from Metrix, so it doesn't include the Female division, and it takes
+        membership from the latest round (Div Z is for non-members). For the official ladder, and
+        each player's chances, see <a href="https://mdgc-sd.vercel.app/results/club-champs" class="text-mdgc-blue-dark underline">the club champs page on mdgc-sd</a>.
+      </p>
+      <nav class="pill-nav" aria-label="Division">
+        <span class="pill-nav-label">Division</span>
+        {divisions.map((d) => <a href={`#${divisionAnchor(d.letter)}`}>{d.letter}</a>)}
+      </nav>
+    </section>
+
+    {divisions.map((d) => (
+      <section>
+        <h2 id={divisionAnchor(d.letter)} class="section-heading mb-4">
+          Div {d.letter}
+          <span class="section-subtitle">{d.places} places</span>
+        </h2>
+        {d.rows.length === 0 ? (
+          <p class="text-slate-600">No members have played in Div {d.letter} yet this season.</p>
+        ) : (
+          <div class="table-scroll max-w-2xl">
+            <table class="data-table compact">
+              <thead>
+                <tr>
+                  <th class="text-center">Pos</th>
+                  <th>Player</th>
+                  <th class="num">Rounds</th>
+                  <th class="num" title="Best eight rounds">Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                {d.rows.map((row, i) => {
+                  const firstOut = i > 0 && i === d.lastInPlaces + 1;
+                  return (
+                    <tr class:list={{ 'below-cut': !row.inPlaces, 'ladder-cut': firstOut }}>
+                      <td class="text-center text-slate-500">{row.position ?? ''}</td>
+                      <td class="font-medium whitespace-nowrap">{cleanPlayerName(row.entry.name)}</td>
+                      <td class="num whitespace-nowrap">
+                        {!row.eligible && (
+                          <Icon
+                            name="heroicons:exclamation-triangle-16-solid"
+                            class="mr-1 inline-block align-text-bottom text-amber-500"
+                            title={`Fewer than ${clubChamps.minimumRounds} rounds`}
+                            aria-label={`Fewer than ${clubChamps.minimumRounds} rounds`}
+                          />
+                        )}
+                        {row.entry.rounds}
+                      </td>
+                      <td class="num font-bold text-slate-800">{Math.round(row.entry.points)}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
+    ))}
+
+    {(nonMembers > 0 || unassigned > 0) && (
+      <p class="text-slate-600">
+        Not shown:
+        {[
+          unassigned > 0 && `${plural(unassigned, 'member')} who've only played in Div X`,
+          nonMembers > 0 && plural(nonMembers, 'non-member'),
+        ].filter(Boolean).join('; ')}.
+      </p>
+    )}
+
+    <Grid>
+      <LinkPanel
+        href="https://mdgc-sd.vercel.app/results/club-champs"
+        title="Club champs qualification"
+        description="the official ladder, with projections, on mdgc-sd"
+        icon="heroicons:trophy"
+      />
+      <LinkPanel
+        image="/images/logos/metrix-favicon.png"
+        href={metrixUrl(season.id)}
+        title="View on Metrix"
+        description="this season on Disc Golf Metrix"
+      />
+    </Grid>
+
+  </div>
+</Layout>
+
+<style>
+  /* The qualification line, below the last player in the places. */
+  .ladder-cut > td {
+    border-top: 2px dashed var(--color-slate-500);
+  }
+
+  .below-cut > td {
+    color: var(--color-slate-400);
+  }
+</style>
