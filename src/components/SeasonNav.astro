@@ -2,21 +2,18 @@
 // Navigation shared by a season's pages: to the previous and next seasons (on
 // the same page), and between the season's Rounds and Stats.
 import { getSeasons, type Season } from '@utils/metrix';
-import { seasonLadderPath, seasonRoundsPath, seasonStatsPath } from '@utils/social-paths';
+import { seasonRoundsPath, seasonStatsPath } from '@utils/social-paths';
 
 export interface Props {
   season: Season;
-  page: 'rounds' | 'stats' | 'ladder';
+  page: 'rounds' | 'stats';
   division?: string;
 }
 
 const { season, page, division } = Astro.props;
 
-// The same page in another season, or its rounds if it has no such page.
 function pathFor(s: Season): string {
-  if (page === 'stats') return seasonStatsPath(s, division);
-  if (page === 'ladder' && s.clubChamps) return seasonLadderPath(s);
-  return seasonRoundsPath(s);
+  return page === 'rounds' ? seasonRoundsPath(s) : seasonStatsPath(s, division);
 }
 
 // Seasons come newest first.

@@ -4,7 +4,7 @@
 // position, grouping by division) happens here so we can re-derive freely
 // without re-fetching.
 
-import { seasonTitle, socialSeasons, type ClubChampsConfig } from '../data/social-seasons';
+import { seasonTitle, socialSeasons } from '../data/social-seasons';
 import { courseForMetrixId } from './metrix-courses';
 
 interface RawTrack {
@@ -146,7 +146,6 @@ export interface Season {
   dateStart?: string;
   dateEnd?: string;
   socialDays: SocialDay[];
-  clubChamps?: ClubChampsConfig;
 }
 
 // Load every raw Metrix response and index it by Metrix ID.
@@ -305,7 +304,7 @@ export function metrixUrl(id: number | string): string {
 /** All configured seasons that have Metrix data, newest first. */
 export function getSeasons(): Season[] {
   const seasons: Season[] = [];
-  for (const { metrixId, slug, clubChamps } of socialSeasons) {
+  for (const { metrixId, slug } of socialSeasons) {
     const comp = byId.get(metrixId);
     if (!comp) continue;
     const children = eventChildren(comp);
@@ -321,7 +320,6 @@ export function getSeasons(): Season[] {
       dateStart: comp.TourDateStart,
       dateEnd: comp.TourDateEnd,
       socialDays,
-      clubChamps,
     });
   }
   return seasons.sort((a, b) => (b.dateStart ?? '').localeCompare(a.dateStart ?? ''));

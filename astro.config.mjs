@@ -32,6 +32,7 @@ export default defineConfig({
     '/upcoming-events': '/events',
     '/what-is-disc-golf': '/disc-golf',
     '/club/shop': '/club#shop',
+    '/events/social/seasons/2026-2/ladder': '/events/2026-11-22-club-champs/qualification',
     // Event alias redirects are handled by aliases in event frontmatter
   },
   markdown: {
