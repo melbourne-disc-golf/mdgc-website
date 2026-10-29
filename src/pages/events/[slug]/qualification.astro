@@ -3,31 +3,28 @@ import Layout from '@layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
-import SeasonNav from '@components/SeasonNav.astro';
-import { Temporal } from '@js-temporal/polyfill';
-import { formatDateRange, formatDayOfSeason } from '@utils/dates';
+import { clubChampsQualifications, ladderPlaces } from '@data/club-champs';
+import { formatDayOfSeason } from '@utils/dates';
+import { dateToPlainDate, getPublishedEvents } from '@utils/events';
 import { getEvent, getSeasons, metrixUrl, type EventDetail } from '@utils/metrix';
 import { divisionLadder, seasonLadder } from '@utils/season-ladder';
 import { cleanPlayerName } from '@utils/season-stats';
-import { divisionAnchor } from '@utils/social-paths';
+import { divisionAnchor, seasonRoundsPath } from '@utils/social-paths';
 
-// A club champs qualifying season's ladder, by division.
+// Who's qualifying for a club champs event, from its qualifying social day season.
 export async function getStaticPaths() {
-  return getSeasons()
-    .filter((season) => season.clubChamps)
-    .map((season) => ({ params: { season: season.slug }, props: { season } }));
+  const events = await getPublishedEvents();
+  const seasons = getSeasons();
+  return clubChampsQualifications.flatMap((clubChamps) => {
+    const event = events.find((e) => e.id === clubChamps.eventId);
+    const season = seasons.find((s) => s.slug === clubChamps.seasonSlug);
+    if (!event || !season) return [];
+    return [{ params: { slug: event.id }, props: { event, season, clubChamps } }];
+  });
 }
 
-const { season } = Astro.props;
-const { title, dateStart, dateEnd, socialDays } = season;
-const clubChamps = season.clubChamps!;
-
-const subtitle = dateStart
-  ? formatDateRange(
-      Temporal.PlainDate.from(dateStart),
-      dateEnd ? Temporal.PlainDate.from(dateEnd) : undefined
-    )
-  : undefined;
+const { event, season, clubChamps } = Astro.props;
+const { socialDays } = season;
 
 const rounds = socialDays
   .filter((day) => day.played)
@@ -36,49 +33,100 @@ const rounds = socialDays
 const roundsLeft = socialDays.filter((day) => !day.played).length;
 
 const ladder = seasonLadder(rounds);
-const divisions = Object.entries(clubChamps.places).map(([letter, places]) => {
+const divisions = Object.entries(ladderPlaces(clubChamps)).map(([letter, places]) => {
   const rows = divisionLadder(ladder, letter, { places, minimumRounds: clubChamps.minimumRounds });
   return { letter, places, rows, lastInPlaces: rows.findLastIndex((r) => r.inPlaces) };
 });
-const nonMembers = ladder.filter((e) => !e.member).length;
-const unassigned = ladder.filter((e) => e.member && !e.division).length;
 
-const champsDate = Temporal.PlainDate.from(clubChamps.date);
+const champsDate = dateToPlainDate(event.data.date);
 const champsDay = `${formatDayOfSeason(champsDate)} ${champsDate.year}`;
+
+function divisionLabel(division: string): string {
+  return /^[A-Z]$/.test(division) ? `Div ${division}` : division;
+}
+
+function sum(values: number[]): number {
+  return values.reduce((a, b) => a + b, 0);
+}
 
 function plural(n: number, word: string): string {
   return `${n} ${word}${n === 1 ? '' : 's'}`;
 }
 ---
 
-<Layout title={`${title} - Ladder`} subtitle={subtitle} backLink={{ href: '/events/social', text: 'Social Days' }}>
-  <SeasonNav season={season} page="ladder" />
+<Layout title="Qualification" subtitle={champsDay} backLink={{ href: `/events/${event.id}`, text: event.data.title }}>
   <div class="mb-8 mt-6 space-y-12">
 
     <section class="max-w-2xl space-y-4 text-slate-600">
-      <h2 class="section-heading">Club champs qualification</h2>
+      <h2 class="section-heading">How to qualify</h2>
       <p>
-        Club champs is on <strong>{champsDay}</strong>. To qualify, be an MDGC member and play
-        at least {clubChamps.minimumRounds} social days this season. Places go to the top of each
-        division's ladder. Players who haven't played {clubChamps.minimumRounds} rounds yet
-        (<Icon name="heroicons:exclamation-triangle-16-solid" class="inline-block align-text-bottom text-amber-500" aria-label={`fewer than ${clubChamps.minimumRounds} rounds`} />)
-        are listed below the line, by points.
+        Eligibility to play in the champs is based on performance in
+        <a href={seasonRoundsPath(season)} class="text-mdgc-blue-dark underline">{season.title}</a>.
       </p>
       <ul class="list-disc space-y-1 pl-6">
+        <li>
+          You <strong>must be an MDGC member</strong>, and have played
+          <strong>at least {clubChamps.minimumRounds} Social Days</strong> in the season.
+        </li>
+        <li>
+          Your division is based on the division you played the most Social Days in. If that's a
+          tie, you go down a division.
+        </li>
+        <li>Female players can choose to compete in their normal social-day division, if they prefer.</li>
+        <li>
+          Places go to the top of each division's ladder, on points from your best eight Social Days.
+          If players are tied on points, the one who's played more Social Days goes higher.
+        </li>
         <li>
           Each round, the best raw score across the whole field gets 100 points, and each place
           after gets a little less (100 divided by the number of players). Ties share points.
         </li>
-        <li>Your best eight rounds count.</li>
-        <li>You're on the ladder for the division you've played most this season. A tie goes down a division.</li>
       </ul>
+    </section>
+
+    <section class="max-w-2xl text-slate-600">
+      <h2 id="field-caps" class="section-heading mb-4">Field caps</h2>
+      <p class="mb-4">The leaders in each division after the morning round go through to the finals.</p>
+      <div class="table-scroll max-w-sm">
+        <table class="data-table compact">
+          <thead>
+            <tr>
+              <th>Division</th>
+              <th class="num">Morning</th>
+              <th class="num">Finals</th>
+            </tr>
+          </thead>
+          <tbody>
+            {clubChamps.fieldCaps.map((c) => (
+              <tr>
+                <td>{divisionLabel(c.division)}</td>
+                <td class="num">{c.morning}</td>
+                <td class="num">{c.finals}</td>
+              </tr>
+            ))}
+            <tr class="font-bold">
+              <td>Total</td>
+              <td class="num">{sum(clubChamps.fieldCaps.map((c) => c.morning))}</td>
+              <td class="num">{sum(clubChamps.fieldCaps.map((c) => c.finals))}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="max-w-2xl space-y-4 text-slate-600">
+      <h2 id="ladder" class="section-heading">Ladder</h2>
       <p>
         {rounds.length > 0 && (roundsLeft > 0
           ? `This is the ladder after ${plural(rounds.length, 'round')}, with ${roundsLeft} still to play.`
           : `This is the final ladder, after all ${rounds.length} rounds.`)}
-        {' '}It's worked out from Metrix, so it doesn't include the Female division, and it takes
-        membership from the latest round (Div Z is for non-members). For the official ladder, and
-        each player's chances, see <a href="https://mdgc-sd.vercel.app/results/club-champs" class="text-mdgc-blue-dark underline">the club champs page on mdgc-sd</a>.
+        {' '}Players who haven't played {clubChamps.minimumRounds} Social Days yet
+        (<Icon name="heroicons:exclamation-triangle-16-solid" class="inline-block align-text-bottom text-amber-500" aria-label={`fewer than ${clubChamps.minimumRounds} rounds`} />)
+        are listed below the line, by points.
+      </p>
+      <p>
+        It's worked out from Metrix, so it doesn't include the Female division, and it takes
+        membership from the latest round (Div Z is for non-members).
       </p>
       <nav class="pill-nav" aria-label="Division">
         <span class="pill-nav-label">Division</span>
@@ -134,28 +182,12 @@ function plural(n: number, word: string): string {
       </section>
     ))}
 
-    {(nonMembers > 0 || unassigned > 0) && (
-      <p class="text-slate-600">
-        Not shown:
-        {[
-          unassigned > 0 && `${plural(unassigned, 'member')} who've only played in Div X`,
-          nonMembers > 0 && plural(nonMembers, 'non-member'),
-        ].filter(Boolean).join('; ')}.
-      </p>
-    )}
-
     <Grid>
-      <LinkPanel
-        href="https://mdgc-sd.vercel.app/results/club-champs"
-        title="Club champs qualification"
-        description="the official ladder, with projections, on mdgc-sd"
-        icon="heroicons:trophy"
-      />
       <LinkPanel
         image="/images/logos/metrix-favicon.png"
         href={metrixUrl(season.id)}
         title="View on Metrix"
-        description="this season on Disc Golf Metrix"
+        description={`${season.title} on Disc Golf Metrix`}
       />
     </Grid>
 

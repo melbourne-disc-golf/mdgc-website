@@ -5,6 +5,7 @@ import Text from '@components/Text.astro';
 import Grid from '@components/Grid.astro';
 import LinkPanel from '@components/LinkPanel.astro';
 import CourseCard from '@components/CourseCard.astro';
+import { qualificationForEvent, qualificationPath } from '@data/club-champs';
 import { formatDateRange } from '@utils/dates';
 import { getPublishedEvents, dateToPlainDate } from '@utils/events';
 
@@ -52,6 +53,18 @@ if (event.data.courses) {
   <Text>
 
     <Content />
+
+    {/* Follows the event's own "How to qualify" section, if it has one. */}
+    {qualificationForEvent(event.id) && (
+      <Grid>
+        <LinkPanel
+          href={qualificationPath(event.id)}
+          title="Qualification"
+          description="the rules, field caps, and who's qualifying"
+          icon="heroicons:trophy"
+        />
+      </Grid>
+    )}
 
     {event.data.registrationUrl && (
       <section class="hide-after-date" data-hide-after={eventStartDate}>

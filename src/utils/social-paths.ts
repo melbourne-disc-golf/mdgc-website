@@ -14,11 +14,6 @@ export function seasonStatsPath(season: { slug: string }, division?: string): st
   return division ? `${base}/${divisionParam(division)}` : base;
 }
 
-/** A season's club champs qualification ladder. */
-export function seasonLadderPath(season: { slug: string }): string {
-  return `${seasonPath(season)}/ladder`;
-}
-
 export function roundPath(season: { slug: string }, roundNumber: number): string {
   return `/events/social/seasons/${season.slug}/rounds/${roundNumber}`;
 }

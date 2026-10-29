@@ -4,7 +4,6 @@ import {
   divisionLinks,
   divisionParam,
   roundPath,
-  seasonLadderPath,
   seasonPath,
   seasonRoundsPath,
   seasonStatsPath,
@@ -19,12 +18,6 @@ describe('seasonPath', () => {
 describe('seasonRoundsPath', () => {
   it('nests rounds under the season', () => {
     expect(seasonRoundsPath({ slug: '2026-1' })).toBe('/events/social/seasons/2026-1/rounds');
-  });
-});
-
-describe('seasonLadderPath', () => {
-  it('nests the ladder under the season', () => {
-    expect(seasonLadderPath({ slug: '2026-2' })).toBe('/events/social/seasons/2026-2/ladder');
   });
 });
 

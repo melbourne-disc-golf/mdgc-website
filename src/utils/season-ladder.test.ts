@@ -142,13 +142,13 @@ describe('divisionLadder', () => {
     });
   });
 
-  it('positions only eligible players, with tied points sharing a position', () => {
+  it('positions only eligible players, breaking ties on points by Social Days played', () => {
     const rows = divisionLadder(ladder, 'A', { places: 2, minimumRounds: 3 });
     expect(Object.fromEntries(rows.map((r) => [r.entry.userId, r.position]))).toEqual({
       '1': 1,
       '2': null,
       '3': 2,
-      '4': 2,
+      '4': 3,
       '5': null,
     });
   });
@@ -164,13 +164,24 @@ describe('divisionLadder', () => {
     ]);
   });
 
-  it('puts players tied on the line inside it', () => {
+  it('breaks a tie on points at the line by Social Days played', () => {
     const rows = divisionLadder(ladder, 'A', { places: 2, minimumRounds: 3 });
-    expect(rows.filter((r) => r.inPlaces).map((r) => r.entry.userId)).toEqual(['1', '3', '4']);
+    expect(rows.filter((r) => r.inPlaces).map((r) => r.entry.userId)).toEqual(['1', '3']);
+  });
+
+  it('puts players tied on points and Social Days played on the line inside it', () => {
+    const tied = [entry('1', 300, 3), entry('2', 200, 4), entry('3', 200, 4), entry('4', 100, 3)];
+    const rows = divisionLadder(tied, 'A', { places: 2, minimumRounds: 3 });
+    expect(rows.map((r) => [r.entry.userId, r.position, r.inPlaces])).toEqual([
+      ['1', 1, true],
+      ['2', 2, true],
+      ['3', 2, true],
+      ['4', 4, false],
+    ]);
   });
 
   it('lists players short of the minimum below the line, by points', () => {
     const rows = divisionLadder(ladder, 'A', { places: 2, minimumRounds: 3 });
-    expect(rows.map((r) => r.entry.userId)).toEqual(['1', '3', '4', '2', '5']);
+    expect(rows.map((r) => r.entry.userId)).toEqual(['1', '3', '2', '4', '5']);
   });
 });
