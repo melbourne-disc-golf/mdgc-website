@@ -45,7 +45,7 @@ The site should look and behave like one site, with a common design language, no
 - One-off styles are fine if they're used by only one page (or page template).
 - A pattern used across pages (or templates) should be factored out into a shared component or class, and documented on `/design`.
 - Also:
-  - use " - " as the separator in titles, e.g. "Round 5 - Bicentennial Park - Div A";
+  - use " - " as the separator in titles, e.g. "2026 Season 2 - Stats - Div A";
   - draw charts and bars to scale;
   - prefer simple and plain over clever.
 

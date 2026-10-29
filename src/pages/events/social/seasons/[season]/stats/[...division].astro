@@ -54,7 +54,7 @@ const bestRoundPositions = stats.bestRounds.map((r, _, all) => {
 });
 ---
 
-<Layout title={division ? `${title} - Div ${division}` : title} subtitle={subtitle} backLink={{ href: '/events/social', text: 'Social Days' }}>
+<Layout title={division ? `${title} - Stats - Div ${division}` : `${title} - Stats`} subtitle={subtitle} backLink={{ href: '/events/social', text: 'Social Days' }}>
   <SeasonNav season={season} page="stats" division={division} />
   <nav class="pill-nav mt-6" aria-label="Division">
     <span class="pill-nav-label">Division</span>
