@@ -2,6 +2,7 @@
 import '@styles/global.css'
 import { Font } from 'astro:assets';
 import defaultOgImage from '@images/ruffey-lake-hole-1.jpg';
+import { documentTitle, pageTitleWithParent, SITE_NAME } from '@utils/page-title';
 import { getNavItems, type NavItem } from '@data/navigation.ts';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
@@ -22,7 +23,6 @@ export interface Props {
 const { title, subtitle, description, heroImage, canonicalPath, cmsPath, backLink: backLinkProp } = Astro.props;
 
 // Build page metadata
-const pageTitle = `${title} | Melbourne Disc Golf Club`;
 const pageDescription = description || subtitle || 'Melbourne Disc Golf Club - promoting disc golf in Melbourne since 2007';
 const canonicalUrl = new URL(canonicalPath ?? Astro.url.pathname, Astro.site);
 const ogImageUrl = heroImage
@@ -55,6 +55,9 @@ function computeBackLink(path: string): BackLink | null {
 // An explicit backLink prop overrides the automatic one.
 const backLink = backLinkProp ?? computeBackLink(currentPath);
 
+const ogTitle = pageTitleWithParent(title, backLink?.text);
+const pageTitle = documentTitle(ogTitle);
+
 
 // Favicon sizes to generate links for
 const faviconSizes = [16, 32, 48, 192];
@@ -74,15 +77,15 @@ const faviconSizes = [16, 32, 48, 192];
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalUrl} />
-		<meta property="og:title" content={pageTitle} />
+		<meta property="og:title" content={ogTitle} />
 		<meta property="og:description" content={pageDescription} />
 		<meta property="og:image" content={ogImageUrl} />
-		<meta property="og:site_name" content="Melbourne Disc Golf Club" />
+		<meta property="og:site_name" content={SITE_NAME} />
 
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:url" content={canonicalUrl} />
-		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:title" content={ogTitle} />
 		<meta name="twitter:description" content={pageDescription} />
 		<meta name="twitter:image" content={ogImageUrl} />
 
