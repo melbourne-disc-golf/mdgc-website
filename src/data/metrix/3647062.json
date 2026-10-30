@@ -4111,11 +4111,36 @@
         "Total": 101
       },
       {
+        "UserID": "251336",
+        "Name": "Tim Kemp",
+        "ClassName": "Div X - No Metrix Rating",
+        "CountryCode": "AU",
+        "Place": 1,
+        "EventResults": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "Total": 0
+      },
+      {
         "UserID": "32212",
         "Name": "Racim Radjef",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 10,
+        "Place": 1,
         "EventResults": [
           null,
           null,
@@ -4140,7 +4165,7 @@
         "Name": "David Wood",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 11,
+        "Place": 2,
         "EventResults": [
           null,
           null,
@@ -4165,7 +4190,7 @@
         "Name": "Choo Tran",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 12,
+        "Place": 3,
         "EventResults": [
           66,
           null,
@@ -4190,7 +4215,7 @@
         "Name": "Jacob Cruden",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 13,
+        "Place": 4,
         "EventResults": [
           null,
           null,
@@ -4215,7 +4240,7 @@
         "Name": "Matt Mutter",
         "ClassName": "",
         "CountryCode": "AU",
-        "Place": 14,
+        "Place": 5,
         "EventResults": [
           null,
           null,
