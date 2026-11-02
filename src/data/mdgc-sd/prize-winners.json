@@ -885,5 +885,40 @@
       }
     ],
     "notes": []
+  },
+  "3647222": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Chris Scott 127348"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Dan Bradshaw"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Robert Lambert"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Owen Maisey"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B/X/Z CTB",
+        "name": "Succulent Chinese Meal"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Lennyanggriani Che Hosni"
+      }
+    ],
+    "notes": []
   }
 }
