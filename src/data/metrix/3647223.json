@@ -16,6 +16,36 @@
     "WeeklyHCSummary": null,
     "WeeklyHC": [
       {
+        "Name": "David Heath",
+        "ClassName": "Div D - Metrix Rating <790",
+        "UserID": 22042,
+        "Rating": 650,
+        "Result": 66,
+        "HC": 29.19,
+        "Change": 36.81,
+        "Order": 1
+      },
+      {
+        "Name": "Marcus Davies",
+        "ClassName": "Div A - Metrix Rating > 890",
+        "UserID": 211228,
+        "Rating": 903,
+        "Result": 46,
+        "HC": 8.09,
+        "Change": 37.91,
+        "Order": 2
+      },
+      {
+        "Name": "Hamish Clarkson",
+        "ClassName": "Div A - Metrix Rating > 890",
+        "UserID": 232102,
+        "Rating": 929,
+        "Result": 44,
+        "HC": 5.92,
+        "Change": 38.08,
+        "Order": 3
+      },
+      {
         "Name": "Daniel Santamaria",
         "ClassName": "Div B - Metrix Rating 845-890",
         "UserID": 224659,
@@ -23,7 +53,7 @@
         "Result": 49,
         "HC": 10.76,
         "Change": 38.24,
-        "Order": 1
+        "Order": 4
       },
       {
         "Name": "Juan rueda",
@@ -33,7 +63,17 @@
         "Result": 44,
         "HC": 5.42,
         "Change": 38.58,
-        "Order": 2
+        "Order": 5
+      },
+      {
+        "Name": "Roselyn Chrisp",
+        "ClassName": "Div D - Metrix Rating <790",
+        "UserID": 222635,
+        "Rating": 544,
+        "Result": 77,
+        "HC": 38.03,
+        "Change": 38.97,
+        "Order": 6
       },
       {
         "Name": "Leong Khoo",
@@ -43,7 +83,7 @@
         "Result": 64,
         "HC": 23.27,
         "Change": 40.730000000000004,
-        "Order": 3
+        "Order": 7
       },
       {
         "Name": "Ben Quinney",
@@ -53,7 +93,7 @@
         "Result": 59,
         "HC": 18.1,
         "Change": 40.9,
-        "Order": 4
+        "Order": 8
       },
       {
         "Name": "David Morkunas",
@@ -63,7 +103,7 @@
         "Result": 58,
         "HC": 16.76,
         "Change": 41.239999999999995,
-        "Order": 5
+        "Order": 9
       },
       {
         "Name": "Steve Davis",
@@ -73,7 +113,7 @@
         "Result": 74,
         "HC": 32.28,
         "Change": 41.72,
-        "Order": 6
+        "Order": 10
       },
       {
         "Name": "Eden Lewis-Shell",
@@ -83,7 +123,7 @@
         "Result": 69,
         "HC": 27.27,
         "Change": 41.730000000000004,
-        "Order": 7
+        "Order": 11
       },
       {
         "Name": "Chris Ronalds",
@@ -93,7 +133,17 @@
         "Result": 46,
         "HC": 4.25,
         "Change": 41.75,
-        "Order": 8
+        "Order": 12
+      },
+      {
+        "Name": "Jason Vincent",
+        "ClassName": "Div B - Metrix Rating 845-890",
+        "UserID": 216122,
+        "Rating": 871,
+        "Result": 53,
+        "HC": 10.76,
+        "Change": 42.24,
+        "Order": 13
       },
       {
         "Name": "Aidan Howard",
@@ -103,7 +153,7 @@
         "Result": 45,
         "HC": 2.67,
         "Change": 42.33,
-        "Order": 9
+        "Order": 14
       },
       {
         "Name": "Peter Barry",
@@ -113,7 +163,7 @@
         "Result": 55,
         "HC": 12.59,
         "Change": 42.41,
-        "Order": 10
+        "Order": 15
       },
       {
         "Name": "Robert Lambert",
@@ -123,7 +173,7 @@
         "Result": 55,
         "HC": 12.51,
         "Change": 42.49,
-        "Order": 11
+        "Order": 16
       },
       {
         "Name": "Carlton Klerck",
@@ -133,7 +183,27 @@
         "Result": 52,
         "HC": 9.42,
         "Change": 42.58,
-        "Order": 12
+        "Order": 17
+      },
+      {
+        "Name": "Montague Traczynski",
+        "ClassName": "Div D - Metrix Rating <790",
+        "UserID": 179974,
+        "Rating": 636,
+        "Result": 73,
+        "HC": 30.36,
+        "Change": 42.64,
+        "Order": 18
+      },
+      {
+        "Name": "Ross Davies",
+        "ClassName": "Div B - Metrix Rating 845-890",
+        "UserID": 211227,
+        "Rating": 859,
+        "Result": 55,
+        "HC": 11.76,
+        "Change": 43.24,
+        "Order": 19
       },
       {
         "Name": "Mathew Redmond",
@@ -143,7 +213,7 @@
         "Result": 57,
         "HC": 13.43,
         "Change": 43.57,
-        "Order": 13
+        "Order": 20
       },
       {
         "Name": "Zach Schloeffel",
@@ -153,7 +223,17 @@
         "Result": 53,
         "HC": 9.34,
         "Change": 43.66,
-        "Order": 14
+        "Order": 21
+      },
+      {
+        "Name": "Oscar Fehlberg",
+        "ClassName": "Div A - Metrix Rating > 890",
+        "UserID": 40349,
+        "Rating": 937,
+        "Result": 49,
+        "HC": 5.25,
+        "Change": 43.75,
+        "Order": 22
       },
       {
         "Name": "Pen Liu",
@@ -163,7 +243,7 @@
         "Result": 46,
         "HC": 2.25,
         "Change": 43.75,
-        "Order": 15
+        "Order": 22
       },
       {
         "Name": "Alistair Morley",
@@ -173,7 +253,7 @@
         "Result": 57,
         "HC": 13.18,
         "Change": 43.82,
-        "Order": 16
+        "Order": 24
       },
       {
         "Name": "Patrick Utri",
@@ -183,7 +263,7 @@
         "Result": 54,
         "HC": 9.84,
         "Change": 44.16,
-        "Order": 17
+        "Order": 25
       },
       {
         "Name": "Glen Ralston",
@@ -193,7 +273,7 @@
         "Result": 55,
         "HC": 10.76,
         "Change": 44.24,
-        "Order": 18
+        "Order": 26
       },
       {
         "Name": "Aaron Ponnudurai",
@@ -203,7 +283,17 @@
         "Result": 59,
         "HC": 14.68,
         "Change": 44.32,
-        "Order": 19
+        "Order": 27
+      },
+      {
+        "Name": "Peter Fletcher",
+        "ClassName": "Div D - Metrix Rating <790",
+        "UserID": 114231,
+        "Rating": 765,
+        "Result": 64,
+        "HC": 19.6,
+        "Change": 44.4,
+        "Order": 28
       },
       {
         "Name": "Zsolt Csatlos",
@@ -213,7 +303,17 @@
         "Result": 53,
         "HC": 8.59,
         "Change": 44.41,
-        "Order": 20
+        "Order": 29
+      },
+      {
+        "Name": "Phillip Hall",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "UserID": 137014,
+        "Rating": 844,
+        "Result": 59,
+        "HC": 13.01,
+        "Change": 45.99,
+        "Order": 30
       },
       {
         "Name": "Simon Farrar",
@@ -223,7 +323,7 @@
         "Result": 55,
         "HC": 8.76,
         "Change": 46.24,
-        "Order": 21
+        "Order": 31
       },
       {
         "Name": "Leo Dykes",
@@ -233,7 +333,7 @@
         "Result": 52,
         "HC": 5.17,
         "Change": 46.83,
-        "Order": 22
+        "Order": 32
       },
       {
         "Name": "Jeff Brunsting",
@@ -243,7 +343,7 @@
         "Result": 61,
         "HC": 13.34,
         "Change": 47.66,
-        "Order": 23
+        "Order": 33
       },
       {
         "Name": "Nick Tay",
@@ -253,7 +353,7 @@
         "Result": 61,
         "HC": 12.93,
         "Change": 48.07,
-        "Order": 24
+        "Order": 34
       },
       {
         "Name": "Michael Smith",
@@ -263,7 +363,7 @@
         "Result": 72,
         "HC": 23.52,
         "Change": 48.480000000000004,
-        "Order": 25
+        "Order": 35
       },
       {
         "Name": "Paul Baker",
@@ -273,7 +373,27 @@
         "Result": 60,
         "HC": 11.51,
         "Change": 48.49,
-        "Order": 26
+        "Order": 36
+      },
+      {
+        "Name": "Simon Mackay",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "UserID": 218039,
+        "Rating": 825,
+        "Result": 64,
+        "HC": 14.6,
+        "Change": 49.4,
+        "Order": 37
+      },
+      {
+        "Name": "Charlotte Davies",
+        "ClassName": "Div D - Metrix Rating <790",
+        "UserID": 217207,
+        "Rating": 768,
+        "Result": 69,
+        "HC": 19.35,
+        "Change": 49.65,
+        "Order": 38
       },
       {
         "Name": "Rafal Wadowski",
@@ -283,7 +403,7 @@
         "Result": 71,
         "HC": 21.1,
         "Change": 49.9,
-        "Order": 27
+        "Order": 39
       },
       {
         "Name": "Xavier Lambert",
@@ -293,7 +413,17 @@
         "Result": 65,
         "HC": 15.1,
         "Change": 49.9,
-        "Order": 27
+        "Order": 39
+      },
+      {
+        "Name": "Illia Kravchenko",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "UserID": 132835,
+        "Rating": 845,
+        "Result": 63,
+        "HC": 12.93,
+        "Change": 50.07,
+        "Order": 41
       },
       {
         "Name": "Martin Goh",
@@ -303,7 +433,7 @@
         "Result": 57,
         "HC": 6.01,
         "Change": 50.99,
-        "Order": 29
+        "Order": 42
       },
       {
         "Name": "Paul Rogers",
@@ -313,7 +443,7 @@
         "Result": 70,
         "HC": 17.85,
         "Change": 52.15,
-        "Order": 30
+        "Order": 43
       },
       {
         "Name": "Mike Van der Linden",
@@ -323,7 +453,7 @@
         "Result": 60,
         "HC": 7.51,
         "Change": 52.49,
-        "Order": 31
+        "Order": 44
       },
       {
         "Name": "John Baker",
@@ -333,7 +463,17 @@
         "Result": 71,
         "HC": 17.76,
         "Change": 53.239999999999995,
-        "Order": 32
+        "Order": 45
+      },
+      {
+        "Name": "Andrew Traczynski",
+        "ClassName": "Div D - Metrix Rating <790",
+        "UserID": 179972,
+        "Rating": 693,
+        "Result": 79,
+        "HC": 25.6,
+        "Change": 53.4,
+        "Order": 46
       },
       {
         "Name": "Michael Ranga-Heka",
@@ -343,10 +483,244 @@
         "Result": 79,
         "HC": 25.1,
         "Change": 53.9,
-        "Order": 33
+        "Order": 47
+      },
+      {
+        "Name": "Ian Whitehead",
+        "ClassName": "Div Z - Non MDGC Members",
+        "UserID": 196024,
+        "Rating": 0,
+        "Result": 62,
+        "HC": 83.4,
+        "Change": -21.400000000000006,
+        "Order": 48
+      },
+      {
+        "Name": "kiwikarl lapwood",
+        "ClassName": "Div X - No Metrix Rating",
+        "UserID": 248175,
+        "Rating": 0,
+        "Result": 65,
+        "HC": 83.4,
+        "Change": -18.400000000000006,
+        "Order": 49
+      },
+      {
+        "Name": "Tim Kemp",
+        "ClassName": "Div X - No Metrix Rating",
+        "UserID": 251336,
+        "Rating": 0,
+        "Result": 73,
+        "HC": 83.4,
+        "Change": -10.400000000000006,
+        "Order": 50
       }
     ],
     "Results": [
+      {
+        "UserID": "232102",
+        "ScorecardID": "15330937",
+        "Name": "Hamish Clarkson",
+        "ClassName": "Div A - Metrix Rating > 890",
+        "CountryCode": "AU",
+        "Group": "18",
+        "PlayerResults": [
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
+        ],
+        "Penalty": null,
+        "Sum": 44,
+        "Diff": -12,
+        "DNF": null,
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
+        "PreviousRoundsSum": null,
+        "PreviousRoundsDiff": null,
+        "Place": 1,
+        "OrderNumber": 1
+      },
       {
         "UserID": "195489",
         "ScorecardID": "15336990",
@@ -752,8 +1126,8 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 2,
-        "OrderNumber": 2
+        "Place": 3,
+        "OrderNumber": 3
       },
       {
         "UserID": "168308",
@@ -956,8 +1330,212 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 3,
-        "OrderNumber": 3
+        "Place": 4,
+        "OrderNumber": 4
+      },
+      {
+        "UserID": "211228",
+        "ScorecardID": "15307282",
+        "Name": "Marcus Davies",
+        "ClassName": "Div A - Metrix Rating > 890",
+        "CountryCode": "AU",
+        "Group": "11",
+        "PlayerResults": [
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
+        ],
+        "Penalty": null,
+        "Sum": 46,
+        "Diff": -10,
+        "DNF": null,
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
+        "PreviousRoundsSum": null,
+        "PreviousRoundsDiff": null,
+        "Place": 4,
+        "OrderNumber": 4
       },
       {
         "UserID": "44655",
@@ -1160,8 +1738,212 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 3,
-        "OrderNumber": 3
+        "Place": 4,
+        "OrderNumber": 4
+      },
+      {
+        "UserID": "40349",
+        "ScorecardID": "15348074",
+        "Name": "Oscar Fehlberg",
+        "ClassName": "Div A - Metrix Rating > 890",
+        "CountryCode": "AU",
+        "Group": "12",
+        "PlayerResults": [
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
+        ],
+        "Penalty": null,
+        "Sum": 49,
+        "Diff": -7,
+        "DNF": null,
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
+        "PreviousRoundsSum": null,
+        "PreviousRoundsDiff": null,
+        "Place": 7,
+        "OrderNumber": 7
       },
       {
         "UserID": "180459",
@@ -1364,8 +2146,8 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 5,
-        "OrderNumber": 5
+        "Place": 8,
+        "OrderNumber": 8
       },
       {
         "UserID": "133762",
@@ -1568,59 +2350,8 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 6,
-        "OrderNumber": 6
-      },
-      {
-        "UserID": "40349",
-        "ScorecardID": "15348074",
-        "Name": "Oscar Fehlberg",
-        "ClassName": "Div A - Metrix Rating > 890",
-        "CountryCode": "AU",
-        "Group": "12",
-        "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          {
-            "Result": "3",
-            "Diff": 0,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "Penalty": null,
-        "Sum": 3,
-        "Diff": 0,
-        "DNF": null,
-        "BUETotal": "",
-        "GRHTotal": "",
-        "OCPTotal": "",
-        "ICPTotal": "",
-        "IBPTotal": "",
-        "PenaltiesTotal": "",
-        "PreviousRoundsSum": null,
-        "PreviousRoundsDiff": null,
-        "Place": 7,
-        "OrderNumber": 7
+        "Place": 9,
+        "OrderNumber": 9
       },
       {
         "UserID": "135396",
@@ -1823,8 +2554,8 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 8,
-        "OrderNumber": 8
+        "Place": 10,
+        "OrderNumber": 10
       },
       {
         "UserID": "133657",
@@ -2027,92 +2758,8 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 9,
-        "OrderNumber": 9
-      },
-      {
-        "UserID": "232102",
-        "ScorecardID": "15330937",
-        "Name": "Hamish Clarkson",
-        "ClassName": "Div A - Metrix Rating > 890",
-        "CountryCode": "AU",
-        "Group": "18",
-        "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "Penalty": null,
-        "Sum": 0,
-        "Diff": 0,
-        "DNF": null,
-        "BUETotal": "0%",
-        "GRHTotal": "0%",
-        "OCPTotal": "0",
-        "ICPTotal": "0%",
-        "IBPTotal": "0",
-        "PenaltiesTotal": "1",
-        "PreviousRoundsSum": null,
-        "PreviousRoundsDiff": null,
-        "Place": 10,
-        "OrderNumber": 10
-      },
-      {
-        "UserID": "211228",
-        "ScorecardID": "15307282",
-        "Name": "Marcus Davies",
-        "ClassName": "Div A - Metrix Rating > 890",
-        "CountryCode": "AU",
-        "Group": "11",
-        "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "Penalty": null,
-        "Sum": 0,
-        "Diff": 0,
-        "DNF": null,
-        "BUETotal": "0%",
-        "GRHTotal": "0%",
-        "OCPTotal": "0",
-        "ICPTotal": "0%",
-        "IBPTotal": "0",
-        "PenaltiesTotal": "1",
-        "PreviousRoundsSum": null,
-        "PreviousRoundsDiff": null,
-        "Place": 10,
-        "OrderNumber": 10
+        "Place": 11,
+        "OrderNumber": 11
       },
       {
         "UserID": "224659",
@@ -2727,6 +3374,210 @@
         "OrderNumber": 3
       },
       {
+        "UserID": "216122",
+        "ScorecardID": "15347863",
+        "Name": "Jason Vincent",
+        "ClassName": "Div B - Metrix Rating 845-890",
+        "CountryCode": "AU",
+        "Group": "11",
+        "PlayerResults": [
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
+        ],
+        "Penalty": null,
+        "Sum": 53,
+        "Diff": -3,
+        "DNF": null,
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
+        "PreviousRoundsSum": null,
+        "PreviousRoundsDiff": null,
+        "Place": 3,
+        "OrderNumber": 3
+      },
+      {
         "UserID": "49416",
         "ScorecardID": "15343584",
         "Name": "Patrick Utri",
@@ -2927,8 +3778,8 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 4,
-        "OrderNumber": 4
+        "Place": 5,
+        "OrderNumber": 5
       },
       {
         "UserID": "134540",
@@ -3131,16 +3982,16 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 5,
-        "OrderNumber": 5
+        "Place": 6,
+        "OrderNumber": 6
       },
       {
-        "UserID": "99466",
-        "ScorecardID": "15330706",
-        "Name": "Robert Lambert",
+        "UserID": "211227",
+        "ScorecardID": "15307272",
+        "Name": "Ross Davies",
         "ClassName": "Div B - Metrix Rating 845-890",
         "CountryCode": "AU",
-        "Group": "4",
+        "Group": "11",
         "PlayerResults": [
           {
             "Result": "2",
@@ -3153,8 +4004,8 @@
             "PEN": "0"
           },
           {
-            "Result": "3",
-            "Diff": 0,
+            "Result": "4",
+            "Diff": 1,
             "BUE": "0",
             "GRH": "0",
             "OCP": "0",
@@ -3163,8 +4014,8 @@
             "PEN": "0"
           },
           {
-            "Result": "3",
-            "Diff": 0,
+            "Result": "2",
+            "Diff": -1,
             "BUE": "0",
             "GRH": "0",
             "OCP": "0",
@@ -3175,6 +4026,26 @@
           {
             "Result": "3",
             "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
             "BUE": "0",
             "GRH": "0",
             "OCP": "0",
@@ -3215,46 +4086,6 @@
           {
             "Result": "3",
             "Diff": 0,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "3",
-            "Diff": 0,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "3",
-            "Diff": 0,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "3",
-            "Diff": 0,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "4",
-            "Diff": 1,
             "BUE": "0",
             "GRH": "0",
             "OCP": "0",
@@ -3264,47 +4095,67 @@
           },
           {
             "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
             "Diff": 1,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "3",
-            "Diff": 0,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "3",
-            "Diff": 0,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "3",
-            "Diff": 0,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          {
-            "Result": "3",
-            "Diff": 0,
             "BUE": "0",
             "GRH": "0",
             "OCP": "0",
@@ -3335,8 +4186,8 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 5,
-        "OrderNumber": 5
+        "Place": 6,
+        "OrderNumber": 6
       },
       {
         "UserID": "194910",
@@ -3539,8 +4390,212 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 5,
-        "OrderNumber": 5
+        "Place": 6,
+        "OrderNumber": 6
+      },
+      {
+        "UserID": "99466",
+        "ScorecardID": "15330706",
+        "Name": "Robert Lambert",
+        "ClassName": "Div B - Metrix Rating 845-890",
+        "CountryCode": "AU",
+        "Group": "4",
+        "PlayerResults": [
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
+        ],
+        "Penalty": null,
+        "Sum": 55,
+        "Diff": -1,
+        "DNF": null,
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
+        "PreviousRoundsSum": null,
+        "PreviousRoundsDiff": null,
+        "Place": 6,
+        "OrderNumber": 6
       },
       {
         "UserID": "195850",
@@ -3743,8 +4798,8 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 8,
-        "OrderNumber": 8
+        "Place": 10,
+        "OrderNumber": 10
       },
       {
         "UserID": "135778",
@@ -3947,92 +5002,8 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 9,
-        "OrderNumber": 9
-      },
-      {
-        "UserID": "216122",
-        "ScorecardID": "15347863",
-        "Name": "Jason Vincent",
-        "ClassName": "Div B - Metrix Rating 845-890",
-        "CountryCode": "AU",
-        "Group": "11",
-        "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "Penalty": null,
-        "Sum": 0,
-        "Diff": 0,
-        "DNF": null,
-        "BUETotal": "0%",
-        "GRHTotal": "0%",
-        "OCPTotal": "0",
-        "ICPTotal": "0%",
-        "IBPTotal": "0",
-        "PenaltiesTotal": "13",
-        "PreviousRoundsSum": null,
-        "PreviousRoundsDiff": null,
-        "Place": 10,
-        "OrderNumber": 10
-      },
-      {
-        "UserID": "211227",
-        "ScorecardID": "15307272",
-        "Name": "Ross Davies",
-        "ClassName": "Div B - Metrix Rating 845-890",
-        "CountryCode": "AU",
-        "Group": "11",
-        "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "Penalty": null,
-        "Sum": 0,
-        "Diff": 0,
-        "DNF": null,
-        "BUETotal": "0%",
-        "GRHTotal": "0%",
-        "OCPTotal": "0",
-        "ICPTotal": "0%",
-        "IBPTotal": "0",
-        "PenaltiesTotal": "13",
-        "PreviousRoundsSum": null,
-        "PreviousRoundsDiff": null,
-        "Place": 10,
-        "OrderNumber": 10
+        "Place": 11,
+        "OrderNumber": 11
       },
       {
         "UserID": "217035",
@@ -4851,6 +5822,210 @@
         "OrderNumber": 4
       },
       {
+        "UserID": "137014",
+        "ScorecardID": "15347801",
+        "Name": "Phillip Hall",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "CountryCode": "AU",
+        "Group": "10",
+        "PlayerResults": [
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
+        ],
+        "Penalty": null,
+        "Sum": 59,
+        "Diff": 3,
+        "DNF": null,
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
+        "PreviousRoundsSum": null,
+        "PreviousRoundsDiff": null,
+        "Place": 4,
+        "OrderNumber": 4
+      },
+      {
         "UserID": "40479",
         "ScorecardID": "15340700",
         "Name": "Jeff Brunsting",
@@ -5051,8 +6226,416 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 5,
-        "OrderNumber": 5
+        "Place": 6,
+        "OrderNumber": 6
+      },
+      {
+        "UserID": "132835",
+        "ScorecardID": "15334487",
+        "Name": "Illia Kravchenko",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "CountryCode": "AU",
+        "Group": "10",
+        "PlayerResults": [
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "6",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
+        ],
+        "Penalty": null,
+        "Sum": 63,
+        "Diff": 7,
+        "DNF": null,
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
+        "PreviousRoundsSum": null,
+        "PreviousRoundsDiff": null,
+        "Place": 7,
+        "OrderNumber": 7
+      },
+      {
+        "UserID": "218039",
+        "ScorecardID": "15280548",
+        "Name": "Simon Mackay",
+        "ClassName": "Div C - Metrix Rating 790-845",
+        "CountryCode": "AU",
+        "Group": "18",
+        "PlayerResults": [
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "6",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
+        ],
+        "Penalty": null,
+        "Sum": 64,
+        "Diff": 8,
+        "DNF": null,
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
+        "PreviousRoundsSum": null,
+        "PreviousRoundsDiff": null,
+        "Place": 8,
+        "OrderNumber": 8
       },
       {
         "UserID": "99473",
@@ -5255,236 +6838,8 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 6,
-        "OrderNumber": 6
-      },
-      {
-        "UserID": "137014",
-        "ScorecardID": "15347801",
-        "Name": "Phillip Hall",
-        "ClassName": "Div C - Metrix Rating 790-845",
-        "CountryCode": "AU",
-        "Group": "10",
-        "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "Penalty": null,
-        "Sum": 0,
-        "Diff": 0,
-        "DNF": null,
-        "BUETotal": "0%",
-        "GRHTotal": "0%",
-        "OCPTotal": "0",
-        "ICPTotal": "0%",
-        "IBPTotal": "0",
-        "PenaltiesTotal": "16",
-        "PreviousRoundsSum": null,
-        "PreviousRoundsDiff": null,
-        "Place": 7,
-        "OrderNumber": 7
-      },
-      {
-        "UserID": "132835",
-        "ScorecardID": "15334487",
-        "Name": "Illia Kravchenko",
-        "ClassName": "Div C - Metrix Rating 790-845",
-        "CountryCode": "AU",
-        "Group": "10",
-        "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "Penalty": null,
-        "Sum": 0,
-        "Diff": 0,
-        "DNF": null,
-        "BUETotal": "0%",
-        "GRHTotal": "0%",
-        "OCPTotal": "0",
-        "ICPTotal": "0%",
-        "IBPTotal": "0",
-        "PenaltiesTotal": "16",
-        "PreviousRoundsSum": null,
-        "PreviousRoundsDiff": null,
-        "Place": 7,
-        "OrderNumber": 7
-      },
-      {
-        "UserID": "218039",
-        "ScorecardID": "15280548",
-        "Name": "Simon Mackay",
-        "ClassName": "Div C - Metrix Rating 790-845",
-        "CountryCode": "AU",
-        "Group": "18",
-        "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "Penalty": null,
-        "Sum": 0,
-        "Diff": 0,
-        "DNF": null,
-        "BUETotal": "0%",
-        "GRHTotal": "0%",
-        "OCPTotal": "0",
-        "ICPTotal": "0%",
-        "IBPTotal": "0",
-        "PenaltiesTotal": "16",
-        "PreviousRoundsSum": null,
-        "PreviousRoundsDiff": null,
-        "Place": 7,
-        "OrderNumber": 7
-      },
-      {
-        "UserID": "179974",
-        "ScorecardID": "15347731",
-        "Name": "Montague Traczynski",
-        "ClassName": "Div D - Metrix Rating <790",
-        "CountryCode": "AU",
-        "Group": "12",
-        "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          {
-            "Result": "4",
-            "Diff": 1,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "Penalty": null,
-        "Sum": 4,
-        "Diff": 1,
-        "DNF": null,
-        "BUETotal": "",
-        "GRHTotal": "",
-        "OCPTotal": "",
-        "ICPTotal": "",
-        "IBPTotal": "",
-        "PenaltiesTotal": "",
-        "PreviousRoundsSum": null,
-        "PreviousRoundsDiff": null,
-        "Place": 1,
-        "OrderNumber": 1
-      },
-      {
-        "UserID": "179972",
-        "ScorecardID": "15347732",
-        "Name": "Andrew Traczynski",
-        "ClassName": "Div D - Metrix Rating <790",
-        "CountryCode": "AU",
-        "Group": "12",
-        "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          {
-            "Result": "4",
-            "Diff": 1,
-            "BUE": "0",
-            "GRH": "0",
-            "OCP": "0",
-            "ICP": "0",
-            "IBP": "0",
-            "PEN": "0"
-          },
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "Penalty": null,
-        "Sum": 4,
-        "Diff": 1,
-        "DNF": null,
-        "BUETotal": "",
-        "GRHTotal": "",
-        "OCPTotal": "",
-        "ICPTotal": "",
-        "IBPTotal": "",
-        "PenaltiesTotal": "",
-        "PreviousRoundsSum": null,
-        "PreviousRoundsDiff": null,
-        "Place": 1,
-        "OrderNumber": 1
+        "Place": 9,
+        "OrderNumber": 9
       },
       {
         "UserID": "236835",
@@ -5687,8 +7042,8 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 3,
-        "OrderNumber": 3
+        "Place": 1,
+        "OrderNumber": 1
       },
       {
         "UserID": "248974",
@@ -5891,8 +7246,620 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
+        "Place": 2,
+        "OrderNumber": 2
+      },
+      {
+        "UserID": "114231",
+        "ScorecardID": "15259046",
+        "Name": "Peter Fletcher",
+        "ClassName": "Div D - Metrix Rating <790",
+        "CountryCode": "AU",
+        "Group": "18",
+        "PlayerResults": [
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
+        ],
+        "Penalty": null,
+        "Sum": 64,
+        "Diff": 8,
+        "DNF": null,
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
+        "PreviousRoundsSum": null,
+        "PreviousRoundsDiff": null,
+        "Place": 2,
+        "OrderNumber": 2
+      },
+      {
+        "UserID": "22042",
+        "ScorecardID": "15257684",
+        "Name": "David Heath",
+        "ClassName": "Div D - Metrix Rating <790",
+        "CountryCode": "AU",
+        "Group": "16",
+        "PlayerResults": [
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "6",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
+        ],
+        "Penalty": null,
+        "Sum": 66,
+        "Diff": 10,
+        "DNF": null,
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
+        "PreviousRoundsSum": null,
+        "PreviousRoundsDiff": null,
         "Place": 4,
         "OrderNumber": 4
+      },
+      {
+        "UserID": "217207",
+        "ScorecardID": "15307278",
+        "Name": "Charlotte Davies",
+        "ClassName": "Div D - Metrix Rating <790",
+        "CountryCode": "AU",
+        "Group": "11",
+        "PlayerResults": [
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "8",
+            "Diff": 4,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
+        ],
+        "Penalty": null,
+        "Sum": 69,
+        "Diff": 13,
+        "DNF": null,
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
+        "PreviousRoundsSum": null,
+        "PreviousRoundsDiff": null,
+        "Place": 5,
+        "OrderNumber": 5
       },
       {
         "UserID": "234357",
@@ -6299,8 +8266,8 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 6,
-        "OrderNumber": 6
+        "Place": 7,
+        "OrderNumber": 7
       },
       {
         "UserID": "188623",
@@ -6503,8 +8470,8 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 7,
-        "OrderNumber": 7
+        "Place": 8,
+        "OrderNumber": 8
       },
       {
         "UserID": "235235",
@@ -6707,8 +8674,8 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 7,
-        "OrderNumber": 7
+        "Place": 8,
+        "OrderNumber": 8
       },
       {
         "UserID": "113704",
@@ -6911,8 +8878,212 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 9,
-        "OrderNumber": 9
+        "Place": 10,
+        "OrderNumber": 10
+      },
+      {
+        "UserID": "179974",
+        "ScorecardID": "15347731",
+        "Name": "Montague Traczynski",
+        "ClassName": "Div D - Metrix Rating <790",
+        "CountryCode": "AU",
+        "Group": "12",
+        "PlayerResults": [
+          {
+            "Result": "6",
+            "Diff": 3,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "6",
+            "Diff": 3,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "6",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
+        ],
+        "Penalty": null,
+        "Sum": 73,
+        "Diff": 17,
+        "DNF": null,
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
+        "PreviousRoundsSum": null,
+        "PreviousRoundsDiff": null,
+        "Place": 11,
+        "OrderNumber": 11
       },
       {
         "UserID": "173779",
@@ -7115,8 +9286,416 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 10,
-        "OrderNumber": 10
+        "Place": 12,
+        "OrderNumber": 12
+      },
+      {
+        "UserID": "222635",
+        "ScorecardID": "15257682",
+        "Name": "Roselyn Chrisp",
+        "ClassName": "Div D - Metrix Rating <790",
+        "CountryCode": "AU",
+        "Group": "16",
+        "PlayerResults": [
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "7",
+            "Diff": 3,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "6",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
+        ],
+        "Penalty": null,
+        "Sum": 77,
+        "Diff": 21,
+        "DNF": null,
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
+        "PreviousRoundsSum": null,
+        "PreviousRoundsDiff": null,
+        "Place": 13,
+        "OrderNumber": 13
+      },
+      {
+        "UserID": "179972",
+        "ScorecardID": "15347732",
+        "Name": "Andrew Traczynski",
+        "ClassName": "Div D - Metrix Rating <790",
+        "CountryCode": "AU",
+        "Group": "12",
+        "PlayerResults": [
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
+        ],
+        "Penalty": null,
+        "Sum": 79,
+        "Diff": 23,
+        "DNF": null,
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
+        "PreviousRoundsSum": null,
+        "PreviousRoundsDiff": null,
+        "Place": 14,
+        "OrderNumber": 14
       },
       {
         "UserID": "237006",
@@ -7319,176 +9898,8 @@
         "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 11,
-        "OrderNumber": 11
-      },
-      {
-        "UserID": "217207",
-        "ScorecardID": "15307278",
-        "Name": "Charlotte Davies",
-        "ClassName": "Div D - Metrix Rating <790",
-        "CountryCode": "AU",
-        "Group": "11",
-        "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "Penalty": null,
-        "Sum": 0,
-        "Diff": 0,
-        "DNF": null,
-        "BUETotal": "0%",
-        "GRHTotal": "0%",
-        "OCPTotal": "0",
-        "ICPTotal": "0%",
-        "IBPTotal": "0",
-        "PenaltiesTotal": "27",
-        "PreviousRoundsSum": null,
-        "PreviousRoundsDiff": null,
-        "Place": 12,
-        "OrderNumber": 12
-      },
-      {
-        "UserID": "114231",
-        "ScorecardID": "15259046",
-        "Name": "Peter Fletcher",
-        "ClassName": "Div D - Metrix Rating <790",
-        "CountryCode": "AU",
-        "Group": "18",
-        "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "Penalty": null,
-        "Sum": 0,
-        "Diff": 0,
-        "DNF": null,
-        "BUETotal": "0%",
-        "GRHTotal": "0%",
-        "OCPTotal": "0",
-        "ICPTotal": "0%",
-        "IBPTotal": "0",
-        "PenaltiesTotal": "27",
-        "PreviousRoundsSum": null,
-        "PreviousRoundsDiff": null,
-        "Place": 12,
-        "OrderNumber": 12
-      },
-      {
-        "UserID": "22042",
-        "ScorecardID": "15257684",
-        "Name": "David Heath",
-        "ClassName": "Div D - Metrix Rating <790",
-        "CountryCode": "AU",
-        "Group": "16",
-        "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "Penalty": null,
-        "Sum": 0,
-        "Diff": 0,
-        "DNF": null,
-        "BUETotal": "0%",
-        "GRHTotal": "0%",
-        "OCPTotal": "0",
-        "ICPTotal": "0%",
-        "IBPTotal": "0",
-        "PenaltiesTotal": "27",
-        "PreviousRoundsSum": null,
-        "PreviousRoundsDiff": null,
-        "Place": 12,
-        "OrderNumber": 12
-      },
-      {
-        "UserID": "222635",
-        "ScorecardID": "15257682",
-        "Name": "Roselyn Chrisp",
-        "ClassName": "Div D - Metrix Rating <790",
-        "CountryCode": "AU",
-        "Group": "16",
-        "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "Penalty": null,
-        "Sum": 0,
-        "Diff": 0,
-        "DNF": null,
-        "BUETotal": "0%",
-        "GRHTotal": "0%",
-        "OCPTotal": "0",
-        "ICPTotal": "0%",
-        "IBPTotal": "0",
-        "PenaltiesTotal": "27",
-        "PreviousRoundsSum": null,
-        "PreviousRoundsDiff": null,
-        "Place": 12,
-        "OrderNumber": 12
+        "Place": 14,
+        "OrderNumber": 14
       },
       {
         "UserID": "248175",
@@ -7498,35 +9909,197 @@
         "CountryCode": "AU",
         "Group": "10",
         "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "6",
+            "Diff": 3,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
         ],
         "Penalty": null,
-        "Sum": 0,
-        "Diff": 0,
+        "Sum": 65,
+        "Diff": 9,
         "DNF": null,
-        "BUETotal": "0%",
-        "GRHTotal": "0%",
-        "OCPTotal": "0",
-        "ICPTotal": "0%",
-        "IBPTotal": "0",
-        "PenaltiesTotal": "27",
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
         "Place": 1,
@@ -7540,39 +10113,201 @@
         "CountryCode": "AU",
         "Group": "18",
         "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "6",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "2",
+            "Diff": -1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "6",
+            "Diff": 3,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
         ],
         "Penalty": null,
-        "Sum": 0,
-        "Diff": 0,
+        "Sum": 73,
+        "Diff": 17,
         "DNF": null,
-        "BUETotal": "0%",
-        "GRHTotal": "0%",
-        "OCPTotal": "0",
-        "ICPTotal": "0%",
-        "IBPTotal": "0",
-        "PenaltiesTotal": "27",
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 1,
-        "OrderNumber": 1
+        "Place": 2,
+        "OrderNumber": 2
       },
       {
         "UserID": "168594",
@@ -7786,77 +10521,197 @@
         "CountryCode": "AU",
         "Group": "10",
         "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "3",
+            "Diff": 0,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
         ],
         "Penalty": null,
-        "Sum": 0,
-        "Diff": 0,
+        "Sum": 62,
+        "Diff": 6,
         "DNF": null,
-        "BUETotal": "0%",
-        "GRHTotal": "0%",
-        "OCPTotal": "0",
-        "ICPTotal": "0%",
-        "IBPTotal": "0",
-        "PenaltiesTotal": "28",
-        "PreviousRoundsSum": null,
-        "PreviousRoundsDiff": null,
-        "Place": 2,
-        "OrderNumber": 2
-      },
-      {
-        "UserID": "251506",
-        "ScorecardID": "15343638",
-        "Name": "Alison Stewart",
-        "ClassName": "Div Z - Non MDGC Members",
-        "CountryCode": "AU",
-        "Group": "16",
-        "PlayerResults": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "Penalty": null,
-        "Sum": 0,
-        "Diff": 0,
-        "DNF": null,
-        "BUETotal": "0%",
-        "GRHTotal": "0%",
-        "OCPTotal": "0",
-        "ICPTotal": "0%",
-        "IBPTotal": "0",
-        "PenaltiesTotal": "28",
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
         "Place": 2,
@@ -7870,39 +10725,297 @@
         "CountryCode": "AU",
         "Group": "16",
         "PlayerResults": [
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "6",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "5",
+            "Diff": 2,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "6",
+            "Diff": 3,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "6",
+            "Diff": 3,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
           [],
           [],
           [],
           [],
           [],
           [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "6",
+            "Diff": 3,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "4",
+            "Diff": 1,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
         ],
         "Penalty": null,
-        "Sum": 0,
-        "Diff": 0,
+        "Sum": 58,
+        "Diff": 21,
         "DNF": null,
-        "BUETotal": "0%",
-        "GRHTotal": "0%",
-        "OCPTotal": "0",
-        "ICPTotal": "0%",
-        "IBPTotal": "0",
-        "PenaltiesTotal": "28",
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
         "PreviousRoundsSum": null,
         "PreviousRoundsDiff": null,
-        "Place": 2,
-        "OrderNumber": 2
+        "Place": 3,
+        "OrderNumber": 3
+      },
+      {
+        "UserID": "251506",
+        "ScorecardID": "15343638",
+        "Name": "Alison Stewart",
+        "ClassName": "Div Z - Non MDGC Members",
+        "CountryCode": "AU",
+        "Group": "16",
+        "PlayerResults": [
+          {
+            "Result": "7",
+            "Diff": 4,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "6",
+            "Diff": 3,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "6",
+            "Diff": 3,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "9",
+            "Diff": 5,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "7",
+            "Diff": 4,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "7",
+            "Diff": 4,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "8",
+            "Diff": 5,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "7",
+            "Diff": 4,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "9",
+            "Diff": 6,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          {
+            "Result": "11",
+            "Diff": 8,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "7",
+            "Diff": 4,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          },
+          {
+            "Result": "8",
+            "Diff": 5,
+            "BUE": "0",
+            "GRH": "0",
+            "OCP": "0",
+            "ICP": "0",
+            "IBP": "0",
+            "PEN": "0"
+          }
+        ],
+        "Penalty": null,
+        "Sum": 92,
+        "Diff": 55,
+        "DNF": null,
+        "BUETotal": "",
+        "GRHTotal": "",
+        "OCPTotal": "",
+        "ICPTotal": "",
+        "IBPTotal": "",
+        "PenaltiesTotal": "",
+        "PreviousRoundsSum": null,
+        "PreviousRoundsDiff": null,
+        "Place": 4,
+        "OrderNumber": 4
       }
     ],
     "Tracks": [
