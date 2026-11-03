@@ -920,5 +920,40 @@
       }
     ],
     "notes": []
+  },
+  "3647223": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Marcus Davies"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Daniel Santamaria"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "David Morkunas"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "David Heath"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B/X/Z CTB",
+        "name": "Chris Ronalds"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Leong Khoo"
+      }
+    ],
+    "notes": []
   }
 }
