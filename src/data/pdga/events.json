@@ -38,5 +38,21 @@
     "location": "Yarralumla, Australian Capital Territory, Australia",
     "startDate": "2026-12-04",
     "endDate": "2026-12-07"
+  },
+  {
+    "name": "Lake Dewar Summer Classic",
+    "eventId": 108969,
+    "tier": "C",
+    "location": "Myrniong, Victoria, Australia",
+    "startDate": "2027-01-09",
+    "endDate": "2027-01-10"
+  },
+  {
+    "name": "Garden City Open 2027 - The 49th New Zealand National Disc Golf Championships",
+    "eventId": 108904,
+    "tier": "A",
+    "location": "christchurch, New Zealand",
+    "startDate": "2027-02-05",
+    "endDate": "2027-02-07"
   }
 ]
