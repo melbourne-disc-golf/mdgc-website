@@ -22,6 +22,7 @@ export default defineConfig({
   redirects: {
     '/about': '/club',
     '/admin': '/cms/',
+    '/champs-rsvp': externalUrls.champsRsvp,
     '/contact': '/club#contact-us',
     '/ctb': externalUrls.ctb,
     '/ctp': '/ctb',

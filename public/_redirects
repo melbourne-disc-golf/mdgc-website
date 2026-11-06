@@ -39,6 +39,8 @@
 /shop/ https://mdgcshop.square.site/ 302
 /ctb https://docs.google.com/forms/d/1qG5hbu89CphfQhYTAXnmCRAqe84S5EgCChU908jlZTQ 302
 /ctb/ https://docs.google.com/forms/d/1qG5hbu89CphfQhYTAXnmCRAqe84S5EgCChU908jlZTQ 302
+/champs-rsvp https://forms.gle/NGakVaMtAU1jj9CB7 302
+/champs-rsvp/ https://forms.gle/NGakVaMtAU1jj9CB7 302
 
 # CMS redirect (308 permanent, preserves method)
 /admin /cms/ 308
