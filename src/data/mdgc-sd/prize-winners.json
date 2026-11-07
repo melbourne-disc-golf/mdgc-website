@@ -955,5 +955,40 @@
       }
     ],
     "notes": []
+  },
+  "3647224": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Marcus Davies"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Zach Schloeffel"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Toby Beasley"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Owen Maisey"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B/X/Z CTB",
+        "name": "Martin Goh"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Simon Mackay"
+      }
+    ],
+    "notes": []
   }
 }
