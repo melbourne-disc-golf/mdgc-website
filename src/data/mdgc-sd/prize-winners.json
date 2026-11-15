@@ -990,5 +990,40 @@
       }
     ],
     "notes": []
+  },
+  "3647226": {
+    "winners": [
+      {
+        "kind": "handicap",
+        "prize": "Div A Handicap",
+        "name": "Joshua Quinn"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div B Handicap",
+        "name": "Levi Naunton"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div C Handicap",
+        "name": "Lennyanggriani Che Hosni"
+      },
+      {
+        "kind": "handicap",
+        "prize": "Div D Handicap",
+        "name": "Oliver Morley"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div A/B/X/Z CTB",
+        "name": "Hamish Clarkson"
+      },
+      {
+        "kind": "ctb",
+        "prize": "Div C/D CTB",
+        "name": "Brett Bobridge"
+      }
+    ],
+    "notes": []
   }
 }
