@@ -11,6 +11,7 @@ import icon from 'astro-icon';
 
 import { rehypeSectionize } from './src/lib/rehype-sectionize.js';
 import { externalUrls } from './src/data/external-urls.ts';
+import { shortLinks } from './src/lib/short-links-integration.ts';
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,9 +23,7 @@ export default defineConfig({
   redirects: {
     '/about': '/club',
     '/admin': '/cms/',
-    '/champs-rsvp': externalUrls.champsRsvp,
     '/contact': '/club#contact-us',
-    '/ctb': externalUrls.ctb,
     '/ctp': '/ctb',
     '/melbourne-courses': '/courses',
     '/membership': '/club/membership',
@@ -34,7 +33,8 @@ export default defineConfig({
     '/what-is-disc-golf': '/disc-golf',
     '/club/shop': '/club#shop',
     '/events/social/seasons/2026-2/ladder': '/events/2026-11-22-club-champs/qualification',
-    // Event alias redirects are handled by aliases in event frontmatter
+    // Event alias redirects are handled by aliases in event frontmatter, and
+    // short links (src/data/short-links.yml) by the shortLinks integration
   },
   markdown: {
     processor: unified({ rehypePlugins: [rehypeSectionize] }),
@@ -45,6 +45,7 @@ export default defineConfig({
     }),
     icon(),
     sitemap(),
+    shortLinks(),
   ],
   fonts: [
     {

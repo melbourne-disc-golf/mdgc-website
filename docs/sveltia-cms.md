@@ -21,6 +21,15 @@ Sveltia CMS is a lightweight rewrite of Netlify/Decap CMS, designed as a drop-in
 
 Access the CMS in production at https://mdgc.pages.dev/cms.
 
+## Short links
+
+Editors manage short links (e.g. `/champs-rsvp`) under "Site → Short links". They're stored in `src/data/short-links.yml`, and the `shortLinks` integration (`src/lib/short-links-integration.ts`) adds them to `dist/_redirects` at build time. They're always temporary (302) redirects, so a destination can be changed later without browsers holding on to the old one.
+
+Hard-coded redirects stay in `public/_redirects`. A short link may not duplicate one of those, or hide an existing page, file or function:
+
+- in the CMS, the name field's `pattern` reserves the names already in use, and `src/utils/short-links.test.ts` fails if that list falls behind;
+- at build time, the integration fails the build on any clash the pattern missed.
+
 ## Image path handling (resolved)
 
 Sveltia had a bug where a `public_folder` of `~/assets/images` gained an extra leading `/` when replacing images (`/~/assets/images/...`), breaking Astro's image imports. We avoid it by keeping `public_folder` off the `~` prefix — see `public/cms/config.yml`.
