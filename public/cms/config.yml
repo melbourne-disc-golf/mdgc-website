@@ -39,6 +39,37 @@ collections:
         fields:
           - { label: "Body", name: "body", widget: "markdown", hint: "Displayed on the Summer Cup page, after the events calendar" }
 
+  - name: "site"
+    label: "Site"
+    editor:
+      preview: false
+    files:
+      - name: "short-links"
+        label: "Short links"
+        file: "src/data/short-links.yml"
+        format: "yaml"
+        fields:
+          - label: "Short links"
+            label_singular: "Short link"
+            name: "links"
+            widget: "list"
+            root: true
+            map_key_field: "name"
+            summary: "/{{name}} → {{to}}"
+            hint: "Short, memorable addresses that redirect elsewhere, e.g. melbournediscgolf.com/champs-rsvp. Each name can only be used once. You can change where a short link goes at any time."
+            fields:
+              - label: "Name"
+                name: "name"
+                widget: "string"
+                hint: "The part after melbournediscgolf.com/. Lowercase letters, digits and hyphens. Names of site sections (e.g. club, events) are taken."
+                # Keep the reserved names in step with src/utils/short-links.test.ts, which lists any that are missing.
+                pattern: ['^(?!(?:404|about|admin|api|club|cms|contact|courses|ctp|design|disc-golf|docs|events|images|index|melbourne-courses|membership|new-player-essentials|news|shop|shop-3|upcoming-events|what-is-disc-golf)$)[a-z0-9]+(?:-[a-z0-9]+)*$', "Use lowercase letters, digits and single hyphens, and not the name of a site section or existing redirect"]
+              - label: "Redirect to"
+                name: "to"
+                widget: "string"
+                hint: "A full web address (https://…), or a path on this site (/…)"
+                pattern: ['^(?:https?://\S+|/\S*)$', "Must start with https://, http:// or /"]
+
   - name: "courses"
     label: "Courses"
     label_singular: "Course"

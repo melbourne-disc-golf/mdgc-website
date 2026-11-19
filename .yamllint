@@ -1,0 +1,12 @@
+---
+extends: default
+
+rules:
+  # The CMS writes short-links.yml, so its layout isn't ours to choose, and
+  # URLs can't be wrapped.
+  document-start:
+    ignore: |
+      src/data/short-links.yml
+  line-length:
+    ignore: |
+      src/data/short-links.yml
