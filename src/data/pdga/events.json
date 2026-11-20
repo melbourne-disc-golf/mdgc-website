@@ -16,6 +16,22 @@
     "endDate": "2026-12-07"
   },
   {
+    "name": "2027 First Wave Open Warrnambool - FPO, FP50, MA1, MA3, MA50, FA2, FA4, FA40, MJ15",
+    "eventId": 109320,
+    "tier": "C",
+    "location": "Warrnambool, Victoria, Australia",
+    "startDate": "2027-01-02",
+    "endDate": "2027-01-02"
+  },
+  {
+    "name": "2027 First Wave Open Warrnambool - MPO, MP50, FP40, MA2, MA4, MA40, FA1, FA3, FA50, FJ15",
+    "eventId": 109324,
+    "tier": "C",
+    "location": "Warrnambool, Victoria, Australia",
+    "startDate": "2027-01-03",
+    "endDate": "2027-01-03"
+  },
+  {
     "name": "Lake Dewar Summer Classic",
     "eventId": 108969,
     "tier": "C",
