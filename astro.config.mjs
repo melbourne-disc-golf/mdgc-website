@@ -11,6 +11,7 @@ import icon from 'astro-icon';
 
 import { rehypeSectionize } from './src/lib/rehype-sectionize.js';
 import { externalUrls } from './src/data/external-urls.ts';
+import { isUnlisted } from './src/data/unlisted-pages.ts';
 import { shortLinks } from './src/lib/short-links-integration.ts';
 
 // https://astro.build/config
@@ -44,7 +45,7 @@ export default defineConfig({
       gfm: true,
     }),
     icon(),
-    sitemap(),
+    sitemap({ filter: (page) => !isUnlisted(page) }),
     shortLinks(),
   ],
   fonts: [

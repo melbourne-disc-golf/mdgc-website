@@ -4,6 +4,7 @@
 export const externalUrls = {
   shop: 'https://mdgcshop.square.site/',
   metrixSocialDays: 'https://discgolfmetrix.com/?u=club_events&id=235',
+  metrixClubJoin: 'https://discgolfmetrix.com/?u=club_join&ClubID=235',
   metrixScoringRules: 'https://discgolfmetrix.com/?u=rule&ID=6',
   metrixFavicon: '/images/logos/metrix-favicon.png',
 } as const;

@@ -1,0 +1,70 @@
+---
+layout: "@layouts/MdxLayout.astro"
+title: Welcome
+subtitle: getting started as a new MDGC member
+heroImage:
+  src: "@images/club-members.jpg"
+  alt: "MDGC members"
+---
+
+import Text from '@components/Text.astro';
+import NextSocialDay from '@components/NextSocialDay.astro';
+import { externalUrls } from '@data/external-urls';
+
+<Text>
+
+Hi, YOUR_NAME_HERE,
+
+Welcome to the Melbourne Disc Golf Club! 
+
+Here are a few things you might like to know, as a new member.
+
+## Getting set up
+
+First, we need _you_ to do three things:
+
+1. **[Join the ADG](https://www.australiandiscgolf.com/join/).** "Australian Disc Golf" is the sport's governing body in Australia, and provides our public liability insurance. Joining is free. You'll be given an "ADG number", which you'll need to know when registering for Social Days.
+2. **Create a [Disc Golf Metrix](https://discgolfmetrix.com/) account.** We run Social Days on Metrix, which handles registration and scoring.
+3. **<a href={externalUrls.metrixClubJoin}>Request to join the club</a> on Metrix.** That lets you play in the members' divisions.
+
+## Social Days
+
+We're looking forward to seeing you at one of our upcoming [Social Days](/events/social). 
+
+We run 15 of them each season, at courses across Melbourne, alternating between Saturdays and Sundays.
+They are **free for members**, and a great way to meet other players and improve your game.
+
+<NextSocialDay />
+
+### Registering for Social Days
+
+You _do_ need to register (on <a href={externalUrls.metrixSocialDays}>Metrix</a>) for each Social Day you plan to attend.
+Registration closes the evening before each event.
+Have your ADG number handy.
+
+There's usually an early round at 8:00am and a later one at 10:30am. We play in groups of 4 (ish). 
+The group you put yourself in is _generally_ the tee you'll start at, though the organisers may shuffle folks around a bit to balance group sizes.
+
+### Getting a rating
+
+Metrix gives you a rating once you've played three rounds, and updates it after every round after that. Your rating decides which [division](/events/social#divisions-and-ratings) you play in at Social Days. Until you have one, you play in Div X.
+
+## Swag
+
+Our membership officer will try to catch you at a Social Day, to give you a new member disc and a numbered bag tag.
+
+## Getting into the game
+
+Social Days aren't the only way to play. If you're new to disc golf:
+
+- **Find a course.** There are [courses](/courses) all over Melbourne, in public parks. They're free to play, with no booking needed, so you can practise any time.
+- **Get some discs.** One or two are enough to start, and a mid-range is best for beginners. See [building your disc collection](/disc-golf/grow#build-your-disc-collection) for what to buy, and the [MDGC Shop](/shop) for where. Until then, you can [borrow discs](/disc-golf/try#borrowing-discs) from some local libraries.
+- **Learn the rules.** Our [rules 101](/disc-golf/try#disc-golf-rules-101) covers the basics, including etiquette.
+- **Keep improving.** [Get into it](/disc-golf/grow) has tips on practising, and on watching the pros play.
+- **Try a tournament.** When you're ready, the club also runs [tournaments](/events/tournaments), and there's plenty more on our [events](/events) page.
+
+## Questions?
+
+Email us at [membership@melbournediscgolf.com](mailto:membership@melbournediscgolf.com). We're happy to help.
+
+</Text>

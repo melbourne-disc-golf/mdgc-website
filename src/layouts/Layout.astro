@@ -4,6 +4,7 @@ import { Font } from 'astro:assets';
 import defaultOgImage from '@images/ruffey-lake-hole-1.jpg';
 import { documentTitle, pageTitleWithParent, SITE_NAME } from '@utils/page-title';
 import { getNavItems, type NavItem } from '@data/navigation.ts';
+import { isUnlisted } from '@data/unlisted-pages';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import PageHero, { type HeroImage, type BackLink } from '@components/PageHero.astro';
@@ -30,6 +31,7 @@ const ogImageUrl = heroImage
   : new URL(defaultOgImage.src, Astro.site);
 
 const currentPath = Astro.url.pathname;
+const noindex = isUnlisted(currentPath);
 
 // Get navigation items dynamically
 const navItems: NavItem[] = await getNavItems();
@@ -90,6 +92,7 @@ const faviconSizes = [16, 32, 48, 192];
 		<meta name="twitter:image" content={ogImageUrl} />
 
 		<link rel="canonical" href={canonicalUrl} />
+		{noindex && <meta name="robots" content="noindex" />}
 		{faviconSizes.map(size => (
 			<link rel="icon" type="image/png" sizes={`${size}x${size}`} href={`/images/favicon-${size}x${size}.png`} />
 		))}
